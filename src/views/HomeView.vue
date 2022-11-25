@@ -1,14 +1,16 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <Ticket v-once />
+  </div>
 </template>
 
 <script>
-// import HelloWorld from "@/components/HelloWorld.vue";
+import Ticket from "@/components/home/Ticket.vue";
 
 export default {
   name: "HomeView",
   components: {
-    // HelloWorld,
+    Ticket,
   },
 };
 </script>
