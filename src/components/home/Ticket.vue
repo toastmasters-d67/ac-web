@@ -16,27 +16,28 @@ export default {
   border-color: transparent;
   margin: 0 auto;
   margin-bottom: 350px;
-}
-.ticket-title {
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 600;
-  text-align: center;
-}
-.ticket-button {
-  width: 201px;
-  height: 48px;
-  background-color: #f2df74;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  text-align: center;
-  box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.15);
-  border-radius: 38px;
-  border-color: transparent;
-  padding: 8px 24px;
-  margin-top: 32px;
-  margin-bottom: 50px;
+  .ticket-title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+  }
+  .ticket-button {
+    width: 201px;
+    height: 48px;
+    background-color: #f2df74;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 38px;
+    border-color: transparent;
+    padding: 8px 24px;
+    margin-top: 32px;
+    margin-bottom: 50px;
+    cursor: pointer;
+  }
 }
 </style>

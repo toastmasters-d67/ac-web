@@ -34,31 +34,30 @@
 .speakers-container {
   width: 100%;
   background: #eaeaea;
-  transform: rotate(-5deg) skew(-5deg);
+  transform: rotate(-10deg) skew(-10deg);
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  margin-bottom: 50px;
   .unskew {
-    transform: rotate(5deg) skew(5deg);
+    transform: rotate(10deg) skew(10deg);
     display: flex;
     flex-direction: column;
+    .speakers-title {
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 49px;
+      margin-top: 150px;
+      margin-bottom: 32px;
+    }
+    .speakers-text {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 29px;
+      margin-bottom: 32px;
+    }
   }
-}
-.speakers-title {
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 49px;
-  margin-top: 50px;
-  margin-bottom: 32px;
-}
-.speakers-text {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  margin-bottom: 32px;
 }
 .speakers {
   width: 1200px;
@@ -103,8 +102,8 @@
         top: 16px;
         width: 100%;
         height: 23px;
+        background-color: #b3c6d1;
         border-color: transparent;
-        background-color: rgba(179, 198, 209, 1);
       }
       .speaker-name-text {
         position: absolute;
@@ -124,7 +123,8 @@
   border-color: transparent;
   padding: 12px 24px;
   margin: 0 auto;
-  margin-bottom: 50px;
+  margin-bottom: 150px;
+  cursor: pointer;
   .button-text {
     color: white;
     font-size: 22px;
@@ -149,9 +149,9 @@ export default {
     return { speakers };
   },
   methods: {
-    getImage(icon) {
-      if (icon.length) {
-        return require(`@/assets/img/home/${icon}.png`);
+    getImage(image) {
+      if (image.length) {
+        return require(`@/assets/image/home/${image}.png`);
       }
       return "";
     },
