@@ -1,5 +1,13 @@
 <template>
-  <div class="slogan-container" :style="getStyle()">
+  <div
+    class="slogan-container"
+    :style="{
+      background:
+        'url(' +
+        require('@/assets/image/home/slogan-background.png') +
+        ') no-repeat center bottom/cover',
+    }"
+  >
     <div class="slogan-date">
       <div class="slogan-date-shadow"></div>
       <span class="slogan-date-text">Feb 3</span>
@@ -72,15 +80,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  name: "Slogan",
-  methods: {
-    getStyle() {
-      const background = require("@/assets/image/home/slogan-background.png");
-      return `background: url(${background}) no-repeat center bottom/cover`;
-    },
-  },
-};
-</script>
