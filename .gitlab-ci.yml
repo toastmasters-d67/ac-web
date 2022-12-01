@@ -1,0 +1,48 @@
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:latest
+# Functions that should be executed before the build script is run
+before_script:
+  - yarn install --frozen-lockfile --progress=false
+build:
+  stage: build
+  except:
+    - dev
+    - deploy
+  script:
+    - echo "Building pages"
+    - yarn build
+
+merge_requests:
+  stage: build
+  only:
+    - merge_requests
+  script:
+    - echo "Building pages for merge requests"
+    - yarn build
+
+pages:
+  stage: deploy
+  script:
+    - echo "Deploying pages"
+    - yarn build
+    - rm -rf public
+    - mv dist public
+  artifacts:
+    expire_in: 1 day
+    paths:
+    # The folder that contains the files to be exposed at the Page URL
+      - public
+  only:
+    - deploy
+
+# This folder is cached between builds
+# https://docs.gitlab.com/ee/ci/yaml/index.html#cache
+cache:
+  paths:
+    - node_modules/
+
+deploy:
+  stage: deploy
+  script: echo "Define your deployment script!"
+  environment: production
