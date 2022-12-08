@@ -1,14 +1,14 @@
 <template>
-  <div class="slogan-container" :style="getStyle()">
+  <section class="slogan-container" :style="getStyle()">
     <div class="slogan-date">
       <div class="slogan-date-shadow"></div>
-      <span class="slogan-date-text">Feb 3</span>
+      <span class="slogan-date-text">Apr 22-23, 2023</span>
     </div>
     <span class="slogan-title">Innovate</span>
     <span class="slogan-title">Intergrate</span>
     <span class="slogan-title">Motivate</span>
     <button class="slogan-button">Get your ticket</button>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -32,7 +32,7 @@
     text-align: left;
   }
   .slogan-date {
-    width: 119px;
+    width: 260px;
     height: 39px;
     position: relative;
     display: flex;
@@ -55,9 +55,9 @@
     }
   }
   .slogan-button {
-    width: 201px;
+    width: 202px;
     height: 48px;
-    background: #f2df74;
+    background: #ffbc58;
     color: black;
     font-size: 20px;
     font-weight: 600;
