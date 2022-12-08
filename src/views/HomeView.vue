@@ -4,6 +4,7 @@
     <Conference v-once />
     <Podcast v-once />
     <Speakers v-once />
+    <Agenda v-once />
     <Souvenirs v-once />
     <Ticket v-once />
   </article>
@@ -14,6 +15,7 @@ import Slogan from "@/components/home/Slogan.vue";
 import Conference from "@/components/home/Conference.vue";
 import Podcast from "@/components/home/Podcast.vue";
 import Speakers from "@/components/home/Speakers.vue";
+import Agenda from "@/components/home/Agenda.vue";
 import Souvenirs from "@/components/home/Souvenirs.vue";
 import Ticket from "@/components/home/Ticket.vue";
 
@@ -24,6 +26,7 @@ export default {
     Conference,
     Podcast,
     Speakers,
+    Agenda,
     Souvenirs,
     Ticket,
   },
