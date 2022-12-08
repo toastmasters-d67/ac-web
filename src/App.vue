@@ -1,6 +1,6 @@
 <template>
-  <Header v-once />
-  <router-view />
+  <Navbar v-once />
+  <router-view v-once />
   <Footer v-once />
 </template>
 
@@ -26,11 +26,11 @@
 </style>
 
 <script>
-import Header from "@/components/app/Header.vue";
+import Navbar from "@/components/app/Navbar.vue";
 import Footer from "@/components/app/Footer.vue";
 export default {
   components: {
-    Header,
+    Navbar,
     Footer,
   },
 };
