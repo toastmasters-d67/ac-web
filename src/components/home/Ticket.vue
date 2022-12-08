@@ -1,8 +1,8 @@
 <template>
-  <div class="ticket-container">
-    <span class="ticket-title">Come and join us!</span>
+  <section class="ticket-container">
+    <header class="ticket-title">Come and join us!</header>
     <button class="ticket-button">Get your ticket</button>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -12,13 +12,14 @@ export default {
 </script>
 <style scoped lang="scss">
 .ticket-container {
-  width: 296px;
+  width: 100%;
+  background: #e5e5e5;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-color: transparent;
   margin: 0 auto;
-  margin-bottom: 350px;
+  padding-bottom: 250px;
   .ticket-title {
     width: 301px;
     font-size: 32px;
@@ -28,9 +29,9 @@ export default {
     display: block;
   }
   .ticket-button {
-    width: 201px;
+    width: 202px;
     height: 48px;
-    background-color: #f2df74;
+    background: #ffbc58;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
