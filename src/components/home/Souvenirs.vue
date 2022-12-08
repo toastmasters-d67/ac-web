@@ -1,16 +1,24 @@
 <template>
-  <div class="souvenirs-container">
-    <span class="souvenirs-title">Souvenirs</span>
+  <section class="souvenirs-container">
+    <header class="souvenirs-title">Souvenirs</header>
     <div class="souvenirs-images">
-      <img src="@/assets/image/home/hat.png" class="souvenirs-hat" alt="hat" />
       <img
-        src="@/assets/image/home/shirt.png"
+        src="@/assets/image/home/souvenirs-hat.png"
+        class="souvenirs-hat"
+        alt="hat"
+      />
+      <img
+        src="@/assets/image/home/souvenirs-shirt.png"
         class="souvenirs-shirt"
         alt="shirt"
       />
-      <img src="@/assets/image/home/hat.png" class="souvenirs-hat" alt="hat" />
+      <img
+        src="@/assets/image/home/souvenirs-hat.png"
+        class="souvenirs-hat"
+        alt="hat"
+      />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -21,12 +29,13 @@ export default {
 <style scoped lang="scss">
 .souvenirs-container {
   width: 100%;
-  background-color: white;
+  color: #004165;
+  background: #e5e5e5;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  margin-top: 150px;
-  margin-bottom: 50px;
+  padding-top: 150px;
+  padding-bottom: 50px;
   .souvenirs-title {
     font-size: 48px;
     font-style: normal;
