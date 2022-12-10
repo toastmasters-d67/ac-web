@@ -22,14 +22,14 @@
             </div>
           </div>
         </div>
-        <button class="button-view-all">
+        <router-link to="/speakers" class="button-view-all">
           <span class="button-text">View all</span>
           <img
             src="@/assets/icon/home/arrow-right.png"
             class="button-arrow-right"
             alt="arrow-right"
           />
-        </button>
+        </router-link>
       </div>
     </div>
   </section>
