@@ -65,17 +65,14 @@
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  // padding-top: 80px;
-  // padding-bottom: 80px;
+  padding-bottom: 80px;
   text-align: left;
   .briefing-title {
     font-size: 48px;
     font-weight: 600;
     line-height: 49px;
-    // margin-top: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
-    // margin-bottom: 32px;
   }
 }
 .briefing-speaker {
