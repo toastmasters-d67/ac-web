@@ -1,61 +1,67 @@
 <template>
-  <div class="speakers-container">
-    <div class="unskew">
-      <span class="speakers-title">Meet our speakers</span>
-      <span class="speakers-text">
-        We invite speakers to enlighten our conference
-      </span>
-      <div class="speakers">
-        <div class="speaker" v-for="(speaker, index) in speakers" :key="index">
-          <img
-            :src="getImage(speaker.image)"
-            class="speaker-image"
-            :alt="speaker.image"
-          />
-          <div class="speaker-name">
-            <div class="speaker-name-shadow"></div>
-            <span class="speaker-name-text">{{ speaker.name }}</span>
+  <section id="speakers" class="speakers-container">
+    <div class="skew">
+      <div class="unskew">
+        <header class="speakers-title">Meet our speakers</header>
+        <span class="speakers-text">
+          We invite speakers to enlighten our conference
+        </span>
+        <div class="speakers">
+          <div v-for="(speaker, index) in speakers" :key="index">
+            <router-link :to="getLink(speaker.key)" class="speaker">
+              <img
+                :src="getImage(speaker.key)"
+                class="speaker-image"
+                :alt="speaker.image"
+              />
+              <div class="speaker-name">
+                <span class="speaker-name-text">{{ speaker.name }}</span>
+              </div>
+            </router-link>
           </div>
         </div>
+        <router-link to="/speakers" class="button-view-all">
+          <span class="button-text">View all</span>
+          <img
+            src="@/assets/icon/home/arrow-right.png"
+            class="button-arrow-right"
+            alt="arrow-right"
+          />
+        </router-link>
       </div>
-      <button class="button-view-all">
-        <span class="button-text">View all</span>
-        <img
-          src="@/assets/icon/home/arrow-right.png"
-          class="button-arrow-right"
-          alt="arrow-right"
-        />
-      </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
 .speakers-container {
-  width: 100%;
-  background: #eaeaea;
-  transform: rotate(-10deg) skew(-10deg);
+  background: #e5e5e5;
+  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  .unskew {
-    transform: rotate(10deg) skew(10deg);
-    display: flex;
-    flex-direction: column;
-    .speakers-title {
-      font-size: 40px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 49px;
-      margin-top: 150px;
-      margin-bottom: 32px;
-    }
-    .speakers-text {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 29px;
-      margin-bottom: 32px;
+  padding-bottom: 150px;
+  .skew {
+    background: #f5f5f5;
+    transform: rotate(-10deg) skew(-10deg);
+    .unskew {
+      transform: rotate(10deg) skew(10deg);
+      display: flex;
+      flex-direction: column;
+      .speakers-title {
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 49px;
+        margin-top: 150px;
+        margin-bottom: 32px;
+      }
+      .speakers-text {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 29px;
+        margin-bottom: 32px;
+      }
     }
   }
 }
@@ -66,6 +72,11 @@
   justify-content: center;
   border-color: transparent;
   margin: 0 auto;
+  a {
+    color: black;
+    text-decoration: none;
+    border-color: transparent;
+  }
   margin-bottom: 60px;
   .speaker {
     display: flex;
@@ -84,32 +95,14 @@
     .speaker-name {
       width: 223px;
       height: 39px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-self: auto;
-      align-items: center;
-      flex-shrink: 1;
-      justify-content: flex-start;
+      background-image: linear-gradient(to top, #b3c6d1 23px, transparent 100%);
       box-sizing: border-box;
       border-color: transparent;
       border-style: none;
-      background-color: transparent;
       border-radius: 0;
       padding: 0;
-      .speaker-name-shadow {
-        position: absolute;
-        top: 16px;
-        width: 100%;
-        height: 23px;
-        background-color: #b3c6d1;
-        border-color: transparent;
-      }
       .speaker-name-text {
-        position: absolute;
-        height: auto;
         font-size: 28px;
-        font-style: normal;
         font-weight: 600;
         line-height: 34px;
       }
@@ -120,6 +113,7 @@
   background-color: #004165;
   display: flex;
   align-items: center;
+  border-radius: 30px;
   border-color: transparent;
   padding: 12px 24px;
   margin: 0 auto;
@@ -128,7 +122,6 @@
   .button-text {
     color: white;
     font-size: 22px;
-    font-style: normal;
     font-weight: 600;
     line-height: 27px;
     margin-right: 8px;
@@ -149,9 +142,15 @@ export default {
     return { speakers };
   },
   methods: {
-    getImage(image) {
-      if (image.length) {
-        return require(`@/assets/image/home/${image}.png`);
+    getLink(key) {
+      if (key.length) {
+        return `/speakers/${key}`;
+      }
+      return "";
+    },
+    getImage(key) {
+      if (key.length) {
+        return require(`@/assets/image/home/speaker-${key}.png`);
       }
       return "";
     },

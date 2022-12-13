@@ -1,22 +1,32 @@
 [
   {
+    "key": "john",
     "name": "黑幼龍博士",
-    "image": "speaker-john"
+    "title": "卡內基訓練創辦人"
   },
   {
+    "key": "bastien",
     "name": "Bachir Bastien",
-    "image": "speaker-bastien"
+    "title": "Life Coach"
   },
   {
+    "key": "kozue",
     "name": "Sakai Kozue",
-    "image": "speaker-kozue"
+    "title": "日語會救援教練"
   },
   {
+    "key": "john",
+    "name": "黑幼龍博士",
+    "title": "卡內基訓練創辦人"
+  },
+  {
+    "key": "bastien",
     "name": "Bachir Bastien",
-    "image": "speaker-bastien"
+    "title": "Life Coach"
   },
   {
+    "key": "kozue",
     "name": "Sakai Kozue",
-    "image": "speaker-kozue"
+    "title": "日語會救援教練"
   }
 ]
