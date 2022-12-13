@@ -1,16 +1,16 @@
 <template>
-  <section id="agenda" class="agenda-container">
-    <header class="agenda-title">Agenda</header>
-    <div class="agenda-table">
-      <div class="agenda-row agenda-baseline">
+  <section id="program" class="program-container">
+    <header class="program-title">Program</header>
+    <div class="program-table">
+      <div class="program-row program-baseline">
         <span class="row-time">08:00 - 10:00</span>
         <span class="row row-yellow">註冊報到</span>
       </div>
-      <div class="agenda-row agenda-baseline">
+      <div class="program-row program-baseline">
         <span class="row-time">10:00 - 11:30</span>
         <span class="row row-yellow">開幕典禮</span>
       </div>
-      <div class="agenda-row agenda-center">
+      <div class="program-row program-center">
         <span class="row-time">11:30 - 12:00</span>
         <div class="row-items">
           <div class="row-item">
@@ -20,11 +20,11 @@
           </div>
         </div>
       </div>
-      <div class="agenda-row agenda-baseline">
+      <div class="program-row program-baseline">
         <span class="row-time">12:00 - 13:00</span>
         <span class="row row-gray">中場休息</span>
       </div>
-      <div class="agenda-row agenda-center">
+      <div class="program-row program-center">
         <span class="row-time">13:00 - 14:00</span>
         <div class="row-items">
           <div class="row-item">
@@ -44,11 +44,11 @@
           </div>
         </div>
       </div>
-      <div class="agenda-row agenda-baseline">
+      <div class="program-row program-baseline">
         <span class="row-time">12:00 - 13:00</span>
         <span class="row row-gray">中場休息</span>
       </div>
-      <div class="agenda-row agenda-center">
+      <div class="program-row program-center">
         <span class="row-time">14:00 - 15:00</span>
         <div class="row-items">
           <div class="row-item">
@@ -68,11 +68,11 @@
           </div>
         </div>
       </div>
-      <div class="agenda-row agenda-baseline">
+      <div class="program-row program-baseline">
         <span class="row-time">15:00 - 15:30</span>
         <span class="row row-gray">中場休息</span>
       </div>
-      <div class="agenda-row agenda-center">
+      <div class="program-row program-center">
         <span class="row-time">15:30 - 16:30</span>
         <div class="row-items">
           <div class="row-item">
@@ -92,7 +92,7 @@
           </div>
         </div>
       </div>
-      <div class="agenda-row agenda-center">
+      <div class="program-row program-center">
         <span class="row-time">16:30 - 17:30</span>
         <div class="row-items">
           <div class="row-item">
@@ -112,7 +112,7 @@
           </div>
         </div>
       </div>
-      <div class="agenda-row agenda-baseline">
+      <div class="program-row program-baseline">
         <span class="row-time">17:30 - 20:30</span>
         <span class="row row-yellow">晚宴暨閉幕表揚</span>
       </div>
@@ -121,7 +121,7 @@
 </template>
 
 <style scoped lang="scss">
-.agenda-container {
+.program-container {
   width: 100%;
   background: #e5e5e5;
   display: flex;
@@ -133,15 +133,15 @@
   box-sizing: border-box;
   padding-top: 80px;
   padding-bottom: 80px;
-  .agenda-title {
+  .program-title {
     color: #004165;
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 600;
     line-height: 49px;
     margin-top: 50px;
     margin-bottom: 32px;
   }
-  .agenda-table {
+  .program-table {
     width: 1347px;
     height: 1755px;
     background: rgba(255, 255, 255, 0.25);
@@ -151,17 +151,17 @@
     justify-content: flex-start;
     border-radius: 50px;
     padding-top: 100px;
-    .agenda-row {
+    .program-row {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
       margin-bottom: 30px;
     }
-    .agenda-center {
+    .program-center {
       align-items: center;
     }
-    .agenda-baseline {
+    .program-baseline {
       align-items: baseline;
     }
   }
