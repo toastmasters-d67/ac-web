@@ -9,7 +9,6 @@
       <span class="navbar-logo-text">2023 年度大會</span>
     </router-link>
     <div class="navbar-links">
-      <span class="navbar-link">Program</span>
       <router-link
         to="/#speakers"
         class="navbar-link"
@@ -17,8 +16,14 @@
       >
         Speakers
       </router-link>
-      <span class="navbar-link">Agenda</span>
-      <span class="navbar-link">Venue &amp; Directions</span>
+      <router-link
+        to="/#program"
+        class="navbar-link"
+        @click="scrollToElement('program')"
+      >
+        Program
+      </router-link>
+      <span class="navbar-link">Venue</span>
       <span class="navbar-link">FAQ</span>
       <button class="navbar-button">Get your ticket</button>
     </div>
@@ -67,7 +72,7 @@
     position: absolute;
     top: 16px;
     right: 24px;
-    width: 924px;
+    width: 645px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,6 +107,8 @@ export default {
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = `/#${id}`;
       }
     },
   },
