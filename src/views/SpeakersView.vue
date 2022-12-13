@@ -1,14 +1,16 @@
 <template>
-  <article id="speakers" class="speakers-container">
+  <article id="speaker" class="speaker-container">
     <Breadcrumb v-once />
-    <header class="speakers-title">Our Speakers</header>
+    <header class="speaker-page-title">Our Speakers</header>
     <div class="speakers">
       <div class="speaker" v-for="(speaker, index) in speakers" :key="index">
-        <img
-          :src="getImage(speaker.image)"
-          class="speaker-image"
-          :alt="speaker.image"
-        />
+        <router-link :to="getLink(speaker.key)">
+          <img
+            :src="getImage(speaker.key)"
+            class="speaker-image"
+            :alt="speaker.key"
+          />
+        </router-link>
         <span class="speaker-name">{{ speaker.name }}</span>
         <span class="speaker-title">{{ speaker.title }}</span>
       </div>
@@ -17,7 +19,7 @@
 </template>
 
 <style scoped lang="scss">
-.speakers-container {
+.speaker-container {
   background: linear-gradient(
     225deg,
     rgba(108, 169, 192, 1) 0%,
@@ -31,7 +33,7 @@
   box-sizing: border-box;
   padding-top: 60px;
   padding-bottom: 150px;
-  .speakers-title {
+  .speaker-page-title {
     color: #004165;
     font-size: 48px;
     font-weight: 600;
@@ -60,9 +62,7 @@
     flex-direction: column;
     align-items: center;
     border-color: transparent;
-    // margin-right: 70px;
     margin-bottom: 60px;
-    cursor: pointer;
     .speaker-image {
       width: 300px;
       height: 300px;
@@ -70,8 +70,6 @@
       margin-bottom: 24px;
     }
     .speaker-name {
-      // width: 224px;
-      // height: 44px;
       color: black;
       font-size: 36px;
       font-weight: 600;
@@ -79,13 +77,12 @@
       text-align: center;
     }
     .speaker-title {
-      // width: 224px;
-      // height: 34px;
       color: #979797;
       font-size: 28px;
       font-weight: 500;
       line-height: 34px;
       text-align: center;
+      margin-top: 15px;
     }
   }
 }
@@ -93,7 +90,7 @@
 
 <script>
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
-import speakers from "@/assets/data/speakers2.json";
+import speakers from "@/assets/data/speakers.json";
 
 export default {
   name: "SpeakersView",
@@ -104,9 +101,15 @@ export default {
     return { speakers };
   },
   methods: {
-    getImage(image) {
-      if (image.length) {
-        return require(`@/assets/image/speakers/${image}-rounded.png`);
+    getLink(key) {
+      if (key.length) {
+        return `/speakers/${key}`;
+      }
+      return "";
+    },
+    getImage(key) {
+      if (key.length) {
+        return require(`@/assets/image/speakers/speaker-${key}-rounded.png`);
       }
       return "";
     },

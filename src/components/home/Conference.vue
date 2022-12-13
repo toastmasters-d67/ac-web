@@ -32,7 +32,7 @@
   padding-top: 80px;
   padding-bottom: 80px;
   .conference-title {
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 600;
     line-height: 49px;
     margin-top: 50px;

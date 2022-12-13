@@ -7,19 +7,17 @@
           We invite speakers to enlighten our conference
         </span>
         <div class="speakers">
-          <div
-            class="speaker"
-            v-for="(speaker, index) in speakers"
-            :key="index"
-          >
-            <img
-              :src="getImage(speaker.image)"
-              class="speaker-image"
-              :alt="speaker.image"
-            />
-            <div class="speaker-name">
-              <span class="speaker-name-text">{{ speaker.name }}</span>
-            </div>
+          <div v-for="(speaker, index) in speakers" :key="index">
+            <router-link :to="getLink(speaker.key)" class="speaker">
+              <img
+                :src="getImage(speaker.key)"
+                class="speaker-image"
+                :alt="speaker.image"
+              />
+              <div class="speaker-name">
+                <span class="speaker-name-text">{{ speaker.name }}</span>
+              </div>
+            </router-link>
           </div>
         </div>
         <router-link to="/speakers" class="button-view-all">
@@ -51,7 +49,7 @@
       display: flex;
       flex-direction: column;
       .speakers-title {
-        font-size: 40px;
+        font-size: 48px;
         font-style: normal;
         font-weight: 600;
         line-height: 49px;
@@ -59,7 +57,6 @@
         margin-bottom: 32px;
       }
       .speakers-text {
-        // font-style: normal;
         font-size: 24px;
         font-weight: 500;
         line-height: 29px;
@@ -75,6 +72,11 @@
   justify-content: center;
   border-color: transparent;
   margin: 0 auto;
+  a {
+    color: black;
+    text-decoration: none;
+    border-color: transparent;
+  }
   margin-bottom: 60px;
   .speaker {
     display: flex;
@@ -84,7 +86,6 @@
     border-color: transparent;
     margin-right: 70px;
     margin-bottom: 60px;
-    cursor: pointer;
     .speaker-image {
       width: 300px;
       height: 300px;
@@ -141,9 +142,15 @@ export default {
     return { speakers };
   },
   methods: {
-    getImage(image) {
-      if (image.length) {
-        return require(`@/assets/image/home/${image}.png`);
+    getLink(key) {
+      if (key.length) {
+        return `/speakers/${key}`;
+      }
+      return "";
+    },
+    getImage(key) {
+      if (key.length) {
+        return require(`@/assets/image/home/speaker-${key}.png`);
       }
       return "";
     },
