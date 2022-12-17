@@ -1,6 +1,7 @@
 <template>
   <article id="home">
     <Slogan v-once />
+    <Countdown v-once />
     <Speakers v-once />
     <Program v-once />
     <Souvenirs v-once />
@@ -11,6 +12,7 @@
 
 <script>
 import Slogan from "@/components/home/Slogan.vue";
+import Countdown from "@/components/home/Countdown.vue";
 import Speakers from "@/components/home/Speakers.vue";
 import Program from "@/components/home/Program.vue";
 import Souvenirs from "@/components/home/Souvenirs.vue";
@@ -21,6 +23,7 @@ export default {
   name: "HomeView",
   components: {
     Slogan,
+    Countdown,
     Speakers,
     Program,
     Souvenirs,
