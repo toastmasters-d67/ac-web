@@ -72,7 +72,7 @@
     position: absolute;
     top: 16px;
     right: 24px;
-    width: 645px;
+    width: 660px;
     display: flex;
     align-items: center;
     justify-content: center;
