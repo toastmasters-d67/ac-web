@@ -23,7 +23,13 @@
       >
         Program
       </router-link>
-      <span class="navbar-link">Venue</span>
+      <router-link
+        to="/#venue"
+        class="navbar-link"
+        @click="scrollToElement('venue')"
+      >
+        Venue
+      </router-link>
       <span class="navbar-link">FAQ</span>
       <button class="navbar-button">Get your ticket</button>
     </div>
