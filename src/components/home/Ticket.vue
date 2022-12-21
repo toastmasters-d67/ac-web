@@ -1,5 +1,5 @@
 <template>
-  <section class="ticket-container">
+  <section id="ticket" class="ticket-container">
     <div class="ticket-item white">
       <span class="ticket-item-title">2 Day Pass</span>
       <span class="ticket-item-price">$ 280</span>
