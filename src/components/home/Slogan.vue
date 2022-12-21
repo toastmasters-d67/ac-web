@@ -1,13 +1,24 @@
 <template>
   <section class="slogan-container" :style="getStyle()">
-    <div class="slogan-date">
-      <div class="slogan-date-shadow"></div>
-      <span class="slogan-date-text">Apr 22-23, 2023</span>
+    <div class="slogan-date">Apr 22-23, 2023</div>
+    <div class="slogan-row">
+      <span class="slogan-year">2023</span>
+      <header class="slogan-title">Annual Conference</header>
     </div>
-    <span class="slogan-title">Innovate</span>
-    <span class="slogan-title">Intergrate</span>
-    <span class="slogan-title">Motivate</span>
-    <button class="slogan-button">Get your ticket</button>
+    <div class="slogan-row">
+      <span class="slogan-word color-1">Innovate</span>
+      <span class="slogan-word color-period">.</span>
+      <span class="slogan-word color-2">Intergrate</span>
+      <span class="slogan-word color-period">.</span>
+      <span class="slogan-word color-3">Motivate</span>
+    </div>
+    <span class="slogan-text">
+      It is our great pleasure to welcome you to the 2023 Annual Conference of
+      the Toastmasters International in Taipei. Learn to improve your public
+      speaking, leadership, and communication skills through 16 education
+      sessions across four tracks.
+    </span>
+    <button class="slogan-button">Get Ticket</button>
   </section>
 </template>
 
@@ -22,50 +33,79 @@
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
+  text-align: left;
   padding-top: 73px;
   padding-left: 120px;
-  .slogan-title {
-    height: 88px;
-    font-size: 72px;
-    font-weight: 700;
-    line-height: 88px;
-    text-align: left;
+  .slogan-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   .slogan-date {
-    width: 260px;
+    width: 270px;
     height: 39px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-color: transparent;
-    .slogan-date-shadow {
-      position: absolute;
-      top: 14px;
-      width: 100%;
-      height: 23px;
-      background-color: #004165;
-    }
-    .slogan-date-text {
-      position: absolute;
-      font-weight: 500;
-      font-size: 32px;
-      line-height: 39px;
-      text-align: center;
-    }
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.2);
+    gap: 10px;
+    padding: 0px 10px;
   }
-  .slogan-button {
-    width: 202px;
-    height: 48px;
-    background: #ffbc58;
-    color: black;
+  .slogan-year {
+    color: #214366;
     font-size: 20px;
     font-weight: 600;
+    letter-spacing: 0.3em;
+    line-height: 20px;
+    text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+    transform: rotate(-90deg);
+  }
+  .slogan-title {
+    color: #214366;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 117px;
+    text-shadow: 0px 4px 4px rgba(206, 212, 218, 0.25);
+  }
+  .slogan-word {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
+    margin-right: 30px;
+  }
+  .color-1 {
+    color: #fac8d5;
+  }
+  .color-2 {
+    color: #dedafe;
+  }
+  .color-3 {
+    color: #fffbd8;
+  }
+  .color-period {
+    color: #dde1e1;
+  }
+  .slogan-text {
+    width: 830px;
+    color: #757575;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 32px;
+    margin-top: 15px;
+  }
+  .slogan-button {
+    width: 151px;
+    color: black;
+    background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
+    font-size: 20px;
+    font-weight: 500;
     line-height: 24px;
     text-align: center;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid white;
     border-radius: 38px;
-    border-color: transparent;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
     padding: 8px 24px;
     margin-top: 40px;
     cursor: pointer;

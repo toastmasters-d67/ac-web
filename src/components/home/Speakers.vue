@@ -1,35 +1,26 @@
 <template>
   <section id="speakers" class="speakers-container">
-    <div class="skew">
-      <div class="unskew">
-        <header class="speakers-title">Meet our speakers</header>
-        <span class="speakers-text">
-          We invite speakers to enlighten our conference
-        </span>
-        <div class="speakers">
-          <div v-for="(speaker, index) in speakers" :key="index">
-            <router-link :to="getLink(speaker.key)" class="speaker">
-              <img
-                :src="getImage(speaker.key)"
-                class="speaker-image"
-                :alt="speaker.image"
-              />
-              <div class="speaker-name">
-                <span class="speaker-name-text">{{ speaker.name }}</span>
-              </div>
-            </router-link>
-          </div>
-        </div>
-        <router-link to="/speakers" class="button-view-all">
-          <span class="button-text">View all</span>
+    <header class="speakers-title">Meet our speakers</header>
+    <div class="speakers">
+      <div v-for="(speaker, index) in speakers" :key="index">
+        <router-link :to="getLink(speaker.key)" class="speaker">
           <img
-            src="@/assets/icon/home/arrow-right.png"
-            class="button-arrow-right"
-            alt="arrow-right"
+            :src="getImage(speaker.key)"
+            class="speaker-image"
+            :alt="speaker.image"
           />
+          <span class="speaker-name-text">{{ speaker.name }}</span>
         </router-link>
       </div>
     </div>
+    <router-link to="/speakers" class="button-view-all">
+      <span class="button-text">View all</span>
+      <img
+        src="@/assets/icon/home/arrow-right.png"
+        class="button-arrow-right"
+        alt="arrow-right"
+      />
+    </router-link>
   </section>
 </template>
 
@@ -40,29 +31,14 @@
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
+  padding-top: 150px;
   padding-bottom: 150px;
-  .skew {
-    background: #f5f5f5;
-    transform: rotate(-10deg) skew(-10deg);
-    .unskew {
-      transform: rotate(10deg) skew(10deg);
-      display: flex;
-      flex-direction: column;
-      .speakers-title {
-        font-size: 48px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 49px;
-        margin-top: 150px;
-        margin-bottom: 32px;
-      }
-      .speakers-text {
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 29px;
-        margin-bottom: 32px;
-      }
-    }
+  .speakers-title {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 49px;
+    margin-bottom: 90px;
   }
 }
 .speakers {
@@ -92,33 +68,34 @@
       border-radius: 20px;
       margin-bottom: 24px;
     }
-    .speaker-name {
-      width: 223px;
-      height: 39px;
-      background-image: linear-gradient(to top, #b3c6d1 23px, transparent 100%);
-      box-sizing: border-box;
-      border-color: transparent;
-      border-style: none;
-      border-radius: 0;
-      padding: 0;
-      .speaker-name-text {
-        font-size: 28px;
-        font-weight: 600;
-        line-height: 34px;
-      }
+    .speaker-name-text {
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 34px;
     }
+    // .speaker-name {
+    //   width: 223px;
+    //   height: 39px;
+    //   background-image: linear-gradient(to top, #b3c6d1 23px, transparent 100%);
+    //   box-sizing: border-box;
+    //   border-color: transparent;
+    //   border-style: none;
+    //   border-radius: 0;
+    //   padding: 0;
+    // }
   }
 }
 .button-view-all {
-  background-color: #004165;
+  width: 120px;
+  background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
   display: flex;
   align-items: center;
+  border: 2px solid white;
   border-radius: 30px;
-  border-color: transparent;
+  text-decoration: none;
   padding: 12px 24px;
   margin: 0 auto;
   margin-bottom: 150px;
-  cursor: pointer;
   .button-text {
     color: white;
     font-size: 22px;
@@ -150,7 +127,7 @@ export default {
     },
     getImage(key) {
       if (key.length) {
-        return require(`@/assets/image/home/speaker-${key}.png`);
+        return require(`@/assets/image/speakers/speaker-${key}-rounded.png`);
       }
       return "";
     },

@@ -1,7 +1,12 @@
 [
   {
+    "key": "price",
+    "name": "Verity Price",
+    "title": "Trainer"
+  },
+  {
     "key": "john",
-    "name": "黑幼龍博士",
+    "name": "John Hei",
     "title": "卡內基訓練創辦人"
   },
   {
@@ -15,18 +20,13 @@
     "title": "日語會救援教練"
   },
   {
+    "key": "price",
+    "name": "Verity Price",
+    "title": "Trainer"
+  },
+  {
     "key": "john",
-    "name": "黑幼龍博士",
+    "name": "John Hei",
     "title": "卡內基訓練創辦人"
-  },
-  {
-    "key": "bastien",
-    "name": "Bachir Bastien",
-    "title": "Life Coach"
-  },
-  {
-    "key": "kozue",
-    "name": "Sakai Kozue",
-    "title": "日語會救援教練"
   }
 ]
