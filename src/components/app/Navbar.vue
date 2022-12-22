@@ -6,7 +6,10 @@
         class="navbar-logo-image"
         alt="logo"
       />
-      <span class="navbar-logo-text">2023 年度大會</span>
+      <div class="navbar-logo-text">
+        <span class="navbar-logo-text-1">Toastmasters Taiwan</span>
+        <span class="navbar-logo-text-2">2023 Annual Conference</span>
+      </div>
     </router-link>
     <div class="navbar-links">
       <router-link
@@ -38,10 +41,13 @@
 
 <style scoped lang="scss">
 .navbar-container {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
   width: 100%;
   height: 80px;
-  background: #e5e5e5;
-  position: relative;
+  background: #819db2;
   font-size: 20px;
   font-style: normal;
   line-height: 24px;
@@ -63,15 +69,24 @@
     .navbar-logo-image {
       width: 60px;
       height: 50px;
+      margin-right: 20px;
     }
     .navbar-logo-text {
-      color: rgba(33, 67, 102, 0.76);
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      line-height: 39px;
-      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .navbar-logo-text-1 {
+        color: #004165;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+      .navbar-logo-text-2 {
+        color: #53595a;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15px;
+      }
     }
   }
   .navbar-links {
@@ -91,7 +106,7 @@
     .navbar-button {
       width: 210px;
       height: 48px;
-      background: rgba(255, 255, 255, 0.5);
+      background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
       font-size: 20px;
       font-weight: 600;
       text-align: center;
