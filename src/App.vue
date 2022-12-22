@@ -1,7 +1,6 @@
 <template>
   <Navbar v-once />
   <router-view v-once />
-  <Footer v-once />
   <ScrollToTop v-once />
 </template>
 
@@ -28,12 +27,10 @@
 
 <script>
 import Navbar from "@/components/app/Navbar.vue";
-import Footer from "@/components/app/Footer.vue";
 import ScrollToTop from "@/components/app/ScrollToTop.vue";
 export default {
   components: {
     Navbar,
-    Footer,
     ScrollToTop,
   },
 };
