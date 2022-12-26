@@ -3,35 +3,30 @@
     <div class="countdown-item">
       <span class="countdown-unit">Days</span>
       <div class="countdown-circle">
-        <span class="countdown-number">98</span>
+        <span class="countdown-number">{{ days }}</span>
       </div>
     </div>
     <div class="countdown-item">
       <span class="countdown-unit">Hours</span>
       <div class="countdown-circle">
-        <span class="countdown-number">06</span>
+        <span class="countdown-number">{{ hours }}</span>
       </div>
     </div>
     <div class="countdown-item">
       <span class="countdown-unit">Minutes</span>
       <div class="countdown-circle">
-        <span class="countdown-number">27</span>
+        <span class="countdown-number">{{ minutes }}</span>
       </div>
     </div>
     <div class="countdown-item">
       <span class="countdown-unit">Seconds</span>
       <div class="countdown-circle">
-        <span class="countdown-number">40</span>
+        <span class="countdown-number">{{ seconds }}</span>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: "Ticket",
-};
-</script>
 <style scoped lang="scss">
 .countdown-container {
   width: 100%;
@@ -101,3 +96,59 @@ export default {
   }
 }
 </style>
+
+<script>
+import { ref } from "vue";
+
+export default {
+  name: "Countdown",
+  data() {
+    const days = ref("98");
+    const hours = ref("06");
+    const minutes = ref("27");
+    const seconds = ref("40");
+    return {
+      days,
+      hours,
+      minutes,
+      seconds,
+      polling: null,
+    };
+  },
+  created() {
+    this.pollData();
+  },
+  methods: {
+    countdown() {
+      const now = new Date();
+      const date = new Date("apr 22, 2023 00:00:00");
+      const remaining = date - now;
+      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(remaining / (1000 * 60 * 60)) % 24;
+      const minutes = Math.floor(remaining / (1000 * 60)) % 60;
+      const seconds = Math.floor(remaining / 1000) % 60;
+      this.days = this.neat(days);
+      this.hours = this.neat(hours);
+      this.minutes = this.neat(minutes);
+      this.seconds = this.neat(seconds);
+    },
+    neat(number) {
+      if (number < 0) {
+        return "";
+      }
+      if (number < 10) {
+        return `0${number.toString()}`;
+      }
+      return number.toString();
+    },
+    pollData() {
+      this.polling = window.setInterval(() => {
+        this.countdown();
+      }, 1000);
+    },
+  },
+  beforeUnmount() {
+    window.clearInterval(this.polling);
+  },
+};
+</script>
