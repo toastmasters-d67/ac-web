@@ -25,7 +25,7 @@ pages:
   stage: deploy
   script:
     - echo "Deploying pages"
-    - yarn build
+    - yarn build --mode ac
     - rm -rf public
     - mv dist public
   artifacts:
