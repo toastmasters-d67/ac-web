@@ -29,12 +29,12 @@ export default {
 .cta-buttons-container {
   position: fixed;
   right: 2.5%;
-  bottom: 100px;
+  bottom: 71px;
   display: flex;
   flex-direction: column;
   .cta-buttons-button {
-    width: calc(46px + 3.76vw);
-    height: calc(46px + 3.76vw);
+    width: 100px;
+    height: 100px;
     position: relative;
     border-color: transparent;
     .cta-buttons-background {
@@ -45,16 +45,29 @@ export default {
     }
     .cta-buttons-text {
       left: 0;
-      top: calc(13.77px + 1.13vw);
+      top: 30px;
       position: absolute;
       text-align: center;
       width: 100%;
       color: rgba(0, 0, 0, 1);
-      font-size: calc(7.89px + 0.56vw);
+      font-size: 16px;
       /* Prevent text to be selected */
       -webkit-user-select: none; /* Safari */
       -ms-user-select: none; /* IE 10 and IE 11 */
       user-select: none; /* Standard syntax */
+    }
+  }
+}
+/* Mobile */
+@media (max-width: 768px) {
+  .cta-buttons-container {
+    .cta-buttons-button {
+      width: 60px;
+      height: 60px;
+      .cta-buttons-text {
+        top: 18px;
+        font-size: 10px;
+      }
     }
   }
 }
