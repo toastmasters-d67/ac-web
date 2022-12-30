@@ -28,6 +28,16 @@
 </template>
 
 <style scoped lang="scss">
+@font-face {
+  font-family: "Hack";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: local("Hack"),
+    url("@/assets/fonts/Hack/hack-regular.woff2") format("woff2"),
+    url("@/assets/fonts/Hack/hack-regular.woff") format("woff");
+}
 .countdown-container {
   width: 100%;
   background: #e5e5e5;
@@ -48,7 +58,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-style: normal;
     margin-top: 50px;
     margin-bottom: 50px;
     .countdown-unit {
@@ -60,9 +69,12 @@
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     .countdown-circle {
-      position: relative;
       width: 200px;
       height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       border-radius: 50%;
       border: 4px solid #bc92b7;
       border-top-color: white;
@@ -72,12 +84,10 @@
       // animation: spin 60s linear infinite;
       margin: 0 auto;
       .countdown-number {
-        position: absolute;
-        left: 35px;
-        top: 70px;
+        font-family: "Hack";
         font-size: 96px;
         font-weight: 400;
-        line-height: 70px;
+        line-height: 80px;
         text-align: censter;
         letter-spacing: 0.05em;
         background: linear-gradient(38.59deg, #de809c 11.59%, #675de2 77.61%),
