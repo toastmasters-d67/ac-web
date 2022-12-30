@@ -2,6 +2,7 @@
   <Navbar v-once />
   <router-view v-once />
   <ScrollToTop v-once />
+  <CtaButtons v-once />
 </template>
 
 <style lang="scss">
@@ -28,10 +29,12 @@
 <script>
 import Navbar from "@/components/app/Navbar.vue";
 import ScrollToTop from "@/components/app/ScrollToTop.vue";
+import CtaButtons from "@/components/app/CtaButtons.vue";
 export default {
   components: {
     Navbar,
     ScrollToTop,
+    CtaButtons,
   },
 };
 </script>
