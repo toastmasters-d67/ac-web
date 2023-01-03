@@ -28,16 +28,6 @@
 </template>
 
 <style scoped lang="scss">
-@font-face {
-  font-family: "Hack";
-  font-weight: 400;
-  font-style: normal;
-  font-display: auto;
-  unicode-range: U+000-5FF;
-  src: local("Hack"),
-    url("@/assets/fonts/Hack/hack-regular.woff2") format("woff2"),
-    url("@/assets/fonts/Hack/hack-regular.woff") format("woff");
-}
 .countdown-container {
   width: 100%;
   background: #e5e5e5;
@@ -84,7 +74,6 @@
       // animation: spin 60s linear infinite;
       margin: 0 auto;
       .countdown-number {
-        font-family: "Hack";
         font-size: 96px;
         font-weight: 400;
         line-height: 80px;
