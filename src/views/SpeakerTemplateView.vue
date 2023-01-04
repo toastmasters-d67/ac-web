@@ -3,6 +3,7 @@
     <Breadcrumb v-once />
     <Briefing v-once />
     <Seminar v-once />
+    <Voting v-once />
   </article>
 </template>
 
@@ -22,6 +23,7 @@
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
+import Voting from "@/components/speaker/Voting.vue";
 
 export default {
   name: "SpeakersView",
@@ -29,6 +31,7 @@ export default {
     Breadcrumb,
     Briefing,
     Seminar,
+    Voting,
   },
 };
 </script>
