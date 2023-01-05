@@ -21,6 +21,7 @@
 
 <style>
 .p-breadcrumb {
+  background: transparent;
   padding-top: 50px;
   margin-bottom: 50px;
   margin-left: 5%;
@@ -30,13 +31,12 @@
 .p-menuitem-text {
   font-family: "Montserrat" !important;
   font-size: 24px;
-  font-style: normal;
   font-weight: 500;
   line-height: 15px;
-  color: #770d29 !important;
+  color: #214366 !important;
 }
 .p-breadcrumb-chevron {
-  color: #770d29 !important;
+  color: #214366 !important;
   margin: 0 0.5rem 0 0.5rem;
 }
 .p-breadcrumb ul {
