@@ -4,7 +4,11 @@
     class="scroll-to-top-button"
     v-on:click="scrollToTop()"
   >
-    <img alt="Scroll To Top" src="@/assets/icon/app/scroll-to-top.svg" />
+    <img
+      alt="Scroll To Top"
+      class="scroll-to-top-img"
+      src="@/assets/icon/app/scroll-to-top.svg"
+    />
   </button>
 </template>
 
@@ -36,13 +40,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .scroll-to-top-button {
   position: fixed;
-  right: 22px;
-  bottom: 30%;
+  right: 1.53%;
+  bottom: 50%;
   border: transparent;
   background-color: transparent;
   display: none;
+  .scroll-to-top-img {
+    width: 47px;
+    height: 47px;
+  }
 }
 </style>
