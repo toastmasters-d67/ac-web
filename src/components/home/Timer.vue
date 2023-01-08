@@ -19,7 +19,7 @@
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: local("Hack"),
+  src: local("Archivo"),
     url("@/assets/fonts/Archivo/Archivo-Regular.woff2") format("woff2"),
     url("@/assets/fonts/Archivo/Archivo-Regular.woff") format("woff");
 }
@@ -32,7 +32,7 @@
     position: relative;
     width: 200px;
     height: 200px;
-    background: transparent;
+    background: white;
     border-radius: 50%;
     overflow: hidden;
     .timer-segment {
@@ -54,7 +54,6 @@
     height: 190px;
     background: #e5e5e5;
     border-radius: 50%;
-    box-shadow: inset white 0px 0px 3px 3px;
     transform: translateX(-50%) translateY(-50%);
   }
   .timer-value {
