@@ -111,6 +111,51 @@
     cursor: pointer;
   }
 }
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .slogan-container {
+    min-height: 213px;
+    padding-top: 19.5px;
+    padding-left: 26px;
+    .slogan-date {
+      height: 12px;
+      font-size: 10px;
+      line-height: 12px;
+      padding: 0px 3.2px;
+    }
+    .slogan-year {
+      font-size: 5px;
+      font-weight: 600;
+      line-height: 10px;
+      letter-spacing: 0.1em;
+    }
+    .slogan-title {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .slogan-word {
+      height: 40px;
+      width: 196px;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .slogan-text {
+      width: 86.49%;
+      min-width: 200px;
+      font-weight: 500;
+      font-size: 8px;
+      line-height: 12px;
+      margin-top: 10px;
+    }
+    .slogan-button {
+      width: 76px;
+      font-size: 10px;
+      line-height: 12px;
+      padding: 5px 12px;
+      margin-top: 10px;
+    }
+  }
+}
 </style>
 
 <script>

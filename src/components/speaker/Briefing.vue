@@ -1,7 +1,7 @@
 <template>
   <section class="briefing-container">
     <div class="briefing-speaker">
-      <header class="briefing-title">黑幼龍博士</header>
+      <header class="briefing-title">Verity Price</header>
       <img
         src="@/assets/icon/speaker/speaker-divider.png"
         class="briefing-speaker-divider"
@@ -9,28 +9,43 @@
       />
       <div class="briefing-speaker-row">
         <img
-          src="@/assets/image/speaker/john.png"
+          src="@/assets/image/speaker/speaker-price.png"
           class="briefing-speaker-image"
           alt="play"
         />
         <div class="briefing-speaker-text">
           <span>
-            華人世界所熟知的「中文卡內基之父」，連續 27 年創下全球營運績效第一名
-            的紀錄；Yes123 人力銀行網站調查─最想追隨的領導人之一，
-            自剖內心世界，寫給想要成為更優秀領導人的每一位讀者。
+            What does it take to be the first? Way back in 2005, Verity started
+            her journey as the first South African musician with the tenacious
+            foresight to get online crowdfunding for an album she hadn&apos;t
+            even recorded yet. Fifteen years later, and a career glittered with
+            accolades, brings us to 2021 and Verity&apos;s latest big first -
+            first speaker from Africa to ever be crowned the World Champion of
+            Public Speaking and the sixth woman in history.
           </span>
           <span>
-            在領導專書 「走出一條不平凡的領導之路：黑幼龍是如何做到的」裡提到：
-            「我想到過去這三十多年，從創辦中文卡內基訓練，並帶著一群夥伴將之推廣、
-            延伸、創新，影響到四十多萬人的一生時，
-            我真的在領導力方面做了些『不平凡的事』。
-            主要的是幫助了很多其他的人成為不平凡的人。
-            我是帶着感恩的心情，在這本書中分享我在領導方面的心路歷程。坦白說，
-            如果我離開世上時，沒有在這世界留下這本書，可能會覺得很遺憾。」
-          </span>
-          <span>
-            非常榮幸在此次年度大會中，黑幼龍博士將會親身以「On Becoming a
-            Leader」為題，分享擔任講師路上的歷練故事，以及分享其對領導力的見解。
+            Her talent for ‘acting out the box’ rather than merely ‘thinking
+            out’ of it, has brought international success for Verity, speaking
+            globally on innovation and thinking differently, which includes two
+            <a
+              href="https://www.ted.com/talks/verity_price_does_convenience_kill_creativity"
+              class="briefing-link"
+              target="_blank"
+            >
+              TEDx Talks
+            </a>
+            . As the Toastmasters 2022 World Champion, Verity captured the
+            judges, and thousands of peoples imagination with her winning speech
+            <a
+              href="https://www.youtube.com/watch?v=k24vGzEjePo&ab_channel=ToastmastersInternational"
+              class="briefing-link"
+              target="_blank"
+            >
+              ‘A Great Read’
+            </a>
+            - an inspiring invitation to improve our lives by &quot;writing a
+            different story&quot;. Helping people do just that, is Verity&apos;s
+            passion.
           </span>
         </div>
       </div>
@@ -61,12 +76,14 @@
   color: black;
   display: flex;
   flex-direction: column;
-  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  padding-bottom: 80px;
   text-align: left;
+  a {
+    color: black;
+    border-color: transparent;
+  }
   .briefing-title {
     font-size: 48px;
     font-weight: 600;
@@ -76,9 +93,10 @@
   }
 }
 .briefing-speaker {
+  min-width: 1200px;
   margin: 0 auto;
   .briefing-speaker-divider {
-    width: 1278px;
+    width: 1200px;
     border: 1px solid #cccccc;
   }
   .briefing-speaker-row {
@@ -87,23 +105,23 @@
     align-items: center;
     margin-top: 20px;
     .briefing-speaker-image {
-      width: 515px;
-      height: 649px;
+      width: 510px;
+      height: 655px;
       border-color: transparent;
       margin-right: 50px;
     }
     .briefing-speaker-text {
-      width: 690px;
+      width: 680px;
       display: flex;
       flex-direction: column;
       font-size: 20px;
-      font-weight: 400;
-      line-height: 50px;
+      line-height: 40px;
     }
     .briefing-logo {
       width: 50px;
       height: 50px;
       margin-right: 20px;
+      cursor: pointer;
     }
   }
 }

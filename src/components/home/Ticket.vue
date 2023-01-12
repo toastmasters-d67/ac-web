@@ -13,7 +13,7 @@
           <span class="ticket-item-text">Souvenirs</span>
         </li>
         <li class="ticket-item-row">
-          <i class="pi pi-exclamation-triangle"></i>
+          <i class="pi pi-shopping-cart"></i>
           <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
         </li>
       </ul>
@@ -33,7 +33,7 @@
           <span class="ticket-item-text">Souvenirs</span>
         </li>
         <li class="ticket-item-row">
-          <i class="pi pi-exclamation-triangle"></i>
+          <i class="pi pi-shopping-cart"></i>
           <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
         </li>
       </ul>
@@ -52,7 +52,7 @@
           <span class="ticket-item-text">Souvenirs</span>
         </li>
         <li class="ticket-item-row">
-          <i class="pi pi-exclamation-triangle"></i>
+          <i class="pi pi-shopping-cart"></i>
           <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
         </li>
       </ul>
@@ -71,7 +71,7 @@
           <span class="ticket-item-text">Souvenirs</span>
         </li>
         <li class="ticket-item-row">
-          <i class="pi pi-exclamation-triangle"></i>
+          <i class="pi pi-shopping-cart"></i>
           <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
         </li>
       </ul>
@@ -80,11 +80,6 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: "Ticket",
-};
-</script>
 <style scoped lang="scss">
 .ticket-container {
   width: 100%;
@@ -102,7 +97,6 @@ export default {
   .ticket-title {
     width: 301px;
     font-size: 32px;
-    font-style: normal;
     font-weight: 600;
     text-align: center;
     display: block;
@@ -112,7 +106,6 @@ export default {
     height: 48px;
     background: #ffbc58;
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
     line-height: 24px;
     text-align: center;
@@ -134,7 +127,7 @@ export default {
 }
 .early-bird {
   width: 320px;
-  height: 390px;
+  height: 470px;
   background: linear-gradient(
     22.11deg,
     #dd7f9b 7.45%,
@@ -147,7 +140,7 @@ export default {
     #372ce6 101.74%
   );
   border-color: white;
-  padding-top: 75px;
+  padding-top: 80px;
 }
 .ticket-item {
   position: relative;
@@ -160,11 +153,9 @@ export default {
   border-width: 2px;
   border-radius: 20px;
   .ticket-item-expiring {
-    width: 194px;
-    height: 34px;
     position: absolute;
     left: 50px;
-    top: -20px;
+    top: -15px;
     color: #52555a;
     background: linear-gradient(
         0deg,
@@ -219,7 +210,6 @@ ul.ticket-item-list {
   list-style-position: inside;
   color: black;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 35px;
   text-align: left;

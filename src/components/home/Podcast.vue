@@ -47,7 +47,6 @@
   width: 100%;
   color: black;
   background: #e5e5e5;
-  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
@@ -120,5 +119,54 @@
   height: 20px;
   margin-left: 9px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .podcast-container {
+    .podcast-box {
+      width: 310px;
+      height: 104px;
+      border-radius: 10px;
+    }
+  }
+  .podcast-toast {
+    width: 101.15px;
+    height: 86px;
+    border-radius: 5.32394px;
+    padding-top: 3.55px;
+    padding-bottom: 0;
+    .podcast-toast-text {
+      width: 88.14px;
+      height: 32.54px;
+    }
+    .podcast-toast-cup {
+      width: 95.24px;
+      height: 52.06px;
+    }
+  }
+  .podcast-content {
+    width: 179px;
+    margin-left: 10px;
+    .podcast-content-title {
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 5px;
+    }
+    .podcast-content-text {
+      width: 179px;
+      font-size: 8px;
+      line-height: 15px;
+      margin-bottom: 5px;
+    }
+  }
+  .podcast-listen-text {
+    font-size: 5px;
+    line-height: 10px;
+  }
+  .podcast-listen-icon {
+    width: 10px;
+    height: 10px;
+    margin-left: 9px;
+  }
 }
 </style>

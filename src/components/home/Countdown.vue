@@ -2,36 +2,23 @@
   <section class="countdown-container">
     <div class="countdown-item">
       <span class="countdown-unit">Days</span>
-      <div class="countdown-circle">
-        <span class="countdown-number">98</span>
-      </div>
+      <Timer :value="days" :full="120" />
     </div>
     <div class="countdown-item">
       <span class="countdown-unit">Hours</span>
-      <div class="countdown-circle">
-        <span class="countdown-number">06</span>
-      </div>
+      <Timer :value="hours" :full="24" />
     </div>
     <div class="countdown-item">
       <span class="countdown-unit">Minutes</span>
-      <div class="countdown-circle">
-        <span class="countdown-number">27</span>
-      </div>
+      <Timer :value="minutes" :full="60" />
     </div>
     <div class="countdown-item">
       <span class="countdown-unit">Seconds</span>
-      <div class="countdown-circle">
-        <span class="countdown-number">40</span>
-      </div>
+      <Timer :value="seconds" :full="60" />
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: "Ticket",
-};
-</script>
 <style scoped lang="scss">
 .countdown-container {
   width: 100%;
@@ -50,54 +37,78 @@ export default {
   .countdown-item {
     width: 200px;
     height: 273px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-style: normal;
     margin-top: 50px;
     margin-bottom: 50px;
     .countdown-unit {
-      color: white;
+      color: gray;
       font-size: 32px;
       font-weight: 500;
       line-height: 60px;
       text-align: center;
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      margin-bottom: 15px;
     }
-    .countdown-circle {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      border: 4px solid #bc92b7;
-      border-top-color: white;
-      border-left-color: white;
-      border-bottom-color: white;
-      // animation: spin 1s ease-in-out infinite;
-      // animation: spin 60s linear infinite;
-      margin: 0 auto;
-      .countdown-number {
-        position: absolute;
-        left: 35px;
-        top: 70px;
-        font-size: 96px;
-        font-weight: 400;
-        line-height: 70px;
-        text-align: censter;
-        letter-spacing: 0.05em;
-        background: linear-gradient(38.59deg, #de809c 11.59%, #675de2 77.61%),
-          white;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        // text-shadow: 0px 6px 4px #c4c4c4;
-      }
-    }
-  }
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
   }
 }
 </style>
+
+<script>
+import { ref } from "vue";
+import Timer from "@/components/home/Timer.vue";
+
+export default {
+  name: "Countdown",
+  components: {
+    Timer,
+  },
+  data() {
+    const [d, h, m, s] = this.getTime();
+    const days = ref(d);
+    const hours = ref(h);
+    const minutes = ref(m);
+    const seconds = ref(s);
+    const polling = ref(null);
+    return {
+      days,
+      hours,
+      minutes,
+      seconds,
+      polling,
+    };
+  },
+  created() {
+    this.pollData();
+  },
+  methods: {
+    getTime() {
+      const now = new Date();
+      const date = new Date("apr 22, 2023 00:00:00");
+      const remaining = date - now;
+      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(remaining / (1000 * 60 * 60)) % 24;
+      const minutes = Math.floor(remaining / (1000 * 60)) % 60;
+      const seconds = Math.floor(remaining / 1000) % 60;
+      return [days, hours, minutes, seconds];
+    },
+    countdown() {
+      const [days, hours, minutes, seconds] = this.getTime();
+      this.days = days;
+      this.hours = hours;
+      this.minutes = minutes;
+      this.seconds = seconds;
+    },
+    pollData() {
+      this.polling = window.setInterval(() => {
+        this.countdown();
+      }, 1000);
+    },
+  },
+  beforeUnmount() {
+    window.clearInterval(this.polling);
+  },
+};
+</script>

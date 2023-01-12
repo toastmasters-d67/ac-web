@@ -15,11 +15,7 @@
     </div>
     <router-link to="/speakers" class="button-view-all">
       <span class="button-text">View all</span>
-      <img
-        src="@/assets/icon/home/arrow-right.png"
-        class="button-arrow-right"
-        alt="arrow-right"
-      />
+      <i class="pi pi-arrow-right button-arrow-right"></i>
     </router-link>
   </section>
 </template>
@@ -27,7 +23,6 @@
 <style scoped lang="scss">
 .speakers-container {
   background: #e5e5e5;
-  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
@@ -35,7 +30,6 @@
   padding-bottom: 150px;
   .speakers-title {
     font-size: 48px;
-    font-style: normal;
     font-weight: 600;
     line-height: 49px;
     margin-bottom: 90px;
@@ -73,22 +67,14 @@
       font-weight: 500;
       line-height: 34px;
     }
-    // .speaker-name {
-    //   width: 223px;
-    //   height: 39px;
-    //   background-image: linear-gradient(to top, #b3c6d1 23px, transparent 100%);
-    //   box-sizing: border-box;
-    //   border-color: transparent;
-    //   border-style: none;
-    //   border-radius: 0;
-    //   padding: 0;
-    // }
   }
 }
 .button-view-all {
-  width: 120px;
+  width: 170px;
   background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
   display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
   align-items: center;
   border: 2px solid white;
   border-radius: 30px;
@@ -104,8 +90,7 @@
     margin-right: 8px;
   }
   .button-arrow-right {
-    width: 24px;
-    height: 24px;
+    color: white;
   }
 }
 </style>

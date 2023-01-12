@@ -27,7 +27,6 @@
     rgba(236, 182, 146, 1) 81%,
     rgba(228, 167, 62, 1) 100%
   );
-  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;

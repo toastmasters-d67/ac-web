@@ -2,6 +2,8 @@
   <article id="speaker" class="speaker-container">
     <Breadcrumb v-once />
     <Briefing v-once />
+    <Seminar v-once />
+    <Voting v-once />
   </article>
 </template>
 
@@ -20,12 +22,16 @@
 <script>
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
+import Seminar from "@/components/speaker/Seminar.vue";
+import Voting from "@/components/speaker/Voting.vue";
 
 export default {
   name: "SpeakersView",
   components: {
     Breadcrumb,
     Briefing,
+    Seminar,
+    Voting,
   },
 };
 </script>

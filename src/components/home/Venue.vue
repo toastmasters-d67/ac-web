@@ -14,11 +14,13 @@
           Taiwan 221
         </span>
       </div>
-      <img
-        src="@/assets/image/home/venue-map.png"
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.2937516051866!2d121.63301651513369!3d25.058030983961142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x345d53515f76e2a1%3A0xec355e84b8db421e!2z5a-s5ZKM5a605bGV6aSo5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1sen!2stw!4v1671638069563!5m2!1sen!2stw"
         class="venue-box-map"
-        alt="map"
-      />
+        frameborder="0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
     </div>
   </section>
 </template>
@@ -28,7 +30,6 @@
   width: 100%;
   color: #004165;
   background: #e5e5e5;
-  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
@@ -43,7 +44,8 @@
   }
 }
 .venue-box {
-  width: 902px;
+  width: 62.64%;
+  min-width: 291px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -69,12 +71,16 @@
       font-weight: 400;
       line-height: 29px;
       margin-bottom: 15px;
+      text-align: left;
     }
   }
   .venue-box-map {
-    width: 902px;
-    height: 479px;
+    width: 100%;
+    aspect-ratio: 902 / 479;
     margin-top: 25px;
+    border: 3px solid;
+    border-color: #a7c4d4;
+    padding: 10px;
   }
 }
 </style>
