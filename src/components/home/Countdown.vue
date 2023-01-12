@@ -1,20 +1,23 @@
 <template>
   <section class="countdown-container">
-    <div class="countdown-item">
-      <span class="countdown-unit">Days</span>
-      <Timer :value="days" :full="120" />
-    </div>
-    <div class="countdown-item">
-      <span class="countdown-unit">Hours</span>
-      <Timer :value="hours" :full="24" />
-    </div>
-    <div class="countdown-item">
-      <span class="countdown-unit">Minutes</span>
-      <Timer :value="minutes" :full="60" />
-    </div>
-    <div class="countdown-item">
-      <span class="countdown-unit">Seconds</span>
-      <Timer :value="seconds" :full="60" />
+    <header class="countdown-title">Conference Starting In</header>
+    <div class="countdown-row">
+      <div class="countdown-item">
+        <span class="countdown-unit">Days</span>
+        <Timer :value="days" :full="120" />
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-unit">Hours</span>
+        <Timer :value="hours" :full="24" />
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-unit">Minutes</span>
+        <Timer :value="minutes" :full="60" />
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-unit">Seconds</span>
+        <Timer :value="seconds" :full="60" />
+      </div>
     </div>
   </section>
 </template>
@@ -24,33 +27,45 @@
   width: 100%;
   background: #e5e5e5;
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-color: transparent;
-  margin: 0 auto;
   padding-top: 150px;
   padding-bottom: 150px;
-  div:nth-child(-n + 4) {
-    margin-right: 50px;
+  .countdown-title {
+    color: #004165;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
   }
-  .countdown-item {
-    width: 200px;
-    height: 273px;
+  .countdown-row {
     display: flex;
-    flex-direction: column;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    .countdown-unit {
-      color: gray;
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 60px;
-      text-align: center;
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      margin-bottom: 15px;
+    div:nth-child(-n + 4) {
+      margin-right: 50px;
+    }
+    margin: 0 auto;
+    .countdown-item {
+      width: 200px;
+      height: 273px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      .countdown-unit {
+        color: #979797;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 60px;
+        text-align: center;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-bottom: 15px;
+      }
     }
   }
 }
