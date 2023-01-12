@@ -1,20 +1,10 @@
 <template>
   <div class="cta-buttons-container">
-    <div class="cta-buttons-button">
-      <img
-        alt=""
-        src="@/assets/image/home/cta-background-1.png"
-        class="cta-buttons-background"
-      />
-      <span class="cta-buttons-text">Get<br />Ticket</span>
+    <div class="cta-button ticket">
+      <span class="cta-button-text">Get Ticket</span>
     </div>
-    <div class="cta-buttons-button">
-      <img
-        alt=""
-        src="@/assets/image/home/cta-background-2.png"
-        class="cta-buttons-background"
-      />
-      <span class="cta-buttons-text">Contact<br />Us</span>
+    <div class="cta-button contact">
+      <span class="cta-button-text">Contact Us</span>
     </div>
   </div>
 </template>
@@ -32,39 +22,43 @@ export default {
   bottom: 71px;
   display: flex;
   flex-direction: column;
-  .cta-buttons-button {
+  .cta-button {
     width: 100px;
     height: 100px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-color: transparent;
-    .cta-buttons-background {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      border-color: transparent;
-    }
-    .cta-buttons-text {
-      left: 0;
-      top: 30px;
-      position: absolute;
-      text-align: center;
-      width: 100%;
-      color: rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25), inset 2px 1px 10px white;
+    padding-top: 5px;
+    cursor: pointer;
+    .cta-button-text {
+      width: 59px;
+      height: 40px;
+      color: black;
       font-size: 16px;
-      /* Prevent text to be selected */
-      -webkit-user-select: none; /* Safari */
-      -ms-user-select: none; /* IE 10 and IE 11 */
-      user-select: none; /* Standard syntax */
+      font-weight: 500;
+      line-height: 20px;
+      text-align: center;
     }
+  }
+  .ticket {
+    background: linear-gradient(107.49deg, #c9d9e3 23.75%, #ffd099 83.94%);
+    margin-bottom: 15px;
+  }
+  .contact {
+    background: linear-gradient(45.28deg, #d6bbea 25.9%, #e7becb 74.88%);
   }
 }
 /* Mobile */
 @media (max-width: 768px) {
   .cta-buttons-container {
-    .cta-buttons-button {
+    .cta-button {
       width: 60px;
       height: 60px;
-      .cta-buttons-text {
+      .cta-button-text {
         top: 18px;
         font-size: 10px;
       }
