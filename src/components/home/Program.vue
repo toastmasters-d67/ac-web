@@ -131,7 +131,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;

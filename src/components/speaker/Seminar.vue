@@ -43,10 +43,10 @@
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   .seminar-box {
-    width: 1254px;
+    width: 1200px;
     background: rgba(255, 255, 255, 0.4);
     display: flex;
     flex-direction: column;

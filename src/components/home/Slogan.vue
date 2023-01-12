@@ -5,9 +5,13 @@
       <span class="slogan-year">2023</span>
       <header class="slogan-title">Annual Conference</header>
     </div>
-    <span class="slogan-word">
-      Connect to the Present<br />Lead the future!
-    </span>
+    <div class="slogan-row">
+      <span class="slogan-word color-1">Innovate</span>
+      <span class="slogan-word color-period">.</span>
+      <span class="slogan-word color-2">Intergrate</span>
+      <span class="slogan-word color-period">.</span>
+      <span class="slogan-word color-3">Motivate</span>
+    </div>
     <span class="slogan-text">
       It is our great pleasure to welcome you to the 2023 Annual Conference of
       the Toastmasters International in Taipei. Learn to improve your public
@@ -38,32 +42,37 @@
     align-items: center;
   }
   .slogan-date {
-    width: fit-content;
-    height: 29px;
+    width: 270px;
+    height: 39px;
     background: rgba(255, 255, 255, 0.2);
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 400;
-    line-height: 29px;
+    line-height: 39px;
     box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.2);
     gap: 10px;
     padding: 0px 10px;
-    margin-bottom: 13px;
   }
   .slogan-year {
     color: #214366;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.3em;
     line-height: 20px;
     text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
     transform: rotate(-90deg);
   }
   .slogan-title {
     color: #214366;
-    font-size: 40px;
+    font-size: 96px;
     font-weight: 700;
-    line-height: 49px;
+    line-height: 117px;
     text-shadow: 0px 4px 4px rgba(206, 212, 218, 0.25);
+  }
+  .slogan-word {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 59px;
+    margin-right: 30px;
   }
   .color-1 {
     color: #fac8d5;
@@ -77,22 +86,8 @@
   .color-period {
     color: #dde1e1;
   }
-  .slogan-word {
-    width: 673px;
-    height: 140px;
-    font-weight: 600;
-    font-size: 55px;
-    line-height: 70px;
-    background: linear-gradient(38.59deg, #de809c 11.59%, #675de2 77.61%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    margin-top: 12px;
-  }
   .slogan-text {
-    width: 63.65%;
-    min-width: 830px;
+    width: 830px;
     color: #757575;
     font-size: 20px;
     font-weight: 500;
@@ -103,7 +98,7 @@
   .slogan-button {
     width: 151px;
     color: black;
-    background: #ffdb82;
+    background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;

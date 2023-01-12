@@ -30,7 +30,6 @@
   width: 100%;
   color: #004165;
   background: #e5e5e5;
-  font-style: normal;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;

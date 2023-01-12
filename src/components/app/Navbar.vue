@@ -97,7 +97,6 @@ a {
   height: 80px;
   background: #819db2;
   font-size: 20px;
-  font-style: normal;
   line-height: 24px;
   text-align: center;
   border-color: transparent;

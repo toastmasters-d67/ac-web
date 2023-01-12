@@ -36,11 +36,6 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: "Souvenirs",
-};
-</script>
 <style scoped lang="scss">
 .souvenirs-container {
   width: 100%;
@@ -53,7 +48,6 @@ export default {
   padding-bottom: 200px;
   .souvenirs-title {
     font-size: 48px;
-    font-style: normal;
     font-weight: 600;
     line-height: 59px;
     margin: 0 auto;
@@ -65,7 +59,6 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-style: normal;
   border-color: transparent;
   padding-top: 70px;
   div:nth-child(-n + 2) {
