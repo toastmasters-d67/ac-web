@@ -1,82 +1,85 @@
 <template>
   <section id="ticket" class="ticket-container">
-    <div class="ticket-item white">
-      <span class="ticket-item-title">2 Day Pass</span>
-      <span class="ticket-item-price">$ 280</span>
-      <ul class="ticket-item-list">
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">2 day pass</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">Souvenirs</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-shopping-cart"></i>
-          <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
-        </li>
-      </ul>
-      <button class="ticket-item-button">Order</button>
+    <header class="ticket-title">Pricing Tickets</header>
+    <div class="ticket-row">
+      <div class="ticket-item white">
+        <span class="ticket-item-title">2 Day Pass</span>
+        <span class="ticket-item-price">$ 280</span>
+        <ul class="ticket-item-list">
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">2 day pass</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">Souvenirs</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-shopping-cart"></i>
+            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+          </li>
+        </ul>
+      </div>
+      <div class="ticket-item early-bird">
+        <span class="ticket-item-expiring">Until Jan 30, 2023</span>
+        <span class="ticket-item-title">Early Bird Pass</span>
+        <span class="ticket-item-price">$ 200</span>
+        <ul class="ticket-item-list">
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">2 day pass</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">Souvenirs</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-shopping-cart"></i>
+            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+          </li>
+        </ul>
+      </div>
+      <div class="ticket-item white">
+        <span class="ticket-item-title">First Day Pass</span>
+        <span class="ticket-item-price">$ 150</span>
+        <ul class="ticket-item-list">
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">1 day pass</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">Souvenirs</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-shopping-cart"></i>
+            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+          </li>
+        </ul>
+      </div>
+      <div class="ticket-item white">
+        <span class="ticket-item-title">Second Day Pass</span>
+        <span class="ticket-item-price">$ 150</span>
+        <ul class="ticket-item-list">
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">1 day pass</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">Souvenirs</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-shopping-cart"></i>
+            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="ticket-item early-bird">
-      <span class="ticket-item-expiring">Until Jan 30, 2023</span>
-      <span class="ticket-item-title">Early Bird Pass</span>
-      <span class="ticket-item-price">$ 200</span>
-      <ul class="ticket-item-list">
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">2 day pass</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">Souvenirs</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-shopping-cart"></i>
-          <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
-        </li>
-      </ul>
-      <button class="ticket-item-button">Order</button>
-    </div>
-    <div class="ticket-item white">
-      <span class="ticket-item-title">First Day Pass</span>
-      <span class="ticket-item-price">$ 150</span>
-      <ul class="ticket-item-list">
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">1 day pass</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">Souvenirs</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-shopping-cart"></i>
-          <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
-        </li>
-      </ul>
-      <button class="ticket-item-button">Order</button>
-    </div>
-    <div class="ticket-item white">
-      <span class="ticket-item-title">Second Day Pass</span>
-      <span class="ticket-item-price">$ 150</span>
-      <ul class="ticket-item-list">
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">1 day pass</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-check"></i>
-          <span class="ticket-item-text">Souvenirs</span>
-        </li>
-        <li class="ticket-item-row">
-          <i class="pi pi-shopping-cart"></i>
-          <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
-        </li>
-      </ul>
-      <button class="ticket-item-button">Order</button>
-    </div>
+    <button class="ticket-button">
+      <span class="button-text">Order Ticket</span>
+      <i class="pi pi-arrow-right button-arrow-right"></i>
+    </button>
   </section>
 </template>
 
@@ -85,37 +88,47 @@
   width: 100%;
   background: #e5e5e5;
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   border-color: transparent;
   padding-bottom: 250px;
-  margin: 0 auto;
-  div:nth-child(-n + 3) {
-    margin-right: 15px;
-  }
   .ticket-title {
-    width: 301px;
-    font-size: 32px;
+    color: #004165;
+    font-size: 48px;
     font-weight: 600;
-    text-align: center;
-    display: block;
+    line-height: 59px;
+    margin-bottom: 50px;
+  }
+  .ticket-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-end;
+    div:nth-child(-n + 3) {
+      margin-right: 15px;
+    }
+    margin: 0 auto;
   }
   .ticket-button {
-    width: 202px;
-    height: 48px;
-    background: #ffbc58;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 24px;
-    text-align: center;
-    box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 38px;
-    border-color: transparent;
-    padding: 8px 24px;
-    margin-top: 32px;
-    margin-bottom: 50px;
+    color: #6f6f6e;
+    background: #ffdb82;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 30px;
+    box-sizing: border-box;
+    gap: 8px;
+    padding: 12px 24px;
+    margin-top: 60px;
     cursor: pointer;
+    .button-text {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 27px;
+      margin-right: 5px;
+    }
   }
 }
 .white {
@@ -148,10 +161,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
   border-style: solid;
   border-width: 2px;
   border-radius: 20px;
+  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
   .ticket-item-expiring {
     position: absolute;
     left: 50px;
@@ -190,19 +203,6 @@
     margin-top: 25px;
     margin-bottom: 25px;
   }
-  .ticket-item-button {
-    width: 151px;
-    height: 46px;
-    background: linear-gradient(
-      267.67deg,
-      rgba(221, 200, 191, 0.6) 5.3%,
-      rgba(167, 196, 212, 0.6) 95.87%
-    );
-    border-color: transparent;
-    border-radius: 20px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-  }
 }
 ul.ticket-item-list {
   width: 170px;
@@ -215,7 +215,7 @@ ul.ticket-item-list {
   text-align: left;
   margin: 0;
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: 75px;
   li.ticket-item-row {
     display: flex;
     flex-direction: row;
