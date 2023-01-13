@@ -1,7 +1,7 @@
 <template>
-  <Navbar v-once />
+  <Navbar :scrollToElement="scrollToElement" v-once />
   <router-view v-once />
-  <Footer v-once />
+  <Footer :scrollToElement="scrollToElement" v-once />
   <ScrollToTop v-once />
   <CtaButtons v-once />
 </template>
@@ -38,6 +38,16 @@ export default {
     Footer,
     ScrollToTop,
     CtaButtons,
+  },
+  methods: {
+    scrollToElement(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = `/#${id}`;
+      }
+    },
   },
 };
 </script>

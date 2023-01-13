@@ -246,20 +246,17 @@ a {
 <script>
 export default {
   name: "Navbar",
+  props: {
+    scrollToElement: {
+      type: Function,
+    },
+  },
   data() {
     return {
       visibleFull: false,
     };
   },
   methods: {
-    scrollToElement(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = `/#${id}`;
-      }
-    },
     hideMenuAndScrollToElement(id) {
       this.visibleFull = false;
       this.scrollToElement(id);

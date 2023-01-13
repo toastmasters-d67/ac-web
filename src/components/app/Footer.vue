@@ -116,14 +116,9 @@ a {
 <script>
 export default {
   name: "Footer",
-  methods: {
-    scrollToElement(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = `/#${id}`;
-      }
+  props: {
+    scrollToElement: {
+      type: Function,
     },
   },
 };
