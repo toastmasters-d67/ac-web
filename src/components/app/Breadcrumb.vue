@@ -33,10 +33,10 @@
   font-size: 24px;
   font-weight: 500;
   line-height: 15px;
-  color: #214366 !important;
+  color: #675de2 !important;
 }
 .p-breadcrumb-chevron {
-  color: #214366 !important;
+  color: #675de2 !important;
   margin: 0 0.5rem 0 0.5rem;
 }
 .p-breadcrumb ul {
