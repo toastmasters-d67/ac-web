@@ -74,7 +74,6 @@
   }
   .slogan-word {
     width: 673px;
-    height: 140px;
     background: linear-gradient(38.59deg, #de809c 11.59%, #675de2 77.61%);
     font-size: 55px;
     font-weight: 600;
@@ -85,8 +84,7 @@
     text-fill-color: transparent;
   }
   .slogan-text {
-    width: 900px;
-    height: 96px;
+    max-width: 912px;
     color: #757575;
     font-size: 20px;
     font-weight: 500;
@@ -123,17 +121,20 @@
       padding: 0px 3.2px;
     }
     .slogan-year {
+      width: 14px;
+      height: 10px;
       font-size: 5px;
-      font-weight: 600;
       line-height: 10px;
-      letter-spacing: 0.1em;
     }
     .slogan-title {
+      width: 162px;
+      height: 20px;
       font-size: 16px;
       line-height: 20px;
+      padding-top: 0px;
+      margin-bottom: 10px;
     }
     .slogan-word {
-      height: 40px;
       width: 196px;
       font-size: 16px;
       line-height: 20px;
