@@ -25,6 +25,10 @@
     url("./assets/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2"),
     url("./assets/fonts/Montserrat/Montserrat-Regular.woff") format("woff");
 }
+
+body {
+  margin: 0;
+}
 </style>
 
 <script>

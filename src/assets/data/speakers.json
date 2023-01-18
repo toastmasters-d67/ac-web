@@ -1,32 +1,25 @@
 [
   {
-    "key": "price",
-    "name": "Verity Price",
-    "title": "Trainer"
+    "key": "borssum",
+    "name": "Greg Van Borssum",
+    "title": "Accredited Speaker"
   },
   {
-    "key": "john",
-    "name": "John Hei",
-    "title": "卡內基訓練創辦人"
+    "key": "tbd",
+    "name": "TBD",
+    "title": "TBD"
   },
   {
-    "key": "bastien",
-    "name": "Bachir Bastien",
-    "title": "Life Coach"
-  },
-  {
-    "key": "kozue",
-    "name": "Sakai Kozue",
-    "title": "日語會救援教練"
-  },
-  {
-    "key": "price",
-    "name": "Verity Price",
-    "title": "Trainer"
-  },
-  {
-    "key": "john",
-    "name": "John Hei",
-    "title": "卡內基訓練創辦人"
+    "key": "tbd",
+    "name": "TBD",
+    "title": "TBD"
+  },{
+    "key": "tbd",
+    "name": "TBD",
+    "title": "TBD"
+  },{
+    "key": "tbd",
+    "name": "TBD",
+    "title": "TBD"
   }
 ]

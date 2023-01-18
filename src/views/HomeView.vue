@@ -7,7 +7,6 @@
     <Program v-once />
     <Venue v-once />
     <Souvenirs v-once />
-    <Podcast v-once />
   </article>
 </template>
 
@@ -19,7 +18,6 @@ import Speakers from "@/components/home/Speakers.vue";
 import Program from "@/components/home/Program.vue";
 import Venue from "@/components/home/Venue.vue";
 import Souvenirs from "@/components/home/Souvenirs.vue";
-import Podcast from "@/components/home/Podcast.vue";
 
 export default {
   name: "HomeView",
@@ -31,7 +29,6 @@ export default {
     Program,
     Venue,
     Souvenirs,
-    Podcast,
   },
 };
 </script>
