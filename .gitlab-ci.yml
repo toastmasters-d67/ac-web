@@ -42,6 +42,19 @@ cache:
   paths:
     - node_modules/
 
+sit:
+  stage: deploy
+  image: registry.gitlab.com/static-web-apps/azure-static-web-apps-deploy
+  script:
+    - echo "Deploying pages in sit"
+  environment: production
+  variables:
+    API_TOKEN: $API_TOKEN_SIT
+    APP_PATH: '$CI_PROJECT_DIR'
+    OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
+  only:
+    - staging
+
 production:
   stage: deploy
   image: registry.gitlab.com/static-web-apps/azure-static-web-apps-deploy
