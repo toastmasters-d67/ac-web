@@ -10,19 +10,28 @@
         <span class="row-time">09:00</span>
         <span class="row row-yellow">
           <span>Registration</span>
-          <span class="row-small-text">(Open until 12:00)</span></span
+          <span class="row-small-text"
+            >(Open until 12:00 at 1F Lobby)</span
+          ></span
         >
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">09:10</span>
+        <div class="row-items">
+          <div class="row-item-expand">
+            <span class="row-item-time"
+              >Judge Briefing
+              <span class="row-item-time-duration">(20 mins)</span></span
+            >
+            <span class="row-item-venue venue-preparation"
+              >2F Preparation Room</span
+            >
+          </div>
+        </div>
       </div>
       <div class="program-row program-center">
         <span class="row-time"></span>
         <div class="row-items">
-          <div class="row-item">
-            <span class="row-item-time"
-              >09:10 <span class="row-item-time-duration">(20 mins)</span></span
-            >
-            <span class="row-item-title">Judge Briefing</span>
-            <span class="row-item-venue venue-prep">Preparation Room</span>
-          </div>
           <div class="row-item">
             <span class="row-item-time"
               >09:40 <span class="row-item-time-duration">(70 mins)</span></span
@@ -30,7 +39,9 @@
             <span class="row-item-title"
               >International Speech Run-off A Contest</span
             >
-            <span class="row-item-venue venue-lisianthus">Room Lisianthus</span>
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
           </div>
           <div class="row-item">
             <span class="row-item-time"
@@ -39,7 +50,7 @@
             <span class="row-item-title"
               >International Speech Run-off B Contest</span
             >
-            <span class="row-item-venue venue-clove">Room Clove</span>
+            <span class="row-item-venue venue-clove">2F Room Clove</span>
           </div>
         </div>
       </div>
@@ -47,38 +58,55 @@
         <span class="row-time">11:00</span>
         <div class="row-items">
           <div class="row-item-expand">
-            <span class="row-item-time">Keynote Speech - Stan Shih</span>
-            <span class="row-item-title">TBD</span>
+            <span class="row-item-time"
+              >Keynote Speech - Stan Shih
+              <span class="row-item-time-duration">(50 mins)</span></span
+            >
+            <span class="row-item-title"
+              >From Wangdao perspective to the competitiveness of Taiwan</span
+            >
             <span class="row-item-venue venue-calla"
-              >Room Calla Lilly & Rose</span
+              >1F Room Calla Lilly & Rose</span
             >
           </div>
         </div>
       </div>
-      <div class="program-row program-baseline">
+      <div class="program-row program-center">
         <span class="row-time">12:00</span>
-        <span class="row row-gray">
-          <span>Lunch Time <span class="row-small-text">(30 mins)</span></span>
-          <span class="row-small-text">(Lunchbox Distribution)</span></span
-        >
+        <div class="row-items">
+          <div class="row-item-expand item-expand-gray">
+            <span class="row-item-time"
+              >Lunchbox Distribution
+              <span class="row-item-time-duration">(30 mins)</span></span
+            >
+            <span class="row-item-venue venue-lobby">1F Lobby</span>
+          </div>
+        </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time"></span>
+        <span class="row-time">12:10</span>
         <div class="row-items">
-          <div class="row-item">
+          <div class="row-item-expand">
             <span class="row-item-time"
-              >12:10 <span class="row-item-time-duration">(20 mins)</span></span
+              >Judge Briefing
+              <span class="row-item-time-duration">(20 mins)</span></span
             >
-            <span class="row-item-title">Judge Briefing</span>
-            <span class="row-item-venue venue-prep">Preparation Room</span>
+            <span class="row-item-venue venue-preparation"
+              >2F Preparation Room</span
+            >
           </div>
-          <div class="row-item">
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:30</span>
+        <div class="row-items">
+          <div class="row-item-expand">
             <span class="row-item-time"
-              >12:30 <span class="row-item-time-duration">(40 mins)</span></span
+              >Opening Ceremony
+              <span class="row-item-time-duration">(40 mins)</span></span
             >
-            <span class="row-item-title">Opening Ceremony</span>
             <span class="row-item-venue venue-calla"
-              >Room Calla Lilly & Rose</span
+              >1F Room Calla Lilly & Rose</span
             >
           </div>
         </div>
@@ -90,16 +118,22 @@
             <span class="row-item-time">Keynote Speech - Greg Van Borssum</span>
             <span class="row-item-title">TBD</span>
             <span class="row-item-venue venue-calla"
-              >Room Calla Lilly & Rose</span
+              >1F Room Calla Lilly & Rose</span
             >
           </div>
         </div>
       </div>
-      <div class="program-row program-baseline">
+      <div class="program-row program-center">
         <span class="row-time">14:00</span>
-        <span class="row row-gray gray-1-line">
-          <span>Tea Break <span class="row-small-text">(20 mins)</span></span>
-        </span>
+        <div class="row-items">
+          <div class="row-item-expand item-expand-gray">
+            <span class="row-item-time"
+              >Tea Break
+              <span class="row-item-time-duration">(20 mins)</span></span
+            >
+            <span class="row-item-venue venue-lobby">1F Lobby</span>
+          </div>
+        </div>
       </div>
       <div class="program-row program-center">
         <span class="row-time"></span>
@@ -110,7 +144,7 @@
             >
             <span class="row-item-title">Mandarin Evaluation Contest</span>
             <span class="row-item-venue venue-calla"
-              >Room Calla Lilly & Rose</span
+              >1F Room Calla Lilly & Rose</span
             >
           </div>
           <div class="row-item">
@@ -118,7 +152,9 @@
               >14:20 <span class="row-item-time-duration">(60 mins)</span></span
             >
             <span class="row-item-title">English Training Session</span>
-            <span class="row-item-venue venue-lisianthus">Room Lisianthus</span>
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
           </div>
           <div class="row-item">
             <span class="row-item-time"
@@ -128,7 +164,7 @@
             <span class="row-item-title title-3-lines"
               >Japanese Speech & Evaluation Contest and Training Session</span
             >
-            <span class="row-item-venue venue-clove">Room Clove</span>
+            <span class="row-item-venue venue-clove">2F Room Clove</span>
           </div>
         </div>
       </div>
@@ -140,7 +176,9 @@
               >15:30 <span class="row-item-time-duration">(60 mins)</span></span
             >
             <span class="row-item-title">Taiwanese Evaluation Contest</span>
-            <span class="row-item-venue venue-lisianthus">Room Lisianthus</span>
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
           </div>
           <div class="row-item">
             <span class="row-item-time"
@@ -148,7 +186,7 @@
             >
             <span class="row-item-title">English Training Session</span>
             <span class="row-item-venue venue-calla"
-              >Room Calla Lilly & Rose</span
+              >1F Room Calla Lilly & Rose</span
             >
           </div>
         </div>
@@ -162,7 +200,7 @@
             >
             <span class="row-item-title">English Evaluation Contest</span>
             <span class="row-item-venue venue-calla"
-              >Room Calla Lilly & Rose</span
+              >1F Room Calla Lilly & Rose</span
             >
           </div>
           <div class="row-item">
@@ -170,7 +208,9 @@
               >16:40 <span class="row-item-time-duration">(90 mins)</span></span
             >
             <span class="row-item-title">Mandarin Training Session</span>
-            <span class="row-item-venue venue-lisianthus">Room Lisianthus</span>
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
           </div>
         </div>
       </div>
@@ -206,6 +246,8 @@
     margin-bottom: 59px;
   }
   .program-day-switcher {
+    max-width: 1223px;
+    width: 84.93%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -263,6 +305,7 @@
     border-radius: 50px;
     padding-top: 47px;
     .program-row {
+      width: 93.74%;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -293,7 +336,8 @@
   color: rgba(255, 255, 255, 0.25);
 }
 .row {
-  width: 1055px;
+  max-width: 1055px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -321,7 +365,8 @@
   height: 60px;
 }
 .row-items {
-  width: 1058px;
+  width: 1055px;
+  // width: 100%;
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -331,7 +376,6 @@
   }
   .row-item-expand {
     width: 100%;
-    height: 180px;
     background: rgba(255, 255, 255, 0.6);
     display: flex;
     flex-direction: column;
@@ -339,33 +383,32 @@
     align-items: center;
     font-size: 24px;
     font-weight: 400;
-    line-height: 50px;
+    line-height: 30px;
     border-radius: 20px;
-    gap: 5px;
-    padding: 5px 20px;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+  .item-expand-gray {
+    height: 100px;
+    background: rgba(182, 194, 210, 0.5);
   }
   .row-item {
-    height: 180px;
     background: rgba(255, 255, 255, 0.6);
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px;
-    padding: 5px 20px;
+    padding: 15px 20px;
+    gap: 15px;
     .row-item-time {
       color: black;
       font-size: 24px;
       font-weight: 400;
       letter-spacing: 0.05em;
       line-height: 30px;
-      .row-item-time-duration {
-        font-size: 16px;
-      }
     }
     .row-item-title {
-      width: 298px;
-      height: 75px;
       color: black;
       display: flex;
       flex-direction: column;
@@ -383,8 +426,10 @@
       letter-spacing: 0.05em;
     }
   }
+  .row-item-time-duration {
+    font-size: 16px;
+  }
   .row-item-venue {
-    height: 30px;
     color: #004165;
     display: flex;
     flex-direction: row;
@@ -393,13 +438,12 @@
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.05em;
-    line-height: 60px;
+    line-height: 20px;
     border-radius: 20px;
     gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px 10px;
   }
-  .venue-prep {
+  .venue-preparation {
     background: #dde1e1;
   }
   .venue-lisianthus {
@@ -410,6 +454,9 @@
   }
   .venue-calla {
     background: #c1ccbe;
+  }
+  .venue-lobby {
+    background: #ffffff;
   }
 }
 </style>
