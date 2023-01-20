@@ -22,7 +22,7 @@
       >
         Venue
       </router-link>
-      <span class="footer-link">FAQ</span>
+      <router-link to="/faq" class="footer-link">FAQ</router-link>
       <span class="footer-link">Contact Us</span>
     </div>
     <div class="footer-row">

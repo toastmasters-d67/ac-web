@@ -33,7 +33,7 @@
       >
         Venue
       </router-link>
-      <span class="navbar-link">FAQ</span>
+      <router-link to="/faq" class="navbar-link">FAQ</router-link>
       <button class="navbar-button">Get your ticket</button>
     </div>
     <div class="navbar-mobile-container">
