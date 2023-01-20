@@ -4,34 +4,37 @@
     <div class="souvenirs-items">
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow">
-          <img
+          <!-- <img
             src="@/assets/image/home/souvenirs-pen.png"
             class="souvenirs-item-image"
             alt="pen"
-          />
+          /> -->
         </div>
-        <div class="souvenirs-item-text">Knock Type Ballpoint Pen</div>
+        <div class="souvenirs-item-text">TBD</div>
       </div>
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow flip">
-          <img
+          <!-- <img
             src="@/assets/image/home/souvenirs-holder.png"
             class="souvenirs-item-image flip"
             alt="holder"
-          />
+          /> -->
         </div>
-        <div class="souvenirs-item-text">Card Holder With Magnets</div>
+        <div class="souvenirs-item-text">TBD</div>
       </div>
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow">
-          <img
+          <!-- <img
             src="@/assets/image/home/souvenirs-cutlery.png"
             class="souvenirs-item-image"
             alt="cutlery"
-          />
+          /> -->
         </div>
-        <div class="souvenirs-item-text">Cutlery Set</div>
+        <div class="souvenirs-item-text">TBD</div>
       </div>
+    </div>
+    <div class="souvenirs-coming-soon">
+      Full details of the souvenirs will be announced soon!
     </div>
   </section>
 </template>
@@ -53,6 +56,13 @@
     margin: 0 auto;
     margin-bottom: 15px;
   }
+  .souvenirs-coming-soon {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    margin: 70px auto;
+  }
 }
 .souvenirs-items {
   display: flex;
@@ -61,9 +71,7 @@
   align-items: center;
   border-color: transparent;
   padding-top: 70px;
-  div:nth-child(-n + 2) {
-    margin-right: 80px;
-  }
+  gap: 80px;
   .souvenirs-item {
     width: 220px;
     display: flex;
@@ -92,6 +100,43 @@
     }
     .flip {
       transform: rotate(-180deg);
+    }
+  }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .souvenirs-container {
+    .souvenirs-title {
+      font-size: 15px;
+      line-height: 18px;
+      margin-bottom: 29px;
+    }
+    .souvenirs-coming-soon {
+      font-size: 10px;
+      line-height: 12px;
+      margin: 30px auto;
+    }
+  }
+  .souvenirs-items {
+    padding-top: 0px;
+    gap: 20px;
+    .souvenirs-item {
+      width: 100px;
+      .souvenirs-item-shadow {
+        width: 100px;
+        height: 132.43px;
+        padding: 20px 10px 10px;
+      }
+      .souvenirs-item-image {
+        width: 100px;
+      }
+      .souvenirs-item-text {
+        width: 23px;
+        font-size: 10px;
+        line-height: 10px;
+        margin-top: 10px;
+      }
     }
   }
 }
