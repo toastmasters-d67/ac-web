@@ -2,11 +2,11 @@
   <section id="program" class="program-container">
     <header class="program-title">Program</header>
     <div class="program-day-switcher">
-      <div class="program-day-1"><span class="row-day-1-text">Day 1</span></div>
-      <div class="program-day-2">Day 2</div>
+      <div class="program-day day-1">Day 1</div>
+      <div class="program-day day-2">Day 2</div>
     </div>
     <div class="program-table">
-      <div class="program-row program-baseline">
+      <div class="program-row program-center">
         <span class="row-time">09:00</span>
         <span class="row row-yellow">
           <span>Registration</span>
@@ -214,7 +214,7 @@
           </div>
         </div>
       </div>
-      <div class="program-row program-baseline">
+      <div class="program-row program-center">
         <span class="row-time">18:30</span>
         <span class="row row-yellow">
           <span>Gala Dinner</span>
@@ -255,11 +255,10 @@
     gap: 31px;
     height: 70px;
     margin-bottom: 20px;
-    .program-day-1 {
-      width: 596px;
+    .program-day {
+      flex: 1;
       height: 70px;
       color: black;
-      background: url(@/assets/icon/home/program-day-1.svg);
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -274,24 +273,12 @@
       padding: 10px;
       cursor: pointer;
     }
-    .program-day-2 {
-      width: 596px;
-      height: 70px;
-      color: black;
+    .day-1 {
+      background-image: url(@/assets/image/home/program-day-1-button.png);
+      background-size: 100% 100%;
+    }
+    .day-2 {
       background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      line-height: 60px;
-      border-radius: 20px;
-      box-sizing: border-box;
-      gap: 10px;
-      padding: 10px;
-      cursor: pointer;
     }
   }
   .program-table {
@@ -302,7 +289,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border-radius: 50px;
+    border-radius: 20px;
     padding-top: 47px;
     .program-row {
       width: 93.74%;
@@ -365,15 +352,13 @@
   height: 60px;
 }
 .row-items {
-  width: 1055px;
-  // width: 100%;
+  max-width: 1055px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: flex-start;
-  div:nth-child(-n + 2) {
-    margin-right: 16px;
-  }
+  gap: 16px;
   .row-item-expand {
     width: 100%;
     background: rgba(255, 255, 255, 0.6);
@@ -401,11 +386,11 @@
     border-radius: 20px;
     padding: 15px 20px;
     gap: 15px;
+    letter-spacing: 0.05em;
     .row-item-time {
       color: black;
       font-size: 24px;
       font-weight: 400;
-      letter-spacing: 0.05em;
       line-height: 30px;
     }
     .row-item-title {
@@ -423,7 +408,6 @@
     .title-3-lines {
       font-size: 20px;
       line-height: 25px;
-      letter-spacing: 0.05em;
     }
   }
   .row-item-time-duration {
@@ -457,6 +441,97 @@
   }
   .venue-lobby {
     background: #ffffff;
+  }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .program-container {
+    .program-title {
+      font-size: 15px;
+      line-height: 18px;
+      margin-top: 20px;
+      margin-bottom: 29px;
+    }
+    .program-day-switcher {
+      width: 90.43%;
+      height: 30px;
+      gap: 10px;
+      margin-bottom: 12px;
+      .program-day {
+        height: 30px;
+        background-size: 100% 30px;
+        font-size: 12px;
+        line-height: 30px;
+        border-radius: 20px;
+      }
+      .day-1 {
+        background-image: url(@/assets/image/home/program-day-1-button-mobile.png);
+      }
+    }
+    .program-table {
+      border-radius: 10px;
+      padding-top: 11px;
+      .program-row {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .row-time {
+    position: absolute;
+    width: fit-content;
+    font-size: 12px;
+    line-height: 15px;
+    margin-left: 10px;
+  }
+  .row {
+    font-size: 12px;
+    line-height: 15px;
+    gap: 5px;
+    .row-small-text {
+      font-size: 8px;
+    }
+  }
+  .row-yellow {
+    height: 42px;
+  }
+  .row-items {
+    gap: 10px;
+    .row-item-expand {
+      font-size: 12px;
+      line-height: 15px;
+      gap: 5px;
+      padding: 10px 20px;
+    }
+    .item-expand-gray {
+      height: 50px;
+    }
+    .row-item {
+      padding: 10px;
+      gap: 5px;
+      .row-item-time {
+        font-size: 10px;
+        line-height: 15px;
+      }
+      .row-item-title {
+        font-size: 10px;
+        line-height: 15px;
+        margin-top: 3px;
+        margin-bottom: 8px;
+      }
+      .title-3-lines {
+        font-size: 8px;
+        line-height: 14px;
+      }
+    }
+    .row-item-time-duration {
+      font-size: 8px;
+    }
+    .row-item-venue {
+      font-size: 8px;
+      line-height: 10px;
+      border-radius: 10px;
+    }
   }
 }
 </style>
