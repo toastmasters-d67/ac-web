@@ -3,7 +3,7 @@
   <router-view v-once />
   <Footer :scrollToElement="scrollToElement" v-once />
   <ScrollToTop v-once />
-  <CtaButtons v-once />
+  <CtaButtons :scrollToElement="scrollToElement" v-once />
 </template>
 
 <style lang="scss">
