@@ -267,4 +267,81 @@ ul.ticket-item-list {
     }
   }
 }
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .ticket-container {
+    padding-bottom: 100px;
+    .ticket-title {
+      font-size: 15px;
+      line-height: 18px;
+      margin-bottom: 30px;
+    }
+    .ticket-row {
+      div:nth-child(-n + 3) {
+        margin-right: 9px;
+      }
+    }
+    .ticket-coming-soon {
+      font-size: 10px;
+      line-height: 12px;
+    }
+    .ticket-button {
+      border: 1px solid white;
+      gap: 5px;
+      padding: 8px 15px;
+      margin-top: 30px;
+      .button-text {
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+  }
+  .white {
+    width: 150px;
+    padding-top: 20px;
+  }
+  .early-bird {
+    width: 163px;
+    height: 231px;
+    padding-top: 30px;
+  }
+  .ticket-item {
+    margin-bottom: 24px;
+    .ticket-item-expiring {
+      left: 25px;
+      top: -12px;
+      font-size: 10px;
+      line-height: 12px;
+      padding: 5px 12px;
+    }
+    .ticket-item-title {
+      font-size: 12px;
+      line-height: 15px;
+    }
+    .title-early-bird {
+      font-size: 15px;
+    }
+    .ticket-item-price {
+      font-size: 24px;
+      line-height: 30px;
+      margin: 17px auto;
+    }
+    .price-early-bird {
+      font-size: 32px;
+    }
+  }
+  ul.ticket-item-list {
+    width: 124px;
+    font-weight: 400;
+    margin-bottom: 34px;
+    li.ticket-item-row {
+      .ticket-item-text {
+        font-size: 10px;
+        line-height: 10px;
+        margin-left: 9px;
+      }
+    }
+  }
+}
 </style>
