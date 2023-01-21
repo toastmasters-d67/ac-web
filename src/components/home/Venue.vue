@@ -8,10 +8,9 @@
         <span class="venue-box-text">(02) 2649-3034</span>
       </div>
       <div class="venue-box-row">
-        <i class="pi pi-map-marker venue-box-icon"></i>
+        <i class="pi pi-globe venue-box-icon"></i>
         <span class="venue-box-text">
-          No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City,
-          Taiwan 221
+          No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City
         </span>
       </div>
       <iframe
@@ -44,8 +43,10 @@
   }
 }
 .venue-box {
-  width: 62.64%;
-  min-width: 291px;
+  // width: 62.64%;
+  // min-width: 291px;
+  width: 87.2%;
+  max-width: 915px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -81,6 +82,45 @@
     border: 3px solid;
     border-color: #a7c4d4;
     padding: 10px;
+  }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .venue-container {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    .venue-title {
+      font-size: 15px;
+      line-height: 18px;
+      margin-bottom: 30px;
+    }
+  }
+  .venue-box {
+    // width: 62.64%;
+    // min-width: 291px;
+    .venue-box-name {
+      font-size: 12px;
+      line-height: 15px;
+      margin-top: 0px;
+      margin-bottom: 16px;
+    }
+    .venue-box-row {
+      .venue-box-icon {
+        font-size: 9px;
+        margin-right: 8px;
+      }
+      .venue-box-text {
+        font-size: 10px;
+        line-height: 12px;
+        margin-bottom: 8px;
+      }
+    }
+    .venue-box-map {
+      margin-top: 0px;
+      border: 0.98px solid;
+      padding: 3px;
+    }
   }
 }
 </style>
