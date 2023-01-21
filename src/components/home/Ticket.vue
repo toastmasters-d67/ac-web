@@ -1,85 +1,105 @@
 <template>
   <section id="ticket" class="ticket-container">
-    <header class="ticket-title">Pricing Tickets</header>
+    <header class="ticket-title">Ticket Price</header>
     <div class="ticket-row">
       <div class="ticket-item white">
         <span class="ticket-item-title">2 Day Pass</span>
-        <span class="ticket-item-price">$ 280</span>
+        <span class="ticket-item-price">$ 2600</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">2 day pass</span>
+            <span class="ticket-item-text">Lunchboxes for 2 days</span>
           </li>
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
             <span class="ticket-item-text">Souvenirs</span>
           </li>
           <li class="ticket-item-row">
-            <i class="pi pi-shopping-cart"></i>
-            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+            <img
+              src="@/assets/icon/home/ticket-dashed-box.svg"
+              class="ticket-item-icon"
+            />
+            <span class="ticket-item-text"
+              >Dinner banquet on 4/22 $800 (optional)</span
+            >
           </li>
         </ul>
       </div>
       <div class="ticket-item early-bird">
-        <span class="ticket-item-expiring">Until Jan 30, 2023</span>
-        <span class="ticket-item-title">Early Bird Pass</span>
-        <span class="ticket-item-price">$ 200</span>
+        <span class="ticket-item-expiring">Until Mar 19, 2023</span>
+        <span class="ticket-item-title title-early-bird">Early Bird Pass</span>
+        <span class="ticket-item-price price-early-bird">$ 2200</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">2 day pass</span>
+            <span class="ticket-item-text">Lunchboxes for 2 days</span>
           </li>
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
             <span class="ticket-item-text">Souvenirs</span>
           </li>
           <li class="ticket-item-row">
-            <i class="pi pi-shopping-cart"></i>
-            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text"
+              >Dinner banquet on 4/22 included</span
+            >
           </li>
         </ul>
       </div>
       <div class="ticket-item white">
         <span class="ticket-item-title">First Day Pass</span>
-        <span class="ticket-item-price">$ 150</span>
+        <span class="ticket-item-price">$ 1600</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">1 day pass</span>
+            <span class="ticket-item-text">Lunchbox</span>
           </li>
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
             <span class="ticket-item-text">Souvenirs</span>
           </li>
           <li class="ticket-item-row">
-            <i class="pi pi-shopping-cart"></i>
-            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+            <img
+              src="@/assets/icon/home/ticket-dashed-box.svg"
+              class="ticket-item-icon"
+            />
+            <span class="ticket-item-text"
+              >Dinner banquet on 4/22 $800 (optional)</span
+            >
           </li>
         </ul>
       </div>
       <div class="ticket-item white">
         <span class="ticket-item-title">Second Day Pass</span>
-        <span class="ticket-item-price">$ 150</span>
+        <span class="ticket-item-price">$ 1600</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">1 day pass</span>
+            <span class="ticket-item-text">Lunchbox</span>
           </li>
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
             <span class="ticket-item-text">Souvenirs</span>
           </li>
           <li class="ticket-item-row">
-            <i class="pi pi-shopping-cart"></i>
-            <span class="ticket-item-text">Dinner party $ 15 (optional)</span>
+            <img
+              src="@/assets/icon/home/ticket-dashed-box.svg"
+              class="ticket-item-icon"
+            />
+            <span class="ticket-item-text"
+              >Dinner banquet on 4/22 $800 (optional)</span
+            >
           </li>
         </ul>
       </div>
     </div>
-    <button class="ticket-button">
+    <div class="ticket-coming-soon">
+      The tickets will be available for order soon. Please stay tuned!
+    </div>
+    <!-- <button class="ticket-button">
       <span class="button-text">Order Ticket</span>
       <i class="pi pi-arrow-right button-arrow-right"></i>
-    </button>
+    </button> -->
   </section>
 </template>
 
@@ -92,7 +112,7 @@
   justify-content: center;
   align-items: center;
   border-color: transparent;
-  padding-bottom: 250px;
+  padding-bottom: 200px;
   .ticket-title {
     color: #004165;
     font-size: 48px;
@@ -109,6 +129,13 @@
       margin-right: 15px;
     }
     margin: 0 auto;
+  }
+  .ticket-coming-soon {
+    width: 60%;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
   }
   .ticket-button {
     color: #6f6f6e;
@@ -136,10 +163,9 @@
   background: rgba(255, 255, 255, 0.6);
   border-color: #bc92b7;
   padding-top: 35px;
-  padding-bottom: 35px;
 }
 .early-bird {
-  width: 320px;
+  width: 312px;
   height: 470px;
   background: linear-gradient(
     22.11deg,
@@ -165,6 +191,7 @@
   border-width: 2px;
   border-radius: 20px;
   box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
+  margin-bottom: 48px;
   .ticket-item-expiring {
     position: absolute;
     left: 50px;
@@ -195,17 +222,23 @@
     line-height: 60px;
     text-align: center;
   }
+  .title-early-bird {
+    font-size: 30px;
+  }
   .ticket-item-price {
     font-size: 48px;
     font-weight: 600;
-    line-height: 30px;
+    line-height: 60px;
     text-align: center;
     margin-top: 25px;
     margin-bottom: 25px;
   }
+  .price-early-bird {
+    font-size: 60px;
+  }
 }
 ul.ticket-item-list {
-  width: 170px;
+  width: 207px;
   list-style-type: none;
   list-style-position: inside;
   color: black;
@@ -221,6 +254,10 @@ ul.ticket-item-list {
     flex-direction: row;
     align-items: center;
     margin-bottom: 5px;
+    .ticket-item-icon {
+      width: 17px;
+      height: 17px;
+    }
     .ticket-item-text {
       font-size: 14px;
       font-weight: 400;
