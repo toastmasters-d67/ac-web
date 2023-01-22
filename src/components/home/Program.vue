@@ -2,10 +2,23 @@
   <section id="program" class="program-container">
     <header class="program-title">Program</header>
     <div class="program-day-switcher">
-      <div class="program-day day-1">Day 1</div>
-      <div class="program-day day-2">Day 2</div>
+      <div
+        class="program-day"
+        :class="showProgramDay1 ? 'day-active' : 'day-non-active'"
+        @click="switchProgram('day1')"
+      >
+        Day 1
+      </div>
+      <div
+        class="program-day"
+        :class="showProgramDay1 ? 'day-non-active' : 'day-active'"
+        @click="switchProgram('day2')"
+      >
+        Day 2
+      </div>
     </div>
-    <div class="program-table">
+    <!-- Day 1 program -->
+    <div class="program-table" v-if="showProgramDay1">
       <div class="program-row program-center">
         <span class="row-time">09:00</span>
         <span class="row row-yellow">
@@ -218,8 +231,186 @@
         <span class="row-time">18:30</span>
         <span class="row row-yellow">
           <span>Gala Dinner</span>
-          <span class="row-small-text">Banquet Hall (Jasmine)</span></span
+          <span class="row-small-text">1F Banquet Hall (Jasmine)</span></span
         >
+      </div>
+    </div>
+    <!-- Day 2 program -->
+    <div class="program-table" v-if="!showProgramDay1">
+      <div class="program-row program-center">
+        <span class="row-time">09:00</span>
+        <span class="row row-yellow">
+          <span>Registration</span>
+          <span class="row-small-text"
+            >(Open until 12:00 at 1F Lobby)</span
+          ></span
+        >
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item item-2-column-height">
+            <span class="row-item-time"
+              >09:10
+              <span class="row-item-time-duration">(180 mins)</span></span
+            >
+            <span class="row-item-title"
+              >Excom Meeting/ District Council Meeting/ Association BoD
+              Meeting</span
+            >
+            <span class="row-item-venue venue-calla"
+              >1F Room Calla Lilly & Rose</span
+            >
+          </div>
+          <div class="row-item-columns">
+            <div class="row-item">
+              <span class="row-item-time"
+                >09:50
+                <span class="row-item-time-duration">(70 mins)</span></span
+              >
+              <span class="row-item-title">Mandarin Training Session</span>
+              <span class="row-item-venue venue-lisianthus"
+                >2F Room Lisianthus</span
+              >
+            </div>
+            <div class="row-item">
+              <span class="row-item-time"
+                >11:00
+                <span class="row-item-time-duration">(60 mins)</span></span
+              >
+              <span class="row-item-title">Taiwanese Training Session</span>
+              <span class="row-item-venue venue-lisianthus"
+                >2F Room Lisianthus</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:00</span>
+        <div class="row-items">
+          <div class="row-item-expand item-expand-gray">
+            <span class="row-item-time"
+              >Luncheon
+              <span class="row-item-time-duration">(50 mins)</span></span
+            >
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
+            <span class="row-item-note"
+              >** Lunchbox Distribution will take place at 1F Lobby</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:20</span>
+        <div class="row-items">
+          <div class="row-item-expand">
+            <span class="row-item-time"
+              >Judge Briefing
+              <span class="row-item-time-duration">(20 mins)</span></span
+            >
+            <span class="row-item-venue venue-preparation"
+              >2F Preparation Room</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time"
+              >13:00 <span class="row-item-time-duration">(70 mins)</span></span
+            >
+            <span class="row-item-title">Mandarin Speech Contest</span>
+            <span class="row-item-venue venue-calla"
+              >1F Room Calla Lilly & Rose</span
+            >
+          </div>
+          <div class="row-item">
+            <span class="row-item-time"
+              >13:00 <span class="row-item-time-duration">(70 mins)</span></span
+            >
+            <span class="row-item-title">English Training Session</span>
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time"
+              >14:20 <span class="row-item-time-duration">(60 mins)</span></span
+            >
+            <span class="row-item-title">Taiwanese Speech Contest</span>
+            <span class="row-item-venue venue-calla"
+              >1F Room Calla Lilly & Rose</span
+            >
+          </div>
+          <div class="row-item">
+            <span class="row-item-time"
+              >14:20 <span class="row-item-time-duration">(60 mins)</span></span
+            >
+            <span class="row-item-title">English Training Session</span>
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">15:20</span>
+        <div class="row-items">
+          <div class="row-item-expand item-expand-gray">
+            <span class="row-item-time"
+              >Tea Break
+              <span class="row-item-time-duration">(20 mins)</span></span
+            >
+            <span class="row-item-venue venue-lobby">1F Lobby</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time"
+              >15:50 <span class="row-item-time-duration">(70 mins)</span></span
+            >
+            <span class="row-item-title">International Speech Contest</span>
+            <span class="row-item-venue venue-calla"
+              >1F Room Calla Lilly & Rose</span
+            >
+          </div>
+          <div class="row-item">
+            <span class="row-item-time"
+              >15:50 <span class="row-item-time-duration">(70 mins)</span></span
+            >
+            <span class="row-item-title">Mandarin Training Session</span>
+            <span class="row-item-venue venue-lisianthus"
+              >2F Room Lisianthus</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">17:10</span>
+        <div class="row-items">
+          <div class="row-item-expand item-expand-yellow">
+            <span class="row-item-time"
+              >Closing Ceremony
+              <span class="row-item-time-duration">(50 mins)</span></span
+            >
+            <span class="row-item-venue venue-calla"
+              >1F Room Calla Lilly & Rose</span
+            >
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -273,13 +464,6 @@
       padding: 10px;
       cursor: pointer;
     }
-    .day-1 {
-      background-image: url(@/assets/image/home/program-day-1-button.png);
-      background-size: 100% 100%;
-    }
-    .day-2 {
-      background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
-    }
   }
   .program-table {
     max-width: 1231px;
@@ -305,6 +489,13 @@
     .program-baseline {
       align-items: baseline;
     }
+  }
+  .day-active {
+    background-image: url(@/assets/image/home/program-day-1-button.png);
+    background-size: 100% 100%;
+  }
+  .day-non-active {
+    background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
   }
 }
 .row-time {
@@ -374,10 +565,23 @@
     padding: 15px 20px;
   }
   .item-expand-gray {
-    height: 100px;
     background: rgba(182, 194, 210, 0.5);
   }
+  .item-expand-yellow {
+    background: rgba(255, 204, 77, 0.25);
+  }
+  .row-item-columns {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .item-2-column-height {
+    height: 343px;
+  }
   .row-item {
+    width: 100%;
     background: rgba(255, 255, 255, 0.6);
     display: flex;
     flex: 1;
@@ -427,6 +631,10 @@
     gap: 10px;
     padding: 5px 10px;
   }
+  .row-item-note {
+    font-size: 16px;
+    color: black;
+  }
   .venue-preparation {
     background: #dde1e1;
   }
@@ -465,7 +673,7 @@
         line-height: 30px;
         border-radius: 20px;
       }
-      .day-1 {
+      .day-active {
         background-image: url(@/assets/image/home/program-day-1-button-mobile.png);
       }
     }
@@ -503,8 +711,14 @@
       gap: 5px;
       padding: 10px 20px;
     }
-    .item-expand-gray {
-      height: 50px;
+    .row-item-columns {
+      gap: 5px;
+    }
+    .item-2-column-height {
+      height: 219px;
+      @media screen and (min-width: 427px) {
+        height: 189px;
+      }
     }
     .row-item {
       padding: 10px;
@@ -532,6 +746,29 @@
       line-height: 10px;
       border-radius: 10px;
     }
+    .row-item-note {
+      font-size: 8px;
+    }
   }
 }
 </style>
+
+<script>
+export default {
+  name: "Program",
+  data() {
+    return {
+      showProgramDay1: true,
+    };
+  },
+  methods: {
+    switchProgram(day) {
+      if (day == "day1") {
+        this.showProgramDay1 = true;
+      } else {
+        this.showProgramDay1 = false;
+      }
+    },
+  },
+};
+</script>
