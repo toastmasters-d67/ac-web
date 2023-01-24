@@ -13,10 +13,10 @@
         </router-link>
       </div>
     </div>
-    <router-link to="/speakers" class="button-view-all">
+    <!-- <router-link to="/speakers" class="button-view-all">
       <span class="button-text">View all</span>
       <i class="pi pi-arrow-right button-arrow-right"></i>
-    </router-link>
+    </router-link> -->
   </section>
 </template>
 
