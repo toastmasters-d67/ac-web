@@ -1,7 +1,8 @@
 <template>
   <section class="briefing-container">
     <div class="briefing-speaker">
-      <header class="briefing-title">Verity Price</header>
+      <header class="briefing-speaker-name">{{ name }}</header>
+      <div class="briefing-speaker-title">{{ title }}</div>
       <img
         src="@/assets/icon/speaker/speaker-divider.png"
         class="briefing-speaker-divider"
@@ -9,44 +10,12 @@
       />
       <div class="briefing-speaker-row">
         <img
-          src="@/assets/image/speaker/speaker-price.png"
+          :src="getImage(speakerKey)"
           class="briefing-speaker-image"
           alt="play"
         />
         <div class="briefing-speaker-text">
-          <span>
-            What does it take to be the first? Way back in 2005, Verity started
-            her journey as the first South African musician with the tenacious
-            foresight to get online crowdfunding for an album she hadn&apos;t
-            even recorded yet. Fifteen years later, and a career glittered with
-            accolades, brings us to 2021 and Verity&apos;s latest big first -
-            first speaker from Africa to ever be crowned the World Champion of
-            Public Speaking and the sixth woman in history.
-          </span>
-          <span>
-            Her talent for ‘acting out the box’ rather than merely ‘thinking
-            out’ of it, has brought international success for Verity, speaking
-            globally on innovation and thinking differently, which includes two
-            <a
-              href="https://www.ted.com/talks/verity_price_does_convenience_kill_creativity"
-              class="briefing-link"
-              target="_blank"
-            >
-              TEDx Talks
-            </a>
-            . As the Toastmasters 2022 World Champion, Verity captured the
-            judges, and thousands of peoples imagination with her winning speech
-            <a
-              href="https://www.youtube.com/watch?v=k24vGzEjePo&ab_channel=ToastmastersInternational"
-              class="briefing-link"
-              target="_blank"
-            >
-              ‘A Great Read’
-            </a>
-            - an inspiring invitation to improve our lives by &quot;writing a
-            different story&quot;. Helping people do just that, is Verity&apos;s
-            passion.
-          </span>
+          {{ intro }}
         </div>
       </div>
       <div class="briefing-speaker-row">
@@ -84,12 +53,18 @@
     color: black;
     border-color: transparent;
   }
-  .briefing-title {
+  .briefing-speaker-name {
     font-size: 48px;
     font-weight: 600;
     line-height: 49px;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+  .briefing-speaker-title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 40px;
+    color: #53595a;
   }
 }
 .briefing-speaker {
@@ -126,3 +101,35 @@
   }
 }
 </style>
+
+<script>
+export default {
+  name: "SpeakerBriefing",
+  props: {
+    speakerKey: {
+      type: String,
+      default: "",
+    },
+    name: {
+      type: String,
+      default: "",
+    },
+    title: {
+      type: String,
+      default: "",
+    },
+    intro: {
+      type: String,
+      default: "",
+    },
+  },
+  methods: {
+    getImage(speakerKey) {
+      if (speakerKey.length) {
+        return require(`@/assets/image/speaker/speaker-${speakerKey}.png`);
+      }
+      return "";
+    },
+  },
+};
+</script>
