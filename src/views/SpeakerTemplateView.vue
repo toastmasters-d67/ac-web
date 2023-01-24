@@ -75,5 +75,8 @@ export default {
       seminarIntroduction,
     };
   },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
+  },
 };
 </script>
