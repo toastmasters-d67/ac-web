@@ -17,7 +17,7 @@
 <style scoped lang="scss">
 .faq-container {
   min-height: 1200px;
-  background: #e5e5e5;
+  background: transparent;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;

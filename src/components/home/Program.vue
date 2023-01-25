@@ -419,7 +419,7 @@
 <style scoped lang="scss">
 .program-container {
   width: 100%;
-  background: #e5e5e5;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
