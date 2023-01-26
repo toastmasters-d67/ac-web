@@ -5,13 +5,13 @@
       :speakerKey="speakerKey"
       :name="name"
       :title="title"
-      :intro="intro"
+      :content="content"
     />
     <Seminar
-      :seminarTopic="seminarTopic"
-      :seminarTime="seminarTime"
-      :seminarLocation="seminarLocation"
-      :seminarIntroduction="seminarIntroduction"
+      :topic="topic"
+      :time="time"
+      :location="location"
+      :introduction="introduction"
     />
     <Voting v-once />
   </article>
@@ -30,11 +30,11 @@
 </style>
 
 <script>
-import { ref } from "vue";
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
 import Voting from "@/components/speaker/Voting.vue";
+import speakers from "@/assets/data/speakers.json";
 
 export default {
   name: "SpeakersView",
@@ -46,33 +46,19 @@ export default {
   },
   data() {
     const speakerKey = this.$route.params.key;
-    let name = ref("");
-    let title = ref("");
-    let intro = ref("");
-    let seminarTopic = ref("");
-    let seminarTime = ref("");
-    let seminarLocation = ref("");
-    let seminarIntroduction = ref("");
-
-    import(`@/assets/data/speakers/${speakerKey}.json`).then((module) => {
-      name.value = module.name;
-      title.value = module.title;
-      intro.value = module.intro;
-      seminarTopic.value = module.seminar.topic;
-      seminarTime.value = module.seminar.time;
-      seminarLocation.value = module.seminar.location;
-      seminarIntroduction.value = module.seminar.introduction;
-    });
+    const speaker = speakers.find((x) => x.key === speakerKey);
+    const { name, title, content, seminar } = speaker;
+    const { topic, time, location, introduction } = seminar;
 
     return {
       speakerKey,
       name,
       title,
-      intro,
-      seminarTopic,
-      seminarTime,
-      seminarLocation,
-      seminarIntroduction,
+      content,
+      topic,
+      time,
+      location,
+      introduction,
     };
   },
   beforeMount() {

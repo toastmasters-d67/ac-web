@@ -150,7 +150,7 @@ export default {
   methods: {
     getLink(key) {
       if (key.length) {
-        return `/speakers/${key}`;
+        return `/${key}`;
       }
       return "";
     },

@@ -7,22 +7,22 @@
         <div class="seminar-content-half">
           <div class="seminar-row">
             <span class="seminar-row-title">Topic of Seminar |</span>
-            <span class="seminar-row-subtitle">{{ seminarTopic }}</span>
+            <span class="seminar-row-subtitle">{{ topic }}</span>
           </div>
           <div class="seminar-row">
             <span class="seminar-row-title">Time |</span>
-            <span class="seminar-row-subtitle">{{ seminarTime }}</span>
+            <span class="seminar-row-subtitle">{{ time }}</span>
           </div>
           <div class="seminar-row">
             <span class="seminar-row-title">Location |</span>
-            <span class="seminar-row-subtitle">{{ seminarLocation }}</span>
+            <span class="seminar-row-subtitle">{{ location }}</span>
           </div>
         </div>
         <div class="seminar-content-half">
           <div class="seminar-row">
             <span class="seminar-row-title">Introduction |</span>
             <span class="seminar-row-text">
-              {{ seminarIntroduction }}
+              {{ introduction }}
             </span>
           </div>
         </div>
@@ -101,19 +101,19 @@
 export default {
   name: "SpeakerSeminar",
   props: {
-    seminarTopic: {
+    topic: {
       type: String,
       default: "",
     },
-    seminarTime: {
+    time: {
       type: String,
       default: "",
     },
-    seminarLocation: {
+    location: {
       type: String,
       default: "",
     },
-    seminarIntroduction: {
+    introduction: {
       type: String,
       default: "",
     },

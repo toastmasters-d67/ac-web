@@ -1,12 +1,7 @@
 {
   "/": "首頁",
   "faq": "FAQ",
-  "speakers": "Speakers",
-  "john": "黑幼龍博士",
-  "bastien": "Bachir Bastien",
-  "kozue": "Sakai Kozue",
-  "price": "Verity Price",
-  "tbd": "TBD",
-  "borssum": "Greg Van Borssum",
-  "stan-shih": "Stan Shih"
+  "van-borssum": "Greg Van Borssum",
+  "shih": "Stan Shih",
+  "tbd": "TBD"
 }

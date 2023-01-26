@@ -15,7 +15,7 @@
           alt="play"
         />
         <div class="briefing-speaker-text">
-          {{ intro }}
+          {{ content }}
         </div>
       </div>
       <div class="briefing-speaker-row">
@@ -118,7 +118,7 @@ export default {
       type: String,
       default: "",
     },
-    intro: {
+    content: {
       type: String,
       default: "",
     },
