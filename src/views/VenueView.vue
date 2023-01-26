@@ -88,7 +88,7 @@
 .venue-container {
   width: 100%;
   color: #004165;
-  background: #e5e5e5;
+  background: transparent;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
@@ -136,8 +136,8 @@
     margin-bottom: 20px;
   }
   .venue-section-direction {
-    width: 888px;
-    height: 154px;
+    width: 97.05%;
+    max-width: 888px;
     color: #004165;
     font-size: 20px;
     line-height: 26px;
@@ -170,6 +170,56 @@
       border-radius: 20px;
       padding: 5px 10px;
       gap: 10px;
+    }
+  }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .venue-container {
+    padding-top: 0px;
+    .venue-box {
+      width: 87.2%;
+      max-width: 915px;
+      margin: 0 auto;
+    }
+    .venue-title {
+      font-size: 15px;
+      line-height: 18px;
+    }
+  }
+  .venue-section {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    .venue-section-button {
+      font-size: 12px;
+      line-height: 15px;
+      border-radius: 20px;
+      padding: 5px 10px;
+      margin-bottom: 16px;
+    }
+    .venue-section-direction {
+      font-size: 12px;
+      line-height: 129.4%;
+      li {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+    .venue-row {
+      .venue-row-icon {
+        font-size: 12px;
+        margin-right: 5px;
+      }
+      .venue-row-text {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 5px;
+      }
+      .venue-row-button {
+        font-size: 12px;
+        line-height: 15px;
+      }
     }
   }
 }
