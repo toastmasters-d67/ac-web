@@ -13,7 +13,6 @@
       :location="location"
       :introduction="introduction"
     />
-    <Voting v-once />
   </article>
 </template>
 
@@ -27,16 +26,14 @@
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
-import Voting from "@/components/speaker/Voting.vue";
 import speakers from "@/assets/data/speakers.json";
 
 export default {
-  name: "SpeakersView",
+  name: "SpeakersTemplateView",
   components: {
     Breadcrumb,
     Briefing,
     Seminar,
-    Voting,
   },
   data() {
     const speakerKey = this.$route.params.key;

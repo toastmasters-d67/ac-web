@@ -4,7 +4,7 @@
       <header class="seminar-title">Seminar</header>
       <div class="seminar-separator"></div>
       <div class="seminar-content">
-        <div class="seminar-content-half">
+        <div class="seminar-content-basic-info">
           <div class="seminar-row">
             <span class="seminar-row-title">Topic of Seminar |</span>
             <span class="seminar-row-subtitle">{{ topic }}</span>
@@ -18,7 +18,7 @@
             <span class="seminar-row-subtitle">{{ location }}</span>
           </div>
         </div>
-        <div class="seminar-content-half">
+        <div class="seminar-content-introduction">
           <div class="seminar-row">
             <span class="seminar-row-title">Introduction |</span>
             <span class="seminar-row-text">
@@ -41,14 +41,15 @@
   padding-top: 100px;
   padding-bottom: 100px;
   .seminar-box {
-    width: 1200px;
+    width: 83.33%;
+    max-width: 1200px;
     background: rgba(255, 255, 255, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    padding: 25px;
+    padding: 25px 50px;
     margin: 0 auto;
     .seminar-title {
       font-size: 40px;
@@ -56,7 +57,7 @@
       line-height: 60px;
     }
     .seminar-separator {
-      width: 1200px;
+      width: 100%;
       border: 1px solid #979797;
       margin-top: 20px;
       margin-bottom: 20px;
@@ -66,8 +67,14 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      .seminar-content-half {
-        width: 45%;
+      .seminar-content-basic-info {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 50px;
+      }
+      .seminar-content-introduction {
+        width: 52%;
         display: flex;
         flex-direction: column;
       }
@@ -87,9 +94,71 @@
           margin-bottom: 50px;
         }
         .seminar-row-text {
-          font-size: 24px;
+          font-size: 28px;
           line-height: 50px;
           text-align: left;
+        }
+        @media screen and (max-width: 1024px) {
+          .seminar-row-title {
+            font-size: 28px;
+            line-height: 48px;
+          }
+          .seminar-row-subtitle {
+            font-size: 28px;
+            line-height: 48px;
+          }
+          .seminar-row-text {
+            font-size: 24px;
+            line-height: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .seminar-container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    .seminar-box {
+      width: 83.73%;
+      border-radius: 20px;
+      padding: 25px;
+      .seminar-title {
+        font-size: 20px;
+        line-height: 30px;
+      }
+      .seminar-separator {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .seminar-content {
+        flex-direction: column;
+        .seminar-content-basic-info {
+          width: 100%;
+          margin-right: 50px;
+        }
+        .seminar-content-introduction {
+          width: 100%;
+        }
+        .seminar-row {
+          display: flex;
+          flex-direction: column;
+          .seminar-row-title {
+            font-size: 16px;
+            line-height: 40px;
+          }
+          .seminar-row-subtitle {
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 10px;
+          }
+          .seminar-row-text {
+            font-size: 12px;
+            line-height: 20px;
+          }
         }
       }
     }

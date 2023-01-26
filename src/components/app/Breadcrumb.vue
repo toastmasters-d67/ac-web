@@ -56,6 +56,23 @@
 .p-breadcrumb::-webkit-scrollbar {
   display: none;
 }
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .p-breadcrumb {
+    padding-top: 25px;
+    margin-bottom: 15px;
+    margin-left: 2.5%;
+  }
+  .p-menuitem-text {
+    font-size: 10px;
+    line-height: 15px;
+  }
+  .p-breadcrumb-chevron {
+    margin: 0 0.25rem 0 0.25rem;
+    font-size: 10px;
+  }
+}
 </style>
 
 <script>
