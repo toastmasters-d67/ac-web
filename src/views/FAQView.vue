@@ -16,7 +16,8 @@
 
 <style scoped lang="scss">
 .faq-container {
-  min-height: 1200px;
+  max-height: 1200px;
+  width: 100%;
   background: transparent;
   border-color: transparent;
   border-radius: 0;
@@ -37,7 +38,8 @@
     margin-top: 20px;
     .faq-question {
       position: relative;
-      width: 990px;
+      max-width: 990px;
+      width: 68.75%;
       background: rgba(255, 255, 255, 0.6);
       display: flex;
       flex-direction: column;
@@ -54,7 +56,8 @@
       margin-bottom: 15px !important;
       margin: 0 auto;
       .faq-row {
-        width: 990px;
+        max-width: 990px;
+        width: 93.33%;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -65,12 +68,43 @@
         }
       }
       .faq-answer {
-        width: 910px;
+        max-width: 910px;
+        width: 91.92%;
         min-height: 80px;
         font-size: 18px;
         line-height: 22px;
         text-align: left;
         padding-top: 5px;
+      }
+    }
+  }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .faq-container {
+    padding-top: 0px;
+    .faq-page-title {
+      font-size: 20px;
+      line-height: 24px;
+      margin-top: 30px;
+      margin-bottom: 60px;
+    }
+    .faq-questions {
+      .faq-question {
+        font-size: 14px;
+        line-height: 17px;
+        gap: 5px;
+        .faq-row {
+          .faq-icon {
+            right: 20px;
+          }
+        }
+        .faq-answer {
+          min-height: 30px;
+          font-size: 12px;
+          line-height: 15px;
+        }
       }
     }
   }
