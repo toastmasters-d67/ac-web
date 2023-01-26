@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar-container">
-    <router-link to="/" class="navbar-logo">
+    <router-link to="/" class="navbar-logo" @click="setWindowToTop()">
       <img
         src="@/assets/icon/app/logo.png"
         class="navbar-logo-image"
@@ -301,6 +301,9 @@ export default {
     },
     hideMenu() {
       this.visibleFull = false;
+    },
+    setWindowToTop() {
+      window.scrollTo({ top: 0 });
     },
   },
 };

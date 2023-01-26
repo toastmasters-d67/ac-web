@@ -1,8 +1,18 @@
 <template>
   <article id="speaker" class="speaker-container">
     <Breadcrumb v-once />
-    <Briefing v-once />
-    <Seminar v-once />
+    <Briefing
+      :speakerKey="speakerKey"
+      :name="name"
+      :title="title"
+      :intro="intro"
+    />
+    <Seminar
+      :seminarTopic="seminarTopic"
+      :seminarTime="seminarTime"
+      :seminarLocation="seminarLocation"
+      :seminarIntroduction="seminarIntroduction"
+    />
     <Voting v-once />
   </article>
 </template>
@@ -20,6 +30,7 @@
 </style>
 
 <script>
+import { ref } from "vue";
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
@@ -32,6 +43,40 @@ export default {
     Briefing,
     Seminar,
     Voting,
+  },
+  data() {
+    const speakerKey = this.$route.params.key;
+    let name = ref("");
+    let title = ref("");
+    let intro = ref("");
+    let seminarTopic = ref("");
+    let seminarTime = ref("");
+    let seminarLocation = ref("");
+    let seminarIntroduction = ref("");
+
+    import(`@/assets/data/speakers/${speakerKey}.json`).then((module) => {
+      name.value = module.name;
+      title.value = module.title;
+      intro.value = module.intro;
+      seminarTopic.value = module.seminar.topic;
+      seminarTime.value = module.seminar.time;
+      seminarLocation.value = module.seminar.location;
+      seminarIntroduction.value = module.seminar.introduction;
+    });
+
+    return {
+      speakerKey,
+      name,
+      title,
+      intro,
+      seminarTopic,
+      seminarTime,
+      seminarLocation,
+      seminarIntroduction,
+    };
+  },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
   },
 };
 </script>

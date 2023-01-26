@@ -69,6 +69,34 @@
     }
   }
 }
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .countdown-container {
+    padding-top: 0px;
+    padding-bottom: 100px;
+    .countdown-title {
+      font-size: 15px;
+      line-height: 18px;
+    }
+    .countdown-row {
+      div:nth-child(-n + 4) {
+        margin-right: 13px;
+      }
+      .countdown-item {
+        width: 63px;
+        height: 96px;
+        margin-top: auto;
+        margin-bottom: auto;
+        .countdown-unit {
+          font-size: 10px;
+          line-height: 35px;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}
 </style>
 
 <script>

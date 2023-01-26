@@ -99,6 +99,9 @@ export default {
   setup() {
     return { speakers };
   },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
+  },
   methods: {
     getLink(key) {
       if (key.length) {

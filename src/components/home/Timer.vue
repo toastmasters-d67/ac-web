@@ -91,6 +91,32 @@
     box-shadow: 0 0 20px red;
   }
 }
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .timer {
+    .timer-circle {
+      width: 63px;
+      height: 63px;
+    }
+    .timer-inner {
+      width: 60px;
+      height: 60px;
+    }
+    .timer-value {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    .timer-ball {
+      top: calc(50% - 1px);
+    }
+    .timer-ball:before {
+      right: -3px;
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
 </style>
 
 <script>

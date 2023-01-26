@@ -7,27 +7,22 @@
         <div class="seminar-content-half">
           <div class="seminar-row">
             <span class="seminar-row-title">Topic of Seminar |</span>
-            <span class="seminar-row-subtitle">On Becoming a Leader</span>
+            <span class="seminar-row-subtitle">{{ seminarTopic }}</span>
           </div>
           <div class="seminar-row">
             <span class="seminar-row-title">Time |</span>
-            <span class="seminar-row-subtitle">4/23 11:20-12:20</span>
+            <span class="seminar-row-subtitle">{{ seminarTime }}</span>
           </div>
           <div class="seminar-row">
             <span class="seminar-row-title">Location |</span>
-            <span class="seminar-row-subtitle">Meeting Room B2</span>
+            <span class="seminar-row-subtitle">{{ seminarLocation }}</span>
           </div>
         </div>
         <div class="seminar-content-half">
           <div class="seminar-row">
             <span class="seminar-row-title">Introduction |</span>
             <span class="seminar-row-text">
-              She is all about facing fears, finding your voice and sharing your
-              truth. As the Toastmasters 2021 World Champion, thousands of
-              peoples imagination with her winning speech ‘A Great Read’ - an
-              inspiring invitation to improve our lives by &quot;writing a
-              different story&quot;. Helping people do just that is
-              Verity&apos;s passion and today she is here to help us to do that.
+              {{ seminarIntroduction }}
             </span>
           </div>
         </div>
@@ -101,3 +96,27 @@
   }
 }
 </style>
+
+<script>
+export default {
+  name: "SpeakerSeminar",
+  props: {
+    seminarTopic: {
+      type: String,
+      default: "",
+    },
+    seminarTime: {
+      type: String,
+      default: "",
+    },
+    seminarLocation: {
+      type: String,
+      default: "",
+    },
+    seminarIntroduction: {
+      type: String,
+      default: "",
+    },
+  },
+};
+</script>
