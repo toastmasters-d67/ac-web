@@ -13,11 +13,6 @@ const routes = [
     component: () => import("@/views/FAQView.vue"),
   },
   {
-    path: "/speakers",
-    name: "speakers",
-    component: () => import("@/views/SpeakersView.vue"),
-  },
-  {
     path: "/speakers/:key",
     name: "speaker",
     component: () => import("@/views/SpeakerTemplateView.vue"),
