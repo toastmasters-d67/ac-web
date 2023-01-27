@@ -3,12 +3,8 @@
     <div class="briefing-speaker">
       <header class="briefing-speaker-name">{{ name }}</header>
       <div class="briefing-speaker-title">{{ title }}</div>
-      <img
-        src="@/assets/icon/speaker/speaker-divider.png"
-        class="briefing-speaker-divider"
-        alt="divider"
-      />
-      <div class="briefing-speaker-row">
+      <hr class="briefing-speaker-divider" />
+      <div class="briefing-speaker-intro">
         <img
           :src="getImage(speakerKey)"
           class="briefing-speaker-image"
@@ -18,7 +14,7 @@
           {{ content }}
         </div>
       </div>
-      <div class="briefing-speaker-row">
+      <div class="briefing-speaker-links">
         <img
           src="@/assets/icon/speaker/speaker-facebook.png"
           class="briefing-logo"
@@ -68,35 +64,89 @@
   }
 }
 .briefing-speaker {
-  min-width: 1200px;
+  width: 83.33%;
+  max-width: 1200px;
   margin: 0 auto;
   .briefing-speaker-divider {
-    width: 1200px;
+    width: 100%;
     border: 1px solid #cccccc;
   }
-  .briefing-speaker-row {
+  .briefing-speaker-intro {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
     .briefing-speaker-image {
-      width: 510px;
-      height: 655px;
+      max-width: 510px;
+      width: 42.5%;
+      aspect-ratio: 510/655;
       border-color: transparent;
       margin-right: 50px;
     }
     .briefing-speaker-text {
-      width: 680px;
       display: flex;
       flex-direction: column;
       font-size: 20px;
       line-height: 40px;
+      @media screen and (max-width: 1024px) {
+        font-size: 15px;
+        line-height: 30px;
+      }
     }
+  }
+  .briefing-speaker-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
     .briefing-logo {
       width: 50px;
       height: 50px;
       margin-right: 20px;
       cursor: pointer;
+    }
+  }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 768px) {
+  .briefing-container {
+    .briefing-speaker-name {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 38px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    .briefing-speaker-title {
+      font-size: 10px;
+      line-height: 10px;
+    }
+  }
+  .briefing-speaker {
+    width: 83.33%;
+    margin: 0 auto;
+    .briefing-speaker-divider {
+      display: none;
+    }
+    .briefing-speaker-intro {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      .briefing-speaker-image {
+        width: 68.27%;
+      }
+      .briefing-speaker-text {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+    .briefing-speaker-links {
+      .briefing-logo {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+      }
     }
   }
 }

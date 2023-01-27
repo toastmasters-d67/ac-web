@@ -22,7 +22,7 @@
 
 <style scoped lang="scss">
 .speakers-container {
-  background: #e5e5e5;
+  background: transparent;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;

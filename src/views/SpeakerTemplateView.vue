@@ -13,19 +13,12 @@
       :location="location"
       :introduction="introduction"
     />
-    <Voting v-once />
   </article>
 </template>
 
 <style scoped lang="scss">
 .speaker-container {
-  background: linear-gradient(
-    225deg,
-    rgba(108, 169, 192, 1) 0%,
-    rgba(220, 213, 179, 1) 29%,
-    rgba(236, 182, 146, 1) 81%,
-    rgba(228, 167, 62, 1) 100%
-  );
+  background: transparent;
 }
 </style>
 
@@ -33,16 +26,14 @@
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
-import Voting from "@/components/speaker/Voting.vue";
 import speakers from "@/assets/data/speakers.json";
 
 export default {
-  name: "SpeakersView",
+  name: "SpeakersTemplateView",
   components: {
     Breadcrumb,
     Briefing,
     Seminar,
-    Voting,
   },
   data() {
     const speakerKey = this.$route.params.key;

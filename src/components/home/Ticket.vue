@@ -106,7 +106,7 @@
 <style scoped lang="scss">
 .ticket-container {
   width: 100%;
-  background: #e5e5e5;
+  background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;

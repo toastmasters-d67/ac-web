@@ -37,7 +37,7 @@
 .venue-container {
   width: 100%;
   color: #004165;
-  background: #e5e5e5;
+  background: transparent;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
@@ -79,8 +79,6 @@
   }
 }
 .venue-box {
-  // width: 62.64%;
-  // min-width: 291px;
   width: 87.2%;
   max-width: 915px;
   display: flex;
@@ -142,10 +140,19 @@
       line-height: 18px;
       margin-bottom: 30px;
     }
+    .button-directions {
+      width: 145px;
+      height: 33px;
+      .button-text {
+        font-size: 14px;
+        line-height: 17px;
+      }
+      .button-arrow-right {
+        font-size: 14px;
+      }
+    }
   }
   .venue-box {
-    // width: 62.64%;
-    // min-width: 291px;
     .venue-box-name {
       font-size: 12px;
       line-height: 15px;
@@ -163,10 +170,15 @@
         margin-bottom: 8px;
       }
     }
+    .venue-box-button {
+      font-size: 10px;
+      line-height: 12px;
+    }
     .venue-box-map {
-      margin-top: 0px;
       border: 0.98px solid;
       padding: 3px;
+      margin-top: 16px;
+      margin-bottom: 16px;
     }
   }
 }

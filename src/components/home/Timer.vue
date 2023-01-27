@@ -26,7 +26,7 @@
 .timer {
   position: relative;
   display: inline-block;
-  background: #e5e5e5;
+  background: transparent;
   margin: 0 auto;
   .timer-circle {
     position: relative;
@@ -52,7 +52,7 @@
     top: 50%;
     width: 190px;
     height: 190px;
-    background: #e5e5e5;
+    background: rgba(219, 231, 231, 1);
     border-radius: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
