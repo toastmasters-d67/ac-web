@@ -1,3 +1,19 @@
 {
-  "message": "hello i18n !!"
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "When is this year's annual conference? Where will it be held?",
+        "answer": "2023 annual conference will be held on April 22nd and 23rd at Kuanhe Exhibition Hall in New Taipei City."
+      },
+      {
+        "question": "What activites are included in this year's annual conference?",
+        "answer": "We have arranged a series of keynote speeches and educational sessions in the two-day program. On the night of 22nd, there will be an gala dinner where you can enjoy great food and great performance brought by outstanding Toastmasters."
+      },
+      {
+        "question": "How can I buy the annual conference tickets?",
+        "answer": "The tickets will be available for online purchase soon. Please stay tuned!"
+      }
+    ]
+  }
 }

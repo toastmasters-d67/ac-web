@@ -1,7 +1,7 @@
 <template>
   <article id="faq" class="faq-container">
     <Breadcrumb v-once />
-    <header class="faq-page-title">Frequently asked questions</header>
+    <header class="faq-page-title">{{ $t("faq.title") }}</header>
     <div class="faq-questions">
       <div v-for="(item, key) in items" :key="key" class="faq-question">
         <div class="faq-row" @click="toggle(key)">
@@ -114,7 +114,6 @@
 <script>
 import { reactive } from "vue";
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
-import faq from "@/assets/data/faq.json";
 
 export default {
   name: "FAQView",
@@ -123,9 +122,14 @@ export default {
   },
   data() {
     const items = reactive([]);
-    Array.from(faq).forEach((item) => {
-      item.icon = "pi pi-angle-down faq-icon";
-      item.show = false;
+    // Array.from(this.$tm("faq_page.items")).forEach((source) => {
+    Array.from(this.$tm("faq.items")).forEach((source) => {
+      const item = {
+        question: this.$rt(source.question),
+        answer: this.$rt(source.answer),
+        icon: "pi pi-angle-down faq-icon",
+        show: false,
+      };
       items.push(item);
     });
     return { items };
