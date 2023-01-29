@@ -8,7 +8,7 @@
 
 <style lang="scss">
 #app {
-  font-family: Montserrat, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, "Noto Sans TC", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -24,6 +24,16 @@
   src: local("Montserrat"),
     url("./assets/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2"),
     url("./assets/fonts/Montserrat/Montserrat-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Noto Sans TC";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  src: local("Noto Sans TC"),
+    url("//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.otf")
+      format("otf");
 }
 
 body {
