@@ -10,7 +10,7 @@
         />
       </section>
       <section id="map" class="venue-section">
-        <header class="venue-title">Kuanhe Exhibition Hall</header>
+        <header class="venue-title">{{ $t("home.venue.title") }}</header>
         <div class="venue-row">
           <i class="pi pi-phone venue-row-icon"></i>
           <span class="venue-row-text">(02) 2649-3034</span>
@@ -18,7 +18,7 @@
         <div class="venue-row">
           <i class="pi pi-globe venue-row-icon"></i>
           <span class="venue-row-text">
-            No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City
+            {{ $t("home.venue.address") }}
           </span>
         </div>
         <div class="venue-row">
@@ -27,56 +27,44 @@
             class="venue-row-button"
             target="_blank"
           >
-            Show on Google Maps
+            {{ $t("home.venue.show") }}
           </a>
         </div>
       </section>
       <section id="car" class="venue-section">
         <div class="venue-row">
-          <div class="venue-section-button">By Car</div>
+          <div class="venue-section-button">{{ $t("venue.car.title") }}</div>
         </div>
         <div class="venue-section-direction">
           <ol>
-            <li>
-              Get off National Highway No.1 at the Xizhi Interchange, turn right
-              at Section 2 of Datong Road, and go straignt to reach No. 237 on
-              Section 1 of Datong Road.
-            </li>
-            <li>
-              Get off National Highway No.3 at the Xintai 5th Road Interchange,
-              turn left at Xintai 5th Road, turn right at Section 1 of Datong
-              Road, and make a u-turn at the second traffic light, and then go
-              straight to reach Kuanhe.
+            <li v-for="(item, key) in $tm('venue.car.steps')" :key="key">
+              {{ $rt(item) }}
             </li>
           </ol>
         </div>
       </section>
       <section id="metro" class="venue-section">
         <div class="venue-row">
-          <div class="venue-section-button">By Metro</div>
+          <div class="venue-section-button">{{ $t("venue.metro.title") }}</div>
         </div>
         <div class="venue-section-direction">
           <span>
-            Take Taipei Metro Bannan Line or Wenhu Line to reach Nangang
-            Exhibition Center Station.
+            {{ $t("venue.metro.content") }}
           </span>
           <ol>
-            <li>Take a taxi to reach Kuanhe which costs around NT$100.</li>
-            <li>
-              Go to exit no. 6 and take a bus (B21, B22, B23, 919, 605 817, 668)
-              to South Zhangshuwan Station, and then walk to reach Kuanhe.
+            <li v-for="(item, key) in $tm('venue.metro.steps')" :key="key">
+              {{ $rt(item) }}
             </li>
           </ol>
         </div>
       </section>
       <section id="bus" class="venue-section">
         <div class="venue-row">
-          <div class="venue-section-button">By Bus</div>
+          <div class="venue-section-button">{{ $t("venue.bus.title") }}</div>
         </div>
         <div class="venue-section-direction">
           <span>
-            Take 605, 668, 817, or Keelung Bus to South Zhangshuwan Station, and
-            then walk to reach Kuanhe.
+            {{ $t("venue.bus.content") }}
           </span>
         </div>
       </section>

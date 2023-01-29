@@ -1,4 +1,12 @@
 {
+  "home": {
+    "venue": {
+      "title": "Kuanhe Exhibition Hall",
+      "address": "No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City, Taiwan 221",
+      "show": "Show on Google Maps",
+      "directions": "Directions"
+    }
+  },
   "faq": {
     "title": "Frequently asked questions",
     "items": [
@@ -15,5 +23,26 @@
         "answer": "The tickets will be available for online purchase soon. Please stay tuned!"
       }
     ]
+  },
+  "venue": {
+    "car": {
+      "title": "By Car",
+      "steps": [
+        "Get off National Highway No.1 at the Xizhi Interchange, turn right at Section 2 of Datong Road, and go straignt to reach No. 237 on Section 1 of Datong Road.",
+        "Get off National Highway No.3 at the Xintai 5th Road Interchange, turn left at Xintai 5th Road, turn right at Section 1 of Datong Road, and make a u-turn at the second traffic light, and then go straight to reach Kuanhe."
+      ]
+    },
+    "metro": {
+      "title": "By Metro",
+      "content": "Take Taipei Metro Bannan Line or Wenhu Line to reach Nangang Exhibition Center Station.",
+      "steps": [
+        "Take a taxi to reach Kuanhe which costs around NT$100.",
+        "Go to exit no. 6 and take a bus (B21, B22, B23, 919, 605 817, 668) to South Zhangshuwan Station, and then walk to reach Kuanhe."
+      ]
+    },
+    "bus": {
+      "title": "By Bus",
+      "content": "Take 605, 668, 817, or Keelung Bus to South Zhangshuwan Station, and then walk to reach Kuanhe."
+    }
   }
 }
