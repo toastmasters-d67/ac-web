@@ -15,6 +15,11 @@
       "minute": "Minutes",
       "second": "Seconds"
     },
+    "souvenir": {
+      "title": "Souvenirs",
+      "tbd": "TBD",
+      "note": "Full details of the souvenirs will be announced soon!"
+    },
     "speakers": {
       "title": "Meet Our Speakers"
     },

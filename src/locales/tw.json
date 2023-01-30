@@ -15,6 +15,11 @@
       "minute": "分",
       "second": "秒"
     },
+    "souvenir": {
+      "title": "年度大會紀念品",
+      "tbd": "待提供",
+      "note": "近期將公開紀念品資訊，敬請期待！"
+    },
     "speakers": {
       "title": "講師介紹"
     },

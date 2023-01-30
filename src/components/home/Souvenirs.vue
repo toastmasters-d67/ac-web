@@ -1,6 +1,6 @@
 <template>
   <section class="souvenirs-container">
-    <header class="souvenirs-title">Souvenirs</header>
+    <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
     <div class="souvenirs-items">
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow">
@@ -10,7 +10,7 @@
             alt="pen"
           /> -->
         </div>
-        <div class="souvenirs-item-text">TBD</div>
+        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
       </div>
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow flip">
@@ -20,7 +20,7 @@
             alt="holder"
           /> -->
         </div>
-        <div class="souvenirs-item-text">TBD</div>
+        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
       </div>
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow">
@@ -30,11 +30,11 @@
             alt="cutlery"
           /> -->
         </div>
-        <div class="souvenirs-item-text">TBD</div>
+        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
       </div>
     </div>
     <div class="souvenirs-coming-soon">
-      Full details of the souvenirs will be announced soon!
+      {{ $t("home.souvenir.note") }}
     </div>
   </section>
 </template>
