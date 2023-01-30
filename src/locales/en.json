@@ -1,11 +1,22 @@
 {
   "app": {
-    "/": "Home",
-    "faq": "FAQ",
-    "venue": "Venue",
-    "van-borssum": "Greg Van Borssum",
-    "shih": "Stan Shih",
-    "tbd": "TBD"
+    "breadcrumb": {
+      "/": "Home",
+      "faq": "FAQ",
+      "venue": "Venue",
+      "van-borssum": "Greg Van Borssum",
+      "shih": "Stan Shih",
+      "tbd": "TBD"
+    },
+    "navbar": {
+      "d67": "Toastmasters District 67",
+      "ac": "2023 Annual Conference",
+      "program": "Program",
+      "speakers": "Speakers",
+      "venue": "Venue",
+      "faq": "FAQ",
+      "lang": "EN"
+    }
   },
   "home": {
     "countdown": {

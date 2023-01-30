@@ -7,8 +7,8 @@
         alt="logo"
       />
       <div class="navbar-logo-text">
-        <span class="navbar-logo-text-1">Toastmasters District 67</span>
-        <span class="navbar-logo-text-2">2023 Annual Conference</span>
+        <span class="navbar-logo-text-1">{{ $t("app.navbar.d67") }}</span>
+        <span class="navbar-logo-text-2">{{ $t("app.navbar.ac") }}</span>
       </div>
     </router-link>
     <div class="navbar-links">
@@ -17,27 +17,29 @@
         class="navbar-link"
         @click="scrollToElement('program')"
       >
-        Program
+        {{ $t("app.navbar.program") }}
       </router-link>
       <router-link
         to="/#speakers"
         class="navbar-link"
         @click="scrollToElement('speakers')"
       >
-        Speakers
+        {{ $t("app.navbar.speakers") }}
       </router-link>
       <router-link
         to="/#venue"
         class="navbar-link"
         @click="scrollToElement('venue')"
       >
-        Venue
+        {{ $t("app.navbar.venue") }}
       </router-link>
-      <router-link to="/faq" class="navbar-link">FAQ</router-link>
-      <div class="navbar-link"><b>EN</b><i class="pi pi-chevron-down"></i></div>
-      <button class="navbar-cta-button" @click="scrollToElement('ticket')">
-        Get Tickets
-      </button>
+      <router-link to="/faq" class="navbar-link">
+        {{ $t("app.navbar.faq") }}
+      </router-link>
+      <div class="navbar-link">
+        <span class="navbar-lang">{{ $t("app.navbar.lang") }}</span>
+        <i class="pi pi-chevron-down"></i>
+      </div>
     </div>
     <div class="navbar-mobile-container">
       <Button
@@ -61,39 +63,39 @@
             class="navbar-mobile-link"
             @click="hideMenuAndScrollToElement('program')"
           >
-            <span class="navbar-mobile-link-text1">Program</span>
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.program") }}
+            </span>
           </router-link>
           <router-link
             to="/#speakers"
             class="navbar-mobile-link"
             @click="hideMenuAndScrollToElement('speakers')"
           >
-            <span class="navbar-mobile-link-text1">Speakers</span>
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.speakers") }}
+            </span>
           </router-link>
           <router-link
             to="/#venue"
             class="navbar-mobile-link"
             @click="hideMenuAndScrollToElement('venue')"
           >
-            <span class="navbar-mobile-link-text1">Venue</span>
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.venue") }}
+            </span>
           </router-link>
           <router-link to="/faq" class="navbar-mobile-link" @click="hideMenu()">
-            <span class="navbar-mobile-link-text1">FAQ</span>
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.faq") }}
+            </span>
           </router-link>
-          <div class="navbar-mobile-link">
-            <span class="navbar-mobile-link-text1">Contact Us</span>
-          </div>
           <hr />
           <div class="navbar-mobile-link">
-            <b>EN</b><i class="pi pi-chevron-down navbar-mobile-arrowdown"></i>
+            <span class="navbar-lang">{{ $t("app.navbar.lang") }}</span>
+            <i class="pi pi-chevron-down"></i>
           </div>
         </div>
-        <button
-          class="navbar-mobile-cta-button"
-          @click="hideMenuAndScrollToElement('ticket')"
-        >
-          Get Tickets
-        </button>
       </Sidebar>
     </div>
   </nav>
@@ -159,7 +161,7 @@ hr {
   }
   .navbar-links {
     position: absolute;
-    top: 16px;
+    top: 28px;
     right: 24px;
     display: flex;
     align-items: center;
@@ -170,18 +172,8 @@ hr {
       margin-right: 32px;
       cursor: pointer;
     }
-    .navbar-cta-button {
-      height: 48px;
-      background-color: rgba(255, 219, 130, 1);
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 24px;
-      text-align: center;
-      border-radius: 38px;
-      border: 1px solid #ffffff;
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-      padding: 8px 24px;
-      cursor: pointer;
+    .navbar-lang {
+      margin-right: 10px;
     }
   }
   .navbar-mobile-container {
@@ -264,20 +256,6 @@ hr {
       right: 0;
     }
   }
-}
-.navbar-mobile-cta-button {
-  height: 48px;
-  display: block;
-  background-color: rgba(255, 219, 130, 1);
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  border-radius: 38px;
-  border: 1px solid #eeeeee;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-  padding: 8px 24px;
-  margin: 35% auto 0;
-  cursor: pointer;
 }
 </style>
 

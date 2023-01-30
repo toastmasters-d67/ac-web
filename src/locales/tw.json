@@ -1,11 +1,22 @@
 {
   "app": {
-    "/": "首頁",
-    "faq": "常見問答",
-    "venue": "場地資訊",
-    "van-borssum": "Greg Van Borssum",
-    "shih": "施振榮",
-    "tbd": "邀約中"
+    "breadcrumb": {
+      "/": "首頁",
+      "faq": "常見問答",
+      "venue": "場地資訊",
+      "van-borssum": "Greg Van Borssum",
+      "shih": "施振榮",
+      "tbd": "邀約中"
+    },
+    "navbar": {
+      "d67": "國際演講會第 67 地區總會",
+      "ac": "2023 年度大會",
+      "program": "大會議程",
+      "speakers": "講者介紹",
+      "venue": "場地資訊",
+      "faq": "常見問答",
+      "lang": "中文"
+    }
   },
   "home": {
     "countdown": {
