@@ -1,4 +1,12 @@
 {
+  "app": {
+    "/": "Home",
+    "faq": "FAQ",
+    "venue": "Venue",
+    "van-borssum": "Greg Van Borssum",
+    "shih": "Stan Shih",
+    "tbd": "TBD"
+  },
   "home": {
     "venue": {
       "title": "Kuanhe Exhibition Hall",

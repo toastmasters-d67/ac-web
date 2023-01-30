@@ -79,16 +79,16 @@
 import { computed, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 import BreadcrumbItem from "@/components/app/BreadcrumbItem.vue";
-import mapping from "@/assets/data/breadcrumb.json";
 
 export default {
   name: "Breadcrumb",
   components: {
     BreadcrumbItem: BreadcrumbItem,
   },
-  setup() {
+  data() {
+    const mapping = this.$tm("app");
     const home = reactive({
-      label: mapping["/"],
+      label: this.$rt(mapping["/"]),
       to: "/",
     });
     const route = useRoute();
@@ -99,7 +99,7 @@ export default {
       const key = path.value.indexOf(segment);
       const url = `${path.value.slice(0, key)}${segment}`;
       const item = {
-        label: mapping[segment],
+        label: this.$rt(mapping[segment]),
         to: url,
       };
       model.push(item);
