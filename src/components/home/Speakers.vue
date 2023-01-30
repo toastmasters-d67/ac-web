@@ -12,6 +12,18 @@
           <span class="speaker-name-text">{{ speaker.name }}</span>
         </router-link>
       </div>
+      <div class="speaker">
+        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
+      </div>
+      <div class="speaker">
+        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
+      </div>
+      <div class="speaker">
+        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
+      </div>
     </div>
     <!-- <router-link to="/speakers" class="button-view-all">
       <span class="button-text">View all</span>
