@@ -37,8 +37,15 @@
         {{ $t("app.navbar.faq") }}
       </router-link>
       <div class="navbar-link">
-        <span class="navbar-lang">{{ $t("app.navbar.lang") }}</span>
-        <i class="pi pi-chevron-down"></i>
+        <select v-model="locale" class="navbar-select">
+          <option
+            v-for="item in localeOptions"
+            :key="`locale-${item.lang}`"
+            :value="item.value"
+          >
+            {{ item.label }}
+          </option>
+        </select>
       </div>
     </div>
     <div class="navbar-mobile-container">
@@ -92,8 +99,15 @@
           </router-link>
           <hr />
           <div class="navbar-mobile-link">
-            <span class="navbar-lang">{{ $t("app.navbar.lang") }}</span>
-            <i class="pi pi-chevron-down"></i>
+            <select v-model="locale" class="navbar-select">
+              <option
+                v-for="item in localeOptions"
+                :key="`locale-${item.lang}`"
+                :value="item.value"
+              >
+                {{ item.label }}
+              </option>
+            </select>
           </div>
         </div>
       </Sidebar>
@@ -172,8 +186,14 @@ hr {
       margin-right: 32px;
       cursor: pointer;
     }
-    .navbar-lang {
-      margin-right: 10px;
+    .navbar-select {
+      color: black !important;
+      background: transparent;
+      font-family: "Montserrat" !important;
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      line-height: 24px;
+      border: transparent;
     }
   }
   .navbar-mobile-container {
@@ -260,6 +280,8 @@ hr {
 </style>
 
 <script>
+import { reactive, ref, watch } from "vue";
+
 export default {
   name: "Navbar",
   props: {
@@ -267,9 +289,29 @@ export default {
       type: Function,
     },
   },
-  data() {
+  setup() {
+    const locale = ref(localStorage.getItem("locale") ?? "en");
+    const localeOptions = reactive([
+      {
+        value: "en",
+        label: "EN",
+      },
+      {
+        value: "tw",
+        label: "中文",
+      },
+    ]);
+    const visibleFull = ref(false);
+
+    watch(locale, (newlocale) => {
+      localStorage.setItem("locale", newlocale);
+      location.reload();
+    });
+
     return {
-      visibleFull: false,
+      locale,
+      localeOptions,
+      visibleFull,
     };
   },
   methods: {
