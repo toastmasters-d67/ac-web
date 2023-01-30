@@ -11,7 +11,9 @@
           alt="play"
         />
         <div class="briefing-speaker-text">
-          {{ content }}
+          <span v-for="(item, key) in contents" :key="key">
+            {{ item }}
+          </span>
         </div>
       </div>
       <div class="briefing-speaker-links">
@@ -168,9 +170,11 @@ export default {
       type: String,
       default: "",
     },
-    content: {
-      type: String,
-      default: "",
+    contents: {
+      type: Array,
+      default: function () {
+        return [];
+      },
     },
   },
   methods: {

@@ -1,26 +1,32 @@
 <template>
   <section class="seminar-container">
     <div class="seminar-box">
-      <header class="seminar-title">Seminar</header>
+      <header class="seminar-title">{{ $t("speaker.seminar") }}</header>
       <div class="seminar-separator"></div>
       <div class="seminar-content">
         <div class="seminar-content-basic-info">
           <div class="seminar-row">
-            <span class="seminar-row-title">Topic of Seminar |</span>
+            <span class="seminar-row-title">
+              Topic{{ $t("speaker.topic") }} |
+            </span>
             <span class="seminar-row-subtitle">{{ topic }}</span>
           </div>
           <div class="seminar-row">
-            <span class="seminar-row-title">Time |</span>
+            <span class="seminar-row-title">{{ $t("speaker.time") }} |</span>
             <span class="seminar-row-subtitle">{{ time }}</span>
           </div>
           <div class="seminar-row">
-            <span class="seminar-row-title">Location |</span>
+            <span class="seminar-row-title">
+              {{ $t("speaker.location") }} |
+            </span>
             <span class="seminar-row-subtitle">{{ location }}</span>
           </div>
         </div>
         <div class="seminar-content-introduction">
           <div class="seminar-row">
-            <span class="seminar-row-title">Introduction |</span>
+            <span class="seminar-row-title">
+              {{ $t("speaker.introduction") }} |
+            </span>
             <span class="seminar-row-text">
               {{ introduction }}
             </span>

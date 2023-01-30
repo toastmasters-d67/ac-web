@@ -5,7 +5,7 @@
       :speakerKey="speakerKey"
       :name="name"
       :title="title"
-      :content="content"
+      :contents="contents"
     />
     <Seminar
       :topic="topic"
@@ -23,10 +23,10 @@
 </style>
 
 <script>
+import { reactive } from "vue";
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
-import speakers from "@/assets/data/speakers.json";
 
 export default {
   name: "SpeakersTemplateView",
@@ -37,15 +37,26 @@ export default {
   },
   data() {
     const speakerKey = this.$route.params.key;
-    const speaker = speakers.find((x) => x.key === speakerKey);
-    const { name, title, content, seminar } = speaker;
-    const { topic, time, location, introduction } = seminar;
+    const speaker = this.$tm("speakers").find(
+      (x) => this.$rt(x.key) === speakerKey
+    );
+    const name = this.$rt(speaker.name);
+    const title = this.$rt(speaker.title);
+    const contents = reactive([]);
+    Array.from(speaker.contents).forEach((source) => {
+      contents.push(this.$rt(source));
+    });
+    const seminar = speaker.seminar;
+    const topic = this.$rt(seminar.topic);
+    const time = this.$rt(seminar.time);
+    const location = this.$rt(seminar.location);
+    const introduction = this.$rt(seminar.introduction);
 
     return {
       speakerKey,
       name,
       title,
-      content,
+      contents,
       topic,
       time,
       location,
