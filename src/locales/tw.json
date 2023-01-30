@@ -16,6 +16,9 @@
       "venue": "場地資訊",
       "faq": "常見問答",
       "lang": "中文"
+    },
+    "footer": {
+      "contact": "聯繫我們"
     }
   },
   "home": {

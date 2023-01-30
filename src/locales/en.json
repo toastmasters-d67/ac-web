@@ -16,6 +16,9 @@
       "venue": "Venue",
       "faq": "FAQ",
       "lang": "EN"
+    },
+    "footer": {
+      "contact": "Contact Us"
     }
   },
   "home": {

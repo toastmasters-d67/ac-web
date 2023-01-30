@@ -6,24 +6,28 @@
         class="footer-link"
         @click="scrollToElement('speakers')"
       >
-        Speakers
+        {{ $t("app.navbar.speakers") }}
       </router-link>
       <router-link
         to="/#program"
         class="footer-link"
         @click="scrollToElement('program')"
       >
-        Program
+        {{ $t("app.navbar.program") }}
       </router-link>
       <router-link
         to="/#venue"
         class="footer-link"
         @click="scrollToElement('venue')"
       >
-        Venue
+        {{ $t("app.navbar.venue") }}
       </router-link>
-      <router-link to="/faq" class="footer-link">FAQ</router-link>
-      <span class="footer-link">Contact Us</span>
+      <router-link to="/faq" class="footer-link">
+        {{ $t("app.navbar.faq") }}
+      </router-link>
+      <span class="footer-link">
+        {{ $t("app.footer.contact") }}
+      </span>
     </div>
     <div class="footer-row">
       <img
