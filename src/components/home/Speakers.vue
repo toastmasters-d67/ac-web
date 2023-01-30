@@ -1,6 +1,6 @@
 <template>
   <section id="speakers" class="speakers-container">
-    <header class="speakers-title">{{ $t("home.speakers.title") }}</header>
+    <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
       <div v-for="(speaker, index) in speakers" :key="index">
         <router-link :to="getLink(speaker.key)" class="speaker">

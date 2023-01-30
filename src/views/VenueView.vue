@@ -10,7 +10,7 @@
         />
       </section>
       <section id="map" class="venue-section">
-        <header class="venue-title">{{ $t("home.venue.title") }}</header>
+        <header class="venue-title">{{ $t("home.venue.venue") }}</header>
         <div class="venue-row">
           <i class="pi pi-phone venue-row-icon"></i>
           <span class="venue-row-text">(02) 2649-3034</span>

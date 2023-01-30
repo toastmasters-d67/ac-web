@@ -86,7 +86,7 @@ export default {
     BreadcrumbItem: BreadcrumbItem,
   },
   data() {
-    const mapping = this.$tm("app");
+    const mapping = this.$tm("app.breadcrumb");
     const home = reactive({
       label: this.$rt(mapping["/"]),
       to: "/",

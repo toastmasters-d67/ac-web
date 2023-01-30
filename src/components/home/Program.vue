@@ -23,22 +23,20 @@
         <span class="row-time">09:00</span>
         <span class="row row-yellow">
           <span>Registration</span>
-          <span class="row-small-text"
-            >(Open until 12:00 at 1F Lobby)</span
-          ></span
-        >
+          <span class="row-small-text"> (Open until 12:00 at 1F Lobby) </span>
+        </span>
       </div>
       <div class="program-row program-center">
         <span class="row-time">09:10</span>
         <div class="row-items">
           <div class="row-item-expand">
-            <span class="row-item-time"
-              >Judge Briefing
-              <span class="row-item-time-duration">(20 mins)</span></span
-            >
-            <span class="row-item-venue venue-preparation"
-              >2F Preparation Room</span
-            >
+            <span class="row-item-time">
+              Judge Briefing
+              <span class="row-item-time-duration">(20 mins)</span>
+            </span>
+            <span class="row-item-venue venue-preparation">
+              2F Preparation Room
+            </span>
           </div>
         </div>
       </div>
@@ -46,23 +44,23 @@
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
-            <span class="row-item-time"
-              >09:40 <span class="row-item-time-duration">(70 mins)</span></span
-            >
-            <span class="row-item-title"
-              >International Speech Run-off A Contest</span
-            >
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
+            <span class="row-item-time">
+              09:40 <span class="row-item-time-duration">(70 mins)</span>
+            </span>
+            <span class="row-item-title">
+              International Speech Run-off A Contest
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              2F Room Lisianthus
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-time"
-              >09:40 <span class="row-item-time-duration">(70 mins)</span></span
-            >
-            <span class="row-item-title"
-              >International Speech Run-off B Contest</span
-            >
+            <span class="row-item-time">
+              09:40 <span class="row-item-time-duration">(70 mins)</span>
+            </span>
+            <span class="row-item-title">
+              International Speech Run-off B Contest
+            </span>
             <span class="row-item-venue venue-clove">2F Room Clove</span>
           </div>
         </div>
@@ -71,16 +69,16 @@
         <span class="row-time">11:00</span>
         <div class="row-items">
           <div class="row-item-expand">
-            <span class="row-item-time"
-              >Keynote Speech - Stan Shih
-              <span class="row-item-time-duration">(50 mins)</span></span
-            >
-            <span class="row-item-title"
-              >From Wangdao perspective to the competitiveness of Taiwan</span
-            >
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              Keynote Speech - Stan Shih
+              <span class="row-item-time-duration">(50 mins)</span>
+            </span>
+            <span class="row-item-title">
+              From Wangdao perspective to the competitiveness of Taiwan
+            </span>
+            <span class="row-item-venue venue-calla">
+              1F Room Calla Lilly & Rose
+            </span>
           </div>
         </div>
       </div>
@@ -88,10 +86,10 @@
         <span class="row-time">12:00</span>
         <div class="row-items">
           <div class="row-item-expand item-expand-gray">
-            <span class="row-item-time"
-              >Lunchbox Distribution
-              <span class="row-item-time-duration">(30 mins)</span></span
-            >
+            <span class="row-item-time">
+              Lunchbox Distribution
+              <span class="row-item-time-duration">(30 mins)</span>
+            </span>
             <span class="row-item-venue venue-lobby">1F Lobby</span>
           </div>
         </div>
@@ -100,13 +98,13 @@
         <span class="row-time">12:10</span>
         <div class="row-items">
           <div class="row-item-expand">
-            <span class="row-item-time"
-              >Judge Briefing
-              <span class="row-item-time-duration">(20 mins)</span></span
-            >
-            <span class="row-item-venue venue-preparation"
-              >2F Preparation Room</span
-            >
+            <span class="row-item-time">
+              Judge Briefing
+              <span class="row-item-time-duration">(20 mins)</span>
+            </span>
+            <span class="row-item-venue venue-preparation">
+              2F Preparation Room
+            </span>
           </div>
         </div>
       </div>
@@ -114,13 +112,13 @@
         <span class="row-time">12:30</span>
         <div class="row-items">
           <div class="row-item-expand">
-            <span class="row-item-time"
-              >Opening Ceremony
-              <span class="row-item-time-duration">(40 mins)</span></span
-            >
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              Opening Ceremony
+              <span class="row-item-time-duration">(40 mins)</span>
+            </span>
+            <span class="row-item-venue venue-calla">
+              1F Room Calla Lilly & Rose
+            </span>
           </div>
         </div>
       </div>
@@ -130,9 +128,9 @@
           <div class="row-item-expand">
             <span class="row-item-time">Keynote Speech - Greg Van Borssum</span>
             <span class="row-item-title">TBD</span>
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-venue venue-calla">
+              1F Room Calla Lilly & Rose
+            </span>
           </div>
         </div>
       </div>
@@ -140,10 +138,10 @@
         <span class="row-time">14:00</span>
         <div class="row-items">
           <div class="row-item-expand item-expand-gray">
-            <span class="row-item-time"
-              >Tea Break
-              <span class="row-item-time-duration">(20 mins)</span></span
-            >
+            <span class="row-item-time">
+              Tea Break
+              <span class="row-item-time-duration">(20 mins)</span>
+            </span>
             <span class="row-item-venue venue-lobby">1F Lobby</span>
           </div>
         </div>
@@ -152,9 +150,9 @@
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
-            <span class="row-item-time"
-              >14:20 <span class="row-item-time-duration">(60 mins)</span></span
-            >
+            <span class="row-item-time">
+              14:20 <span class="row-item-time-duration">(60 mins)</span>
+            </span>
             <span class="row-item-title">Mandarin Evaluation Contest</span>
             <span class="row-item-venue venue-calla"
               >1F Room Calla Lilly & Rose</span
@@ -462,7 +460,6 @@
       box-sizing: border-box;
       gap: 10px;
       padding: 10px;
-      cursor: pointer;
     }
   }
   .program-table {
@@ -491,11 +488,11 @@
     }
   }
   .day-active {
-    background-image: url(@/assets/image/home/program-day-1-button.png);
-    background-size: 100% 100%;
+    background: rgba(255, 255, 255, 0.25);
   }
   .day-non-active {
     background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
+    cursor: pointer;
   }
 }
 .row-time {
@@ -648,7 +645,7 @@
     background: #c1ccbe;
   }
   .venue-lobby {
-    background: #ffffff;
+    background: white;
   }
 }
 
@@ -673,8 +670,8 @@
         line-height: 30px;
         border-radius: 20px;
       }
-      .day-active {
-        background-image: url(@/assets/image/home/program-day-1-button-mobile.png);
+      .day-1 {
+        background: rgba(255, 255, 255, 0.25);
       }
     }
     .program-table {
@@ -763,7 +760,7 @@ export default {
   },
   methods: {
     switchProgram(day) {
-      if (day == "day1") {
+      if (day === "day1") {
         this.showProgramDay1 = true;
       } else {
         this.showProgramDay1 = false;

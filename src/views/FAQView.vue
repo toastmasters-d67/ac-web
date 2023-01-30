@@ -122,7 +122,6 @@ export default {
   },
   data() {
     const items = reactive([]);
-    // Array.from(this.$tm("faq_page.items")).forEach((source) => {
     Array.from(this.$tm("faq.items")).forEach((source) => {
       const item = {
         question: this.$rt(source.question),

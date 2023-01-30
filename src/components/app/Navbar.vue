@@ -256,7 +256,6 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-family: Montserrat;
   padding: 0px;
   padding-left: 6.4%;
   .navbar-mobile-link {
