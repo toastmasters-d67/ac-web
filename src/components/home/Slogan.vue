@@ -1,20 +1,17 @@
 <template>
   <section class="slogan-container" :style="getStyle()">
-    <div class="slogan-date">Apr 22-23, 2023</div>
+    <div class="slogan-date">{{ $t("home.slogan.date") }}</div>
     <div class="slogan-row">
       <span class="slogan-year">2023</span>
-      <header class="slogan-title">Annual Conference</header>
+      <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
     </div>
     <div class="slogan-row">
-      <span class="slogan-word">Connect to the Present. Lead the future!</span>
+      <span class="slogan-word">{{ $t("home.slogan.slogan") }}</span>
     </div>
     <span class="slogan-text">
-      It is our great pleasure to welcome you to the 2023 Annual Conference of
-      the Toastmasters International in Taipei. Learn to improve your public
-      speaking, leadership, and communication skills through 16 education
-      sessions across four tracks.
+      {{ $t("home.slogan.text") }}
     </span>
-    <button class="slogan-button">Get Ticket</button>
+    <button class="slogan-button">{{ $t("home.slogan.ticket") }}</button>
   </section>
 </template>
 
