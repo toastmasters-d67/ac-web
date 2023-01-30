@@ -1,8 +1,8 @@
 <template>
   <section id="venue" class="venue-container">
-    <header class="venue-title">How to get there?</header>
+    <header class="venue-title">{{ $t("home.venue.title") }}</header>
     <div class="venue-box">
-      <span class="venue-box-name">Kuanhe Exhibition Hall</span>
+      <span class="venue-box-name">{{ $t("home.venue.venue") }}</span>
       <div class="venue-box-row">
         <i class="pi pi-phone venue-box-icon"></i>
         <span class="venue-box-text">(02) 2649-3034</span>
@@ -10,7 +10,7 @@
       <div class="venue-box-row">
         <i class="pi pi-globe venue-box-icon"></i>
         <span class="venue-box-text">
-          No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City
+          {{ $t("home.venue.address") }}
         </span>
       </div>
       <a
@@ -18,7 +18,7 @@
         class="venue-box-button"
         target="_blank"
       >
-        Show on Google Maps
+        {{ $t("home.venue.show") }}
       </a>
       <img
         src="@/assets/image/home/venue-map.png"
@@ -27,7 +27,7 @@
       />
     </div>
     <router-link to="/venue" class="button-directions">
-      <span class="button-text">Directions</span>
+      <span class="button-text">{{ $t("home.venue.directions") }}</span>
       <i class="pi pi-arrow-right button-arrow-right"></i>
     </router-link>
   </section>
@@ -61,6 +61,7 @@
     background: #f5db8c;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     border-radius: 20px;
     padding: 8px 24px;
