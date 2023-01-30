@@ -638,6 +638,7 @@
 /* Mobile Design */
 @media screen and (max-width: 768px) {
   .program-container {
+    padding-bottom: 0px;
     .program-title {
       font-size: 15px;
       line-height: 18px;

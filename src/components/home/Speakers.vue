@@ -97,7 +97,7 @@
 /* Mobile Design */
 @media screen and (max-width: 768px) {
   .speakers-container {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 50px;
     .speakers-title {
       font-size: 15px;
