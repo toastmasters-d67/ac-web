@@ -1,9 +1,9 @@
 <template>
   <div class="cta-buttons-container">
     <button class="cta-button ticket" @click="scrollToElement('ticket')">
-      Get Tickets
+      {{ $t("home.slogan.ticket") }}
     </button>
-    <button class="cta-button contact">Contact Us</button>
+    <button class="cta-button contact">{{ $t("app.footer.contact") }}</button>
   </div>
 </template>
 
