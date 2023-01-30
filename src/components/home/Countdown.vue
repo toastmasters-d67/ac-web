@@ -1,21 +1,21 @@
 <template>
   <section class="countdown-container">
-    <header class="countdown-title">Conference Starting In</header>
+    <header class="countdown-title">{{ $t("home.countdown.title") }}</header>
     <div class="countdown-row">
       <div class="countdown-item">
-        <span class="countdown-unit">Days</span>
+        <span class="countdown-unit">{{ $t("home.countdown.day") }}</span>
         <Timer :value="days" :full="120" />
       </div>
       <div class="countdown-item">
-        <span class="countdown-unit">Hours</span>
+        <span class="countdown-unit">{{ $t("home.countdown.hour") }}</span>
         <Timer :value="hours" :full="24" />
       </div>
       <div class="countdown-item">
-        <span class="countdown-unit">Minutes</span>
+        <span class="countdown-unit">{{ $t("home.countdown.minute") }}</span>
         <Timer :value="minutes" :full="60" />
       </div>
       <div class="countdown-item">
-        <span class="countdown-unit">Seconds</span>
+        <span class="countdown-unit">{{ $t("home.countdown.second") }}</span>
         <Timer :value="seconds" :full="60" />
       </div>
     </div>

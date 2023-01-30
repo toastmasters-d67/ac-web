@@ -8,6 +8,13 @@
     "tbd": "TBD"
   },
   "home": {
+    "countdown": {
+      "title": "Conference Starting in",
+      "day": "Days",
+      "hour": "Hours",
+      "minute": "Minutes",
+      "second": "Seconds"
+    },
     "speakers": {
       "title": "Meet Our Speakers"
     },

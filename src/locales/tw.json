@@ -8,6 +8,13 @@
     "tbd": "邀約中"
   },
   "home": {
+    "countdown": {
+      "title": "年度大會開幕倒數",
+      "day": "天",
+      "hour": "小時",
+      "minute": "分",
+      "second": "秒"
+    },
     "speakers": {
       "title": "講師介紹"
     },
