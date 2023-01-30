@@ -1,6 +1,6 @@
 <template>
   <article id="home">
-    <Slogan v-once />
+    <Slogan :scrollToElement="scrollToElement" v-once />
     <Countdown v-once />
     <Ticket v-once />
     <Speakers v-once />
@@ -21,6 +21,11 @@ import Souvenirs from "@/components/home/Souvenirs.vue";
 
 export default {
   name: "HomeView",
+  props: {
+    scrollToElement: {
+      type: Function,
+    },
+  },
   components: {
     Slogan,
     Countdown,
