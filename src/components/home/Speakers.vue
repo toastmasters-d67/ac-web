@@ -1,6 +1,6 @@
 <template>
   <section id="speakers" class="speakers-container">
-    <header class="speakers-title">Meet our speakers</header>
+    <header class="speakers-title">{{ $t("home.speakers.title") }}</header>
     <div class="speakers">
       <div v-for="(speaker, index) in speakers" :key="index">
         <router-link :to="getLink(speaker.key)" class="speaker">
@@ -140,11 +140,19 @@
 </style>
 
 <script>
-import speakers from "@/assets/data/speakers.json";
+import { reactive } from "vue";
 
 export default {
   name: "Speakers",
-  setup() {
+  data() {
+    const speakers = reactive([]);
+    Array.from(this.$tm("speakers")).forEach((source) => {
+      const item = {
+        key: this.$rt(source.key),
+        name: this.$rt(source.name),
+      };
+      speakers.push(item);
+    });
     return { speakers };
   },
   methods: {
