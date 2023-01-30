@@ -23,6 +23,20 @@
     "speakers": {
       "title": "Meet Our Speakers"
     },
+    "ticket": {
+      "title": "Ticket Price",
+      "two-day": "2 Day Pass",
+      "early-bird": "Early Bird Pass",
+      "first-day": "First Day Pass",
+      "second-day": "Second Day Pass",
+      "until": "Until Mar 19, 2023",
+      "lunch": "Lunchbox",
+      "lunch2": "Lunchboxes for 2 days",
+      "souvenir": "Souvenirs",
+      "banquet": "Dinner banquet on 4/22 party included",
+      "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
+      "note": "The tickets will be a vailable for order soon. Please stay tuned!"
+    },
     "venue": {
       "title": "How to Get There?",
       "venue": "Kuanhe Exhibition Hall",

@@ -1,100 +1,115 @@
 <template>
   <section id="ticket" class="ticket-container">
-    <header class="ticket-title">Ticket Price</header>
+    <header class="ticket-title">{{ $t("home.ticket.title") }}</header>
     <div class="ticket-row">
       <div class="ticket-item white">
-        <span class="ticket-item-title">2 Day Pass</span>
-        <span class="ticket-item-price">$ 2600</span>
+        <span class="ticket-item-title">{{ $t("home.ticket.two-day") }}</span>
+        <span class="ticket-item-price">$ 2500</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Lunchboxes for 2 days</span>
+            <span class="ticket-item-text">{{ $t("home.ticket.lunch2") }}</span>
           </li>
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Souvenirs</span>
+            <span class="ticket-item-text">
+              {{ $t("home.ticket.souvenir") }}
+            </span>
           </li>
           <li class="ticket-item-row">
             <img
               src="@/assets/icon/home/ticket-dashed-box.svg"
               class="ticket-item-icon"
             />
-            <span class="ticket-item-text"
-              >Dinner banquet on 4/22 $800 (optional)</span
-            >
+            <span class="ticket-item-text">
+              {{ $t("home.ticket.banquet-optional") }}
+            </span>
           </li>
         </ul>
       </div>
       <div class="ticket-item early-bird">
-        <span class="ticket-item-expiring">Until Mar 19, 2023</span>
-        <span class="ticket-item-title title-early-bird">Early Bird Pass</span>
+        <span class="ticket-item-expiring">{{ $t("home.ticket.until") }}</span>
+        <span class="ticket-item-title">{{
+          $t("home.ticket.early-bird")
+        }}</span>
         <span class="ticket-item-price price-early-bird">$ 2200</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Lunchboxes for 2 days</span>
+            <span class="ticket-item-text">{{ $t("home.ticket.lunch2") }}</span>
           </li>
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Souvenirs</span>
-          </li>
-          <li class="ticket-item-row">
-            <i class="pi pi-check"></i>
-            <span class="ticket-item-text"
-              >Dinner banquet on 4/22 included</span
-            >
-          </li>
-        </ul>
-      </div>
-      <div class="ticket-item white">
-        <span class="ticket-item-title">First Day Pass</span>
-        <span class="ticket-item-price">$ 1600</span>
-        <ul class="ticket-item-list">
-          <li class="ticket-item-row">
-            <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Lunchbox</span>
-          </li>
-          <li class="ticket-item-row">
-            <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Souvenirs</span>
+            <span class="ticket-item-text">
+              {{ $t("home.ticket.souvenir") }}
+            </span>
           </li>
           <li class="ticket-item-row">
             <img
               src="@/assets/icon/home/ticket-dashed-box.svg"
               class="ticket-item-icon"
             />
-            <span class="ticket-item-text"
-              >Dinner banquet on 4/22 $800 (optional)</span
-            >
+            <span class="ticket-item-text">
+              {{ $t("home.ticket.banquet") }}
+            </span>
           </li>
         </ul>
       </div>
       <div class="ticket-item white">
-        <span class="ticket-item-title">Second Day Pass</span>
-        <span class="ticket-item-price">$ 1600</span>
+        <span class="ticket-item-title">{{ $t("home.ticket.first-day") }}</span>
+        <span class="ticket-item-price">$ 1300</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Lunchbox</span>
+            <span class="ticket-item-text">{{ $t("home.ticket.lunch") }}</span>
           </li>
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
-            <span class="ticket-item-text">Souvenirs</span>
+            <span class="ticket-item-text">
+              {{ $t("home.ticket.souvenir") }}
+            </span>
           </li>
           <li class="ticket-item-row">
             <img
               src="@/assets/icon/home/ticket-dashed-box.svg"
               class="ticket-item-icon"
             />
-            <span class="ticket-item-text"
-              >Dinner banquet on 4/22 $800 (optional)</span
-            >
+            <span class="ticket-item-text">
+              {{ $t("home.ticket.banquet-optional") }}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="ticket-item white">
+        <span class="ticket-item-title">{{
+          $t("home.ticket.second-day")
+        }}</span>
+        <span class="ticket-item-price">$ 1300</span>
+        <ul class="ticket-item-list">
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">{{ $t("home.ticket.lunch") }}</span>
+          </li>
+          <li class="ticket-item-row">
+            <i class="pi pi-check"></i>
+            <span class="ticket-item-text">{{
+              $t("home.ticket.souvenir")
+            }}</span>
+          </li>
+          <li class="ticket-item-row">
+            <img
+              src="@/assets/icon/home/ticket-dashed-box.svg"
+              class="ticket-item-icon"
+            />
+            <span class="ticket-item-text">
+              {{ $t("home.ticket.banquet-optional") }}
+            </span>
           </li>
         </ul>
       </div>
     </div>
     <div class="ticket-coming-soon">
-      The tickets will be available for order soon. Please stay tuned!
+      {{ $t("home.ticket.note") }}
     </div>
     <!-- <button class="ticket-button">
       <span class="button-text">Order Ticket</span>
