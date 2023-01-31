@@ -1,13 +1,17 @@
 <template>
   <div class="cta-buttons-container">
     <button class="cta-button ticket" @click="scrollToElement('ticket')">
-      {{ $t("home.slogan.ticket") }}
+      <span v-for="(item, index) in $tm('app.button.ticket')" :key="index">
+        {{ $rt(item) }}
+      </span>
     </button>
     <button
       class="cta-button contact"
       onclick="location.href = 'mailto:tmicon@toastmasters.org.tw'"
     >
-      {{ $t("app.footer.contact") }}
+      <span v-for="(item, index) in $tm('app.button.contact')" :key="index">
+        {{ $rt(item) }}
+      </span>
     </button>
   </div>
 </template>

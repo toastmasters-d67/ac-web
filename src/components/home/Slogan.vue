@@ -6,8 +6,9 @@
       <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
     </div>
     <div class="slogan-word">
-      <span>{{ $t("home.slogan.slogan1") }}</span>
-      <span>{{ $t("home.slogan.slogan2") }}</span>
+      <span v-for="(item, index) in $tm('home.slogan.slogan')" :key="index">
+        {{ $rt(item) }}
+      </span>
     </div>
     <span class="slogan-text">
       {{ $t("home.slogan.text") }}

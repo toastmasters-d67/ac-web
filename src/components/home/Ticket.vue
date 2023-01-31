@@ -4,7 +4,7 @@
     <div class="ticket-row">
       <div class="ticket-item white">
         <span class="ticket-item-title">{{ $t("home.ticket.two-day") }}</span>
-        <span class="ticket-item-price">$ 2500</span>
+        <span class="ticket-item-price">$ 2200</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
@@ -32,7 +32,7 @@
         <span class="ticket-item-title">{{
           $t("home.ticket.early-bird")
         }}</span>
-        <span class="ticket-item-price price-early-bird">$ 2200</span>
+        <span class="ticket-item-price price-early-bird">$ 2500</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
@@ -45,10 +45,7 @@
             </span>
           </li>
           <li class="ticket-item-row">
-            <img
-              src="@/assets/icon/home/ticket-dashed-box.svg"
-              class="ticket-item-icon"
-            />
+            <i class="pi pi-check"></i>
             <span class="ticket-item-text">
               {{ $t("home.ticket.banquet") }}
             </span>
