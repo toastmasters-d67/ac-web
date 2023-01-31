@@ -94,7 +94,7 @@
                 (50 {{ $t("home.program.min") }})
               </span>
             </span>
-            <span class="row-item-title">
+            <span class="row-item-title title-expand">
               {{ $t("speakers[1].seminar.topic") }}
             </span>
             <span class="row-item-venue venue-calla">
@@ -862,16 +862,18 @@
         }
       }
       .row-item-title {
-        max-width: 220px;
         font-size: 10px;
         line-height: 15px;
-        margin: auto;
         margin-top: 3px;
         margin-bottom: 8px;
       }
       .title-3-lines {
         font-size: 8px;
         line-height: 14px;
+      }
+      .title-expand {
+        max-width: 76%;
+        text-align: center;
       }
       .row-item-venue {
         font-size: 8px;
@@ -883,6 +885,7 @@
       }
     }
     .item-expand {
+      margin: auto;
       font-size: 12px;
       line-height: 15px;
       gap: 5px;
