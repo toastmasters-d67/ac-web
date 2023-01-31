@@ -20,17 +20,19 @@
     <div class="program-table" v-if="showProgramDay1">
       <div class="program-row program-center">
         <span class="row-time">09:00</span>
-        <span class="row row-yellow">
-          <span>
-            {{ $t("home.program.registration") }}
-            <span class="row-small-text">
-              ({{ $t("home.program.until") }} 12:00)
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-yellow">
+            <span class="row-item-time">
+              {{ $t("home.program.registration") }}
+              <span class="row-item-time-duration">
+                ({{ $t("home.program.until") }} 12:00)
+              </span>
             </span>
-          </span>
-          <span class="row-item-venue venue-lobby">
-            {{ $t("home.program.room.lobby") }}
-          </span>
-        </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+        </div>
       </div>
       <div class="program-row program-center">
         <span class="row-time">09:10</span>
@@ -320,28 +322,34 @@
       </div>
       <div class="program-row program-center">
         <span class="row-time">18:30</span>
-        <span class="row row-yellow">
-          <span>{{ $t("home.program.dinner") }}</span>
-          <span class="row-item-venue venue-jasmine">
-            {{ $t("home.program.room.jasmine") }}
-          </span>
-        </span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-yellow">
+            <span class="row-item-time">
+              {{ $t("home.program.dinner") }}
+            </span>
+            <span class="row-item-venue venue-jasmine">
+              {{ $t("home.program.room.jasmine") }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="program-table" v-if="!showProgramDay1">
       <div class="program-row program-center">
         <span class="row-time">09:00</span>
-        <span class="row row-yellow">
-          <span>
-            {{ $t("home.program.registration") }}
-            <span class="row-small-text">
-              ({{ $t("home.program.until") }} 12:00)
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-yellow">
+            <span class="row-item-time">
+              {{ $t("home.program.registration") }}
+              <span class="row-item-time-duration">
+                ({{ $t("home.program.until") }} 12:00)
+              </span>
             </span>
-          </span>
-          <span class="row-item-venue venue-lobby">
-            {{ $t("home.program.room.lobby") }}
-          </span>
-        </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+        </div>
       </div>
       <div class="program-row program-center">
         <span class="row-time"></span>
@@ -686,31 +694,6 @@
   line-height: 60px;
   margin-right: 23px;
 }
-.time-filter {
-  color: rgba(255, 255, 255, 0.25);
-}
-.row {
-  max-width: 1055px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 25px;
-  border-radius: 20px;
-  gap: 10px;
-  padding: 0px 10px;
-  .row-small-text {
-    font-size: 16px;
-  }
-}
-.row-yellow {
-  height: 93px;
-  background: rgba(255, 204, 77, 0.25);
-}
 .row-items {
   max-width: 1055px;
   width: 100%;
@@ -765,6 +748,20 @@
       font-size: 20px;
       line-height: 25px;
     }
+    .row-item-venue {
+      color: #004165;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 20px;
+      border-radius: 20px;
+      gap: 10px;
+      padding: 5px 10px;
+    }
     .venue-preparation {
       background: #dde1e1;
     }
@@ -776,6 +773,12 @@
     }
     .venue-calla {
       background: #c1ccbe;
+    }
+    .venue-jasmine {
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .venue-lobby {
+      background: white;
     }
     .row-item-note {
       font-size: 16px;
@@ -796,26 +799,7 @@
     background: rgba(255, 204, 77, 0.25);
   }
 }
-.row-item-venue {
-  color: #004165;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 20px;
-  border-radius: 20px;
-  gap: 10px;
-  padding: 5px 10px;
-}
-.venue-jasmine {
-  background: rgba(255, 255, 255, 0.6);
-}
-.venue-lobby {
-  background: white;
-}
+
 @media screen and (max-width: 768px) {
   .program-container {
     padding-bottom: 0px;
@@ -855,17 +839,6 @@
     font-size: 12px;
     line-height: 15px;
     margin-left: 10px;
-  }
-  .row {
-    font-size: 12px;
-    line-height: 15px;
-    gap: 5px;
-    .row-small-text {
-      font-size: 8px;
-    }
-  }
-  .row-yellow {
-    height: 42px;
   }
   .row-items {
     gap: 10px;
