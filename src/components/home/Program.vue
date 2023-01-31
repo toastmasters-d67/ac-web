@@ -1,28 +1,35 @@
 <template>
   <section id="program" class="program-container">
-    <header class="program-title">Program</header>
+    <header class="program-title">{{ $t("home.program.title") }}</header>
     <div class="program-day-switcher">
       <div
         class="program-day"
         :class="showProgramDay1 ? 'day-active' : 'day-non-active'"
         @click="switchProgram('day1')"
       >
-        Day 1
+        {{ $t("home.program.day1") }}
       </div>
       <div
         class="program-day"
         :class="showProgramDay1 ? 'day-non-active' : 'day-active'"
         @click="switchProgram('day2')"
       >
-        Day 2
+        {{ $t("home.program.day2") }}
       </div>
     </div>
     <div class="program-table" v-if="showProgramDay1">
       <div class="program-row program-center">
         <span class="row-time">09:00</span>
         <span class="row row-yellow">
-          <span>Registration</span>
-          <span class="row-small-text"> (Open until 12:00 at 1F Lobby) </span>
+          <span>
+            {{ $t("home.program.registration") }}
+            <span class="row-small-text">
+              ({{ $t("home.program.until") }} 12:00)
+            </span>
+          </span>
+          <span class="row-item-venue venue-lobby">
+            {{ $t("home.program.room.lobby") }}
+          </span>
         </span>
       </div>
       <div class="program-row program-center">
@@ -30,11 +37,13 @@
         <div class="row-items">
           <div class="row-item item-expand">
             <span class="row-item-time">
-              Judge Briefing
-              <span class="row-item-time-duration">(20 mins)</span>
+              {{ $t("home.program.judge") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
             </span>
             <span class="row-item-venue venue-preparation">
-              2F Preparation Room
+              {{ $t("home.program.room.preparation") }}
             </span>
           </div>
         </div>
@@ -44,23 +53,31 @@
         <div class="row-items">
           <div class="row-item">
             <span class="row-item-time">
-              09:40 <span class="row-item-time-duration">(70 mins)</span>
+              09:40
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
             </span>
             <span class="row-item-title">
-              International Speech Run-off A Contest
+              {{ $t("home.program.run-off", { alphabet: "A" }) }}
             </span>
             <span class="row-item-venue venue-lisianthus">
-              2F Room Lisianthus
+              {{ $t("home.program.room.lisianthus") }}
             </span>
           </div>
           <div class="row-item">
             <span class="row-item-time">
-              09:40 <span class="row-item-time-duration">(70 mins)</span>
+              09:40
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
             </span>
             <span class="row-item-title">
-              International Speech Run-off B Contest
+              {{ $t("home.program.run-off", { alphabet: "B" }) }}
             </span>
-            <span class="row-item-venue venue-clove">2F Room Clove</span>
+            <span class="row-item-venue venue-clove">
+              {{ $t("home.program.room.clove") }}
+            </span>
           </div>
         </div>
       </div>
@@ -69,14 +86,17 @@
         <div class="row-items">
           <div class="row-item item-expand">
             <span class="row-item-time">
-              Keynote Speech - Stan Shih
-              <span class="row-item-time-duration">(50 mins)</span>
+              {{ $t("home.program.keynote") }} -
+              {{ $t("speakers[1].name") }}
+              <span class="row-item-time-duration">
+                (50 {{ $t("home.program.min") }})
+              </span>
             </span>
             <span class="row-item-title">
-              From Wangdao perspective to the competitiveness of Taiwan
+              {{ $t("speakers[1].seminar.topic") }}
             </span>
             <span class="row-item-venue venue-calla">
-              1F Room Calla Lilly & Rose
+              {{ $t("home.program.room.calla") }}
             </span>
           </div>
         </div>
@@ -86,10 +106,14 @@
         <div class="row-items">
           <div class="row-item item-expand item-expand-gray">
             <span class="row-item-time">
-              Lunchbox Distribution
-              <span class="row-item-time-duration">(30 mins)</span>
+              {{ $t("home.program.lunch") }}
+              <span class="row-item-time-duration">
+                (30 {{ $t("home.program.min") }})
+              </span>
             </span>
-            <span class="row-item-venue venue-lobby">1F Lobby</span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
           </div>
         </div>
       </div>
@@ -98,11 +122,13 @@
         <div class="row-items">
           <div class="row-item item-expand">
             <span class="row-item-time">
-              Judge Briefing
-              <span class="row-item-time-duration">(20 mins)</span>
+              {{ $t("home.program.judge") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
             </span>
             <span class="row-item-venue venue-preparation">
-              2F Preparation Room
+              {{ $t("home.program.room.preparation") }}
             </span>
           </div>
         </div>
@@ -112,11 +138,13 @@
         <div class="row-items">
           <div class="row-item item-expand">
             <span class="row-item-time">
-              Opening Ceremony
-              <span class="row-item-time-duration">(40 mins)</span>
+              {{ $t("home.program.opening") }}
+              <span class="row-item-time-duration">
+                (40 {{ $t("home.program.min") }})
+              </span>
             </span>
             <span class="row-item-venue venue-calla">
-              1F Room Calla Lilly & Rose
+              {{ $t("home.program.room.calla") }}
             </span>
           </div>
         </div>
@@ -125,10 +153,14 @@
         <span class="row-time">13:10</span>
         <div class="row-items">
           <div class="row-item item-expand">
-            <span class="row-item-time">Keynote Speech - Greg Van Borssum</span>
-            <span class="row-item-title">TBD</span>
+            <span class="row-item-time">
+              {{ $t("home.program.keynote") }} - {{ $t("speakers[0].name") }}
+            </span>
+            <span class="row-item-title">
+              {{ $t("speakers[0].seminar.topic") }}
+            </span>
             <span class="row-item-venue venue-calla">
-              1F Room Calla Lilly & Rose
+              {{ $t("home.program.room.calla") }}
             </span>
           </div>
         </div>
@@ -138,10 +170,14 @@
         <div class="row-items">
           <div class="row-item item-expand item-expand-gray">
             <span class="row-item-time">
-              Tea Break
-              <span class="row-item-time-duration">(20 mins)</span>
+              {{ $t("home.program.tea") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
             </span>
-            <span class="row-item-venue venue-lobby">1F Lobby</span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
           </div>
         </div>
       </div>
@@ -150,54 +186,53 @@
         <div class="row-items">
           <div class="row-item">
             <span class="row-item-time">
-              14:20 <span class="row-item-time-duration">(60 mins)</span>
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
             </span>
-            <span class="row-item-title">Mandarin Evaluation Contest</span>
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-title">
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-time"
-              >14:20 <span class="row-item-time-duration">(60 mins)</span></span
-            >
-            <span class="row-item-title">English Training Session</span>
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-time"
-              >14:20
-              <span class="row-item-time-duration">(120 mins)</span></span
-            >
-            <span class="row-item-title title-3-lines"
-              >Japanese Speech & Evaluation Contest and Training Session</span
-            >
-            <span class="row-item-venue venue-clove">2F Room Clove</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time"></span>
-        <div class="row-items">
-          <div class="row-item">
-            <span class="row-item-time"
-              >15:30 <span class="row-item-time-duration">(60 mins)</span></span
-            >
-            <span class="row-item-title">Taiwanese Evaluation Contest</span>
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
-          </div>
-          <div class="row-item">
-            <span class="row-item-time"
-              >15:30 <span class="row-item-time-duration">(60 mins)</span></span
-            >
-            <span class="row-item-title">English Training Session</span>
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (120 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title title-3-lines">
+              {{ $t("home.program.japanese") }}
+            </span>
+            <span class="row-item-venue venue-clove">
+              {{ $t("home.program.room.clove") }}
+            </span>
           </div>
         </div>
       </div>
@@ -205,79 +240,162 @@
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
-            <span class="row-item-time"
-              >16:40 <span class="row-item-time-duration">(90 mins)</span></span
-            >
-            <span class="row-item-title">English Evaluation Contest</span>
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              15:30
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.taiwanese"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-time"
-              >16:40 <span class="row-item-time-duration">(90 mins)</span></span
-            >
-            <span class="row-item-title">Mandarin Training Session</span>
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
+            <span class="row-item-time">
+              15:30
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              16:40
+              <span class="row-item-time-duration">
+                (90 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              16:40
+              <span class="row-item-time-duration">
+                (90 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
           </div>
         </div>
       </div>
       <div class="program-row program-center">
         <span class="row-time">18:30</span>
         <span class="row row-yellow">
-          <span>Gala Dinner</span>
-          <span class="row-small-text">1F Banquet Hall (Jasmine)</span></span
-        >
+          <span>{{ $t("home.program.dinner") }}</span>
+          <span class="row-item-venue venue-jasmine">
+            {{ $t("home.program.room.jasmine") }}
+          </span>
+        </span>
       </div>
     </div>
     <div class="program-table" v-if="!showProgramDay1">
       <div class="program-row program-center">
         <span class="row-time">09:00</span>
         <span class="row row-yellow">
-          <span>Registration</span>
-          <span class="row-small-text"
-            >(Open until 12:00 at 1F Lobby)</span
-          ></span
-        >
+          <span>
+            {{ $t("home.program.registration") }}
+            <span class="row-small-text">
+              ({{ $t("home.program.until") }} 12:00)
+            </span>
+          </span>
+          <span class="row-item-venue venue-lobby">
+            {{ $t("home.program.room.lobby") }}
+          </span>
+        </span>
       </div>
       <div class="program-row program-center">
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item item-2-column-height">
-            <span class="row-item-time"
-              >09:10
-              <span class="row-item-time-duration">(180 mins)</span></span
-            >
-            <span class="row-item-title"
-              >Excom Meeting/ District Council Meeting/ Association BoD
-              Meeting</span
-            >
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              09:10
+              <span class="row-item-time-duration">
+                (180 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.excom") }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
           </div>
           <div class="row-item-columns">
             <div class="row-item">
-              <span class="row-item-time"
-                >09:50
-                <span class="row-item-time-duration">(70 mins)</span></span
-              >
-              <span class="row-item-title">Mandarin Training Session</span>
-              <span class="row-item-venue venue-lisianthus"
-                >2F Room Lisianthus</span
-              >
+              <span class="row-item-time">
+                09:50
+                <span class="row-item-time-duration">
+                  (70 {{ $t("home.program.min") }})
+                </span>
+              </span>
+              <span class="row-item-title">
+                {{
+                  $t("home.program.training", {
+                    language: $t("home.program.mandarin"),
+                  })
+                }}
+              </span>
+              <span class="row-item-venue venue-lisianthus">
+                {{ $t("home.program.room.lisianthus") }}
+              </span>
             </div>
             <div class="row-item">
-              <span class="row-item-time"
-                >11:00
-                <span class="row-item-time-duration">(60 mins)</span></span
-              >
-              <span class="row-item-title">Taiwanese Training Session</span>
-              <span class="row-item-venue venue-lisianthus"
-                >2F Room Lisianthus</span
-              >
+              <span class="row-item-time">
+                11:00
+                <span class="row-item-time-duration">
+                  (60 {{ $t("home.program.min") }})
+                </span>
+              </span>
+              <span class="row-item-title">
+                {{
+                  $t("home.program.training", {
+                    language: $t("home.program.taiwanese"),
+                  })
+                }}
+              </span>
+              <span class="row-item-venue venue-lisianthus">
+                {{ $t("home.program.room.lisianthus") }}
+              </span>
             </div>
           </div>
         </div>
@@ -286,16 +404,18 @@
         <span class="row-time">12:00</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-gray">
-            <span class="row-item-time"
-              >Luncheon
-              <span class="row-item-time-duration">(50 mins)</span></span
-            >
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
-            <span class="row-item-note"
-              >** Lunchbox Distribution will take place at 1F Lobby</span
-            >
+            <span class="row-item-time">
+              {{ $t("home.program.luncheon") }}
+              <span class="row-item-time-duration">
+                (50 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+            <span class="row-item-note">
+              ({{ $t("home.program.lunch-note") }})
+            </span>
           </div>
         </div>
       </div>
@@ -303,13 +423,15 @@
         <span class="row-time">12:20</span>
         <div class="row-items">
           <div class="row-item item-expand">
-            <span class="row-item-time"
-              >Judge Briefing
-              <span class="row-item-time-duration">(20 mins)</span></span
-            >
-            <span class="row-item-venue venue-preparation"
-              >2F Preparation Room</span
-            >
+            <span class="row-item-time">
+              {{ $t("home.program.judge") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-preparation">
+              {{ $t("home.program.room.preparation") }}
+            </span>
           </div>
         </div>
       </div>
@@ -317,22 +439,40 @@
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
-            <span class="row-item-time"
-              >13:00 <span class="row-item-time-duration">(70 mins)</span></span
-            >
-            <span class="row-item-title">Mandarin Speech Contest</span>
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              13:00
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.speech", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-time"
-              >13:00 <span class="row-item-time-duration">(70 mins)</span></span
-            >
-            <span class="row-item-title">English Training Session</span>
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
+            <span class="row-item-time">
+              13:00
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
           </div>
         </div>
       </div>
@@ -340,22 +480,40 @@
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
-            <span class="row-item-time"
-              >14:20 <span class="row-item-time-duration">(60 mins)</span></span
-            >
-            <span class="row-item-title">Taiwanese Speech Contest</span>
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.speech", {
+                  language: $t("home.program.taiwanese"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-time"
-              >14:20 <span class="row-item-time-duration">(60 mins)</span></span
-            >
-            <span class="row-item-title">English Training Session</span>
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
           </div>
         </div>
       </div>
@@ -363,11 +521,15 @@
         <span class="row-time">15:20</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-gray">
-            <span class="row-item-time"
-              >Tea Break
-              <span class="row-item-time-duration">(20 mins)</span></span
-            >
-            <span class="row-item-venue venue-lobby">1F Lobby</span>
+            <span class="row-item-time">
+              {{ $t("home.program.tea") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
           </div>
         </div>
       </div>
@@ -375,22 +537,36 @@
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
-            <span class="row-item-time"
-              >15:50 <span class="row-item-time-duration">(70 mins)</span></span
-            >
-            <span class="row-item-title">International Speech Contest</span>
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              15:50
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.final") }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-time"
-              >15:50 <span class="row-item-time-duration">(70 mins)</span></span
-            >
-            <span class="row-item-title">Mandarin Training Session</span>
-            <span class="row-item-venue venue-lisianthus"
-              >2F Room Lisianthus</span
-            >
+            <span class="row-item-time">
+              15:50
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
           </div>
         </div>
       </div>
@@ -398,13 +574,15 @@
         <span class="row-time">17:10</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-yellow">
-            <span class="row-item-time"
-              >Closing Ceremony
-              <span class="row-item-time-duration">(50 mins)</span></span
-            >
-            <span class="row-item-venue venue-calla"
-              >1F Room Calla Lilly & Rose</span
-            >
+            <span class="row-item-time">
+              {{ $t("home.program.closing") }}
+              <span class="row-item-time-duration">
+                (50 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
           </div>
         </div>
       </div>
@@ -487,6 +665,9 @@
   }
   .day-active {
     background: rgba(255, 255, 255, 0.25);
+    border: 2px solid;
+    border-color: #ddc8bf;
+    box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
   }
   .day-non-active {
     background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
@@ -584,20 +765,6 @@
       font-size: 20px;
       line-height: 25px;
     }
-    .row-item-venue {
-      color: #004165;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      line-height: 20px;
-      border-radius: 20px;
-      gap: 10px;
-      padding: 5px 10px;
-    }
     .venue-preparation {
       background: #dde1e1;
     }
@@ -609,9 +776,6 @@
     }
     .venue-calla {
       background: #c1ccbe;
-    }
-    .venue-lobby {
-      background: white;
     }
     .row-item-note {
       font-size: 16px;
@@ -632,7 +796,26 @@
     background: rgba(255, 204, 77, 0.25);
   }
 }
-
+.row-item-venue {
+  color: #004165;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 20px;
+  border-radius: 20px;
+  gap: 10px;
+  padding: 5px 10px;
+}
+.venue-jasmine {
+  background: rgba(255, 255, 255, 0.6);
+}
+.venue-lobby {
+  background: white;
+}
 @media screen and (max-width: 768px) {
   .program-container {
     padding-bottom: 0px;

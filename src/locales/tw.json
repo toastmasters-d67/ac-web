@@ -19,6 +19,10 @@
     },
     "footer": {
       "contact": "聯繫我們"
+    },
+    "button": {
+      "ticket": ["線上", "購票"],
+      "contact": ["聯繫", "我們"]
     }
   },
   "home": {
@@ -29,11 +33,45 @@
       "minute": "分",
       "second": "秒"
     },
+    "program": {
+      "title": "大會議程",
+      "day1": "第一天",
+      "day2": "第二天",
+      "registration": "報到",
+      "until": "直到",
+      "judge": "裁判賽前簡報",
+      "min": "分鐘",
+      "run-off": "英文演講準決賽{alphabet}",
+      "keynote": "{language}專題演講",
+      "lunch": "發放午餐餐盒",
+      "opening": "開幕典禮",
+      "tea": "下午茶",
+      "english": "英語",
+      "mandarin": "國語",
+      "taiwanese": "台語",
+      "evaluation": "{language}講評比賽",
+      "training": "{language}教育訓練",
+      "japanese": "日語演講暨講評比賽及教育訓練",
+      "dinner": "精緻晚宴",
+      "excom": "執委會，會員大會，理監事會議",
+      "luncheon": "餐敘",
+      "lunch-note": "午餐餐盒在 1 樓 大廳發放",
+      "speech": "{language}演講比賽",
+      "final": "英語演講比賽決賽",
+      "closing": "閉幕典禮",
+      "room": {
+        "calla": "1 樓 主廳 (海芋廳&薔薇廳)",
+        "clove": "2 樓 丁香廳",
+        "jasmine": "1 樓 茉莉廳",
+        "lisianthus": "2 樓 桔梗廳",
+        "lobby": "1 樓 大廳",
+        "preparation": "2 樓 準備室"
+      }
+    },
     "slogan": {
       "title": "年度大會",
       "date": "4/22 - 4/23",
-      "slogan1": "連結現在",
-      "slogan2": "領導未來！",
+      "slogan": ["連結現在", "領導未來！"],
       "text": "我們誠摯地邀請您參與國際演講會第 67 地區總會所舉辦的 2023 年度大會。在為期兩天的大會議程中，您可以參與精心規畫的專題講座及教育訓練、於晚宴享用美食饗宴，並觀看精彩的演講比賽全國總決賽，增進您的公眾演說、領導及溝通技巧。千萬不要錯過睽違了四年的實體年會，絕對精采可期！",
       "ticket": "線上購票"
     },

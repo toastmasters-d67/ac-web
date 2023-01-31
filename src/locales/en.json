@@ -19,6 +19,10 @@
     },
     "footer": {
       "contact": "Contact Us"
+    },
+    "button": {
+      "ticket": ["Get", "Tickets"],
+      "contact": ["Contact", "Us"]
     }
   },
   "home": {
@@ -29,11 +33,45 @@
       "minute": "Minutes",
       "second": "Seconds"
     },
+    "program": {
+      "title": "Program",
+      "day1": "Day 1",
+      "day2": "Day 2",
+      "registration": "Registration",
+      "until": "Open until",
+      "judge": "Judge Briefing",
+      "min": "mins",
+      "run-off": "International Speech Run-off {alphabet} Contest",
+      "keynote": "Keynote Speech",
+      "lunch": "Lunchbox Distribution",
+      "opening": "Opening Ceremony",
+      "tea": "Tea Break",
+      "english": "English",
+      "mandarin": "Mandarin",
+      "taiwanese": "Taiwanese",
+      "evaluation": "{language} Evaluation Contest",
+      "training": "{language} Training Session",
+      "japanese": "Japanese Speech & Evaluation Contest and Training Session",
+      "dinner": "Gala Dinner",
+      "excom": "Excom Meeting/ District Council Meeting/ Association BoD Meeting",
+      "luncheon": "Luncheon",
+      "lunch-note": "Lunchbox Distribution will take place at 1F Lobby",
+      "speech": "{language} Speech Contest",
+      "final": "International Speech Contest",
+      "closing": "Closing Ceremony",
+      "room": {
+        "calla": "1F Room Calla Lilly & Rose",
+        "clove": "2F Room Clove",
+        "jasmine": "1F Banquet Hall (Room Jasmine)",
+        "lisianthus": "2F Room Lisianthus",
+        "lobby": "1F Lobby",
+        "preparation": "2F Preparation Room"
+      }
+    },
     "slogan": {
       "title": "Annual Conference",
       "date": "Apr. 22-23",
-      "slogan1": "Connect to the Present.",
-      "slogan2": "Lead the future!",
+      "slogan": ["Connect to the Present.", "Lead the future!"],
       "text": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions. 16 education sessions across four tracks.",
       "ticket": "Get Tickets"
     },
