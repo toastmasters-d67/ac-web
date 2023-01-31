@@ -274,6 +274,15 @@ hr {
       right: 0;
     }
   }
+  .navbar-select {
+    color: black !important;
+    background: transparent;
+    font-family: "Montserrat" !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 24px;
+    border: transparent;
+  }
 }
 </style>
 

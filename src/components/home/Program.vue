@@ -706,8 +706,10 @@
         }
       }
       .row-item-title {
+        max-width: 220px;
         font-size: 10px;
         line-height: 15px;
+        margin: auto;
         margin-top: 3px;
         margin-bottom: 8px;
       }
