@@ -220,5 +220,8 @@ export default {
   components: {
     Breadcrumb,
   },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
+  },
 };
 </script>
