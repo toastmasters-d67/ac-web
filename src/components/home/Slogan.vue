@@ -111,7 +111,6 @@
     cursor: pointer;
   }
 }
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .slogan-container {
     min-height: 213px;

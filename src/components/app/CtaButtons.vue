@@ -58,7 +58,6 @@ export default {
   }
 }
 
-/* Mobile Design */
 @media (max-width: 768px) {
   .cta-buttons-container {
     .cta-button {

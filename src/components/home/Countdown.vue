@@ -70,7 +70,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .countdown-container {
     padding-top: 0px;

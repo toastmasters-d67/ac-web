@@ -92,7 +92,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .timer {
     .timer-circle {

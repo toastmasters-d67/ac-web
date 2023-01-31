@@ -25,10 +25,6 @@
         <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
       </div>
     </div>
-    <!-- <router-link to="/speakers" class="button-view-all">
-      <span class="button-text">View all</span>
-      <i class="pi pi-arrow-right button-arrow-right"></i>
-    </router-link> -->
   </section>
 </template>
 
@@ -82,31 +78,7 @@
     }
   }
 }
-.button-view-all {
-  width: 170px;
-  background: #ffdb82;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid white;
-  border-radius: 30px;
-  text-decoration: none;
-  padding: 12px 24px;
-  margin: 0 auto;
-  .button-text {
-    color: #6f6f6e;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 27px;
-    margin-right: 8px;
-  }
-  .button-arrow-right {
-    color: #6f6f6e;
-  }
-}
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .speakers-container {
     padding-top: 100px;

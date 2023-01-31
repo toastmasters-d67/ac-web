@@ -111,10 +111,6 @@
     <div class="ticket-coming-soon">
       {{ $t("home.ticket.note") }}
     </div>
-    <!-- <button class="ticket-button">
-      <span class="button-text">Order Ticket</span>
-      <i class="pi pi-arrow-right button-arrow-right"></i>
-    </button> -->
   </section>
 </template>
 
@@ -283,7 +279,6 @@ ul.ticket-item-list {
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .ticket-container {
     padding-bottom: 100px;

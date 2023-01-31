@@ -140,7 +140,6 @@ a {
   line-height: 18px;
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .footer-container {
     padding: 20px 0px;

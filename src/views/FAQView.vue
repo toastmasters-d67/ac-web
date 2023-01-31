@@ -80,7 +80,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .faq-container {
     padding-top: 0px;

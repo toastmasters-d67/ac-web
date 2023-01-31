@@ -110,7 +110,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .briefing-container {
     .briefing-speaker-name {

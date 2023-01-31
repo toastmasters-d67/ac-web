@@ -123,7 +123,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .seminar-container {
     padding-top: 24px;

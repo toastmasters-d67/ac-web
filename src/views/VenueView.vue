@@ -162,7 +162,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .venue-container {
     padding-top: 0px;

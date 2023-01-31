@@ -17,7 +17,6 @@
         Day 2
       </div>
     </div>
-    <!-- Day 1 program -->
     <div class="program-table" v-if="showProgramDay1">
       <div class="program-row program-center">
         <span class="row-time">09:00</span>
@@ -233,7 +232,6 @@
         >
       </div>
     </div>
-    <!-- Day 2 program -->
     <div class="program-table" v-if="!showProgramDay1">
       <div class="program-row program-center">
         <span class="row-time">09:00</span>
@@ -635,7 +633,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .program-container {
     padding-bottom: 0px;

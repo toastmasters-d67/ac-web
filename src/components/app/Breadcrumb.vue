@@ -57,7 +57,6 @@
   display: none;
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .p-breadcrumb {
     padding-top: 25px;

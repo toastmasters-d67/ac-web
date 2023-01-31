@@ -3,33 +3,15 @@
     <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
     <div class="souvenirs-items">
       <div class="souvenirs-item">
-        <div class="souvenirs-item-shadow">
-          <!-- <img
-            src="@/assets/image/home/souvenirs-pen.png"
-            class="souvenirs-item-image"
-            alt="pen"
-          /> -->
-        </div>
+        <div class="souvenirs-item-shadow"></div>
         <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
       </div>
       <div class="souvenirs-item">
-        <div class="souvenirs-item-shadow flip">
-          <!-- <img
-            src="@/assets/image/home/souvenirs-holder.png"
-            class="souvenirs-item-image flip"
-            alt="holder"
-          /> -->
-        </div>
+        <div class="souvenirs-item-shadow flip"></div>
         <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
       </div>
       <div class="souvenirs-item">
-        <div class="souvenirs-item-shadow">
-          <!-- <img
-            src="@/assets/image/home/souvenirs-cutlery.png"
-            class="souvenirs-item-image"
-            alt="cutlery"
-          /> -->
-        </div>
+        <div class="souvenirs-item-shadow"></div>
         <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
       </div>
     </div>
@@ -104,7 +86,6 @@
   }
 }
 
-/* Mobile Design */
 @media screen and (max-width: 768px) {
   .souvenirs-container {
     .souvenirs-title {

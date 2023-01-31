@@ -201,7 +201,6 @@ hr {
   }
 }
 
-/* Mobile design */
 @media screen and (max-width: 768px) {
   .navbar-container {
     height: 63px;
