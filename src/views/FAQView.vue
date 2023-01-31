@@ -140,8 +140,5 @@ export default {
       this.items[key].icon = `pi pi-angle-${direction} faq-icon`;
     },
   },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
 };
 </script>
