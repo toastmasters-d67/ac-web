@@ -3,7 +3,12 @@
     <button class="cta-button ticket" @click="scrollToElement('ticket')">
       {{ $t("home.slogan.ticket") }}
     </button>
-    <button class="cta-button contact">{{ $t("app.footer.contact") }}</button>
+    <button
+      class="cta-button contact"
+      onclick="location.href = 'mailto:tmicon@toastmasters.org.tw'"
+    >
+      {{ $t("app.footer.contact") }}
+    </button>
   </div>
 </template>
 
@@ -22,7 +27,7 @@ export default {
 .cta-buttons-container {
   position: fixed;
   right: 2.5%;
-  bottom: 71px;
+  bottom: 6%;
   display: flex;
   flex-direction: column;
   .cta-button {

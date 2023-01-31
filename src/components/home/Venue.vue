@@ -134,7 +134,7 @@
 /* Mobile Design */
 @media screen and (max-width: 768px) {
   .venue-container {
-    padding-top: 20px;
+    padding-top: 100px;
     padding-bottom: 0px;
     .venue-title {
       font-size: 15px;

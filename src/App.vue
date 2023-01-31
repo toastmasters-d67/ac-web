@@ -1,6 +1,6 @@
 <template>
   <Navbar :scrollToElement="scrollToElement" v-once />
-  <router-view v-once />
+  <router-view :scrollToElement="scrollToElement" v-once />
   <Footer :scrollToElement="scrollToElement" v-once />
   <ScrollToTop v-once />
   <CtaButtons :scrollToElement="scrollToElement" v-once />
