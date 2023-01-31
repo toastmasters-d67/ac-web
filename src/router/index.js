@@ -8,12 +8,17 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/speakers",
-    name: "speakers",
-    component: () => import("@/views/SpeakersView.vue"),
+    path: "/faq",
+    name: "faq",
+    component: () => import("@/views/FAQView.vue"),
   },
   {
-    path: "/speakers/:name",
+    path: "/venue",
+    name: "venue",
+    component: () => import("@/views/VenueView.vue"),
+  },
+  {
+    path: "/:key",
     name: "speaker",
     component: () => import("@/views/SpeakerTemplateView.vue"),
   },

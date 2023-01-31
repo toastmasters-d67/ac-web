@@ -26,7 +26,7 @@
 .timer {
   position: relative;
   display: inline-block;
-  background: #e5e5e5;
+  background: transparent;
   margin: 0 auto;
   .timer-circle {
     position: relative;
@@ -52,7 +52,7 @@
     top: 50%;
     width: 190px;
     height: 190px;
-    background: #e5e5e5;
+    background: rgba(219, 231, 231, 1);
     border-radius: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
@@ -89,6 +89,31 @@
     background: linear-gradient(218.6deg, #de809c 31%, #7c51d2 100%);
     border-radius: 50%;
     box-shadow: 0 0 20px red;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .timer {
+    .timer-circle {
+      width: 63px;
+      height: 63px;
+    }
+    .timer-inner {
+      width: 60px;
+      height: 60px;
+    }
+    .timer-value {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    .timer-ball {
+      top: calc(50% - 1px);
+    }
+    .timer-ball:before {
+      right: -3px;
+      width: 8px;
+      height: 8px;
+    }
   }
 }
 </style>

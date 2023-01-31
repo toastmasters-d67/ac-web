@@ -1,40 +1,52 @@
 <template>
   <nav class="navbar-container">
-    <router-link to="/" class="navbar-logo">
+    <router-link to="/" class="navbar-logo" @click="setWindowToTop()">
       <img
         src="@/assets/icon/app/logo.png"
         class="navbar-logo-image"
         alt="logo"
       />
       <div class="navbar-logo-text">
-        <span class="navbar-logo-text-1">Toastmasters Taiwan</span>
-        <span class="navbar-logo-text-2">2023 Annual Conference</span>
+        <span class="navbar-logo-text-1">{{ $t("app.navbar.d67") }}</span>
+        <span class="navbar-logo-text-2">{{ $t("app.navbar.ac") }}</span>
       </div>
     </router-link>
     <div class="navbar-links">
-      <router-link
-        to="/#speakers"
-        class="navbar-link"
-        @click="scrollToElement('speakers')"
-      >
-        Speakers
-      </router-link>
       <router-link
         to="/#program"
         class="navbar-link"
         @click="scrollToElement('program')"
       >
-        Program
+        {{ $t("app.navbar.program") }}
+      </router-link>
+      <router-link
+        to="/#speakers"
+        class="navbar-link"
+        @click="scrollToElement('speakers')"
+      >
+        {{ $t("app.navbar.speakers") }}
       </router-link>
       <router-link
         to="/#venue"
         class="navbar-link"
         @click="scrollToElement('venue')"
       >
-        Venue
+        {{ $t("app.navbar.venue") }}
       </router-link>
-      <span class="navbar-link">FAQ</span>
-      <button class="navbar-button">Get your ticket</button>
+      <router-link to="/faq" class="navbar-link">
+        {{ $t("app.navbar.faq") }}
+      </router-link>
+      <div class="navbar-link">
+        <select v-model="locale" class="navbar-select">
+          <option
+            v-for="item in localeOptions"
+            :key="`locale-${item.lang}`"
+            :value="item.value"
+          >
+            {{ item.label }}
+          </option>
+        </select>
+      </div>
     </div>
     <div class="navbar-mobile-container">
       <Button
@@ -54,28 +66,49 @@
       >
         <div class="navbar-mobile-links">
           <router-link
-            to="/#speakers"
-            class="navbar-mobile-link"
-            @click="hideMenuAndScrollToElement('speakers')"
-          >
-            Speakers
-          </router-link>
-          <router-link
             to="/#program"
             class="navbar-mobile-link"
             @click="hideMenuAndScrollToElement('program')"
           >
-            Program
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.program") }}
+            </span>
+          </router-link>
+          <router-link
+            to="/#speakers"
+            class="navbar-mobile-link"
+            @click="hideMenuAndScrollToElement('speakers')"
+          >
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.speakers") }}
+            </span>
           </router-link>
           <router-link
             to="/#venue"
             class="navbar-mobile-link"
             @click="hideMenuAndScrollToElement('venue')"
           >
-            Venue
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.venue") }}
+            </span>
           </router-link>
-          <div class="navbar-mobile-link">FAQ</div>
-          <button class="navbar-mobile-sidebar-cta">Get your ticket</button>
+          <router-link to="/faq" class="navbar-mobile-link" @click="hideMenu()">
+            <span class="navbar-mobile-link-text1">
+              {{ $t("app.navbar.faq") }}
+            </span>
+          </router-link>
+          <hr />
+          <div class="navbar-mobile-link">
+            <select v-model="locale" class="navbar-select">
+              <option
+                v-for="item in localeOptions"
+                :key="`locale-${item.lang}`"
+                :value="item.value"
+              >
+                {{ item.label }}
+              </option>
+            </select>
+          </div>
         </div>
       </Sidebar>
     </div>
@@ -87,6 +120,15 @@ a {
   color: black;
   text-decoration: none;
   border-color: transparent;
+}
+button {
+  font-family: inherit;
+}
+hr {
+  width: 100%;
+  margin-bottom: 24px;
+  border: 0;
+  border-top: 2px solid black;
 }
 .navbar-container {
   position: sticky;
@@ -133,30 +175,25 @@ a {
   }
   .navbar-links {
     position: absolute;
-    top: 16px;
+    top: 28px;
     right: 24px;
-    width: 660px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
     .navbar-link {
       font-weight: 700;
-      margin-right: 40px;
+      margin-right: 32px;
       cursor: pointer;
     }
-    .navbar-button {
-      width: 210px;
-      height: 48px;
-      background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
-      font-size: 20px;
-      font-weight: 600;
-      text-align: center;
-      border-radius: 38px;
-      border: 1px solid #eeeeee;
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-      padding: 8px 24px;
-      cursor: pointer;
+    .navbar-select {
+      color: black !important;
+      background: transparent;
+      font-family: "Montserrat" !important;
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      line-height: 24px;
+      border: transparent;
     }
   }
   .navbar-mobile-container {
@@ -164,7 +201,6 @@ a {
   }
 }
 
-/* Mobile design */
 @media screen and (max-width: 768px) {
   .navbar-container {
     height: 63px;
@@ -222,47 +258,79 @@ a {
   padding: 0px;
   padding-left: 6.4%;
   .navbar-mobile-link {
+    position: relative;
+    width: 95%;
     display: flex;
-    height: 30px;
     margin-bottom: 24px;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    .navbar-mobile-link-text1 {
+      color: #675de2;
+    }
+    .navbar-mobile-arrowdown {
+      position: absolute;
+      top: 5.5px;
+      right: 0;
+    }
   }
-}
-.navbar-mobile-sidebar-cta {
-  width: 210px;
-  height: 48px;
-  background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  border-radius: 38px;
-  border: 1px solid #eeeeee;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-  padding: 8px 24px;
-  cursor: pointer;
+  .navbar-select {
+    color: black !important;
+    background: transparent;
+    font-family: "Montserrat" !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 24px;
+    border: transparent;
+  }
 }
 </style>
 
 <script>
+import { reactive, ref, watch } from "vue";
+
 export default {
   name: "Navbar",
-  data() {
+  props: {
+    scrollToElement: {
+      type: Function,
+    },
+  },
+  setup() {
+    const locale = ref(localStorage.getItem("locale") ?? "en");
+    const localeOptions = reactive([
+      {
+        value: "en",
+        label: "EN",
+      },
+      {
+        value: "tw",
+        label: "中文",
+      },
+    ]);
+    const visibleFull = ref(false);
+
+    watch(locale, (newlocale) => {
+      localStorage.setItem("locale", newlocale);
+      location.reload();
+    });
+
     return {
-      visibleFull: false,
+      locale,
+      localeOptions,
+      visibleFull,
     };
   },
   methods: {
-    scrollToElement(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = `/#${id}`;
-      }
-    },
     hideMenuAndScrollToElement(id) {
       this.visibleFull = false;
       this.scrollToElement(id);
+    },
+    hideMenu() {
+      this.visibleFull = false;
+    },
+    setWindowToTop() {
+      window.scrollTo({ top: 0 });
     },
   },
 };

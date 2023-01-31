@@ -1,13 +1,12 @@
 <template>
   <article id="home">
-    <Slogan v-once />
+    <Slogan :scrollToElement="scrollToElement" v-once />
     <Countdown v-once />
     <Ticket v-once />
     <Speakers v-once />
     <Program v-once />
     <Venue v-once />
     <Souvenirs v-once />
-    <Podcast v-once />
   </article>
 </template>
 
@@ -19,10 +18,14 @@ import Speakers from "@/components/home/Speakers.vue";
 import Program from "@/components/home/Program.vue";
 import Venue from "@/components/home/Venue.vue";
 import Souvenirs from "@/components/home/Souvenirs.vue";
-import Podcast from "@/components/home/Podcast.vue";
 
 export default {
   name: "HomeView",
+  props: {
+    scrollToElement: {
+      type: Function,
+    },
+  },
   components: {
     Slogan,
     Countdown,
@@ -31,7 +34,9 @@ export default {
     Program,
     Venue,
     Souvenirs,
-    Podcast,
+  },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
   },
 };
 </script>

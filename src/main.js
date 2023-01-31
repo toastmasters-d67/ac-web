@@ -7,8 +7,9 @@ import PrimeVue from "primevue/config";
 import "primevue/resources/primevue.min.css";
 import "primevue/resources/themes/lara-light-indigo/theme.css";
 import "primeicons/primeicons.css";
+import i18n from "./i18n";
 
-const app = createApp(App);
+const app = createApp(App).use(i18n);
 app.use(router).use(PrimeVue);
 app.component("Button", Button);
 app.component("Sidebar", Sidebar);

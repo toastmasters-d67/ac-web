@@ -1,0 +1,187 @@
+{
+  "app": {
+    "breadcrumb": {
+      "/": "Home",
+      "faq": "FAQ",
+      "venue": "Venue",
+      "van-borssum": "Greg Van Borssum",
+      "shih": "Stan Shih",
+      "tbd": "TBD"
+    },
+    "navbar": {
+      "d67": "Toastmasters District 67",
+      "ac": "2023 Annual Conference",
+      "program": "Program",
+      "speakers": "Speakers",
+      "venue": "Venue",
+      "faq": "FAQ",
+      "lang": "EN"
+    },
+    "footer": {
+      "contact": "Contact Us"
+    },
+    "button": {
+      "ticket": ["Get", "Tickets"],
+      "contact": ["Contact", "Us"]
+    }
+  },
+  "home": {
+    "countdown": {
+      "title": "Conference Starting in",
+      "day": "Days",
+      "hour": "Hours",
+      "minute": "Minutes",
+      "second": "Seconds"
+    },
+    "program": {
+      "title": "Program",
+      "day1": "Day 1",
+      "day2": "Day 2",
+      "registration": "Registration",
+      "until": "Open until",
+      "judge": "Judge Briefing",
+      "min": "mins",
+      "run-off": "International Speech Run-off {alphabet} Contest",
+      "keynote": "Keynote Speech",
+      "lunch": "Lunchbox Distribution",
+      "opening": "Opening Ceremony",
+      "tea": "Tea Break",
+      "english": "English",
+      "mandarin": "Mandarin",
+      "taiwanese": "Taiwanese",
+      "evaluation": "{language} Evaluation Contest",
+      "training": "{language} Training Session",
+      "japanese": "Japanese Speech & Evaluation Contest and Training Session",
+      "dinner": "Gala Dinner",
+      "excom": "Excom Meeting/ District Council Meeting/ Association BoD Meeting",
+      "luncheon": "Luncheon",
+      "lunch-note": "Lunchbox Distribution will take place at 1F Lobby",
+      "speech": "{language} Speech Contest",
+      "final": "International Speech Contest",
+      "closing": "Closing Ceremony",
+      "room": {
+        "calla": "1F Room Calla Lilly & Rose",
+        "clove": "2F Room Clove",
+        "jasmine": "1F Banquet Hall (Room Jasmine)",
+        "lisianthus": "2F Room Lisianthus",
+        "lobby": "1F Lobby",
+        "preparation": "2F Preparation Room"
+      }
+    },
+    "slogan": {
+      "title": "Annual Conference",
+      "date": "Apr. 22-23",
+      "slogan": ["Connect to the Present.", "Lead the future!"],
+      "text": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions. 16 education sessions across four tracks.",
+      "ticket": "Get Tickets"
+    },
+    "souvenir": {
+      "title": "Souvenirs",
+      "tbd": "TBD",
+      "note": "Full details of the souvenirs will be announced soon!"
+    },
+    "speaker": {
+      "title": "Meet Our Speakers",
+      "tbd": "TBD"
+    },
+    "ticket": {
+      "title": "Ticket Price",
+      "two-day": "2 Day Pass",
+      "early-bird": "Early Bird Pass",
+      "first-day": "First Day Pass",
+      "second-day": "Second Day Pass",
+      "until": "Until Mar 19, 2023",
+      "lunch": "Lunchbox",
+      "lunch2": "Lunchboxes for 2 days",
+      "souvenir": "Souvenirs",
+      "banquet": "Dinner banquet on 4/22 party included",
+      "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
+      "note": "The tickets will be a vailable for order soon. Please stay tuned!"
+    },
+    "venue": {
+      "title": "How to Get There?",
+      "venue": "Kuanhe Exhibition Hall",
+      "address": "No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City, Taiwan 221",
+      "show": "Show on Google Maps",
+      "directions": "Directions"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "When is this year's annual conference? Where will it be held?",
+        "answer": "2023 annual conference will be held on April 22nd and 23rd at Kuanhe Exhibition Hall in New Taipei City."
+      },
+      {
+        "question": "What activites are included in this year's annual conference?",
+        "answer": "We have arranged a series of keynote speeches and educational sessions in the two-day program. On the night of 22nd, there will be an gala dinner where you can enjoy great food and great performance brought by outstanding Toastmasters."
+      },
+      {
+        "question": "How can I buy the annual conference tickets?",
+        "answer": "The tickets will be available for online purchase soon. Please stay tuned!"
+      }
+    ]
+  },
+  "speaker": {
+    "seminar": "Seminar",
+    "topic": "Topic of Seminar",
+    "time": "Time",
+    "location": "Location",
+    "introduction": "Introduction"
+  },
+  "speakers": [
+    {
+      "key": "van-borssum",
+      "name": "Greg Van Borssum",
+      "title": "Accredited Speaker",
+      "contents": [
+        "A bullied, skinny kid too afraid to stand up for himself, Greg used to live in fear. At age 12, he decided to change and spent his newspaper route money on a gym membership and undertook rigorous weight training and the study of martial arts. He then decided to take on two massive challenges, to become the Australian National Bodybuilding Champion and a Karate Master. It was here Greg learned to unravel the warriors code and by applying its principles he revealed how limitless his life could become.",
+        "In 2019, Greg became an Accredited Speaker by Toastmasters International, making him 1 of 88 speakers globally in over 40 years to receive this honor. Greg’s ability to transfer his mindset into totally new areas of life and master them in relatively short time has had him labelled by many as the MASTER OF REMASTERY. Let Greg show you the steps to master your mindset and remaster your life."
+      ],
+      "seminar": {
+        "topic": "TBD",
+        "time": "4/22 13:10-14:00",
+        "location": "1F Room Calla Lilly & Rose",
+        "introduction": "TBD"
+      }
+    },
+    {
+      "key": "shih",
+      "name": "Stan Shih",
+      "title": "Cofounder of the Acer Group",
+      "contents": [
+        "Stan Shih is the Chairman of Stan Shih Foundation, Cofounder & Honorary Chairman of the Acer Group. Mr. Shih serves on the boards of Acer, the former boards of TSMC. He is the Chairman of Cloud Gate Culture and Art Foundation and the head of One Song Orchestra Fun Club. Besides, he acts as commissioner of the Reform for Resilience Commission and Director of CAPRI.",
+        "Time featured Mr. Shih in its article “60 years of Asian Hero’s” for turning Taiwan into a PC manufacturing powerhouse. He is awarded “Taiwan Cultural Collaboration Medal” by the Ministry of Culture of Taiwan in 2021.",
+        "Mr. Shih earned a Bachelor’s Master and honorary Ph D in Electronics engineering from National Chiao Tung University in Taiwan. He was awarded an Honorary Doctorate of Technology by Hong Kong Polytechnic University, and an Honorary Doctor of International Law from the Thousand School of Global Management."
+      ],
+      "seminar": {
+        "topic": "From Wangdao Perspective to the Competitiveness of Taiwan",
+        "time": "4/22 11:00-11:50",
+        "location": "1F Room Calla Lilly & Rose",
+        "introduction": "“New Wangdao” talks about the leadership thinking of any organization by “creating values, balancing current interest and sustaining future development.” In the perspective of Wangdao, there are six criteria to measure the total value of contributions: “visible, direct and current” values, and “invisible, indirect and future” values, while the later is much more important."
+      }
+    }
+  ],
+  "venue": {
+    "car": {
+      "title": "By Car",
+      "steps": [
+        "Get off National Highway No.1 at the Xizhi Interchange, turn right at Section 2 of Datong Road, and go straignt to reach No. 237 on Section 1 of Datong Road.",
+        "Get off National Highway No.3 at the Xintai 5th Road Interchange, turn left at Xintai 5th Road, turn right at Section 1 of Datong Road, and make a u-turn at the second traffic light, and then go straight to reach Kuanhe."
+      ]
+    },
+    "metro": {
+      "title": "By Metro",
+      "content": "Take Taipei Metro Bannan Line or Wenhu Line to reach Nangang Exhibition Center Station.",
+      "steps": [
+        "Take a taxi to reach Kuanhe which costs around NT$100.",
+        "Go to exit no. 6 and take a bus (B21, B22, B23, 919, 605 817, 668) to South Zhangshuwan Station, and then walk to reach Kuanhe."
+      ]
+    },
+    "bus": {
+      "title": "By Bus",
+      "content": "Take 605, 668, 817, or Keelung Bus to South Zhangshuwan Station, and then walk to reach Kuanhe."
+    }
+  }
+}

@@ -1,124 +1,590 @@
 <template>
   <section id="program" class="program-container">
-    <header class="program-title">Program</header>
-    <div class="program-table">
-      <div class="program-row program-baseline">
-        <div class="row-day-1">Day 1</div>
-        <div class="row-day-2">Day 2</div>
+    <header class="program-title">{{ $t("home.program.title") }}</header>
+    <div class="program-day-switcher">
+      <div
+        class="program-day"
+        :class="showProgramDay1 ? 'day-active' : 'day-non-active'"
+        @click="switchProgram('day1')"
+      >
+        {{ $t("home.program.day1") }}
       </div>
-      <div class="program-row program-baseline">
-        <span class="row-time">08:00 - 10:00</span>
-        <span class="row row-yellow">Registration &amp; Coffee</span>
+      <div
+        class="program-day"
+        :class="showProgramDay1 ? 'day-non-active' : 'day-active'"
+        @click="switchProgram('day2')"
+      >
+        {{ $t("home.program.day2") }}
       </div>
-      <div class="program-row program-baseline">
-        <span class="row-time">10:00 - 11:30</span>
-        <span class="row row-yellow">Opening Ceremony</span>
+    </div>
+    <div class="program-table" v-if="showProgramDay1">
+      <div class="program-row program-center">
+        <span class="row-time">09:00</span>
+        <span class="row row-yellow">
+          <span>
+            {{ $t("home.program.registration") }}
+            <span class="row-small-text">
+              ({{ $t("home.program.until") }} 12:00)
+            </span>
+          </span>
+          <span class="row-item-venue venue-lobby">
+            {{ $t("home.program.room.lobby") }}
+          </span>
+        </span>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">11:30 - 12:00</span>
+        <span class="row-time">09:10</span>
         <div class="row-items">
-          <div class="row-item-expand">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2c">Room 2C</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-baseline">
-        <span class="row-time">12:00 - 13:00</span>
-        <span class="row row-gray">Talks &amp; Bites</span>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">13:00 - 14:00</span>
-        <div class="row-items">
-          <div class="row-item">
-            <span class="row-item-speaker">Bachir Bastie</span>
-            <span class="row-item-title">Better Life</span>
-            <span class="row-item-venue venue-b2">Room B2</span>
-          </div>
-          <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2c">Room 2C</span>
-          </div>
-          <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2d">Room 2D</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-baseline">
-        <span class="row-time">12:00 - 13:00</span>
-        <span class="row row-gray">Talks &amp; Bites</span>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">14:00 - 15:00</span>
-        <div class="row-items">
-          <div class="row-item">
-            <span class="row-item-speaker">Verity Price</span>
-            <span class="row-item-title">How to write a winning speech</span>
-            <span class="row-item-venue venue-b2">Room B2</span>
-          </div>
-          <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2c">Room 2C</span>
-          </div>
-          <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2d">Room 2D</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-baseline">
-        <span class="row-time">15:00 - 15:30</span>
-        <span class="row row-gray">Talks &amp; Bites</span>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">15:30 - 16:30</span>
-        <div class="row-items">
-          <div class="row-item">
-            <span class="row-item-speaker">Bachir Bastie</span>
-            <span class="row-item-title">Better Life</span>
-            <span class="row-item-venue venue-b2">Room B2</span>
-          </div>
-          <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2c">Room 2C</span>
-          </div>
-          <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2d">Room 2D</span>
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.judge") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-preparation">
+              {{ $t("home.program.room.preparation") }}
+            </span>
           </div>
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">16:30 - 17:30</span>
+        <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
-            <span class="row-item-speaker">Verity Price</span>
-            <span class="row-item-title">How to write a winning speech</span>
-            <span class="row-item-venue venue-b2">Room B2</span>
+            <span class="row-item-time">
+              09:40
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.run-off", { alphabet: "A" }) }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
           </div>
           <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2c">Room 2C</span>
-          </div>
-          <div class="row-item">
-            <span class="row-item-speaker">John Hei</span>
-            <span class="row-item-title">On Becoming a Leader</span>
-            <span class="row-item-venue venue-2d">Room 2D</span>
+            <span class="row-item-time">
+              09:40
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.run-off", { alphabet: "B" }) }}
+            </span>
+            <span class="row-item-venue venue-clove">
+              {{ $t("home.program.room.clove") }}
+            </span>
           </div>
         </div>
       </div>
-      <div class="program-row program-baseline">
-        <span class="row-time">17:30 - 20:30</span>
-        <span class="row row-yellow">Dinner Party &amp; Closing Ceremony</span>
+      <div class="program-row program-center">
+        <span class="row-time">11:00</span>
+        <div class="row-items">
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.keynote") }} -
+              {{ $t("speakers[1].name") }}
+              <span class="row-item-time-duration">
+                (50 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("speakers[1].seminar.topic") }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:00</span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-gray">
+            <span class="row-item-time">
+              {{ $t("home.program.lunch") }}
+              <span class="row-item-time-duration">
+                (30 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:10</span>
+        <div class="row-items">
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.judge") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-preparation">
+              {{ $t("home.program.room.preparation") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:30</span>
+        <div class="row-items">
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.opening") }}
+              <span class="row-item-time-duration">
+                (40 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">13:10</span>
+        <div class="row-items">
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.keynote") }} - {{ $t("speakers[0].name") }}
+            </span>
+            <span class="row-item-title">
+              {{ $t("speakers[0].seminar.topic") }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">14:00</span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-gray">
+            <span class="row-item-time">
+              {{ $t("home.program.tea") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (120 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title title-3-lines">
+              {{ $t("home.program.japanese") }}
+            </span>
+            <span class="row-item-venue venue-clove">
+              {{ $t("home.program.room.clove") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              15:30
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.taiwanese"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              15:30
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              16:40
+              <span class="row-item-time-duration">
+                (90 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              16:40
+              <span class="row-item-time-duration">
+                (90 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">18:30</span>
+        <span class="row row-yellow">
+          <span>{{ $t("home.program.dinner") }}</span>
+          <span class="row-item-venue venue-jasmine">
+            {{ $t("home.program.room.jasmine") }}
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="program-table" v-if="!showProgramDay1">
+      <div class="program-row program-center">
+        <span class="row-time">09:00</span>
+        <span class="row row-yellow">
+          <span>
+            {{ $t("home.program.registration") }}
+            <span class="row-small-text">
+              ({{ $t("home.program.until") }} 12:00)
+            </span>
+          </span>
+          <span class="row-item-venue venue-lobby">
+            {{ $t("home.program.room.lobby") }}
+          </span>
+        </span>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item item-2-column-height">
+            <span class="row-item-time">
+              09:10
+              <span class="row-item-time-duration">
+                (180 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.excom") }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+          <div class="row-item-columns">
+            <div class="row-item">
+              <span class="row-item-time">
+                09:50
+                <span class="row-item-time-duration">
+                  (70 {{ $t("home.program.min") }})
+                </span>
+              </span>
+              <span class="row-item-title">
+                {{
+                  $t("home.program.training", {
+                    language: $t("home.program.mandarin"),
+                  })
+                }}
+              </span>
+              <span class="row-item-venue venue-lisianthus">
+                {{ $t("home.program.room.lisianthus") }}
+              </span>
+            </div>
+            <div class="row-item">
+              <span class="row-item-time">
+                11:00
+                <span class="row-item-time-duration">
+                  (60 {{ $t("home.program.min") }})
+                </span>
+              </span>
+              <span class="row-item-title">
+                {{
+                  $t("home.program.training", {
+                    language: $t("home.program.taiwanese"),
+                  })
+                }}
+              </span>
+              <span class="row-item-venue venue-lisianthus">
+                {{ $t("home.program.room.lisianthus") }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:00</span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-gray">
+            <span class="row-item-time">
+              {{ $t("home.program.luncheon") }}
+              <span class="row-item-time-duration">
+                (50 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+            <span class="row-item-note">
+              ({{ $t("home.program.lunch-note") }})
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:20</span>
+        <div class="row-items">
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.judge") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-preparation">
+              {{ $t("home.program.room.preparation") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              13:00
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.speech", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              13:00
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.speech", {
+                  language: $t("home.program.taiwanese"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              14:20
+              <span class="row-item-time-duration">
+                (60 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.english"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">15:20</span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-gray">
+            <span class="row-item-time">
+              {{ $t("home.program.tea") }}
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              15:50
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.final") }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              15:50
+              <span class="row-item-time-duration">
+                (70 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{
+                $t("home.program.training", {
+                  language: $t("home.program.mandarin"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">17:10</span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-yellow">
+            <span class="row-item-time">
+              {{ $t("home.program.closing") }}
+              <span class="row-item-time-duration">
+                (50 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -127,7 +593,7 @@
 <style scoped lang="scss">
 .program-container {
   width: 100%;
-  background: #e5e5e5;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,19 +608,48 @@
     font-weight: 600;
     line-height: 49px;
     margin-top: 50px;
-    margin-bottom: 32px;
+    margin-bottom: 59px;
+  }
+  .program-day-switcher {
+    max-width: 1223px;
+    width: 84.93%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 31px;
+    height: 70px;
+    margin-bottom: 20px;
+    .program-day {
+      flex: 1;
+      height: 70px;
+      color: black;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 60px;
+      border-radius: 20px;
+      box-sizing: border-box;
+      gap: 10px;
+      padding: 10px;
+    }
   }
   .program-table {
-    width: 1347px;
-    height: 1755px;
+    max-width: 1231px;
+    width: 93.54%;
     background: rgba(255, 255, 255, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border-radius: 50px;
-    padding-top: 100px;
+    border-radius: 20px;
+    padding-top: 47px;
     .program-row {
+      width: 93.74%;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -168,9 +663,19 @@
       align-items: baseline;
     }
   }
+  .day-active {
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid;
+    border-color: #ddc8bf;
+    box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
+  }
+  .day-non-active {
+    background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
+    cursor: pointer;
+  }
 }
 .row-time {
-  width: 168px;
+  width: 73px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -181,109 +686,70 @@
   line-height: 60px;
   margin-right: 23px;
 }
+.time-filter {
+  color: rgba(255, 255, 255, 0.25);
+}
 .row {
-  width: 1055px;
+  max-width: 1055px;
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.05em;
-  line-height: 60px;
+  line-height: 25px;
   border-radius: 20px;
   gap: 10px;
   padding: 0px 10px;
-}
-.row-day-1 {
-  width: 610px;
-  height: 70px;
-  color: black;
-  background: rgba(255, 255, 255, 0.25);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 60px;
-  border-radius: 20px;
-  box-sizing: border-box;
-  gap: 10px;
-  padding: 10px;
-  margin-right: 35px;
-  cursor: pointer;
-}
-.row-day-2 {
-  width: 610px;
-  height: 70px;
-  color: black;
-  background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 60px;
-  border-radius: 20px;
-  box-sizing: border-box;
-  gap: 10px;
-  padding: 10px;
-  cursor: pointer;
+  .row-small-text {
+    font-size: 16px;
+  }
 }
 .row-yellow {
-  height: 90px;
+  height: 93px;
   background: rgba(255, 204, 77, 0.25);
 }
-.row-gray {
-  height: 60px;
-  background: rgba(182, 194, 210, 0.5);
-}
 .row-items {
-  width: 1058px;
+  max-width: 1055px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: flex-start;
-  div:nth-child(-n + 2) {
-    margin-right: 16px;
-  }
-  .row-item-expand {
-    width: 1055px;
-    height: 180px;
-    background: rgba(255, 255, 255, 0.6);
+  gap: 16px;
+  .row-item-columns {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 50px;
-    border-radius: 20px;
-    gap: 5px;
-    padding: 5px 20px;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .item-2-column-height {
+    height: 343px;
   }
   .row-item {
-    width: 341px;
-    height: 180px;
+    width: 100%;
     background: rgba(255, 255, 255, 0.6);
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px;
-    padding: 5px 20px;
-    .row-item-speaker {
+    padding: 15px 20px;
+    gap: 15px;
+    letter-spacing: 0.05em;
+    .row-item-time {
       color: black;
       font-size: 24px;
       font-weight: 400;
-      letter-spacing: 0.05em;
-      line-height: 60px;
+      line-height: 30px;
+      .row-item-time-duration {
+        font-size: 16px;
+      }
     }
     .row-item-title {
-      height: 180px;
       color: black;
       display: flex;
       flex-direction: column;
@@ -292,31 +758,183 @@
       font-size: 24px;
       line-height: 30px;
       text-align: left;
+      margin-top: 3px;
+      margin-bottom: 8px;
+    }
+    .title-3-lines {
+      font-size: 20px;
+      line-height: 25px;
+    }
+    .venue-preparation {
+      background: #dde1e1;
+    }
+    .venue-lisianthus {
+      background: #ddc8bf;
+    }
+    .venue-clove {
+      background: rgba(188, 155, 221, 0.5);
+    }
+    .venue-calla {
+      background: #c1ccbe;
+    }
+    .row-item-note {
+      font-size: 16px;
+      color: black;
     }
   }
-  .row-item-venue {
-    width: 100px;
-    height: 30px;
-    color: #004165;
-    display: flex;
-    flex-direction: row;
+  .item-expand {
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 400;
-    letter-spacing: 0.05em;
-    line-height: 60px;
-    border-radius: 20px;
+    line-height: 30px;
+  }
+  .item-expand-gray {
+    background: rgba(182, 194, 210, 0.5);
+  }
+  .item-expand-yellow {
+    background: rgba(255, 204, 77, 0.25);
+  }
+}
+.row-item-venue {
+  color: #004165;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 20px;
+  border-radius: 20px;
+  gap: 10px;
+  padding: 5px 10px;
+}
+.venue-jasmine {
+  background: rgba(255, 255, 255, 0.6);
+}
+.venue-lobby {
+  background: white;
+}
+@media screen and (max-width: 768px) {
+  .program-container {
+    padding-bottom: 0px;
+    .program-title {
+      font-size: 15px;
+      line-height: 18px;
+      margin-top: 20px;
+      margin-bottom: 29px;
+    }
+    .program-day-switcher {
+      width: 90.43%;
+      height: 30px;
+      gap: 10px;
+      margin-bottom: 12px;
+      .program-day {
+        height: 30px;
+        background-size: 100% 30px;
+        font-size: 12px;
+        line-height: 30px;
+        border-radius: 20px;
+      }
+      .day-1 {
+        background: rgba(255, 255, 255, 0.25);
+      }
+    }
+    .program-table {
+      border-radius: 10px;
+      padding-top: 11px;
+      .program-row {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .row-time {
+    position: absolute;
+    width: fit-content;
+    font-size: 12px;
+    line-height: 15px;
+    margin-left: 10px;
+  }
+  .row {
+    font-size: 12px;
+    line-height: 15px;
+    gap: 5px;
+    .row-small-text {
+      font-size: 8px;
+    }
+  }
+  .row-yellow {
+    height: 42px;
+  }
+  .row-items {
     gap: 10px;
-  }
-  .venue-2c {
-    background: #ddc8bf;
-  }
-  .venue-2d {
-    background: rgba(188, 155, 221, 0.5);
-  }
-  .venue-b2 {
-    background: #dde1e1;
+    .row-item-columns {
+      gap: 5px;
+    }
+    .item-2-column-height {
+      height: 219px;
+      @media screen and (min-width: 427px) {
+        height: 189px;
+      }
+    }
+    .row-item {
+      padding: 10px;
+      gap: 5px;
+      .row-item-time {
+        font-size: 10px;
+        line-height: 15px;
+        .row-item-time-duration {
+          font-size: 8px;
+        }
+      }
+      .row-item-title {
+        max-width: 220px;
+        font-size: 10px;
+        line-height: 15px;
+        margin: auto;
+        margin-top: 3px;
+        margin-bottom: 8px;
+      }
+      .title-3-lines {
+        font-size: 8px;
+        line-height: 14px;
+      }
+      .row-item-venue {
+        font-size: 8px;
+        line-height: 10px;
+        border-radius: 10px;
+      }
+      .row-item-note {
+        font-size: 8px;
+      }
+    }
+    .item-expand {
+      font-size: 12px;
+      line-height: 15px;
+      gap: 5px;
+      padding: 10px 20px;
+    }
   }
 }
 </style>
+
+<script>
+export default {
+  name: "Program",
+  data() {
+    return {
+      showProgramDay1: true,
+    };
+  },
+  methods: {
+    switchProgram(day) {
+      if (day === "day1") {
+        this.showProgramDay1 = true;
+      } else {
+        this.showProgramDay1 = false;
+      }
+    },
+  },
+};
+</script>

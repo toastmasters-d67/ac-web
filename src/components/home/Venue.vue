@@ -1,27 +1,35 @@
 <template>
   <section id="venue" class="venue-container">
-    <header class="venue-title">How to get there?</header>
+    <header class="venue-title">{{ $t("home.venue.title") }}</header>
     <div class="venue-box">
-      <span class="venue-box-name">Kuanhe Exhibition Hall</span>
+      <span class="venue-box-name">{{ $t("home.venue.venue") }}</span>
       <div class="venue-box-row">
         <i class="pi pi-phone venue-box-icon"></i>
         <span class="venue-box-text">(02) 2649-3034</span>
       </div>
       <div class="venue-box-row">
-        <i class="pi pi-map-marker venue-box-icon"></i>
+        <i class="pi pi-globe venue-box-icon"></i>
         <span class="venue-box-text">
-          No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City,
-          Taiwan 221
+          {{ $t("home.venue.address") }}
         </span>
       </div>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.2937516051866!2d121.63301651513369!3d25.058030983961142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x345d53515f76e2a1%3A0xec355e84b8db421e!2z5a-s5ZKM5a605bGV6aSo5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1sen!2stw!4v1671638069563!5m2!1sen!2stw"
+      <a
+        href="https://goo.gl/maps/hk4DmRVfQ2e4q5FA9"
+        class="venue-box-button"
+        target="_blank"
+      >
+        {{ $t("home.venue.show") }}
+      </a>
+      <img
+        src="@/assets/image/home/venue-map.png"
         class="venue-box-map"
-        frameborder="0"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+        alt="map"
+      />
     </div>
+    <router-link to="/venue" class="button-directions">
+      <span class="button-text">{{ $t("home.venue.directions") }}</span>
+      <i class="pi pi-arrow-right button-arrow-right"></i>
+    </router-link>
   </section>
 </template>
 
@@ -29,12 +37,17 @@
 .venue-container {
   width: 100%;
   color: #004165;
-  background: #e5e5e5;
+  background: transparent;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
   padding-top: 150px;
   padding-bottom: 50px;
+  a {
+    color: #004165;
+    text-decoration: none;
+    border-color: transparent;
+  }
   .venue-title {
     font-size: 48px;
     font-weight: 600;
@@ -42,10 +55,33 @@
     margin: 0 auto;
     margin-bottom: 15px;
   }
+  .button-directions {
+    width: 191px;
+    height: 43px;
+    background: #f5db8c;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 8px 24px;
+    gap: 8px;
+    margin: 0 auto;
+    .button-text {
+      color: #004165;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: center;
+    }
+    .button-arrow-right {
+      color: #004165;
+    }
+  }
 }
 .venue-box {
-  width: 62.64%;
-  min-width: 291px;
+  width: 87.2%;
+  max-width: 915px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -74,6 +110,16 @@
       text-align: left;
     }
   }
+  .venue-box-button {
+    background: #f5db8c;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 5px 10px;
+    gap: 10px;
+  }
   .venue-box-map {
     width: 100%;
     aspect-ratio: 902 / 479;
@@ -81,6 +127,59 @@
     border: 3px solid;
     border-color: #a7c4d4;
     padding: 10px;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .venue-container {
+    padding-top: 100px;
+    padding-bottom: 0px;
+    .venue-title {
+      font-size: 15px;
+      line-height: 18px;
+      margin-bottom: 30px;
+    }
+    .button-directions {
+      width: 145px;
+      height: 33px;
+      .button-text {
+        font-size: 14px;
+        line-height: 17px;
+      }
+      .button-arrow-right {
+        font-size: 14px;
+      }
+    }
+  }
+  .venue-box {
+    .venue-box-name {
+      font-size: 12px;
+      line-height: 15px;
+      margin-top: 0px;
+      margin-bottom: 16px;
+    }
+    .venue-box-row {
+      .venue-box-icon {
+        font-size: 9px;
+        margin-right: 8px;
+      }
+      .venue-box-text {
+        font-size: 10px;
+        line-height: 12px;
+        margin-bottom: 8px;
+      }
+    }
+    .venue-box-button {
+      font-size: 10px;
+      line-height: 12px;
+    }
+    .venue-box-map {
+      border: 0.98px solid;
+      padding: 3px;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
   }
 }
 </style>

@@ -8,7 +8,7 @@ build:
   stage: build
   except:
     - dev
-    - deploy
+    - staging
   script:
     - echo "Building pages"
     - yarn build
@@ -34,7 +34,7 @@ pages:
     # The folder that contains the files to be exposed at the Page URL
       - public
   only:
-    - deploy
+    - staging
 
 # This folder is cached between builds
 # https://docs.gitlab.com/ee/ci/yaml/index.html#cache
@@ -42,7 +42,20 @@ cache:
   paths:
     - node_modules/
 
-deploy:
+sit:
+  stage: deploy
+  image: registry.gitlab.com/static-web-apps/azure-static-web-apps-deploy
+  script:
+    - echo "Deploying pages in sit"
+  environment: production
+  variables:
+    API_TOKEN: $API_TOKEN_SIT
+    APP_PATH: '$CI_PROJECT_DIR'
+    OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
+  only:
+    - staging
+
+production:
   stage: deploy
   image: registry.gitlab.com/static-web-apps/azure-static-web-apps-deploy
   script:
@@ -52,3 +65,5 @@ deploy:
     API_TOKEN: $API_TOKEN
     APP_PATH: '$CI_PROJECT_DIR'
     OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
+  only:
+    - main

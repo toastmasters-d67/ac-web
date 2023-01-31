@@ -1,55 +1,22 @@
 <template>
   <section class="briefing-container">
     <div class="briefing-speaker">
-      <header class="briefing-title">Verity Price</header>
-      <img
-        src="@/assets/icon/speaker/speaker-divider.png"
-        class="briefing-speaker-divider"
-        alt="divider"
-      />
-      <div class="briefing-speaker-row">
+      <header class="briefing-speaker-name">{{ name }}</header>
+      <div class="briefing-speaker-title">{{ title }}</div>
+      <hr class="briefing-speaker-divider" />
+      <div class="briefing-speaker-intro">
         <img
-          src="@/assets/image/speaker/speaker-price.png"
+          :src="getImage(speakerKey)"
           class="briefing-speaker-image"
           alt="play"
         />
         <div class="briefing-speaker-text">
-          <span>
-            What does it take to be the first? Way back in 2005, Verity started
-            her journey as the first South African musician with the tenacious
-            foresight to get online crowdfunding for an album she hadn&apos;t
-            even recorded yet. Fifteen years later, and a career glittered with
-            accolades, brings us to 2021 and Verity&apos;s latest big first -
-            first speaker from Africa to ever be crowned the World Champion of
-            Public Speaking and the sixth woman in history.
-          </span>
-          <span>
-            Her talent for ‘acting out the box’ rather than merely ‘thinking
-            out’ of it, has brought international success for Verity, speaking
-            globally on innovation and thinking differently, which includes two
-            <a
-              href="https://www.ted.com/talks/verity_price_does_convenience_kill_creativity"
-              class="briefing-link"
-              target="_blank"
-            >
-              TEDx Talks
-            </a>
-            . As the Toastmasters 2022 World Champion, Verity captured the
-            judges, and thousands of peoples imagination with her winning speech
-            <a
-              href="https://www.youtube.com/watch?v=k24vGzEjePo&ab_channel=ToastmastersInternational"
-              class="briefing-link"
-              target="_blank"
-            >
-              ‘A Great Read’
-            </a>
-            - an inspiring invitation to improve our lives by &quot;writing a
-            different story&quot;. Helping people do just that, is Verity&apos;s
-            passion.
+          <span v-for="(item, key) in contents" :key="key">
+            {{ item }}
           </span>
         </div>
       </div>
-      <div class="briefing-speaker-row">
+      <div class="briefing-speaker-links">
         <img
           src="@/assets/icon/speaker/speaker-facebook.png"
           class="briefing-logo"
@@ -84,39 +51,56 @@
     color: black;
     border-color: transparent;
   }
-  .briefing-title {
+  .briefing-speaker-name {
     font-size: 48px;
     font-weight: 600;
     line-height: 49px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .briefing-speaker-title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 40px;
+    color: #53595a;
+  }
 }
 .briefing-speaker {
-  min-width: 1200px;
+  width: 83.33%;
+  max-width: 1200px;
   margin: 0 auto;
   .briefing-speaker-divider {
-    width: 1200px;
+    width: 100%;
     border: 1px solid #cccccc;
   }
-  .briefing-speaker-row {
+  .briefing-speaker-intro {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
     .briefing-speaker-image {
-      width: 510px;
-      height: 655px;
+      max-width: 510px;
+      width: 42.5%;
+      aspect-ratio: 510/655;
       border-color: transparent;
       margin-right: 50px;
     }
     .briefing-speaker-text {
-      width: 680px;
       display: flex;
       flex-direction: column;
       font-size: 20px;
       line-height: 40px;
+      @media screen and (max-width: 1024px) {
+        font-size: 15px;
+        line-height: 30px;
+      }
     }
+  }
+  .briefing-speaker-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
     .briefing-logo {
       width: 50px;
       height: 50px;
@@ -125,4 +109,80 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .briefing-container {
+    .briefing-speaker-name {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 38px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    .briefing-speaker-title {
+      font-size: 10px;
+      line-height: 10px;
+    }
+  }
+  .briefing-speaker {
+    width: 83.33%;
+    margin: 0 auto;
+    .briefing-speaker-divider {
+      display: none;
+    }
+    .briefing-speaker-intro {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      .briefing-speaker-image {
+        width: 68.27%;
+      }
+      .briefing-speaker-text {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+    .briefing-speaker-links {
+      .briefing-logo {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
 </style>
+
+<script>
+export default {
+  name: "SpeakerBriefing",
+  props: {
+    speakerKey: {
+      type: String,
+      default: "",
+    },
+    name: {
+      type: String,
+      default: "",
+    },
+    title: {
+      type: String,
+      default: "",
+    },
+    contents: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
+  },
+  methods: {
+    getImage(speakerKey) {
+      if (speakerKey.length) {
+        return require(`@/assets/image/speaker/speaker-${speakerKey}.png`);
+      }
+      return "";
+    },
+  },
+};
+</script>

@@ -1,6 +1,6 @@
 <template>
   <section id="speakers" class="speakers-container">
-    <header class="speakers-title">Meet our speakers</header>
+    <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
       <div v-for="(speaker, index) in speakers" :key="index">
         <router-link :to="getLink(speaker.key)" class="speaker">
@@ -12,17 +12,25 @@
           <span class="speaker-name-text">{{ speaker.name }}</span>
         </router-link>
       </div>
+      <div class="speaker">
+        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
+      </div>
+      <div class="speaker">
+        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
+      </div>
+      <div class="speaker">
+        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
+      </div>
     </div>
-    <router-link to="/speakers" class="button-view-all">
-      <span class="button-text">View all</span>
-      <i class="pi pi-arrow-right button-arrow-right"></i>
-    </router-link>
   </section>
 </template>
 
 <style scoped lang="scss">
 .speakers-container {
-  background: #e5e5e5;
+  background: transparent;
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
@@ -36,18 +44,19 @@
   }
 }
 .speakers {
-  width: 1200px;
+  max-width: 1200px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   border-color: transparent;
   margin: 0 auto;
+  padding-left: 70px;
+  margin-bottom: 32px;
   a {
     color: black;
     text-decoration: none;
     border-color: transparent;
   }
-  margin-bottom: 60px;
   .speaker {
     display: flex;
     flex-direction: column;
@@ -55,10 +64,10 @@
     align-items: center;
     border-color: transparent;
     margin-right: 70px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     .speaker-image {
-      width: 300px;
-      height: 300px;
+      width: 250px;
+      height: 250px;
       border-radius: 20px;
       margin-bottom: 24px;
     }
@@ -69,44 +78,71 @@
     }
   }
 }
-.button-view-all {
-  width: 170px;
-  background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid white;
-  border-radius: 30px;
-  text-decoration: none;
-  padding: 12px 24px;
-  margin: 0 auto;
-  margin-bottom: 150px;
-  .button-text {
-    color: white;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 27px;
-    margin-right: 8px;
+
+@media screen and (max-width: 768px) {
+  .speakers-container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    .speakers-title {
+      font-size: 15px;
+      line-height: 18px;
+      margin-bottom: 29px;
+    }
   }
-  .button-arrow-right {
-    color: white;
+  .speakers {
+    padding-left: 10px;
+    margin-bottom: 0;
+    .speaker {
+      margin-right: 10px;
+      margin-bottom: 19px;
+      .speaker-image {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+      .speaker-name-text {
+        font-size: 12px;
+        line-height: 15px;
+      }
+    }
+  }
+  .button-view-all {
+    width: 91px;
+    border: 1px solid white;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    .button-text {
+      font-size: 10px;
+      line-height: 12px;
+      margin-right: 8px;
+    }
+    .button-arrow-right {
+      font-size: 9px;
+    }
   }
 }
 </style>
 
 <script>
-import speakers from "@/assets/data/speakers.json";
+import { reactive } from "vue";
 
 export default {
   name: "Speakers",
-  setup() {
+  data() {
+    const speakers = reactive([]);
+    Array.from(this.$tm("speakers")).forEach((source) => {
+      const item = {
+        key: this.$rt(source.key),
+        name: this.$rt(source.name),
+      };
+      speakers.push(item);
+    });
     return { speakers };
   },
   methods: {
     getLink(key) {
       if (key.length) {
-        return `/speakers/${key}`;
+        return `/${key}`;
       }
       return "";
     },
