@@ -360,8 +360,30 @@ ul.ticket-item-list {
       line-height: 30px;
       margin: 17px auto;
     }
+    .ticket-item-price-note {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 40px;
+    }
+    .early-bird-title {
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      line-height: 20px;
+    }
+    .early-bird-title-note {
+      font-size: 10px;
+      line-height: 15px;
+      letter-spacing: 0;
+    }
     .early-bird-price {
       font-size: 32px;
+      margin-top: 9px;
+      margin-bottom: 9px;
+    }
+    .early-bird-price-note {
+      font-size: 10px;
+      line-height: 10px;
+      margin-bottom: 9px;
     }
   }
   ul.ticket-item-list {
