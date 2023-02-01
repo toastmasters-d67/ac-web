@@ -354,7 +354,7 @@
       <div class="program-row program-center">
         <span class="row-time"></span>
         <div class="row-items">
-          <div class="row-item item-2-column-height">
+          <div class="row-item">
             <span class="row-item-time">
               09:10
               <span class="row-item-time-duration">
@@ -699,7 +699,6 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
   justify-content: flex-start;
   gap: 16px;
   .row-item-columns {
@@ -708,9 +707,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
-  }
-  .item-2-column-height {
-    height: 343px;
   }
   .row-item {
     width: 100%;
@@ -747,6 +743,9 @@
     .title-3-lines {
       font-size: 20px;
       line-height: 25px;
+    }
+    .title-expand {
+      text-align: center;
     }
     .row-item-venue {
       color: #004165;
@@ -845,12 +844,6 @@
     .row-item-columns {
       gap: 5px;
     }
-    .item-2-column-height {
-      height: 219px;
-      @media screen and (min-width: 427px) {
-        height: 189px;
-      }
-    }
     .row-item {
       padding: 10px;
       gap: 5px;
@@ -873,7 +866,6 @@
       }
       .title-expand {
         max-width: 76%;
-        text-align: center;
       }
       .row-item-venue {
         font-size: 8px;
