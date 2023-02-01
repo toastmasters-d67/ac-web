@@ -255,8 +255,8 @@
                 })
               }}
             </span>
-            <span class="row-item-venue venue-lisianthus">
-              {{ $t("home.program.room.lisianthus") }}
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
             </span>
           </div>
           <div class="row-item">
@@ -273,8 +273,8 @@
                 })
               }}
             </span>
-            <span class="row-item-venue venue-calla">
-              {{ $t("home.program.room.calla") }}
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
             </span>
           </div>
         </div>
