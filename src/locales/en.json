@@ -87,7 +87,9 @@
     "ticket": {
       "title": "Ticket Price",
       "two-day": "2 Day Pass",
-      "early-bird": "Early Bird Pass",
+      "early-bird-title": "Early Bird Pass",
+      "early-bird-title-note": "2 day pass + Dinner Banquet",
+      "early-bird-price-note": "Original price $ 3000",
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
       "until": "Until Mar 19, 2023",

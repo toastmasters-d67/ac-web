@@ -87,7 +87,9 @@
     "ticket": {
       "title": "票價資訊",
       "two-day": "二日票",
-      "early-bird": "早鳥二日票",
+      "early-bird-title": "早鳥二日票",
+      "early-bird-title-note": "二日票加晚宴",
+      "early-bird-price-note": "原價 $ 3000",
       "first-day": "第一日票",
       "second-day": "第二日票",
       "until": "優惠至 3 月 19 日止",

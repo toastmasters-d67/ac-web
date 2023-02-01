@@ -29,10 +29,16 @@
       </div>
       <div class="ticket-item early-bird">
         <span class="ticket-item-expiring">{{ $t("home.ticket.until") }}</span>
-        <span class="ticket-item-title">{{
-          $t("home.ticket.early-bird")
-        }}</span>
-        <span class="ticket-item-price price-early-bird">$ 2500</span>
+        <span class="ticket-item-title early-bird-title">
+          {{ $t("home.ticket.early-bird-title") }}
+        </span>
+        <span class="early-bird-title-note">
+          {{ $t("home.ticket.early-bird-title-note") }}
+        </span>
+        <span class="ticket-item-price early-bird-price">$ 2500</span>
+        <span class="early-bird-price-note">
+          {{ $t("home.ticket.early-bird-price-note") }}
+        </span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
@@ -230,9 +236,6 @@
     line-height: 60px;
     text-align: center;
   }
-  .title-early-bird {
-    font-size: 30px;
-  }
   .ticket-item-price {
     font-size: 48px;
     font-weight: 600;
@@ -241,8 +244,34 @@
     margin-top: 25px;
     margin-bottom: 25px;
   }
-  .price-early-bird {
+  .ticket-item-price-note {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 40px;
+    text-decoration-line: line-through;
+  }
+  .early-bird-title {
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 50px;
+  }
+  .early-bird-title-note {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 22px;
+  }
+  .early-bird-price {
     font-size: 60px;
+    font-weight: 500;
+    line-height: 40px;
+  }
+  .early-bird-price-note {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    text-decoration-line: line-through;
   }
 }
 ul.ticket-item-list {
@@ -326,15 +355,12 @@ ul.ticket-item-list {
       font-size: 12px;
       line-height: 15px;
     }
-    .title-early-bird {
-      font-size: 15px;
-    }
     .ticket-item-price {
       font-size: 24px;
       line-height: 30px;
       margin: 17px auto;
     }
-    .price-early-bird {
+    .early-bird-price {
       font-size: 32px;
     }
   }
