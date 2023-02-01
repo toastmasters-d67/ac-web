@@ -40,13 +40,14 @@
     align-items: center;
   }
   .slogan-date {
-    width: 270px;
+    width: fit-content;
     height: 39px;
     background: rgba(255, 255, 255, 0.2);
     font-size: 32px;
     font-weight: 400;
     line-height: 39px;
     box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.2);
+    border-radius: 1000px;
     gap: 10px;
     padding: 0px 10px;
   }
@@ -62,7 +63,6 @@
     transform: rotate(-90deg);
   }
   .slogan-title {
-    width: 403px;
     height: 49px;
     color: #214366;
     font-size: 40px;
@@ -130,7 +130,6 @@
       line-height: 10px;
     }
     .slogan-title {
-      width: 162px;
       height: 20px;
       font-size: 16px;
       line-height: 20px;

@@ -71,7 +71,6 @@
       width: 200px;
     }
     .souvenirs-item-text {
-      width: 187px;
       color: black;
       font-size: 24px;
       font-weight: 400;
@@ -113,7 +112,6 @@
         width: 100px;
       }
       .souvenirs-item-text {
-        width: 23px;
         font-size: 10px;
         line-height: 10px;
         margin-top: 10px;
