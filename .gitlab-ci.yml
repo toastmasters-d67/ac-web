@@ -54,6 +54,7 @@ sit:
     OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
   only:
     - staging
+  cache: []
 
 production:
   stage: deploy
@@ -67,3 +68,4 @@ production:
     OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
   only:
     - main
+  cache: []
