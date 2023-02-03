@@ -22,7 +22,6 @@
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  padding-top: 60px;
   padding-bottom: 150px;
   .faq-page-title {
     color: #004165;
@@ -82,7 +81,6 @@
 
 @media screen and (max-width: 768px) {
   .faq-container {
-    padding-top: 0px;
     .faq-page-title {
       font-size: 20px;
       line-height: 24px;

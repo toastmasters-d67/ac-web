@@ -38,7 +38,7 @@
       "day1": "Day 1",
       "day2": "Day 2",
       "registration": "Registration",
-      "until": "Open until",
+      "until": "Open until 12:00",
       "judge": "Judge Briefing",
       "min": "mins",
       "run-off": "International Speech Run-off {alphabet} Contest",
@@ -72,7 +72,7 @@
       "title": "Annual Conference",
       "date": "Apr. 22-23",
       "slogan": ["Connect to the Present.", "Lead the future!"],
-      "text": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions. 16 education sessions across four tracks.",
+      "text": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions.",
       "ticket": "Get Tickets"
     },
     "souvenir": {
@@ -96,9 +96,9 @@
       "lunch": "Lunchbox",
       "lunch2": "Lunchboxes for 2 days",
       "souvenir": "Souvenirs",
-      "banquet": "Dinner banquet on 4/22 party included",
+      "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
-      "note": "The tickets will be a vailable for order soon. Please stay tuned!"
+      "note": "The tickets will be available for order soon. Please stay tuned!"
     },
     "venue": {
       "title": "How to Get There?",
@@ -141,6 +141,9 @@
         "A bullied, skinny kid too afraid to stand up for himself, Greg used to live in fear. At age 12, he decided to change and spent his newspaper route money on a gym membership and undertook rigorous weight training and the study of martial arts. He then decided to take on two massive challenges, to become the Australian National Bodybuilding Champion and a Karate Master. It was here Greg learned to unravel the warriors code and by applying its principles he revealed how limitless his life could become.",
         "In 2019, Greg became an Accredited Speaker by Toastmasters International, making him 1 of 88 speakers globally in over 40 years to receive this honor. Greg’s ability to transfer his mindset into totally new areas of life and master them in relatively short time has had him labelled by many as the MASTER OF REMASTERY. Let Greg show you the steps to master your mindset and remaster your life."
       ],
+      "facebook": "https://www.facebook.com/greg.vanborssum/",
+      "instagram": "https://www.instagram.com/gvb_mindwarriors/",
+      "youtube": "https://www.youtube.com/{'@'}gvbmindwarriors5678",
       "seminar": {
         "topic": "TBD",
         "time": "4/22 13:10-14:00",
@@ -157,6 +160,9 @@
         "Time featured Mr. Shih in its article “60 years of Asian Hero’s” for turning Taiwan into a PC manufacturing powerhouse. He is awarded “Taiwan Cultural Collaboration Medal” by the Ministry of Culture of Taiwan in 2021.",
         "Mr. Shih earned a Bachelor’s Master and honorary Ph D in Electronics engineering from National Chiao Tung University in Taiwan. He was awarded an Honorary Doctorate of Technology by Hong Kong Polytechnic University, and an Honorary Doctor of International Law from the Thousand School of Global Management."
       ],
+      "facebook": "https://www.facebook.com/StanShares/",
+      "instagram": "https://www.instagram.com/stanshih.ig/",
+      "youtube": "",
       "seminar": {
         "topic": "From Wangdao Perspective to the Competitiveness of Taiwan",
         "time": "4/22 11:00-11:50",

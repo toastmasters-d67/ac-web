@@ -6,9 +6,7 @@
       <div class="seminar-content">
         <div class="seminar-content-basic-info">
           <div class="seminar-row">
-            <span class="seminar-row-title">
-              Topic{{ $t("speaker.topic") }} |
-            </span>
+            <span class="seminar-row-title"> {{ $t("speaker.topic") }} | </span>
             <span class="seminar-row-subtitle">{{ topic }}</span>
           </div>
           <div class="seminar-row">
