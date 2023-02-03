@@ -87,7 +87,6 @@
     .briefing-speaker-image {
       max-width: 510px;
       width: 42.5%;
-      aspect-ratio: 510/655;
       border-color: transparent;
       margin-right: 50px;
     }
