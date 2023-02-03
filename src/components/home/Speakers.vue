@@ -13,15 +13,15 @@
         </router-link>
       </div>
       <div class="speaker">
-        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <img :src="getImage('tbd')" class="speaker-image" alt="TBD" />
         <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
       </div>
       <div class="speaker">
-        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <img :src="getImage('tbd')" class="speaker-image" alt="TBD" />
         <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
       </div>
       <div class="speaker">
-        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
+        <img :src="getImage('tbd')" class="speaker-image" alt="TBD" />
         <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
       </div>
     </div>

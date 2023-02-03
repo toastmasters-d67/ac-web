@@ -6,6 +6,9 @@
       :name="name"
       :title="title"
       :contents="contents"
+      :facebook="facebook"
+      :instagram="instagram"
+      :youtube="youtube"
     />
     <Seminar
       :topic="topic"
@@ -43,6 +46,9 @@ export default {
     const name = this.$rt(speaker.name);
     const title = this.$rt(speaker.title);
     const contents = reactive([]);
+    const facebook = this.$rt(speaker.facebook);
+    const instagram = this.$rt(speaker.instagram);
+    const youtube = this.$rt(speaker.youtube);
     Array.from(speaker.contents).forEach((source) => {
       contents.push(this.$rt(source));
     });
@@ -57,6 +63,9 @@ export default {
       name,
       title,
       contents,
+      facebook,
+      instagram,
+      youtube,
       topic,
       time,
       location,
