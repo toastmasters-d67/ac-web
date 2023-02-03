@@ -80,7 +80,6 @@
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  padding-top: 150px;
   padding-bottom: 50px;
   a {
     color: #004165;
@@ -164,7 +163,6 @@
 
 @media screen and (max-width: 768px) {
   .venue-container {
-    padding-top: 0px;
     .venue-box {
       width: 87.2%;
       max-width: 915px;
