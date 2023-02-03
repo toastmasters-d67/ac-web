@@ -19,13 +19,13 @@
     </div>
     <div class="program-table" v-if="showProgramDay1">
       <div class="program-row program-center">
-        <span class="row-time">09:00</span>
+        <span class="row-time">09:10</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-yellow">
             <span class="row-item-time">
               {{ $t("home.program.registration") }}
               <span class="row-item-time-duration">
-                ({{ $t("home.program.until") }} 12:00)
+                ({{ $t("home.program.until") }})
               </span>
             </span>
             <span class="row-item-venue venue-lobby">
@@ -336,13 +336,13 @@
     </div>
     <div class="program-table" v-if="!showProgramDay1">
       <div class="program-row program-center">
-        <span class="row-time">09:00</span>
+        <span class="row-time">09:10</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-yellow">
             <span class="row-item-time">
               {{ $t("home.program.registration") }}
               <span class="row-item-time-duration">
-                ({{ $t("home.program.until") }} 12:00)
+                ({{ $t("home.program.until") }})
               </span>
             </span>
             <span class="row-item-venue venue-lobby">
