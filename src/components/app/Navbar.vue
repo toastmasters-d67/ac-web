@@ -145,14 +145,13 @@ hr {
   .navbar-logo {
     position: absolute;
     top: 15px;
-    left: 38px;
+    left: 3.96%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     .navbar-logo-image {
       width: 60px;
-      height: 50px;
       margin-right: 20px;
     }
     .navbar-logo-text {
@@ -176,7 +175,7 @@ hr {
   .navbar-links {
     position: absolute;
     top: 28px;
-    right: 24px;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -195,6 +194,15 @@ hr {
       line-height: 24px;
       border: transparent;
     }
+    @media screen and (max-width: 950px) {
+      .navbar-link {
+        font-size: 16px;
+        margin-right: 20px;
+      }
+      .navbar-select {
+        font-size: 16px !important;
+      }
+    }
   }
   .navbar-mobile-container {
     display: none;
@@ -209,7 +217,6 @@ hr {
       left: 22px;
       .navbar-logo-image {
         width: 50px;
-        height: 41.49px;
         margin-right: 7px;
       }
       .navbar-logo-text {
