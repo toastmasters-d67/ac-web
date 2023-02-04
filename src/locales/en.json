@@ -18,7 +18,8 @@
       "lang": "EN"
     },
     "footer": {
-      "contact": "Contact Us"
+      "contact": "Contact Us",
+      "reserved": "2023 District 67, Toastmasters International. All rights reserved."
     },
     "button": {
       "ticket": ["Get", "Tickets"],

@@ -95,6 +95,7 @@
       flex-direction: column;
       font-size: 20px;
       line-height: 40px;
+      font-weight: 400;
       @media screen and (max-width: 1024px) {
         font-size: 15px;
         line-height: 30px;
@@ -143,7 +144,7 @@
         width: 68.27%;
       }
       .briefing-speaker-text {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 20px;
       }
     }
