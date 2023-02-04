@@ -144,8 +144,9 @@
       width: 86.49%;
       min-width: 200px;
       font-weight: 500;
-      font-size: 8px;
-      line-height: 12px;
+      font-size: 11px;
+      line-height: 15px;
+      letter-spacing: 0.05em;
       margin-top: 10px;
     }
     .slogan-button {
