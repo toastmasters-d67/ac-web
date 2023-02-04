@@ -78,9 +78,7 @@
           alt="youtube"
       /></a>
     </div>
-    <div class="footer-reserved">
-      © 2023 District 67, Toastmasters International. All rights reserved.
-    </div>
+    <div class="footer-reserved">© {{ $t("app.footer.reserved") }}</div>
   </footer>
 </template>
 

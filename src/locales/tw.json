@@ -18,7 +18,8 @@
       "lang": "中文"
     },
     "footer": {
-      "contact": "聯繫我們"
+      "contact": "聯繫我們",
+      "reserved": "2023 中華民國國際演講協會 版權所有"
     },
     "button": {
       "ticket": ["線上", "購票"],
