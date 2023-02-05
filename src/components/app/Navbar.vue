@@ -2,7 +2,7 @@
   <nav class="navbar-container">
     <router-link to="/" class="navbar-logo" @click="setWindowToTop()">
       <img
-        src="@/assets/icon/app/logo.png"
+        src="@/assets/icon/app/logo.svg"
         class="navbar-logo-image"
         alt="logo"
       />
