@@ -192,5 +192,29 @@
       "title": "By Bus",
       "content": "Take 605, 668, 817, or Keelung Bus to South Zhangshuwan Station, and then walk to reach Kuanhe."
     }
+  },
+  "login": {
+    "introduction": {
+      "title": {
+        "text-highlight": "3 Steps ",
+        "text": "to purchase your ticket!"
+      },
+      "step1": {
+        "text": "Log-in with your ",
+        "text-highlight": "Google account."
+      },
+      "step2": {
+        "text": "Choose your tickets and ",
+        "text-highlight": "Check out."
+      },
+      "step3": {
+        "text": "Edit your ",
+        "text-highlight": "Attendee Information."
+      }
+    },
+    "google": {
+      "title": "Log in",
+      "description": "Please log in before you purchase the ticket."
+    }
   }
 }

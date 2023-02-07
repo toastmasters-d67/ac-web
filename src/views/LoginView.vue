@@ -3,30 +3,38 @@
     <div class="login-instruction">
       <span class="login-instruction-title">
         <span class="login-instruction-title-text">
-          <span class="login-instruction-title-highlight">3 Steps&nbsp;</span>
-          to purchase your ticket !
+          <span class="login-instruction-title-highlight"
+            >{{ $t("login.introduction.title.text-highlight") }}
+          </span>
+          {{ $t("login.introduction.title.text") }}
         </span>
       </span>
       <div class="login-instruction-steps">
         <div class="login-instruction-step">
           <span class="login-instruction-step-number">1</span>
           <span class="login-instruction-step-text"
-            >Log-in with your&nbsp;
-            <span class="text-highlight">Google account</span>
+            >{{ $t("login.introduction.step1.text") }}
+            <span class="text-highlight">
+              {{ $t("login.introduction.step1.text-highlight") }}
+            </span>
           </span>
         </div>
         <div class="login-instruction-step">
           <span class="login-instruction-step-number">2</span>
           <span class="login-instruction-step-text"
-            >Choose your tickets and&nbsp;
-            <span class="text-highlight">Check out</span>
+            >{{ $t("login.introduction.step2.text") }}
+            <span class="text-highlight">
+              {{ $t("login.introduction.step2.text-highlight") }}
+            </span>
           </span>
         </div>
         <div class="login-instruction-step">
           <span class="login-instruction-step-number">3</span>
           <span class="login-instruction-step-text"
-            >Edit your&nbsp;
-            <span class="text-highlight">Attendee Information</span>
+            >{{ $t("login.introduction.step3.text") }}
+            <span class="text-highlight">
+              {{ $t("login.introduction.step3.text-highlight") }}
+            </span>
           </span>
         </div>
       </div>
@@ -37,9 +45,9 @@
       />
     </div>
     <div class="login-google">
-      <span class="login-google-title">Log in</span>
+      <span class="login-google-title">{{ $t("login.google.title") }}</span>
       <span class="login-google-description">
-        Please log in before you purchase the ticket.
+        {{ $t("login.google.description") }}
       </span>
       <button class="login-google-button">
         <img

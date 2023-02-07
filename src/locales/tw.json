@@ -192,5 +192,29 @@
       "title": "搭公車前往",
       "content": "搭乘605、668、817號、基隆客運至南樟樹灣站下車，再步行至寬和宴展館即可。"
     }
+  },
+  "login": {
+    "introduction": {
+      "title": {
+        "text-highlight": "只需3個步驟 ",
+        "text": "即可完成購票！"
+      },
+      "step1": {
+        "text": "登入您的 ",
+        "text-highlight": "Google 帳號"
+      },
+      "step2": {
+        "text": "選擇您想購買的票券並 ",
+        "text-highlight": "結帳"
+      },
+      "step3": {
+        "text": "編輯您的 ",
+        "text-highlight": "參與者資訊"
+      }
+    },
+    "google": {
+      "title": "登入",
+      "description": "請登入以繼續完成購票"
+    }
   }
 }
