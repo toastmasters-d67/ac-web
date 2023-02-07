@@ -32,7 +32,7 @@
       </div>
       <img
         alt="manshoppingonline"
-        src="@/assets/image/login/man-shopping-online.png"
+        :src="getImage()"
         class="login-man-shopping-online"
       />
     </div>
@@ -56,8 +56,32 @@
 <script>
 export default {
   name: "Login",
+  data() {
+    return {
+      windowHeight: window.innerHeight,
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
   beforeMount() {
     window.scrollTo({ top: 0 });
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.windowHeight = window.innerWidth;
+    },
+    getImage() {
+      if (this.windowHeight > 768) {
+        return require(`@/assets/image/login/man-shopping-online.png`);
+      } else {
+        return require(`@/assets/image/login/man-shopping-online-mobile.png`);
+      }
+    },
   },
 };
 </script>
@@ -165,6 +189,7 @@ export default {
       text-decoration: none;
     }
     .login-google-description {
+      width: 90%;
       color: rgba(33, 67, 102, 1);
       font-size: 20px;
       align-self: auto;
@@ -204,6 +229,80 @@ export default {
         line-height: normal;
         font-stretch: normal;
         text-decoration: none;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .login-container {
+    height: 660px;
+    flex-direction: column;
+    background-color: #f8f0e9;
+    .login-instruction {
+      width: 100%;
+      height: auto;
+      background: none;
+      padding: 0;
+      padding-top: 94px;
+      .login-instruction-title {
+        margin: 24px auto 8px;
+        .login-instruction-title-highlight {
+          font-size: 20px;
+          line-height: 24px;
+        }
+        .login-instruction-title-text {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+      .login-man-shopping-online {
+        position: relative;
+        width: 166px;
+        order: -1;
+        margin: auto;
+      }
+      .login-instruction-steps {
+        margin: auto;
+        margin-bottom: 24px;
+        gap: 8px;
+        .login-instruction-step {
+          .login-instruction-step-number {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            line-height: 17px;
+            padding: 9px;
+            margin-right: 17px;
+          }
+          .login-instruction-step-text {
+            font-size: 14px;
+            line-height: 17px;
+          }
+        }
+      }
+    }
+    .login-google {
+      position: absolute;
+      top: 80px;
+      width: 100%;
+      height: 525px;
+      .login-google-title {
+        font-size: 24px;
+        line-height: 29px;
+      }
+      .login-google-description {
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 0;
+      }
+      .login-google-button {
+        position: absolute;
+        width: 315px;
+        height: 47px;
+        bottom: 0;
+        gap: 19px;
+        margin-right: 0;
+        cursor: pointer;
       }
     }
   }
