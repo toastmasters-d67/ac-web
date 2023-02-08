@@ -1,5 +1,6 @@
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
+  publicPath: process.env.BASE_URL,
   transpileDependencies: true,
 
   pluginOptions: {
@@ -13,20 +14,5 @@ module.exports = defineConfig({
       fullInstall: true,
     },
   },
+  lintOnSave: process.env.NODE_ENV !== "production",
 });
-
-module.exports = {
-  publicPath: process.env.BASE_URL,
-
-  pluginOptions: {
-    i18n: {
-      locale: "en",
-      fallbackLocale: "en",
-      localeDir: "locales",
-      enableLegacy: false,
-      runtimeOnly: false,
-      compositionOnly: false,
-      fullInstall: true,
-    },
-  },
-};
