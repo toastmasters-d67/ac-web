@@ -3,7 +3,7 @@
 image: node:latest
 # Functions that should be executed before the build script is run
 before_script:
-  - yarn install --frozen-lockfile --progress=false
+  - yarn --frozen-lockfile --progress=false
 build:
   stage: build
   except:
