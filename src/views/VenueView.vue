@@ -16,7 +16,7 @@
           <span class="venue-row-text">(02) 2649-3034</span>
         </div>
         <div class="venue-row">
-          <i class="pi pi-globe venue-row-icon"></i>
+          <i class="pi pi-map-marker venue-row-icon"></i>
           <span class="venue-row-text">
             {{ $t("home.venue.address") }}
           </span>
