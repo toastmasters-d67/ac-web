@@ -137,7 +137,7 @@ hr {
   z-index: 5;
   width: 100%;
   height: 80px;
-  background: #819db2;
+  background: #f8f0e9;
   font-size: 20px;
   line-height: 24px;
   text-align: center;

@@ -33,6 +33,11 @@
   border-color: transparent;
   padding-top: 150px;
   padding-bottom: 150px;
+  background: linear-gradient(
+    180.29deg,
+    #f8f0e9 0.27%,
+    rgba(251, 239, 229, 0) 99.76%
+  );
   .countdown-title {
     color: #004165;
     font-size: 48px;

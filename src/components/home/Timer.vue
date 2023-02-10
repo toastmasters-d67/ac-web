@@ -52,7 +52,7 @@
     top: 50%;
     width: 190px;
     height: 190px;
-    background: rgba(219, 231, 231, 1);
+    background: rgba(233, 238, 235, 1);
     border-radius: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
