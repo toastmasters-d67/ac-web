@@ -111,9 +111,18 @@
         </ul>
       </div>
     </div>
-    <div class="ticket-coming-soon">
-      {{ $t("home.ticket.note") }}
+    <div class="ticket-note">
+      <span v-for="(item, index) in $tm('home.ticket.note')" :key="index">
+        {{ $rt(item) }}&nbsp;
+      </span>
     </div>
+    <button
+      class="ticket-button"
+      onclick="location.href = 'https://core.newebpay.com/EPG/tmacearlybird2023/urEMIb'"
+    >
+      <span class="button-text">{{ $t("home.ticket.order") }}</span>
+      <i class="pi pi-arrow-right button-arrow-right"></i>
+    </button>
   </section>
 </template>
 
@@ -126,6 +135,7 @@
   justify-content: center;
   align-items: center;
   border-color: transparent;
+  padding-top: 100px;
   padding-bottom: 200px;
   .ticket-title {
     color: #004165;
@@ -144,12 +154,16 @@
     }
     margin: 0 auto;
   }
-  .ticket-coming-soon {
-    width: 60%;
+  .ticket-note {
+    display: flex;
+    flex-direction: row;
     font-weight: 600;
     font-size: 22px;
     line-height: 30px;
     letter-spacing: 0.05em;
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    }
   }
   .ticket-button {
     color: #6f6f6e;
@@ -162,7 +176,7 @@
     box-sizing: border-box;
     gap: 8px;
     padding: 12px 24px;
-    margin-top: 60px;
+    margin-top: 23px;
     cursor: pointer;
     .button-text {
       font-size: 22px;
@@ -307,6 +321,7 @@ ul.ticket-item-list {
 
 @media screen and (max-width: 768px) {
   .ticket-container {
+    padding-top: 70px;
     padding-bottom: 100px;
     .ticket-title {
       font-size: 15px;
@@ -318,7 +333,8 @@ ul.ticket-item-list {
         margin-right: 9px;
       }
     }
-    .ticket-coming-soon {
+    .ticket-note {
+      flex-direction: column;
       font-size: 10px;
       line-height: 12px;
     }
@@ -326,7 +342,7 @@ ul.ticket-item-list {
       border: 1px solid white;
       gap: 5px;
       padding: 8px 15px;
-      margin-top: 30px;
+      margin-top: 16px;
       .button-text {
         font-size: 10px;
         line-height: 12px;
@@ -339,7 +355,7 @@ ul.ticket-item-list {
   }
   .early-bird {
     width: 163px;
-    height: 231px;
+    height: 222px;
     padding-top: 30px;
   }
   .ticket-item {
@@ -389,7 +405,7 @@ ul.ticket-item-list {
   ul.ticket-item-list {
     width: 124px;
     font-weight: 400;
-    margin-bottom: 34px;
+    margin-bottom: 16px;
     li.ticket-item-row {
       .ticket-item-text {
         font-size: 10px;

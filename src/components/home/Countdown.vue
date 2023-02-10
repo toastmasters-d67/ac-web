@@ -73,7 +73,7 @@
 @media screen and (max-width: 768px) {
   .countdown-container {
     padding-top: 0px;
-    padding-bottom: 100px;
+    padding-bottom: 30px;
     .countdown-title {
       font-size: 15px;
       line-height: 18px;

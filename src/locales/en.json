@@ -99,7 +99,8 @@
       "souvenir": "Souvenirs",
       "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
-      "note": "The tickets will be available for order soon. Please stay tuned!"
+      "note": ["Early Bird Pass is available for order now!", "Please stay tuned for more updates."],
+      "order": "Order Ticket"
     },
     "venue": {
       "title": "How to Get There?",
