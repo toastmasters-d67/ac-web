@@ -11,7 +11,7 @@
       </span>
     </div>
     <span class="slogan-text">
-      {{ $t("home.slogan.text") }}
+      {{ sloganText }}
     </span>
     <button class="slogan-button" @click="scrollToElement('ticket')">
       {{ $t("home.slogan.ticket") }}
@@ -167,7 +167,28 @@ export default {
       type: Function,
     },
   },
+  data() {
+    return {
+      windowHeight: window.innerHeight,
+      sloganText: this.$t("home.slogan.text.desktop"),
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
+    handleResize() {
+      this.windowHeight = window.innerWidth;
+      if (this.windowHeight > 768) {
+        this.sloganText = this.$t("home.slogan.text.desktop");
+      } else {
+        this.sloganText = this.$t("home.slogan.text.mobile");
+      }
+    },
     getStyle() {
       const background = require("@/assets/image/home/slogan-background.png");
       return `background: url(${background}) no-repeat center bottom/cover`;
