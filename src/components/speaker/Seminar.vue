@@ -154,12 +154,12 @@
             line-height: 40px;
           }
           .seminar-row-subtitle {
-            font-size: 16px;
+            font-size: 14px;
             line-height: 20px;
             margin-bottom: 10px;
           }
           .seminar-row-text {
-            font-size: 12px;
+            font-size: 14px;
             line-height: 20px;
           }
         }
