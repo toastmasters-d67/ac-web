@@ -27,6 +27,11 @@ const routes = [
     name: "speaker",
     component: () => import("@/views/SpeakerTemplateView.vue"),
   },
+  {
+    path: "/order",
+    name: "order",
+    component: () => import("@/views/OrderView.vue"),
+  },
 ];
 
 const router = createRouter({
