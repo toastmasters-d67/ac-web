@@ -22,7 +22,9 @@
             class="myorder-banquet-icon"
           />
           <span class="myorder-banquet-text">Night banquet</span>
-          <span class="myorder-banquet-number">2</span>
+          <span class="myorder-banquet-number">
+            {{ remainBanquetTickets }}
+          </span>
         </div>
         <span class="myorder-banquet-note">
           (Please assign Night Banquet ticket to recipients.)
@@ -37,14 +39,24 @@
 <script>
 export default {
   name: "MyOrder",
+  props: {
+    tickets: {
+      type: Object,
+    },
+    remainBanquetTickets: {
+      type: Number,
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
 .myorder-container {
-  // width: 387px;
   width: 32.25%;
-  position: relative;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   background-color: white;

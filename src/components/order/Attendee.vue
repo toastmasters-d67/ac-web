@@ -2,79 +2,104 @@
   <div class="attendee-container">
     <div class="attendee-heading">
       <span class="attendee-title">Attendee Information</span>
-      <button class="attendee-edit">Edit</button>
+      <button
+        class="attendee-button edit"
+        @click="editing = !editing"
+        v-if="!editing"
+      >
+        Edit
+      </button>
+      <button class="attendee-button save" @click="editing = !editing" v-else>
+        Save
+      </button>
     </div>
     <span class="attendee-required">
       Required&nbsp;<span class="red">*</span>
     </span>
     <div class="attendee-ticket-list">
       <div
-        v-for="ticket in tickets"
+        v-for="(ticket, index) in tickets"
         :key="ticket.id"
         class="attendee-ticket-item"
       >
         <div class="attendee-ticket-title">
-          <span>Ticket {{ key }} - {{ ticket.description }}</span>
+          <span>Ticket {{ ticket.id }} - {{ ticket.description }}</span>
           <i class="pi pi-angle-up attendee-expandarrowup" />
         </div>
+        <!-- Debug use -->
+        <!-- <span style="font-size: 16px; color: blue">{{ ticket }}</span> -->
+        <!-- Debug use -->
         <div class="attendee-ticket-form">
           <div class="attendee-ticket-input">
             <input
-              v-model="firstName"
+              v-model="ticket.firstName"
               class="attendee-input-text"
               required
               pattern=".*\S.*"
+              :disabled="!editing"
             />
-            <span class="attendee-input-placeholder">
+            <span class="attendee-input-placeholder" v-show="!ticket.firstName">
               First name&nbsp;<span class="red">*</span>
             </span>
           </div>
           <div class="attendee-ticket-input">
             <input
-              v-model="lastName"
+              v-model="ticket.lastName"
               class="attendee-input-text"
               required
               pattern=".*\S.*"
+              :disabled="!editing"
             />
-            <span class="attendee-input-placeholder">
+            <span class="attendee-input-placeholder" v-show="!ticket.lastName">
               Last name&nbsp;<span class="red">*</span>
             </span>
           </div>
           <div class="attendee-ticket-input">
             <input
-              v-model="knownAs"
+              v-model="ticket.knownAs"
               class="attendee-input-text"
               placeholder="Also known as (Optional)"
+              :disabled="!editing"
             />
           </div>
-          <select v-model="clubName" class="attendee-ticket-input">
-            <option
-              v-for="item in clubs"
-              :key="item.id"
-              :value="item.english_name"
+          <div class="attendee-ticket-input">
+            <select
+              v-model="ticket.clubName"
+              class="attendee-input-text"
+              :disabled="!editing"
             >
-              {{ item.english_name }}
-            </option>
-          </select>
+              <option
+                v-for="item in clubs"
+                :key="item.id"
+                :value="item.english_name"
+              >
+                {{ item.english_name }}
+              </option>
+            </select>
+            <span class="attendee-input-placeholder" v-show="!ticket.clubName">
+              Club name&nbsp;<span class="red">*</span>
+            </span>
+          </div>
           <div class="attendee-ticket-checkbox">
             <input
-              class="attendee-checkbox-box"
               type="checkbox"
-              id="vegetarian"
-              value="true"
-              v-model="isVegetarian"
+              class="attendee-checkbox-box"
+              v-model="ticket.isVegetarian"
+              :disabled="!editing"
             />
             <label for="vegetarian" class="attendee-checkbox-text"
               >I'm a vegetarian.
             </label>
           </div>
-          <div class="attendee-ticket-checkbox" v-if="ticket.addBanquet">
+          <div class="attendee-ticket-checkbox" v-if="ticket.type != 1">
             <input
-              class="attendee-checkbox-box"
               type="checkbox"
-              id="banquet"
-              value="true"
-              v-model="hasBanquet"
+              class="attendee-checkbox-box"
+              v-model="ticket.addBanquet"
+              :disabled="
+                !editing ||
+                disableBanquetCheckboxList[index].disableBanquetCheckbox
+              "
             />
             <label for="banquet" class="attendee-checkbox-text"
               >Add a banquet ticket.
@@ -91,45 +116,62 @@ import { reactive } from "vue";
 
 export default {
   name: "Attendee",
+  props: {
+    tickets: {
+      type: Object,
+    },
+    banquetTicketNumber: {
+      type: Number,
+    },
+    assignedBanquets: {
+      type: Number,
+    },
+    clubs: {
+      type: Object,
+    },
+  },
+  beforeUpdate() {
+    var assignedBanquets = 0;
+    this.tickets.forEach((ticket) => {
+      if (ticket.addBanquet == true) {
+        assignedBanquets++;
+      }
+    });
+
+    if (this.assignedBanquets >= this.banquetTicketNumber) {
+      this.tickets.forEach((ticket) => {
+        if (ticket.addBanquet == false) {
+          this.disableBanquetCheckboxList[
+            ticket.id - 1
+          ].disableBanquetCheckbox = true;
+        }
+      });
+    } else {
+      this.tickets.forEach((ticket) => {
+        this.disableBanquetCheckboxList[
+          ticket.id - 1
+        ].disableBanquetCheckbox = false;
+      });
+    }
+
+    this.$emit("updateAssignedBanquets", assignedBanquets);
+
+    // Debug
+    console.debug(this.tickets);
+  },
   data() {
-    // Hard-code some test data
-    const tickets = reactive([
-      {
-        id: 1,
-        description: "Ticket 01 - Early Bird 2 Day Pass",
-        addBanquet: false,
-      },
-      {
-        id: 2,
-        description: "Ticket 02 - Early Bird 2 Day Pass",
-        addBanquet: false,
-      },
-      {
-        id: 3,
-        description: "Ticket 03 - First Day Pass",
-        addBanquet: true,
-      },
-      {
-        id: 4,
-        description: "Ticket 04 - Second Day Pass",
-        addBanquet: true,
-      },
-    ]);
-    const clubs = reactive([
-      { id: 1, english_name: "Happiness Toastmasters Club" },
-      { id: 2, english_name: "Hsinchu Toastmasters Club" },
-      { id: 3, english_name: "Sparkle Toastmasters Club" },
-    ]);
+    const disableBanquetCheckboxList = reactive([]);
+    this.tickets.forEach((ticket) => {
+      const item = {
+        id: ticket.id,
+        disableBanquetCheckbox: false,
+      };
+      disableBanquetCheckboxList.push(item);
+    });
     return {
-      key: 0,
-      firstName: "",
-      lastName: "",
-      knownAs: "",
-      clubName: "",
-      isVegetarian: false,
-      hasBanquet: false,
-      tickets,
-      clubs,
+      editing: false,
+      banquetCheckboxDisabled: false,
+      disableBanquetCheckboxList,
     };
   },
 };
@@ -138,6 +180,9 @@ export default {
 <style scoped lang="scss">
 .red {
   color: red;
+}
+*:disabled {
+  background-color: lightgrey;
 }
 .attendee-container {
   max-width: 713px;
@@ -164,23 +209,29 @@ export default {
     font-weight: 600;
     margin-right: 24px;
   }
-  .attendee-edit {
+  .attendee-button {
     width: 124px;
     height: 48px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
     font-size: 18px;
-    font-style: Medium;
     font-weight: 500;
+    line-height: 22px;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
     border: black solid 1px;
     border-radius: 70px;
-    background-color: white;
     padding: 4px;
     cursor: pointer;
+  }
+  .edit {
+    color: black;
+    background-color: white;
+  }
+  .save {
+    color: white;
+    background: #004165;
   }
 }
 .attendee-required {
