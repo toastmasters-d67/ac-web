@@ -53,6 +53,8 @@ sit:
     APP_PATH: '$CI_PROJECT_DIR'
     OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
     DEPLOYMENT_ENVIRONMENT: staging
+  only:
+    - staging
 
 production:
   stage: deploy
