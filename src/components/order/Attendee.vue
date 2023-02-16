@@ -22,14 +22,14 @@
         :key="ticket.id"
         class="attendee-ticket-item"
       >
-        <div class="attendee-ticket-title">
+        <div class="attendee-ticket-title" @click="toggle(index)">
           <span>Ticket {{ ticket.id }} - {{ ticket.description }}</span>
-          <i class="pi pi-angle-up attendee-expandarrowup" />
+          <i :class="forms[index].icon" />
         </div>
         <!-- Debug use -->
         <!-- <span style="font-size: 16px; color: blue">{{ ticket }}</span> -->
         <!-- Debug use -->
-        <div class="attendee-ticket-form">
+        <div class="attendee-ticket-form" v-show="forms[index].show">
           <div class="attendee-ticket-input">
             <input
               v-model="ticket.firstName"
@@ -160,18 +160,27 @@ export default {
     console.debug(this.tickets);
   },
   data() {
+    // console.log(this.tickets.length);
     const banquetCheckboxes = reactive([]);
+    const forms = reactive([]);
     this.tickets.forEach((ticket) => {
       const item = {
         id: ticket.id,
         disable: false,
       };
       banquetCheckboxes.push(item);
+
+      const item2 = {
+        id: ticket.id,
+        icon: "pi pi-angle-up attendee-expandarrow",
+        show: true,
+      };
+      forms.push(item2);
     });
     return {
       editing: false,
-      banquetCheckboxDisabled: false,
       banquetCheckboxes,
+      forms,
     };
   },
   methods: {
@@ -182,6 +191,11 @@ export default {
       ) {
         ticket.addBanquet = !ticket.addBanquet;
       }
+    },
+    toggle(index) {
+      this.forms[index].show = !this.forms[index].show;
+      const direction = this.forms[index].show ? "up" : "down";
+      this.forms[index].icon = `pi pi-angle-${direction} attendee-expandarrow`;
     },
   },
 };
@@ -195,6 +209,7 @@ export default {
   background-color: lightgrey;
 }
 .attendee-container {
+  width: 100%;
   max-width: 713px;
   display: flex;
   flex-direction: column;
@@ -285,7 +300,7 @@ export default {
   padding: 0px 12px;
   margin-bottom: 8px;
 }
-.attendee-expandarrowup {
+.attendee-expandarrow {
   width: 25px;
   height: 25px;
 }
