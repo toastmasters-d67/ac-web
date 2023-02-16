@@ -80,7 +80,10 @@
               Club name&nbsp;<span class="red">*</span>
             </span>
           </div>
-          <div class="attendee-ticket-checkbox">
+          <div
+            class="attendee-ticket-checkbox"
+            @click="ticket.isVegetarian = !ticket.isVegetarian"
+          >
             <input
               type="checkbox"
               class="attendee-checkbox-box"
@@ -91,15 +94,16 @@
               >I'm a vegetarian.
             </label>
           </div>
-          <div class="attendee-ticket-checkbox" v-if="ticket.type != 1">
+          <div
+            class="attendee-ticket-checkbox"
+            v-if="ticket.type != 1"
+            @click="clickBanquet(ticket)"
+          >
             <input
               type="checkbox"
               class="attendee-checkbox-box"
               v-model="ticket.addBanquet"
-              :disabled="
-                !editing ||
-                disableBanquetCheckboxList[index].disableBanquetCheckbox
-              "
+              :disabled="!editing || banquetCheckboxes[index].disable"
             />
             <label for="banquet" class="attendee-checkbox-text"
               >Add a banquet ticket.
@@ -120,7 +124,7 @@ export default {
     tickets: {
       type: Object,
     },
-    banquetTicketNumber: {
+    totalBanquets: {
       type: Number,
     },
     assignedBanquets: {
@@ -138,19 +142,15 @@ export default {
       }
     });
 
-    if (this.assignedBanquets >= this.banquetTicketNumber) {
+    if (this.assignedBanquets >= this.totalBanquets) {
       this.tickets.forEach((ticket) => {
         if (ticket.addBanquet == false) {
-          this.disableBanquetCheckboxList[
-            ticket.id - 1
-          ].disableBanquetCheckbox = true;
+          this.banquetCheckboxes[ticket.id - 1].disable = true;
         }
       });
     } else {
       this.tickets.forEach((ticket) => {
-        this.disableBanquetCheckboxList[
-          ticket.id - 1
-        ].disableBanquetCheckbox = false;
+        this.banquetCheckboxes[ticket.id - 1].disable = false;
       });
     }
 
@@ -160,19 +160,29 @@ export default {
     console.debug(this.tickets);
   },
   data() {
-    const disableBanquetCheckboxList = reactive([]);
+    const banquetCheckboxes = reactive([]);
     this.tickets.forEach((ticket) => {
       const item = {
         id: ticket.id,
-        disableBanquetCheckbox: false,
+        disable: false,
       };
-      disableBanquetCheckboxList.push(item);
+      banquetCheckboxes.push(item);
     });
     return {
       editing: false,
       banquetCheckboxDisabled: false,
-      disableBanquetCheckboxList,
+      banquetCheckboxes,
     };
+  },
+  methods: {
+    clickBanquet(ticket) {
+      if (
+        this.editing &&
+        this.banquetCheckboxes[ticket.id - 1].disable == false
+      ) {
+        ticket.addBanquet = !ticket.addBanquet;
+      }
+    },
   },
 };
 </script>

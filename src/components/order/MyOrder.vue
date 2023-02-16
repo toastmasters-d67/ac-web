@@ -23,7 +23,7 @@
           />
           <span class="myorder-banquet-text">Night banquet</span>
           <span class="myorder-banquet-number">
-            {{ remainBanquetTickets }}
+            {{ remainBanquets }}
           </span>
         </div>
         <span class="myorder-banquet-note">
@@ -43,7 +43,7 @@ export default {
     tickets: {
       type: Object,
     },
-    remainBanquetTickets: {
+    remainBanquets: {
       type: Number,
     },
   },

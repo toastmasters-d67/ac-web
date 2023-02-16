@@ -1,9 +1,9 @@
 <template>
   <article id="order" class="order-container">
-    <MyOrder :tickets="tickets" :remainBanquetTickets="remainBanquetTickets" />
+    <MyOrder :tickets="tickets" :remainBanquets="remainBanquets" />
     <AttendeeInformation
       :tickets="tickets"
-      :banquetTicketNumber="banquetTicketNumber"
+      :totalBanquets="totalBanquets"
       :assignedBanquets="assignedBanquets"
       :clubs="clubs"
       @updateAssignedBanquets="assignedBanquets = $event"
@@ -14,6 +14,7 @@
 <style scoped lang="scss">
 .order-container {
   display: flex;
+  gap: 20px;
   margin: 80px 8.33% 200px 8.33%;
 }
 @media screen and (max-width: 768px) {
@@ -34,7 +35,6 @@ export default {
     MyOrder,
     AttendeeInformation,
   },
-  // setup => create tickets form as it should be
   data() {
     // Hard-code some test data
     const tickets = reactive([
@@ -94,10 +94,10 @@ export default {
         addBanquet: false,
       },
     ]);
-    const banquetTicketNumber = 2;
+    const totalBanquets = 2;
     const assignedBanquets = 0;
-    const remainBanquetTickets = computed(
-      () => this.banquetTicketNumber - this.assignedBanquets
+    const remainBanquets = computed(
+      () => this.totalBanquets - this.assignedBanquets
     );
     const clubs = reactive([
       { id: 1, english_name: "Happiness Toastmasters Club" },
@@ -106,9 +106,9 @@ export default {
     ]);
     return {
       tickets,
-      banquetTicketNumber,
+      totalBanquets,
       assignedBanquets,
-      remainBanquetTickets,
+      remainBanquets,
       clubs,
     };
   },
@@ -116,11 +116,7 @@ export default {
     window.scrollTo({ top: 0 });
   },
   updated() {
-    console.log(
-      this.banquetTicketNumber,
-      this.assignedBanquets,
-      this.remainBanquetTickets
-    );
+    console.log(this.totalBanquets, this.assignedBanquets, this.remainBanquets);
   },
 };
 </script>
