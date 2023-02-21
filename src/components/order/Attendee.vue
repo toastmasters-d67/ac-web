@@ -29,7 +29,7 @@
           >ticket:[{{ index }}] - {{ ticket }}
         </span>
         <span style="font-size: 16px; color: red"
-          >errors:[{{ index }}] - {{ errors[index] }}
+          >formStatus:[{{ index }}] - {{ formStatus[index] }}
         </span> -->
         <!-- Debug use -->
         <div
@@ -38,7 +38,7 @@
         >
           <div
             class="attendee-ticket-input"
-            :style="getStyle(errors[index].firstName)"
+            :style="getStyle(formStatus[index].firstNameError)"
           >
             <input
               v-model="ticket.firstName"
@@ -57,7 +57,7 @@
           </div>
           <div
             class="attendee-ticket-input"
-            :style="getStyle(errors[index].lastName)"
+            :style="getStyle(formStatus[index].lastNameError)"
           >
             <input
               v-model="ticket.lastName"
@@ -84,13 +84,13 @@
           </div>
           <div
             class="attendee-ticket-input"
-            :style="getStyle(errors[index].clubName)"
+            :style="getStyle(formStatus[index].clubNameError)"
           >
             <select
               v-model="ticket.clubName"
               :id="`clubName-${ticket.id}`"
               class="attendee-input-text"
-              @input="validateForm()"
+              @change="validateForm()"
               :disabled="!editing"
             >
               <option
@@ -187,28 +187,21 @@ export default {
   },
   data() {
     const formStatus = reactive([]);
-    const errors = reactive([]);
     this.tickets.forEach((ticket) => {
       const item = {
         id: ticket.id,
         icon: "pi pi-angle-up attendee-expandarrow",
         showDetails: true,
         banquetDisabled: false,
+        firstNameError: null,
+        lastNameError: null,
+        clubNameError: null,
       };
       formStatus.push(item);
-
-      const item2 = {
-        id: ticket.id,
-        firstName: "",
-        lastName: null,
-        clubName: "",
-      };
-      errors.push(item2);
     });
     return {
       editing: false,
       formStatus,
-      errors,
     };
   },
   methods: {
@@ -238,31 +231,28 @@ export default {
       else return "border: red 1px solid;";
     },
     submitForm: function (e) {
+      if (this.validateForm()) this.editing = !this.editing;
+      else e.preventDefault();
+    },
+    validateForm() {
       var isFormValid = true;
       this.tickets.forEach((ticket) => {
-        this.validateForm();
+        let ticketStatus = this.formStatus[ticket.id - 1];
+        if (!ticket.firstName)
+          ticketStatus.firstNameError = "firstName required.";
+        else ticketStatus.firstNameError = "";
+
+        if (!ticket.lastName) ticketStatus.lastNameError = "lastName required.";
+        else ticketStatus.lastNameError = "";
+
+        if (!ticket.clubName) ticketStatus.clubNameError = "clubName required.";
+        else ticketStatus.clubNameError = "";
 
         if (!ticket.firstName || !ticket.lastName || !ticket.clubName)
           isFormValid = false;
       });
 
-      if (isFormValid) this.editing = !this.editing;
-      else e.preventDefault();
-    },
-    validateForm() {
-      this.tickets.forEach((ticket) => {
-        if (!ticket.firstName)
-          this.errors[ticket.id - 1].firstName = "firstName required.";
-        else this.errors[ticket.id - 1].firstName = "";
-
-        if (!ticket.lastName)
-          this.errors[ticket.id - 1].lastName = "lastName required.";
-        else this.errors[ticket.id - 1].lastName = "";
-
-        if (!ticket.clubName)
-          this.errors[ticket.id - 1].clubName = "clubName required.";
-        else this.errors[ticket.id - 1].clubName = "";
-      });
+      return isFormValid;
     },
   },
 };
@@ -406,12 +396,6 @@ export default {
       border-radius: 4px;
       padding: 0 16px;
     }
-    // input:focus + .attendee-input-placeholder {
-    //   display: none;
-    // }
-    // input:valid + .attendee-input-placeholder {
-    //   display: none;
-    // }
     ::placeholder {
       position: absolute;
       top: 10px;
@@ -420,18 +404,6 @@ export default {
       font-weight: 500;
       color: rgba(83, 89, 90, 1);
     }
-    // :required::placeholder {
-    //   background: linear-gradient(
-    //     to right,
-    //     rgba(83, 89, 90, 1) 0%,
-    //     rgba(83, 89, 90, 1) 90%,
-    //     red 90%,
-    //     red 100%
-    //   );
-    //   background-clip: text;
-    //   -webkit-background-clip: text;
-    //   color: transparent;
-    // }
   }
   .attendee-ticket-checkbox {
     display: flex;
