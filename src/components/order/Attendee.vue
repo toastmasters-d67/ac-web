@@ -1,5 +1,5 @@
 <template>
-  <div class="attendee-container">
+  <form @submit="submitForm" class="attendee-container">
     <div class="attendee-heading">
       <span class="attendee-title">Attendee Information</span>
       <button
@@ -9,9 +9,7 @@
       >
         Edit
       </button>
-      <button class="attendee-button save" @click="editing = !editing" v-else>
-        Save
-      </button>
+      <button type="submit" class="attendee-button save" v-else>Save</button>
     </div>
     <span class="attendee-required">
       Required&nbsp;<span class="red">*</span>
@@ -24,35 +22,57 @@
       >
         <div class="attendee-ticket-title" @click="toggle(index)">
           <span>Ticket {{ ticket.id }} - {{ ticket.description }}</span>
-          <i :class="forms[index].icon" />
+          <i :class="formStatus[index].icon" />
         </div>
         <!-- Debug use -->
-        <!-- <span style="font-size: 16px; color: blue">{{ ticket }}</span> -->
+        <!-- <span style="font-size: 16px; color: blue"
+          >ticket:[{{ index }}] - {{ ticket }}
+        </span>
+        <span style="font-size: 16px; color: red"
+          >errors:[{{ index }}] - {{ errors[index] }}
+        </span> -->
         <!-- Debug use -->
-        <div class="attendee-ticket-form" v-show="forms[index].show">
-          <div class="attendee-ticket-input">
+        <div
+          class="attendee-ticket-form"
+          v-show="formStatus[index].showDetails"
+        >
+          <div
+            class="attendee-ticket-input"
+            :style="getStyle(errors[index].firstName)"
+          >
             <input
               v-model="ticket.firstName"
+              :id="`firstName-${ticket.id}`"
               class="attendee-input-text"
-              required
-              pattern=".*\S.*"
+              @input="validateForm()"
               :disabled="!editing"
             />
-            <span class="attendee-input-placeholder" v-show="!ticket.firstName">
+            <label
+              :for="`firstName-${ticket.id}`"
+              class="attendee-input-placeholder"
+              v-show="!ticket.firstName"
+            >
               First name&nbsp;<span class="red">*</span>
-            </span>
+            </label>
           </div>
-          <div class="attendee-ticket-input">
+          <div
+            class="attendee-ticket-input"
+            :style="getStyle(errors[index].lastName)"
+          >
             <input
               v-model="ticket.lastName"
+              :id="`lastName-${ticket.id}`"
               class="attendee-input-text"
-              required
-              pattern=".*\S.*"
+              @input="validateForm()"
               :disabled="!editing"
             />
-            <span class="attendee-input-placeholder" v-show="!ticket.lastName">
+            <label
+              :for="`lastName-${ticket.id}`"
+              class="attendee-input-placeholder"
+              v-show="!ticket.lastName"
+            >
               Last name&nbsp;<span class="red">*</span>
-            </span>
+            </label>
           </div>
           <div class="attendee-ticket-input">
             <input
@@ -62,10 +82,15 @@
               :disabled="!editing"
             />
           </div>
-          <div class="attendee-ticket-input">
+          <div
+            class="attendee-ticket-input"
+            :style="getStyle(errors[index].clubName)"
+          >
             <select
               v-model="ticket.clubName"
+              :id="`clubName-${ticket.id}`"
               class="attendee-input-text"
+              @input="validateForm()"
               :disabled="!editing"
             >
               <option
@@ -76,13 +101,17 @@
                 {{ item.english_name }}
               </option>
             </select>
-            <span class="attendee-input-placeholder" v-show="!ticket.clubName">
+            <label
+              :for="`clubName-${ticket.id}`"
+              class="attendee-input-placeholder"
+              v-show="!ticket.clubName"
+            >
               Club name&nbsp;<span class="red">*</span>
-            </span>
+            </label>
           </div>
           <div
             class="attendee-ticket-checkbox"
-            @click="ticket.isVegetarian = !ticket.isVegetarian"
+            @click="clickVegetarian(ticket)"
           >
             <input
               type="checkbox"
@@ -103,7 +132,7 @@
               type="checkbox"
               class="attendee-checkbox-box"
               v-model="ticket.addBanquet"
-              :disabled="!editing || banquetCheckboxes[index].disable"
+              :disabled="!editing || formStatus[index].banquetDisabled"
             />
             <label for="banquet" class="attendee-checkbox-text"
               >Add a banquet ticket.
@@ -112,7 +141,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -145,57 +174,95 @@ export default {
     if (this.assignedBanquets >= this.totalBanquets) {
       this.tickets.forEach((ticket) => {
         if (ticket.addBanquet == false) {
-          this.banquetCheckboxes[ticket.id - 1].disable = true;
+          this.formStatus[ticket.id - 1].banquetDisabled = true;
         }
       });
     } else {
       this.tickets.forEach((ticket) => {
-        this.banquetCheckboxes[ticket.id - 1].disable = false;
+        this.formStatus[ticket.id - 1].banquetDisabled = false;
       });
     }
 
     this.$emit("updateAssignedBanquets", assignedBanquets);
-
-    // Debug
-    console.debug(this.tickets);
   },
   data() {
-    // console.log(this.tickets.length);
-    const banquetCheckboxes = reactive([]);
-    const forms = reactive([]);
+    const formStatus = reactive([]);
+    const errors = reactive([]);
     this.tickets.forEach((ticket) => {
       const item = {
         id: ticket.id,
-        disable: false,
+        icon: "pi pi-angle-up attendee-expandarrow",
+        showDetails: true,
+        banquetDisabled: false,
       };
-      banquetCheckboxes.push(item);
+      formStatus.push(item);
 
       const item2 = {
         id: ticket.id,
-        icon: "pi pi-angle-up attendee-expandarrow",
-        show: true,
+        firstName: "",
+        lastName: null,
+        clubName: "",
       };
-      forms.push(item2);
+      errors.push(item2);
     });
     return {
       editing: false,
-      banquetCheckboxes,
-      forms,
+      formStatus,
+      errors,
     };
   },
   methods: {
     clickBanquet(ticket) {
       if (
         this.editing &&
-        this.banquetCheckboxes[ticket.id - 1].disable == false
+        this.formStatus[ticket.id - 1].banquetDisabled == false
       ) {
         ticket.addBanquet = !ticket.addBanquet;
       }
     },
+    clickVegetarian(ticket) {
+      if (this.editing) {
+        ticket.isVegetarian = !ticket.isVegetarian;
+      }
+    },
     toggle(index) {
-      this.forms[index].show = !this.forms[index].show;
-      const direction = this.forms[index].show ? "up" : "down";
-      this.forms[index].icon = `pi pi-angle-${direction} attendee-expandarrow`;
+      this.formStatus[index].showDetails = !this.formStatus[index].showDetails;
+      const direction = this.formStatus[index].showDetails ? "up" : "down";
+      this.formStatus[
+        index
+      ].icon = `pi pi-angle-${direction} attendee-expandarrow`;
+    },
+    getStyle(error) {
+      if (error === null || error === "")
+        return "border: rgba(83, 89, 90, 1) 1px solid;";
+      else return "border: red 1px solid;";
+    },
+    submitForm: function (e) {
+      var isFormValid = true;
+      this.tickets.forEach((ticket) => {
+        this.validateForm();
+
+        if (!ticket.firstName || !ticket.lastName || !ticket.clubName)
+          isFormValid = false;
+      });
+
+      if (isFormValid) this.editing = !this.editing;
+      else e.preventDefault();
+    },
+    validateForm() {
+      this.tickets.forEach((ticket) => {
+        if (!ticket.firstName)
+          this.errors[ticket.id - 1].firstName = "firstName required.";
+        else this.errors[ticket.id - 1].firstName = "";
+
+        if (!ticket.lastName)
+          this.errors[ticket.id - 1].lastName = "lastName required.";
+        else this.errors[ticket.id - 1].lastName = "";
+
+        if (!ticket.clubName)
+          this.errors[ticket.id - 1].clubName = "clubName required.";
+        else this.errors[ticket.id - 1].clubName = "";
+      });
     },
   },
 };
@@ -260,7 +327,6 @@ export default {
   }
 }
 .attendee-required {
-  flex-grow: 1;
   font-size: 14px;
   text-align: left;
   font-weight: 500;
@@ -340,12 +406,12 @@ export default {
       border-radius: 4px;
       padding: 0 16px;
     }
-    input:focus + .attendee-input-placeholder {
-      display: none;
-    }
-    input:valid + .attendee-input-placeholder {
-      display: none;
-    }
+    // input:focus + .attendee-input-placeholder {
+    //   display: none;
+    // }
+    // input:valid + .attendee-input-placeholder {
+    //   display: none;
+    // }
     ::placeholder {
       position: absolute;
       top: 10px;
@@ -354,6 +420,18 @@ export default {
       font-weight: 500;
       color: rgba(83, 89, 90, 1);
     }
+    // :required::placeholder {
+    //   background: linear-gradient(
+    //     to right,
+    //     rgba(83, 89, 90, 1) 0%,
+    //     rgba(83, 89, 90, 1) 90%,
+    //     red 90%,
+    //     red 100%
+    //   );
+    //   background-clip: text;
+    //   -webkit-background-clip: text;
+    //   color: transparent;
+    // }
   }
   .attendee-ticket-checkbox {
     display: flex;

@@ -10,10 +10,9 @@
       <i class="pi pi-code myorder-selector-icon" />
     </button>
     <ul class="myorder-tickets-list">
-      <li class="myorder-ticket">Ticket 01 - Early Bird 2 Day Pass</li>
-      <li class="myorder-ticket">Ticket 02 - Early Bird 2 Day Pass</li>
-      <li class="myorder-ticket">Ticket 03 - First Day Pass</li>
-      <li class="myorder-ticket">Ticket 04 - Second Day Pass</li>
+      <li v-for="ticket of tickets" :key="ticket.id" class="myorder-ticket">
+        Ticket {{ ticket.id }} - {{ ticket.description }}
+      </li>
       <li class="myorder-banquet">
         <div class="myorder-banquet-content">
           <img
@@ -45,6 +44,11 @@ export default {
     },
     remainBanquets: {
       type: Number,
+    },
+  },
+  methods: {
+    onSubmit(event) {
+      console.log(event);
     },
   },
 };
@@ -206,6 +210,14 @@ export default {
 @media screen and (max-width: 768px) {
   .myorder-container {
     width: 100%;
+    position: relative;
+    top: 0px;
+    z-index: 0;
+    ul.myorder-tickets-list {
+      li.myorder-ticket {
+        display: none;
+      }
+    }
   }
 }
 </style>

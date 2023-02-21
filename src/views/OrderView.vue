@@ -1,7 +1,7 @@
 <template>
   <article id="order" class="order-container">
     <MyOrder :tickets="tickets" :remainBanquets="remainBanquets" />
-    <AttendeeInformation
+    <Attendee
       :tickets="tickets"
       :totalBanquets="totalBanquets"
       :assignedBanquets="assignedBanquets"
@@ -19,6 +19,7 @@
 }
 @media screen and (max-width: 768px) {
   .order-container {
+    flex-direction: column;
     margin: 80px 4.27% 200px 4.27%;
   }
 }
@@ -27,13 +28,13 @@
 <script>
 import { reactive, computed } from "vue";
 import MyOrder from "@/components/order/MyOrder.vue";
-import AttendeeInformation from "@/components/order/Attendee.vue";
+import Attendee from "@/components/order/Attendee.vue";
 
 export default {
   name: "OrderInformationView",
   components: {
     MyOrder,
-    AttendeeInformation,
+    Attendee,
   },
   data() {
     // Hard-code some test data
