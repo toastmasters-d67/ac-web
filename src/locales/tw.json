@@ -15,7 +15,8 @@
       "speakers": "講者介紹",
       "venue": "場地資訊",
       "faq": "常見問答",
-      "lang": "中文"
+      "lang": "中文",
+      "login": "登入"
     },
     "footer": {
       "contact": "聯繫我們",

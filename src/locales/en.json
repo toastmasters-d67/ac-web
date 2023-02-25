@@ -15,7 +15,8 @@
       "speakers": "Speakers",
       "venue": "Venue",
       "faq": "FAQ",
-      "lang": "EN"
+      "lang": "EN",
+      "login": "Log in"
     },
     "footer": {
       "contact": "Contact Us",
