@@ -159,8 +159,7 @@ export default {
     width: 100%;
     height: auto;
     background: none;
-    padding: 0;
-    padding-top: 94px;
+    padding: 40px 0 100px 0;
     .instruction-title {
       margin: 24px auto 8px;
       .instruction-title-highlight {

@@ -221,9 +221,17 @@
         "text-highlight": "參與者資訊"
       }
     },
-    "google": {
+    "login": {
       "title": "登入",
       "description": "請登入以繼續完成購票"
+    },
+    "form": {
+      "email": "電子郵件",
+      "password": "密碼",
+      "forget-password": "忘記密碼?",
+      "login-button": "登入",
+      "no-account": "沒有帳號嗎?",
+      "register": "註冊"
     }
   }
 }

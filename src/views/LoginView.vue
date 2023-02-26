@@ -1,12 +1,35 @@
 <template>
   <article id="login" class="login-container">
     <Instruction v-once />
-    <div class="login-google">
-      <span class="login-google-title">{{ $t("login.google.title") }}</span>
-      <span class="login-google-description">
-        {{ $t("login.google.description") }}
+    <div class="login-login">
+      <span class="login-login-title">{{ $t("login.login.title") }}</span>
+      <span class="login-login-description">
+        {{ $t("login.login.description") }}
       </span>
-      <button class="login-google-button">
+      <div class="login-form">
+        <label for="email" class="login-label">
+          {{ $t("login.form.email") }}
+        </label>
+        <input v-model="email" id="email" class="login-input" />
+        <label for="password" class="login-label">
+          {{ $t("login.form.password") }}
+        </label>
+        <input v-model="password" id="password" class="login-input" />
+        <span class="login-forget-password">
+          {{ $t("login.form.forget-password") }}
+        </span>
+        <button class="login-login-button">
+          {{ $t("login.form.login-button") }}
+        </button>
+      </div>
+      <div class="login-register">
+        {{ $t("login.form.no-account") }}
+        <span class="login-register-bold">
+          {{ $t("login.form.register") }}
+        </span>
+      </div>
+      <hr class="login-divider" />
+      <button class="login-google-button" v-if="false">
         <img
           alt="google"
           src="@/assets/icon/login/google.svg"
@@ -57,20 +80,20 @@ export default {
 <style scoped lang="scss">
 .login-container {
   width: 100%;
-  height: 796px;
+  min-height: 796px;
   display: flex;
-  flex-shrink: 0;
   border-color: transparent;
   background-color: white;
-  .login-google {
-    width: 55.5%;
+  .login-login {
+    width: 32.22%;
+    max-width: 464px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-color: transparent;
     margin: auto;
-    .login-google-title {
-      color: rgba(0, 0, 0, 1);
+    .login-login-title {
+      color: black;
       font-size: 40px;
       align-self: auto;
       font-style: Medium;
@@ -79,20 +102,90 @@ export default {
       margin-bottom: 8px;
       text-decoration: none;
     }
-    .login-google-description {
-      width: 90%;
-      color: rgba(33, 67, 102, 1);
-      font-size: 20px;
-      align-self: auto;
-      font-style: Medium;
+    .login-login-description {
+      text-align: center;
+      font-size: 18px;
       font-weight: 500;
-      line-height: normal;
+      line-height: 22px;
+      letter-spacing: 0em;
+      font-weight: 500;
+      color: rgba(33, 67, 102, 1);
       margin-bottom: 40px;
-      text-decoration: none;
+    }
+    .login-form {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      .login-label {
+        color: black;
+        font-size: 24px;
+        font-style: Medium;
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .login-input {
+        width: 100%;
+        height: 54px;
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        align-items: flex-start;
+        font-size: 24px;
+        border-color: transparent;
+        border-radius: 33px;
+        background-color: rgba(241, 240, 240, 1);
+        padding-left: 20px;
+        margin-bottom: 16px;
+      }
+      .login-forget-password {
+        width: 100%;
+        color: black;
+        font-size: 18px;
+        text-align: right;
+        font-weight: 500;
+        text-decoration: none;
+        margin-bottom: 40px;
+      }
+      .login-login-button {
+        position: relative;
+        width: 100%;
+        height: 54px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 500;
+        color: white;
+        border-color: transparent;
+        border-radius: 70px;
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+        background-color: rgba(0, 65, 101, 1);
+        margin-bottom: 40px;
+      }
+    }
+    .login-register {
+      display: flex;
+      flex-wrap: wrap;
+      border-color: transparent;
+      color: black;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: center;
+      gap: 2px;
+      .login-register-bold {
+        color: rgba(33, 67, 102, 1);
+        font-size: 20px;
+        font-style: SemiBold;
+        font-weight: 600;
+      }
+    }
+    .login-divider {
+      display: none;
     }
     .login-google-button {
-      max-width: 488px;
-      width: 61%;
+      width: 100%;
       height: 62px;
       display: flex;
       flex-direction: row;
@@ -104,7 +197,7 @@ export default {
       border-color: transparent;
       background: white;
       gap: 19px;
-      margin-right: 19px;
+      margin-top: 40px;
       cursor: pointer;
       .login-google-button-logo {
         width: 22px;
@@ -118,39 +211,76 @@ export default {
         text-align: left;
         font-weight: 600;
         line-height: normal;
-        font-stretch: normal;
-        text-decoration: none;
       }
     }
   }
 }
 @media screen and (max-width: 768px) {
   .login-container {
-    height: 660px;
-    flex-direction: column;
+    flex-direction: column-reverse;
     background-color: #f8f0e9;
-    .login-google {
-      position: absolute;
-      top: 80px;
-      width: 100%;
-      height: 525px;
-      .login-google-title {
+    padding-top: 16px;
+    .login-login {
+      position: relative;
+      width: 84%;
+      .login-login-title {
         font-size: 24px;
         line-height: 29px;
       }
-      .login-google-description {
+      .login-login-description {
         font-size: 14px;
         line-height: 17px;
-        margin-bottom: 0;
+        margin-bottom: 36px;
+      }
+      .login-form {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        .login-label {
+          font-size: 16px;
+          line-height: 20px;
+          margin-bottom: 4px;
+        }
+        .login-input {
+          height: 46px;
+          font-size: 16px;
+          background: white;
+          padding-left: 16px;
+          margin-bottom: 16px;
+        }
+        .login-forget-password {
+          font-size: 14px;
+          line-height: 17px;
+          margin-bottom: 32px;
+        }
+        .login-login-button {
+          height: 46px;
+          font-size: 18px;
+          line-height: 22px;
+          margin-bottom: 40px;
+        }
+      }
+      .login-register {
+        font-size: 14px;
+        line-height: 17px;
+        .login-register-bold {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+      .login-divider {
+        display: block;
+        width: 100%;
+        border: 1px solid #b4b4b4;
+        margin-top: 32px;
       }
       .login-google-button {
-        position: absolute;
-        width: 315px;
         height: 47px;
-        bottom: 0;
-        gap: 19px;
-        margin-right: 0;
-        cursor: pointer;
+        .login-google-button-text {
+          font-size: 18px;
+          line-height: 22px;
+        }
       }
     }
   }

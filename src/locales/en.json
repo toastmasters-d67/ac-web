@@ -221,9 +221,17 @@
         "text-highlight": "Attendee Information."
       }
     },
-    "google": {
+    "login": {
       "title": "Log in",
       "description": "Please log in before you purchase the ticket."
+    },
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "forget-password": "Forgot your password?",
+      "login-button": "Log in",
+      "no-account": "Don't have an account?",
+      "register": "Register"
     }
   }
 }
