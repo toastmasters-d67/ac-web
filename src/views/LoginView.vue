@@ -1,49 +1,6 @@
 <template>
-  <div class="login-container">
-    <div class="login-instruction">
-      <span class="login-instruction-title">
-        <span class="login-instruction-title-text">
-          <span class="login-instruction-title-highlight"
-            >{{ $t("login.introduction.title.text-highlight") }}
-          </span>
-          {{ $t("login.introduction.title.text") }}
-        </span>
-      </span>
-      <div class="login-instruction-steps">
-        <div class="login-instruction-step">
-          <span class="login-instruction-step-number">1</span>
-          <span class="login-instruction-step-text"
-            >{{ $t("login.introduction.step1.text") }}
-            <span class="text-highlight">
-              {{ $t("login.introduction.step1.text-highlight") }}
-            </span>
-          </span>
-        </div>
-        <div class="login-instruction-step">
-          <span class="login-instruction-step-number">2</span>
-          <span class="login-instruction-step-text"
-            >{{ $t("login.introduction.step2.text") }}
-            <span class="text-highlight">
-              {{ $t("login.introduction.step2.text-highlight") }}
-            </span>
-          </span>
-        </div>
-        <div class="login-instruction-step">
-          <span class="login-instruction-step-number">3</span>
-          <span class="login-instruction-step-text"
-            >{{ $t("login.introduction.step3.text") }}
-            <span class="text-highlight">
-              {{ $t("login.introduction.step3.text-highlight") }}
-            </span>
-          </span>
-        </div>
-      </div>
-      <img
-        alt="manshoppingonline"
-        :src="getImage()"
-        class="login-man-shopping-online"
-      />
-    </div>
+  <article id="login" class="login-container">
+    <Instruction v-once />
     <div class="login-google">
       <span class="login-google-title">{{ $t("login.google.title") }}</span>
       <span class="login-google-description">
@@ -58,10 +15,12 @@
         <span class="login-google-button-text">Google</span>
       </button>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
+import Instruction from "@/components/login/Instruction.vue";
+
 export default {
   name: "Login",
   data() {
@@ -91,6 +50,7 @@ export default {
       }
     },
   },
+  components: { Instruction },
 };
 </script>
 
@@ -102,83 +62,6 @@ export default {
   flex-shrink: 0;
   border-color: transparent;
   background-color: white;
-  .login-instruction {
-    position: relative;
-    width: 44.5%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
-    border-color: transparent;
-    background-color: #f8f0e9;
-    padding-left: 5.7%;
-    padding-right: 20px;
-    padding-top: 148px;
-    .login-instruction-title {
-      text-align: left;
-      margin-bottom: 94px;
-      .login-instruction-title-highlight {
-        font-size: 32px;
-        font-weight: 500;
-        line-height: 39px;
-        letter-spacing: 0em;
-        color: rgba(233, 168, 55, 1);
-      }
-      .login-instruction-title-text {
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 29px;
-        letter-spacing: 0em;
-        color: #004165;
-      }
-    }
-    .login-man-shopping-online {
-      width: 297px;
-      right: 0;
-      bottom: 0;
-      position: absolute;
-      border-color: transparent;
-    }
-    .login-instruction-steps {
-      width: fit-content;
-      display: flex;
-      flex-direction: column;
-      border-color: transparent;
-      margin-bottom: 24px;
-      gap: 24px;
-      .login-instruction-step {
-        width: fit-content;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        flex-shrink: 0;
-        .login-instruction-step-number {
-          width: 40px;
-          height: 40px;
-          font-size: 20px;
-          text-align: center;
-          border-radius: 500px;
-          background-color: rgba(255, 255, 255, 0.6);
-          text-decoration: none;
-          padding: 10px;
-          margin-right: 22.5px;
-          margin-bottom: 0;
-        }
-        .login-instruction-step-text {
-          font-weight: 500;
-          font-size: 20px;
-          line-height: 24px;
-          color: rgba(33, 67, 102, 1);
-        }
-        .text-highlight {
-          color: rgba(233, 168, 55, 1);
-          font-weight: 700;
-        }
-      }
-    }
-  }
   .login-google {
     width: 55.5%;
     display: flex;
@@ -246,49 +129,6 @@ export default {
     height: 660px;
     flex-direction: column;
     background-color: #f8f0e9;
-    .login-instruction {
-      width: 100%;
-      height: auto;
-      background: none;
-      padding: 0;
-      padding-top: 94px;
-      .login-instruction-title {
-        margin: 24px auto 8px;
-        .login-instruction-title-highlight {
-          font-size: 20px;
-          line-height: 24px;
-        }
-        .login-instruction-title-text {
-          font-size: 16px;
-          line-height: 20px;
-        }
-      }
-      .login-man-shopping-online {
-        position: relative;
-        width: 166px;
-        order: -1;
-        margin: auto;
-      }
-      .login-instruction-steps {
-        margin: auto;
-        margin-bottom: 24px;
-        gap: 8px;
-        .login-instruction-step {
-          .login-instruction-step-number {
-            width: 32px;
-            height: 32px;
-            font-size: 14px;
-            line-height: 17px;
-            padding: 9px;
-            margin-right: 17px;
-          }
-          .login-instruction-step-text {
-            font-size: 14px;
-            line-height: 17px;
-          }
-        }
-      }
-    }
     .login-google {
       position: absolute;
       top: 80px;
