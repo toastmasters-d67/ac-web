@@ -225,13 +225,21 @@
       "title": "登入",
       "description": "請登入以繼續完成購票"
     },
+    "register": {
+      "title": "註冊",
+      "description": "請先註冊以繼續完成購票"
+    },
     "form": {
+      "first-name": "名字",
+      "last-name": "姓氏",
       "email": "電子郵件",
       "password": "密碼",
+      "confirm-password": "確認密碼",
       "forget-password": "忘記密碼?",
-      "login-button": "登入",
+      "login": "登入",
+      "register": "註冊",
       "no-account": "沒有帳號嗎?",
-      "register": "註冊"
+      "already-account": "已經有帳號嗎?"
     }
   }
 }

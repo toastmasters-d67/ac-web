@@ -1,42 +1,49 @@
 <template>
-  <article id="login" class="login-container">
+  <article id="register" class="register-container">
     <Instruction v-once />
-    <div class="login-login">
-      <span class="login-login-title">{{ $t("login.login.title") }}</span>
-      <span class="login-login-description">
-        {{ $t("login.login.description") }}
+    <div class="register-register">
+      <span class="register-register-title">
+        {{ $t("login.register.title") }}
       </span>
-      <div class="login-form">
-        <label for="email" class="login-label">
+      <span class="register-register-description">
+        {{ $t("login.register.description") }}
+      </span>
+      <div class="register-form">
+        <label for="firstName" class="register-label">
+          {{ $t("login.form.first-name") }}
+        </label>
+        <input v-model="firstName" id="firstName" class="register-input" />
+        <label for="lastName" class="register-label">
+          {{ $t("login.form.last-name") }}
+        </label>
+        <input v-model="lastName" id="lastName" class="register-input" />
+        <label for="email" class="register-label">
           {{ $t("login.form.email") }}
         </label>
-        <input v-model="email" id="email" class="login-input" />
-        <label for="password" class="login-label">
+        <input v-model="email" id="email" class="register-input" />
+        <label for="password" class="register-label">
           {{ $t("login.form.password") }}
         </label>
-        <input v-model="password" id="password" class="login-input" />
-        <span class="login-forget-password">
-          {{ $t("login.form.forget-password") }}
-        </span>
-        <button class="login-login-button">
-          {{ $t("login.form.login") }}
+        <input v-model="password" id="password" class="register-input" />
+        <label for="confirmPassword" class="register-label">
+          {{ $t("login.form.confirm-password") }}
+        </label>
+        <input
+          v-model="confirmPassword"
+          id="confirmPassword"
+          class="register-input"
+        />
+        <button class="register-register-button">
+          {{ $t("login.form.register") }}
         </button>
       </div>
-      <div class="login-register">
-        {{ $t("login.form.no-account") }}
-        <router-link to="/register" class="login-register-bold">
-          {{ $t("login.form.register") }}
+      <div class="register-login">
+        {{ $t("login.form.already-account") }}
+        <router-link to="/login" class="register-login-bold">
+          {{ $t("login.form.login") }}
         </router-link>
       </div>
-      <hr class="login-divider" />
-      <button class="login-google-button" v-if="false">
-        <img
-          alt="google"
-          src="@/assets/icon/login/google.svg"
-          class="login-google-button-logo"
-        />
-        <span class="login-google-button-text">Google</span>
-      </button>
+      <hr class="register-divider" />
     </div>
   </article>
 </template>
@@ -45,54 +52,29 @@
 import Instruction from "@/components/login/Instruction.vue";
 
 export default {
-  name: "Login",
-  data() {
-    return {
-      windowHeight: window.innerHeight,
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-    },
-    getImage() {
-      if (this.windowHeight > 768) {
-        return require(`@/assets/image/login/man-shopping-online.png`);
-      } else {
-        return require(`@/assets/image/login/man-shopping-online-mobile.png`);
-      }
-    },
-  },
+  name: "Register",
   components: { Instruction },
 };
 </script>
 
 <style scoped lang="scss">
-.login-container {
+.register-container {
   width: 100%;
   min-height: 796px;
   display: flex;
   border-color: transparent;
   background-color: white;
-  .login-login {
+  .register-register {
     width: 32.22%;
     max-width: 464px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-color: transparent;
+    padding-top: 80px;
+    padding-bottom: 80px;
     margin: auto;
-    .login-login-title {
+    .register-register-title {
       color: black;
       font-size: 40px;
       align-self: auto;
@@ -102,7 +84,7 @@ export default {
       margin-bottom: 8px;
       text-decoration: none;
     }
-    .login-login-description {
+    .register-register-description {
       text-align: center;
       font-size: 18px;
       font-weight: 500;
@@ -112,12 +94,12 @@ export default {
       color: rgba(33, 67, 102, 1);
       margin-bottom: 40px;
     }
-    .login-form {
+    .register-form {
       width: 100%;
       display: flex;
       align-items: flex-start;
       flex-direction: column;
-      .login-label {
+      .register-label {
         color: black;
         font-size: 24px;
         font-style: Medium;
@@ -125,7 +107,7 @@ export default {
         font-weight: 500;
         margin-bottom: 8px;
       }
-      .login-input {
+      .register-input {
         width: 100%;
         height: 54px;
         position: relative;
@@ -139,16 +121,7 @@ export default {
         padding-left: 20px;
         margin-bottom: 16px;
       }
-      .login-forget-password {
-        width: 100%;
-        color: black;
-        font-size: 18px;
-        text-align: right;
-        font-weight: 500;
-        text-decoration: none;
-        margin-bottom: 40px;
-      }
-      .login-login-button {
+      .register-register-button {
         position: relative;
         width: 100%;
         height: 54px;
@@ -162,11 +135,12 @@ export default {
         border-radius: 70px;
         box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
         background-color: rgba(0, 65, 101, 1);
+        margin-top: 24px;
         margin-bottom: 40px;
         cursor: pointer;
       }
     }
-    .login-register {
+    .register-login {
       display: flex;
       flex-wrap: wrap;
       border-color: transparent;
@@ -175,7 +149,7 @@ export default {
       font-weight: 500;
       text-align: center;
       gap: 2px;
-      .login-register-bold {
+      .register-login-bold {
         color: rgba(33, 67, 102, 1);
         font-size: 20px;
         font-style: SemiBold;
@@ -183,106 +157,65 @@ export default {
         text-decoration: none;
       }
     }
-    .login-divider {
+    .register-divider {
       display: none;
-    }
-    .login-google-button {
-      width: 100%;
-      height: 62px;
-      display: flex;
-      flex-direction: row;
-      flex-shrink: 0;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.25);
-      border-radius: 6px;
-      border-color: transparent;
-      background: white;
-      gap: 19px;
-      margin-top: 40px;
-      cursor: pointer;
-      .login-google-button-logo {
-        width: 22px;
-        height: 22px;
-      }
-      .login-google-button-text {
-        color: rgba(117, 117, 117, 1);
-        font-size: 18px;
-        align-self: auto;
-        font-style: SemiBold;
-        text-align: left;
-        font-weight: 600;
-        line-height: normal;
-      }
     }
   }
 }
 @media screen and (max-width: 768px) {
-  .login-container {
+  .register-container {
     flex-direction: column-reverse;
     background-color: #f8f0e9;
     padding-top: 16px;
-    .login-login {
+    .register-register {
       position: relative;
       width: 84%;
-      .login-login-title {
+      .register-register-title {
         font-size: 24px;
         line-height: 29px;
       }
-      .login-login-description {
+      .register-register-description {
         font-size: 14px;
         line-height: 17px;
         margin-bottom: 36px;
       }
-      .login-form {
+      .register-form {
         width: 100%;
         display: flex;
         align-items: flex-start;
         flex-direction: column;
-        .login-label {
+        .register-label {
           font-size: 16px;
           line-height: 20px;
           margin-bottom: 4px;
         }
-        .login-input {
+        .register-input {
           height: 46px;
           font-size: 16px;
           background: white;
           padding-left: 16px;
           margin-bottom: 16px;
         }
-        .login-forget-password {
-          font-size: 14px;
-          line-height: 17px;
-          margin-bottom: 32px;
-        }
-        .login-login-button {
+        .register-register-button {
           height: 46px;
           font-size: 18px;
           line-height: 22px;
           margin-bottom: 40px;
         }
       }
-      .login-register {
+      .register-login {
         font-size: 14px;
         line-height: 17px;
-        .login-register-bold {
+        .register-login-bold {
           font-size: 16px;
           line-height: 20px;
         }
       }
-      .login-divider {
+      .register-divider {
         display: block;
         width: 100%;
         border: 1px solid #b4b4b4;
         margin-top: 32px;
-      }
-      .login-google-button {
-        height: 47px;
-        .login-google-button-text {
-          font-size: 18px;
-          line-height: 22px;
-        }
       }
     }
   }
