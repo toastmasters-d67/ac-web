@@ -47,6 +47,15 @@
           </option>
         </select>
       </div>
+      <router-link to="login" class="navbar-login-button">
+        {{ $t("app.navbar.login") }}
+      </router-link>
+      <img
+        src="@/assets/icon/app/myaccount.svg"
+        class="navbar-myaccount"
+        alt="My Account"
+        v-if="false"
+      />
     </div>
     <div class="navbar-mobile-container">
       <Button
@@ -110,6 +119,9 @@
             </select>
           </div>
         </div>
+        <router-link to="login" class="navbar-login-button login-mobile">
+          {{ $t("app.navbar.login") }}
+        </router-link>
       </Sidebar>
     </div>
   </nav>
@@ -174,15 +186,16 @@ hr {
   }
   .navbar-links {
     position: absolute;
-    top: 28px;
+    top: 20px;
     right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
+    column-gap: 32px;
+    margin-right: 32px;
     .navbar-link {
       font-weight: 700;
-      margin-right: 32px;
       cursor: pointer;
     }
     .navbar-select {
@@ -194,21 +207,65 @@ hr {
       line-height: 24px;
       border: transparent;
     }
-    @media screen and (max-width: 950px) {
+  }
+  .navbar-mobile-container {
+    display: none;
+  }
+}
+.navbar-login-button {
+  display: flex;
+  align-items: center;
+  border-radius: 38px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  border: 1px solid white;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+  background: #ffdb82;
+  text-align: center;
+  padding: 8px 24px;
+  cursor: pointer;
+}
+.navbar-myaccount {
+  height: 24.75px;
+  width: 24.75px;
+  border-radius: 0px;
+}
+@media screen and (max-width: 1024px) {
+  .navbar-container {
+    .navbar-logo {
+      .navbar-logo-image {
+        width: 50px;
+        margin-right: 14px;
+      }
+      .navbar-logo-text {
+        .navbar-logo-text-1 {
+          font-size: 16px;
+          line-height: 20px;
+        }
+        .navbar-logo-text-2 {
+          font-size: 10px;
+          line-height: 14px;
+        }
+      }
+    }
+    .navbar-links {
+      gap: 18px;
+      margin-right: 18px;
       .navbar-link {
         font-size: 16px;
-        margin-right: 20px;
       }
       .navbar-select {
         font-size: 16px !important;
       }
     }
   }
-  .navbar-mobile-container {
-    display: none;
+  .navbar-login-button {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 8px 16px;
   }
 }
-
 @media screen and (max-width: 768px) {
   .navbar-container {
     height: 63px;
@@ -290,6 +347,9 @@ hr {
     line-height: 24px;
     border: transparent;
   }
+}
+.login-mobile {
+  margin: 35% auto 0;
 }
 </style>
 
