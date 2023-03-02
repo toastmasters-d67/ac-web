@@ -33,10 +33,16 @@ const routes = [
     component: () => import("@/views/SpeakerTemplateView.vue"),
   },
   {
+    path: "/me",
+    name: "me",
+    component: () => import("@/views/AccountView.vue"),
+  },
+  {
     path: "/order",
     name: "order",
     component: () => import("@/views/OrderView.vue"),
   },
+  { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
 const router = createRouter({
