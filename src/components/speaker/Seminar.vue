@@ -102,7 +102,7 @@
         .seminar-row-text {
           display: flex;
           flex-direction: column;
-          font-size: 22px;
+          font-size: 24px;
           line-height: 50px;
           text-align: left;
         }
@@ -116,7 +116,7 @@
             line-height: 48px;
           }
           .seminar-row-text {
-            font-size: 18px;
+            font-size: 20px;
             line-height: 40px;
           }
         }
