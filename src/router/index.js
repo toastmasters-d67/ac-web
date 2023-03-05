@@ -37,11 +37,6 @@ const routes = [
     name: "me",
     component: () => import("@/views/AccountView.vue"),
   },
-  {
-    path: "/order",
-    name: "order",
-    component: () => import("@/views/OrderView.vue"),
-  },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
