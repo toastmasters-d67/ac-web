@@ -10,12 +10,7 @@
       :instagram="instagram"
       :youtube="youtube"
     />
-    <Seminar
-      :topic="topic"
-      :time="time"
-      :location="location"
-      :introduction="introduction"
-    />
+    <Seminar :seminars="seminars" />
   </article>
 </template>
 
@@ -52,13 +47,18 @@ export default {
     Array.from(speaker.contents).forEach((source) => {
       contents.push(this.$rt(source));
     });
-    const seminar = speaker.seminar;
-    const topic = this.$rt(seminar.topic);
-    const time = this.$rt(seminar.time);
-    const location = this.$rt(seminar.location);
-    const introduction = reactive([]);
-    Array.from(seminar.introduction).forEach((source) => {
-      introduction.push(this.$rt(source));
+    const seminars = reactive([]);
+    Array.from(speaker.seminars).forEach((source) => {
+      let introduction = reactive([]);
+      Array.from(source.introduction).forEach((intro) => {
+        introduction.push(this.$rt(intro));
+      });
+      seminars.push({
+        topic: this.$rt(source.topic),
+        time: this.$rt(source.time),
+        location: this.$rt(source.location),
+        introduction: introduction,
+      });
     });
 
     return {
@@ -69,10 +69,7 @@ export default {
       facebook,
       instagram,
       youtube,
-      topic,
-      time,
-      location,
-      introduction,
+      seminars,
     };
   },
   beforeMount() {

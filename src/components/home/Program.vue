@@ -95,7 +95,7 @@
               </span>
             </span>
             <span class="row-item-title title-expand">
-              {{ $t("speakers[0].seminar.topic") }}
+              {{ $t("speakers[0].seminars[0].topic") }}
             </span>
             <span class="row-item-venue venue-calla">
               {{ $t("home.program.room.calla") }}
@@ -159,7 +159,7 @@
               {{ $t("home.program.keynote") }} - {{ $t("speakers[1].name") }}
             </span>
             <span class="row-item-title">
-              {{ $t("speakers[1].seminar.topic") }}
+              {{ $t("speakers[1].seminars[0].topic") }}
             </span>
             <span class="row-item-venue venue-calla">
               {{ $t("home.program.room.calla") }}
@@ -518,7 +518,7 @@
                 $t("home.program.training", {
                   language: $t("home.program.english"),
                 })
-              }}
+              }}&nbsp;({{ $t("speakers[1].name") }})
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.lisianthus") }}
