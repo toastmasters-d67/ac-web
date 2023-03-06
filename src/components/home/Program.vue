@@ -35,22 +35,6 @@
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">09:10</span>
-        <div class="row-items">
-          <div class="row-item item-expand">
-            <span class="row-item-time">
-              {{ $t("home.program.judge") }}
-              <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
-              </span>
-            </span>
-            <span class="row-item-venue venue-preparation">
-              {{ $t("home.program.room.preparation") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
@@ -120,22 +104,6 @@
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">12:10</span>
-        <div class="row-items">
-          <div class="row-item item-expand">
-            <span class="row-item-time">
-              {{ $t("home.program.judge") }}
-              <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
-              </span>
-            </span>
-            <span class="row-item-venue venue-preparation">
-              {{ $t("home.program.room.preparation") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
         <span class="row-time">12:30</span>
         <div class="row-items">
           <div class="row-item item-expand">
@@ -158,7 +126,7 @@
             <span class="row-item-time">
               {{ $t("home.program.keynote") }} - {{ $t("speakers[1].name") }}
             </span>
-            <span class="row-item-title">
+            <span class="row-item-title title-expand">
               {{ $t("speakers[1].seminars[0].topic") }}
             </span>
             <span class="row-item-venue venue-calla">
@@ -424,22 +392,6 @@
             </span>
             <span class="row-item-note">
               ({{ $t("home.program.lunch-note") }})
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">12:20</span>
-        <div class="row-items">
-          <div class="row-item item-expand">
-            <span class="row-item-time">
-              {{ $t("home.program.judge") }}
-              <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
-              </span>
-            </span>
-            <span class="row-item-venue venue-preparation">
-              {{ $t("home.program.room.preparation") }}
             </span>
           </div>
         </div>
