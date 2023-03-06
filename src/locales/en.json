@@ -4,8 +4,14 @@
       "/": "Home",
       "faq": "FAQ",
       "venue": "Venue",
-      "van-borssum": "Greg Van Borssum",
       "shih": "Stan Shih",
+      "van-borssum": "Greg Van Borssum",
+      "hisamatsu": "Chika Hisamatsu",
+      "tu": "Samantha Tu",
+      "botha": "Phillip Botha",
+      "wang": "王玉梅",
+      "lin": "林惠君",
+      "li": "Angel Li",
       "tbd": "TBD"
     },
     "navbar": {
@@ -144,40 +150,192 @@
   },
   "speakers": [
     {
-      "key": "van-borssum",
-      "name": "Greg Van Borssum",
-      "title": "Accredited Speaker",
-      "contents": [
-        "A bullied, skinny kid too afraid to stand up for himself, Greg used to live in fear. At age 12, he decided to change and spent his newspaper route money on a gym membership and undertook rigorous weight training and the study of martial arts. He then decided to take on two massive challenges, to become the Australian National Bodybuilding Champion and a Karate Master. It was here Greg learned to unravel the warriors code and by applying its principles he revealed how limitless his life could become.",
-        "In 2019, Greg became an Accredited Speaker by Toastmasters International, making him 1 of 88 speakers globally in over 40 years to receive this honor. Greg’s ability to transfer his mindset into totally new areas of life and master them in relatively short time has had him labelled by many as the MASTER OF REMASTERY. Let Greg show you the steps to master your mindset and remaster your life."
-      ],
-      "facebook": "https://www.facebook.com/greg.vanborssum/",
-      "instagram": "https://www.instagram.com/gvb_mindwarriors/",
-      "youtube": "https://www.youtube.com/{'@'}gvbmindwarriors5678",
-      "seminar": {
-        "topic": "TBD",
-        "time": "4/22 13:10-14:00",
-        "location": "1F Room Calla Lilly & Rose",
-        "introduction": "TBD"
-      }
-    },
-    {
       "key": "shih",
       "name": "Stan Shih",
-      "title": "Cofounder of the Acer Group",
+      "title": "Acer Inc. Founder/StanShih Foundation Chairman",
       "contents": [
-        "Stan Shih is the Chairman of Stan Shih Foundation, Cofounder & Honorary Chairman of the Acer Group. Mr. Shih serves on the boards of Acer, the former boards of TSMC. He is the Chairman of Cloud Gate Culture and Art Foundation and the head of One Song Orchestra Fun Club. Besides, he acts as commissioner of the Reform for Resilience Commission and Director of CAPRI.",
-        "Time featured Mr. Shih in its article “60 years of Asian Hero’s” for turning Taiwan into a PC manufacturing powerhouse. He is awarded “Taiwan Cultural Collaboration Medal” by the Ministry of Culture of Taiwan in 2021.",
-        "Mr. Shih earned a Bachelor’s Master and honorary Ph D in Electronics engineering from National Chiao Tung University in Taiwan. He was awarded an Honorary Doctorate of Technology by Hong Kong Polytechnic University, and an Honorary Doctor of International Law from the Thousand School of Global Management."
+        "Mr. Shih is the Founder and Honorary Chairman of Acer Inc., Chairman of StanShih Foundation, Director of Acer and Nan Shan Life Insurance Co., Ltd. and a past Director of Taiwan Semiconductor Manufacturing Company. He has been promoting the way of benevolent governance, proactively driving the elevation of Taiwan’s industrial transformation, enhancing Taiwan’s competitive sustainability, standing on the edge of the scale balancing “culture” and “technology.” He has been acting as “the driver of culture and technology integration” to create value across domains.",
+        "BusinessWeek named Mr. Shih one of its “25 Top Managers of the Year” in 1996. He was featured in Time Magazine’s “60 Years of Asian Heroes” in 2006 to recognize him for his contribution to the global IT industry. In 2007, he served as the President’s envoy at the 15th APEC Economic Leader’s Summit in Sydney, Australia. For his long-term contributions, the President honored him with the Order of Brilliant Star with Grand Cordon in October 2011 and the 1st Industrial Technology Research Institute (ITRI) Laureate in 2012. In 2021, he was also awarded the Taiwan Cultural Collaboration Medal by the Ministry of Culture.",
+        "Mr. Shih earned his bachelors, masters, and honorary doctorate in electronics engineering from the National Chiao Tung University. He was also awarded an Honorary Doctorate of Technology by Hong Kong Polytechnic University, made an honorary fellow of the University of Wales, awarded an Honorary Doctorate of International Law from the Thunderbird School of Global Management, and awarded an Honorary Doctorate of Fine Arts by the Tainan National University of the Arts."
       ],
       "facebook": "https://www.facebook.com/StanShares/",
       "instagram": "https://www.instagram.com/stanshih.ig/",
       "youtube": "",
       "seminar": {
-        "topic": "From Wangdao Perspective to the Competitiveness of Taiwan",
+        "topic": "Discussing Taiwan’s Competitiveness Through the Thinking of Wangdao",
         "time": "4/22 11:00-11:50",
         "location": "1F Room Calla Lilly & Rose",
-        "introduction": "“New Wangdao” talks about the leadership thinking of any organization by “creating values, balancing current interest and sustaining future development.” In the perspective of Wangdao, there are six criteria to measure the total value of contributions: “visible, direct and current” values, and “invisible, indirect and future” values, while the later is much more important."
+        "introduction": [
+          "“New Wangdao” is a discussion of the way of leaders in organizations of various sizes. “Value creation, the balance of interests, and sustainable development” are the three core concepts of Wangdao thinking. Wangdao emphasizes looking at the total value of things through the “Six-Aspect Values.” Pay greater attention to the “intangible, indirect, future” invisible value in addition to the “tangible, direct, and present” dominant value. Build a new mechanism for mutual value creation and the balance of interests through continuous creativity and value creation. Only then can the goal of sustainable development be realized.",
+          "Taiwan is already Si-nnovation. Facing the new and future challenges of the world, we need to make Taiwan the birthplace of Si-vilization. In the past, Taiwan has served as the main contributor of the world’s electronic products and material civilization. Hopefully in the future, Taiwan can contribute to the future spiritual civilization of mankind. Taiwan can position itself as a friend of the world.",
+          "This year, the theme of the annual conference is “Connect to the Present, Lead the Future.” It fits perfectly with the thinking of Wangdao and its mission of leading Taiwan towards the future. Standing on the foundation of Taiwan’s current ICT and electronics industries, we can further lead future cross-domain and integration applications, develop smart medicine, cultural technology, smart agriculture, etc. We can contribute to our island, the international community, and the global environment."
+        ]
+      }
+    },
+    {
+      "key": "van-borssum",
+      "name": "Greg Van Borssum",
+      "title": "Accredited Speaker",
+      "contents": [
+        "Australia’s first accredited speaker",
+        "Academy Award Winning Best Animated Film “Happy Feet” Assistant Director",
+        "Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor",
+        "2016 Screen Actors Guild Award Winner",
+        "2014 World Champion Pistol Winner",
+        "Australian National Bodybuilding Champion",
+        "National Mental Health Ambassador",
+        "International Karate Master"
+      ],
+      "facebook": "https://www.facebook.com/greg.vanborssum/",
+      "instagram": "https://www.instagram.com/gvb_mindwarriors/",
+      "youtube": "https://www.youtube.com/{'@'}gvbmindwarriors5678",
+      "seminar": {
+        "topic": "Remastermind - How a Failed School Kid Mastered His Mindset to Become a Champion",
+        "time": "4/22 13:10-14:00",
+        "location": "1F Room Calla Lilly & Rose",
+        "introduction": [
+          "When people look at Greg’s life, they only see the result. They don’t see the years of failures; they don’t feel the years of pain, and they don’t hear the negative voices from his childhood that echoed so loudly through his mind.",
+          "His primary teachers told him he would amount to nothing, high school teachers said he’d be the most likely student to be in prison or dead by 21... but no matter what they said, Greg refused to listen.",
+          "Instead, he immersed himself into the worlds of martial arts and bodybuilding, absorbed life lessons from the influential people closest to him, and used them to temper his body and mind.",
+          "Greg turned his life around, becoming the World’s youngest Professional Natural Bodybuilder, a World champion pistol shooter, Award Winning Hollywood Action Choreographer and director, and the Southern Hemispheres only Toastmasters Accredited Speaker.",
+          "It’s time to learn what it takes to master your mindset with Greg Van Borssum “Remastermind - how a failed school kid mastered his mindset to become a champion.”"
+        ]
+      }
+    },
+    {
+      "key": "hisamatsu",
+      "name": "Chika Hisamatsu",
+      "title": "",
+      "contents": [
+        "TBD"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminar": {
+        "topic": "TBD",
+        "time": "4/22 14:20-16:20",
+        "location": "2F Room Clove",
+        "introduction": [
+          "TBD"
+        ]
+      }
+    },
+    {
+      "key": "tu",
+      "name": "Samantha Tu",
+      "title": "",
+      "contents": [
+        "Lecturer of business etiquette and tea culture in National Changhua University of Education",
+        "Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association",
+        "Public Relations manager of Toastmasters international, D67, 2020-2021"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminar": {
+        "topic": "Come Have a Cup of Tea - Reconnect to the World through Tea",
+        "time": "4/22, 14:20-15:30",
+        "location": "2F Room Lisianthus",
+        "introduction": [
+          "”Come have a cup of tea” used to be an authentic greeting in traditional Taiwanese society.", 
+          "It showed the hospitality of Taiwanese people and indicated the important role that tea has played in Taiwanese life.",
+          "The power of tea is much more than you can image.", 
+          "It is not only one of the top 3 popular drinks worldwide, tea also provides more health advantages than others, most of all, tea is an elegant way for us to reconnect to the world after the pandemic." 
+        ]
+      }
+    },
+    {
+      "key": "botha",
+      "name": "Phillip Botha",
+      "title": "",
+      "contents": [
+        "Phillip has been a Toastmaster for about 8 years.", 
+        "During that time, he served in several leadership roles including VPM and President of Taipei Tech (NTUT) Toastmasters Club plus VPM and VPPR of Premium Toastmasters Club.", 
+        "In 2019 Phillip participated in the D67 International Speech Contest where he made it to the finals held in Kaohsiung City.", 
+        "Phillip is currently a member of the Good Life Toastmasters Club.", 
+        "Phillip’s personal struggle with low self-confidence and self-esteem has motivated him to become a student and teacher in these fields.", 
+        "In 2018 he traveled to Orlando, Florida where he became certified as a John C. Maxwell Coach, Teacher, Trainer, and Speaker.", 
+        "His passion for teaching and helping others has led him to conduct this training program."
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminar": {
+        "topic": "Be Your Own Hero: How to Overcome Self-Doubt and Be The Most Confident You",
+        "time": "4/23, 13:00-14:10",
+        "location": "2F Room Lisianthus",
+        "introduction": [
+          "Do you ever feel that a lack of self-confidence is holding you back from being the best version of yourself and accomplishing your biggest dreams?", 
+          "In this training, you’ll discover what self-confidence really is, and receive an action-based blueprint for overcoming self-doubt and building and maintaining optimal levels of confidence.", 
+          "You will learn how to take control of your own personal growth and become the hero of your own story."
+        ]
+      }
+    },
+    {
+      "key": "wang",
+      "name": "王玉梅",
+      "title": "",
+      "contents": [
+        "TBD"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminar": {
+        "topic": "TBD",
+        "time": "4/23, 15:40-16:50",
+        "location": "2F Room Lisianthus",
+        "introduction": [
+          "TBD"
+        ]
+      }
+    },
+    {
+      "key": "lin",
+      "name": "林惠君",
+      "title": "",
+      "contents": [
+        "TBD"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminar": {
+        "topic": "TBD",
+        "time": "4/22, 16:40-18:10",
+        "location": "2F Room Lisianthus",
+        "introduction": [
+          "TBD"
+        ]
+      }
+    },
+    {
+      "key": "li",
+      "name": "Angel Li",
+      "title": "",
+      "contents": [
+        "Angel Li has been joining Toastmasters since she was a freshman in National Taiwan University.", 
+        "If you want to know how an introvert girl who dare not speak English can be transformed by 16-year Toastmasters journey into a global project manager in clinical research industries, you should come to listen to her inspiring stories.",
+        "Angel has become a mother of a baby girl since year 2022 while she is seeking for a new record and striving for a new height in her career. She achieves all the milestones and timeline at work, cooks for almost every meal for family, and keep me-time and own hobbies at the same time. If you want to know how a working mother can balance her career, life and family elegantly, you should come to listen to her tips for time management skills."
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminar": {
+        "topic": "Manage Your Time, Master Your Life",
+        "time": "4/22, 15:30-16:30",
+        "location": "2F Room Lisianthus",
+        "introduction": [
+          "Time flies, but the good news is you are the pilot. If one does not know to which port one is sailing, no wind is favorable. Your life is like a candle. Every bit of melted wax vanishes forever and shall never be recovered. We will only be able to be productive when we truly strive to protect and make the most of our time.",
+          "Focus 100% of your energy, your time and your life to getting what is really important to you. Accept only what really matters in your lives. Simplify your life. Eliminate anything trivial, everything that is superfluous. There’s no greater joy than working to achieve what really matters to you.",
+          "Angel who serves as a global project manager in clinical research industries, a mother of one-year old baby and a life master has been implementing strong time management skills to strike for an elegant balance of her life. She is going to share her practical tips of managing your time by mastering your life.",
+          "You will learn:",
+          "● The impact of pre-occupation to your efficiency.",
+          "● The decision diagrams.",
+          "● Identify the 3Ts, the three most important tasks to carry out in the day.",
+          "● One by one, only once and till the end."
+        ]
       }
     }
   ],

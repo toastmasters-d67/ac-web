@@ -26,7 +26,9 @@
               {{ $t("speaker.introduction") }} |
             </span>
             <span class="seminar-row-text">
-              {{ introduction }}
+              <span v-for="(item, key) in introduction" :key="key">
+                {{ item }}
+              </span>
             </span>
           </div>
         </div>
@@ -98,7 +100,9 @@
           margin-bottom: 50px;
         }
         .seminar-row-text {
-          font-size: 28px;
+          display: flex;
+          flex-direction: column;
+          font-size: 24px;
           line-height: 50px;
           text-align: left;
         }
@@ -112,7 +116,7 @@
             line-height: 48px;
           }
           .seminar-row-text {
-            font-size: 24px;
+            font-size: 20px;
             line-height: 40px;
           }
         }
@@ -186,8 +190,10 @@ export default {
       default: "",
     },
     introduction: {
-      type: String,
-      default: "",
+      type: Array,
+      default: function () {
+        return [];
+      },
     },
   },
 };

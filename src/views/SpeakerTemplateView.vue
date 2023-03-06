@@ -56,7 +56,10 @@ export default {
     const topic = this.$rt(seminar.topic);
     const time = this.$rt(seminar.time);
     const location = this.$rt(seminar.location);
-    const introduction = this.$rt(seminar.introduction);
+    const introduction = reactive([]);
+    Array.from(seminar.introduction).forEach((source) => {
+      introduction.push(this.$rt(source));
+    });
 
     return {
       speakerKey,
