@@ -87,6 +87,7 @@
     .briefing-speaker-image {
       max-width: 510px;
       width: 42.5%;
+      align-self: flex-start;
       border-color: transparent;
       margin-right: 50px;
     }
