@@ -105,30 +105,26 @@
             text-align: left;
           }
           .seminar-row-subtitle {
-            font-size: 32px;
-            line-height: 60px;
+            font-size: 24px;
+            line-height: 48px;
             text-align: left;
             margin-bottom: 50px;
           }
           .seminar-row-text {
             display: flex;
             flex-direction: column;
-            font-size: 24px;
-            line-height: 50px;
+            font-size: 20px;
+            line-height: 40px;
             text-align: left;
           }
           @media screen and (max-width: 1024px) {
-            .seminar-row-title {
-              font-size: 28px;
-              line-height: 48px;
-            }
             .seminar-row-subtitle {
-              font-size: 28px;
-              line-height: 48px;
-            }
-            .seminar-row-text {
               font-size: 20px;
               line-height: 40px;
+            }
+            .seminar-row-text {
+              font-size: 16px;
+              line-height: 32px;
             }
           }
         }

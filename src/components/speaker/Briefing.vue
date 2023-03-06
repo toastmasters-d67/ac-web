@@ -98,8 +98,8 @@
       line-height: 40px;
       font-weight: 400;
       @media screen and (max-width: 1024px) {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: 16px;
+        line-height: 32px;
       }
     }
   }
