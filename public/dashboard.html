@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
+    <title>Annual Conference</title>
+</head>
+
+<body>
+    <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+                Please enable it to continue.</strong>
+    </noscript>
+    <!-- <div id="app"></div> -->
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h2>My account</h2>
+            <button href="#"><svg width="20" height="20"
+                viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z"
+                  fill="currentColor"/>
+              </svg>New order</button>
+        </div>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th class="row-1">Order number</th>
+                    <th class="row-2">Date</th>
+                    <th class="row-3">Status</th>
+                    <th class="row-4">Amount</th>
+                    <th class="row-5">Attendee info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <details>
+                            <summary>
+                                <table class="summary-table">
+                                    <tr>
+                                        <th class="row-1">04993421</th>
+                                        <td class="row-2">2023.4.1</td>
+                                        <td class="row-3">
+                                            <button class="btn-paid">Paid</button>
+                                        </td>
+                                        <td class="row-4">$ 2,000</td>
+                                        <td class="row-5"><span>Complete</span>
+                                            <button class="btn-edit">Edit</button>
+                                            <svg class="fold-icon" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
+                                                fill="currentColor"/>
+                                            </svg>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </summary>
+                            <div class="folding-table d-flex">
+                                <div>
+                                    <p class="folding-title">Tickets</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between total">
+                                        <p>Total</p>
+                                        <p>$ 4,800</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="folding-title">Payment information</p>
+                                    <p>Please check your registered e-mail for detailed information.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <details>
+                            <summary>
+                                <table class="summary-table">
+                                    <th class="row-1">04993421</th>
+                                    <td class="row-2">2023.4.1</td>
+                                    <td class="row-3">
+                                        <button class="btn-failed">Failed</button>
+                                    </td>
+                                    <td class="row-4">$ 2,000</td>
+                                    <td class="row-5"><span>Incomplete</span>
+                                        <button class="btn-edit">Edit</button>
+                                        <button class="btn-reorder">Reorder</button>
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="fold-icon"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
+                                        fill="currentColor"/>
+                                    </svg>
+                                    </td>
+                                </table>
+                            </summary>
+                            <div class="folding-table d-flex">
+                                <div>
+                                    <p class="folding-title">Tickets</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between total">
+                                        <p>Total</p>
+                                        <p>$ 4,800</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="folding-title">Payment information</p>
+                                    <p>Please check your registered e-mail for detailed information.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <details>
+                            <summary>
+                                <table class="summary-table">
+                                    <th class="row-1">04993421</th>
+                                    <td class="row-2">2023.4.1</td>
+                                    <td class="row-3">
+                                        <button class="btn-pending">Pending</button>
+                                    </td>
+                                    <td class="row-4">$ 2,000</td>
+                                    <td class="row-5"><span>Incomplete</span>
+                                        <button class="btn-edit">Edit</button>
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="fold-icon"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
+                                        fill="currentColor"/>
+                                    </svg>
+                                    </td>
+                                </table>
+                            </summary>
+                            <div class="folding-table d-flex">
+                                <div>
+                                    <p class="folding-title">Tickets</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between total">
+                                        <p>Total</p>
+                                        <p>$ 4,800</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="folding-title">Payment information</p>
+                                    <p>Please check your registered e-mail for detailed information.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <details>
+                            <summary>
+                                <table class="summary-table">
+                                    <th class="row-1">04993421</th>
+                                    <td class="row-2">2023.4.1</td>
+                                    <td class="row-3">
+                                        <button class="btn-pending">Pending</button>
+                                    </td>
+                                    <td class="row-4">$ 2,000</td>
+                                    <td class="row-5"><span>Incomplete</span>
+                                        <button class="btn-edit">Edit</button>
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="fold-icon"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
+                                        fill="currentColor"/>
+                                    </svg>
+                                    </td>
+                                </table>
+                            </summary>
+                            <div class="folding-table d-flex">
+                                <div>
+                                    <p class="folding-title">Tickets</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between total">
+                                        <p>Total</p>
+                                        <p>$ 4,800</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="folding-title">Payment information</p>
+                                    <p>Please check your registered e-mail for detailed information.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <details>
+                            <summary>
+                                <table  class="summary-table">
+                                    <th class="row-1">04993421</th>
+                                    <td class="row-2">2023.4.1</td>
+                                    <td class="row-3">Draft</td>
+                                    <td class="row-4">$ 2,000</td>
+                                    <td class="row-5"><span>Incomplete</span>
+                                        <button class="btn-edit">Edit</button>
+                                        <button class="btn-reorder">Modify</button>
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="fold-icon"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
+                                        fill="currentColor"/>
+                                    </svg>
+                                    </td>
+                                </table>
+                            </summary>
+                            <div class="folding-table d-flex">
+                                <div>
+                                    <p class="folding-title">Tickets</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>Early Bird x2</p>
+                                        <p>$ 1,600</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between total">
+                                        <p>Total</p>
+                                        <p>$ 4,800</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="folding-title">Payment information</p>
+                                    <p>Please check your registered e-mail for detailed information.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        .d-flex {
+            display: flex;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .dashboard {
+            margin: 0 auto;
+            font-family: Montserrat;
+            width: 1056px;
+            background: #fff;
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            padding-bottom: 12px;
+        }
+
+        .dashboard button {
+            font-size: 18px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .dashboard button svg {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .dashboard-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0;
+            
+        }
+
+        .dashboard-header button {
+            background: rgba(255, 219, 130, 1);
+            border-radius: 70px;
+            box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
+            padding: 3px 24px;
+            border-color: transparent;
+            font-size: 20px;
+            font-family: Montserrat;
+            font-weight: bold;
+        }
+
+        .dashboard table {
+            width: 100%;
+            border: 0px;
+            border-spacing: 0;
+        }
+
+        .dashboard table thead {
+            background: #d4d4d4;
+        }
+        .dashboard table thead tr{
+            border-radius: 4px 4px 0 0;
+        }
+        .dashboard table tr {
+            /* border-bottom: 1px solid #5E5E5E; */
+            height: 65px;
+            width: 1056px;
+            font-size: 18px;
+            box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .dashboard table tbody td,
+        .dashboard table tbody th {
+            /* border-bottom: 1px solid #5E5E5E; */
+            border-right:0px;
+            color: #5E5E5E;
+        }
+
+        .dashboard table tr th:first-child{
+            padding-left: 20px;
+        }
+
+        /* .dashboard table tr td:last-child{
+            padding-right: 20px;
+        } */
+
+        .dashboard table thead th {
+            font-weight: medium;
+            font-size: 18px;
+        }
+
+        .dashboard table tbody th {
+            font-weight: 400;
+        }
+
+        .dashboard th,
+        .dashboard td {
+            text-align: left;
+        }
+
+        .dashboard table tbody td:last-child span {
+            min-width: 100px;
+            display: inline-block;
+        }
+
+        .dashboard td svg{
+            float: right;
+            padding-top: 10px;
+        }
+
+        .btn-paid,
+        .btn-failed,
+        .btn-pending {
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .btn-paid {
+            color: #109F43;
+            background: #E0FFD9;
+        }
+
+        .btn-failed {
+            color: #E31C1C;
+            background: #FFD3CD;
+        }
+
+        .btn-pending {
+            color: #DC6B04;
+            background: #FFF4CD;
+        }
+
+        .btn-edit {
+            border: #BCBCBC 1px solid;
+            border-radius: 70px;
+            padding: 8px 16px;
+            margin-right: 50px;
+            margin-left: 20px;
+            background: #fff;
+        }
+
+        .btn-reorder {
+            border-radius: 70px;
+            padding: 8px 25px;
+            border: #B0B0B0 solid 1px;
+            background: #fff;
+        }
+        .folding-table{
+            background: #F4F4F4;
+            padding-top: 35px;
+            padding-bottom: 45px;
+            font-size: 15px;
+        }
+        .folding-table p{
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+        .folding-table div:first-child{
+            margin-right: 95px;
+            margin-left: 37px;
+            min-width: 250px;
+        }
+        .folding-title{
+            color: #004165;
+            font-size: 17.5px;
+            font-weight: bold;
+        }
+        .folding-table .total{
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-in-out;
+        }
+        .fold-icon{
+            padding-right: 20px;
+        }
+        details[open] > summary:first-of-type {
+            list-style-type: none;
+        }
+        details[open] > summary:first-of-type .fold-icon{
+            transform: rotatex(180deg);
+            transition: all .3s linear;
+        }
+        details > summary:first-of-type {
+            display: list-item;
+            counter-increment: list-item 0;
+            list-style: none;
+        }
+        details > summary:first-of-type .fold-icon{
+            transition: all .3s linear;
+        }
+        .row-1{
+            width: 190px;
+        }
+        .row-2{
+            width: 100px;
+        }
+        .row-3{
+            width: 120px;
+        }
+        .row-4{
+            width: 120px;
+        }
+        .row-5 {
+            width:600px ;
+        }
+    </style>
+</body>
+
+</html>
