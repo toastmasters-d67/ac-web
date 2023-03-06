@@ -152,7 +152,7 @@
     {
       "key": "shih",
       "name": "Stan Shih",
-      "title": "Acer Inc. Founder/StanShih Foundation Chairman",
+      "title": "Keynote Speaker (Mandarin)/ Acer Inc. Founder/ StanShih Foundation Chairman",
       "contents": [
         "Mr. Shih is the Founder and Honorary Chairman of Acer Inc., Chairman of StanShih Foundation, Director of Acer and Nan Shan Life Insurance Co., Ltd. and a past Director of Taiwan Semiconductor Manufacturing Company. He has been promoting the way of benevolent governance, proactively driving the elevation of Taiwan’s industrial transformation, enhancing Taiwan’s competitive sustainability, standing on the edge of the scale balancing “culture” and “technology.” He has been acting as “the driver of culture and technology integration” to create value across domains.",
         "BusinessWeek named Mr. Shih one of its “25 Top Managers of the Year” in 1996. He was featured in Time Magazine’s “60 Years of Asian Heroes” in 2006 to recognize him for his contribution to the global IT industry. In 2007, he served as the President’s envoy at the 15th APEC Economic Leader’s Summit in Sydney, Australia. For his long-term contributions, the President honored him with the Order of Brilliant Star with Grand Cordon in October 2011 and the 1st Industrial Technology Research Institute (ITRI) Laureate in 2012. In 2021, he was also awarded the Taiwan Cultural Collaboration Medal by the Ministry of Culture.",
@@ -175,16 +175,16 @@
     {
       "key": "van-borssum",
       "name": "Greg Van Borssum",
-      "title": "Accredited Speaker",
+      "title": "Keynote Speaker (English)/ Accredited Speaker",
       "contents": [
-        "Australia’s first accredited speaker",
-        "Academy Award Winning Best Animated Film “Happy Feet” Assistant Director",
-        "Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor",
-        "2016 Screen Actors Guild Award Winner",
-        "2014 World Champion Pistol Winner",
-        "Australian National Bodybuilding Champion",
-        "National Mental Health Ambassador",
-        "International Karate Master"
+        "● Australia’s first accredited speaker",
+        "● Academy Award Winning Best Animated Film “Happy Feet” Assistant Director",
+        "● Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor",
+        "● 2016 Screen Actors Guild Award Winner",
+        "● 2014 World Champion Pistol Winner",
+        "● Australian National Bodybuilding Champion",
+        "● National Mental Health Ambassador",
+        "● International Karate Master"
       ],
       "facebook": "https://www.facebook.com/greg.vanborssum/",
       "instagram": "https://www.instagram.com/gvb_mindwarriors/",
@@ -205,11 +205,11 @@
     {
       "key": "tu",
       "name": "Samantha Tu",
-      "title": "",
+      "title": "Trainer of the English Training Session",
       "contents": [
-        "Lecturer of business etiquette and tea culture in National Changhua University of Education",
-        "Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association",
-        "Public Relations manager of Toastmasters international, D67, 2020-2021"
+        "● Lecturer of business etiquette and tea culture in National Changhua University of Education",
+        "● Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association",
+        "● Public Relations manager of Toastmasters international, D67, 2020-2021"
       ],
       "facebook": "",
       "instagram": "",
@@ -229,7 +229,7 @@
     {
       "key": "li",
       "name": "Angel Li",
-      "title": "",
+      "title": "Trainer of the English Training Session",
       "contents": [
         "Angel Li has been joining Toastmasters since she was a freshman in National Taiwan University.", 
         "If you want to know how an introvert girl who dare not speak English can be transformed by 16-year Toastmasters journey into a global project manager in clinical research industries, you should come to listen to her inspiring stories.",
@@ -257,7 +257,7 @@
     {
       "key": "botha",
       "name": "Phillip Botha",
-      "title": "",
+      "title": "Trainer of the English Training Session",
       "contents": [
         "Phillip has been a Toastmaster for about 8 years.", 
         "During that time, he served in several leadership roles including VPM and President of Taipei Tech (NTUT) Toastmasters Club plus VPM and VPPR of Premium Toastmasters Club.", 
@@ -284,57 +284,83 @@
     {
       "key": "lin",
       "name": "林惠君",
-      "title": "",
+      "title": "國語教育訓練講師",
       "contents": [
-        "TBD"
+        "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
+        "林惠君是亞洲知名催眠師、企業諮詢顧問，以幽默和務實的教學風格著稱，其發明「中國哲學五行卡」號稱東方塔羅牌，該卡片已成為華人卜算的重要工具。",
+        "講師以獨特的生命經歷和好奇心滿滿的性格，讓她在各領域展露頭角，其專業包括催眠、心理、哲學、茶葉品評、調酒，於2015年被評選為優良教師，更在全國演講大賽中斬獲多次冠軍。"
       ],
       "facebook": "",
       "instagram": "",
       "youtube": "",
       "seminar": {
-        "topic": "TBD",
+        "topic": "充滿人性的超效溝通",
         "time": "4/22, 16:40-18:10",
         "location": "2F Room Lisianthus",
         "introduction": [
-          "TBD"
+          "在ＡＩ時代更需要運用充滿人性的溝通來領導未來，真實的人生經驗和互動能為心理帶來安慰，運用哲學的的思維和腦神經為本的串連能為生命創造更多的彈性。",
+          "本次教育訓練將採工作坊模式進行，讓資深企業諮詢師帶領你從語言、哲學、心理進行充滿人性的超效溝通法。",
+          "準備來一場從腦神經到末稍神經的洗禮，用最符合人性的心理學教你超效溝通，專屬 Toastmasters 的講座，千萬別錯過！"
         ]
       }
     },
     {
       "key": "wang",
       "name": "王玉梅",
-      "title": "",
+      "title": "國語教育訓練講師",
       "contents": [
-        "TBD"
+        "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
+        "● 學歷：東吳大學法律系學士；企管系EMBA碩士",
+        "● 經歷：1984-2022服務於東吳大學（已退休）",
+        "● 東吳校友總會監事",
+        "● 東吳企管EMBA聯合會監事",
+        "● 東吳女籃校友會會長",
+        "● 東吳前兩岸事務中心主任（從事兩岸學術交流26年）",
+        "● 海峽兩岸交流基金會2023年顧問（無給職）",
+        "● 演講及主持經歷：",
+        "　○ 中文演講會22年資深會員、喜洋洋中文演講會顧問", 
+        "　○ 2000年國語備稿演講比賽冠軍、2002年台語即席比賽冠軍",
+        "　○ 多次參與國際演講會大會教育訓練及1次春季大會晚會主持",
+        "　○ 主持演講會會友結婚喜宴、主持演講會會友公司春酒午宴",
+        "　○ 主持訪問姚明見面會、主持800人年終尾牙",  
+        "　○ 主持14場大陸同學來台交流大型活動開、閉幕典禮"
       ],
       "facebook": "",
       "instagram": "",
       "youtube": "",
       "seminar": {
-        "topic": "TBD",
+        "topic": "輕鬆談「主持二、三事」",
         "time": "4/23, 15:40-16:50",
         "location": "2F Room Lisianthus",
         "introduction": [
-          "TBD"
+          "大家好！我是喜洋洋中文國際演講會王玉梅，很榮幸受邀在2023年春季大會的教育訓練工作坊中，和大家一起分享和學習。",
+          "個人參加演講會超過20年，雖然只完成40篇演講，但每篇演講都是「以口說心，人稿合一」的體現，就像談了40場傾心以對，轟轟烈烈的戀愛！因此，「心口稿三合一」始終是我個人對演講舞台的態度和信念。",
+          "從小因多次參加演講比賽的經驗，讓我對「上台演講」並不陌生，但是在參加演講會之前，「主持」這件事，我可就一無所知。直到透過例會的總主持人、開懷、即席再到總講評等等的學習，才培養出我對「主持」的興趣和能力，也因為具備「主持能力」，", 
+          "無論是演講或主持，每位會友都有自己獨特的風格，20年多來，我像個園丁或農夫，守著演講舞台的一畝三分地，深耕勤耘，產出不多，但都是誠心之作，能常常和會友們分享，就是最歡喜的收穫！回首演講會一路走來，真心感受「惠我良多」，如今退休成為「時間富婆」，理當盡己之力感恩回饋！",
+          "古云「溫故知新」，期待4月23日能和舊雨們重新溫故，也能和新知們共同學習，我們一起來杯「心口稿三合一」下午茶，輕鬆聊聊「主持二、三事」吧！"
         ]
       }
     },
     {
       "key": "hisamatsu",
       "name": "Chika Hisamatsu",
-      "title": "",
+      "title": "日本語ワークショップ講師",
       "contents": [
-        "TBD"
+        "Please be noted that this training will be conducted in Japanese; therefore, only Japaneseintroduction is provided. Thank you.",
+        "神奈川の馬車道トーストマスターズクラブ、広島のもみじトーストマスターズクラブに所属しています。",
+        "Toastmasters歴は20年以上で、例会やコンテストなどを通して論評力を磨いてきました。",
+        "2005年、2009年に国際スピーチコンテストの日本代表となった経験から、みなさんとスピーチをより良くする論評について考えていきたいと思います。"
       ],
       "facebook": "",
       "instagram": "",
       "youtube": "",
       "seminar": {
-        "topic": "TBD",
+        "topic": "「誰でもできる！これが論評の基本形」",
         "time": "4/22 14:20-16:20",
         "location": "2F Room Clove",
         "introduction": [
-          "TBD"
+          "論評に苦手意識はありませんか？実は論評には基本的な流れがあり、これさえ理解すれば誰でも短時間で簡単にまとめることができます。",
+          "ワークショップではワークシートを使って実際に日本語スピーチへの論評にチャレンジしていただきます。よい論評でみなさんのクラブの例会を盛り上げましょう！"
         ]
       }
     }
