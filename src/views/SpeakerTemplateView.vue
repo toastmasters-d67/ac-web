@@ -6,13 +6,11 @@
       :name="name"
       :title="title"
       :contents="contents"
+      :facebook="facebook"
+      :instagram="instagram"
+      :youtube="youtube"
     />
-    <Seminar
-      :topic="topic"
-      :time="time"
-      :location="location"
-      :introduction="introduction"
-    />
+    <Seminar :seminars="seminars" />
   </article>
 </template>
 
@@ -43,24 +41,35 @@ export default {
     const name = this.$rt(speaker.name);
     const title = this.$rt(speaker.title);
     const contents = reactive([]);
+    const facebook = this.$rt(speaker.facebook);
+    const instagram = this.$rt(speaker.instagram);
+    const youtube = this.$rt(speaker.youtube);
     Array.from(speaker.contents).forEach((source) => {
       contents.push(this.$rt(source));
     });
-    const seminar = speaker.seminar;
-    const topic = this.$rt(seminar.topic);
-    const time = this.$rt(seminar.time);
-    const location = this.$rt(seminar.location);
-    const introduction = this.$rt(seminar.introduction);
+    const seminars = reactive([]);
+    Array.from(speaker.seminars).forEach((source) => {
+      let introduction = reactive([]);
+      Array.from(source.introduction).forEach((intro) => {
+        introduction.push(this.$rt(intro));
+      });
+      seminars.push({
+        topic: this.$rt(source.topic),
+        time: this.$rt(source.time),
+        location: this.$rt(source.location),
+        introduction: introduction,
+      });
+    });
 
     return {
       speakerKey,
       name,
       title,
       contents,
-      topic,
-      time,
-      location,
-      introduction,
+      facebook,
+      instagram,
+      youtube,
+      seminars,
     };
   },
   beforeMount() {

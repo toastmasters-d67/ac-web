@@ -33,6 +33,11 @@
   border-color: transparent;
   padding-top: 150px;
   padding-bottom: 150px;
+  background: linear-gradient(
+    180.29deg,
+    #f8f0e9 0.27%,
+    rgba(251, 239, 229, 0) 99.76%
+  );
   .countdown-title {
     color: #004165;
     font-size: 48px;
@@ -73,7 +78,7 @@
 @media screen and (max-width: 768px) {
   .countdown-container {
     padding-top: 0px;
-    padding-bottom: 100px;
+    padding-bottom: 30px;
     .countdown-title {
       font-size: 15px;
       line-height: 18px;

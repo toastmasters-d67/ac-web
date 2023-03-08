@@ -19,31 +19,17 @@
     </div>
     <div class="program-table" v-if="showProgramDay1">
       <div class="program-row program-center">
-        <span class="row-time">09:00</span>
-        <span class="row row-yellow">
-          <span>
-            {{ $t("home.program.registration") }}
-            <span class="row-small-text">
-              ({{ $t("home.program.until") }} 12:00)
-            </span>
-          </span>
-          <span class="row-item-venue venue-lobby">
-            {{ $t("home.program.room.lobby") }}
-          </span>
-        </span>
-      </div>
-      <div class="program-row program-center">
         <span class="row-time">09:10</span>
         <div class="row-items">
-          <div class="row-item item-expand">
+          <div class="row-item item-expand item-expand-yellow">
             <span class="row-item-time">
-              {{ $t("home.program.judge") }}
+              {{ $t("home.program.registration") }}
               <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
+                ({{ $t("home.program.until") }})
               </span>
             </span>
-            <span class="row-item-venue venue-preparation">
-              {{ $t("home.program.room.preparation") }}
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
             </span>
           </div>
         </div>
@@ -87,13 +73,13 @@
           <div class="row-item item-expand">
             <span class="row-item-time">
               {{ $t("home.program.keynote") }} -
-              {{ $t("speakers[1].name") }}
+              {{ $t("speakers[0].name") }}
               <span class="row-item-time-duration">
                 (50 {{ $t("home.program.min") }})
               </span>
             </span>
-            <span class="row-item-title">
-              {{ $t("speakers[1].seminar.topic") }}
+            <span class="row-item-title title-expand">
+              {{ $t("speakers[0].seminars[0].topic") }}
             </span>
             <span class="row-item-venue venue-calla">
               {{ $t("home.program.room.calla") }}
@@ -113,22 +99,6 @@
             </span>
             <span class="row-item-venue venue-lobby">
               {{ $t("home.program.room.lobby") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">12:10</span>
-        <div class="row-items">
-          <div class="row-item item-expand">
-            <span class="row-item-time">
-              {{ $t("home.program.judge") }}
-              <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
-              </span>
-            </span>
-            <span class="row-item-venue venue-preparation">
-              {{ $t("home.program.room.preparation") }}
             </span>
           </div>
         </div>
@@ -154,10 +124,10 @@
         <div class="row-items">
           <div class="row-item item-expand">
             <span class="row-item-time">
-              {{ $t("home.program.keynote") }} - {{ $t("speakers[0].name") }}
+              {{ $t("home.program.keynote") }} - {{ $t("speakers[1].name") }}
             </span>
-            <span class="row-item-title">
-              {{ $t("speakers[0].seminar.topic") }}
+            <span class="row-item-title title-expand">
+              {{ $t("speakers[1].seminars[0].topic") }}
             </span>
             <span class="row-item-venue venue-calla">
               {{ $t("home.program.room.calla") }}
@@ -214,7 +184,7 @@
                 $t("home.program.training", {
                   language: $t("home.program.english"),
                 })
-              }}
+              }}&nbsp;({{ $t("speakers[2].name") }})
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.lisianthus") }}
@@ -229,6 +199,7 @@
             </span>
             <span class="row-item-title title-3-lines">
               {{ $t("home.program.japanese") }}
+              &nbsp;({{ $t("speakers[7].name") }})
             </span>
             <span class="row-item-venue venue-clove">
               {{ $t("home.program.room.clove") }}
@@ -253,8 +224,8 @@
                 })
               }}
             </span>
-            <span class="row-item-venue venue-lisianthus">
-              {{ $t("home.program.room.lisianthus") }}
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
             </span>
           </div>
           <div class="row-item">
@@ -269,10 +240,10 @@
                 $t("home.program.training", {
                   language: $t("home.program.english"),
                 })
-              }}
+              }}&nbsp;({{ $t("speakers[3].name") }})
             </span>
-            <span class="row-item-venue venue-calla">
-              {{ $t("home.program.room.calla") }}
+            <span class="row-item-venue venue-lisianthus">
+              {{ $t("home.program.room.lisianthus") }}
             </span>
           </div>
         </div>
@@ -310,7 +281,7 @@
                 $t("home.program.training", {
                   language: $t("home.program.mandarin"),
                 })
-              }}
+              }}&nbsp;({{ $t("speakers[5].name") }})
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.lisianthus") }}
@@ -320,33 +291,39 @@
       </div>
       <div class="program-row program-center">
         <span class="row-time">18:30</span>
-        <span class="row row-yellow">
-          <span>{{ $t("home.program.dinner") }}</span>
-          <span class="row-item-venue venue-jasmine">
-            {{ $t("home.program.room.jasmine") }}
-          </span>
-        </span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-yellow">
+            <span class="row-item-time">
+              {{ $t("home.program.dinner") }}
+            </span>
+            <span class="row-item-venue venue-jasmine">
+              {{ $t("home.program.room.jasmine") }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="program-table" v-if="!showProgramDay1">
       <div class="program-row program-center">
-        <span class="row-time">09:00</span>
-        <span class="row row-yellow">
-          <span>
-            {{ $t("home.program.registration") }}
-            <span class="row-small-text">
-              ({{ $t("home.program.until") }} 12:00)
+        <span class="row-time">09:10</span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-yellow">
+            <span class="row-item-time">
+              {{ $t("home.program.registration") }}
+              <span class="row-item-time-duration">
+                ({{ $t("home.program.until") }})
+              </span>
             </span>
-          </span>
-          <span class="row-item-venue venue-lobby">
-            {{ $t("home.program.room.lobby") }}
-          </span>
-        </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+        </div>
       </div>
       <div class="program-row program-center">
         <span class="row-time"></span>
         <div class="row-items">
-          <div class="row-item item-2-column-height">
+          <div class="row-item">
             <span class="row-item-time">
               09:10
               <span class="row-item-time-duration">
@@ -373,7 +350,7 @@
                   $t("home.program.training", {
                     language: $t("home.program.mandarin"),
                   })
-                }}
+                }}&nbsp;({{ $t("speakers[6].name") }})
               </span>
               <span class="row-item-venue venue-lisianthus">
                 {{ $t("home.program.room.lisianthus") }}
@@ -420,22 +397,6 @@
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">12:20</span>
-        <div class="row-items">
-          <div class="row-item item-expand">
-            <span class="row-item-time">
-              {{ $t("home.program.judge") }}
-              <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
-              </span>
-            </span>
-            <span class="row-item-venue venue-preparation">
-              {{ $t("home.program.room.preparation") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
         <span class="row-time"></span>
         <div class="row-items">
           <div class="row-item">
@@ -468,7 +429,7 @@
                 $t("home.program.training", {
                   language: $t("home.program.english"),
                 })
-              }}
+              }}&nbsp;({{ $t("speakers[4].name") }})
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.lisianthus") }}
@@ -509,7 +470,7 @@
                 $t("home.program.training", {
                   language: $t("home.program.english"),
                 })
-              }}
+              }}&nbsp;({{ $t("speakers[1].name") }})
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.lisianthus") }}
@@ -538,7 +499,7 @@
         <div class="row-items">
           <div class="row-item">
             <span class="row-item-time">
-              15:50
+              15:40
               <span class="row-item-time-duration">
                 (70 {{ $t("home.program.min") }})
               </span>
@@ -552,7 +513,7 @@
           </div>
           <div class="row-item">
             <span class="row-item-time">
-              15:50
+              15:40
               <span class="row-item-time-duration">
                 (70 {{ $t("home.program.min") }})
               </span>
@@ -686,37 +647,11 @@
   line-height: 60px;
   margin-right: 23px;
 }
-.time-filter {
-  color: rgba(255, 255, 255, 0.25);
-}
-.row {
-  max-width: 1055px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 25px;
-  border-radius: 20px;
-  gap: 10px;
-  padding: 0px 10px;
-  .row-small-text {
-    font-size: 16px;
-  }
-}
-.row-yellow {
-  height: 93px;
-  background: rgba(255, 204, 77, 0.25);
-}
 .row-items {
   max-width: 1055px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
   justify-content: flex-start;
   gap: 16px;
   .row-item-columns {
@@ -725,9 +660,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
-  }
-  .item-2-column-height {
-    height: 343px;
   }
   .row-item {
     width: 100%;
@@ -765,6 +697,23 @@
       font-size: 20px;
       line-height: 25px;
     }
+    .title-expand {
+      text-align: center;
+    }
+    .row-item-venue {
+      color: #004165;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 20px;
+      border-radius: 20px;
+      gap: 10px;
+      padding: 5px 10px;
+    }
     .venue-preparation {
       background: #dde1e1;
     }
@@ -776,6 +725,12 @@
     }
     .venue-calla {
       background: #c1ccbe;
+    }
+    .venue-jasmine {
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .venue-lobby {
+      background: white;
     }
     .row-item-note {
       font-size: 16px;
@@ -796,26 +751,7 @@
     background: rgba(255, 204, 77, 0.25);
   }
 }
-.row-item-venue {
-  color: #004165;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 20px;
-  border-radius: 20px;
-  gap: 10px;
-  padding: 5px 10px;
-}
-.venue-jasmine {
-  background: rgba(255, 255, 255, 0.6);
-}
-.venue-lobby {
-  background: white;
-}
+
 @media screen and (max-width: 768px) {
   .program-container {
     padding-bottom: 0px;
@@ -856,27 +792,10 @@
     line-height: 15px;
     margin-left: 10px;
   }
-  .row {
-    font-size: 12px;
-    line-height: 15px;
-    gap: 5px;
-    .row-small-text {
-      font-size: 8px;
-    }
-  }
-  .row-yellow {
-    height: 42px;
-  }
   .row-items {
     gap: 10px;
     .row-item-columns {
       gap: 5px;
-    }
-    .item-2-column-height {
-      height: 219px;
-      @media screen and (min-width: 427px) {
-        height: 189px;
-      }
     }
     .row-item {
       padding: 10px;
@@ -889,16 +808,17 @@
         }
       }
       .row-item-title {
-        max-width: 220px;
         font-size: 10px;
         line-height: 15px;
-        margin: auto;
         margin-top: 3px;
         margin-bottom: 8px;
       }
       .title-3-lines {
         font-size: 8px;
         line-height: 14px;
+      }
+      .title-expand {
+        max-width: 76%;
       }
       .row-item-venue {
         font-size: 8px;
@@ -910,6 +830,7 @@
       }
     }
     .item-expand {
+      margin: auto;
       font-size: 12px;
       line-height: 15px;
       gap: 5px;

@@ -2,7 +2,7 @@
   <nav class="navbar-container">
     <router-link to="/" class="navbar-logo" @click="setWindowToTop()">
       <img
-        src="@/assets/icon/app/logo.png"
+        src="@/assets/icon/app/logo.svg"
         class="navbar-logo-image"
         alt="logo"
       />
@@ -47,6 +47,12 @@
           </option>
         </select>
       </div>
+      <img
+        src="@/assets/icon/app/myaccount.svg"
+        class="navbar-myaccount"
+        alt="My Account"
+        v-if="false"
+      />
     </div>
     <div class="navbar-mobile-container">
       <Button
@@ -110,6 +116,9 @@
             </select>
           </div>
         </div>
+        <router-link to="login" class="navbar-login-button login-mobile">
+          {{ $t("app.navbar.login") }}
+        </router-link>
       </Sidebar>
     </div>
   </nav>
@@ -137,7 +146,7 @@ hr {
   z-index: 5;
   width: 100%;
   height: 80px;
-  background: #819db2;
+  background: #f8f0e9;
   font-size: 20px;
   line-height: 24px;
   text-align: center;
@@ -145,14 +154,13 @@ hr {
   .navbar-logo {
     position: absolute;
     top: 15px;
-    left: 38px;
+    left: 3.96%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     .navbar-logo-image {
       width: 60px;
-      height: 50px;
       margin-right: 20px;
     }
     .navbar-logo-text {
@@ -175,15 +183,16 @@ hr {
   }
   .navbar-links {
     position: absolute;
-    top: 28px;
-    right: 24px;
+    top: 20px;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
+    column-gap: 32px;
+    margin-right: 32px;
     .navbar-link {
       font-weight: 700;
-      margin-right: 32px;
       cursor: pointer;
     }
     .navbar-select {
@@ -200,7 +209,60 @@ hr {
     display: none;
   }
 }
-
+.navbar-login-button {
+  display: flex;
+  align-items: center;
+  border-radius: 38px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  border: 1px solid white;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+  background: #ffdb82;
+  text-align: center;
+  padding: 8px 24px;
+  cursor: pointer;
+}
+.navbar-myaccount {
+  height: 24.75px;
+  width: 24.75px;
+  border-radius: 0px;
+}
+@media screen and (max-width: 1024px) {
+  .navbar-container {
+    .navbar-logo {
+      .navbar-logo-image {
+        width: 50px;
+        margin-right: 14px;
+      }
+      .navbar-logo-text {
+        .navbar-logo-text-1 {
+          font-size: 16px;
+          line-height: 20px;
+        }
+        .navbar-logo-text-2 {
+          font-size: 10px;
+          line-height: 14px;
+        }
+      }
+    }
+    .navbar-links {
+      gap: 18px;
+      margin-right: 18px;
+      .navbar-link {
+        font-size: 16px;
+      }
+      .navbar-select {
+        font-size: 16px !important;
+      }
+    }
+  }
+  .navbar-login-button {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 8px 16px;
+  }
+}
 @media screen and (max-width: 768px) {
   .navbar-container {
     height: 63px;
@@ -209,7 +271,6 @@ hr {
       left: 22px;
       .navbar-logo-image {
         width: 50px;
-        height: 41.49px;
         margin-right: 7px;
       }
       .navbar-logo-text {
@@ -283,6 +344,9 @@ hr {
     line-height: 24px;
     border: transparent;
   }
+}
+.login-mobile {
+  margin: 35% auto 0;
 }
 </style>
 

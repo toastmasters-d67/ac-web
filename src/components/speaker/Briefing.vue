@@ -17,21 +17,27 @@
         </div>
       </div>
       <div class="briefing-speaker-links">
-        <img
-          src="@/assets/icon/speaker/speaker-facebook.png"
-          class="briefing-logo"
-          alt="facebook"
-        />
-        <img
-          src="@/assets/icon/speaker/speaker-instagram.png"
-          class="briefing-logo"
-          alt="instagram"
-        />
-        <img
-          src="@/assets/icon/speaker/speaker-youtube.png"
-          class="briefing-logo"
-          alt="youtube"
-        />
+        <a :href="facebook" target="_blank" v-if="facebook">
+          <img
+            src="@/assets/icon/speaker/speaker-facebook.png"
+            class="briefing-logo"
+            alt="facebook"
+          />
+        </a>
+        <a :href="instagram" target="_blank" v-if="instagram">
+          <img
+            src="@/assets/icon/speaker/speaker-instagram.png"
+            class="briefing-logo"
+            alt="instagram"
+          />
+        </a>
+        <a :href="youtube" target="_blank" v-if="youtube">
+          <img
+            src="@/assets/icon/speaker/speaker-youtube.png"
+            class="briefing-logo"
+            alt="youtube"
+          />
+        </a>
       </div>
     </div>
   </section>
@@ -81,7 +87,7 @@
     .briefing-speaker-image {
       max-width: 510px;
       width: 42.5%;
-      aspect-ratio: 510/655;
+      align-self: flex-start;
       border-color: transparent;
       margin-right: 50px;
     }
@@ -90,9 +96,10 @@
       flex-direction: column;
       font-size: 20px;
       line-height: 40px;
+      font-weight: 400;
       @media screen and (max-width: 1024px) {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: 16px;
+        line-height: 32px;
       }
     }
   }
@@ -138,7 +145,7 @@
         width: 68.27%;
       }
       .briefing-speaker-text {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 20px;
       }
     }
@@ -174,6 +181,18 @@ export default {
       default: function () {
         return [];
       },
+    },
+    facebook: {
+      type: String,
+      default: "",
+    },
+    instagram: {
+      type: String,
+      default: "",
+    },
+    youtube: {
+      type: String,
+      default: "",
     },
   },
   methods: {

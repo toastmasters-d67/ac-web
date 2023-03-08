@@ -12,18 +12,6 @@
           <span class="speaker-name-text">{{ speaker.name }}</span>
         </router-link>
       </div>
-      <div class="speaker">
-        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
-        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
-      </div>
-      <div class="speaker">
-        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
-        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
-      </div>
-      <div class="speaker">
-        <img :src="getImage('tbd')" class="speaker-image" :alt="TBD" />
-        <span class="speaker-name-text">{{ $t("home.speaker.tbd") }}</span>
-      </div>
     </div>
   </section>
 </template>
@@ -68,7 +56,7 @@
     .speaker-image {
       width: 250px;
       height: 250px;
-      border-radius: 20px;
+      border-radius: 125px;
       margin-bottom: 24px;
     }
     .speaker-name-text {

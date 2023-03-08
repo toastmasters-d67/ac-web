@@ -3,7 +3,7 @@
 image: node:latest
 # Functions that should be executed before the build script is run
 before_script:
-  - yarn install --frozen-lockfile --progress=false
+  - yarn --frozen-lockfile --progress=false
 build:
   stage: build
   except:
@@ -47,11 +47,12 @@ sit:
   image: registry.gitlab.com/static-web-apps/azure-static-web-apps-deploy
   script:
     - echo "Deploying pages in sit"
-  environment: production
+  environment: staging
   variables:
-    API_TOKEN: $API_TOKEN_SIT
+    API_TOKEN: $API_TOKEN
     APP_PATH: '$CI_PROJECT_DIR'
     OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
+    DEPLOYMENT_ENVIRONMENT: staging
   only:
     - staging
 

@@ -2,34 +2,42 @@
   <section class="seminar-container">
     <div class="seminar-box">
       <header class="seminar-title">{{ $t("speaker.seminar") }}</header>
-      <div class="seminar-separator"></div>
-      <div class="seminar-content">
-        <div class="seminar-content-basic-info">
-          <div class="seminar-row">
-            <span class="seminar-row-title">
-              Topic{{ $t("speaker.topic") }} |
-            </span>
-            <span class="seminar-row-subtitle">{{ topic }}</span>
+      <div
+        v-for="(seminar, key) in seminars"
+        :key="key"
+        class="seminar-subcontainer"
+      >
+        <div class="seminar-separator"></div>
+        <div class="seminar-content">
+          <div class="seminar-content-basic-info">
+            <div class="seminar-row">
+              <span class="seminar-row-title">
+                {{ $t("speaker.topic") }} |
+              </span>
+              <span class="seminar-row-subtitle">{{ seminar.topic }}</span>
+            </div>
+            <div class="seminar-row">
+              <span class="seminar-row-title">{{ $t("speaker.time") }} |</span>
+              <span class="seminar-row-subtitle">{{ seminar.time }}</span>
+            </div>
+            <div class="seminar-row">
+              <span class="seminar-row-title">
+                {{ $t("speaker.location") }} |
+              </span>
+              <span class="seminar-row-subtitle">{{ seminar.location }}</span>
+            </div>
           </div>
-          <div class="seminar-row">
-            <span class="seminar-row-title">{{ $t("speaker.time") }} |</span>
-            <span class="seminar-row-subtitle">{{ time }}</span>
-          </div>
-          <div class="seminar-row">
-            <span class="seminar-row-title">
-              {{ $t("speaker.location") }} |
-            </span>
-            <span class="seminar-row-subtitle">{{ location }}</span>
-          </div>
-        </div>
-        <div class="seminar-content-introduction">
-          <div class="seminar-row">
-            <span class="seminar-row-title">
-              {{ $t("speaker.introduction") }} |
-            </span>
-            <span class="seminar-row-text">
-              {{ introduction }}
-            </span>
+          <div class="seminar-content-introduction">
+            <div class="seminar-row">
+              <span class="seminar-row-title">
+                {{ $t("speaker.introduction") }} |
+              </span>
+              <span class="seminar-row-text">
+                <span v-for="(item, key) in seminar.introduction" :key="key">
+                  {{ item }}
+                </span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -68,54 +76,56 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-    .seminar-content {
+    .seminar-subcontainer {
       width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      .seminar-content-basic-info {
-        width: 40%;
+      .seminar-content {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        margin-right: 50px;
-      }
-      .seminar-content-introduction {
-        width: 52%;
-        display: flex;
-        flex-direction: column;
-      }
-      .seminar-row {
-        display: flex;
-        flex-direction: column;
-        .seminar-row-title {
-          color: rgba(33, 67, 102, 0.76);
-          font-size: 32px;
-          line-height: 60px;
-          text-align: left;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 50px;
+        .seminar-content-basic-info {
+          width: 40%;
+          display: flex;
+          flex-direction: column;
+          margin-right: 50px;
         }
-        .seminar-row-subtitle {
-          font-size: 32px;
-          line-height: 60px;
-          text-align: left;
-          margin-bottom: 50px;
+        .seminar-content-introduction {
+          width: 52%;
+          display: flex;
+          flex-direction: column;
         }
-        .seminar-row-text {
-          font-size: 28px;
-          line-height: 50px;
-          text-align: left;
-        }
-        @media screen and (max-width: 1024px) {
+        .seminar-row {
+          display: flex;
+          flex-direction: column;
           .seminar-row-title {
-            font-size: 28px;
-            line-height: 48px;
+            color: rgba(33, 67, 102, 0.76);
+            font-size: 32px;
+            line-height: 60px;
+            text-align: left;
           }
           .seminar-row-subtitle {
-            font-size: 28px;
+            font-size: 24px;
             line-height: 48px;
+            text-align: left;
+            margin-bottom: 50px;
           }
           .seminar-row-text {
-            font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
             line-height: 40px;
+            text-align: left;
+          }
+          @media screen and (max-width: 1024px) {
+            .seminar-row-subtitle {
+              font-size: 20px;
+              line-height: 40px;
+            }
+            .seminar-row-text {
+              font-size: 16px;
+              line-height: 32px;
+            }
           }
         }
       }
@@ -139,30 +149,34 @@
         margin-top: 10px;
         margin-bottom: 10px;
       }
-      .seminar-content {
-        flex-direction: column;
-        .seminar-content-basic-info {
-          width: 100%;
-          margin-right: 50px;
-        }
-        .seminar-content-introduction {
-          width: 100%;
-        }
-        .seminar-row {
-          display: flex;
+      .seminar-subcontainer {
+        width: 100%;
+        .seminar-content {
           flex-direction: column;
-          .seminar-row-title {
-            font-size: 16px;
-            line-height: 40px;
+          margin-bottom: 25px;
+          .seminar-content-basic-info {
+            width: 100%;
+            margin-right: 50px;
           }
-          .seminar-row-subtitle {
-            font-size: 16px;
-            line-height: 20px;
-            margin-bottom: 10px;
+          .seminar-content-introduction {
+            width: 100%;
           }
-          .seminar-row-text {
-            font-size: 12px;
-            line-height: 20px;
+          .seminar-row {
+            display: flex;
+            flex-direction: column;
+            .seminar-row-title {
+              font-size: 16px;
+              line-height: 40px;
+            }
+            .seminar-row-subtitle {
+              font-size: 14px;
+              line-height: 20px;
+              margin-bottom: 10px;
+            }
+            .seminar-row-text {
+              font-size: 14px;
+              line-height: 20px;
+            }
           }
         }
       }
@@ -172,24 +186,16 @@
 </style>
 
 <script>
+import { reactive } from "vue";
+
 export default {
   name: "SpeakerSeminar",
   props: {
-    topic: {
-      type: String,
-      default: "",
-    },
-    time: {
-      type: String,
-      default: "",
-    },
-    location: {
-      type: String,
-      default: "",
-    },
-    introduction: {
-      type: String,
-      default: "",
+    seminars: {
+      type: Object,
+      default: function () {
+        return reactive([]);
+      },
     },
   },
 };

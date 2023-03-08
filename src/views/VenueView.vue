@@ -16,7 +16,7 @@
           <span class="venue-row-text">(02) 2649-3034</span>
         </div>
         <div class="venue-row">
-          <i class="pi pi-globe venue-row-icon"></i>
+          <i class="pi pi-map-marker venue-row-icon"></i>
           <span class="venue-row-text">
             {{ $t("home.venue.address") }}
           </span>
@@ -80,7 +80,6 @@
   border-color: transparent;
   border-radius: 0;
   box-sizing: border-box;
-  padding-top: 150px;
   padding-bottom: 50px;
   a {
     color: #004165;
@@ -164,7 +163,6 @@
 
 @media screen and (max-width: 768px) {
   .venue-container {
-    padding-top: 0px;
     .venue-box {
       width: 87.2%;
       max-width: 915px;

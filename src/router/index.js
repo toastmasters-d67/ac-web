@@ -13,6 +13,16 @@ const routes = [
     component: () => import("@/views/FAQView.vue"),
   },
   {
+    path: "/me",
+    name: "me",
+    component: () => import("@/views/AccountView.vue"),
+  },
+  {
+    path: "/order",
+    name: "order",
+    component: () => import("@/views/OrderView.vue"),
+  },
+  {
     path: "/venue",
     name: "venue",
     component: () => import("@/views/VenueView.vue"),
@@ -22,6 +32,7 @@ const routes = [
     name: "speaker",
     component: () => import("@/views/SpeakerTemplateView.vue"),
   },
+  { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
 const router = createRouter({

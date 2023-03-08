@@ -4,8 +4,14 @@
       "/": "Home",
       "faq": "FAQ",
       "venue": "Venue",
-      "van-borssum": "Greg Van Borssum",
       "shih": "Stan Shih",
+      "van-borssum": "Greg Van Borssum",
+      "hisamatsu": "Chika Hisamatsu",
+      "tu": "Samantha Tu",
+      "botha": "Phillip Botha",
+      "wang": "王玉梅",
+      "lin": "林惠君",
+      "li": "Angel Li",
       "tbd": "TBD"
     },
     "navbar": {
@@ -15,10 +21,12 @@
       "speakers": "Speakers",
       "venue": "Venue",
       "faq": "FAQ",
-      "lang": "EN"
+      "lang": "EN",
+      "login": "Log in"
     },
     "footer": {
-      "contact": "Contact Us"
+      "contact": "Contact Us",
+      "reserved": "2023 District 67, Toastmasters International. All rights reserved."
     },
     "button": {
       "ticket": ["Get", "Tickets"],
@@ -38,7 +46,7 @@
       "day1": "Day 1",
       "day2": "Day 2",
       "registration": "Registration",
-      "until": "Open until",
+      "until": "Open until 12:00",
       "judge": "Judge Briefing",
       "min": "mins",
       "run-off": "International Speech Run-off {alphabet} Contest",
@@ -72,7 +80,10 @@
       "title": "Annual Conference",
       "date": "Apr. 22-23",
       "slogan": ["Connect to the Present.", "Lead the future!"],
-      "text": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions. 16 education sessions across four tracks.",
+      "text": {
+        "desktop": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions.",
+        "mobile": "Come join the exciting 2-day program of keynote speeches, speech contests and training sessions."
+      },
       "ticket": "Get Tickets"
     },
     "souvenir": {
@@ -87,16 +98,19 @@
     "ticket": {
       "title": "Ticket Price",
       "two-day": "2 Day Pass",
-      "early-bird": "Early Bird Pass",
+      "early-bird-title": "Early Bird Pass",
+      "early-bird-title-note": "2 day pass + Dinner Banquet",
+      "early-bird-price-note": "Original price $ 3000",
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
       "until": "Until Mar 19, 2023",
       "lunch": "Lunchbox",
       "lunch2": "Lunchboxes for 2 days",
       "souvenir": "Souvenirs",
-      "banquet": "Dinner banquet on 4/22 party included",
+      "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
-      "note": "The tickets will be a vailable for order soon. Please stay tuned!"
+      "note": ["Early Bird Pass is available for order now!", "Please stay tuned for more updates."],
+      "order": "Order Ticket"
     },
     "venue": {
       "title": "How to Get There?",
@@ -120,6 +134,10 @@
       {
         "question": "How can I buy the annual conference tickets?",
         "answer": "The tickets will be available for online purchase soon. Please stay tuned!"
+      },
+      {
+        "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
+        "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 16th for the manual refund process. No refund is allowed after this deadline."
       }
     ]
   },
@@ -132,35 +150,247 @@
   },
   "speakers": [
     {
-      "key": "van-borssum",
-      "name": "Greg Van Borssum",
-      "title": "Accredited Speaker",
-      "contents": [
-        "A bullied, skinny kid too afraid to stand up for himself, Greg used to live in fear. At age 12, he decided to change and spent his newspaper route money on a gym membership and undertook rigorous weight training and the study of martial arts. He then decided to take on two massive challenges, to become the Australian National Bodybuilding Champion and a Karate Master. It was here Greg learned to unravel the warriors code and by applying its principles he revealed how limitless his life could become.",
-        "In 2019, Greg became an Accredited Speaker by Toastmasters International, making him 1 of 88 speakers globally in over 40 years to receive this honor. Greg’s ability to transfer his mindset into totally new areas of life and master them in relatively short time has had him labelled by many as the MASTER OF REMASTERY. Let Greg show you the steps to master your mindset and remaster your life."
-      ],
-      "seminar": {
-        "topic": "TBD",
-        "time": "4/22 13:10-14:00",
-        "location": "1F Room Calla Lilly & Rose",
-        "introduction": "TBD"
-      }
-    },
-    {
       "key": "shih",
       "name": "Stan Shih",
-      "title": "Cofounder of the Acer Group",
+      "title": "Keynote Speaker (Mandarin)/ Acer Inc. Founder/ StanShih Foundation Chairman",
       "contents": [
-        "Stan Shih is the Chairman of Stan Shih Foundation, Cofounder & Honorary Chairman of the Acer Group. Mr. Shih serves on the boards of Acer, the former boards of TSMC. He is the Chairman of Cloud Gate Culture and Art Foundation and the head of One Song Orchestra Fun Club. Besides, he acts as commissioner of the Reform for Resilience Commission and Director of CAPRI.",
-        "Time featured Mr. Shih in its article “60 years of Asian Hero’s” for turning Taiwan into a PC manufacturing powerhouse. He is awarded “Taiwan Cultural Collaboration Medal” by the Ministry of Culture of Taiwan in 2021.",
-        "Mr. Shih earned a Bachelor’s Master and honorary Ph D in Electronics engineering from National Chiao Tung University in Taiwan. He was awarded an Honorary Doctorate of Technology by Hong Kong Polytechnic University, and an Honorary Doctor of International Law from the Thousand School of Global Management."
+        "Mr. Shih is the Founder and Honorary Chairman of Acer Inc., Chairman of StanShih Foundation, Director of Acer and Nan Shan Life Insurance Co., Ltd. and a past Director of Taiwan Semiconductor Manufacturing Company. He has been promoting the way of benevolent governance, proactively driving the elevation of Taiwan’s industrial transformation, enhancing Taiwan’s competitive sustainability, standing on the edge of the scale balancing “culture” and “technology.” He has been acting as “the driver of culture and technology integration” to create value across domains.",
+        "BusinessWeek named Mr. Shih one of its “25 Top Managers of the Year” in 1996. He was featured in Time Magazine’s “60 Years of Asian Heroes” in 2006 to recognize him for his contribution to the global IT industry. In 2007, he served as the President’s envoy at the 15th APEC Economic Leader’s Summit in Sydney, Australia. For his long-term contributions, the President honored him with the Order of Brilliant Star with Grand Cordon in October 2011 and the 1st Industrial Technology Research Institute (ITRI) Laureate in 2012. In 2021, he was also awarded the Taiwan Cultural Collaboration Medal by the Ministry of Culture.",
+        "Mr. Shih earned his bachelors, masters, and honorary doctorate in electronics engineering from the National Chiao Tung University. He was also awarded an Honorary Doctorate of Technology by Hong Kong Polytechnic University, made an honorary fellow of the University of Wales, awarded an Honorary Doctorate of International Law from the Thunderbird School of Global Management, and awarded an Honorary Doctorate of Fine Arts by the Tainan National University of the Arts."
       ],
-      "seminar": {
-        "topic": "From Wangdao Perspective to the Competitiveness of Taiwan",
-        "time": "4/22 11:00-11:50",
-        "location": "1F Room Calla Lilly & Rose",
-        "introduction": "“New Wangdao” talks about the leadership thinking of any organization by “creating values, balancing current interest and sustaining future development.” In the perspective of Wangdao, there are six criteria to measure the total value of contributions: “visible, direct and current” values, and “invisible, indirect and future” values, while the later is much more important."
-      }
+      "facebook": "https://www.facebook.com/StanShares/",
+      "instagram": "https://www.instagram.com/stanshih.ig/",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "Discussing Taiwan’s Competitiveness Through the Thinking of Wangdao",
+          "time": "4/22, 11:00-11:50",
+          "location": "1F Room Calla Lilly & Rose",
+          "introduction": [
+            "“New Wangdao” is a discussion of the way of leaders in organizations of various sizes. “Value creation, the balance of interests, and sustainable development” are the three core concepts of Wangdao thinking. Wangdao emphasizes looking at the total value of things through the “Six-Aspect Values.” Pay greater attention to the “intangible, indirect, future” invisible value in addition to the “tangible, direct, and present” dominant value. Build a new mechanism for mutual value creation and the balance of interests through continuous creativity and value creation. Only then can the goal of sustainable development be realized.",
+            "Taiwan is already Si-nnovation. Facing the new and future challenges of the world, we need to make Taiwan the birthplace of Si-vilization. In the past, Taiwan has served as the main contributor of the world’s electronic products and material civilization. Hopefully in the future, Taiwan can contribute to the future spiritual civilization of mankind. Taiwan can position itself as a friend of the world.",
+            "This year, the theme of the annual conference is “Connect to the Present, Lead the Future.” It fits perfectly with the thinking of Wangdao and its mission of leading Taiwan towards the future. Standing on the foundation of Taiwan’s current ICT and electronics industries, we can further lead future cross-domain and integration applications, develop smart medicine, cultural technology, smart agriculture, etc. We can contribute to our island, the international community, and the global environment."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "van-borssum",
+      "name": "Greg Van Borssum",
+      "title": "Keynote Speaker (English)/ Accredited Speaker",
+      "contents": [
+        "● Australia’s first accredited speaker",
+        "● Academy Award Winning Best Animated Film “Happy Feet” Assistant Director",
+        "● Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor",
+        "● 2016 Screen Actors Guild Award Winner",
+        "● 2014 World Champion Pistol Winner",
+        "● Australian National Bodybuilding Champion",
+        "● National Mental Health Ambassador",
+        "● International Karate Master"
+      ],
+      "facebook": "https://www.facebook.com/greg.vanborssum/",
+      "instagram": "https://www.instagram.com/gvb_mindwarriors/",
+      "youtube": "https://www.youtube.com/{'@'}gvbmindwarriors5678",
+      "seminars": [
+        {
+          "topic": "Remastermind - How a Failed School Kid Mastered His Mindset to Become a Champion",
+          "time": "4/22, 13:10-14:00",
+          "location": "1F Room Calla Lilly & Rose",
+          "introduction": [
+            "When people look at Greg’s life, they only see the result. They don’t see the years of failures; they don’t feel the years of pain, and they don’t hear the negative voices from his childhood that echoed so loudly through his mind.",
+            "His primary teachers told him he would amount to nothing, high school teachers said he’d be the most likely student to be in prison or dead by 21... but no matter what they said, Greg refused to listen.",
+            "Instead, he immersed himself into the worlds of martial arts and bodybuilding, absorbed life lessons from the influential people closest to him, and used them to temper his body and mind.",
+            "Greg turned his life around, becoming the World’s youngest Professional Natural Bodybuilder, a World champion pistol shooter, Award Winning Hollywood Action Choreographer and director, and the Southern Hemispheres only Toastmasters Accredited Speaker.",
+            "It’s time to learn what it takes to master your mindset with Greg Van Borssum “Remastermind - how a failed school kid mastered his mindset to become a champion.”"
+          ]
+        },
+        {
+          "topic": "Team Survival Skills from Antarctica to the Apocalypse",
+          "time": "4/23, 14:20-15:20",
+          "location": "2F Room Lisianthus",
+          "introduction": [
+            "The skills of leadership are some of the most important life skills you could ever wish to cultivate. Learning how to persuade, speak, present and influence, to me are some of the most imperative.",
+            "Anyone can lead when times are good, but it’s in a time of crisis, when the pressure is on, and things aren’t going your way, when true leadership comes to the fore.",
+            "Over the past 25 years Greg has pushed boundaries, from being a multiple national and a world champion sportsman, to spearheading some of Hollywood’s biggest films. In his time, he has led teams of up to 1000 people, in high pressure, high danger environments and all under massive time constraints.",
+            "In this workshop, Greg will go through the lessons he learned whilst putting his face to the fire, from his competition years to making films, Happy feet, Happy Feet 2 and Mad Max Fury Road with the films winning a total of 7 Academy Awards.",
+            "It’s time to learn “Team survival skills from Antarctica to the Apocalypse.”"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tu",
+      "name": "Samantha Tu",
+      "title": "Trainer of the English Training Session",
+      "contents": [
+        "● Lecturer of business etiquette and tea culture in National Changhua University of Education",
+        "● Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association",
+        "● Public Relations manager of Toastmasters international, D67, 2020-2021"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "Come Have a Cup of Tea - Reconnect to the World through Tea",
+          "time": "4/22, 14:20-15:30",
+          "location": "2F Room Lisianthus",
+          "introduction": [
+            "”Come have a cup of tea” used to be an authentic greeting in traditional Taiwanese society.", 
+            "It showed the hospitality of Taiwanese people and indicated the important role that tea has played in Taiwanese life.",
+            "The power of tea is much more than you can image.", 
+            "It is not only one of the top 3 popular drinks worldwide, tea also provides more health advantages than others, most of all, tea is an elegant way for us to reconnect to the world after the pandemic." 
+          ]
+        }
+      ]
+    },
+    {
+      "key": "li",
+      "name": "Angel Li",
+      "title": "Trainer of the English Training Session",
+      "contents": [
+        "Angel Li has been joining Toastmasters since she was a freshman in National Taiwan University.", 
+        "If you want to know how an introvert girl who dare not speak English can be transformed by 16-year Toastmasters journey into a global project manager in clinical research industries, you should come to listen to her inspiring stories.",
+        "Angel has become a mother of a baby girl since year 2022 while she is seeking for a new record and striving for a new height in her career. She achieves all the milestones and timeline at work, cooks for almost every meal for family, and keep me-time and own hobbies at the same time. If you want to know how a working mother can balance her career, life and family elegantly, you should come to listen to her tips for time management skills."
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "Manage Your Time, Master Your Life",
+          "time": "4/22, 15:30-16:30",
+          "location": "2F Room Lisianthus",
+          "introduction": [
+            "Time flies, but the good news is you are the pilot. If one does not know to which port one is sailing, no wind is favorable. Your life is like a candle. Every bit of melted wax vanishes forever and shall never be recovered. We will only be able to be productive when we truly strive to protect and make the most of our time.",
+            "Focus 100% of your energy, your time and your life to getting what is really important to you. Accept only what really matters in your lives. Simplify your life. Eliminate anything trivial, everything that is superfluous. There’s no greater joy than working to achieve what really matters to you.",
+            "Angel who serves as a global project manager in clinical research industries, a mother of one-year old baby and a life master has been implementing strong time management skills to strike for an elegant balance of her life. She is going to share her practical tips of managing your time by mastering your life.",
+            "You will learn:",
+            "● The impact of pre-occupation to your efficiency.",
+            "● The decision diagrams.",
+            "● Identify the 3Ts, the three most important tasks to carry out in the day.",
+            "● One by one, only once and till the end."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "botha",
+      "name": "Phillip Botha",
+      "title": "Trainer of the English Training Session",
+      "contents": [
+        "Phillip has been a Toastmaster for about 8 years.", 
+        "During that time, he served in several leadership roles including VPM and President of Taipei Tech (NTUT) Toastmasters Club plus VPM and VPPR of Premium Toastmasters Club.", 
+        "In 2019 Phillip participated in the D67 International Speech Contest where he made it to the finals held in Kaohsiung City.", 
+        "Phillip is currently a member of the Good Life Toastmasters Club.", 
+        "Phillip’s personal struggle with low self-confidence and self-esteem has motivated him to become a student and teacher in these fields.", 
+        "In 2018 he traveled to Orlando, Florida where he became certified as a John C. Maxwell Coach, Teacher, Trainer, and Speaker.", 
+        "His passion for teaching and helping others has led him to conduct this training program."
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "Be Your Own Hero: How to Overcome Self-Doubt and Be The Most Confident You",
+          "time": "4/23, 13:00-14:10",
+          "location": "2F Room Lisianthus",
+          "introduction": [
+            "Do you ever feel that a lack of self-confidence is holding you back from being the best version of yourself and accomplishing your biggest dreams?", 
+            "In this training, you’ll discover what self-confidence really is, and receive an action-based blueprint for overcoming self-doubt and building and maintaining optimal levels of confidence.", 
+            "You will learn how to take control of your own personal growth and become the hero of your own story."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "lin",
+      "name": "林惠君",
+      "title": "國語教育訓練講師",
+      "contents": [
+        "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
+        "林惠君是亞洲知名催眠師、企業諮詢顧問，以幽默和務實的教學風格著稱，其發明「中國哲學五行卡」號稱東方塔羅牌，該卡片已成為華人卜算的重要工具。",
+        "講師以獨特的生命經歷和好奇心滿滿的性格，讓她在各領域展露頭角，其專業包括催眠、心理、哲學、茶葉品評、調酒，於2015年被評選為優良教師，更在全國演講大賽中斬獲多次冠軍。"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "充滿人性的超效溝通",
+          "time": "4/22, 16:40-18:10",
+          "location": "2F Room Lisianthus",
+          "introduction": [
+            "在ＡＩ時代更需要運用充滿人性的溝通來領導未來，真實的人生經驗和互動能為心理帶來安慰，運用哲學的的思維和腦神經為本的串連能為生命創造更多的彈性。",
+            "本次教育訓練將採工作坊模式進行，讓資深企業諮詢師帶領你從語言、哲學、心理進行充滿人性的超效溝通法。",
+            "準備來一場從腦神經到末稍神經的洗禮，用最符合人性的心理學教你超效溝通，專屬 Toastmasters 的講座，千萬別錯過！"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "wang",
+      "name": "王玉梅",
+      "title": "國語教育訓練講師",
+      "contents": [
+        "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
+        "● 學歷：東吳大學法律系學士；企管系EMBA碩士",
+        "● 經歷：1984-2022服務於東吳大學（已退休）",
+        "● 東吳校友總會監事",
+        "● 東吳企管EMBA聯合會監事",
+        "● 東吳女籃校友會會長",
+        "● 東吳前兩岸事務中心主任（從事兩岸學術交流26年）",
+        "● 海峽兩岸交流基金會2023年顧問（無給職）",
+        "● 演講及主持經歷：",
+        "　○ 中文演講會22年資深會員、喜洋洋中文演講會顧問", 
+        "　○ 2000年國語備稿演講比賽冠軍、2002年台語即席比賽冠軍",
+        "　○ 多次參與國際演講會大會教育訓練及1次春季大會晚會主持",
+        "　○ 主持演講會會友結婚喜宴、主持演講會會友公司春酒午宴",
+        "　○ 主持訪問姚明見面會、主持800人年終尾牙",  
+        "　○ 主持14場大陸同學來台交流大型活動開、閉幕典禮"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "輕鬆談「主持二、三事」",
+          "time": "4/23, 15:40-16:50",
+          "location": "2F Room Lisianthus",
+          "introduction": [
+            "大家好！我是喜洋洋中文國際演講會王玉梅，很榮幸受邀在2023年春季大會的教育訓練工作坊中，和大家一起分享和學習。",
+            "個人參加演講會超過20年，雖然只完成40篇演講，但每篇演講都是「以口說心，人稿合一」的體現，就像談了40場傾心以對，轟轟烈烈的戀愛！因此，「心口稿三合一」始終是我個人對演講舞台的態度和信念。",
+            "從小因多次參加演講比賽的經驗，讓我對「上台演講」並不陌生，但是在參加演講會之前，「主持」這件事，我可就一無所知。直到透過例會的總主持人、開懷、即席再到總講評等等的學習，才培養出我對「主持」的興趣和能力，也因為具備「主持能力」，", 
+            "無論是演講或主持，每位會友都有自己獨特的風格，20年多來，我像個園丁或農夫，守著演講舞台的一畝三分地，深耕勤耘，產出不多，但都是誠心之作，能常常和會友們分享，就是最歡喜的收穫！回首演講會一路走來，真心感受「惠我良多」，如今退休成為「時間富婆」，理當盡己之力感恩回饋！",
+            "古云「溫故知新」，期待4月23日能和舊雨們重新溫故，也能和新知們共同學習，我們一起來杯「心口稿三合一」下午茶，輕鬆聊聊「主持二、三事」吧！"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "hisamatsu",
+      "name": "Chika Hisamatsu",
+      "title": "日本語ワークショップ講師",
+      "contents": [
+        "Please be noted that this training will be conducted in Japanese; therefore, only Japaneseintroduction is provided. Thank you.",
+        "神奈川の馬車道トーストマスターズクラブ、広島のもみじトーストマスターズクラブに所属しています。",
+        "Toastmasters歴は20年以上で、例会やコンテストなどを通して論評力を磨いてきました。",
+        "2005年、2009年に国際スピーチコンテストの日本代表となった経験から、みなさんとスピーチをより良くする論評について考えていきたいと思います。"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "「誰でもできる！これが論評の基本形」",
+          "time": "4/22, 14:20-16:20",
+          "location": "2F Room Clove",
+          "introduction": [
+            "論評に苦手意識はありませんか？実は論評には基本的な流れがあり、これさえ理解すれば誰でも短時間で簡単にまとめることができます。",
+            "ワークショップではワークシートを使って実際に日本語スピーチへの論評にチャレンジしていただきます。よい論評でみなさんのクラブの例会を盛り上げましょう！"
+          ]
+        }
+      ]
     }
   ],
   "venue": {
@@ -182,6 +412,46 @@
     "bus": {
       "title": "By Bus",
       "content": "Take 605, 668, 817, or Keelung Bus to South Zhangshuwan Station, and then walk to reach Kuanhe."
+    }
+  },
+  "login": {
+    "introduction": {
+      "title": {
+        "text-highlight": "3 Steps ",
+        "text": "to purchase your ticket!"
+      },
+      "step1": {
+        "text": "Log-in with your ",
+        "text-highlight": "Google account."
+      },
+      "step2": {
+        "text": "Choose your tickets and ",
+        "text-highlight": "Check out."
+      },
+      "step3": {
+        "text": "Edit your ",
+        "text-highlight": "Attendee Information."
+      }
+    },
+    "login": {
+      "title": "Log in",
+      "description": "Please log in before you purchase the ticket."
+    },
+    "register": {
+      "title": "Register",
+      "description": "Please register before you purchase the ticket."
+    },
+    "form": {
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "confirm-password": "Confirm password",
+      "forget-password": "Forgot your password?",
+      "login": "Log in",
+      "register": "Register",
+      "no-account": "Don't have an account?",
+      "already-account": "Already have an account?"
     }
   }
 }
