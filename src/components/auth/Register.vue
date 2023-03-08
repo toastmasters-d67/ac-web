@@ -126,7 +126,7 @@ export default {
     <div class="register-row">
       <label class="register-label">First name</label>
       <input
-        v-model="v$.state.firstName.$model"
+        v-model.trim="v$.state.firstName.$model"
         type="text"
         placeholder="First name"
         class="register-input"
@@ -140,7 +140,7 @@ export default {
     <div class="register-row">
       <label class="register-label">Last name</label>
       <input
-        v-model="v$.state.lastName.$model"
+        v-model.trim="v$.state.lastName.$model"
         type="text"
         placeholder="Last name"
         class="register-input"
@@ -154,7 +154,7 @@ export default {
     <div class="register-row">
       <label class="register-label">Email</label>
       <input
-        v-model="v$.state.email.$model"
+        v-model.trim="v$.state.email.$model"
         type="email"
         placeholder="Email"
         class="register-input"
@@ -167,7 +167,7 @@ export default {
     <div class="register-row">
       <label class="register-label">Password</label>
       <input
-        v-model="v$.state.password.$model"
+        v-model.trim="v$.state.password.$model"
         type="password"
         placeholder="Password"
         class="register-input"
@@ -180,7 +180,7 @@ export default {
     <div class="register-row">
       <label class="register-label">Confirmed password</label>
       <input
-        v-model="v$.state.confirmPassword.$model"
+        v-model.trim="v$.state.confirmPassword.$model"
         type="password"
         placeholder="Confirmed password"
         class="register-input"
@@ -214,15 +214,16 @@ export default {
     color: #214366;
     text-decoration: none;
     border-color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
   }
   .form-input-hint {
     width: 464px;
-    color: #f07b7b;
+    color: #d72727;
     font-size: 18px;
     font-weight: 500;
     line-height: 22px;
-    // display: flex;
-    // align-items: center;
     text-align: left;
     margin: 10px;
   }
