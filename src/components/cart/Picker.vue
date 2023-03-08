@@ -102,6 +102,58 @@ export default {
       numbers,
     };
   },
+  computed: {
+    subTotal: {
+      get() {
+        return reactive({
+          early: this.state.early * this.price.early,
+          double: this.state.double * this.price.double,
+          first: this.state.first * this.price.first,
+          second: this.state.second * this.price.second,
+          banquet: this.state.banquet * this.price.banquet,
+        });
+      },
+    },
+  },
+  methods: {
+    checkout(event) {
+      event.preventDefault();
+      if (this.amount) {
+        const token = localStorage.getItem("token");
+        if (!token || !token.length) {
+          this.$router.push("login");
+        }
+        console.log("token =", token);
+        submit(token, this);
+      }
+    },
+    getAmount() {
+      let sum = 0;
+      Object.keys(this.state).forEach((key) => {
+        // console.log("key =", key);
+        // console.log("this.state[key] =", this.state[key]);
+        // console.log("this.price[key] =", this.price[key]);
+        sum += this.state[key] * this.price[key];
+        // console.log("sum =", sum);
+      });
+      console.log("sum =", sum);
+      return sum;
+    },
+    setValues(response) {
+      console.log("setValues(): ", response);
+      const { merchantID, version, content, sha } = response.data;
+      console.log("setValues() content: ", content);
+      console.log("setValues() sha: ", sha);
+      this.merchantID = merchantID;
+      this.version = version;
+      this.content = content;
+      this.sha = sha;
+      setTimeout(function () {
+        console.log("Executed after 1 second");
+        document.getElementById("blue").submit();
+      }, 1000);
+    },
+  },
 };
 </script>
 
@@ -131,7 +183,6 @@ export default {
             {{ option }}
           </option>
         </select>
-        <!-- <span>{{ state.early }}</span> -->
       </div>
       <div class="picker-row">
         <div class="picker-ticket">
@@ -155,7 +206,6 @@ export default {
             {{ option }}
           </option>
         </select>
-        <!-- <span>{{ state.double }}</span> -->
       </div>
       <div class="picker-row">
         <div class="picker-ticket">
@@ -179,7 +229,6 @@ export default {
             {{ option }}
           </option>
         </select>
-        <!-- <span>{{ state.first }}</span> -->
       </div>
       <div class="picker-row">
         <div class="picker-ticket">
@@ -203,7 +252,6 @@ export default {
             {{ option }}
           </option>
         </select>
-        <!-- <span>{{ state.second }}</span> -->
       </div>
       <span class="picker-additional">Additional Banquet Ticket</span>
       <hr class="picker-divider" />
@@ -229,14 +277,29 @@ export default {
             {{ option }}
           </option>
         </select>
-        <!-- <span>{{ state.banquet }}</span> -->
       </div>
     </section>
     <div class="picker-summary-container">
       <span class="picker-summary-title">Order summary</span>
-      <div class="picker-summary-items">
-        <span>2 Day Pass x2</span>
-        <span>NT$ 4,400</span>
+      <div class="picker-summary-items" v-if="state.early">
+        <span>{{ name.early }} x{{ state.early }}</span>
+        <span>NT$ {{ subTotal.early }}</span>
+      </div>
+      <div class="picker-summary-items" v-if="state.double">
+        <span>{{ name.double }} x{{ state.double }}</span>
+        <span>NT$ {{ subTotal.double }}</span>
+      </div>
+      <div class="picker-summary-items" v-if="state.first">
+        <span>{{ name.first }} x{{ state.first }}</span>
+        <span>NT$ {{ subTotal.first }}</span>
+      </div>
+      <div class="picker-summary-items" v-if="state.second">
+        <span>{{ name.second }} x{{ state.second }}</span>
+        <span>NT$ {{ subTotal.second }}</span>
+      </div>
+      <div class="picker-summary-items" v-if="state.banquet">
+        <span>{{ name.banquet }} x{{ state.banquet }}</span>
+        <span>NT$ {{ subTotal.banquet }}</span>
       </div>
       <hr class="picker-summary-divider" />
       <div class="picker-summary-amount">
