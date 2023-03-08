@@ -47,9 +47,6 @@
           </option>
         </select>
       </div>
-      <router-link to="login" class="navbar-login-button">
-        {{ $t("app.navbar.login") }}
-      </router-link>
       <img
         src="@/assets/icon/app/myaccount.svg"
         class="navbar-myaccount"
