@@ -47,24 +47,15 @@
           </option>
         </select>
       </div>
-      <router-link v-if="!isLogin" to="login" class="navbar-login-button">
+      <router-link to="login" class="navbar-login-button">
         {{ $t("app.navbar.login") }}
       </router-link>
-      <button v-else class="navbar-account-button" ref="accountButton">
-        <img src="@/assets/icon/app/account.svg" alt="My Account" />
-      </button>
-      <div v-if="showAccountMenu" class="navbar-account-menu">
-        <router-link
-          to="/me"
-          class="navbar-account-menu-link"
-          @click="scrollToTop()"
-        >
-          {{ $t("app.navbar.account") }}
-        </router-link>
-        <div class="navbar-account-menu-link" @click="logout()">
-          {{ $t("app.navbar.logout") }}
-        </div>
-      </div>
+      <img
+        src="@/assets/icon/app/myaccount.svg"
+        class="navbar-myaccount"
+        alt="My Account"
+        v-if="false"
+      />
     </div>
     <div class="navbar-mobile-container">
       <Button
