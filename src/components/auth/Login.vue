@@ -18,6 +18,7 @@ export async function onSubmit(values, target) {
     axios
       .post(url, values)
       .then(function (response) {
+        console.log("response =", response);
         let token = "";
         if (response && response.data && "token" in response.data) {
           token = response.data.token;
@@ -102,7 +103,7 @@ export default {
           {{ $t("login.form.email") }}
         </label>
         <input
-          v-model="v$.state.email.$model"
+          v-model.trim="v$.state.email.$model"
           type="email"
           placeholder="Email"
           class="login-input"
@@ -115,7 +116,7 @@ export default {
           {{ $t("login.form.password") }}
         </label>
         <input
-          v-model="v$.state.password.$model"
+          v-model.trim="v$.state.password.$model"
           type="password"
           placeholder="Password"
           class="login-input"
@@ -133,7 +134,7 @@ export default {
       </div>
       <div class="login-register">
         {{ $t("login.form.no-account") }}
-        <router-link to="/register" class="login-register-bold">
+        <router-link to="/register">
           {{ $t("login.form.register") }}
         </router-link>
       </div>
@@ -153,6 +154,23 @@ export default {
 <style scoped lang="scss">
 .login-container {
   margin: auto;
+  a {
+    color: #214366;
+    text-decoration: none;
+    border-color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  .form-input-hint {
+    width: 464px;
+    color: #d72727;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    text-align: left;
+    margin: 10px;
+  }
   .login-login {
     display: flex;
     flex-direction: column;
@@ -242,13 +260,6 @@ export default {
       font-weight: 500;
       text-align: center;
       gap: 2px;
-      .login-register-bold {
-        color: rgba(33, 67, 102, 1);
-        font-size: 20px;
-        font-style: SemiBold;
-        font-weight: 600;
-        text-decoration: none;
-      }
     }
     .login-divider {
       display: none;
@@ -334,10 +345,6 @@ export default {
       .login-register {
         font-size: 14px;
         line-height: 17px;
-        .login-register-bold {
-          font-size: 16px;
-          line-height: 20px;
-        }
       }
       .login-divider {
         display: block;
