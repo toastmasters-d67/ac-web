@@ -338,7 +338,6 @@ export default {
         }
       }
       .picker-select {
-        width: 75px;
         color: black;
         background: white;
         font-size: 16px;
@@ -431,14 +430,88 @@ export default {
   .picker-container {
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 9px;
+    gap: 16px;
     .picker-ticket-container {
       width: 91.47%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 4.267%;
+      padding-right: 4.267%;
+      .picker-expiring {
+        font-size: 12px;
+        line-height: 15px;
+      }
       .picker-row {
-        gap: 32px;
+        gap: 22px;
+        margin-bottom: 35px;
+        .picker-ticket {
+          .picker-ticket-title {
+            .picker-ticket-icon {
+              width: 20px;
+              height: 20px;
+            }
+            .picker-name {
+              font-size: 14px;
+              line-height: 17px;
+            }
+            .picker-price {
+              min-width: 67px;
+              font-size: 14px;
+              line-height: 17px;
+            }
+          }
+          .picker-ticket-detail {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+        .picker-select {
+          font-size: 14px;
+          line-height: 17px;
+          padding: 8px;
+          padding-left: 12px;
+        }
+      }
+      .picker-additional {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 4px;
+      }
+      .picker-divider {
+        width: 100%;
+        border: 1px solid #cecece;
+        margin-top: 0px;
+        margin-bottom: 24px;
       }
     }
     .picker-summary-container {
       width: 91.47%;
+      padding: 12px 16px;
+      .picker-summary-title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 24px;
+      }
+      .picker-summary-items {
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 8px;
+      }
+      .picker-summary-divider {
+        margin-bottom: 8px;
+      }
+      .picker-summary-amount {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 24px;
+      }
+      .picker-button {
+        font-size: 16px;
+        line-height: 20px;
+      }
     }
   }
 }
