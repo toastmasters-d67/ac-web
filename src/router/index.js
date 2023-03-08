@@ -8,6 +8,11 @@ const routes = [
     component: HomeView,
   },
   {
+    path: "/cart",
+    name: "cart",
+    component: () => import("@/views/CartView.vue"),
+  },
+  {
     path: "/faq",
     name: "faq",
     component: () => import("@/views/FAQView.vue"),
@@ -16,6 +21,16 @@ const routes = [
     path: "/login",
     name: "login",
     component: () => import("@/views/LoginView.vue"),
+  },
+  {
+    path: "/me",
+    name: "me",
+    component: () => import("@/views/AccountView.vue"),
+  },
+  {
+    path: "/order",
+    name: "order",
+    component: () => import("@/views/OrderView.vue"),
   },
   {
     path: "/register",
@@ -31,11 +46,6 @@ const routes = [
     path: "/:key",
     name: "speaker",
     component: () => import("@/views/SpeakerTemplateView.vue"),
-  },
-  {
-    path: "/me",
-    name: "me",
-    component: () => import("@/views/AccountView.vue"),
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
