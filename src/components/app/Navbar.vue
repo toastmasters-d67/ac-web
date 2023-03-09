@@ -47,15 +47,22 @@
           </option>
         </select>
       </div>
-      <router-link to="login" class="navbar-login-button">
+      <router-link v-if="!isLogin" to="login" class="navbar-login-button">
         {{ $t("app.navbar.login") }}
       </router-link>
-      <img
-        src="@/assets/icon/app/myaccount.svg"
-        class="navbar-myaccount"
-        alt="My Account"
-        v-if="false"
-      />
+      <button v-else class="navbar-account-button" ref="accountButton">
+        <img src="@/assets/icon/app/account.svg" alt="My Account" />
+      </button>
+      <div v-if="showAccountMenu" class="navbar-account-menu">
+        <router-link
+          to="/me"
+          class="navbar-account-menu-text"
+          @click="setWindowToTop()"
+        >
+          My Order
+        </router-link>
+        <span class="navbar-account-menu-text">Log Out</span>
+      </div>
     </div>
     <div class="navbar-mobile-container">
       <Button
@@ -260,11 +267,10 @@ hr {
   background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
-  .navbar-account-menu-link {
+  .navbar-account-menu-text {
     font-size: 20px;
     line-height: 24px;
     padding: 10px 20px;
-    cursor: pointer;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -466,6 +472,17 @@ export default {
       this.$router.push("/").then(() => {
         this.$router.go();
       });
+    },
+    onClick(event) {
+      if (
+        !this.showAccountMenu &&
+        this.$refs.accountButton &&
+        this.$refs.accountButton.contains(event.target)
+      ) {
+        this.showAccountMenu = true;
+      } else {
+        this.showAccountMenu = false;
+      }
     },
   },
 };
