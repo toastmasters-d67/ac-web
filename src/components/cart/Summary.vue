@@ -22,14 +22,8 @@ export async function submit(token, target) {
         banquet: target.state.banquet,
       })
       .then((response) => target.setValues(response))
-      .catch(function (error) {
-        if (401 === error.response.status) {
-          localStorage.removeItem("token");
-          this.$router.push("login");
-        } else {
-          console.log(error);
-          return Promise.reject(error);
-        }
+      .catch((error) => {
+        console.log(error.toJSON());
       });
   } catch (error) {
     console.log(error);
@@ -77,14 +71,14 @@ export default {
   },
   data() {
     const amount = ref(computed(() => this.getAmount()));
-    const url = ref("");
+    const newebpay = ref(process.env.VUE_APP_NEWEBPAY);
     const content = ref("");
     const sha = ref("");
     const merchantID = ref("");
     const version = ref("");
     return {
       amount,
-      url,
+      newebpay,
       content,
       sha,
       merchantID,
@@ -124,12 +118,11 @@ export default {
       return sum;
     },
     setValues(response) {
-      const { merchantID, version, content, sha, url } = response.data;
+      const { merchantID, version, content, sha } = response.data;
       this.merchantID = merchantID;
       this.version = version;
       this.content = content;
       this.sha = sha;
-      this.url = url;
       setTimeout(function () {
         document.getElementById("blue").submit();
       }, 1000);
@@ -141,36 +134,34 @@ export default {
 <template>
   <div class="summary-container">
     <section id="summary">
-      <span class="summary-title">{{ $t("cart.summary.order-sum") }}</span>
+      <span class="summary-title">Order summary</span>
       <div class="summary-items" v-if="state.early">
-        <span>{{ $t("cart.picker.early.name") }} x{{ state.early }}</span>
+        <span>{{ name.early }} x{{ state.early }}</span>
         <span>NT$ {{ subTotal.early }}</span>
       </div>
       <div class="summary-items" v-if="state.double">
-        <span>{{ $t("cart.picker.double.name") }} x{{ state.double }}</span>
+        <span>{{ name.double }} x{{ state.double }}</span>
         <span>NT$ {{ subTotal.double }}</span>
       </div>
       <div class="summary-items" v-if="state.first">
-        <span>{{ $t("cart.picker.first.name") }} x{{ state.first }}</span>
+        <span>{{ name.first }} x{{ state.first }}</span>
         <span>NT$ {{ subTotal.first }}</span>
       </div>
       <div class="summary-items" v-if="state.second">
-        <span>{{ $t("cart.picker.second.name") }} x{{ state.second }}</span>
+        <span>{{ name.second }} x{{ state.second }}</span>
         <span>NT$ {{ subTotal.second }}</span>
       </div>
       <div class="summary-items" v-if="state.banquet">
-        <span>{{ $t("cart.picker.banquet.name") }} x{{ state.banquet }}</span>
+        <span>{{ name.banquet }} x{{ state.banquet }}</span>
         <span>NT$ {{ subTotal.banquet }}</span>
       </div>
       <hr class="summary-divider" />
       <div class="summary-amount">
-        <span>{{ $t("cart.summary.total") }}</span>
+        <span>Total</span>
         <span>NT$ {{ amount }}</span>
       </div>
-      <button class="picker-button" @click="this.checkout">
-        {{ $t("cart.summary.checkout") }}
-      </button>
-      <form id="blue" :action="this.url" method="POST">
+      <button class="picker-button" @click="this.checkout">Check out</button>
+      <form id="blue" :action="this.newebpay" method="POST">
         <input v-model="merchantID" type="hidden" name="MerchantID" />
         <input v-model="version" type="hidden" name="Version" />
         <input v-model="content" type="hidden" name="TradeInfo" />
