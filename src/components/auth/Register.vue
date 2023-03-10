@@ -118,13 +118,11 @@ export default {
     </span>
     <div class="register-name">
       <div class="register-row row-name">
-        <label class="register-label">
-          {{ $t("register.form.first-name") }}
-        </label>
+        <label class="register-label">First name</label>
         <input
           v-model.trim="v$.state.firstName.$model"
           type="text"
-          :placeholder="$t('register.form.first-name')"
+          placeholder="First name"
           class="register-input"
           required
         />
@@ -133,13 +131,11 @@ export default {
         </p>
       </div>
       <div class="register-row row-name">
-        <label class="register-label">
-          {{ $t("register.form.last-name") }}
-        </label>
+        <label class="register-label">Last name</label>
         <input
           v-model.trim="v$.state.lastName.$model"
           type="text"
-          :placeholder="$t('register.form.last-name')"
+          placeholder="Last name"
           class="register-input"
           required
         />
@@ -150,9 +146,7 @@ export default {
     </div>
 
     <div class="register-row">
-      <label class="register-label">
-        {{ $t("register.form.email") }}
-      </label>
+      <label class="register-label">Email</label>
       <input
         v-model.trim="v$.state.email.$model"
         type="email"
