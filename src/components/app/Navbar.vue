@@ -59,9 +59,11 @@
           class="navbar-account-menu-text"
           @click="setWindowToTop()"
         >
-          My Order
+          {{ $t("app.navbar.account") }}
         </router-link>
-        <span class="navbar-account-menu-text">Log Out</span>
+        <span class="navbar-account-menu-text">
+          {{ $t("app.navbar.logout") }}
+        </span>
       </div>
     </div>
     <div class="navbar-mobile-container">
@@ -137,9 +139,9 @@
           >
             {{ $t("app.navbar.account") }}
           </router-link>
-          <div v-if="isLogin" class="navbar-mobile-link" @click="logout()">
+          <span v-if="isLogin" class="navbar-mobile-link">
             {{ $t("app.navbar.logout") }}
-          </div>
+          </span>
         </div>
       </Sidebar>
     </div>
@@ -371,7 +373,6 @@ hr {
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
-    cursor: pointer;
   }
   .link-text1 {
     color: #675de2;
@@ -448,30 +449,19 @@ export default {
     hideMenu() {
       this.visibleFull = false;
     },
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push("/").then(() => {
+        this.$router.go();
+      });
+    },
     hideMenuAndScrollToElement(id) {
       this.hideMenu();
       this.scrollToElement(id);
     },
     hideMenuAndToTop() {
       this.hideMenu();
-      this.scrollToTop();
-    },
-    onClick(event) {
-      if (
-        !this.showAccountMenu &&
-        this.$refs.accountButton &&
-        this.$refs.accountButton.contains(event.target)
-      ) {
-        this.showAccountMenu = true;
-      } else {
-        this.showAccountMenu = false;
-      }
-    },
-    logout() {
-      localStorage.removeItem("token");
-      this.$router.push("/").then(() => {
-        this.$router.go();
-      });
+      this.setWindowToTop();
     },
     onClick(event) {
       if (

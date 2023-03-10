@@ -33,7 +33,7 @@
       "faq": "FAQ",
       "lang": "EN",
       "login": "Log in",
-      "account": "My Account",
+      "account":"My Account",
       "logout": "Log out"
     },
     "footer": {
