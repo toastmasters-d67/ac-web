@@ -20,6 +20,10 @@
         />
         <div class="souvenirs-item-text">{{ $t("home.souvenir.towel") }}</div>
       </div>
+      <div class="souvenirs-item">
+        <div class="souvenirs-item-shadow"></div>
+        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
+      </div>
     </div>
   </section>
 </template>
@@ -79,7 +83,7 @@
       top: 30px;
     }
     .souvenirs-towel {
-      top: 70px;
+      top: 110px;
     }
     .souvenirs-item-text {
       color: black;
