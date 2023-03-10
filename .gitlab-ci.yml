@@ -70,6 +70,20 @@ uat:
   only:
     - staging
 
+uat:
+  stage: deploy
+  image: registry.gitlab.com/static-web-apps/azure-static-web-apps-deploy
+  script:
+    - echo "Deploying pages in uat"
+  environment: staging
+  variables:
+    API_TOKEN: $API_TOKEN
+    APP_PATH: '$CI_PROJECT_DIR'
+    OUTPUT_PATH: '$CI_PROJECT_DIR/dist'
+    DEPLOYMENT_ENVIRONMENT: uat
+  only:
+    - staging
+
 production:
   stage: deploy
   image: registry.gitlab.com/static-web-apps/azure-static-web-apps-deploy
