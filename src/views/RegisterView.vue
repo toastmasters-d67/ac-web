@@ -8,9 +8,6 @@ export default {
     Instruction,
     Register,
   },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
   data() {
     return {
       step1HighlightText: this.$t(
