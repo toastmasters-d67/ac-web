@@ -22,8 +22,14 @@ export async function submit(token, target) {
         banquet: target.state.banquet,
       })
       .then((response) => target.setValues(response))
-      .catch((error) => {
-        console.log(error.toJSON());
+      .catch(function (error) {
+        if (401 === error.response.status) {
+          localStorage.removeItem("token");
+          this.$router.push("login");
+        } else {
+          console.log(error);
+          return Promise.reject(error);
+        }
       });
   } catch (error) {
     console.log(error);
@@ -71,14 +77,14 @@ export default {
   },
   data() {
     const amount = ref(computed(() => this.getAmount()));
-    const newebpay = ref(process.env.VUE_APP_NEWEBPAY);
+    const url = ref("");
     const content = ref("");
     const sha = ref("");
     const merchantID = ref("");
     const version = ref("");
     return {
       amount,
-      newebpay,
+      url,
       content,
       sha,
       merchantID,
@@ -118,11 +124,12 @@ export default {
       return sum;
     },
     setValues(response) {
-      const { merchantID, version, content, sha } = response.data;
+      const { merchantID, version, content, sha, url } = response.data;
       this.merchantID = merchantID;
       this.version = version;
       this.content = content;
       this.sha = sha;
+      this.url = url;
       setTimeout(function () {
         document.getElementById("blue").submit();
       }, 1000);
@@ -161,7 +168,7 @@ export default {
         <span>NT$ {{ amount }}</span>
       </div>
       <button class="picker-button" @click="this.checkout">Check out</button>
-      <form id="blue" :action="this.newebpay" method="POST">
+      <form id="blue" :action="this.url" method="POST">
         <input v-model="merchantID" type="hidden" name="MerchantID" />
         <input v-model="version" type="hidden" name="Version" />
         <input v-model="content" type="hidden" name="TradeInfo" />
