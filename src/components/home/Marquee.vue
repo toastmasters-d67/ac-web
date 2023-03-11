@@ -27,9 +27,23 @@ export default {
     };
   },
   created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
     this.pollMarquee();
   },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
+    handleResize() {
+      const locale = ref(localStorage.getItem("locale") ?? "en");
+      let width = window.innerWidth;
+      if (locale.value === "en") {
+        if (width < 530) this.window = 46;
+      } else {
+        if (width < 450) this.window = 32;
+      }
+    },
     runMarquee() {
       const start = this.content.substring(0, this.offset);
       const end = this.content.substring(this.offset);
@@ -89,6 +103,16 @@ export default {
       position: absolute;
       right: 5px;
       width: 500px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .marquee-container {
+    .marquee-row {
+      width: 100%;
+      .marquee-segment {
+        width: calc(100% - 30px);
+      }
     }
   }
 }
