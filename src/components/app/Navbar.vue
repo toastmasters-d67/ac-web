@@ -56,14 +56,14 @@
       <div v-if="showAccountMenu" class="navbar-account-menu">
         <router-link
           to="/me"
-          class="navbar-account-menu-text"
+          class="navbar-account-menu-link"
           @click="setWindowToTop()"
         >
           {{ $t("app.navbar.account") }}
         </router-link>
-        <span class="navbar-account-menu-text">
+        <div class="navbar-account-menu-link" @click="logout()">
           {{ $t("app.navbar.logout") }}
-        </span>
+        </div>
       </div>
     </div>
     <div class="navbar-mobile-container">
@@ -139,9 +139,9 @@
           >
             {{ $t("app.navbar.account") }}
           </router-link>
-          <span v-if="isLogin" class="navbar-mobile-link">
+          <div v-if="isLogin" class="navbar-mobile-link" @click="logout()">
             {{ $t("app.navbar.logout") }}
-          </span>
+          </div>
         </div>
       </Sidebar>
     </div>
@@ -269,10 +269,11 @@ hr {
   background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
-  .navbar-account-menu-text {
+  .navbar-account-menu-link {
     font-size: 20px;
     line-height: 24px;
     padding: 10px 20px;
+    cursor: pointer;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -373,6 +374,7 @@ hr {
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
+    cursor: pointer;
   }
   .link-text1 {
     color: #675de2;
@@ -473,6 +475,12 @@ export default {
       } else {
         this.showAccountMenu = false;
       }
+    },
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push("/").then(() => {
+        this.$router.go();
+      });
     },
   },
 };
