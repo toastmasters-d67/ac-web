@@ -1,5 +1,4 @@
 <script>
-// import { computed, reactive, ref } from "vue";
 import { reactive } from "vue";
 
 export default {
@@ -40,10 +39,6 @@ export default {
         };
       },
     },
-    // upperBound: {
-    //   type: Number,
-    //   default: 0,
-    // },
     setEarly: {
       type: Function,
     },

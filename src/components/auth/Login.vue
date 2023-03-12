@@ -33,7 +33,6 @@ export async function onSubmit(values, target) {
       .catch(function (error) {
         if (401 === error.response.status) {
           localStorage.removeItem("token");
-          target.loginError = target.$t("login.error.password");
         } else {
           console.log(error);
           return Promise.reject(error);
