@@ -106,7 +106,7 @@ export default {
       { id: 2, english_name: "Hsinchu Toastmasters Club" },
       { id: 3, english_name: "Sparkle Toastmasters Club" },
     ]);
-    const hasSubmitted = false;
+    const hasSubmitted = false; // 此 order 是否已經 submitted
     return {
       tickets,
       totalBanquets,
