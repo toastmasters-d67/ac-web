@@ -571,5 +571,41 @@
       "no-account": "Don't have an account?",
       "already-account": "Already have an account?"
     }
+  },
+  "picker":{
+    "early":{
+      "name" : "Early Bird 2 Day Pass",
+      "price": "2500",
+      "note":"The lowest price you can get - first come, first serve. Includes access to both conference days at 2023 Annual Conference, souvenirs and dinner party on site."
+
+    },
+    "double":{
+      "name":"2 Day Pass",
+      "price": "2200"
+    
+
+    },
+    "first":{
+      "name":"First Day Pass",
+      "price": "1300"
+
+    },
+
+    "second": {
+      "name":"Second Day Pass",
+        "price": "1300"
+    },
+
+    "banquet": {
+      "name" :"Dinner Banquet",
+      "price" : "800",
+      "note":"The lowest price you can get - first come, first serve. Includes access to both conference days at 2023 Annual Conference, souvenirs and dinner party on site."
+    },
+
+    "additional":"Additional Banquet Ticket",
+    "orderSum":"Order summary",
+    "total" : "Total",
+    "checkout" : "Check out"
+    
   }
 }

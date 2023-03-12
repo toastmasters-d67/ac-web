@@ -73,7 +73,7 @@ export default {
 
 <template>
   <section id="picker" class="picker-container">
-    <span class="picker-expiring">Until Mar 19, 2023</span>
+    <span class="picker-expiring">{{ $t("home.ticket.until") }}</span>
     <div class="picker-row">
       <div class="picker-ticket">
         <div class="picker-title">
@@ -82,10 +82,11 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-          <span class="picker-name">{{ name.early }}</span>
-          <span class="picker-price">NT$ {{ price.early }}</span>
+
+          <span class="picker-name">{{ $t("picker.early.name") }}</span>
+          <span class="picker-price">NT$ {{ $t("picker.early.price") }}</span>
         </div>
-        <span class="picker-note">{{ note.early }}</span>
+        <span class="picker-note">{{ $t("picker.early.note") }}</span>
       </div>
       <select
         :value="state.early"
@@ -105,8 +106,8 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-          <span class="picker-name">{{ name.double }}</span>
-          <span class="picker-price">NT$ {{ price.double }}</span>
+          <span class="picker-name">{{ $t("picker.double.name") }}</span>
+          <span class="picker-price">NT$ {{ $t("picker.double.price") }}</span>
         </div>
       </div>
       <select
@@ -127,8 +128,8 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-          <span class="picker-name">{{ name.first }}</span>
-          <span class="picker-price">NT$ {{ price.first }}</span>
+          <span class="picker-name">{{ $t("picker.first.name") }}</span>
+          <span class="picker-price">NT$ {{ $t("picker.first.price") }}</span>
         </div>
       </div>
       <select
@@ -149,8 +150,8 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-          <span class="picker-name">{{ name.second }}</span>
-          <span class="picker-price">NT$ {{ price.second }}</span>
+          <span class="picker-name">{{ $t("picker.second.name") }}</span>
+          <span class="picker-price">NT$ {{ $t("picker.second.price") }}</span>
         </div>
       </div>
       <select
@@ -163,7 +164,7 @@ export default {
         </option>
       </select>
     </div>
-    <span class="picker-additional">Additional Banquet Ticket</span>
+    <span class="picker-additional">{{ $t("picker.additional") }}</span>
     <hr class="picker-divider" />
     <div class="picker-row">
       <div class="picker-ticket">
@@ -173,12 +174,11 @@ export default {
             class="picker-icon"
             alt="banquet-icon"
           />
-          <span class="picker-name">{{ name.banquet }}</span>
-          <span class="picker-price">NT$ {{ price.banquet }}</span>
+          <span class="picker-name">{{ $t("picker.banquet.name") }}</span>
+          <span class="picker-price">NT$ {{ $t("picker.banquet.price") }}</span>
         </div>
-        <span class="picker-note">{{ note.banquet }}</span>
+        <span class="picker-note">{{ $t("picker.banquet.note") }}</span>
       </div>
-      <p>{{ state.banquet }}</p>
       <select
         :value="state.banquet"
         @change="setBanquet($event)"
@@ -353,6 +353,5 @@ export default {
       margin-bottom: 24px;
     }
   }
-  // }
 }
 </style>
