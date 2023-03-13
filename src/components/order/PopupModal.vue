@@ -43,7 +43,6 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  /* padding: 0.5rem; */
   display: flex;
   align-items: center;
   z-index: 99;
@@ -54,18 +53,10 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 24px 40px;
-  /* gap: 24px; */
   width: 706px;
   background: #fff;
   border-radius: 4px;
   margin: 0 auto;
   z-index: 99;
-  /* background: #fff;
-  border-radius: 4px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1rem; */
 }
 </style>

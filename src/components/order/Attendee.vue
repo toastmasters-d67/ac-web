@@ -199,21 +199,6 @@ export default {
 
     this.$emit("updateAssignedBanquets", assignedBanquets);
   },
-  // beforeRouteLeave(to, from, next) {
-  //   if (this.editing) {
-  //     var confirmResult = this.$refs.confirmDialogue.show({
-  //       title: "Confirm",
-  //       message: "Do you want to save the information?",
-  //       cancelButton: "No, thanks",
-  //       okButton: "Save",
-  //     });
-  //     if (confirmResult) {
-  //       // TODO: save
-  //     }
-  //     // acceptToLeave ? next() : next(false);
-  //   }
-  //   next();
-  // },
   async mounted() {
     try {
       window.onbeforeunload = () => {

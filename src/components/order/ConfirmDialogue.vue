@@ -1,6 +1,5 @@
 <template>
   <popup-modal ref="popup">
-    <!-- <h2 style="margin-top: 0">{{ title }}</h2> -->
     <div class="message">{{ message }}</div>
     <div class="buttons">
       <button class="button cancel-button" @click="_cancel">
@@ -22,7 +21,6 @@ export default {
 
   data: () => ({
     // Parameters that change depending on the type of dialogue
-    // title: undefined,
     message: undefined, // Main text content
     okButton: undefined, // Text for confirm button; leave it empty because we don't know what we're using it for
     cancelButton: "Go Back", // text for cancel button
@@ -32,7 +30,6 @@ export default {
   }),
   methods: {
     show(opts = {}) {
-      // this.title = opts.title;
       this.message = opts.message;
       this.okButton = opts.okButton;
       if (opts.cancelButton) {
