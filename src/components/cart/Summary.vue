@@ -141,34 +141,34 @@ export default {
 <template>
   <div class="summary-container">
     <section id="summary">
-      <span class="summary-title">{{ $t("picker.orderSum") }}</span>
+      <span class="summary-title">{{ $t("cart.summary.order-sum") }}</span>
       <div class="summary-items" v-if="state.early">
-        <span>{{ $t("picker.early.name") }} x{{ state.early }}</span>
+        <span>{{ $t("cart.picker.early.name") }} x{{ state.early }}</span>
         <span>NT$ {{ subTotal.early }}</span>
       </div>
       <div class="summary-items" v-if="state.double">
-        <span>{{ $t("picker.double.name") }} x{{ state.double }}</span>
+        <span>{{ $t("cart.picker.double.name") }} x{{ state.double }}</span>
         <span>NT$ {{ subTotal.double }}</span>
       </div>
       <div class="summary-items" v-if="state.first">
-        <span>{{ $t("picker.first.name") }} x{{ state.first }}</span>
+        <span>{{ $t("cart.picker.first.name") }} x{{ state.first }}</span>
         <span>NT$ {{ subTotal.first }}</span>
       </div>
       <div class="summary-items" v-if="state.second">
-        <span>{{ $t("picker.second.name") }} x{{ state.second }}</span>
+        <span>{{ $t("cart.picker.second.name") }} x{{ state.second }}</span>
         <span>NT$ {{ subTotal.second }}</span>
       </div>
       <div class="summary-items" v-if="state.banquet">
-        <span>{{ $t("picker.banquet.name") }} x{{ state.banquet }}</span>
+        <span>{{ $t("cart.picker.banquet.name") }} x{{ state.banquet }}</span>
         <span>NT$ {{ subTotal.banquet }}</span>
       </div>
       <hr class="summary-divider" />
       <div class="summary-amount">
-        <span>{{ $t("picker.total") }}</span>
+        <span>{{ $t("cart.summary.total") }}</span>
         <span>NT$ {{ amount }}</span>
       </div>
       <button class="picker-button" @click="this.checkout">
-        {{ $t("picker.checkout") }}
+        {{ $t("cart.summary.checkout") }}
       </button>
       <form id="blue" :action="this.newebpay" method="POST">
         <input v-model="merchantID" type="hidden" name="MerchantID" />

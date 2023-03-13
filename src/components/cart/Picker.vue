@@ -83,10 +83,12 @@ export default {
             alt="ticket-icon"
           />
 
-          <span class="picker-name">{{ $t("picker.early.name") }}</span>
-          <span class="picker-price">NT$ {{ $t("picker.early.price") }}</span>
+          <span class="picker-name">{{ $t("cart.picker.early.name") }}</span>
+          <span class="picker-price"
+            >NT$ {{ $t("cart.picker.early.price") }}</span
+          >
         </div>
-        <span class="picker-note">{{ $t("picker.early.note") }}</span>
+        <span class="picker-note">{{ $t("cart.picker.early.note") }}</span>
       </div>
       <select
         :value="state.early"
@@ -106,8 +108,10 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-          <span class="picker-name">{{ $t("picker.double.name") }}</span>
-          <span class="picker-price">NT$ {{ $t("picker.double.price") }}</span>
+          <span class="picker-name">{{ $t("cart.picker.double.name") }}</span>
+          <span class="picker-price"
+            >NT$ {{ $t("cart.picker.double.price") }}</span
+          >
         </div>
       </div>
       <select
@@ -128,8 +132,10 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-          <span class="picker-name">{{ $t("picker.first.name") }}</span>
-          <span class="picker-price">NT$ {{ $t("picker.first.price") }}</span>
+          <span class="picker-name">{{ $t("cart.picker.first.name") }}</span>
+          <span class="picker-price"
+            >NT$ {{ $t("cart.picker.first.price") }}</span
+          >
         </div>
       </div>
       <select
@@ -150,8 +156,10 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-          <span class="picker-name">{{ $t("picker.second.name") }}</span>
-          <span class="picker-price">NT$ {{ $t("picker.second.price") }}</span>
+          <span class="picker-name">{{ $t("cart.picker.second.name") }}</span>
+          <span class="picker-price"
+            >NT$ {{ $t("cart.picker.second.price") }}</span
+          >
         </div>
       </div>
       <select
@@ -164,7 +172,7 @@ export default {
         </option>
       </select>
     </div>
-    <span class="picker-additional">{{ $t("picker.additional") }}</span>
+    <span class="picker-additional">{{ $t("cart.picker.additional") }}</span>
     <hr class="picker-divider" />
     <div class="picker-row">
       <div class="picker-ticket">
@@ -174,10 +182,12 @@ export default {
             class="picker-icon"
             alt="banquet-icon"
           />
-          <span class="picker-name">{{ $t("picker.banquet.name") }}</span>
-          <span class="picker-price">NT$ {{ $t("picker.banquet.price") }}</span>
+          <span class="picker-name">{{ $t("cart.picker.banquet.name") }}</span>
+          <span class="picker-price"
+            >NT$ {{ $t("cart.picker.banquet.price") }}</span
+          >
         </div>
-        <span class="picker-note">{{ $t("picker.banquet.note") }}</span>
+        <span class="picker-note">{{ $t("cart.picker.banquet.note") }}</span>
       </div>
       <select
         :value="state.banquet"
