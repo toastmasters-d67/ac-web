@@ -118,7 +118,7 @@ export default {
         <input
           v-model.trim="v$.state.email.$model"
           type="email"
-          :placeholder="$t('register.form.email')"
+          :placeholder="$t('login.form.email')"
           class="login-input"
           required
           @click="clear"
@@ -133,7 +133,7 @@ export default {
         <input
           v-model.trim="v$.state.password.$model"
           type="password"
-          :placeholder="$t('register.form.password')"
+          :placeholder="$t('login.form.password')"
           class="login-input"
           required
           @click="clear"
