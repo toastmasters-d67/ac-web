@@ -5,8 +5,8 @@ export default {
   name: "Marquee",
   data() {
     const sentences = [
-      `${this.$t("home.marquee.a")}. `,
-      `${this.$t("home.marquee.b")}. `,
+      `《${this.$t("home.marquee.a")}.》 `,
+      `《${this.$t("home.marquee.b")}.》 `,
     ];
     const content = ref(sentences.join(""));
     const segment = ref("");
