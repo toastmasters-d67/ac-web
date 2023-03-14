@@ -51,9 +51,8 @@ sit:
   variables:
     API_TOKEN: $API_TOKEN
     APP_PATH: "$CI_PROJECT_DIR"
+    OUTPUT_PATH: "$CI_PROJECT_DIR/dist"
     DEPLOYMENT_ENVIRONMENT: staging
-    VUE_APP_API: https://spinda.azurewebsites.net/api/v1
-    VUE_APP_NEWEBPAY: https://ccore.newebpay.com/MPG/mpg_gateway
   only:
     - staging
 
@@ -66,6 +65,7 @@ uat:
   variables:
     API_TOKEN: $API_TOKEN
     APP_PATH: "$CI_PROJECT_DIR"
+    OUTPUT_PATH: "$CI_PROJECT_DIR/dist"
     DEPLOYMENT_ENVIRONMENT: uat
   only:
     - staging
@@ -79,5 +79,6 @@ production:
   variables:
     API_TOKEN: $API_TOKEN
     APP_PATH: "$CI_PROJECT_DIR"
+    OUTPUT_PATH: "$CI_PROJECT_DIR/dist"
   only:
     - main
