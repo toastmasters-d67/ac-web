@@ -7,10 +7,7 @@
   <router-view :scrollToElement="scrollToElement" v-once />
   <Footer :scrollToElement="scrollToElement" v-once />
   <ScrollToTopButton :scrollToTop="scrollToTop" v-once />
-  <CtaButtons
-    :scrollToElement="scrollToElement"
-    :showCtaGetTickets="showCtaGetTickets"
-  />
+  <CtaButtons :scrollToElement="scrollToElement" v-once />
 </template>
 
 <style lang="scss">

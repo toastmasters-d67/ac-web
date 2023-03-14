@@ -57,7 +57,7 @@
         <router-link
           to="/me"
           class="navbar-account-menu-link"
-          @click="setWindowToTop()"
+          @click="scrollToTop()"
         >
           {{ $t("app.navbar.account") }}
         </router-link>
@@ -451,19 +451,13 @@ export default {
     hideMenu() {
       this.visibleFull = false;
     },
-    logout() {
-      localStorage.removeItem("token");
-      this.$router.push("/").then(() => {
-        this.$router.go();
-      });
-    },
     hideMenuAndScrollToElement(id) {
       this.hideMenu();
       this.scrollToElement(id);
     },
     hideMenuAndToTop() {
       this.hideMenu();
-      this.setWindowToTop();
+      this.scrollToTop();
     },
     onClick(event) {
       if (
