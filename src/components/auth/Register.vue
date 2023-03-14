@@ -111,18 +111,20 @@ export default {
 <template>
   <section id="register" class="register-container">
     <header class="register-title">
-      {{ $t("register.title") }}
+      {{ $t("login.register.title") }}
     </header>
     <span class="register-title-note">
-      {{ $t("register.description") }}
+      {{ $t("login.register.description") }}
     </span>
     <div class="register-name">
       <div class="register-row row-name">
-        <label class="register-label">First name</label>
+        <label class="register-label">
+          {{ $t("login.form.first-name") }}
+        </label>
         <input
           v-model.trim="v$.state.firstName.$model"
           type="text"
-          placeholder="First name"
+          :placeholder="$t('login.form.first-name')"
           class="register-input"
           required
         />
@@ -131,11 +133,13 @@ export default {
         </p>
       </div>
       <div class="register-row row-name">
-        <label class="register-label">Last name</label>
+        <label class="register-label">
+          {{ $t("login.form.last-name") }}
+        </label>
         <input
           v-model.trim="v$.state.lastName.$model"
           type="text"
-          placeholder="Last name"
+          :placeholder="$t('login.form.last-name')"
           class="register-input"
           required
         />
@@ -146,11 +150,13 @@ export default {
     </div>
 
     <div class="register-row">
-      <label class="register-label">Email</label>
+      <label class="register-label">
+        {{ $t("login.form.email") }}
+      </label>
       <input
         v-model.trim="v$.state.email.$model"
         type="email"
-        :placeholder="$t('register.form.email')"
+        :placeholder="$t('login.form.email')"
         class="register-input"
         required
         @click="clear"
@@ -162,12 +168,12 @@ export default {
     </div>
     <div class="register-row">
       <label class="register-label">
-        {{ $t("register.form.password") }}
+        {{ $t("login.form.password") }}
       </label>
       <input
         v-model.trim="v$.state.password.$model"
         type="password"
-        :placeholder="$t('register.form.password')"
+        :placeholder="$t('login.form.password')"
         class="register-input"
         required
       />
@@ -177,12 +183,12 @@ export default {
     </div>
     <div class="register-row">
       <label class="register-label">
-        {{ $t("register.form.confirm-password") }}
+        {{ $t("login.form.confirm-password") }}
       </label>
       <input
         v-model.trim="v$.state.confirmPassword.$model"
         type="password"
-        :placeholder="$t('register.form.confirm-password')"
+        :placeholder="$t('login.form.confirm-password')"
         class="register-input"
         required
       />
@@ -191,13 +197,13 @@ export default {
       </p>
     </div>
     <button type="submit" class="register-button" @click="this.registerUser">
-      {{ $t("register.title") }}
+      {{ $t("login.form.register") }}
     </button>
 
     <span class="register-button-note">
-      {{ $t("register.form.have-account") }}
+      {{ $t("login.form.already-account") }}
       <router-link to="/login">
-        {{ $t("login.title") }}
+        {{ $t("login.form.login") }}
       </router-link>
     </span>
     <hr class="register-divider" />
