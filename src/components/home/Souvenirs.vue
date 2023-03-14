@@ -83,7 +83,7 @@
       top: 30px;
     }
     .souvenirs-towel {
-      top: 110px;
+      top: 70px;
     }
     .souvenirs-item-text {
       color: black;
