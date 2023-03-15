@@ -17,18 +17,14 @@ export async function getUser(token, target) {
           response.data.orders.length
         ) {
           Array.from(response.data.orders).forEach((order) => {
-            const item = {
-              id: order.orderId,
-              amount: order.amount,
-              status: "pending",
-              date: new Date(+order.orderId * 1000).toISOString().slice(0, 10),
-            };
+            console.log(order);
+            let status = "Pending";
             if (order.transactions.length) {
               const transaction = order.transactions.find(
                 (x) => x.status === "SUCCESS"
               );
               if (transaction && transaction.amount === order.amount) {
-                item.status = "paid";
+                status = "Paid";
               }
             }
             target.items.push(item);
@@ -52,11 +48,27 @@ export async function getUser(token, target) {
 export default {
   name: "AccountView",
   data() {
-    const fields = reactive([
-      this.$t("account.number"),
-      this.$t("account.date"),
-      this.$t("account.status"),
-      this.$t("account.amount"),
+    const fields = reactive(["Order number", "Date", "Status", "Amount"]);
+    // const items = reactive([]);
+    const items = reactive([
+      {
+        id: "1678129341",
+        amount: 12533,
+        status: "Pending",
+        date: "2023-01-11",
+      },
+      {
+        id: "1678149341",
+        amount: 24533,
+        status: "Paid",
+        date: "2023-02-11",
+      },
+      {
+        id: "1678169341",
+        amount: 77533,
+        status: "OK",
+        date: "2023-04-11",
+      },
     ]);
     const items = reactive([]);
     return {
