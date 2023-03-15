@@ -234,10 +234,10 @@
         "text-highlight": "參與者資訊"
       }
     },
-    "login": {
-      "title": "登入",
-      "description": "請登入以繼續完成購票"
-    }
+    "title": "登入",
+    "description": "請登入以繼續完成購票",
+    "forget-password": "忘記密碼?",
+    "no-account": "沒有帳號嗎?"
   },
   "register": {
     "title": "註冊",
@@ -251,9 +251,6 @@
       "email": "電子郵件",
       "password": "密碼",
       "confirm-password": "確認密碼",
-      "forget-password": "忘記密碼?",
-      "login": "登入",
-      "no-account": "沒有帳號嗎?",
       "have-account": "已經有帳號嗎?"
     }
   },

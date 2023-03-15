@@ -118,7 +118,7 @@ export default {
         <input
           v-model.trim="v$.state.email.$model"
           type="email"
-          :placeholder="$t('login.form.email')"
+          :placeholder="$t('register.form.email')"
           class="login-input"
           required
           @click="clear"
@@ -133,7 +133,7 @@ export default {
         <input
           v-model.trim="v$.state.password.$model"
           type="password"
-          :placeholder="$t('login.form.password')"
+          :placeholder="$t('register.form.password')"
           class="login-input"
           required
           @click="clear"
@@ -143,19 +143,16 @@ export default {
         <p class="form-input-hint" v-if="!!errors.password">
           {{ errors.password }}
         </p>
-        <a
-          class="login-forget-password"
-          href="mailto:tmicon@toastmasters.org.tw"
-        >
+        <span class="login-forget-password">
           {{ $t("login.forget-password") }}
-        </a>
+        </span>
         <button class="login-button" @click="this.loginUser">
           {{ $t("login.title") }}
         </button>
       </div>
       <div class="login-register">
         {{ $t("login.no-account") }}
-        <router-link class="login-register register-link" to="/register">
+        <router-link to="/register">
           {{ $t("register.title") }}
         </router-link>
       </div>
