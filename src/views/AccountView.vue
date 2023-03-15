@@ -107,9 +107,7 @@ export default {
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
         <button class="account-button">
-          <router-link to="/cart" class="">
-            <span class="plus">+</span> {{ $t("account.new") }}
-          </router-link>
+          <router-link to="/cart" class=""><span class="plus">+</span> New order</router-link>
         </button>
       </div>
       <table id="tableComponent" class="table table-bordered table-striped">
@@ -137,18 +135,13 @@ export default {
       </table>
       <div class="rwd-account" v-for="item in items" :key="item">
         <div class="rwd-title">
-          <div v-for="field in fields" :key="field" @click="sortTable(field)">
-            {{ field }}
-          </div>
+            <div v-for="field in fields" :key="field" @click="sortTable(field)"> {{ field }}</div>
         </div>
         <div class="rwd-content">
-          <div>{{ item.id }}</div>
-          <div>{{ item.date }}</div>
-          <div
-            :class="item.status.toLocaleLowerCase()"
-            v-text="getStatus(item)"
-          ></div>
-          <div>$ {{ item.amount }}</div>
+            <div>{{ item.id }}</div>
+            <div>{{ item.date }}</div>
+            <div :class="item.status.toLowerCase()">{{ item.status }}</div>
+            <div>{{ item.amount }}</div>
         </div>
       </div>
     </article>
@@ -194,7 +187,7 @@ export default {
         box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
         text-align: center;
         padding: 8px 24px;
-        .plus {
+        .plus{
           font-size: 25px;
           line-height: 1;
           vertical-align: bottom;
@@ -246,27 +239,27 @@ export default {
         background-color: #f3f3f3;
       }
     }
-    .rwd-account {
+    .rwd-account{
       display: none;
     }
   }
 }
 @media screen and (max-width: 768px) {
-  .account-container {
+  .account-container{
     padding-top: 20px;
     padding-bottom: 20px;
-    .account-title {
+    .account-title{
       font-size: 18px !important;
     }
-    .account-button {
+    .account-button{
       font-size: 16px !important;
       padding: 5.5px 20px !important;
-      width: auto !important;
+      width:auto !important;
     }
-    table {
+    table{
       display: none;
     }
-    .rwd-account {
+    .rwd-account{
       background: #fff;
       border-radius: 4px;
       padding: 12px 12px 0 12px;
@@ -274,25 +267,24 @@ export default {
       justify-content: space-between;
       margin-bottom: 16px;
       box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
-      .rwd-title {
-        text-align: left;
-        div {
-          margin-bottom: 12px;
-          font-weight: 800;
+        .rwd-title{
+          text-align: left;
+          div{
+            margin-bottom: 12px;
+            font-weight: 800;
+          }
         }
-      }
-      .rwd-content {
-        text-align: right;
-        div {
-          margin-bottom: 12px;
-          color: #868686;
-        }
-        .ok,
-        .paid {
-          text-align: center;
+        .rwd-content{
+          text-align: right;
+          div{
+            margin-bottom: 12px;
+            color:#868686;
+          }
+          .ok, .paid{
+            text-align: center;
+          }
         }
       }
     }
   }
-}
 </style>
