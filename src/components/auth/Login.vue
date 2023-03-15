@@ -155,7 +155,7 @@ export default {
       </div>
       <div class="login-register">
         {{ $t("login.no-account") }}
-        <router-link to="/register">
+        <router-link class="login-register register-link" to="/register">
           {{ $t("register.title") }}
         </router-link>
       </div>
