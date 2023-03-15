@@ -204,7 +204,7 @@ export default {
     <span class="register-button-note">
       {{ $t("register.form.have-account") }}
       <router-link to="/login">
-        {{ $t("register.form.login") }}
+        {{ $t("login.title") }}
       </router-link>
     </span>
     <hr class="register-divider" />
