@@ -143,9 +143,12 @@ export default {
         <p class="form-input-hint" v-if="!!errors.password">
           {{ errors.password }}
         </p>
-        <span class="login-forget-password">
+        <a
+          class="login-forget-password"
+          href="mailto:tmicon@toastmasters.org.tw"
+        >
           {{ $t("login.forget-password") }}
-        </span>
+        </a>
         <button class="login-button" @click="this.loginUser">
           {{ $t("login.title") }}
         </button>
