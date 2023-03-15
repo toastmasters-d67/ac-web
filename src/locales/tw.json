@@ -237,10 +237,13 @@
     "login": {
       "title": "登入",
       "description": "請登入以繼續完成購票"
-    },
-    "register": {
-      "title": "註冊",
-      "description": "請先註冊以繼續完成購票"
+    }
+  },
+  "register": {
+    "title": "註冊",
+    "description": "請先註冊以繼續完成購票",
+    "error": {
+      "email": "Email 已註冊"
     },
     "form": {
       "first-name": "名字",
@@ -250,9 +253,8 @@
       "confirm-password": "確認密碼",
       "forget-password": "忘記密碼?",
       "login": "登入",
-      "register": "註冊",
       "no-account": "沒有帳號嗎?",
-      "already-account": "已經有帳號嗎?"
+      "have-account": "已經有帳號嗎?"
     }
   },
   "speaker": {

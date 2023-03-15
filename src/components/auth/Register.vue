@@ -17,6 +17,7 @@ const registerFormSchema = Yup.object().shape({
 
 export async function onSubmit(values, target) {
   const url = `${process.env.VUE_APP_API}/user`;
+  console.log(url);
   try {
     axios
       .post(url, values)
@@ -111,20 +112,20 @@ export default {
 <template>
   <section id="register" class="register-container">
     <header class="register-title">
-      {{ $t("login.register.title") }}
+      {{ $t("register.title") }}
     </header>
     <span class="register-title-note">
-      {{ $t("login.register.description") }}
+      {{ $t("register.description") }}
     </span>
     <div class="register-name">
       <div class="register-row row-name">
         <label class="register-label">
-          {{ $t("login.form.first-name") }}
+          {{ $t("register.form.first-name") }}
         </label>
         <input
           v-model.trim="v$.state.firstName.$model"
           type="text"
-          :placeholder="$t('login.form.first-name')"
+          :placeholder="$t('register.form.first-name')"
           class="register-input"
           required
         />
@@ -134,12 +135,12 @@ export default {
       </div>
       <div class="register-row row-name">
         <label class="register-label">
-          {{ $t("login.form.last-name") }}
+          {{ $t("register.form.last-name") }}
         </label>
         <input
           v-model.trim="v$.state.lastName.$model"
           type="text"
-          :placeholder="$t('login.form.last-name')"
+          :placeholder="$t('register.form.last-name')"
           class="register-input"
           required
         />
@@ -151,12 +152,12 @@ export default {
 
     <div class="register-row">
       <label class="register-label">
-        {{ $t("login.form.email") }}
+        {{ $t("register.form.email") }}
       </label>
       <input
         v-model.trim="v$.state.email.$model"
         type="email"
-        :placeholder="$t('login.form.email')"
+        :placeholder="$t('register.form.email')"
         class="register-input"
         required
         @click="clear"
@@ -168,12 +169,12 @@ export default {
     </div>
     <div class="register-row">
       <label class="register-label">
-        {{ $t("login.form.password") }}
+        {{ $t("register.form.password") }}
       </label>
       <input
         v-model.trim="v$.state.password.$model"
         type="password"
-        :placeholder="$t('login.form.password')"
+        :placeholder="$t('register.form.password')"
         class="register-input"
         required
       />
@@ -183,12 +184,12 @@ export default {
     </div>
     <div class="register-row">
       <label class="register-label">
-        {{ $t("login.form.confirm-password") }}
+        {{ $t("register.form.confirm-password") }}
       </label>
       <input
         v-model.trim="v$.state.confirmPassword.$model"
         type="password"
-        :placeholder="$t('login.form.confirm-password')"
+        :placeholder="$t('register.form.confirm-password')"
         class="register-input"
         required
       />
@@ -197,13 +198,13 @@ export default {
       </p>
     </div>
     <button type="submit" class="register-button" @click="this.registerUser">
-      {{ $t("login.form.register") }}
+      {{ $t("register.title") }}
     </button>
 
     <span class="register-button-note">
-      {{ $t("login.form.already-account") }}
+      {{ $t("register.form.have-account") }}
       <router-link to="/login">
-        {{ $t("login.form.login") }}
+        {{ $t("register.form.login") }}
       </router-link>
     </span>
     <hr class="register-divider" />

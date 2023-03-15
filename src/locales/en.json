@@ -238,10 +238,13 @@
     "login": {
       "title": "Log in",
       "description": "Please log in before you purchase the ticket."
-    },
-    "register": {
-      "title": "Register",
-      "description": "Please register before you purchase the ticket."
+    }
+  },
+  "register": {
+    "title": "Register",
+    "description": "Please register before you purchase the ticket.",
+    "error": {
+      "email": "Email exists."
     },
     "form": {
       "first-name": "First name",
@@ -251,9 +254,8 @@
       "confirm-password": "Confirm password",
       "forget-password": "Forgot your password?",
       "login": "Log in",
-      "register": "Register",
       "no-account": "Don't have an account?",
-      "already-account": "Already have an account?"
+      "have-account": "Already have an account?"
     }
   },
   "speaker": {
