@@ -231,8 +231,9 @@
         "text-highlight": "Check out."
       },
       "step3": {
-        "text": "Edit your ",
-        "text-highlight": "Attendee Information."
+        "text1": "Edit ",
+        "text-highlight": "Attendee Information.",
+        "text2": " (coming soon)"
       }
     },
     "title": "Log in",

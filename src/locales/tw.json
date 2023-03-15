@@ -230,8 +230,9 @@
         "text-highlight": "結帳"
       },
       "step3": {
-        "text": "編輯您的 ",
-        "text-highlight": "參與者資訊"
+        "text1": "填寫 ",
+        "text-highlight": "與會者資訊",
+        "text2": " (將於近期推出)"
       }
     },
     "title": "登入",
