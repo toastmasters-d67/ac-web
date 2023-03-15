@@ -230,24 +230,17 @@
         "text-highlight": "結帳"
       },
       "step3": {
-        "text1": "填寫 ",
-        "text-highlight": "與會者資訊",
-        "text2": " (將於近期推出)"
+        "text": "編輯您的 ",
+        "text-highlight": "參與者資訊"
       }
     },
-    "title": "登入",
-    "description": "請登入以繼續完成購票",
-    "forget-password": "忘記密碼?",
-    "no-account": "沒有帳號嗎?",
-    "error": {
-      "password": "錯誤的帳號或密碼"
-    }
-  },
-  "register": {
-    "title": "註冊",
-    "description": "請先註冊以繼續完成購票",
-    "error": {
-      "email": "此 email 已被使用，請重新輸入。"
+    "login": {
+      "title": "登入",
+      "description": "請登入以繼續完成購票"
+    },
+    "register": {
+      "title": "註冊",
+      "description": "請先註冊以繼續完成購票"
     },
     "form": {
       "first-name": "名字",
@@ -255,7 +248,11 @@
       "email": "電子郵件",
       "password": "密碼",
       "confirm-password": "確認密碼",
-      "have-account": "已經有帳號嗎?"
+      "forget-password": "忘記密碼?",
+      "login": "登入",
+      "register": "註冊",
+      "no-account": "沒有帳號嗎?",
+      "already-account": "已經有帳號嗎?"
     }
   },
   "speaker": {
@@ -499,47 +496,6 @@
     "bus": {
       "title": "搭公車前往",
       "content": "搭乘605、668、817號、基隆客運至南樟樹灣站下車，再步行至寬和宴展館即可。"
-    }
-  },
-  "login": {
-    "introduction": {
-      "title": {
-        "text-highlight": "只需3個步驟 ",
-        "text": "即可完成購票！"
-      },
-      "step1": {
-        "text-highlight-login": "登入 ",
-        "text-highlight-register": "註冊 ",
-        "text": "您的帳號"
-      },
-      "step2": {
-        "text": "選擇您想購買的票券並 ",
-        "text-highlight": "結帳"
-      },
-      "step3": {
-        "text": "編輯您的 ",
-        "text-highlight": "參與者資訊"
-      }
-    },
-    "login": {
-      "title": "登入",
-      "description": "請登入以繼續完成購票"
-    },
-    "register": {
-      "title": "註冊",
-      "description": "請先註冊以繼續完成購票"
-    },
-    "form": {
-      "first-name": "名字",
-      "last-name": "姓氏",
-      "email": "電子郵件",
-      "password": "密碼",
-      "confirm-password": "確認密碼",
-      "forget-password": "忘記密碼?",
-      "login": "登入",
-      "register": "註冊",
-      "no-account": "沒有帳號嗎?",
-      "already-account": "已經有帳號嗎?"
     }
   }
 }
