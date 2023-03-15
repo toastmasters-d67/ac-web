@@ -170,7 +170,7 @@ export default {
       <button class="picker-button" @click="this.checkout">
         {{ $t("cart.summary.checkout") }}
       </button>
-      <form id="blue" :action="this.newebpay" method="POST">
+      <form id="blue" :action="this.url" method="POST">
         <input v-model="merchantID" type="hidden" name="MerchantID" />
         <input v-model="version" type="hidden" name="Version" />
         <input v-model="content" type="hidden" name="TradeInfo" />
