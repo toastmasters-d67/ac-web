@@ -73,7 +73,7 @@
       "banquet": {
         "name": "Dinner Banquet",
         "price": "800",
-        "note": "The lowest price you can get - first come, first serve. Includes access to both conference days at 2023 Annual Conference, souvenirs and dinner party on site."
+        "note": "The dinner banquet tickets cannot be sold seperately."
       },
       "additional": "Additional Banquet Ticket"
     },
