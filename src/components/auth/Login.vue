@@ -25,7 +25,9 @@ export async function onSubmit(values, target) {
         }
         if (token.length) {
           localStorage.setItem("token", token);
-          target.$router.push("me");
+          target.$router.push("me").then(() => {
+            target.$router.go();
+          });
         }
       })
       .catch(function (error) {
