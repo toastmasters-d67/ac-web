@@ -245,7 +245,7 @@
     "title": "Register",
     "description": "Please register before you purchase the ticket.",
     "error": {
-      "email": "Email exists."
+      "email": "This email has been registered. Please try again."
     },
     "form": {
       "first-name": "First name",
