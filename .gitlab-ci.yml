@@ -53,7 +53,6 @@ sit:
     APP_PATH: "$CI_PROJECT_DIR"
     DEPLOYMENT_ENVIRONMENT: staging
     VUE_APP_API: https://spinda.azurewebsites.net/api/v1
-    VUE_APP_NEWEBPAY: https://ccore.newebpay.com/MPG/mpg_gateway
   only:
     - staging
 
@@ -67,6 +66,7 @@ uat:
     API_TOKEN: $API_TOKEN
     APP_PATH: "$CI_PROJECT_DIR"
     DEPLOYMENT_ENVIRONMENT: uat
+    VUE_APP_API: https://kyogre.azurewebsites.net/api/v1
   only:
     - staging
 
@@ -79,5 +79,6 @@ production:
   variables:
     API_TOKEN: $API_TOKEN
     APP_PATH: "$CI_PROJECT_DIR"
+    VUE_APP_API: https://yveltal.azurewebsites.net/api/v1
   only:
     - main
