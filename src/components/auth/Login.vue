@@ -25,14 +25,13 @@ export async function onSubmit(values, target) {
         }
         if (token.length) {
           localStorage.setItem("token", token);
-          target.$router.push("me").then(() => {
-            target.$router.go();
-          });
+          target.$router.push("me");
         }
       })
       .catch(function (error) {
         if (401 === error.response.status) {
           localStorage.removeItem("token");
+          target.loginError = target.$t("login.error.password");
         } else {
           console.log(error);
           return Promise.reject(error);

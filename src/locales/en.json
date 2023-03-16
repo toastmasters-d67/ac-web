@@ -239,7 +239,10 @@
     "title": "Log in",
     "description": "Please log in before you purchase the ticket.",
     "forget-password": "Forgot your password?",
-    "no-account": "Don't have an account?"
+    "no-account": "Don't have an account?",
+    "error": {
+      "password": "Incorrect account or password."
+    }
   },
   "register": {
     "title": "Register",

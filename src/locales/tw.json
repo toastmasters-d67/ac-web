@@ -238,7 +238,10 @@
     "title": "登入",
     "description": "請登入以繼續完成購票",
     "forget-password": "忘記密碼?",
-    "no-account": "沒有帳號嗎?"
+    "no-account": "沒有帳號嗎?",
+    "error": {
+      "password": "錯誤的帳號或密碼"
+    }
   },
   "register": {
     "title": "註冊",
