@@ -266,9 +266,7 @@ export default {
       }
     },
     saveForm() {
-      // TODO: call api to save tickets.
       this.editing = !this.editing;
-      // TODO: reload
     },
     async submitForm(event) {
       event.preventDefault();
@@ -282,7 +280,7 @@ export default {
         });
         if (confirmResult) {
           this.editing = !this.editing;
-          this.submit(); // sumbit or reload
+          this.submit();
         }
       }
     },

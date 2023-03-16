@@ -58,27 +58,6 @@ export default {
       this.$t("account.status"),
       this.$t("account.amount"),
     ]);
-    // const items = reactive([]);
-    const items = reactive([
-      {
-        id: "1678129341",
-        amount: 12533,
-        status: "pending",
-        date: "2023-01-11",
-      },
-      {
-        id: "1678149341",
-        amount: 24533,
-        status: "paid",
-        date: "2023-02-11",
-      },
-      {
-        id: "1678169341",
-        amount: 77533,
-        status: "OK",
-        date: "2023-04-11",
-      },
-    ]);
     const items = reactive([]);
     return {
       fields,
@@ -211,7 +190,6 @@ export default {
       }
     }
     .paid {
-      // .orange {
       color: #dc6b04;
       background: #ffe3b9;
       border-radius: 4px;

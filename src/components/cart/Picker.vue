@@ -56,15 +56,8 @@ export default {
     },
   },
   data() {
-    const note = reactive({
-      early:
-        "The lowest price you can get - first come, first serve. Includes access to both conference days at 2023 Annual Conference, souvenirs and dinner party on site.",
-      banquet:
-        "The first day of conference, we provide a night banquet for all our guests who wants to attend.",
-    });
     const numbers = reactive(Array.from(Array(31).keys()));
     return {
-      note,
       numbers,
     };
   },
@@ -82,11 +75,10 @@ export default {
             class="picker-icon"
             alt="ticket-icon"
           />
-
           <span class="picker-name">{{ $t("cart.picker.early.name") }}</span>
-          <span class="picker-price"
-            >NT$ {{ $t("cart.picker.early.price") }}</span
-          >
+          <span class="picker-price">
+            NT$ {{ $t("cart.picker.early.price") }}
+          </span>
         </div>
         <span class="picker-note">{{ $t("cart.picker.early.note") }}</span>
       </div>
@@ -109,9 +101,9 @@ export default {
             alt="ticket-icon"
           />
           <span class="picker-name">{{ $t("cart.picker.double.name") }}</span>
-          <span class="picker-price"
-            >NT$ {{ $t("cart.picker.double.price") }}</span
-          >
+          <span class="picker-price">
+            NT$ {{ $t("cart.picker.double.price") }}
+          </span>
         </div>
       </div>
       <select
@@ -133,9 +125,9 @@ export default {
             alt="ticket-icon"
           />
           <span class="picker-name">{{ $t("cart.picker.first.name") }}</span>
-          <span class="picker-price"
-            >NT$ {{ $t("cart.picker.first.price") }}</span
-          >
+          <span class="picker-price">
+            NT$ {{ $t("cart.picker.first.price") }}
+          </span>
         </div>
       </div>
       <select
@@ -157,9 +149,9 @@ export default {
             alt="ticket-icon"
           />
           <span class="picker-name">{{ $t("cart.picker.second.name") }}</span>
-          <span class="picker-price"
-            >NT$ {{ $t("cart.picker.second.price") }}</span
-          >
+          <span class="picker-price">
+            NT$ {{ $t("cart.picker.second.price") }}
+          </span>
         </div>
       </div>
       <select
@@ -183,9 +175,9 @@ export default {
             alt="banquet-icon"
           />
           <span class="picker-name">{{ $t("cart.picker.banquet.name") }}</span>
-          <span class="picker-price"
-            >NT$ {{ $t("cart.picker.banquet.price") }}</span
-          >
+          <span class="picker-price">
+            NT$ {{ $t("cart.picker.banquet.price") }}
+          </span>
         </div>
         <span class="picker-note">{{ $t("cart.picker.banquet.note") }}</span>
       </div>
@@ -308,7 +300,6 @@ export default {
     margin-bottom: 16px;
   }
 }
-// }
 @media screen and (max-width: 768px) {
   .picker-container {
     width: 91.47%;
