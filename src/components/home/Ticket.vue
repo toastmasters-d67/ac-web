@@ -116,13 +116,10 @@
         {{ $rt(item) }}&nbsp;
       </span>
     </div>
-    <button
-      class="ticket-button"
-      onclick="location.href = 'https://core.newebpay.com/EPG/tmacearlybird2023/urEMIb'"
-    >
+    <router-link to="/me" class="ticket-button">
       <span class="button-text">{{ $t("home.ticket.order") }}</span>
       <i class="pi pi-arrow-right button-arrow-right"></i>
-    </button>
+    </router-link>
   </section>
 </template>
 
@@ -177,6 +174,7 @@
     gap: 8px;
     padding: 12px 24px;
     margin-top: 23px;
+    text-decoration: none;
     cursor: pointer;
     .button-text {
       font-size: 22px;

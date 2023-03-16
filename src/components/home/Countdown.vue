@@ -1,3 +1,60 @@
+<script>
+import { ref } from "vue";
+import Timer from "@/components/home/Timer.vue";
+
+export default {
+  name: "Countdown",
+  components: {
+    Timer,
+  },
+  data() {
+    const [d, h, m, s] = this.getTime();
+    const days = ref(d);
+    const hours = ref(h);
+    const minutes = ref(m);
+    const seconds = ref(s);
+    const polling = ref(null);
+    return {
+      days,
+      hours,
+      minutes,
+      seconds,
+      polling,
+    };
+  },
+  created() {
+    this.pollData();
+  },
+  methods: {
+    getTime() {
+      const now = new Date();
+      const date = new Date(process.env.VUE_APP_COUNTDOWN_DATE);
+      const remaining = date - now;
+      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(remaining / (1000 * 60 * 60)) % 24;
+      const minutes = Math.floor(remaining / (1000 * 60)) % 60;
+      const seconds = Math.floor(remaining / 1000) % 60;
+      return [days, hours, minutes, seconds];
+    },
+    countdown() {
+      const [days, hours, minutes, seconds] = this.getTime();
+      this.days = days;
+      this.hours = hours;
+      this.minutes = minutes;
+      this.seconds = seconds;
+    },
+    pollData() {
+      this.polling = window.setInterval(() => {
+        this.countdown();
+      }, 1000);
+    },
+  },
+  beforeUnmount() {
+    window.clearInterval(this.polling);
+  },
+};
+</script>
+
 <template>
   <section class="countdown-container">
     <header class="countdown-title">{{ $t("home.countdown.title") }}</header>
@@ -102,60 +159,3 @@
   }
 }
 </style>
-
-<script>
-import { ref } from "vue";
-import Timer from "@/components/home/Timer.vue";
-
-export default {
-  name: "Countdown",
-  components: {
-    Timer,
-  },
-  data() {
-    const [d, h, m, s] = this.getTime();
-    const days = ref(d);
-    const hours = ref(h);
-    const minutes = ref(m);
-    const seconds = ref(s);
-    const polling = ref(null);
-    return {
-      days,
-      hours,
-      minutes,
-      seconds,
-      polling,
-    };
-  },
-  created() {
-    this.pollData();
-  },
-  methods: {
-    getTime() {
-      const now = new Date();
-      const date = new Date("apr 22, 2023 00:00:00");
-      const remaining = date - now;
-      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(remaining / (1000 * 60 * 60)) % 24;
-      const minutes = Math.floor(remaining / (1000 * 60)) % 60;
-      const seconds = Math.floor(remaining / 1000) % 60;
-      return [days, hours, minutes, seconds];
-    },
-    countdown() {
-      const [days, hours, minutes, seconds] = this.getTime();
-      this.days = days;
-      this.hours = hours;
-      this.minutes = minutes;
-      this.seconds = seconds;
-    },
-    pollData() {
-      this.polling = window.setInterval(() => {
-        this.countdown();
-      }, 1000);
-    },
-  },
-  beforeUnmount() {
-    window.clearInterval(this.polling);
-  },
-};
-</script>

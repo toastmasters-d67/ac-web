@@ -1,4 +1,14 @@
 {
+  "account": {
+    "title": "My account",
+    "new": "New order",
+    "number": "Order number",
+    "date": "Date",
+    "status": "Status",
+    "amount": "Amount",
+    "pending": "Pending",
+    "paid": "Paid"
+  },
   "app": {
     "breadcrumb": {
       "/": "Home",
@@ -22,15 +32,55 @@
       "venue": "Venue",
       "faq": "FAQ",
       "lang": "EN",
-      "login": "Log in"
+      "login": "Log in",
+      "account": "My Account",
+      "logout": "Log out"
     },
     "footer": {
       "contact": "Contact Us",
       "reserved": "2023 District 67, Toastmasters International. All rights reserved."
     },
     "button": {
-      "ticket": ["Get", "Tickets"],
-      "contact": ["Contact", "Us"]
+      "ticket": [
+        "Get",
+        "Tickets"
+      ],
+      "contact": [
+        "Contact",
+        "Us"
+      ]
+    }
+  },
+  "cart": {
+    "picker": {
+      "early": {
+        "name": "Early Bird 2 Day Pass",
+        "price": "2500",
+        "note": "The lowest price you can get - first come, first serve. Includes access to both conference days at 2023 Annual Conference, souvenirs and dinner party on site."
+      },
+      "double": {
+        "name": "2 Day Pass",
+        "price": "2200"
+      },
+      "first": {
+        "name": "First Day Pass",
+        "price": "1300"
+      },
+      "second": {
+        "name": "Second Day Pass",
+        "price": "1300"
+      },
+      "banquet": {
+        "name": "Dinner Banquet",
+        "price": "800",
+        "note": "The dinner banquet tickets cannot be sold seperately."
+      },
+      "additional": "Additional Banquet Ticket"
+    },
+    "summary": {
+      "order-sum": "Order summary",
+      "total": "Total",
+      "checkout": "Check out"
     }
   },
   "home": {
@@ -40,6 +90,10 @@
       "hour": "Hours",
       "minute": "Minutes",
       "second": "Seconds"
+    },
+    "marquee": {
+      "a": "International Speech Run-off A Contest: Division A, D, E, G, I, L, M",
+      "b": "International Speech Run-off B Contest: Division B, C, H, K, N, O"
     },
     "program": {
       "title": "Program",
@@ -68,18 +122,25 @@
       "final": "International Speech Contest",
       "closing": "Closing Ceremony",
       "room": {
-        "calla": "1F Room Calla Lilly & Rose",
-        "clove": "2F Room Clove",
-        "jasmine": "1F Banquet Hall (Room Jasmine)",
-        "lisianthus": "2F Room Lisianthus",
+        "calla": "1F Room Calla Lilly & Rose (1A)",
+        "clove": "2F Room Clove (2B)",
+        "jasmine": "1F Room Jasmine (1B)",
+        "lisianthus": "2F Room Lisianthus (2A)",
         "lobby": "1F Lobby",
-        "preparation": "2F Preparation Room"
-      }
+        "preparation": "2F Preparation Room (2C)"
+      },
+      "gvb-keynote-title": [
+        "Remastermind - How a Failed School Kid",
+        "Mastered His Mindset to Become a Champion"
+      ]
     },
     "slogan": {
       "title": "Annual Conference",
       "date": "Apr. 22-23",
-      "slogan": ["Connect to the Present.", "Lead the future!"],
+      "slogan": [
+        "Connect to the Present.",
+        "Lead the future!"
+      ],
       "text": {
         "desktop": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions.",
         "mobile": "Come join the exciting 2-day program of keynote speeches, speech contests and training sessions."
@@ -88,6 +149,8 @@
     },
     "souvenir": {
       "title": "Souvenirs",
+      "bag": "Non-woven Bags with Logo",
+      "towel": "Towels with Logo and Slogan",
       "tbd": "TBD",
       "note": "Full details of the souvenirs will be announced soon!"
     },
@@ -103,14 +166,16 @@
       "early-bird-price-note": "Original price $ 3000",
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
-      "until": "Until Mar 19, 2023",
+      "until": "Until Mar 27, 2023",
       "lunch": "Lunchbox",
       "lunch2": "Lunchboxes for 2 days",
       "souvenir": "Souvenirs",
       "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
-      "note": ["Early Bird Pass is available for order now!", "Please stay tuned for more updates."],
-      "order": "Order Ticket"
+      "note": [
+        "All tickets are available for order now! Don't miss out on our early bird offer."
+      ],
+      "order": "Order Tickets"
     },
     "venue": {
       "title": "How to Get There?",
@@ -133,13 +198,65 @@
       },
       {
         "question": "How can I buy the annual conference tickets?",
-        "answer": "The tickets will be available for online purchase soon. Please stay tuned!"
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the tutorial for more details. Thank you. Refer: https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link"
       },
       {
         "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
         "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 16th for the manual refund process. No refund is allowed after this deadline."
+      },
+      {
+        "question": "Who can I contact if I have questions regarding the annual conference?",
+        "answer": "Please email your request to tmicon{'@'}toastmasters.org.tw. We will respond shortly."
+      },
+      {
+        "question": "Is there any recommended accommodation near the venue?",
+        "answer": "• Xi Zhi Dist. / Tainan Fushin Hotel / $2,600-$3,200 / 5-min walk from the conference venue • Nangang Dist. / May Rooms Taipei / $1,800 / 5-min walk from Nangang MRT Station / 15-min walk from Nangang Exhibition Center • Nangang Dist. / Uline Motel / $2,400-$2,900 / 10-min walk from Kunyang MRT Station • Nangang Dist. / The Place Taipei / $3,500-$3,700 / Near Nangang Software Park MRT Station / 8-min walk from Taipei Nangang Exhibition Center MRT Station • Nangang Dist. / Forward Hotel Nangang / $3,600-$3,800 / 5-min walk from Nangang Software Park MRT  • Nangang Dist. / Green World NanGang / $5,000 / 5-min walk from Nangang MRT Station"
       }
     ]
+  },
+  "login": {
+    "introduction": {
+      "title": {
+        "text-highlight": "3 Steps ",
+        "text": "to purchase your ticket!"
+      },
+      "step1": {
+        "text-highlight-login": "Log in ",
+        "text-highlight-register": "Register ",
+        "text": "your account."
+      },
+      "step2": {
+        "text": "Choose your tickets and ",
+        "text-highlight": "Check out."
+      },
+      "step3": {
+        "text1": "Edit ",
+        "text-highlight": "Attendee Information.",
+        "text2": " (coming soon)"
+      }
+    },
+    "title": "Log in",
+    "description": "Please log in before you purchase the ticket.",
+    "forget-password": "Forgot your password?",
+    "no-account": "Don't have an account?",
+    "error": {
+      "password": "Incorrect account or password."
+    }
+  },
+  "register": {
+    "title": "Register",
+    "description": "Please register before you purchase the ticket.",
+    "error": {
+      "email": "This email has been registered. Please try again."
+    },
+    "form": {
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "confirm-password": "Confirm password",
+      "have-account": "Already have an account?"
+    }
   },
   "speaker": {
     "seminar": "Seminar",
@@ -165,7 +282,7 @@
         {
           "topic": "Discussing Taiwan’s Competitiveness Through the Thinking of Wangdao",
           "time": "4/22, 11:00-11:50",
-          "location": "1F Room Calla Lilly & Rose",
+          "location": "1F Room Calla Lilly & Rose (1A)",
           "introduction": [
             "“New Wangdao” is a discussion of the way of leaders in organizations of various sizes. “Value creation, the balance of interests, and sustainable development” are the three core concepts of Wangdao thinking. Wangdao emphasizes looking at the total value of things through the “Six-Aspect Values.” Pay greater attention to the “intangible, indirect, future” invisible value in addition to the “tangible, direct, and present” dominant value. Build a new mechanism for mutual value creation and the balance of interests through continuous creativity and value creation. Only then can the goal of sustainable development be realized.",
             "Taiwan is already Si-nnovation. Facing the new and future challenges of the world, we need to make Taiwan the birthplace of Si-vilization. In the past, Taiwan has served as the main contributor of the world’s electronic products and material civilization. Hopefully in the future, Taiwan can contribute to the future spiritual civilization of mankind. Taiwan can position itself as a friend of the world.",
@@ -195,7 +312,7 @@
         {
           "topic": "Remastermind - How a Failed School Kid Mastered His Mindset to Become a Champion",
           "time": "4/22, 13:10-14:00",
-          "location": "1F Room Calla Lilly & Rose",
+          "location": "1F Room Calla Lilly & Rose (1A)",
           "introduction": [
             "When people look at Greg’s life, they only see the result. They don’t see the years of failures; they don’t feel the years of pain, and they don’t hear the negative voices from his childhood that echoed so loudly through his mind.",
             "His primary teachers told him he would amount to nothing, high school teachers said he’d be the most likely student to be in prison or dead by 21... but no matter what they said, Greg refused to listen.",
@@ -207,7 +324,7 @@
         {
           "topic": "Team Survival Skills from Antarctica to the Apocalypse",
           "time": "4/23, 14:20-15:20",
-          "location": "2F Room Lisianthus",
+          "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "The skills of leadership are some of the most important life skills you could ever wish to cultivate. Learning how to persuade, speak, present and influence, to me are some of the most imperative.",
             "Anyone can lead when times are good, but it’s in a time of crisis, when the pressure is on, and things aren’t going your way, when true leadership comes to the fore.",
@@ -234,12 +351,12 @@
         {
           "topic": "Come Have a Cup of Tea - Reconnect to the World through Tea",
           "time": "4/22, 14:20-15:30",
-          "location": "2F Room Lisianthus",
+          "location": "2F Room Lisianthus (2A)",
           "introduction": [
-            "”Come have a cup of tea” used to be an authentic greeting in traditional Taiwanese society.", 
+            "”Come have a cup of tea” used to be an authentic greeting in traditional Taiwanese society.",
             "It showed the hospitality of Taiwanese people and indicated the important role that tea has played in Taiwanese life.",
-            "The power of tea is much more than you can image.", 
-            "It is not only one of the top 3 popular drinks worldwide, tea also provides more health advantages than others, most of all, tea is an elegant way for us to reconnect to the world after the pandemic." 
+            "The power of tea is much more than you can image.",
+            "It is not only one of the top 3 popular drinks worldwide, tea also provides more health advantages than others, most of all, tea is an elegant way for us to reconnect to the world after the pandemic."
           ]
         }
       ]
@@ -249,7 +366,7 @@
       "name": "Angel Li",
       "title": "Trainer of the English Training Session",
       "contents": [
-        "Angel Li has been joining Toastmasters since she was a freshman in National Taiwan University.", 
+        "Angel Li has been joining Toastmasters since she was a freshman in National Taiwan University.",
         "If you want to know how an introvert girl who dare not speak English can be transformed by 16-year Toastmasters journey into a global project manager in clinical research industries, you should come to listen to her inspiring stories.",
         "Angel has become a mother of a baby girl since year 2022 while she is seeking for a new record and striving for a new height in her career. She achieves all the milestones and timeline at work, cooks for almost every meal for family, and keep me-time and own hobbies at the same time. If you want to know how a working mother can balance her career, life and family elegantly, you should come to listen to her tips for time management skills."
       ],
@@ -260,7 +377,7 @@
         {
           "topic": "Manage Your Time, Master Your Life",
           "time": "4/22, 15:30-16:30",
-          "location": "2F Room Lisianthus",
+          "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "Time flies, but the good news is you are the pilot. If one does not know to which port one is sailing, no wind is favorable. Your life is like a candle. Every bit of melted wax vanishes forever and shall never be recovered. We will only be able to be productive when we truly strive to protect and make the most of our time.",
             "Focus 100% of your energy, your time and your life to getting what is really important to you. Accept only what really matters in your lives. Simplify your life. Eliminate anything trivial, everything that is superfluous. There’s no greater joy than working to achieve what really matters to you.",
@@ -279,12 +396,12 @@
       "name": "Phillip Botha",
       "title": "Trainer of the English Training Session",
       "contents": [
-        "Phillip has been a Toastmaster for about 8 years.", 
-        "During that time, he served in several leadership roles including VPM and President of Taipei Tech (NTUT) Toastmasters Club plus VPM and VPPR of Premium Toastmasters Club.", 
-        "In 2019 Phillip participated in the D67 International Speech Contest where he made it to the finals held in Kaohsiung City.", 
-        "Phillip is currently a member of the Good Life Toastmasters Club.", 
-        "Phillip’s personal struggle with low self-confidence and self-esteem has motivated him to become a student and teacher in these fields.", 
-        "In 2018 he traveled to Orlando, Florida where he became certified as a John C. Maxwell Coach, Teacher, Trainer, and Speaker.", 
+        "Phillip has been a Toastmaster for about 8 years.",
+        "During that time, he served in several leadership roles including VPM and President of Taipei Tech (NTUT) Toastmasters Club plus VPM and VPPR of Premium Toastmasters Club.",
+        "In 2019 Phillip participated in the D67 International Speech Contest where he made it to the finals held in Kaohsiung City.",
+        "Phillip is currently a member of the Good Life Toastmasters Club.",
+        "Phillip’s personal struggle with low self-confidence and self-esteem has motivated him to become a student and teacher in these fields.",
+        "In 2018 he traveled to Orlando, Florida where he became certified as a John C. Maxwell Coach, Teacher, Trainer, and Speaker.",
         "His passion for teaching and helping others has led him to conduct this training program."
       ],
       "facebook": "",
@@ -294,10 +411,10 @@
         {
           "topic": "Be Your Own Hero: How to Overcome Self-Doubt and Be The Most Confident You",
           "time": "4/23, 13:00-14:10",
-          "location": "2F Room Lisianthus",
+          "location": "2F Room Lisianthus (2A)",
           "introduction": [
-            "Do you ever feel that a lack of self-confidence is holding you back from being the best version of yourself and accomplishing your biggest dreams?", 
-            "In this training, you’ll discover what self-confidence really is, and receive an action-based blueprint for overcoming self-doubt and building and maintaining optimal levels of confidence.", 
+            "Do you ever feel that a lack of self-confidence is holding you back from being the best version of yourself and accomplishing your biggest dreams?",
+            "In this training, you’ll discover what self-confidence really is, and receive an action-based blueprint for overcoming self-doubt and building and maintaining optimal levels of confidence.",
             "You will learn how to take control of your own personal growth and become the hero of your own story."
           ]
         }
@@ -319,7 +436,7 @@
         {
           "topic": "充滿人性的超效溝通",
           "time": "4/22, 16:40-18:10",
-          "location": "2F Room Lisianthus",
+          "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "在ＡＩ時代更需要運用充滿人性的溝通來領導未來，真實的人生經驗和互動能為心理帶來安慰，運用哲學的的思維和腦神經為本的串連能為生命創造更多的彈性。",
             "本次教育訓練將採工作坊模式進行，讓資深企業諮詢師帶領你從語言、哲學、心理進行充滿人性的超效溝通法。",
@@ -342,11 +459,11 @@
         "● 東吳前兩岸事務中心主任（從事兩岸學術交流26年）",
         "● 海峽兩岸交流基金會2023年顧問（無給職）",
         "● 演講及主持經歷：",
-        "　○ 中文演講會22年資深會員、喜洋洋中文演講會顧問", 
+        "　○ 中文演講會22年資深會員、喜洋洋中文演講會顧問",
         "　○ 2000年國語備稿演講比賽冠軍、2002年台語即席比賽冠軍",
         "　○ 多次參與國際演講會大會教育訓練及1次春季大會晚會主持",
         "　○ 主持演講會會友結婚喜宴、主持演講會會友公司春酒午宴",
-        "　○ 主持訪問姚明見面會、主持800人年終尾牙",  
+        "　○ 主持訪問姚明見面會、主持800人年終尾牙",
         "　○ 主持14場大陸同學來台交流大型活動開、閉幕典禮"
       ],
       "facebook": "",
@@ -356,11 +473,11 @@
         {
           "topic": "輕鬆談「主持二、三事」",
           "time": "4/23, 15:40-16:50",
-          "location": "2F Room Lisianthus",
+          "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "大家好！我是喜洋洋中文國際演講會王玉梅，很榮幸受邀在2023年春季大會的教育訓練工作坊中，和大家一起分享和學習。",
             "個人參加演講會超過20年，雖然只完成40篇演講，但每篇演講都是「以口說心，人稿合一」的體現，就像談了40場傾心以對，轟轟烈烈的戀愛！因此，「心口稿三合一」始終是我個人對演講舞台的態度和信念。",
-            "從小因多次參加演講比賽的經驗，讓我對「上台演講」並不陌生，但是在參加演講會之前，「主持」這件事，我可就一無所知。直到透過例會的總主持人、開懷、即席再到總講評等等的學習，才培養出我對「主持」的興趣和能力，也因為具備「主持能力」，", 
+            "從小因多次參加演講比賽的經驗，讓我對「上台演講」並不陌生，但是在參加演講會之前，「主持」這件事，我可就一無所知。直到透過例會的總主持人、開懷、即席再到總講評等等的學習，才培養出我對「主持」的興趣和能力，也因為具備「主持能力」，",
             "無論是演講或主持，每位會友都有自己獨特的風格，20年多來，我像個園丁或農夫，守著演講舞台的一畝三分地，深耕勤耘，產出不多，但都是誠心之作，能常常和會友們分享，就是最歡喜的收穫！回首演講會一路走來，真心感受「惠我良多」，如今退休成為「時間富婆」，理當盡己之力感恩回饋！",
             "古云「溫故知新」，期待4月23日能和舊雨們重新溫故，也能和新知們共同學習，我們一起來杯「心口稿三合一」下午茶，輕鬆聊聊「主持二、三事」吧！"
           ]
@@ -384,7 +501,7 @@
         {
           "topic": "「誰でもできる！これが論評の基本形」",
           "time": "4/22, 14:20-16:20",
-          "location": "2F Room Clove",
+          "location": "2F Room Clove (2B)",
           "introduction": [
             "論評に苦手意識はありませんか？実は論評には基本的な流れがあり、これさえ理解すれば誰でも短時間で簡単にまとめることができます。",
             "ワークショップではワークシートを使って実際に日本語スピーチへの論評にチャレンジしていただきます。よい論評でみなさんのクラブの例会を盛り上げましょう！"
@@ -412,46 +529,6 @@
     "bus": {
       "title": "By Bus",
       "content": "Take 605, 668, 817, or Keelung Bus to South Zhangshuwan Station, and then walk to reach Kuanhe."
-    }
-  },
-  "login": {
-    "introduction": {
-      "title": {
-        "text-highlight": "3 Steps ",
-        "text": "to purchase your ticket!"
-      },
-      "step1": {
-        "text": "Log-in with your ",
-        "text-highlight": "Google account."
-      },
-      "step2": {
-        "text": "Choose your tickets and ",
-        "text-highlight": "Check out."
-      },
-      "step3": {
-        "text": "Edit your ",
-        "text-highlight": "Attendee Information."
-      }
-    },
-    "login": {
-      "title": "Log in",
-      "description": "Please log in before you purchase the ticket."
-    },
-    "register": {
-      "title": "Register",
-      "description": "Please register before you purchase the ticket."
-    },
-    "form": {
-      "first-name": "First name",
-      "last-name": "Last name",
-      "email": "Email",
-      "password": "Password",
-      "confirm-password": "Confirm password",
-      "forget-password": "Forgot your password?",
-      "login": "Log in",
-      "register": "Register",
-      "no-account": "Don't have an account?",
-      "already-account": "Already have an account?"
     }
   }
 }

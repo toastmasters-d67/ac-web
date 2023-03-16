@@ -1,5 +1,6 @@
 <template>
   <article id="home">
+    <Marquee v-once />
     <Slogan :scrollToElement="scrollToElement" v-once />
     <Countdown v-once />
     <Ticket v-once />
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import Marquee from "@/components/home/Marquee.vue";
 import Slogan from "@/components/home/Slogan.vue";
 import Countdown from "@/components/home/Countdown.vue";
 import Ticket from "@/components/home/Ticket.vue";
@@ -27,6 +29,7 @@ export default {
     },
   },
   components: {
+    Marquee,
     Slogan,
     Countdown,
     Ticket,

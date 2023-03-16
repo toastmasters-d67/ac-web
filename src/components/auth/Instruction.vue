@@ -1,6 +1,12 @@
 <script>
 export default {
   name: "Instruction",
+  props: {
+    step1HighlightText: {
+      type: String,
+      default: "Log in",
+    },
+  },
   data() {
     return {
       windowHeight: window.innerHeight,
@@ -9,9 +15,6 @@ export default {
   created() {
     window.addEventListener("resize", this.handleResize);
     this.handleResize();
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
   },
   unmounted() {
     window.removeEventListener("resize", this.handleResize);
@@ -44,11 +47,11 @@ export default {
     <div class="instruction-steps">
       <div class="instruction-step">
         <span class="instruction-step-number">1</span>
-        <span class="instruction-step-text"
-          >{{ $t("login.introduction.step1.text") }}
+        <span class="instruction-step-text">
           <span class="text-highlight">
-            {{ $t("login.introduction.step1.text-highlight") }}
+            {{ step1HighlightText }}
           </span>
+          {{ $t("login.introduction.step1.text") }}
         </span>
       </div>
       <div class="instruction-step">
@@ -63,10 +66,11 @@ export default {
       <div class="instruction-step">
         <span class="instruction-step-number">3</span>
         <span class="instruction-step-text"
-          >{{ $t("login.introduction.step3.text") }}
+          >{{ $t("login.introduction.step3.text1") }}
           <span class="text-highlight">
             {{ $t("login.introduction.step3.text-highlight") }}
           </span>
+          {{ $t("login.introduction.step3.text2") }}
         </span>
       </div>
     </div>

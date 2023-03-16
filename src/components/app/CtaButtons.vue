@@ -1,6 +1,10 @@
 <template>
   <div class="cta-buttons-container">
-    <button class="cta-button ticket" @click="scrollToElement('ticket')">
+    <button
+      class="cta-button ticket"
+      @click="scrollToElement('ticket')"
+      v-if="showCtaGetTickets"
+    >
       <span v-for="(item, index) in $tm('app.button.ticket')" :key="index">
         {{ $rt(item) }}
       </span>
@@ -22,6 +26,10 @@ export default {
   props: {
     scrollToElement: {
       type: Function,
+    },
+    showCtaGetTickets: {
+      type: Boolean,
+      default: true,
     },
   },
 };

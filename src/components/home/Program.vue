@@ -127,7 +127,8 @@
               {{ $t("home.program.keynote") }} - {{ $t("speakers[1].name") }}
             </span>
             <span class="row-item-title title-expand">
-              {{ $t("speakers[1].seminars[0].topic") }}
+              {{ $t("home.program.gvb-keynote-title[0]") }}<br />
+              {{ $t("home.program.gvb-keynote-title[1]") }}
             </span>
             <span class="row-item-venue venue-calla">
               {{ $t("home.program.room.calla") }}

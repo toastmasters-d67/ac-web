@@ -1,25 +1,3 @@
-<template>
-  <article id="speaker" class="speaker-container">
-    <Breadcrumb v-once />
-    <Briefing
-      :speakerKey="speakerKey"
-      :name="name"
-      :title="title"
-      :contents="contents"
-      :facebook="facebook"
-      :instagram="instagram"
-      :youtube="youtube"
-    />
-    <Seminar :seminars="seminars" />
-  </article>
-</template>
-
-<style scoped lang="scss">
-.speaker-container {
-  background: transparent;
-}
-</style>
-
 <script>
 import { reactive } from "vue";
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
@@ -38,6 +16,9 @@ export default {
     const speaker = this.$tm("speakers").find(
       (x) => this.$rt(x.key) === speakerKey
     );
+    if (speaker === undefined) {
+      this.$router.push("/");
+    }
     const name = this.$rt(speaker.name);
     const title = this.$rt(speaker.title);
     const contents = reactive([]);
@@ -77,3 +58,25 @@ export default {
   },
 };
 </script>
+
+<template>
+  <article id="speaker" class="speaker-container">
+    <Breadcrumb v-once />
+    <Briefing
+      :speakerKey="speakerKey"
+      :name="name"
+      :title="title"
+      :contents="contents"
+      :facebook="facebook"
+      :instagram="instagram"
+      :youtube="youtube"
+    />
+    <Seminar :seminars="seminars" />
+  </article>
+</template>
+
+<style scoped lang="scss">
+.speaker-container {
+  background: transparent;
+}
+</style>

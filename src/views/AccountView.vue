@@ -9,30 +9,40 @@ export async function getUser(token, target) {
     axios
       .get(url)
       .then(function (response) {
-        if (response && response.data && "orders" in response.data) {
+        if (
+          response &&
+          response.data &&
+          "orders" in response.data &&
+          response.data.orders &&
+          response.data.orders.length
+        ) {
           Array.from(response.data.orders).forEach((order) => {
-            console.log(order);
-            let status = "Draft";
+            const item = {
+              id: order.orderId,
+              amount: order.amount,
+              status: "pending",
+              date: new Date(+order.orderId * 1000).toISOString().slice(0, 10),
+            };
             if (order.transactions.length) {
               const transaction = order.transactions.find(
                 (x) => x.status === "SUCCESS"
               );
               if (transaction && transaction.amount === order.amount) {
-                status = "Pending";
+                item.status = "paid";
               }
             }
-            const item = {
-              id: order.orderId,
-              amount: order.amount,
-              status: status,
-              date: new Date(+order.orderId * 1000).toISOString().slice(0, 10),
-            };
             target.items.push(item);
           });
         }
       })
       .catch(function (error) {
-        console.log(error);
+        if (401 === error.response.status) {
+          localStorage.removeItem("token");
+          this.$router.push("login");
+        } else {
+          console.log(error);
+          return Promise.reject(error);
+        }
       });
   } catch (error) {
     console.log(error);
@@ -42,42 +52,39 @@ export async function getUser(token, target) {
 export default {
   name: "AccountView",
   data() {
-    const fields = reactive(["Order number", "Date", "Status", "Amount"]);
-    // const items = reactive([]);
-    const items = reactive([
-      {
-        id: "1678129341",
-        amount: 12533,
-        status: "Draft",
-        date: "2023-01-11",
-      },
-      {
-        id: "1678149341",
-        amount: 24533,
-        status: "Pending",
-        date: "2023-02-11",
-      },
-      {
-        id: "1678169341",
-        amount: 77533,
-        status: "OK",
-        date: "2023-04-11",
-      },
+    const fields = reactive([
+      this.$t("account.number"),
+      this.$t("account.date"),
+      this.$t("account.status"),
+      this.$t("account.amount"),
     ]);
+    const items = reactive([]);
     return {
       fields,
       items,
     };
   },
+  methods: {
+    getStatus(item) {
+      if (item.status === "pending") {
+        return this.$t("account.pending");
+      } else if (item.status === "paid") {
+        return this.$t("account.paid");
+      }
+      return "OK";
+    },
+  },
   created() {
-    // if (!this.items.length) {
-    if (this.items.length < 4) {
+    if (!this.items.length) {
       const token = localStorage.getItem("token");
       if (!token || !token.length) {
         this.$router.push("login");
       }
       getUser(token, this);
     }
+  },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
   },
 };
 </script>
@@ -86,9 +93,11 @@ export default {
   <div class="account-container">
     <article id="account" class="account-container">
       <div class="account-row">
-        <header class="account-title">My account</header>
+        <header class="account-title">{{ $t("account.title") }}</header>
         <button class="account-button">
-          <router-link to="/cart" class="">New order</router-link>
+          <router-link to="/cart" class="">
+            <span class="plus">+</span> {{ $t("account.new") }}
+          </router-link>
         </button>
       </div>
       <table id="tableComponent" class="table table-bordered table-striped">
@@ -104,12 +113,32 @@ export default {
             <td>{{ item.id }}</td>
             <td>{{ item.date }}</td>
             <td>
-              <span :class="item.status.toLowerCase()">{{ item.status }}</span>
+              <span
+                :class="item.status.toLocaleLowerCase()"
+                v-text="getStatus(item)"
+              >
+              </span>
             </td>
-            <td>{{ item.amount }}</td>
+            <td>$ {{ item.amount }}</td>
           </tr>
         </tbody>
       </table>
+      <div class="rwd-account" v-for="item in items" :key="item">
+        <div class="rwd-title">
+          <div v-for="field in fields" :key="field" @click="sortTable(field)">
+            {{ field }}
+          </div>
+        </div>
+        <div class="rwd-content">
+          <div>{{ item.id }}</div>
+          <div>{{ item.date }}</div>
+          <div
+            :class="item.status.toLocaleLowerCase()"
+            v-text="getStatus(item)"
+          ></div>
+          <div>$ {{ item.amount }}</div>
+        </div>
+      </div>
     </article>
   </div>
 </template>
@@ -153,18 +182,23 @@ export default {
         box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
         text-align: center;
         padding: 8px 24px;
+        .plus {
+          font-size: 25px;
+          line-height: 1;
+          vertical-align: bottom;
+        }
       }
     }
-    .pending {
+    .paid {
       color: #dc6b04;
-      background: #fff4cd;
+      background: #ffe3b9;
       border-radius: 4px;
       padding: 4px 12px;
       gap: 10px;
     }
     .ok {
       color: #109f43;
-      background: #e0ffd9;
+      background: #cdffc0;
       border-radius: 4px;
       padding: 4px 12px;
       gap: 10px;
@@ -178,12 +212,9 @@ export default {
       th {
         color: white;
         background-color: #009879;
-        // color: black;
-        // background: #d5d5d5;
         font-size: 20px;
         font-weight: 600;
         line-height: 24px;
-        // border-radius: 4px 4px 0px 0px;
         width: 25vw;
         height: 75px;
       }
@@ -201,6 +232,53 @@ export default {
       }
       tr:nth-of-type(even) td {
         background-color: #f3f3f3;
+      }
+    }
+    .rwd-account {
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .account-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .account-title {
+      font-size: 18px !important;
+    }
+    .account-button {
+      font-size: 16px !important;
+      padding: 5.5px 20px !important;
+      width: auto !important;
+    }
+    table {
+      display: none;
+    }
+    .rwd-account {
+      background: #fff;
+      border-radius: 4px;
+      padding: 12px 12px 0 12px;
+      display: flex !important;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
+      .rwd-title {
+        text-align: left;
+        div {
+          margin-bottom: 12px;
+          font-weight: 800;
+        }
+      }
+      .rwd-content {
+        text-align: right;
+        div {
+          margin-bottom: 12px;
+          color: #868686;
+        }
+        .ok,
+        .paid {
+          text-align: center;
+        }
       }
     }
   }

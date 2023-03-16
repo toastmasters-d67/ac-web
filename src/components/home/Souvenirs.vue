@@ -1,22 +1,25 @@
 <template>
-  <section class="souvenirs-container">
+  <section id="souvenirs" class="souvenirs-container">
     <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
     <div class="souvenirs-items">
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow"></div>
-        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
+        <img
+          src="@/assets/image/home/souvenirs-bag.png"
+          class="souvenirs-item-image souvenirs-bag"
+          alt="souvenirs-bag"
+        />
+        <div class="souvenirs-item-text">{{ $t("home.souvenir.bag") }}</div>
       </div>
       <div class="souvenirs-item">
         <div class="souvenirs-item-shadow flip"></div>
-        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
+        <img
+          src="@/assets/image/home/souvenirs-towel.png"
+          class="souvenirs-item-image souvenirs-towel"
+          alt="souvenirs-towel"
+        />
+        <div class="souvenirs-item-text">{{ $t("home.souvenir.towel") }}</div>
       </div>
-      <div class="souvenirs-item">
-        <div class="souvenirs-item-shadow"></div>
-        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
-      </div>
-    </div>
-    <div class="souvenirs-coming-soon">
-      {{ $t("home.souvenir.note") }}
     </div>
   </section>
 </template>
@@ -53,8 +56,9 @@
   align-items: center;
   border-color: transparent;
   padding-top: 70px;
-  gap: 80px;
+  gap: 5%;
   .souvenirs-item {
+    position: relative;
     width: 220px;
     display: flex;
     flex-direction: column;
@@ -68,7 +72,14 @@
       gap: 10px;
     }
     .souvenirs-item-image {
+      position: absolute;
       width: 200px;
+    }
+    .souvenirs-bag {
+      top: 30px;
+    }
+    .souvenirs-towel {
+      top: 70px;
     }
     .souvenirs-item-text {
       color: black;
@@ -100,7 +111,6 @@
   }
   .souvenirs-items {
     padding-top: 0px;
-    gap: 20px;
     .souvenirs-item {
       width: 100px;
       .souvenirs-item-shadow {
@@ -109,7 +119,13 @@
         padding: 20px 10px 10px;
       }
       .souvenirs-item-image {
-        width: 100px;
+        width: 90px;
+      }
+      .souvenirs-bag {
+        top: 20px;
+      }
+      .souvenirs-towel {
+        top: 37px;
       }
       .souvenirs-item-text {
         font-size: 10px;

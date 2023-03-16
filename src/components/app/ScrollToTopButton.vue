@@ -2,7 +2,7 @@
   <button
     ref="scrollToTopButton"
     class="scroll-to-top-button"
-    v-on:click="scrollToTop()"
+    @click="scrollToTop('smooth')"
   >
     <img
       alt="Scroll To Top"
@@ -14,11 +14,13 @@
 
 <script>
 export default {
-  name: "ScrollToTop",
-  methods: {
-    scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  name: "ScrollToTopButton",
+  props: {
+    scrollToTop: {
+      type: Function,
     },
+  },
+  methods: {
     handelScroll() {
       var mybutton = this.$refs.scrollToTopButton;
       if (

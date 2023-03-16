@@ -1,5 +1,5 @@
 <script>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
@@ -25,14 +25,23 @@ export async function onSubmit(values, target) {
         }
         if (token.length) {
           localStorage.setItem("token", token);
-          target.$router.push("me");
+          target.$router.push("me").then(() => {
+            target.$router.go();
+          });
         }
       })
       .catch(function (error) {
-        console.log(error);
+        if (401 === error.response.status) {
+          localStorage.removeItem("token");
+          target.loginError = target.$t("login.error.password");
+        } else {
+          console.log(error);
+          return Promise.reject(error);
+        }
       });
   } catch (error) {
-    console.log(error);
+    console.log("error =", error);
+    localStorage.removeItem("token");
   }
 }
 
@@ -47,7 +56,8 @@ export default {
       email: "",
       password: "",
     });
-    return { state, v$, errors };
+    const loginError = ref("");
+    return { state, v$, errors, loginError };
   },
   methods: {
     validate(field) {
@@ -60,6 +70,10 @@ export default {
           this.errors[field] = err.message;
         });
     },
+    clear() {
+      this.loginError = "";
+      this.errors = { email: "", password: "" };
+    },
     loginUser() {
       if (this.v$.state.$errors.length) {
         Array.from(this.v$.state.$errors).forEach((error) => {
@@ -70,7 +84,7 @@ export default {
       loginFormSchema
         .validate(this.state, { abortEarly: false })
         .then(() => {
-          this.errors = {};
+          this.errors = { email: "", password: "" };
           onSubmit(this.state, this);
         })
         .catch((err) => {
@@ -94,48 +108,56 @@ export default {
 <template>
   <section id="login" class="login-container">
     <div class="login-login">
-      <header class="login-title">{{ $t("login.login.title") }}</header>
+      <header class="login-title">{{ $t("login.title") }}</header>
       <span class="login-login-description">
-        {{ $t("login.login.description") }}
+        {{ $t("login.description") }}
       </span>
       <div class="login-form">
         <label for="email" class="login-label">
-          {{ $t("login.form.email") }}
+          {{ $t("register.form.email") }}
         </label>
         <input
           v-model.trim="v$.state.email.$model"
           type="email"
-          placeholder="Email"
+          :placeholder="$t('register.form.email')"
           class="login-input"
           required
+          @click="clear"
+          @input="clear"
         />
         <p class="form-input-hint" v-if="!!errors.email">
           {{ errors.email }}
         </p>
         <label for="password" class="login-label">
-          {{ $t("login.form.password") }}
+          {{ $t("register.form.password") }}
         </label>
         <input
           v-model.trim="v$.state.password.$model"
           type="password"
-          placeholder="Password"
+          :placeholder="$t('register.form.password')"
           class="login-input"
           required
+          @click="clear"
+          @input="clear"
         />
+        <p class="form-input-hint">{{ loginError }}</p>
         <p class="form-input-hint" v-if="!!errors.password">
           {{ errors.password }}
         </p>
-        <span class="login-forget-password">
-          {{ $t("login.form.forget-password") }}
-        </span>
+        <a
+          class="login-forget-password"
+          href="mailto:tmicon@toastmasters.org.tw"
+        >
+          {{ $t("login.forget-password") }}
+        </a>
         <button class="login-button" @click="this.loginUser">
-          {{ $t("login.form.login") }}
+          {{ $t("login.title") }}
         </button>
       </div>
       <div class="login-register">
-        {{ $t("login.form.no-account") }}
-        <router-link to="/register">
-          {{ $t("login.form.register") }}
+        {{ $t("login.no-account") }}
+        <router-link class="login-register register-link" to="/register">
+          {{ $t("register.title") }}
         </router-link>
       </div>
       <hr class="login-divider" />
@@ -153,7 +175,10 @@ export default {
 
 <style scoped lang="scss">
 .login-container {
-  margin: auto;
+  width: 55.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   a {
     color: #214366;
     text-decoration: none;
@@ -162,21 +187,13 @@ export default {
     font-weight: 600;
     line-height: 24px;
   }
-  .form-input-hint {
-    width: 464px;
-    color: #d72727;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 22px;
-    text-align: left;
-    margin: 10px;
-  }
   .login-login {
+    width: 84%;
+    max-width: 464px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-color: transparent;
-    margin: auto;
     .login-title {
       color: black;
       font-size: 40px;
@@ -224,6 +241,15 @@ export default {
         padding-left: 20px;
         margin-bottom: 16px;
       }
+      .form-input-hint {
+        width: 100%;
+        color: #d72727;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        text-align: left;
+        margin: 10px;
+      }
       .login-forget-password {
         width: 100%;
         color: black;
@@ -261,6 +287,11 @@ export default {
       text-align: center;
       gap: 2px;
     }
+    .register-link {
+      color: rgb(0, 65, 101);
+      font-size: 20px;
+      font-weight: 600;
+    }
     .login-divider {
       display: none;
     }
@@ -297,10 +328,7 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .login-container {
-    // position: absolute;
-    // top: 80px;
-    // width: 100%;
-    // height: 525px;
+    width: 100%;
     .login-login {
       position: relative;
       width: 84%;
@@ -345,6 +373,9 @@ export default {
       .login-register {
         font-size: 14px;
         line-height: 17px;
+      }
+      .register-link {
+        font-size: 16px;
       }
       .login-divider {
         display: block;

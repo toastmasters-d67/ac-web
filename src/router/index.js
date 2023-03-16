@@ -8,9 +8,19 @@ const routes = [
     component: HomeView,
   },
   {
+    path: "/cart",
+    name: "cart",
+    component: () => import("@/views/CartView.vue"),
+  },
+  {
     path: "/faq",
     name: "faq",
     component: () => import("@/views/FAQView.vue"),
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/LoginView.vue"),
   },
   {
     path: "/me",
@@ -21,6 +31,11 @@ const routes = [
     path: "/order",
     name: "order",
     component: () => import("@/views/OrderView.vue"),
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("@/views/RegisterView.vue"),
   },
   {
     path: "/venue",

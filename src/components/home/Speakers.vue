@@ -1,3 +1,36 @@
+<script>
+import { reactive } from "vue";
+
+export default {
+  name: "Speakers",
+  data() {
+    const speakers = reactive([]);
+    Array.from(this.$tm("speakers")).forEach((source) => {
+      const item = {
+        key: this.$rt(source.key),
+        name: this.$rt(source.name),
+      };
+      speakers.push(item);
+    });
+    return { speakers };
+  },
+  methods: {
+    getLink(key) {
+      if (key.length) {
+        return `/${key}`;
+      }
+      return "";
+    },
+    getImage(key) {
+      if (key.length) {
+        return require(`@/assets/image/speakers/speaker-${key}-rounded.png`);
+      }
+      return "";
+    },
+  },
+};
+</script>
+
 <template>
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
@@ -56,7 +89,6 @@
     .speaker-image {
       width: 250px;
       height: 250px;
-      border-radius: 125px;
       margin-bottom: 24px;
     }
     .speaker-name-text {
@@ -110,36 +142,3 @@
   }
 }
 </style>
-
-<script>
-import { reactive } from "vue";
-
-export default {
-  name: "Speakers",
-  data() {
-    const speakers = reactive([]);
-    Array.from(this.$tm("speakers")).forEach((source) => {
-      const item = {
-        key: this.$rt(source.key),
-        name: this.$rt(source.name),
-      };
-      speakers.push(item);
-    });
-    return { speakers };
-  },
-  methods: {
-    getLink(key) {
-      if (key.length) {
-        return `/${key}`;
-      }
-      return "";
-    },
-    getImage(key) {
-      if (key.length) {
-        return require(`@/assets/image/speakers/speaker-${key}-rounded.png`);
-      }
-      return "";
-    },
-  },
-};
-</script>

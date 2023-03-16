@@ -8,12 +8,22 @@ export default {
     Instruction,
     Register,
   },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
+  },
+  data() {
+    return {
+      step1HighlightText: this.$t(
+        "login.introduction.step1.text-highlight-register"
+      ),
+    };
+  },
 };
 </script>
 
 <template>
   <div class="auth-container">
-    <Instruction v-once />
+    <Instruction :step1HighlightText="step1HighlightText" v-once />
     <Register v-once />
   </div>
 </template>
@@ -28,8 +38,8 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .auth-container {
-    height: 660px;
-    flex-direction: column;
+    min-height: 660px;
+    flex-direction: column-reverse;
     background-color: #f8f0e9;
   }
 }

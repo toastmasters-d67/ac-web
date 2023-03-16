@@ -1,9 +1,16 @@
 <template>
-  <Navbar :scrollToElement="scrollToElement" v-once />
+  <Navbar
+    :scrollToElement="scrollToElement"
+    :scrollToTop="scrollToTop"
+    v-once
+  />
   <router-view :scrollToElement="scrollToElement" v-once />
   <Footer :scrollToElement="scrollToElement" v-once />
-  <ScrollToTop v-once />
-  <CtaButtons :scrollToElement="scrollToElement" v-once />
+  <ScrollToTopButton :scrollToTop="scrollToTop" v-once />
+  <CtaButtons
+    :scrollToElement="scrollToElement"
+    :showCtaGetTickets="showCtaGetTickets"
+  />
 </template>
 
 <style lang="scss">
@@ -52,14 +59,25 @@ body {
 <script>
 import Navbar from "@/components/app/Navbar.vue";
 import Footer from "@/components/app/Footer.vue";
-import ScrollToTop from "@/components/app/ScrollToTop.vue";
+import ScrollToTopButton from "@/components/app/ScrollToTopButton.vue";
 import CtaButtons from "@/components/app/CtaButtons.vue";
 export default {
   components: {
     Navbar,
     Footer,
-    ScrollToTop,
+    ScrollToTopButton,
     CtaButtons,
+  },
+  computed: {
+    showCtaGetTickets() {
+      const currentRoute = this.$route.path;
+      return (
+        currentRoute !== "/login" &&
+        currentRoute !== "/register" &&
+        currentRoute !== "/me" &&
+        currentRoute !== "/cart"
+      );
+    },
   },
   methods: {
     scrollToElement(id) {
@@ -69,6 +87,9 @@ export default {
       } else {
         window.location.href = `/#${id}`;
       }
+    },
+    scrollToTop(behavior) {
+      window.scrollTo({ top: 0, behavior: behavior });
     },
   },
 };

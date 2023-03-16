@@ -1,16 +1,31 @@
 <template>
-  <form @submit="submitForm" class="attendee-container">
+  <ConfirmDialogue ref="confirmDialogue"></ConfirmDialogue>
+  <form class="attendee-container">
     <div class="attendee-heading">
       <span class="attendee-title">Attendee Information</span>
       <button
         class="attendee-button edit"
+        :disabled="hasSubmitted"
+        :style="getDisabledButtonStyle(hasSubmitted)"
         @click="editing = !editing"
         v-if="!editing"
       >
         Edit
       </button>
-      <button type="submit" class="attendee-button save" v-else>Save</button>
+      <button class="attendee-button edit" @click="saveForm()" v-else>
+        Save
+      </button>
+      <button
+        class="attendee-button submit"
+        v-if="editing"
+        @click="this.submitForm"
+      >
+        Submit
+      </button>
     </div>
+    <span class="attendee-display-already-submitted" v-if="hasSubmitted">
+      {{ displayAlreadySubmitted }}
+    </span>
     <span class="attendee-required">
       Required&nbsp;<span class="red">*</span>
     </span>
@@ -24,14 +39,6 @@
           <span>Ticket {{ ticket.id }} - {{ ticket.description }}</span>
           <i :class="formStatus[index].icon" />
         </div>
-        <!-- Debug use -->
-        <!-- <span style="font-size: 16px; color: blue"
-          >ticket:[{{ index }}] - {{ ticket }}
-        </span>
-        <span style="font-size: 16px; color: red"
-          >formStatus:[{{ index }}] - {{ formStatus[index] }}
-        </span> -->
-        <!-- Debug use -->
         <div
           class="attendee-ticket-form"
           v-show="formStatus[index].showDetails"
@@ -146,9 +153,13 @@
 
 <script>
 import { reactive } from "vue";
+import ConfirmDialogue from "@/components/order/ConfirmDialogue.vue";
 
 export default {
   name: "Attendee",
+  components: {
+    ConfirmDialogue,
+  },
   props: {
     tickets: {
       type: Object,
@@ -161,6 +172,9 @@ export default {
     },
     clubs: {
       type: Object,
+    },
+    hasSubmitted: {
+      type: Boolean,
     },
   },
   beforeUpdate() {
@@ -185,7 +199,22 @@ export default {
 
     this.$emit("updateAssignedBanquets", assignedBanquets);
   },
+  async mounted() {
+    try {
+      window.onbeforeunload = () => {
+        if (this.editing) return "";
+      };
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  beforeUnmount() {
+    window.onbeforeunload = null;
+  },
   data() {
+    const displayAlreadySubmitted =
+      "You’ve already submitted. If you want to edit your information, please contact the service center tmicon@toastmasters.org.tw";
+
     const formStatus = reactive([]);
     this.tickets.forEach((ticket) => {
       const item = {
@@ -202,6 +231,7 @@ export default {
     return {
       editing: false,
       formStatus,
+      displayAlreadySubmitted,
     };
   },
   methods: {
@@ -230,9 +260,29 @@ export default {
         return "border: rgba(83, 89, 90, 1) 1px solid;";
       else return "border: red 1px solid;";
     },
-    submitForm: function (e) {
-      if (this.validateForm()) this.editing = !this.editing;
-      else e.preventDefault();
+    getDisabledButtonStyle(isDisabled) {
+      if (isDisabled) {
+        return "color: #b0b0b0; border: 1px solid #bababa; background: #f3f3f3";
+      }
+    },
+    saveForm() {
+      this.editing = !this.editing;
+    },
+    async submitForm(event) {
+      event.preventDefault();
+      if (this.validateForm()) {
+        var confirmResult = await this.$refs.confirmDialogue.show({
+          title: "Confirm",
+          message:
+            "Once you submit this form, you won’t be able to edit in the future.",
+          cancelButton: "Cancel",
+          okButton: "Submit",
+        });
+        if (confirmResult) {
+          this.editing = !this.editing;
+          this.submit();
+        }
+      }
     },
     validateForm() {
       var isFormValid = true;
@@ -289,7 +339,6 @@ export default {
     font-size: 28px;
     text-align: left;
     font-weight: 600;
-    margin-right: 24px;
   }
   .attendee-button {
     width: 124px;
@@ -305,16 +354,28 @@ export default {
     border: black solid 1px;
     border-radius: 70px;
     padding: 4px;
+    margin-left: 24px;
     cursor: pointer;
   }
   .edit {
     color: black;
     background-color: white;
   }
-  .save {
+  .submit {
     color: white;
     background: #004165;
   }
+}
+.attendee-display-already-submitted {
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  color: #004165;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: left;
+  margin-bottom: 24px;
 }
 .attendee-required {
   font-size: 14px;

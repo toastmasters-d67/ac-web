@@ -11,6 +11,9 @@ export default {
   data() {
     return {
       windowHeight: window.innerHeight,
+      step1HighlightText: this.$t(
+        "login.introduction.step1.text-highlight-login"
+      ),
     };
   },
   created() {
@@ -40,7 +43,7 @@ export default {
 
 <template>
   <div class="auth-container">
-    <Instruction v-once />
+    <Instruction :step1HighlightText="step1HighlightText" v-once />
     <Login v-once />
   </div>
 </template>

@@ -1,14 +1,6 @@
 <template>
   <div class="myorder-container">
     <span class="myorder-title">My order</span>
-    <div class="myorder-paidunpaid-switcher">
-      <button class="myorder-switcher-button button-active">Paid</button>
-      <button class="myorder-switcher-button button-inactive">Unpaid</button>
-    </div>
-    <button class="myorder-order-selector">
-      <span class="myorder-order-number">#Order 01</span>
-      <i class="pi pi-code myorder-selector-icon" />
-    </button>
     <ul class="myorder-tickets-list">
       <li v-for="ticket of tickets" :key="ticket.id" class="myorder-ticket">
         Ticket {{ ticket.id }} - {{ ticket.description }}
@@ -30,8 +22,6 @@
         </span>
       </li>
     </ul>
-    <hr class="myorder-line" />
-    <button class="myorder-new-order">Create a new order</button>
   </div>
 </template>
 

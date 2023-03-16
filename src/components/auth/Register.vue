@@ -1,5 +1,5 @@
 <script>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, sameAs } from "@vuelidate/validators";
@@ -12,6 +12,7 @@ const registerFormSchema = Yup.object().shape({
   password: Yup.string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters"),
+  confirmPassword: Yup.string().required().min(6),
 });
 
 export async function onSubmit(values, target) {
@@ -24,19 +25,17 @@ export async function onSubmit(values, target) {
         target.$router.push("login");
       })
       .catch(function (error) {
-        console.log(error);
+        if (409 === error.response.status) {
+          target.errors.email = target.$t("register.error.email");
+          target.show = true;
+        } else {
+          console.log(error);
+          return Promise.reject(error);
+        }
       });
   } catch (error) {
-    console.log(error);
+    console.log("error =", error);
   }
-}
-
-export function validName(name) {
-  const validNamePattern = new RegExp("^[a-zA-Z]+(?:[-'\\s][a-zA-Z]+)*$");
-  if (validNamePattern.test(name)) {
-    return true;
-  }
-  return false;
 }
 
 export default {
@@ -56,7 +55,8 @@ export default {
       password: "",
       confirmPassword: "",
     });
-    return { state, v$, errors };
+    const show = ref(false);
+    return { state, v$, errors, show };
   },
   methods: {
     validate(field) {
@@ -68,6 +68,11 @@ export default {
         .catch((err) => {
           this.errors[field] = err.message;
         });
+    },
+    clear() {
+      if (this.errors.email === this.$t("register.error.email")) {
+        this.errors.email = "";
+      }
     },
     registerUser() {
       if (this.v$.state.$errors.length) {
@@ -92,22 +97,8 @@ export default {
   validations() {
     return {
       state: {
-        firstName: {
-          required,
-          name_validation: {
-            $validator: validName,
-            $message:
-              "Invalid Name. Valid name only contain letters, dashes (-) and spaces",
-          },
-        },
-        lastName: {
-          required,
-          name_validation: {
-            $validator: validName,
-            $message:
-              "Invalid Name. Valid name only contain letters, dashes (-) and spaces",
-          },
-        },
+        firstName: { required },
+        lastName: { required },
         email: { required, email },
         password: { required, min: minLength(6) },
         confirmPassword: { required, sameAs: sameAs(this.state.password) },
@@ -119,57 +110,70 @@ export default {
 
 <template>
   <section id="register" class="register-container">
-    <header class="register-title">Register</header>
+    <header class="register-title">
+      {{ $t("register.title") }}
+    </header>
     <span class="register-title-note">
-      Please register before you purchase the ticket.
+      {{ $t("register.description") }}
     </span>
-    <div class="register-row">
-      <label class="register-label">First name</label>
-      <input
-        v-model.trim="v$.state.firstName.$model"
-        type="text"
-        placeholder="First name"
-        class="register-input"
-        required
-      />
-      <p class="form-input-hint" v-if="!!errors.firstName">
-        {{ errors.firstName }}
-      </p>
+    <div class="register-name">
+      <div class="register-row row-name">
+        <label class="register-label">
+          {{ $t("register.form.first-name") }}
+        </label>
+        <input
+          v-model.trim="v$.state.firstName.$model"
+          type="text"
+          :placeholder="$t('register.form.first-name')"
+          class="register-input"
+          required
+        />
+        <p class="form-input-hint" v-if="!!errors.firstName">
+          {{ errors.firstName }}
+        </p>
+      </div>
+      <div class="register-row row-name">
+        <label class="register-label">
+          {{ $t("register.form.last-name") }}
+        </label>
+        <input
+          v-model.trim="v$.state.lastName.$model"
+          type="text"
+          :placeholder="$t('register.form.last-name')"
+          class="register-input"
+          required
+        />
+        <p class="form-input-hint" v-if="!!errors.lastName">
+          {{ errors.lastName }}
+        </p>
+      </div>
     </div>
 
     <div class="register-row">
-      <label class="register-label">Last name</label>
-      <input
-        v-model.trim="v$.state.lastName.$model"
-        type="text"
-        placeholder="Last name"
-        class="register-input"
-        required
-      />
-      <p class="form-input-hint" v-if="!!errors.lastName">
-        {{ errors.lastName }}
-      </p>
-    </div>
-
-    <div class="register-row">
-      <label class="register-label">Email</label>
+      <label class="register-label">
+        {{ $t("register.form.email") }}
+      </label>
       <input
         v-model.trim="v$.state.email.$model"
         type="email"
-        placeholder="Email"
+        :placeholder="$t('register.form.email')"
         class="register-input"
         required
+        @click="clear"
+        @input="clear"
       />
-      <p class="form-input-hint" v-if="!!errors.email">
+      <p class="form-input-hint" v-if="!!errors.email || show">
         {{ errors.email }}
       </p>
     </div>
     <div class="register-row">
-      <label class="register-label">Password</label>
+      <label class="register-label">
+        {{ $t("register.form.password") }}
+      </label>
       <input
         v-model.trim="v$.state.password.$model"
         type="password"
-        placeholder="Password"
+        :placeholder="$t('register.form.password')"
         class="register-input"
         required
       />
@@ -178,11 +182,13 @@ export default {
       </p>
     </div>
     <div class="register-row">
-      <label class="register-label">Confirmed password</label>
+      <label class="register-label">
+        {{ $t("register.form.confirm-password") }}
+      </label>
       <input
         v-model.trim="v$.state.confirmPassword.$model"
         type="password"
-        placeholder="Confirmed password"
+        :placeholder="$t('register.form.confirm-password')"
         class="register-input"
         required
       />
@@ -191,13 +197,16 @@ export default {
       </p>
     </div>
     <button type="submit" class="register-button" @click="this.registerUser">
-      Register
+      {{ $t("register.title") }}
     </button>
 
     <span class="register-button-note">
-      Already have an account?
-      <router-link to="/login">Log in</router-link>
+      {{ $t("register.form.have-account") }}
+      <router-link to="/login">
+        {{ $t("login.title") }}
+      </router-link>
     </span>
+    <hr class="register-divider" />
   </section>
 </template>
 
@@ -219,7 +228,8 @@ export default {
     line-height: 24px;
   }
   .form-input-hint {
-    width: 464px;
+    width: 84%;
+    max-width: 464px;
     color: #d72727;
     font-size: 18px;
     font-weight: 500;
@@ -240,11 +250,15 @@ export default {
     line-height: 22px;
     margin-bottom: 70px;
   }
-  .register-box {
+  .register-name {
+    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
   }
   .register-row {
+    width: 84%;
+    max-width: 464px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -256,7 +270,7 @@ export default {
       margin-bottom: 10px;
     }
     .register-input {
-      width: 464px;
+      width: 100%;
       height: 54px;
       background: #f1f0f0;
       font-size: 24px;
@@ -267,7 +281,8 @@ export default {
     }
   }
   .register-button {
-    width: 464px;
+    width: 84%;
+    max-width: 464px;
     height: 54px;
     color: white;
     background: #004165;
@@ -288,13 +303,82 @@ export default {
     line-height: 22px;
     margin-bottom: 100px;
   }
+  .register-divider {
+    display: none;
+  }
 }
 @media screen and (max-width: 768px) {
   .register-container {
-    position: absolute;
-    top: 80px;
     width: 100%;
-    height: 525px;
+    a {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .form-input-hint {
+      color: #d72727;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      text-align: left;
+      margin: 10px;
+    }
+    .register-title {
+      font-size: 28px;
+      line-height: 34px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    .register-title-note {
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 36px;
+    }
+    .register-name {
+      width: 84%;
+      max-width: 464px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .register-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      .register-label {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 4px;
+      }
+      .register-input {
+        height: 46px;
+        background: white;
+        font-size: 16px;
+      }
+    }
+    .row-name {
+      width: 48.095%;
+    }
+    .register-button {
+      height: 46px;
+      font-size: 18px;
+      line-height: 22px;
+      margin-top: 16px;
+      margin-bottom: 35px;
+    }
+    .register-button-note {
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 32px;
+    }
+    .register-divider {
+      display: block;
+      width: 84%;
+      max-width: 464px;
+      border: 1px solid #b4b4b4;
+      margin-top: 32px;
+    }
   }
 }
 </style>

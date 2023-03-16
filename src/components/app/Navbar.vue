@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar-container">
-    <router-link to="/" class="navbar-logo" @click="setWindowToTop()">
+    <router-link to="/" class="navbar-logo" @click="scrollToTop()">
       <img
         src="@/assets/icon/app/logo.svg"
         class="navbar-logo-image"
@@ -47,12 +47,24 @@
           </option>
         </select>
       </div>
-      <img
-        src="@/assets/icon/app/myaccount.svg"
-        class="navbar-myaccount"
-        alt="My Account"
-        v-if="false"
-      />
+      <router-link v-if="!isLogin" to="login" class="navbar-login-button">
+        {{ $t("app.navbar.login") }}
+      </router-link>
+      <button v-else class="navbar-account-button" ref="accountButton">
+        <img src="@/assets/icon/app/account.svg" alt="My Account" />
+      </button>
+      <div v-if="showAccountMenu" class="navbar-account-menu">
+        <router-link
+          to="/me"
+          class="navbar-account-menu-link"
+          @click="scrollToTop()"
+        >
+          {{ $t("app.navbar.account") }}
+        </router-link>
+        <div class="navbar-account-menu-link" @click="logout()">
+          {{ $t("app.navbar.logout") }}
+        </div>
+      </div>
     </div>
     <div class="navbar-mobile-container">
       <Button
@@ -73,35 +85,31 @@
         <div class="navbar-mobile-links">
           <router-link
             to="/#program"
-            class="navbar-mobile-link"
+            class="navbar-mobile-link link-text1"
             @click="hideMenuAndScrollToElement('program')"
           >
-            <span class="navbar-mobile-link-text1">
-              {{ $t("app.navbar.program") }}
-            </span>
+            {{ $t("app.navbar.program") }}
           </router-link>
           <router-link
             to="/#speakers"
-            class="navbar-mobile-link"
+            class="navbar-mobile-link link-text1"
             @click="hideMenuAndScrollToElement('speakers')"
           >
-            <span class="navbar-mobile-link-text1">
-              {{ $t("app.navbar.speakers") }}
-            </span>
+            {{ $t("app.navbar.speakers") }}
           </router-link>
           <router-link
             to="/#venue"
-            class="navbar-mobile-link"
+            class="navbar-mobile-link link-text1"
             @click="hideMenuAndScrollToElement('venue')"
           >
-            <span class="navbar-mobile-link-text1">
-              {{ $t("app.navbar.venue") }}
-            </span>
+            {{ $t("app.navbar.venue") }}
           </router-link>
-          <router-link to="/faq" class="navbar-mobile-link" @click="hideMenu()">
-            <span class="navbar-mobile-link-text1">
-              {{ $t("app.navbar.faq") }}
-            </span>
+          <router-link
+            to="/faq"
+            class="navbar-mobile-link link-text1"
+            @click="hideMenu()"
+          >
+            {{ $t("app.navbar.faq") }}
           </router-link>
           <hr />
           <div class="navbar-mobile-link">
@@ -115,10 +123,26 @@
               </option>
             </select>
           </div>
+          <router-link
+            v-if="!isLogin"
+            to="login"
+            class="navbar-mobile-link"
+            @click="hideMenu()"
+          >
+            {{ $t("app.navbar.login") }}
+          </router-link>
+          <router-link
+            v-if="isLogin"
+            to="/me"
+            class="navbar-mobile-link"
+            @click="hideMenuAndToTop()"
+          >
+            {{ $t("app.navbar.account") }}
+          </router-link>
+          <div v-if="isLogin" class="navbar-mobile-link" @click="logout()">
+            {{ $t("app.navbar.logout") }}
+          </div>
         </div>
-        <router-link to="login" class="navbar-login-button login-mobile">
-          {{ $t("app.navbar.login") }}
-        </router-link>
       </Sidebar>
     </div>
   </nav>
@@ -223,10 +247,34 @@ hr {
   padding: 8px 24px;
   cursor: pointer;
 }
-.navbar-myaccount {
-  height: 24.75px;
-  width: 24.75px;
-  border-radius: 0px;
+.navbar-account-button {
+  width: 27px;
+  height: 27px;
+  border-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.navbar-account-menu {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  border-color: transparent;
+  border-radius: 8px;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .navbar-account-menu-link {
+    font-size: 20px;
+    line-height: 24px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
 }
 @media screen and (max-width: 1024px) {
   .navbar-container {
@@ -326,14 +374,10 @@ hr {
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
-    .navbar-mobile-link-text1 {
-      color: #675de2;
-    }
-    .navbar-mobile-arrowdown {
-      position: absolute;
-      top: 5.5px;
-      right: 0;
-    }
+    cursor: pointer;
+  }
+  .link-text1 {
+    color: #675de2;
   }
   .navbar-select {
     color: black !important;
@@ -345,9 +389,6 @@ hr {
     border: transparent;
   }
 }
-.login-mobile {
-  margin: 35% auto 0;
-}
 </style>
 
 <script>
@@ -357,6 +398,9 @@ export default {
   name: "Navbar",
   props: {
     scrollToElement: {
+      type: Function,
+    },
+    scrollToTop: {
       type: Function,
     },
   },
@@ -373,6 +417,8 @@ export default {
       },
     ]);
     const visibleFull = ref(false);
+    const isLogin = ref(false);
+    const showAccountMenu = ref(false);
 
     watch(locale, (newlocale) => {
       localStorage.setItem("locale", newlocale);
@@ -383,18 +429,52 @@ export default {
       locale,
       localeOptions,
       visibleFull,
+      isLogin,
+      showAccountMenu,
     };
   },
+  created() {
+    const token = localStorage.getItem("token");
+    if (!token || !token.length) {
+      this.isLogin = false;
+    } else {
+      this.isLogin = true;
+    }
+  },
+  mounted() {
+    document.addEventListener("click", this.onClick);
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", this.onClick);
+  },
   methods: {
-    hideMenuAndScrollToElement(id) {
-      this.visibleFull = false;
-      this.scrollToElement(id);
-    },
     hideMenu() {
       this.visibleFull = false;
     },
-    setWindowToTop() {
-      window.scrollTo({ top: 0 });
+    hideMenuAndScrollToElement(id) {
+      this.hideMenu();
+      this.scrollToElement(id);
+    },
+    hideMenuAndToTop() {
+      this.hideMenu();
+      this.scrollToTop();
+    },
+    onClick(event) {
+      if (
+        !this.showAccountMenu &&
+        this.$refs.accountButton &&
+        this.$refs.accountButton.contains(event.target)
+      ) {
+        this.showAccountMenu = true;
+      } else {
+        this.showAccountMenu = false;
+      }
+    },
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push("/").then(() => {
+        this.$router.go();
+      });
     },
   },
 };
