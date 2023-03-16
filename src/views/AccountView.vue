@@ -157,7 +157,7 @@ export default {
             :class="item.status.toLocaleLowerCase()"
             v-text="getStatus(item)"
           ></div>
-          <div>{{ item.amount }}</div>
+          <div>$ {{ item.amount }}</div>
         </div>
       </div>
     </article>
