@@ -20,10 +20,6 @@
         />
         <div class="souvenirs-item-text">{{ $t("home.souvenir.towel") }}</div>
       </div>
-      <div class="souvenirs-item">
-        <div class="souvenirs-item-shadow"></div>
-        <div class="souvenirs-item-text">{{ $t("home.souvenir.tbd") }}</div>
-      </div>
     </div>
   </section>
 </template>
