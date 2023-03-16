@@ -17,7 +17,6 @@ const registerFormSchema = Yup.object().shape({
 
 export async function onSubmit(values, target) {
   const url = `${process.env.VUE_APP_API}/user`;
-  console.log(url);
   try {
     axios
       .post(url, values)
