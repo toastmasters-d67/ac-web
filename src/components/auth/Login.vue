@@ -2,7 +2,7 @@
 import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import useVuelidate from "@vuelidate/core";
-import { required, email, minLength } from "@vuelidate/validators";
+import { required, email, minLength, helpers } from "@vuelidate/validators";
 import axios from "axios";
 
 const loginFormSchema = Yup.object().shape({
@@ -52,12 +52,24 @@ export default {
       email: "",
       password: "",
     });
-    const errors = reactive({
+    const initialErrors = reactive({
       email: "",
       password: "",
     });
+    const errors = reactive({ ...initialErrors });
     const loginError = ref("");
-    return { state, v$, errors, loginError };
+    return { state, v$, errors, loginError, initialErrors };
+  },
+  data() {
+    const errorMessages = reactive({
+      requiredEmail: this.$t("login.error.required-email"),
+      requiredPassword: this.$t("login.error.required-password"),
+      email: this.$t("login.error.email"),
+      min: this.$t("login.error.min"),
+    });
+    return {
+      errorMessages,
+    };
   },
   methods: {
     validate(field) {
@@ -72,9 +84,10 @@ export default {
     },
     clear() {
       this.loginError = "";
-      this.errors = { email: "", password: "" };
+      Object.assign(this.errors, this.initialErrors);
     },
     loginUser() {
+      this.v$.$validate();
       if (this.v$.state.$errors.length) {
         Array.from(this.v$.state.$errors).forEach((error) => {
           this.errors[error.$property] = error.$message;
@@ -97,8 +110,20 @@ export default {
   validations() {
     return {
       state: {
-        email: { required, email },
-        password: { required, min: minLength(6) },
+        email: {
+          email: helpers.withMessage(this.errorMessages.email, email),
+          required: helpers.withMessage(
+            this.errorMessages.requiredEmail,
+            required
+          ),
+        },
+        password: {
+          min: helpers.withMessage(this.errorMessages.min, minLength(6)),
+          required: helpers.withMessage(
+            this.errorMessages.requiredPassword,
+            required
+          ),
+        },
       },
     };
   },

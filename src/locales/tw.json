@@ -239,6 +239,10 @@
     "forget-password": "忘記密碼?",
     "no-account": "沒有帳號嗎?",
     "error": {
+      "required-email": "請填寫您的電子郵件",
+      "required-password": "請填寫您的密碼",
+      "email": "您輸入的電子郵件格式不正確",
+      "min": "密碼必須至少為六位數",
       "password": "錯誤的帳號或密碼"
     }
   },
@@ -246,7 +250,14 @@
     "title": "註冊",
     "description": "請先註冊以繼續完成購票",
     "error": {
-      "email": "此 email 已被使用，請重新輸入。"
+      "required-firstname": "請輸入您的名字",
+      "required-lastname": "請輸入您的姓氏",
+      "required-email": "請填寫您的電子郵件",
+      "required-password": "請填寫您的密碼",
+      "email-format": "您輸入的電子郵件格式不正確",
+      "email": "此 email 已被使用，請重新輸入。",
+      "min": "密碼必須至少為六位數",
+      "same-as-password": "您輸入的密碼必須和前一個欄位相同"
     },
     "form": {
       "first-name": "名字",

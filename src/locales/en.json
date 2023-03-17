@@ -240,6 +240,10 @@
     "forget-password": "Forgot your password?",
     "no-account": "Don't have an account?",
     "error": {
+      "required-email": "Please input your email.",
+      "required-password": "Please input your password.",
+      "email": "The email address you entered is not valid.",
+      "min": "Password length must be at least 6 characters.",
       "password": "Incorrect account or password."
     }
   },
@@ -247,7 +251,14 @@
     "title": "Register",
     "description": "Please register before you purchase the ticket.",
     "error": {
-      "email": "This email has been registered. Please try again."
+      "required-firstname": "Please input your first name.",
+      "required-lastname": "Please input your last name.",
+      "required-email": "Please input your email.",
+      "required-password": "Please input your password.",
+      "email-format": "The email address you entered is not valid.",
+      "email": "This email has been registered. Please try again.",
+      "min": "Password length must be at least 6 characters.",
+      "same-as-password": "The passwords you entered do not match."
     },
     "form": {
       "first-name": "First name",
