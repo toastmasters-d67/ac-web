@@ -55,6 +55,15 @@ export default {
       type: Function,
     },
   },
+  computed: {
+    banquetNumbers: {
+      get() {
+        const maxBanquetNumber =
+          this.state.double + this.state.first + this.state.second;
+        return reactive(Array.from(Array(maxBanquetNumber + 1).keys()));
+      },
+    },
+  },
   data() {
     const numbers = reactive(Array.from(Array(31).keys()));
     return {
@@ -186,7 +195,11 @@ export default {
         @change="setBanquet($event)"
         class="picker-select"
       >
-        <option v-for="(option, index) in numbers" :key="index" :value="option">
+        <option
+          v-for="(option, index) in banquetNumbers"
+          :key="index"
+          :value="option"
+        >
           {{ option }}
         </option>
       </select>

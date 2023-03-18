@@ -43,12 +43,15 @@ export default {
     },
     setDouble(event) {
       this.state.double = +event.target.value;
+      this.updateBanquet();
     },
     setFirst(event) {
       this.state.first = +event.target.value;
+      this.updateBanquet();
     },
     setSecond(event) {
       this.state.second = +event.target.value;
+      this.updateBanquet();
     },
     setBanquet(event) {
       let value = +event.target.value;
@@ -57,6 +60,12 @@ export default {
         value = sum;
       }
       this.state.banquet = value;
+    },
+    updateBanquet() {
+      const sum = this.state.double + this.state.first + this.state.second;
+      if (this.state.banquet > sum) {
+        this.state.banquet = sum;
+      }
     },
   },
   beforeMount() {
