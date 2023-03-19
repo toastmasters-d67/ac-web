@@ -8,7 +8,9 @@
           <span>{{ item.question }}</span>
           <i :class="item.icon"></i>
         </div>
-        <span v-if="item.show" class="faq-answer">{{ item.answer }}</span>
+        <span v-if="item.show" class="faq-answer">
+          <div v-html="item.answer"></div>
+        </span>
       </div>
     </div>
   </article>
@@ -16,7 +18,7 @@
 
 <style scoped lang="scss">
 .faq-container {
-  max-height: 1200px;
+  // max-height: 1200px;
   width: 100%;
   background: transparent;
   border-color: transparent;
@@ -128,7 +130,7 @@ export default {
       };
       items.push(item);
     });
-    return { items };
+    return { str, items };
   },
   methods: {
     toggle(key) {

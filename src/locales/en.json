@@ -198,7 +198,7 @@
       },
       {
         "question": "How can I buy the annual conference tickets?",
-        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the tutorial for more details. Thank you. Refer: https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link"
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
       },
       {
         "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
@@ -210,7 +210,7 @@
       },
       {
         "question": "Is there any recommended accommodation near the venue?",
-        "answer": "• Xi Zhi Dist. / Tainan Fushin Hotel / $2,600-$3,200 / 5-min walk from the conference venue • Nangang Dist. / May Rooms Taipei / $1,800 / 5-min walk from Nangang MRT Station / 15-min walk from Nangang Exhibition Center • Nangang Dist. / Uline Motel / $2,400-$2,900 / 10-min walk from Kunyang MRT Station • Nangang Dist. / The Place Taipei / $3,500-$3,700 / Near Nangang Software Park MRT Station / 8-min walk from Taipei Nangang Exhibition Center MRT Station • Nangang Dist. / Forward Hotel Nangang / $3,600-$3,800 / 5-min walk from Nangang Software Park MRT  • Nangang Dist. / Green World NanGang / $5,000 / 5-min walk from Nangang MRT Station"
+        "answer": "• Xi Zhi Dist. / Tainan Fushin Hotel / $2,600-$3,200 / 5-min walk from the conference venue </br></br> • Nangang Dist. / May Rooms Taipei / $1,800 / 5-min walk from Nangang MRT Station / 15-min walk from Nangang Exhibition Center </br></br>• Nangang Dist. / Uline Motel / $2,400-$2,900 / 10-min walk from Kunyang MRT Station </br></br>• Nangang Dist. / The Place Taipei / $3,500-$3,700 / Near Nangang Software Park MRT Station / 8-min walk from Taipei Nangang Exhibition Center MRT Station </br></br>• Nangang Dist. / Forward Hotel Nangang / $3,600-$3,800 / 5-min walk from Nangang Software Park MRT  </br></br>• Nangang Dist. / Green World NanGang / $5,000 / 5-min walk from Nangang MRT Station"
       }
     ]
   },
