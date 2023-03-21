@@ -11,10 +11,7 @@
       src="@/assets/image/home/key-vision-mobile1.png"
     />
     <div class="slogan-date">{{ $t("home.slogan.date") }}</div>
-    <div class="slogan-row">
-      <span class="slogan-year">2023</span>
-      <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
-    </div>
+    <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
     <div class="slogan-word">
       <span v-for="(item, index) in $tm('home.slogan.slogan')" :key="index">
         {{ $rt(item) }}
@@ -63,13 +60,6 @@
   .slogan-kv-mobile2 {
     display: none;
   }
-  .slogan-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 8px;
-    margin-bottom: 20px;
-  }
   .slogan-date {
     width: fit-content;
     color: #214366;
@@ -94,6 +84,11 @@
     font-size: 32px;
     line-height: 39px;
     text-shadow: 0px 4px 4px rgba(206, 212, 218, 0.25);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 20px;
   }
   .slogan-word {
     width: fit-content;
@@ -106,7 +101,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
   }
   .slogan-text {
     width: 63.5%;
@@ -163,10 +157,6 @@
       align-self: flex-end;
       margin-top: 13px;
     }
-    .slogan-row {
-      margin-top: 0;
-      margin-bottom: 16px;
-    }
     .slogan-date {
       font-size: 12px;
       line-height: 15px;
@@ -182,7 +172,7 @@
       line-height: 15px;
       padding-top: 0px;
       margin-top: 0px;
-      margin-bottom: 0px;
+      margin-bottom: 16px;
     }
     .slogan-word {
       font-size: 20px;
