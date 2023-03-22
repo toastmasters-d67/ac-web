@@ -12,7 +12,7 @@
         />
         <div class="briefing-speaker-text">
           <span v-for="(item, key) in contents" :key="key">
-            {{ item }}
+            <span v-html="item"></span>
           </span>
         </div>
       </div>
@@ -97,6 +97,10 @@
       font-size: 20px;
       line-height: 40px;
       font-weight: 400;
+      ::v-deep .second-layer {
+        list-style-type: circle;
+        padding-left: 15px;
+      }
       @media screen and (max-width: 1024px) {
         font-size: 16px;
         line-height: 32px;
