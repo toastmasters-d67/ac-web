@@ -1,11 +1,13 @@
 <script>
 import { reactive } from "vue";
+import Marquee from "@/components/app/Marquee.vue";
 import Picker from "@/components/cart/Picker.vue";
 import Summary from "@/components/cart/Summary.vue";
 
 export default {
   name: "CartView",
   components: {
+    Marquee,
     Picker,
     Summary,
   },
@@ -75,20 +77,23 @@ export default {
 </script>
 
 <template>
-  <article id="cart" class="cart-container">
-    <Picker
-      :state="state"
-      :name="name"
-      :price="price"
-      :setEarly="setEarly"
-      :setDouble="setDouble"
-      :setFirst="setFirst"
-      :setSecond="setSecond"
-      :setBanquet="setBanquet"
-      v-once
-    />
-    <Summary :state="state" :name="name" :price="price" v-once />
-  </article>
+  <div>
+    <Marquee v-once :sentences="[this.$t('cart.marquee.important-notice')]" />
+    <article id="cart" class="cart-container">
+      <Picker
+        :state="state"
+        :name="name"
+        :price="price"
+        :setEarly="setEarly"
+        :setDouble="setDouble"
+        :setFirst="setFirst"
+        :setSecond="setSecond"
+        :setBanquet="setBanquet"
+        v-once
+      />
+      <Summary :state="state" :name="name" :price="price" v-once />
+    </article>
+  </div>
 </template>
 
 <style scoped lang="scss">

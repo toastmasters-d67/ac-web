@@ -1,5 +1,8 @@
 {
   "account": {
+    "marquee": {
+      "important-notice": "《Important Notice》Please complete your payment before the expiry date. If you did not pay in time, your order will be canceled. Please place a new order instead."
+    },
     "title": "My account",
     "new": "New order",
     "number": "Order number",
@@ -54,6 +57,9 @@
     }
   },
   "cart": {
+    "marquee": {
+      "important-notice": "《Important Notice》Please complete your payment before the expiry date. If you did not pay in time, your order will be canceled. Please place a new order instead."
+    },
     "picker": {
       "early": {
         "name": "Early Bird 2 Day Pass",
