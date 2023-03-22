@@ -34,8 +34,8 @@ export default {
 <template>
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
-    <div class="speakers">
-      <div v-for="(speaker, index) in speakers" :key="index">
+    <ul class="speakers">
+      <li v-for="(speaker, index) in speakers" :key="index">
         <router-link :to="getLink(speaker.key)" class="speaker">
           <img
             :src="getImage(speaker.key)"
@@ -44,8 +44,8 @@ export default {
           />
           <span class="speaker-name-text">{{ speaker.name }}</span>
         </router-link>
-      </div>
-    </div>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -77,6 +77,9 @@ export default {
     color: black;
     text-decoration: none;
     border-color: transparent;
+  }
+  li {
+    list-style: none;
   }
   .speaker {
     display: flex;

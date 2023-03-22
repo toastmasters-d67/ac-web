@@ -9,7 +9,7 @@
           <i :class="item.icon"></i>
         </div>
         <span v-if="item.show" class="faq-answer">
-          <div v-html="item.answer"></div>
+          <div class="answer-content" v-html="item.answer"></div>
         </span>
       </div>
     </div>
@@ -17,8 +17,11 @@
 </template>
 
 <style scoped lang="scss">
+.answer-content::v-deep li {
+  margin-bottom: 15px;
+}
+
 .faq-container {
-  // max-height: 1200px;
   width: 100%;
   background: transparent;
   border-color: transparent;
@@ -34,6 +37,7 @@
     margin-top: 80px;
     margin-bottom: 80px;
   }
+
   .faq-questions {
     color: black;
     margin-top: 20px;
@@ -130,7 +134,7 @@ export default {
       };
       items.push(item);
     });
-    return { str, items };
+    return { items };
   },
   methods: {
     toggle(key) {
