@@ -198,7 +198,7 @@
       },
       {
         "question": "How can I buy the annual conference tickets?",
-        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the tutorial for more details. Thank you. Refer: https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link"
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
       },
       {
         "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
@@ -210,7 +210,7 @@
       },
       {
         "question": "Is there any recommended accommodation near the venue?",
-        "answer": "• Xi Zhi Dist. / Tainan Fushin Hotel / $2,600-$3,200 / 5-min walk from the conference venue • Nangang Dist. / May Rooms Taipei / $1,800 / 5-min walk from Nangang MRT Station / 15-min walk from Nangang Exhibition Center • Nangang Dist. / Uline Motel / $2,400-$2,900 / 10-min walk from Kunyang MRT Station • Nangang Dist. / The Place Taipei / $3,500-$3,700 / Near Nangang Software Park MRT Station / 8-min walk from Taipei Nangang Exhibition Center MRT Station • Nangang Dist. / Forward Hotel Nangang / $3,600-$3,800 / 5-min walk from Nangang Software Park MRT  • Nangang Dist. / Green World NanGang / $5,000 / 5-min walk from Nangang MRT Station"
+        "answer": "<ul><li>Xi Zhi Dist. / Tainan Fushin Hotel / $2,600-$3,200 / 5-min walk from the conference venue</li><li>Nangang Dist. / May Rooms Taipei / $1,800 / 5-min walk from Nangang MRT Station / 15-min walk from Nangang Exhibition Center</li><li>Nangang Dist. / Uline Motel / $2,400-$2,900 / 10-min walk from Kunyang MRT Station</li><li>Nangang Dist. / The Place Taipei / $3,500-$3,700 / Near Nangang Software Park MRT Station / 8-min walk from Taipei Nangang Exhibition Center MRT Station</li><li>Nangang Dist. / Forward Hotel Nangang / $3,600-$3,800 / 5-min walk from Nangang Software Park MRT</li><li>Nangang Dist. / Green World NanGang / $5,000 / 5-min walk from Nangang MRT Station</li></ul>"
       }
     ]
   },
@@ -307,14 +307,14 @@
       "name": "Greg Van Borssum",
       "title": "Keynote Speaker (English)/ Accredited Speaker",
       "contents": [
-        "● Australia’s first accredited speaker",
-        "● Academy Award Winning Best Animated Film “Happy Feet” Assistant Director",
-        "● Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor",
-        "● 2016 Screen Actors Guild Award Winner",
-        "● 2014 World Champion Pistol Winner",
-        "● Australian National Bodybuilding Champion",
-        "● National Mental Health Ambassador",
-        "● International Karate Master"
+        "<li>Australia’s first accredited speaker</li>",
+        "<li>Academy Award Winning Best Animated Film “Happy Feet” Assistant Director</li>",
+        "<li>Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor</li>",
+        "<li>2016 Screen Actors Guild Award Winner</li>",
+        "<li>2014 World Champion Pistol Winner</li>",
+        "<li>Australian National Bodybuilding Champion</li>",
+        "<li>National Mental Health Ambassador</li>",
+        "<li>International Karate Master</li>"
       ],
       "facebook": "https://www.facebook.com/greg.vanborssum/",
       "instagram": "https://www.instagram.com/gvb_mindwarriors/",
@@ -351,9 +351,9 @@
       "name": "Samantha Tu",
       "title": "Trainer of the English Training Session",
       "contents": [
-        "● Lecturer of business etiquette and tea culture in National Changhua University of Education",
-        "● Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association",
-        "● Public Relations manager of Toastmasters international, D67, 2020-2021"
+        "<li>Lecturer of business etiquette and tea culture in National Changhua University of Education</li>",
+        "<li>Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association</li>",
+        "<li>Public Relations manager of Toastmasters international, D67, 2020-2021</li>"
       ],
       "facebook": "",
       "instagram": "",
@@ -394,10 +394,10 @@
             "Focus 100% of your energy, your time and your life to getting what is really important to you. Accept only what really matters in your lives. Simplify your life. Eliminate anything trivial, everything that is superfluous. There’s no greater joy than working to achieve what really matters to you.",
             "Angel who serves as a global project manager in clinical research industries, a mother of one-year old baby and a life master has been implementing strong time management skills to strike for an elegant balance of her life. She is going to share her practical tips of managing your time by mastering your life.",
             "You will learn:",
-            "● The impact of pre-occupation to your efficiency.",
-            "● The decision diagrams.",
-            "● Identify the 3Ts, the three most important tasks to carry out in the day.",
-            "● One by one, only once and till the end."
+            "<li>The impact of pre-occupation to your efficiency.</li>",
+            "<li>The decision diagrams.</li>",
+            "<li>Identify the 3Ts, the three most important tasks to carry out in the day.</li>",
+            "<li>One by one, only once and till the end.</li>"
           ]
         }
       ]
@@ -462,20 +462,20 @@
       "title": "國語教育訓練講師",
       "contents": [
         "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
-        "● 學歷：東吳大學法律系學士；企管系EMBA碩士",
-        "● 經歷：1984-2022服務於東吳大學（已退休）",
-        "● 東吳校友總會監事",
-        "● 東吳企管EMBA聯合會監事",
-        "● 東吳女籃校友會會長",
-        "● 東吳前兩岸事務中心主任（從事兩岸學術交流26年）",
-        "● 海峽兩岸交流基金會2023年顧問（無給職）",
-        "● 演講及主持經歷：",
-        "　○ 中文演講會22年資深會員、喜洋洋中文演講會顧問",
-        "　○ 2000年國語備稿演講比賽冠軍、2002年台語即席比賽冠軍",
-        "　○ 多次參與國際演講會大會教育訓練及1次春季大會晚會主持",
-        "　○ 主持演講會會友結婚喜宴、主持演講會會友公司春酒午宴",
-        "　○ 主持訪問姚明見面會、主持800人年終尾牙",
-        "　○ 主持14場大陸同學來台交流大型活動開、閉幕典禮"
+        "<li>學歷：東吳大學法律系學士；企管系EMBA碩士</li>",
+        "<li>經歷：1984-2022服務於東吳大學（已退休）</li>",
+        "<li>東吳校友總會監事</li>",
+        "<li>東吳企管EMBA聯合會監事</li>",
+        "<li>東吳女籃校友會會長</li>",
+        "<li>東吳前兩岸事務中心主任（從事兩岸學術交流26年）</li>",
+        "<li>海峽兩岸交流基金會2023年顧問（無給職）</li>",
+        "<li>演講及主持經歷：</li>",
+        "<li class='second-layer'>中文演講會22年資深會員、喜洋洋中文演講會顧問</li>",
+        "<li class='second-layer'>2000年國語備稿演講比賽冠軍、2002年台語即席比賽冠軍</li>",
+        "<li class='second-layer'>多次參與國際演講會大會教育訓練及1次春季大會晚會主持</li>",
+        "<li class='second-layer'>主持演講會會友結婚喜宴、主持演講會會友公司春酒午宴</li>",
+        "<li class='second-layer'>主持訪問姚明見面會、主持800人年終尾牙</li>",
+        "<li class='second-layer'>主持14場大陸同學來台交流大型活動開、閉幕典禮</li>"
       ],
       "facebook": "",
       "instagram": "",
