@@ -200,7 +200,7 @@
             </span>
             <span class="row-item-title title-3-lines">
               {{ $t("home.program.japanese") }}
-              &nbsp;({{ $t("speakers[7].name") }})
+              &nbsp;({{ $t("speakers[9].name") }})
             </span>
             <span class="row-item-venue venue-clove">
               {{ $t("home.program.room.clove") }}
@@ -369,7 +369,7 @@
                   $t("home.program.training", {
                     language: $t("home.program.taiwanese"),
                   })
-                }}
+                }}&nbsp;({{ $t("speakers[8].name") }})
               </span>
               <span class="row-item-venue venue-lisianthus">
                 {{ $t("home.program.room.lisianthus") }}
@@ -524,7 +524,7 @@
                 $t("home.program.training", {
                   language: $t("home.program.mandarin"),
                 })
-              }}
+              }}&nbsp;({{ $t("speakers[7].name") }})
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.lisianthus") }}
