@@ -22,6 +22,8 @@
       "wang": "王玉梅",
       "lin": "林惠君",
       "li": "Angel Li",
+      "chang": "張志良",
+      "huang": "黃東竣",
       "tbd": "TBD"
     },
     "navbar": {
@@ -491,6 +493,64 @@
             "從小因多次參加演講比賽的經驗，讓我對「上台演講」並不陌生，但是在參加演講會之前，「主持」這件事，我可就一無所知。直到透過例會的總主持人、開懷、即席再到總講評等等的學習，才培養出我對「主持」的興趣和能力，也因為具備「主持能力」，",
             "無論是演講或主持，每位會友都有自己獨特的風格，20年多來，我像個園丁或農夫，守著演講舞台的一畝三分地，深耕勤耘，產出不多，但都是誠心之作，能常常和會友們分享，就是最歡喜的收穫！回首演講會一路走來，真心感受「惠我良多」，如今退休成為「時間富婆」，理當盡己之力感恩回饋！",
             "古云「溫故知新」，期待4月23日能和舊雨們重新溫故，也能和新知們共同學習，我們一起來杯「心口稿三合一」下午茶，輕鬆聊聊「主持二、三事」吧！"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "chang",
+      "name": "張志良",
+      "title": "國語教育訓練講師",
+      "contents": [
+        "<li>現任翔威國際（華碩電腦子公司）副總經理</li>",
+        "<li>2017年加入國際演講會</li>",
+        "<li>2019年榮獲國語演講比賽第二名</li>",
+        "<li>2021年榮獲國語演講比賽第一名</li>"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "文字的多元呈現",
+          "time": "4/23 15:40-16:50",
+          "location": "2F Room Lisianthus (2A)",
+          "introduction": [
+            "(英文版網頁請加註) Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
+            "以系統的方法，將創意導入文字文稿中，因而產生不同的趣味。有興趣的會友，歡迎一起來玩！"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "huang",
+      "name": "黃東竣",
+      "title": "台語教育訓練講師",
+      "contents": [
+        "<li>2016年國語演講比賽第一名</li>",
+        "<li>2017年台語演講比賽第一名</li>"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "乎囝仔也愛講台語",
+          "time": "4/23 11:00-12:00",
+          "location": "2F Room Lisianthus (2A)",
+          "introduction": [
+            "(英文版網頁請加註) Please be noted that this training will be conducted in Taiwanese; therefore, only Taiwaneseintroduction is provided. Thank you.",
+            "台語是咱A母語！",
+            "講台語是一件很浪漫A代誌！",
+            "有很多話，用台語來講才有伊特殊A感情甲效果！",
+            "但是愈來愈少人用台語來交流！",
+            "我感覺非常A難過！",
+            "我去思考為什麼會發生這種代誌？",
+            "我發現是因為大部份A人～感覺講台語卡沒水準！",
+            "這個結果，是因為電視上面～台語攏是用來罵人耶！",
+            "但是，事實不是這樣耶！",
+            "現在乎咱開始來學習講優美A台語、咱開始來愛講咱A母語。",
+            "只有咱開始愛講台語，咱A囝仔才會也愛講台語！"
           ]
         }
       ]
