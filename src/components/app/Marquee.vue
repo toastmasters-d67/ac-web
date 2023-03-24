@@ -104,7 +104,6 @@ export default {
       position: absolute;
       right: 5px;
       width: 500px;
-      // white-space: nowrap;
     }
   }
 }
