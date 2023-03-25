@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import router from "./router/index copy";
+import router from "./router/index";
 import Button from "primevue/button";
 import Sidebar from "primevue/sidebar";
 import PrimeVue from "primevue/config";
