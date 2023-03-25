@@ -9,8 +9,11 @@
     "date": "日期",
     "status": "狀態",
     "amount": "金額",
-    "pending": "待付款",
-    "paid": "已付款"
+    "attendee": "購票人資訊",
+    "edit": "編輯",
+    "unpaid": "未付款",
+    "pending": "待完成",
+    "complete": "已完成"
   },
   "app": {
     "breadcrumb": {
