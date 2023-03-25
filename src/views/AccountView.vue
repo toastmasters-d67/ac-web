@@ -1,6 +1,7 @@
 <script>
 import { reactive } from "vue";
 import axios from "axios";
+import Marquee from "@/components/app/Marquee.vue";
 
 export async function getUser(token, target) {
   const url = `${process.env.VUE_APP_API}/user`;
@@ -51,6 +52,9 @@ export async function getUser(token, target) {
 
 export default {
   name: "AccountView",
+  components: {
+    Marquee,
+  },
   data() {
     const fields = reactive([
       this.$t("account.number"),
@@ -90,7 +94,11 @@ export default {
 </script>
 
 <template>
-  <div class="account-container">
+  <div>
+    <Marquee
+      v-once
+      :sentences="[this.$t('account.marquee.important-notice')]"
+    />
     <article id="account" class="account-container">
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
@@ -145,100 +153,101 @@ export default {
 
 <style scoped lang="scss">
 .account-container {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+
   border-color: transparent;
   background-color: transparent;
   padding-top: 100px;
   padding-bottom: 100px;
+
   a {
     color: black;
     text-decoration: none;
     border-color: transparent;
   }
-  #account {
-    width: 80%;
-    margin: 0 auto;
-    .account-row {
-      position: relative;
-      margin-bottom: 20px;
-      .account-title {
-        color: black;
-        font-size: 28px;
-        font-weight: 600;
-        line-height: 34px;
-        text-align: left;
-      }
-      .account-button {
-        position: absolute;
-        top: 0px;
-        right: 10px;
-        width: 189px;
-        background: #ffdb82;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 24px;
-        border-color: transparent;
-        border-radius: 70px;
-        box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
-        text-align: center;
-        padding: 8px 24px;
-        .plus {
-          font-size: 25px;
-          line-height: 1;
-          vertical-align: bottom;
-        }
-      }
+
+  .account-row {
+    position: relative;
+    margin-bottom: 20px;
+    .account-title {
+      color: black;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 34px;
+      text-align: left;
     }
-    .paid {
-      color: #dc6b04;
-      background: #ffe3b9;
-      border-radius: 4px;
-      padding: 4px 12px;
-      gap: 10px;
-    }
-    .ok {
-      color: #109f43;
-      background: #cdffc0;
-      border-radius: 4px;
-      padding: 4px 12px;
-      gap: 10px;
-    }
-    table {
-      border-collapse: collapse;
-      border-radius: 10px 10px 0px 0px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
-      margin: 0 auto;
-      margin-top: 30px;
-      th {
-        color: white;
-        background-color: #009879;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 24px;
-        width: 25vw;
-        height: 75px;
+    .account-button {
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      width: 189px;
+      background: #ffdb82;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 24px;
+      border-color: transparent;
+      border-radius: 70px;
+      box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      padding: 8px 24px;
+      .plus {
+        font-size: 25px;
+        line-height: 1;
+        vertical-align: bottom;
       }
-      td {
-        color: #5e5e5e;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 22px;
-        background-color: white;
-        width: 25vw;
-        height: 50px;
-      }
-      tr {
-        border-bottom: 1px solid #dddddd;
-      }
-      tr:nth-of-type(even) td {
-        background-color: #f3f3f3;
-      }
-    }
-    .rwd-account {
-      display: none;
     }
   }
+  .paid {
+    color: #dc6b04;
+    background: #ffe3b9;
+    border-radius: 4px;
+    padding: 4px 12px;
+    gap: 10px;
+  }
+  .ok {
+    color: #109f43;
+    background: #cdffc0;
+    border-radius: 4px;
+    padding: 4px 12px;
+    gap: 10px;
+  }
+  table {
+    border-collapse: collapse;
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+    margin: 0 auto;
+    margin-top: 30px;
+    th {
+      color: white;
+      background-color: #009879;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      width: 25vw;
+      height: 75px;
+    }
+    td {
+      color: #5e5e5e;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      background-color: white;
+      width: 25vw;
+      height: 50px;
+    }
+    tr {
+      border-bottom: 1px solid #dddddd;
+    }
+    tr:nth-of-type(even) td {
+      background-color: #f3f3f3;
+    }
+  }
+  .rwd-account {
+    display: none;
+  }
 }
+
 @media screen and (max-width: 768px) {
   .account-container {
     padding-top: 20px;
