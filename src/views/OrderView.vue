@@ -101,11 +101,13 @@ export default {
     const remainBanquets = computed(
       () => this.totalBanquets - this.assignedBanquets
     );
-    const clubs = reactive([
-      { id: 1, english_name: "Happiness Toastmasters Club" },
-      { id: 2, english_name: "Hsinchu Toastmasters Club" },
-      { id: 3, english_name: "Sparkle Toastmasters Club" },
-    ]);
+    const clubs = reactive([]);
+    Array.from(this.$tm("clubs")).forEach((source, index) => {
+      clubs.push({
+        id: index + 1,
+        name: this.$rt(source),
+      });
+    });
     const hasSubmitted = false;
     return {
       tickets,
