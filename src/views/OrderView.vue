@@ -51,52 +51,52 @@ export default {
         isVegetarian: false,
         addBanquet: false,
       },
-      {
-        id: 2,
-        type: 1, // Early Bird
-        description: "Early Bird 2 Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
-      {
-        id: 3,
-        type: 3, // First Day
-        description: "First Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
-      {
-        id: 4,
-        type: 4, // Second Day
-        description: "Second Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
-      {
-        id: 5,
-        type: 4, // Second Day
-        description: "Second Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
+      // {
+      //   id: 2,
+      //   type: 1, // Early Bird
+      //   description: "Early Bird 2 Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
+      // {
+      //   id: 3,
+      //   type: 3, // First Day
+      //   description: "First Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
+      // {
+      //   id: 4,
+      //   type: 4, // Second Day
+      //   description: "Second Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
+      // {
+      //   id: 5,
+      //   type: 4, // Second Day
+      //   description: "Second Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
     ]);
-    const totalBanquets = 2;
+    const totalBanquets = 0;
     const assignedBanquets = 0;
     const remainBanquets = computed(
       () => this.totalBanquets - this.assignedBanquets

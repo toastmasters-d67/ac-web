@@ -9,8 +9,11 @@
     "date": "Date",
     "status": "Status",
     "amount": "Amount",
+    "attendee": "Attendee info",
+    "edit": "Edit",
+    "unpaid": "Unpaid",
     "pending": "Pending",
-    "paid": "Paid"
+    "complete": "Complete"
   },
   "app": {
     "breadcrumb": {
