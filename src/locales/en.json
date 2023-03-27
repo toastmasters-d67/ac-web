@@ -84,7 +84,8 @@
         "price": "800",
         "note": "The dinner banquet tickets cannot be sold seperately."
       },
-      "additional": "Additional Banquet Ticket"
+      "additional": "Additional Banquet Ticket",
+      "sold-out": "Sold out"
     },
     "summary": {
       "order-sum": "Order summary",
@@ -362,13 +363,14 @@
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
       "until": "Until Mar 27, 2023",
+      "sold-out": "Sold out",
       "lunch": "Lunchbox",
       "lunch2": "Lunchboxes for 2 days",
       "souvenir": "Souvenirs",
       "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
       "note": [
-        "All tickets are available for order now! Don't miss out on our early bird offer."
+        "The tickets will be available for purchase until Apr 10. Don't miss out!"
       ],
       "order": "Order Tickets"
     },
