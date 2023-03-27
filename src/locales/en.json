@@ -1,4 +1,56 @@
 {
+  "accommodation": {
+    "title": "Accommodation",
+    "xizhi": "Xi Zhi",
+    "nangang": "Nangang",
+    "hotels": [
+      {
+        "name": "Taipei Fushin Hotel",
+        "price": "$2,600 - $3,200",
+        "transportation": [
+          "5-min walk from the conference venue"
+        ]
+      },
+      {
+        "name": "May Rooms Taipei",
+        "price": "$1,800",
+        "transportation": [
+          "5-min walk from Nangang MRT Station",
+          "15-min walk from Nangang Exhibition Center"
+        ]
+      },
+      {
+        "name": "Uline Motel",
+        "price": "$2,400 - $2,900",
+        "transportation": [
+          "10-min walk from Kunyang MRT Station"
+        ]
+      },
+      {
+        "name": "The Place Taipei",
+        "price": "$3,500 - $3,700",
+        "transportation": [
+          "Near Nangang Software Park MRT Station",
+          "8-min walk from Taipei Nangang Exhibition Center MRT Station"
+        ]
+      },
+      {
+        "name": "Forward Hotel Nangang",
+        "price": "$3,600 - $3,800",
+        "transportation": [
+          "5-min walk from Nangang Software Park MRT"
+        ]
+      },
+      {
+        "name": "Green World NanGang",
+        "price": "$5,000",
+        "transportation": [
+          "5-min walk from Nangang MRT Station"
+        ]
+      }
+    ],
+    "transportation-location": "Transportation Location"
+  },
   "account": {
     "marquee": {
       "important-notice": "《Important Notice》Please complete your payment before the expiry date. If you did not pay in time, your order will be canceled. Please place a new order instead."
@@ -379,7 +431,8 @@
       "venue": "Kuanhe Exhibition Hall",
       "address": "No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City, Taiwan 221",
       "show": "Show on Google Maps",
-      "directions": "Directions"
+      "transporation": "Transporation",
+      "accommodation": "Accommodation"
     }
   },
   "faq": {
@@ -697,6 +750,7 @@
       "name": "張志良",
       "title": "國語教育訓練講師",
       "contents": [
+        "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
         "<li>現任翔威國際（華碩電腦子公司）副總經理</li>",
         "<li>2017年加入國際演講會</li>",
         "<li>2019年榮獲國語演講比賽第二名</li>",
@@ -711,7 +765,6 @@
           "time": "4/23 15:40-16:50",
           "location": "2F Room Lisianthus (2A)",
           "introduction": [
-            "(英文版網頁請加註) Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
             "以系統的方法，將創意導入文字文稿中，因而產生不同的趣味。有興趣的會友，歡迎一起來玩！"
           ]
         }
@@ -722,6 +775,7 @@
       "name": "黃東竣",
       "title": "台語教育訓練講師",
       "contents": [
+        "Please be noted that this training will be conducted in Taiwanese; therefore, only Taiwaneseintroduction is provided. Thank you.",
         "<li>2016年國語演講比賽第一名</li>",
         "<li>2017年台語演講比賽第一名</li>"
       ],
@@ -734,7 +788,6 @@
           "time": "4/23 11:00-12:00",
           "location": "2F Room Lisianthus (2A)",
           "introduction": [
-            "(英文版網頁請加註) Please be noted that this training will be conducted in Taiwanese; therefore, only Taiwaneseintroduction is provided. Thank you.",
             "台語是咱A母語！",
             "講台語是一件很浪漫A代誌！",
             "有很多話，用台語來講才有伊特殊A感情甲效果！",

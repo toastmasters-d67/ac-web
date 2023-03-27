@@ -1,4 +1,56 @@
 {
+  "accommodation": {
+    "title": "住宿資訊",
+    "xizhi": "汐止",
+    "nangang": "南港",
+    "hotels": [
+      {
+        "name": "台北富信大飯店",
+        "price": "$2,600 - $3,200",
+        "transportation": [
+          "寬和宴展館 － 步行 5 分鐘"
+        ]
+      },
+      {
+        "name": "南港安樂旅社",
+        "price": "$1,800",
+        "transportation": [
+          "捷運南港站 － 步行 5 分鐘",
+          "捷運南港展覽館站 － 步行 15 分鐘"
+        ]
+      },
+      {
+        "name": "友徠精品旅館",
+        "price": "$2,400 - $2,900",
+        "transportation": [
+          "捷運昆陽站 － 步行 10 分鐘"
+        ]
+      },
+      {
+        "name": "南港老爺行旅",
+        "price": "$3,500 - $3,700",
+        "transportation": [
+          "捷運南港軟體園區站 － 中國信託出口",
+          "捷運南港展覽館站 － 步行約 8 分鐘"
+        ]
+      },
+      {
+        "name": "台北馥華南港館",
+        "price": "$3,600 - $3,800",
+        "transportation": [
+          "捷運文湖線南港軟體園區站 1 號出口下，沿經貿二路左轉三重路，步行約 5 分鐘"
+        ]
+      },
+      {
+        "name": "洛碁大飯店南港館",
+        "price": "$5,000",
+        "transportation": [
+          "捷運南港站 (2 號出口) － 步行 5 分鐘"
+        ]
+      }
+    ],
+    "transportation-location": "交通"
+  },
   "account": {
     "marquee": {
       "important-notice": "《重要提醒》送出訂單後，請在繳費期限內付款，謝謝。若未在期限內付款，您的訂單將被取消，請重新訂票。"
@@ -378,7 +430,8 @@
       "venue": "寬和宴展館",
       "address": "新北市汐止區大同路一段 237-6 號",
       "show": "在Google地圖上查看",
-      "directions": "交通指南"
+      "transporation": "交通指南",
+      "accommodation": "住宿資訊"
     }
   },
   "faq": {
