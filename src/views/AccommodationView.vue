@@ -1,8 +1,8 @@
 <template>
   <Breadcrumb v-once />
-  <header class="accommodation-title">Accommodation</header>
+  <header class="accommodation-title">{{ $t("accommodation.title") }}</header>
   <article id="accommodation" class="accommodation-container">
-    <div class="accommodation-area">Xi Zhi</div>
+    <div class="accommodation-area">{{ $t("accommodation.xizhi") }}</div>
     <div class="accommodation-item">
       <img
         src="@/assets/image/accommodation/fushin-large.png"
@@ -11,8 +11,12 @@
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
-          <div class="accommodation-name">Taipei Fushin Hotel</div>
-          <div class="accommodation-price">$2,600 - $3,200</div>
+          <div class="accommodation-name">
+            {{ $t("accommodation.hotels[0].name") }}
+          </div>
+          <div class="accommodation-price">
+            {{ $t("accommodation.hotels[0].price") }}
+          </div>
         </div>
         <div class="accommodation-transportation">
           <div class="accommodation-transportation-title">
@@ -20,15 +24,15 @@
               src="@/assets/image/accommodation/icon-transportation-large.svg"
               alt="transportation-icon"
             />
-            <p>Transportation Location</p>
+            <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
           <ul>
-            <li>5-min walk from the conference venue</li>
+            <li>{{ $t("accommodation.hotels[0].transportation[0]") }}</li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="accommodation-area">Nangang</div>
+    <div class="accommodation-area">{{ $t("accommodation.nangang") }}</div>
     <div class="accommodation-item">
       <img
         src="@/assets/image/accommodation/may-large.png"
@@ -37,8 +41,12 @@
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
-          <div class="accommodation-name">May Rooms Taipei</div>
-          <div class="accommodation-price">$1,800</div>
+          <div class="accommodation-name">
+            {{ $t("accommodation.hotels[1].name") }}
+          </div>
+          <div class="accommodation-price">
+            {{ $t("accommodation.hotels[1].price") }}
+          </div>
         </div>
         <div class="accommodation-transportation">
           <div class="accommodation-transportation-title">
@@ -46,11 +54,11 @@
               src="@/assets/image/accommodation/icon-transportation-large.svg"
               alt="transportation-icon"
             />
-            <p>Transportation Location</p>
+            <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
           <ul>
-            <li>5-min walk from Nangang MRT Station</li>
-            <li>15-min walk from Nangang Exhibition Center</li>
+            <li>{{ $t("accommodation.hotels[1].transportation[0]") }}</li>
+            <li>{{ $t("accommodation.hotels[1].transportation[1]") }}</li>
           </ul>
         </div>
       </div>
@@ -63,8 +71,12 @@
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
-          <div class="accommodation-name">Uline Motel</div>
-          <div class="accommodation-price">$2,400 - $2,900</div>
+          <div class="accommodation-name">
+            {{ $t("accommodation.hotels[2].name") }}
+          </div>
+          <div class="accommodation-price">
+            {{ $t("accommodation.hotels[2].price") }}
+          </div>
         </div>
         <div class="accommodation-transportation">
           <div class="accommodation-transportation-title">
@@ -72,10 +84,10 @@
               src="@/assets/image/accommodation/icon-transportation-large.svg"
               alt="transportation-icon"
             />
-            <p>Transportation Location</p>
+            <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
           <ul>
-            <li>10-min walk from Kunyang MRT Station</li>
+            <li>{{ $t("accommodation.hotels[2].transportation[0]") }}</li>
           </ul>
         </div>
       </div>
@@ -88,8 +100,12 @@
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
-          <div class="accommodation-name">The Place Taipei</div>
-          <div class="accommodation-price">$3,500 - $3,700</div>
+          <div class="accommodation-name">
+            {{ $t("accommodation.hotels[3].name") }}
+          </div>
+          <div class="accommodation-price">
+            {{ $t("accommodation.hotels[3].price") }}
+          </div>
         </div>
         <div class="accommodation-transportation">
           <div class="accommodation-transportation-title">
@@ -97,13 +113,11 @@
               src="@/assets/image/accommodation/icon-transportation-large.svg"
               alt="transportation-icon"
             />
-            <p>Transportation Location</p>
+            <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
           <ul>
-            <li>Near Nangang Software Park MRT Station</li>
-            <li>
-              8-min walk from Taipei Nangang Exhibition Center MRT Station
-            </li>
+            <li>{{ $t("accommodation.hotels[3].transportation[0]") }}</li>
+            <li>{{ $t("accommodation.hotels[3].transportation[1]") }}</li>
           </ul>
         </div>
       </div>
@@ -116,8 +130,12 @@
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
-          <div class="accommodation-name">Forward Hotel Nangang</div>
-          <div class="accommodation-price">$3,600 - $3,800</div>
+          <div class="accommodation-name">
+            {{ $t("accommodation.hotels[4].name") }}
+          </div>
+          <div class="accommodation-price">
+            {{ $t("accommodation.hotels[4].price") }}
+          </div>
         </div>
         <div class="accommodation-transportation">
           <div class="accommodation-transportation-title">
@@ -125,10 +143,10 @@
               src="@/assets/image/accommodation/icon-transportation-large.svg"
               alt="transportation-icon"
             />
-            <p>Transportation Location</p>
+            <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
           <ul>
-            <li>5-min walk from Nangang Software Park MRT</li>
+            <li>{{ $t("accommodation.hotels[4].transportation[0]") }}</li>
           </ul>
         </div>
       </div>
@@ -141,8 +159,12 @@
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
-          <div class="accommodation-name">Green World NanGang</div>
-          <div class="accommodation-price">$5,000</div>
+          <div class="accommodation-name">
+            {{ $t("accommodation.hotels[5].name") }}
+          </div>
+          <div class="accommodation-price">
+            {{ $t("accommodation.hotels[5].price") }}
+          </div>
         </div>
         <div class="accommodation-transportation">
           <div class="accommodation-transportation-title">
@@ -150,10 +172,10 @@
               src="@/assets/image/accommodation/icon-transportation-large.svg"
               alt="transportation-icon"
             />
-            <p>Transportation Location</p>
+            <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
           <ul>
-            <li>5-min walk from Nangang MRT Station</li>
+            <li>{{ $t("accommodation.hotels[5].transportation[0]") }}</li>
           </ul>
         </div>
       </div>
