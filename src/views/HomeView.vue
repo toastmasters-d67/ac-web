@@ -1,6 +1,6 @@
 <template>
   <article id="home">
-    <Marquee v-once :sentences="sentences" />
+    <Marquee :sentences="sentences" v-once />
     <Slogan :scrollToElement="scrollToElement" v-once />
     <Countdown v-once />
     <Ticket v-once />

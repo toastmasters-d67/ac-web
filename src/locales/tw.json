@@ -72,7 +72,7 @@
       "/": "首頁",
       "faq": "常見問答",
       "venue": "場地資訊",
-      "accommodation":"住宿資訊",
+      "accommodation": "住宿資訊",
       "shih": "施振榮",
       "van-borssum": "Greg Van Borssum",
       "hisamatsu": "久松 知香",
@@ -136,7 +136,7 @@
         "price": "800",
         "note": "晚宴票不單售，購買張數需小於等於兩日票或一日票的總張數。"
       },
-      "additional": "加購晚宴票",      
+      "additional": "加購晚宴票",
       "sold-out": "已完售"
     },
     "summary": {
