@@ -379,7 +379,8 @@
       "venue": "Kuanhe Exhibition Hall",
       "address": "No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City, Taiwan 221",
       "show": "Show on Google Maps",
-      "directions": "Directions"
+      "transporation": "Transporation",
+      "accommodation": "Accommodation"
     }
   },
   "faq": {
