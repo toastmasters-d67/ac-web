@@ -61,7 +61,6 @@ export default {
       this.$t("account.date"),
       this.$t("account.status"),
       this.$t("account.amount"),
-      this.$t("account.attendee"),
     ]);
     const items = reactive([]);
     return {
@@ -101,10 +100,7 @@ export default {
 
 <template>
   <div>
-    <Marquee
-      v-once
-      :sentences="[this.$t('account.marquee.important-notice')]"
-    />
+    <Marquee :sentences="[this.$t('account.marquee.notice')]" v-once />
     <article id="account" class="account-container">
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
@@ -135,11 +131,6 @@ export default {
               </span>
             </td>
             <td>$ {{ item.amount }}</td>
-            <td>
-              <button class="account-edit-button">
-                {{ $t("account.edit") }}
-              </button>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -154,9 +145,6 @@ export default {
           <div>{{ item.date }}</div>
           <div :class="getStatusClass(item)" v-text="getStatus(item)" />
           <div>$ {{ item.amount }}</div>
-          <button class="account-edit-button">
-            {{ $t("account.edit") }}
-          </button>
         </div>
       </div>
     </article>
@@ -166,19 +154,16 @@ export default {
 <style scoped lang="scss">
 .account-container {
   width: 80%;
-  margin: 0 auto;
-
   border-color: transparent;
   background-color: transparent;
   padding-top: 100px;
   padding-bottom: 100px;
-
+  margin: 0 auto;
   a {
     color: black;
     text-decoration: none;
     border-color: transparent;
   }
-
   .account-row {
     position: relative;
     margin-bottom: 20px;
