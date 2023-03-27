@@ -53,7 +53,7 @@
   },
   "account": {
     "marquee": {
-      "important-notice": "《Important Notice》Please complete your payment before the expiry date. If you did not pay in time, your order will be canceled. Please place a new order instead."
+      "notice": "《Important Notice》Please complete your payment before the expiry date. If you did not pay in time, your order will be canceled. Please place a new order instead."
     },
     "title": "My account",
     "new": "New order",
@@ -460,7 +460,7 @@
       },
       {
         "question": "Is there any recommended accommodation near the venue?",
-        "answer": "<ul><li>Xi Zhi Dist. / Tainan Fushin Hotel / $2,600-$3,200 / 5-min walk from the conference venue</li><li>Nangang Dist. / May Rooms Taipei / $1,800 / 5-min walk from Nangang MRT Station / 15-min walk from Nangang Exhibition Center</li><li>Nangang Dist. / Uline Motel / $2,400-$2,900 / 10-min walk from Kunyang MRT Station</li><li>Nangang Dist. / The Place Taipei / $3,500-$3,700 / Near Nangang Software Park MRT Station / 8-min walk from Taipei Nangang Exhibition Center MRT Station</li><li>Nangang Dist. / Forward Hotel Nangang / $3,600-$3,800 / 5-min walk from Nangang Software Park MRT</li><li>Nangang Dist. / Green World NanGang / $5,000 / 5-min walk from Nangang MRT Station</li></ul>"
+        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
       }
     ]
   },
