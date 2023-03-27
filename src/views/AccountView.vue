@@ -1,6 +1,7 @@
 <script>
 import { reactive } from "vue";
 import axios from "axios";
+import Marquee from "@/components/app/Marquee.vue";
 
 export async function getUser(token, target) {
   const url = `${process.env.VUE_APP_API}/user`;
@@ -20,7 +21,7 @@ export async function getUser(token, target) {
             const item = {
               id: order.orderId,
               amount: order.amount,
-              status: "pending",
+              status: "unpaid",
               date: new Date(+order.orderId * 1000).toISOString().slice(0, 10),
             };
             if (order.transactions.length) {
@@ -28,7 +29,7 @@ export async function getUser(token, target) {
                 (x) => x.status === "SUCCESS"
               );
               if (transaction && transaction.amount === order.amount) {
-                item.status = "paid";
+                item.status = "pending";
               }
             }
             target.items.push(item);
@@ -51,6 +52,9 @@ export async function getUser(token, target) {
 
 export default {
   name: "AccountView",
+  components: {
+    Marquee,
+  },
   data() {
     const fields = reactive([
       this.$t("account.number"),
@@ -65,13 +69,18 @@ export default {
     };
   },
   methods: {
+    getStatusClass(item) {
+      return "account-status " + item.status.toLocaleLowerCase();
+    },
     getStatus(item) {
-      if (item.status === "pending") {
+      if (item.status === "unpaid") {
+        return this.$t("account.unpaid");
+      } else if (item.status === "pending") {
         return this.$t("account.pending");
-      } else if (item.status === "paid") {
-        return this.$t("account.paid");
+      } else if (item.status === "complete") {
+        return this.$t("account.complete");
       }
-      return "OK";
+      return "Error";
     },
   },
   created() {
@@ -90,7 +99,8 @@ export default {
 </script>
 
 <template>
-  <div class="account-container">
+  <div>
+    <Marquee :sentences="[this.$t('account.marquee.notice')]" v-once />
     <article id="account" class="account-container">
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
@@ -103,8 +113,12 @@ export default {
       <table id="tableComponent" class="table table-bordered table-striped">
         <thead class="table-head">
           <tr>
-            <th v-for="field in fields" :key="field" @click="sortTable(field)">
+            <th v-for="field in fields" :key="field">
               {{ field }}
+              <i
+                v-if="field == $t('account.status')"
+                class="pi pi-question-circle"
+              />
             </th>
           </tr>
         </thead>
@@ -113,10 +127,7 @@ export default {
             <td>{{ item.id }}</td>
             <td>{{ item.date }}</td>
             <td>
-              <span
-                :class="item.status.toLocaleLowerCase()"
-                v-text="getStatus(item)"
-              >
+              <span :class="getStatusClass(item)" v-text="getStatus(item)">
               </span>
             </td>
             <td>$ {{ item.amount }}</td>
@@ -125,17 +136,14 @@ export default {
       </table>
       <div class="rwd-account" v-for="item in items" :key="item">
         <div class="rwd-title">
-          <div v-for="field in fields" :key="field" @click="sortTable(field)">
+          <div v-for="field in fields" :key="field">
             {{ field }}
           </div>
         </div>
         <div class="rwd-content">
           <div>{{ item.id }}</div>
           <div>{{ item.date }}</div>
-          <div
-            :class="item.status.toLocaleLowerCase()"
-            v-text="getStatus(item)"
-          ></div>
+          <div :class="getStatusClass(item)" v-text="getStatus(item)" />
           <div>$ {{ item.amount }}</div>
         </div>
       </div>
@@ -145,100 +153,118 @@ export default {
 
 <style scoped lang="scss">
 .account-container {
-  width: 100%;
+  width: 80%;
   border-color: transparent;
   background-color: transparent;
   padding-top: 100px;
   padding-bottom: 100px;
+  margin: 0 auto;
   a {
     color: black;
     text-decoration: none;
     border-color: transparent;
   }
-  #account {
-    width: 80%;
-    margin: 0 auto;
-    .account-row {
-      position: relative;
-      margin-bottom: 20px;
-      .account-title {
-        color: black;
-        font-size: 28px;
-        font-weight: 600;
-        line-height: 34px;
-        text-align: left;
-      }
-      .account-button {
-        position: absolute;
-        top: 0px;
-        right: 10px;
-        width: 189px;
-        background: #ffdb82;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 24px;
-        border-color: transparent;
-        border-radius: 70px;
-        box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
-        text-align: center;
-        padding: 8px 24px;
-        .plus {
-          font-size: 25px;
-          line-height: 1;
-          vertical-align: bottom;
-        }
-      }
+  .account-row {
+    position: relative;
+    margin-bottom: 20px;
+    .account-title {
+      color: black;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 34px;
+      text-align: left;
     }
-    .paid {
-      color: #dc6b04;
-      background: #ffe3b9;
-      border-radius: 4px;
-      padding: 4px 12px;
-      gap: 10px;
-    }
-    .ok {
-      color: #109f43;
-      background: #cdffc0;
-      border-radius: 4px;
-      padding: 4px 12px;
-      gap: 10px;
-    }
-    table {
-      border-collapse: collapse;
-      border-radius: 10px 10px 0px 0px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
-      margin: 0 auto;
-      margin-top: 30px;
-      th {
-        color: white;
-        background-color: #009879;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 24px;
-        width: 25vw;
-        height: 75px;
+    .account-button {
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      width: 189px;
+      background: #ffdb82;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 24px;
+      border-color: transparent;
+      border-radius: 70px;
+      box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      padding: 8px 24px;
+      .plus {
+        font-size: 25px;
+        line-height: 1;
+        vertical-align: bottom;
       }
-      td {
-        color: #5e5e5e;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 22px;
-        background-color: white;
-        width: 25vw;
-        height: 50px;
-      }
-      tr {
-        border-bottom: 1px solid #dddddd;
-      }
-      tr:nth-of-type(even) td {
-        background-color: #f3f3f3;
-      }
-    }
-    .rwd-account {
-      display: none;
     }
   }
+  .account-status {
+    border-radius: 4px;
+    padding: 4px 12px;
+    margin-bottom: 30px;
+  }
+  .unpaid {
+    color: #e31c1c;
+    background: #ffd3cd;
+  }
+  .pending {
+    color: #dc6b04;
+    background: #ffe3b9;
+  }
+  .complete {
+    color: #109f43;
+    background: #cdddc0;
+  }
+  table {
+    border-collapse: collapse;
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+    margin: 0 auto;
+    margin-top: 30px;
+    th {
+      color: white;
+      background-color: #004165;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      width: 25vw;
+      height: 75px;
+      i {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    td {
+      color: #5e5e5e;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      background-color: white;
+      width: 25vw;
+      height: 65px;
+    }
+    tr {
+      border-bottom: 1px solid #dddddd;
+    }
+    tr:nth-of-type(even) td {
+      background-color: #f3f3f3;
+    }
+  }
+  .account-edit-button {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: black;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #bcbcbc;
+    border-radius: 70px;
+    cursor: pointer;
+  }
+  .rwd-account {
+    display: none;
+  }
 }
+
 @media screen and (max-width: 768px) {
   .account-container {
     padding-top: 20px;
@@ -255,7 +281,7 @@ export default {
       display: none;
     }
     .rwd-account {
-      background: #fff;
+      background: white;
       border-radius: 4px;
       padding: 12px 12px 0 12px;
       display: flex !important;
@@ -265,19 +291,35 @@ export default {
       .rwd-title {
         text-align: left;
         div {
-          margin-bottom: 12px;
+          margin-bottom: 16px;
           font-weight: 800;
         }
       }
       .rwd-content {
         text-align: right;
         div {
-          margin-bottom: 12px;
+          margin-bottom: 16px;
           color: #868686;
         }
-        .ok,
-        .paid {
-          text-align: center;
+        .account-status {
+          margin-bottom: 8px;
+        }
+        .unpaid {
+          color: #e31c1c;
+          background: #ffd3cd;
+        }
+        .pending {
+          color: #dc6b04;
+          background: #ffe3b9;
+        }
+        .complete {
+          color: #109f43;
+          background: #cdddc0;
+        }
+        .account-edit-button {
+          font-size: 14px;
+          line-height: 17px;
+          padding: 4px 16px;
         }
       }
     }

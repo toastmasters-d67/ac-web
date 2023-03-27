@@ -3,12 +3,13 @@ import { ref } from "vue";
 
 export default {
   name: "Marquee",
+  props: {
+    sentences: {
+      type: Object,
+    },
+  },
   data() {
-    const sentences = [
-      `《${this.$t("home.marquee.a")}.》 `,
-      `《${this.$t("home.marquee.b")}.》 `,
-    ];
-    const content = ref(sentences.join(""));
+    const content = ref(this.sentences.join(""));
     const segment = ref("");
     let offset = 6;
     let window = 65;

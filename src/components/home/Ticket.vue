@@ -28,7 +28,9 @@
         </ul>
       </div>
       <div class="ticket-item early-bird">
-        <span class="ticket-item-expiring">{{ $t("home.ticket.until") }}</span>
+        <span class="ticket-item-expiring">
+          {{ $t("home.ticket.sold-out") }}
+        </span>
         <span class="ticket-item-title early-bird-title">
           {{ $t("home.ticket.early-bird-title") }}
         </span>
@@ -220,7 +222,7 @@
   margin-bottom: 48px;
   .ticket-item-expiring {
     position: absolute;
-    left: 50px;
+    left: 90px;
     top: -15px;
     color: #52555a;
     background: linear-gradient(
@@ -359,7 +361,7 @@ ul.ticket-item-list {
   .ticket-item {
     margin-bottom: 24px;
     .ticket-item-expiring {
-      left: 25px;
+      left: 48px;
       top: -12px;
       font-size: 10px;
       line-height: 12px;

@@ -1,6 +1,6 @@
 <template>
   <article id="home">
-    <Marquee v-once />
+    <Marquee :sentences="sentences" v-once />
     <Slogan :scrollToElement="scrollToElement" v-once />
     <Countdown v-once />
     <Ticket v-once />
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Marquee from "@/components/home/Marquee.vue";
+import Marquee from "@/components/app/Marquee.vue";
 import Slogan from "@/components/home/Slogan.vue";
 import Countdown from "@/components/home/Countdown.vue";
 import Ticket from "@/components/home/Ticket.vue";
@@ -37,6 +37,15 @@ export default {
     Program,
     Venue,
     Souvenirs,
+  },
+  data() {
+    const sentences = [
+      `《${this.$t("home.marquee.a")}.》 `,
+      `《${this.$t("home.marquee.b")}.》 `,
+    ];
+    return {
+      sentences,
+    };
   },
   beforeMount() {
     window.scrollTo({ top: 0 });

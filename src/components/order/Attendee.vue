@@ -100,12 +100,8 @@
               @change="validateForm()"
               :disabled="!editing"
             >
-              <option
-                v-for="item in clubs"
-                :key="item.id"
-                :value="item.english_name"
-              >
-                {{ item.english_name }}
+              <option v-for="item in clubs" :key="item.id" :value="item.name">
+                {{ item.name }}
               </option>
             </select>
             <label

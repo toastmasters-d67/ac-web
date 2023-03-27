@@ -1,11 +1,13 @@
 <script>
 import { reactive } from "vue";
+import Marquee from "@/components/app/Marquee.vue";
 import Picker from "@/components/cart/Picker.vue";
 import Summary from "@/components/cart/Summary.vue";
 
 export default {
   name: "CartView",
   components: {
+    Marquee,
     Picker,
     Summary,
   },
@@ -43,12 +45,15 @@ export default {
     },
     setDouble(event) {
       this.state.double = +event.target.value;
+      this.updateBanquet();
     },
     setFirst(event) {
       this.state.first = +event.target.value;
+      this.updateBanquet();
     },
     setSecond(event) {
       this.state.second = +event.target.value;
+      this.updateBanquet();
     },
     setBanquet(event) {
       let value = +event.target.value;
@@ -58,6 +63,12 @@ export default {
       }
       this.state.banquet = value;
     },
+    updateBanquet() {
+      const sum = this.state.double + this.state.first + this.state.second;
+      if (this.state.banquet > sum) {
+        this.state.banquet = sum;
+      }
+    },
   },
   beforeMount() {
     window.scrollTo({ top: 0 });
@@ -66,20 +77,26 @@ export default {
 </script>
 
 <template>
-  <article id="cart" class="cart-container">
-    <Picker
-      :state="state"
-      :name="name"
-      :price="price"
-      :setEarly="setEarly"
-      :setDouble="setDouble"
-      :setFirst="setFirst"
-      :setSecond="setSecond"
-      :setBanquet="setBanquet"
+  <div>
+    <Marquee
       v-once
+      :sentences="[this.$t('account.marquee.important-notice')]"
     />
-    <Summary :state="state" :name="name" :price="price" v-once />
-  </article>
+    <article id="cart" class="cart-container">
+      <Picker
+        :state="state"
+        :name="name"
+        :price="price"
+        :setEarly="setEarly"
+        :setDouble="setDouble"
+        :setFirst="setFirst"
+        :setSecond="setSecond"
+        :setBanquet="setBanquet"
+        v-once
+      />
+      <Summary :state="state" :name="name" :price="price" v-once />
+    </article>
+  </div>
 </template>
 
 <style scoped lang="scss">

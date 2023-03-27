@@ -26,10 +26,24 @@
         alt="map"
       />
     </div>
-    <router-link to="/venue" class="button-directions">
-      <span class="button-text">{{ $t("home.venue.directions") }}</span>
-      <i class="pi pi-arrow-right button-arrow-right"></i>
-    </router-link>
+    <div class="venue-bottom-buttons">
+      <router-link to="/venue" class="button-bottom">
+        <img
+          src="@/assets/icon/home/transportation.svg"
+          class="button-icon"
+          alt="transportation"
+        />
+        <span class="button-text">{{ $t("home.venue.transporation") }}</span>
+      </router-link>
+      <router-link to="/accommodation" class="button-bottom">
+        <img
+          src="@/assets/icon/home/accommodation.svg"
+          class="button-icon"
+          alt="accommodation"
+        />
+        <span class="button-text">{{ $t("home.venue.accommodation") }}</span>
+      </router-link>
+    </div>
   </section>
 </template>
 
@@ -37,6 +51,10 @@
 .venue-container {
   width: 100%;
   color: #004165;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: transparent;
   border-color: transparent;
   border-radius: 0;
@@ -55,27 +73,37 @@
     margin: 0 auto;
     margin-bottom: 15px;
   }
-  .button-directions {
-    width: 191px;
-    height: 43px;
-    background: #f5db8c;
+  .venue-bottom-buttons {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    padding: 8px 24px;
-    gap: 8px;
-    margin: 0 auto;
-    .button-text {
-      color: #004165;
-      font-size: 22px;
-      font-weight: 500;
-      line-height: 27px;
-      text-align: center;
-    }
-    .button-arrow-right {
-      color: #004165;
+    gap: 12.5%;
+    .button-bottom {
+      width: 265px;
+      height: 45px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      border: 2px solid rgba(0, 65, 101, 0.5);
+      padding: 8px 24px;
+      gap: 8px;
+      .button-icon {
+        width: 20px;
+      }
+      .button-text {
+        color: #004165;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 27px;
+        text-align: center;
+      }
+      .button-arrow-right {
+        color: #004165;
+      }
     }
   }
 }
@@ -140,15 +168,21 @@
       line-height: 18px;
       margin-bottom: 30px;
     }
-    .button-directions {
-      width: 145px;
-      height: 33px;
-      .button-text {
-        font-size: 14px;
-        line-height: 17px;
-      }
-      .button-arrow-right {
-        font-size: 14px;
+    .venue-bottom-buttons {
+      justify-content: space-evenly;
+      gap: 0;
+      .button-bottom {
+        max-width: 180px;
+        width: 42.67%;
+        height: 36px;
+        border: 1px solid rgba(0, 65, 101, 0.5);
+        .button-icon {
+          width: 16px;
+        }
+        .button-text {
+          font-size: 14px;
+          line-height: 17px;
+        }
       }
     }
   }

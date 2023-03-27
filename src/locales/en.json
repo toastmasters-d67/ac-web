@@ -1,19 +1,78 @@
 {
+  "accommodation": {
+    "title": "Accommodation",
+    "xizhi": "Xi Zhi",
+    "nangang": "Nangang",
+    "hotels": [
+      {
+        "name": "Taipei Fushin Hotel",
+        "price": "$2,600 - $3,200",
+        "transportation": [
+          "5-min walk from the conference venue"
+        ]
+      },
+      {
+        "name": "May Rooms Taipei",
+        "price": "$1,800",
+        "transportation": [
+          "5-min walk from Nangang MRT Station",
+          "15-min walk from Nangang Exhibition Center"
+        ]
+      },
+      {
+        "name": "Uline Motel",
+        "price": "$2,400 - $2,900",
+        "transportation": [
+          "10-min walk from Kunyang MRT Station"
+        ]
+      },
+      {
+        "name": "The Place Taipei",
+        "price": "$3,500 - $3,700",
+        "transportation": [
+          "Near Nangang Software Park MRT Station",
+          "8-min walk from Taipei Nangang Exhibition Center MRT Station"
+        ]
+      },
+      {
+        "name": "Forward Hotel Nangang",
+        "price": "$3,600 - $3,800",
+        "transportation": [
+          "5-min walk from Nangang Software Park MRT"
+        ]
+      },
+      {
+        "name": "Green World NanGang",
+        "price": "$5,000",
+        "transportation": [
+          "5-min walk from Nangang MRT Station"
+        ]
+      }
+    ],
+    "transportation-location": "Transportation Location"
+  },
   "account": {
+    "marquee": {
+      "notice": "《Important Notice》Please complete your payment before the expiry date. If you did not pay in time, your order will be canceled. Please place a new order instead."
+    },
     "title": "My account",
     "new": "New order",
     "number": "Order number",
     "date": "Date",
     "status": "Status",
     "amount": "Amount",
+    "attendee": "Attendee info",
+    "edit": "Edit",
+    "unpaid": "Unpaid",
     "pending": "Pending",
-    "paid": "Paid"
+    "complete": "Complete"
   },
   "app": {
     "breadcrumb": {
       "/": "Home",
       "faq": "FAQ",
       "venue": "Venue",
+      "accommodation": "Accommodation",
       "shih": "Stan Shih",
       "van-borssum": "Greg Van Borssum",
       "hisamatsu": "Chika Hisamatsu",
@@ -22,6 +81,8 @@
       "wang": "王玉梅",
       "lin": "林惠君",
       "li": "Angel Li",
+      "chang": "張志良",
+      "huang": "黃東竣",
       "tbd": "TBD"
     },
     "navbar": {
@@ -75,7 +136,8 @@
         "price": "800",
         "note": "The dinner banquet tickets cannot be sold seperately."
       },
-      "additional": "Additional Banquet Ticket"
+      "additional": "Additional Banquet Ticket",
+      "sold-out": "Sold out"
     },
     "summary": {
       "order-sum": "Order summary",
@@ -83,6 +145,192 @@
       "checkout": "Check out"
     }
   },
+  "clubs": [
+    "Advanced Singing Toastmasters Club",
+    "ALE ELITE Toastmasters Club",
+    "Ale Ladder Toastmasters Club",
+    "ALE MAX Toastmasters Club",
+    "ALE Spectacular Toastmasters Club",
+    "Ale Ultimate Toastmaster Club",
+    "Aloha Bilingual Toastmasters Club",
+    "ALPHA Toastmasters Club",
+    "AMC Leaders  Toastmasters Club",
+    "AMEX Taiwan Toastmasters Club",
+    "ARRIS Toastmasters Club",
+    "Beast Toastmasters Club",
+    "Bei-Tun Toastmasters Club",
+    "BID Toastmasters Club",
+    "BNI Tainan Toastmasters Club",
+    "Born to Shine Christian Toastmasters",
+    "CECI Toastmasters Club",
+    "Challenge Yourself to Grow (CYTG) Toastmasters Club",
+    "Changhua Bilingual Toastmasters　Club",
+    "Changhua Toastmasters Club",
+    "Chaoyang Tech Toastmasters Club",
+    "Charming Toastmasters Club",
+    "Cheer Toastmasters Club",
+    "Chia-Yi Toastmasters Club",
+    "China Toastmasters Club",
+    "Chung Hsing Chinese Toastmasters Club",
+    "Chung Hsing Japanese Toastmasters Club",
+    "Chung Shan Medical University Toastmasters Club",
+    "Chung-Gang Toastmasters Club",
+    "Chungli Toastmasters Club",
+    "Corning Toastmasters Club",
+    "Critical Thinkers Toastmasters Club",
+    "CTBC Toastmasters Club",
+    "CYCU Toastmasters Club",
+    "Da-Li Toastmasters Club",
+    "Dalin Toastmasters Club",
+    "Da-Ya Toastmasters Club",
+    "Distinguished Bilingual",
+    "Elephant Advanced Toastmasters Club",
+    "Elite Toastmasters Club",
+    "English Conversation Toastmasters Club",
+    "Entrepreneur Toastmasters Club",
+    "Evershine Billingual Toastmasters  Club",
+    "Excellence Toastmasters Club",
+    "EYT Toastmasters Club",
+    "Far Eastern Int'L Bank Toastmasters Club",
+    "FENC Toastmasters Club",
+    "Fengyuan Toastmasters Club",
+    "Ferina Toastmasters Club",
+    "FHK Toastmasters Club",
+    "FJU Toastmasters Club",
+    "Fluency Toastmasters Club",
+    "Formosa Toastmasters Club",
+    "Full House Bilingual Toastmasters Club",
+    "Galaxy Toastmasters Club",
+    "Golden Noon Toastmasters Club",
+    "Go-Me Bilingual  Toastmasters Club",
+    "Good Life Toastmasters Club",
+    "Grand Toastmasters Club",
+    "Hai-Lan-Lan Keelung Toastmasters Club",
+    "Happiness Toastmasters Club",
+    "Happy Hours Advanced Toastmasters Club",
+    "Happy Life Toastmasters Club",
+    "Happy Toastmasters Club",
+    "Harmony Bilingual Toastmasters Club",
+    "Hi Five Zhubei Bilingual Toastmasters Club",
+    "Hiking Toastmasters Club",
+    "HOPAX Toastmasters Club",
+    "HP Taiwan Toastmasters Club",
+    "Hsinchu Toastmasters Club",
+    "Hsiushui Bilingual Toastmasters Club",
+    "Hualien Toastmasters Club",
+    "Huatan Bilingual Toastmasters　Club",
+    "Huluton Toastmasters Club",
+    "Huwei Toastmasters Club",
+    "Incredible Asus Toastmasters Club",
+    "Innovative Toastmasters Club",
+    "Inspiration Christian Toastmasters Club",
+    "Irrationally Motivated Advanced Toastmasters Club",
+    "J.P. Morgan Taiwan Toastmasters Club",
+    "Joy Club Toastmasters Club",
+    "Kaohsiung Medical University",
+    "Kaohsiung Members United-Bilingual",
+    "Kaohsiung Taiwanese Toastmasters Club",
+    "Kaohsiung Toastmasters Club",
+    "KPMG Taiwan Toastmasters Club",
+    "Lantern Taiwanese Toastmasters Club",
+    "Leadership Village Toastmasters Club",
+    "Legacy Toastmasters Club",
+    "Legend Advanced Toastmasters Club",
+    "Life Bridge Bilingual Toastmasters Club",
+    "Li-Lin Bilingual Toastmasters Club",
+    "Linkou Toastmasters Club",
+    "Longtan Toastmasters Club",
+    "Mahi Mahi Taitung",
+    "Medical Group Toastmasters Club",
+    "Meta Toastmasters Club",
+    "MIRDC Toastmasters Club",
+    "MSD Taiwan Toastmasters Club",
+    "Music Talks Toastmasters Club",
+    "Nankai Bilingual Toastmasters Club",
+    "Nantou Mentor Toastmasters Club",
+    "Nantou Toastmasters Club",
+    "National Chengchi University Club",
+    "National Taiwan Normal University English Toastmasters Club",
+    "National Taiwan University Toastmasters Club",
+    "NCYU Toastmasters Club",
+    "New Century Bilingual Toastmasters Club",
+    "NKNU Toastmasters Club",
+    "NTHU Toastmasters Club",
+    "NTNU Mandarin Toastmasters Club",
+    "NTPC Toastmasters Club",
+    "NTPU Toastmasters Club",
+    "NTUB Toastmasters Club",
+    "NTUST Toastmasters Club",
+    "NTUT Toastmasters Club",
+    "Ovation Advanced Toastmasters Club",
+    "Pacific Toastmasters Club",
+    "PAREXEL International Toastmasters Club",
+    "PECL Toastmasters Club",
+    "Pega Pega Toastmasters Club",
+    "Pingtung Mandarin-Taiwanese Bilingual Toastmasters Club",
+    "Pingtung Toastmasters Club",
+    "Polaris Toastmasters Club",
+    "Premium Toastmasters Club",
+    "Prestige Toastmasters Club",
+    "Puli Bilingual Toastmasters Club",
+    "Pu-Shin Bilingual Toastmasters Club",
+    "Red Hill Toastmasters Club",
+    "Sandwich Taipei Toastmasters Club",
+    "Scien Tech Toastmasters Club",
+    "Shanhua Toastmasters Club",
+    "Shin Ying Toastmasters Club",
+    "Skal Taipei Toastmasters Club",
+    "Soochow University Toastmasters Club",
+    "Sounder Bilingual Toastmasters Club",
+    "Spark Toastmasters Club",
+    "Sparkle Toastmasters Club",
+    "Sunflower Advanced Toastmasters Club",
+    "Sunrise Toastmasters Club",
+    "Sunshine Toastmasters Club",
+    "SYSB Toastmasters Club",
+    "Ta Ren Toastmasters Club",
+    "Tachia Toastmasters Club",
+    "Taichung Advanced Toastmasters Club",
+    "Taichung Central Japanese Toastmasters Club",
+    "Taichung Elite Advanced Toastmasters Club",
+    "Taichung Taiwanese Toastmasters Club",
+    "Taichung Toastmasters Club",
+    "Tainan Toastmasters Club",
+    "Taipei DCS Toastmasters Club",
+    "Taipei Lions Toastmasters Club",
+    "Taipei Metro Toastmasters Club",
+    "Taipei Phoenix Toastmasters Club",
+    "Taipei Toastmasters Club",
+    "Taiwan Hakka Toastmasters Club",
+    "Taiwan Toastmasters Club",
+    "Tan-Zih Toastmasters Club",
+    "Taoyuan BNI Mandarin Toastmasters Club",
+    "Taoyuan Japanese Toastmasters Club",
+    "Taoyuan Taiwanese Toastmasters Club",
+    "Taoyuan Toastmasters Club",
+    "TGIF Christian Toastmasters Club",
+    "Tien Mou Toastmasters Club",
+    "Top Bilingual Toastmasters Club",
+    "Top Gun Toastmasters Club",
+    "Tso-Ying Toastmasters Club",
+    "UBI Group  Toastmasters Club",
+    "UCT-Taiwan Toastmasters Club",
+    "UPS Taiwan Toastmasters Club",
+    "USI Toastmasters Club",
+    "U-SWOT Toastmasters Club",
+    "We Rock Toastmasters Club",
+    "Wheelers Toastmasters Club",
+    "Wuri Early Bird Toastmasters Club",
+    "Y.W.C.A. Toastmasters  Club",
+    "Yang-Ming University Toastmasters Club",
+    "Yilan Toastmasters Club",
+    "YMIC Toastmasters Club",
+    "Young-Bankers Toastmasters Club",
+    "Yuanlin Toastmasters Club",
+    "Yuan-Shan Club",
+    "YZU Toastmasters Club",
+    "Zhubei Bilingual Toastmasters Club"
+  ],
   "home": {
     "countdown": {
       "title": "Conference Starting in",
@@ -135,7 +383,7 @@
       ]
     },
     "slogan": {
-      "title": "Annual Conference",
+      "title": "2023 Annual Conference",
       "date": "Apr. 22-23",
       "slogan": [
         "Connect to the Present.",
@@ -167,13 +415,14 @@
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
       "until": "Until Mar 27, 2023",
+      "sold-out": "Sold out",
       "lunch": "Lunchbox",
       "lunch2": "Lunchboxes for 2 days",
       "souvenir": "Souvenirs",
       "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
       "note": [
-        "All tickets are available for order now! Don't miss out on our early bird offer."
+        "The tickets will be available for purchase until Apr 10. Don't miss out!"
       ],
       "order": "Order Tickets"
     },
@@ -182,7 +431,8 @@
       "venue": "Kuanhe Exhibition Hall",
       "address": "No. 237-6, Section 1, Datong Rd, Xizhi District, New Taipei City, Taiwan 221",
       "show": "Show on Google Maps",
-      "directions": "Directions"
+      "transporation": "Transporation",
+      "accommodation": "Accommodation"
     }
   },
   "faq": {
@@ -198,7 +448,7 @@
       },
       {
         "question": "How can I buy the annual conference tickets?",
-        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the tutorial for more details. Thank you. Refer: https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link"
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
       },
       {
         "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
@@ -210,7 +460,7 @@
       },
       {
         "question": "Is there any recommended accommodation near the venue?",
-        "answer": "• Xi Zhi Dist. / Tainan Fushin Hotel / $2,600-$3,200 / 5-min walk from the conference venue • Nangang Dist. / May Rooms Taipei / $1,800 / 5-min walk from Nangang MRT Station / 15-min walk from Nangang Exhibition Center • Nangang Dist. / Uline Motel / $2,400-$2,900 / 10-min walk from Kunyang MRT Station • Nangang Dist. / The Place Taipei / $3,500-$3,700 / Near Nangang Software Park MRT Station / 8-min walk from Taipei Nangang Exhibition Center MRT Station • Nangang Dist. / Forward Hotel Nangang / $3,600-$3,800 / 5-min walk from Nangang Software Park MRT  • Nangang Dist. / Green World NanGang / $5,000 / 5-min walk from Nangang MRT Station"
+        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
       }
     ]
   },
@@ -240,6 +490,10 @@
     "forget-password": "Forgot your password?",
     "no-account": "Don't have an account?",
     "error": {
+      "required-email": "Please input your email.",
+      "required-password": "Please input your password.",
+      "email": "The email address you entered is not valid.",
+      "min": "Password length must be at least 6 characters.",
       "password": "Incorrect account or password."
     }
   },
@@ -247,7 +501,14 @@
     "title": "Register",
     "description": "Please register before you purchase the ticket.",
     "error": {
-      "email": "This email has been registered. Please try again."
+      "required-firstname": "Please input your first name.",
+      "required-lastname": "Please input your last name.",
+      "required-email": "Please input your email.",
+      "required-password": "Please input your password.",
+      "email-format": "The email address you entered is not valid.",
+      "email": "This email has been registered. Please try again.",
+      "min": "Password length must be at least 6 characters.",
+      "same-as-password": "The passwords you entered do not match."
     },
     "form": {
       "first-name": "First name",
@@ -296,14 +557,14 @@
       "name": "Greg Van Borssum",
       "title": "Keynote Speaker (English)/ Accredited Speaker",
       "contents": [
-        "● Australia’s first accredited speaker",
-        "● Academy Award Winning Best Animated Film “Happy Feet” Assistant Director",
-        "● Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor",
-        "● 2016 Screen Actors Guild Award Winner",
-        "● 2014 World Champion Pistol Winner",
-        "● Australian National Bodybuilding Champion",
-        "● National Mental Health Ambassador",
-        "● International Karate Master"
+        "<li>Australia’s first accredited speaker</li>",
+        "<li>Academy Award Winning Best Animated Film “Happy Feet” Assistant Director</li>",
+        "<li>Academy Award Winning Film “Mad Max: Fury Road” Choreographer and Actor</li>",
+        "<li>2016 Screen Actors Guild Award Winner</li>",
+        "<li>2014 World Champion Pistol Winner</li>",
+        "<li>Australian National Bodybuilding Champion</li>",
+        "<li>National Mental Health Ambassador</li>",
+        "<li>International Karate Master</li>"
       ],
       "facebook": "https://www.facebook.com/greg.vanborssum/",
       "instagram": "https://www.instagram.com/gvb_mindwarriors/",
@@ -340,9 +601,9 @@
       "name": "Samantha Tu",
       "title": "Trainer of the English Training Session",
       "contents": [
-        "● Lecturer of business etiquette and tea culture in National Changhua University of Education",
-        "● Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association",
-        "● Public Relations manager of Toastmasters international, D67, 2020-2021"
+        "<li>Lecturer of business etiquette and tea culture in National Changhua University of Education</li>",
+        "<li>Tea master & Trainer of tea master etiquette of Huixin Tea Culture Development Association</li>",
+        "<li>Public Relations manager of Toastmasters international, D67, 2020-2021</li>"
       ],
       "facebook": "",
       "instagram": "",
@@ -383,10 +644,10 @@
             "Focus 100% of your energy, your time and your life to getting what is really important to you. Accept only what really matters in your lives. Simplify your life. Eliminate anything trivial, everything that is superfluous. There’s no greater joy than working to achieve what really matters to you.",
             "Angel who serves as a global project manager in clinical research industries, a mother of one-year old baby and a life master has been implementing strong time management skills to strike for an elegant balance of her life. She is going to share her practical tips of managing your time by mastering your life.",
             "You will learn:",
-            "● The impact of pre-occupation to your efficiency.",
-            "● The decision diagrams.",
-            "● Identify the 3Ts, the three most important tasks to carry out in the day.",
-            "● One by one, only once and till the end."
+            "<li>The impact of pre-occupation to your efficiency.</li>",
+            "<li>The decision diagrams.</li>",
+            "<li>Identify the 3Ts, the three most important tasks to carry out in the day.</li>",
+            "<li>One by one, only once and till the end.</li>"
           ]
         }
       ]
@@ -451,20 +712,20 @@
       "title": "國語教育訓練講師",
       "contents": [
         "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
-        "● 學歷：東吳大學法律系學士；企管系EMBA碩士",
-        "● 經歷：1984-2022服務於東吳大學（已退休）",
-        "● 東吳校友總會監事",
-        "● 東吳企管EMBA聯合會監事",
-        "● 東吳女籃校友會會長",
-        "● 東吳前兩岸事務中心主任（從事兩岸學術交流26年）",
-        "● 海峽兩岸交流基金會2023年顧問（無給職）",
-        "● 演講及主持經歷：",
-        "　○ 中文演講會22年資深會員、喜洋洋中文演講會顧問",
-        "　○ 2000年國語備稿演講比賽冠軍、2002年台語即席比賽冠軍",
-        "　○ 多次參與國際演講會大會教育訓練及1次春季大會晚會主持",
-        "　○ 主持演講會會友結婚喜宴、主持演講會會友公司春酒午宴",
-        "　○ 主持訪問姚明見面會、主持800人年終尾牙",
-        "　○ 主持14場大陸同學來台交流大型活動開、閉幕典禮"
+        "<li>學歷：東吳大學法律系學士；企管系EMBA碩士</li>",
+        "<li>經歷：1984-2022服務於東吳大學（已退休）</li>",
+        "<li>東吳校友總會監事</li>",
+        "<li>東吳企管EMBA聯合會監事</li>",
+        "<li>東吳女籃校友會會長</li>",
+        "<li>東吳前兩岸事務中心主任（從事兩岸學術交流26年）</li>",
+        "<li>海峽兩岸交流基金會2023年顧問（無給職）</li>",
+        "<li>演講及主持經歷：</li>",
+        "<li class='second-layer'>中文演講會22年資深會員、喜洋洋中文演講會顧問</li>",
+        "<li class='second-layer'>2000年國語備稿演講比賽冠軍、2002年台語即席比賽冠軍</li>",
+        "<li class='second-layer'>多次參與國際演講會大會教育訓練及1次春季大會晚會主持</li>",
+        "<li class='second-layer'>主持演講會會友結婚喜宴、主持演講會會友公司春酒午宴</li>",
+        "<li class='second-layer'>主持訪問姚明見面會、主持800人年終尾牙</li>",
+        "<li class='second-layer'>主持14場大陸同學來台交流大型活動開、閉幕典禮</li>"
       ],
       "facebook": "",
       "instagram": "",
@@ -480,6 +741,64 @@
             "從小因多次參加演講比賽的經驗，讓我對「上台演講」並不陌生，但是在參加演講會之前，「主持」這件事，我可就一無所知。直到透過例會的總主持人、開懷、即席再到總講評等等的學習，才培養出我對「主持」的興趣和能力，也因為具備「主持能力」，",
             "無論是演講或主持，每位會友都有自己獨特的風格，20年多來，我像個園丁或農夫，守著演講舞台的一畝三分地，深耕勤耘，產出不多，但都是誠心之作，能常常和會友們分享，就是最歡喜的收穫！回首演講會一路走來，真心感受「惠我良多」，如今退休成為「時間富婆」，理當盡己之力感恩回饋！",
             "古云「溫故知新」，期待4月23日能和舊雨們重新溫故，也能和新知們共同學習，我們一起來杯「心口稿三合一」下午茶，輕鬆聊聊「主持二、三事」吧！"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "chang",
+      "name": "張志良",
+      "title": "國語教育訓練講師",
+      "contents": [
+        "Please be noted that this training will be conducted in Mandarin; therefore, only Mandarin introduction is provided. Thank you.",
+        "<li>現任翔威國際（華碩電腦子公司）副總經理</li>",
+        "<li>2017年加入國際演講會</li>",
+        "<li>2019年榮獲國語演講比賽第二名</li>",
+        "<li>2021年榮獲國語演講比賽第一名</li>"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "文字的多元呈現",
+          "time": "4/23 15:40-16:50",
+          "location": "2F Room Lisianthus (2A)",
+          "introduction": [
+            "以系統的方法，將創意導入文字文稿中，因而產生不同的趣味。有興趣的會友，歡迎一起來玩！"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "huang",
+      "name": "黃東竣",
+      "title": "台語教育訓練講師",
+      "contents": [
+        "Please be noted that this training will be conducted in Taiwanese; therefore, only Taiwaneseintroduction is provided. Thank you.",
+        "<li>2016年國語演講比賽第一名</li>",
+        "<li>2017年台語演講比賽第一名</li>"
+      ],
+      "facebook": "",
+      "instagram": "",
+      "youtube": "",
+      "seminars": [
+        {
+          "topic": "乎囝仔也愛講台語",
+          "time": "4/23 11:00-12:00",
+          "location": "2F Room Lisianthus (2A)",
+          "introduction": [
+            "台語是咱A母語！",
+            "講台語是一件很浪漫A代誌！",
+            "有很多話，用台語來講才有伊特殊A感情甲效果！",
+            "但是愈來愈少人用台語來交流！",
+            "我感覺非常A難過！",
+            "我去思考為什麼會發生這種代誌？",
+            "我發現是因為大部份A人～感覺講台語卡沒水準！",
+            "這個結果，是因為電視上面～台語攏是用來罵人耶！",
+            "但是，事實不是這樣耶！",
+            "現在乎咱開始來學習講優美A台語、咱開始來愛講咱A母語。",
+            "只有咱開始愛講台語，咱A囝仔才會也愛講台語！"
           ]
         }
       ]

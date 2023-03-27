@@ -51,61 +51,63 @@ export default {
         isVegetarian: false,
         addBanquet: false,
       },
-      {
-        id: 2,
-        type: 1, // Early Bird
-        description: "Early Bird 2 Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
-      {
-        id: 3,
-        type: 3, // First Day
-        description: "First Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
-      {
-        id: 4,
-        type: 4, // Second Day
-        description: "Second Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
-      {
-        id: 5,
-        type: 4, // Second Day
-        description: "Second Day Pass",
-        firstName: "",
-        lastName: "",
-        knownAs: "",
-        clubName: "",
-        isVegetarian: false,
-        addBanquet: false,
-      },
+      // {
+      //   id: 2,
+      //   type: 1, // Early Bird
+      //   description: "Early Bird 2 Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
+      // {
+      //   id: 3,
+      //   type: 3, // First Day
+      //   description: "First Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
+      // {
+      //   id: 4,
+      //   type: 4, // Second Day
+      //   description: "Second Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
+      // {
+      //   id: 5,
+      //   type: 4, // Second Day
+      //   description: "Second Day Pass",
+      //   firstName: "",
+      //   lastName: "",
+      //   knownAs: "",
+      //   clubName: "",
+      //   isVegetarian: false,
+      //   addBanquet: false,
+      // },
     ]);
-    const totalBanquets = 2;
+    const totalBanquets = 0;
     const assignedBanquets = 0;
     const remainBanquets = computed(
       () => this.totalBanquets - this.assignedBanquets
     );
-    const clubs = reactive([
-      { id: 1, english_name: "Happiness Toastmasters Club" },
-      { id: 2, english_name: "Hsinchu Toastmasters Club" },
-      { id: 3, english_name: "Sparkle Toastmasters Club" },
-    ]);
+    const clubs = reactive([]);
+    Array.from(this.$tm("clubs")).forEach((source, index) => {
+      clubs.push({
+        id: index + 1,
+        name: this.$rt(source),
+      });
+    });
     const hasSubmitted = false;
     return {
       tickets,

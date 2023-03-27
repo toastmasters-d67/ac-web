@@ -2,7 +2,13 @@
 import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import useVuelidate from "@vuelidate/core";
-import { required, email, minLength, sameAs } from "@vuelidate/validators";
+import {
+  required,
+  email,
+  minLength,
+  sameAs,
+  helpers,
+} from "@vuelidate/validators";
 import axios from "axios";
 
 const registerFormSchema = Yup.object().shape({
@@ -48,15 +54,31 @@ export default {
       password: "",
       confirmPassword: "",
     });
-    const errors = reactive({
+    const initialErrors = reactive({
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
     });
+    const errors = reactive({ ...initialErrors });
     const show = ref(false);
-    return { state, v$, errors, show };
+    return { state, v$, errors, initialErrors, show };
+  },
+  data() {
+    const errorMessages = reactive({
+      requiredFirstname: this.$t("register.error.required-firstname"),
+      requiredLastname: this.$t("register.error.required-lastname"),
+      requiredEmail: this.$t("register.error.required-email"),
+      requiredPassword: this.$t("register.error.required-password"),
+      emailFormat: this.$t("register.error.email-format"),
+      email: this.$t("register.error.email"),
+      min: this.$t("register.error.min"),
+      sameAsPassword: this.$t("register.error.same-as-password"),
+    });
+    return {
+      errorMessages,
+    };
   },
   methods: {
     validate(field) {
@@ -73,8 +95,10 @@ export default {
       if (this.errors.email === this.$t("register.error.email")) {
         this.errors.email = "";
       }
+      Object.assign(this.errors, this.initialErrors);
     },
     registerUser() {
+      this.v$.$validate();
       if (this.v$.state.$errors.length) {
         Array.from(this.v$.state.$errors).forEach((error) => {
           this.errors[error.$property] = error.$message;
@@ -97,11 +121,43 @@ export default {
   validations() {
     return {
       state: {
-        firstName: { required },
-        lastName: { required },
-        email: { required, email },
-        password: { required, min: minLength(6) },
-        confirmPassword: { required, sameAs: sameAs(this.state.password) },
+        firstName: {
+          required: helpers.withMessage(
+            this.errorMessages.requiredFirstname,
+            required
+          ),
+        },
+        lastName: {
+          required: helpers.withMessage(
+            this.errorMessages.requiredLastname,
+            required
+          ),
+        },
+        email: {
+          email: helpers.withMessage(this.errorMessages.emailFormat, email),
+          required: helpers.withMessage(
+            this.errorMessages.requiredEmail,
+            required
+          ),
+        },
+        password: {
+          min: helpers.withMessage(this.errorMessages.min, minLength(6)),
+          required: helpers.withMessage(
+            this.errorMessages.requiredPassword,
+            required
+          ),
+        },
+        confirmPassword: {
+          sameAsPassword: helpers.withMessage(
+            this.errorMessages.sameAsPassword,
+            sameAs(this.state.password)
+          ),
+          min: helpers.withMessage(this.errorMessages.min, minLength(6)),
+          required: helpers.withMessage(
+            this.errorMessages.requiredPassword,
+            required
+          ),
+        },
       },
     };
   },
@@ -127,6 +183,8 @@ export default {
           :placeholder="$t('register.form.first-name')"
           class="register-input"
           required
+          @click="clear"
+          @input="clear"
         />
         <p class="form-input-hint" v-if="!!errors.firstName">
           {{ errors.firstName }}
@@ -142,6 +200,8 @@ export default {
           :placeholder="$t('register.form.last-name')"
           class="register-input"
           required
+          @click="clear"
+          @input="clear"
         />
         <p class="form-input-hint" v-if="!!errors.lastName">
           {{ errors.lastName }}
@@ -176,6 +236,8 @@ export default {
         :placeholder="$t('register.form.password')"
         class="register-input"
         required
+        @click="clear"
+        @input="clear"
       />
       <p class="form-input-hint" v-if="!!errors.password">
         {{ errors.password }}
@@ -191,6 +253,8 @@ export default {
         :placeholder="$t('register.form.confirm-password')"
         class="register-input"
         required
+        @click="clear"
+        @input="clear"
       />
       <p class="form-input-hint" v-if="!!errors.confirmPassword">
         {{ errors.confirmPassword }}

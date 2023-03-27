@@ -55,6 +55,15 @@ export default {
       type: Function,
     },
   },
+  computed: {
+    banquetNumbers: {
+      get() {
+        const maxBanquetNumber =
+          this.state.double + this.state.first + this.state.second;
+        return reactive(Array.from(Array(maxBanquetNumber + 1).keys()));
+      },
+    },
+  },
   data() {
     const numbers = reactive(Array.from(Array(31).keys()));
     return {
@@ -66,7 +75,6 @@ export default {
 
 <template>
   <section id="picker" class="picker-container">
-    <span class="picker-expiring">{{ $t("home.ticket.until") }}</span>
     <div class="picker-row">
       <div class="picker-ticket">
         <div class="picker-title">
@@ -82,15 +90,7 @@ export default {
         </div>
         <span class="picker-note">{{ $t("cart.picker.early.note") }}</span>
       </div>
-      <select
-        :value="state.early"
-        @change="setEarly($event)"
-        class="picker-select"
-      >
-        <option v-for="(option, index) in numbers" :key="index" :value="option">
-          {{ option }}
-        </option>
-      </select>
+      <span class="picker-sold-out">{{ $t("cart.picker.sold-out") }}</span>
     </div>
     <div class="picker-row">
       <div class="picker-ticket">
@@ -186,7 +186,11 @@ export default {
         @change="setBanquet($event)"
         class="picker-select"
       >
-        <option v-for="(option, index) in numbers" :key="index" :value="option">
+        <option
+          v-for="(option, index) in banquetNumbers"
+          :key="index"
+          :value="option"
+        >
           {{ option }}
         </option>
       </select>
@@ -205,24 +209,6 @@ export default {
   padding-bottom: 130px;
   padding-left: 7%;
   padding-right: 7%;
-  .picker-expiring {
-    display: flex;
-    width: fit-content;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    color: #52555a;
-    background: linear-gradient(
-        0deg,
-        rgba(255, 204, 77, 0.7),
-        rgba(255, 204, 77, 0.7)
-      ),
-      #ffffff;
-    box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
-    border-radius: 1000px;
-    padding: 5px 12px;
-    margin-bottom: 8px;
-  }
   .picker-row {
     display: flex;
     align-items: center;
@@ -284,6 +270,13 @@ export default {
       padding: 8px 16px;
       gap: 12px;
     }
+    .picker-sold-out {
+      width: 100px;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      color: black;
+    }
   }
   .picker-additional {
     font-weight: 500;
@@ -307,10 +300,6 @@ export default {
     padding-bottom: 20px;
     padding-left: 4.267%;
     padding-right: 4.267%;
-    .picker-expiring {
-      font-size: 12px;
-      line-height: 15px;
-    }
     .picker-row {
       gap: 22px;
       margin-bottom: 35px;
@@ -340,6 +329,11 @@ export default {
         line-height: 17px;
         padding: 8px;
         padding-left: 12px;
+      }
+      .picker-sold-out {
+        width: 60px;
+        font-size: 14px;
+        line-height: 17px;
       }
     }
     .picker-additional {
