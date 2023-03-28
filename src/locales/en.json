@@ -65,7 +65,13 @@
     "edit": "Edit",
     "unpaid": "Unpaid",
     "pending": "Pending",
-    "complete": "Complete"
+    "complete": "Complete",
+    "popup": {
+      "title": "What does the status mean?",
+      "complete-description": "Your payment has been made, and the attendee info has been completed.",
+      "pending-description": "Your payment has been completed, but you haven’t finished editing the attendee info.",
+      "unpaid-description": "You haven’t paid or the payment is still in process. (It takes 2~5 days for barcode payment to refresh its status, while other payment types will refresh within a day.)"
+    }
   },
   "app": {
     "breadcrumb": {

@@ -163,26 +163,31 @@ export default {
     <PopupModal ref="popup">
       <div class="popup-container">
         <div class="popup-title">
-          What does the status mean?
+          {{ $t("account.popup.title") }}
           <i
             class="pi pi-times popup-close"
             @click="this.$refs.popup.close()"
           />
         </div>
         <div class="popup-content">
-          <span class="popup-status complete">Complete</span>
-          Your payment has been made, and the attendee info has been completed.
+          <span class="popup-status complete">
+            {{ $t("account.complete") }}
+          </span>
+          <span>{{ $t("account.popup.complete-description") }}</span>
         </div>
         <div class="popup-content">
-          <span class="popup-status pending">Pending</span>
-          Your payment has been completed, but you haven’t finished editing the
-          attendee info.
+          <span class="popup-status pending">
+            {{ $t("account.pending") }}
+          </span>
+          {{ $t("account.popup.pending-description") }}
         </div>
         <div class="popup-content">
-          <span class="popup-status unpaid">Unpaid</span>
-          You haven’t paid or the payment is still in process. (It takes 2~5
-          days for barcode payment to refresh its status, while other payment
-          types will refresh within a day.)
+          <span class="popup-status unpaid">
+            {{ $t("account.unpaid") }}
+          </span>
+          <span class="popup-description">
+            {{ $t("account.popup.unpaid-description") }}
+          </span>
         </div>
       </div>
     </PopupModal>
@@ -326,6 +331,7 @@ export default {
     }
   }
   .popup-content {
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -351,6 +357,11 @@ export default {
     .unpaid {
       color: #e31c1c;
       background: #ffd3cd;
+    }
+    .popup-description {
+      width: fit-content;
+      display: flex;
+      flex: 1;
     }
   }
 }
