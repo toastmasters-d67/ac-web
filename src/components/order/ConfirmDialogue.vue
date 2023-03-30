@@ -1,19 +1,21 @@
 <template>
   <popup-modal ref="popup">
-    <div class="message">{{ message }}</div>
-    <div class="buttons">
-      <button class="button cancel-button" @click="_cancel">
-        {{ cancelButton }}
-      </button>
-      <button class="button ok-button" @click="_confirm">
-        {{ okButton }}
-      </button>
+    <div class="window">
+      <div class="message">{{ message }}</div>
+      <div class="buttons">
+        <button class="button cancel-button" @click="_cancel">
+          {{ cancelButton }}
+        </button>
+        <button class="button ok-button" @click="_confirm">
+          {{ okButton }}
+        </button>
+      </div>
     </div>
   </popup-modal>
 </template>
 
 <script>
-import PopupModal from "./PopupModal.vue";
+import PopupModal from "@/components/app/PopupModal.vue";
 
 export default {
   name: "ConfirmDialogue",
@@ -58,6 +60,17 @@ export default {
 </script>
 
 <style scoped>
+.window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 40px;
+  width: 706px;
+  background: white;
+  border-radius: 4px;
+  margin: 0 auto;
+  z-index: 99;
+}
 .message {
   font-weight: 500;
   font-size: 18px;

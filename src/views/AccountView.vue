@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 import axios from "axios";
 import Marquee from "@/components/app/Marquee.vue";
+import PopupModal from "@/components/app/PopupModal.vue";
 
 export async function getUser(token, target) {
   const url = `${process.env.VUE_APP_API}/user`;
@@ -54,6 +55,7 @@ export default {
   name: "AccountView",
   components: {
     Marquee,
+    PopupModal,
   },
   data() {
     const fields = reactive([
@@ -61,6 +63,7 @@ export default {
       this.$t("account.date"),
       this.$t("account.status"),
       this.$t("account.amount"),
+      this.$t("account.attendee"),
     ]);
     const items = reactive([]);
     return {
@@ -118,6 +121,7 @@ export default {
               <i
                 v-if="field == $t('account.status')"
                 class="pi pi-question-circle"
+                @click="$refs.popup.open()"
               />
             </th>
           </tr>
@@ -131,6 +135,11 @@ export default {
               </span>
             </td>
             <td>$ {{ item.amount }}</td>
+            <td>
+              <button class="account-edit-button">
+                {{ $t("account.edit") }}
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -145,9 +154,43 @@ export default {
           <div>{{ item.date }}</div>
           <div :class="getStatusClass(item)" v-text="getStatus(item)" />
           <div>$ {{ item.amount }}</div>
+          <button class="account-edit-button">
+            {{ $t("account.edit") }}
+          </button>
         </div>
       </div>
     </article>
+    <PopupModal ref="popup">
+      <div class="popup-container">
+        <div class="popup-title">
+          {{ $t("account.popup.title") }}
+          <i
+            class="pi pi-times popup-close"
+            @click="this.$refs.popup.close()"
+          />
+        </div>
+        <div class="popup-content">
+          <span class="popup-status complete">
+            {{ $t("account.complete") }}
+          </span>
+          <span>{{ $t("account.popup.complete-description") }}</span>
+        </div>
+        <div class="popup-content">
+          <span class="popup-status pending">
+            {{ $t("account.pending") }}
+          </span>
+          {{ $t("account.popup.pending-description") }}
+        </div>
+        <div class="popup-content">
+          <span class="popup-status unpaid">
+            {{ $t("account.unpaid") }}
+          </span>
+          <span class="popup-description">
+            {{ $t("account.popup.unpaid-description") }}
+          </span>
+        </div>
+      </div>
+    </PopupModal>
   </div>
 </template>
 
@@ -264,6 +307,64 @@ export default {
     display: none;
   }
 }
+.popup-container {
+  width: 60.28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin: auto;
+  .popup-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #004165;
+    .popup-close {
+      padding: 4px;
+    }
+  }
+  .popup-content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    .popup-status {
+      font-size: 18px;
+      line-height: 22px;
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-right: 16px;
+    }
+    .complete {
+      color: #109f43;
+      background: #cdffc0;
+    }
+    .pending {
+      color: #dc6b04;
+      background: #ffe3b9;
+    }
+    .unpaid {
+      color: #e31c1c;
+      background: #ffd3cd;
+    }
+    .popup-description {
+      width: fit-content;
+      display: flex;
+      flex: 1;
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
   .account-container {
@@ -321,6 +422,33 @@ export default {
           line-height: 17px;
           padding: 4px 16px;
         }
+      }
+    }
+  }
+  .popup-container {
+    width: 91.47%;
+    gap: 16px;
+    padding: 24px 16px;
+    .popup-title {
+      text-align: start;
+      font-size: 18px;
+      line-height: 22px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+      .popup-close {
+        padding: 0px;
+        transform: translateY(-32px);
+      }
+    }
+    .popup-content {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 17px;
+      .popup-status {
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 8px;
       }
     }
   }

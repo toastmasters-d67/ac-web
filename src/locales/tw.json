@@ -65,7 +65,13 @@
     "edit": "編輯",
     "unpaid": "未付款",
     "pending": "待完成",
-    "complete": "已完成"
+    "complete": "已完成",
+    "popup": {
+      "title": "票券狀態代表什麼意思？",
+      "complete-description": "您已完成付款及與會者資訊填寫",
+      "pending-description": "您已完成付款，但尚未填寫完與會者資訊",
+      "unpaid-description": "您尚未付款，或款項尚在處理中（超商條碼繳費約需二～五個工作天，其他繳費方式將在一天內更新）"
+    }
   },
   "app": {
     "breadcrumb": {
