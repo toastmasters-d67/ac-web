@@ -351,7 +351,7 @@
                   $t("home.program.training", {
                     language: $t("home.program.mandarin"),
                   })
-                }}&nbsp;({{ $t("speakers[6].name") }})
+                }}&nbsp;({{ $t("speakers[7].name") }})
               </span>
               <span class="row-item-venue venue-lisianthus">
                 {{ $t("home.program.room.lisianthus") }}
@@ -524,7 +524,7 @@
                 $t("home.program.training", {
                   language: $t("home.program.mandarin"),
                 })
-              }}&nbsp;({{ $t("speakers[7].name") }})
+              }}&nbsp;({{ $t("speakers[6].name") }})
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.lisianthus") }}
