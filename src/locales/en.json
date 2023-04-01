@@ -354,11 +354,15 @@
       "day1": "Day 1",
       "day2": "Day 2",
       "registration": "Registration",
-      "until": "Open until 12:00",
-      "judge": "Judge Briefing",
+      "until": "Open until 11:30",
       "min": "mins",
-      "run-off": "International Speech Run-off {alphabet} Contest",
+      "briefing1": "International Speech Run-off A/B Contests",
+      "briefing2": "{group} Briefing",
+      "group1": "Judge/Timer/Ballot Counter",
+      "group2": "Contestant/SAA",
+      "run-off": "International Speech Run-off Contest, Group {alphabet}",
       "keynote": "Keynote Speech",
+      "speaker-shih": "Founder of Acer Group, Mr. Stan Shih",
       "lunch": "Lunchbox Distribution",
       "opening": "Opening Ceremony",
       "tea": "Tea Break",
@@ -376,12 +380,15 @@
       "final": "International Speech Contest",
       "closing": "Closing Ceremony",
       "room": {
-        "calla": "1F Room Calla Lilly & Rose (1A)",
+        "calla": "1F Main Hall",
         "clove": "2F Room Clove (2B)",
+        "group2-briefing-a": "Room 2A: Run-off A",
+        "group2-briefing-b": "Room 2B: Run-off B",
         "jasmine": "1F Room Jasmine (1B)",
         "lisianthus": "2F Room Lisianthus (2A)",
         "lobby": "1F Lobby",
-        "preparation": "2F Preparation Room (2C)"
+        "preparation": "2F Preparation Room (2C)",
+        "rose": "1F Room Rose"
       },
       "gvb-keynote-title": [
         "Remastermind - How a Failed School Kid",
@@ -549,7 +556,7 @@
         {
           "topic": "Discussing Taiwan’s Competitiveness Through the Thinking of Wangdao",
           "time": "4/22, 11:00-11:50",
-          "location": "1F Room Calla Lilly & Rose (1A)",
+          "location": "1F Main Hall",
           "introduction": [
             "“New Wangdao” is a discussion of the way of leaders in organizations of various sizes. “Value creation, the balance of interests, and sustainable development” are the three core concepts of Wangdao thinking. Wangdao emphasizes looking at the total value of things through the “Six-Aspect Values.” Pay greater attention to the “intangible, indirect, future” invisible value in addition to the “tangible, direct, and present” dominant value. Build a new mechanism for mutual value creation and the balance of interests through continuous creativity and value creation. Only then can the goal of sustainable development be realized.",
             "Taiwan is already Si-nnovation. Facing the new and future challenges of the world, we need to make Taiwan the birthplace of Si-vilization. In the past, Taiwan has served as the main contributor of the world’s electronic products and material civilization. Hopefully in the future, Taiwan can contribute to the future spiritual civilization of mankind. Taiwan can position itself as a friend of the world.",
@@ -579,7 +586,7 @@
         {
           "topic": "Remastermind - How a Failed School Kid Mastered His Mindset to Become a Champion",
           "time": "4/22, 13:10-14:00",
-          "location": "1F Room Calla Lilly & Rose (1A)",
+          "location": "1F Main Hall",
           "introduction": [
             "When people look at Greg’s life, they only see the result. They don’t see the years of failures; they don’t feel the years of pain, and they don’t hear the negative voices from his childhood that echoed so loudly through his mind.",
             "His primary teachers told him he would amount to nothing, high school teachers said he’d be the most likely student to be in prison or dead by 21... but no matter what they said, Greg refused to listen.",
@@ -768,7 +775,7 @@
       "seminars": [
         {
           "topic": "文字的多元呈現",
-          "time": "4/23 15:40-16:50",
+          "time": "4/23, 09:50-11:00",
           "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "以系統的方法，將創意導入文字文稿中，因而產生不同的趣味。有興趣的會友，歡迎一起來玩！"
@@ -791,7 +798,7 @@
       "seminars": [
         {
           "topic": "乎囝仔也愛講台語",
-          "time": "4/23 11:00-12:00",
+          "time": "4/23, 11:00-12:00",
           "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "台語是咱A母語！",
