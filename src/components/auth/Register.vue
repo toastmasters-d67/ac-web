@@ -54,50 +54,36 @@ export default {
       password: "",
       confirmPassword: "",
     });
-    const initialErrors = reactive({
+    const clearedErrors = reactive({
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
     });
-    const errors = reactive({ ...initialErrors });
+    const errors = reactive({ ...clearedErrors });
     const show = ref(false);
-    return { state, v$, errors, initialErrors, show };
-  },
-  data() {
     const errorMessages = reactive({
-      requiredFirstname: this.$t("register.error.required-firstname"),
-      requiredLastname: this.$t("register.error.required-lastname"),
+      requiredFirstname: this.$t("order.error.firstname"),
+      requiredLastname: this.$t("order.error.lastname"),
       requiredEmail: this.$t("register.error.required-email"),
-      requiredPassword: this.$t("register.error.required-password"),
+      requiredPassword: this.$t("register.error.password"),
       emailFormat: this.$t("register.error.email-format"),
       email: this.$t("register.error.email"),
       min: this.$t("register.error.min"),
       sameAsPassword: this.$t("register.error.same-as-password"),
     });
-    return {
-      errorMessages,
-    };
+    return { state, v$, errors, clearedErrors, show, errorMessages };
   },
   methods: {
-    validate(field) {
-      registerFormSchema
-        .validateAt(field, this.values)
-        .then(() => {
-          this.errors[field] = "";
-        })
-        .catch((err) => {
-          this.errors[field] = err.message;
-        });
-    },
     clear() {
       if (this.errors.email === this.$t("register.error.email")) {
         this.errors.email = "";
       }
-      Object.assign(this.errors, this.initialErrors);
+      Object.assign(this.errors, this.clearedErrors);
     },
-    registerUser() {
+    registerUser(event) {
+      event.preventDefault();
       this.v$.$validate();
       if (this.v$.state.$errors.length) {
         Array.from(this.v$.state.$errors).forEach((error) => {
