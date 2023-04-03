@@ -112,11 +112,11 @@ export default {
     <article id="account" class="account-container">
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
-        <button class="account-button">
           <router-link to="/cart" class="">
-            <span class="plus">+</span> {{ $t("account.new") }}
-          </router-link>
+        <button class="account-button">         
+            <span class="plus">+ {{ $t("account.new") }}</span>
         </button>
+          </router-link>
       </div>
       <table id="tableComponent" class="table table-bordered table-striped">
         <thead class="table-head">
@@ -251,6 +251,7 @@ export default {
       box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
       text-align: center;
       padding: 8px 24px;
+      cursor: pointer;
       .plus {
         font-size: 25px;
         line-height: 1;
