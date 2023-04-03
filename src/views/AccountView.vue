@@ -25,7 +25,9 @@ export async function getUser(token, target) {
               status: "unpaid",
               date: new Date(+order.orderId * 1000).toISOString().slice(0, 10),
             };
-            if (order.transactions.length) {
+            if (order.tickets.length) {
+              item.status = "complete";
+            } else if (order.transactions.length) {
               const transaction = order.transactions.find(
                 (x) => x.status === "SUCCESS"
               );
@@ -72,6 +74,9 @@ export default {
     };
   },
   methods: {
+    getOrder(id) {
+      this.$router.push(`order/${id}`);
+    },
     getStatusClass(item) {
       return "account-status " + item.status.toLocaleLowerCase();
     },
@@ -136,8 +141,19 @@ export default {
             </td>
             <td>$ {{ item.amount }}</td>
             <td>
-              <button class="account-edit-button">
+              <button
+                v-if="item.status == 'pending'"
+                class="account-edit-button"
+                @click="this.getOrder(item.id)"
+              >
                 {{ $t("account.edit") }}
+              </button>
+              <button
+                v-if="item.status == 'complete'"
+                class="account-edit-button"
+                @click="this.getOrder(item.id)"
+              >
+                {{ $t("account.view") }}
               </button>
             </td>
           </tr>
@@ -154,7 +170,11 @@ export default {
           <div>{{ item.date }}</div>
           <div :class="getStatusClass(item)" v-text="getStatus(item)" />
           <div>$ {{ item.amount }}</div>
-          <button class="account-edit-button">
+          <button
+            v-if="item.status == 'pending'"
+            class="account-edit-button"
+            @click="this.edit(item.id)"
+          >
             {{ $t("account.edit") }}
           </button>
         </div>
