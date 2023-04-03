@@ -63,6 +63,7 @@
     "amount": "Amount",
     "attendee": "Attendee info",
     "edit": "Edit",
+    "view": "View",
     "unpaid": "Unpaid",
     "pending": "Pending",
     "complete": "Complete",
@@ -170,7 +171,7 @@
     "Born to Shine Christian Toastmasters",
     "CECI Toastmasters Club",
     "Challenge Yourself to Grow (CYTG) Toastmasters Club",
-    "Changhua Bilingual Toastmasters　Club",
+    "Changhua Bilingual Toastmasters Club",
     "Changhua Toastmasters Club",
     "Chaoyang Tech Toastmasters Club",
     "Charming Toastmasters Club",
@@ -224,7 +225,7 @@
     "Hsinchu Toastmasters Club",
     "Hsiushui Bilingual Toastmasters Club",
     "Hualien Toastmasters Club",
-    "Huatan Bilingual Toastmasters　Club",
+    "Huatan Bilingual Toastmasters Club",
     "Huluton Toastmasters Club",
     "Huwei Toastmasters Club",
     "Incredible Asus Toastmasters Club",
@@ -510,14 +511,19 @@
       "password": "Incorrect account or password."
     }
   },
+  "order": {
+    "error": {
+      "firstname": "Please input your first name.",
+      "lastname": "Please input your last name.",
+      "club": "Please input your club."
+    }
+  },
   "register": {
     "title": "Register",
     "description": "Please register before you purchase the ticket.",
     "error": {
-      "required-firstname": "Please input your first name.",
-      "required-lastname": "Please input your last name.",
       "required-email": "Please input your email.",
-      "required-password": "Please input your password.",
+      "password": "Please input your password.",
       "email-format": "The email address you entered is not valid.",
       "email": "This email has been registered. Please try again.",
       "min": "Password length must be at least 6 characters.",

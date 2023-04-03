@@ -53,7 +53,7 @@
   },
   "account": {
     "marquee": {
-      "important-notice": "《重要提醒》送出訂單後，請在繳費期限內付款，謝謝。若未在期限內付款，您的訂單將被取消，請重新訂票。"
+      "notice": "《重要提醒》送出訂單後，請在繳費期限內付款，謝謝。若未在期限內付款，您的訂單將被取消，請重新訂票。"
     },
     "title": "我的帳號",
     "new": "新訂單",
@@ -63,6 +63,7 @@
     "amount": "金額",
     "attendee": "購票人資訊",
     "edit": "編輯",
+    "view": "檢視",
     "unpaid": "未付款",
     "pending": "待完成",
     "complete": "已完成",
@@ -509,14 +510,19 @@
       "password": "錯誤的帳號或密碼"
     }
   },
+  "order": {
+    "error": {
+      "firstname": "請輸入您的名字",
+      "lastname": "請輸入您的姓氏",
+      "club": "請輸入您的分會"
+    }
+  },
   "register": {
     "title": "註冊",
     "description": "請先註冊以繼續完成購票",
     "error": {
-      "required-firstname": "請輸入您的名字",
-      "required-lastname": "請輸入您的姓氏",
       "required-email": "請填寫您的電子郵件",
-      "required-password": "請填寫您的密碼",
+      "password": "請填寫您的密碼",
       "email-format": "您輸入的電子郵件格式不正確",
       "email": "此 email 已被使用，請重新輸入。",
       "min": "密碼必須至少為六位數",
