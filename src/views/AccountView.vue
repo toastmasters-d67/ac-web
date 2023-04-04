@@ -23,7 +23,7 @@ export async function getUser(token, target) {
               id: order.orderId,
               amount: order.amount,
               status: "unpaid",
-              date: parseDate(order.orderId),
+              date: getDateString(order.orderId),
             };
             if (order.tickets.length) {
               item.status = "complete";
@@ -53,14 +53,14 @@ export async function getUser(token, target) {
   }
 }
 
-export function parseDate(dateString) {
+export function getDateString(orderId) {
   try {
-    return new Date(+dateString * 1000).toISOString().slice(0, 10);
+    return new Date(+orderId * 1000).toISOString().slice(0, 10);
   } catch (error) {
     if (error.message === "Invalid time value") {
-      let year = dateString.slice(0, 4);
-      let month = dateString.slice(4, 6);
-      let day = dateString.slice(6, 8);
+      let year = orderId.slice(0, 4);
+      let month = orderId.slice(4, 6);
+      let day = orderId.slice(6, 8);
       return year.concat("-", month, "-", day);
     } else throw error;
   }
