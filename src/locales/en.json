@@ -383,8 +383,8 @@
       "room": {
         "calla": "1F Main Hall",
         "clove": "2F Room Clove (2B)",
-        "group2-briefing-a": "Room 2A: Run-off A",
-        "group2-briefing-b": "Room 2B: Run-off B",
+        "group2-briefing-a": "2F Room 2A: Run-off A",
+        "group2-briefing-b": "2F Room 2B: Run-off B",
         "jasmine": "1F Room Jasmine (1B)",
         "lisianthus": "2F Room Lisianthus (2A)",
         "lobby": "1F Lobby",
@@ -781,7 +781,7 @@
       "seminars": [
         {
           "topic": "文字的多元呈現",
-          "time": "4/23, 09:50-11:00",
+          "time": "4/23, 09:50-10:50",
           "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "以系統的方法，將創意導入文字文稿中，因而產生不同的趣味。有興趣的會友，歡迎一起來玩！"
