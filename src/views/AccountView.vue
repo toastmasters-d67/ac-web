@@ -23,16 +23,22 @@ export async function getUser(token, target) {
               id: order.orderId,
               amount: order.amount,
               status: "unpaid",
-              date: getDateString(order.orderId),
+              statusText: target.$t("account.unpaid"),
+              button: "",
+              date: target.getDate(order.orderId),
             };
             if (order.tickets.length) {
               item.status = "complete";
+              item.statusText = target.$t("account.complete");
+              item.button = target.$t("account.view");
             } else if (order.transactions.length) {
               const transaction = order.transactions.find(
                 (x) => x.status === "SUCCESS"
               );
               if (transaction && transaction.amount === order.amount) {
                 item.status = "pending";
+                item.statusText = target.$t("account.pending");
+                item.button = target.$t("account.edit");
               }
             }
             target.items.push(item);
@@ -50,19 +56,6 @@ export async function getUser(token, target) {
       });
   } catch (error) {
     console.log(error);
-  }
-}
-
-export function getDateString(orderId) {
-  try {
-    return new Date(+orderId * 1000).toISOString().slice(0, 10);
-  } catch (error) {
-    if (error.message === "Invalid time value") {
-      let year = orderId.slice(0, 4);
-      let month = orderId.slice(4, 6);
-      let day = orderId.slice(6, 8);
-      return year.concat("-", month, "-", day);
-    } else throw error;
   }
 }
 
@@ -87,21 +80,26 @@ export default {
     };
   },
   methods: {
-    getOrder(id) {
-      this.$router.push(`order/${id}`);
+    getDate(orderId) {
+      try {
+        return new Date(+orderId * 1000).toISOString().slice(0, 10);
+      } catch (error) {
+        if (error.message === "Invalid time value") {
+          const arr = [
+            orderId.slice(0, 4),
+            orderId.slice(4, 6),
+            orderId.slice(6, 8),
+          ];
+          return arr.join("-");
+        }
+        return "";
+      }
     },
     getStatusClass(item) {
       return "account-status " + item.status.toLocaleLowerCase();
     },
-    getStatus(item) {
-      if (item.status === "unpaid") {
-        return this.$t("account.unpaid");
-      } else if (item.status === "pending") {
-        return this.$t("account.pending");
-      } else if (item.status === "complete") {
-        return this.$t("account.complete");
-      }
-      return "Error";
+    browseOrder(id) {
+      this.$router.push(`order/${id}`);
     },
   },
   created() {
@@ -149,24 +147,19 @@ export default {
             <td>{{ item.id }}</td>
             <td>{{ item.date }}</td>
             <td>
-              <span :class="getStatusClass(item)" v-text="getStatus(item)">
+              <span :class="getStatusClass(item)">
+                {{ item.statusText }}
               </span>
             </td>
             <td>$ {{ item.amount }}</td>
             <td>
               <button
-                v-if="item.status == 'pending'"
-                class="account-edit-button"
-                @click="this.getOrder(item.id)"
+                v-if="item.button.length"
+                statusText
+                class="account-button"
+                @click="this.browseOrder(item.id)"
               >
-                {{ $t("account.edit") }}
-              </button>
-              <button
-                v-if="item.status == 'complete'"
-                class="account-edit-button"
-                @click="this.getOrder(item.id)"
-              >
-                {{ $t("account.view") }}
+                {{ item.button }}
               </button>
             </td>
           </tr>
@@ -181,14 +174,14 @@ export default {
         <div class="rwd-content">
           <div>{{ item.id }}</div>
           <div>{{ item.date }}</div>
-          <div :class="getStatusClass(item)" v-text="getStatus(item)" />
+          <div :class="getStatusClass(item)">{{ item.statusText }}</div>
           <div>$ {{ item.amount }}</div>
           <button
-            v-if="item.status == 'pending'"
-            class="account-edit-button"
-            @click="this.edit(item.id)"
+            v-if="item.button.length"
+            class="account-button"
+            @click="this.browseOrder(item.id)"
           >
-            {{ $t("account.edit") }}
+            {{ item.button }}
           </button>
         </div>
       </div>
@@ -323,7 +316,7 @@ export default {
       background-color: #f3f3f3;
     }
   }
-  .account-edit-button {
+  .account-button {
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
@@ -450,7 +443,7 @@ export default {
           color: #109f43;
           background: #cdddc0;
         }
-        .account-edit-button {
+        .account-button {
           font-size: 14px;
           line-height: 17px;
           padding: 4px 16px;
