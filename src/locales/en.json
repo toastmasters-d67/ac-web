@@ -338,6 +338,22 @@
     "YZU Toastmasters Club",
     "Zhubei Bilingual Toastmasters Club"
   ],
+  "error": {
+    "club": "Please input your last club.",
+    "email": {
+      "empty": "Please input your email.",
+      "format": "The email address you entered is not valid.",
+      "occupied": "This email has been registered. Please try again."
+    },
+    "firstname": "Please input your first name.",
+    "lastname": "Please input your last name.",
+    "password": {
+      "empty": "Please input your password.",
+      "incorrect": "Incorrect account or password.",
+      "match": "The passwords you entered do not match.",
+      "min": "Password length must be at least 6 characters."
+    }
+  },
   "home": {
     "countdown": {
       "title": "Conference Starting in",
@@ -503,32 +519,11 @@
     "description": "Please log in before you purchase the ticket.",
     "forget-password": "Forgot your password?",
     "no-account": "Don't have an account?",
-    "error": {
-      "required-email": "Please input your email.",
-      "required-password": "Please input your password.",
-      "email": "The email address you entered is not valid.",
-      "min": "Password length must be at least 6 characters.",
-      "password": "Incorrect account or password."
-    }
   },
-  "order": {
-    "error": {
-      "firstname": "Please input your first name.",
-      "lastname": "Please input your last name.",
-      "club": "Please input your club."
-    }
-  },
+  "order": {},
   "register": {
     "title": "Register",
     "description": "Please register before you purchase the ticket.",
-    "error": {
-      "required-email": "Please input your email.",
-      "password": "Please input your password.",
-      "email-format": "The email address you entered is not valid.",
-      "email": "This email has been registered. Please try again.",
-      "min": "Password length must be at least 6 characters.",
-      "same-as-password": "The passwords you entered do not match."
-    },
     "form": {
       "first-name": "First name",
       "last-name": "Last name",

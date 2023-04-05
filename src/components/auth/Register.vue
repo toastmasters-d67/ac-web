@@ -12,12 +12,10 @@ import {
 import axios from "axios";
 
 const registerFormSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
+  firstName: Yup.string().required(),
+  lastName: Yup.string().required(),
   email: Yup.string().required().email(),
-  password: Yup.string()
-    .required("Password is required")
-    .min(6, "Password must be at least 6 characters"),
+  password: Yup.string().required().min(6),
   confirmPassword: Yup.string().required().min(6),
 });
 
@@ -32,7 +30,7 @@ export async function onSubmit(values, target) {
       })
       .catch(function (error) {
         if (409 === error.response.status) {
-          target.errors.email = target.$t("register.error.email");
+          target.errors.email = target.$t("error.email.occupied");
           target.show = true;
         } else {
           console.log(error);
@@ -45,7 +43,7 @@ export async function onSubmit(values, target) {
 }
 
 export default {
-  setup() {
+  data() {
     const v$ = useVuelidate();
     const state = reactive({
       firstName: "",
@@ -64,20 +62,20 @@ export default {
     const errors = reactive({ ...clearedErrors });
     const show = ref(false);
     const errorMessages = reactive({
-      requiredFirstname: this.$t("order.error.firstname"),
-      requiredLastname: this.$t("order.error.lastname"),
-      requiredEmail: this.$t("register.error.required-email"),
-      requiredPassword: this.$t("register.error.password"),
-      emailFormat: this.$t("register.error.email-format"),
-      email: this.$t("register.error.email"),
-      min: this.$t("register.error.min"),
-      sameAsPassword: this.$t("register.error.same-as-password"),
+      requiredFirstname: this.$t("error.firstname"),
+      requiredLastname: this.$t("error.lastname"),
+      requiredEmail: this.$t("error.email.empty"),
+      requiredPassword: this.$t("error.password.empty"),
+      emailFormat: this.$t("error.email.format"),
+      email: this.$t("error.email.occupied"),
+      min: this.$t("error.password.min"),
+      sameAsPassword: this.$t("error.password.match"),
     });
     return { state, v$, errors, clearedErrors, show, errorMessages };
   },
   methods: {
     clear() {
-      if (this.errors.email === this.$t("register.error.email")) {
+      if (this.errors.email === this.$t("error.email.occupied")) {
         this.errors.email = "";
       }
       Object.assign(this.errors, this.clearedErrors);

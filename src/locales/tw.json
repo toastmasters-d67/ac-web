@@ -201,7 +201,7 @@
     "遠東商銀英語國際演講會",
     "遠東新世紀英語國際演講會",
     "豐原英語國際演講會",
-    "Ferina英語國際演講會",
+    "Ferina 英語國際演講會",
     "FHK Toastmasters Club",
     "輔仁英語國際演講會",
     "流暢英語國際演講會",
@@ -238,7 +238,7 @@
     "高友雙語國際演講會",
     "高雄台語國際演講會",
     "高雄英語國際演講會",
-    "安侯建業 KPMG英語國際演講會",
+    "安侯建業 KPMG 英語國際演講會",
     "輪轉台語國際演講會",
     "領導村英語國際演講會",
     "薪傳英語國際演講會",
@@ -338,6 +338,22 @@
     "元智英語國際演講會",
     "竹北雙語演講會"
   ],
+  "error": {
+    "club": "請輸入您的分會",
+    "email": {
+      "empty": "請輸入您的電子信箱",
+      "format": "您輸入的電子信箱格式不正確",
+      "occupied": "此電子信箱已被使用，請重新輸入。"
+    },
+    "firstname": "請輸入您的名字",
+    "lastname": "請輸入您的姓氏",
+    "password": {
+      "empty": "請輸入您的密碼",
+      "incorrect": "錯誤的帳號或密碼",
+      "match": "您輸入的密碼必須和前一個欄位相同",
+      "min": "密碼必須至少為六位數"
+    }
+  },
   "home": {
     "countdown": {
       "title": "年度大會開幕倒數",
@@ -501,33 +517,12 @@
     "title": "登入",
     "description": "請登入以繼續完成購票",
     "forget-password": "忘記密碼?",
-    "no-account": "沒有帳號嗎?",
-    "error": {
-      "required-email": "請填寫您的電子郵件",
-      "required-password": "請填寫您的密碼",
-      "email": "您輸入的電子郵件格式不正確",
-      "min": "密碼必須至少為六位數",
-      "password": "錯誤的帳號或密碼"
-    }
+    "no-account": "沒有帳號嗎?"
   },
-  "order": {
-    "error": {
-      "firstname": "請輸入您的名字",
-      "lastname": "請輸入您的姓氏",
-      "club": "請輸入您的分會"
-    }
-  },
+  "order": {},
   "register": {
     "title": "註冊",
     "description": "請先註冊以繼續完成購票",
-    "error": {
-      "required-email": "請填寫您的電子郵件",
-      "password": "請填寫您的密碼",
-      "email-format": "您輸入的電子郵件格式不正確",
-      "email": "此 email 已被使用，請重新輸入。",
-      "min": "密碼必須至少為六位數",
-      "same-as-password": "您輸入的密碼必須和前一個欄位相同"
-    },
     "form": {
       "first-name": "名字",
       "last-name": "姓氏",
