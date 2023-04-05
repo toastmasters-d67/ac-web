@@ -44,17 +44,15 @@ export async function getCountOfTickets(token, target) {
   }
 }
 
-export async function getTickets(token, target) {
+export async function fetchTickets(token, target) {
   const url = `${process.env.VUE_APP_API}/tickets/${target.$route.params.id}`;
   try {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     axios
       .get(url)
       .then(function (response) {
-        console.log("getTickets() response.data =", response.data);
         if (response && response.data) {
           target.readState(response.data);
-          target.readTickets(response.data);
           target.setAssignments(target.count.banquet);
         }
       })
@@ -79,6 +77,9 @@ export async function onSubmit(values, target) {
       .post(url, values)
       .then(function (response) {
         console.log("response =", response);
+        target.$router.push("me").then(() => {
+          target.$router.go();
+        });
       })
       .catch(function (error) {
         if (401 === error.response.status) {
@@ -169,16 +170,16 @@ export default {
       if (data.tickets.length === 0) {
         this.active = true;
         this.getState();
-        this.setTickets();
       } else {
         const token = localStorage.getItem("token");
         if (!token || !token.length) {
           this.$router.push("login");
         }
-        getTickets(token, this);
+        fetchTickets(token, this);
       }
     },
     readState(tickets) {
+      let index = 1;
       Array.from(tickets).forEach((ticket) => {
         const item = {
           firstName: ticket.firstName,
@@ -188,30 +189,20 @@ export default {
           vegetarian: ticket.vegetarian,
           dtm: ticket.dtm,
           banquet: ticket.banquet,
-        };
-        this.state.push(item);
-        this.errors.push(this.clearedErrors);
-      });
-    },
-    readTickets(tickets) {
-      let index = 1;
-      Array.from(tickets).forEach((ticket) => {
-        const item = {
           key: index,
           type: ticket.type,
           description: this.$t(`cart.picker.${ticket.type}.name`),
           icon: "pi pi-angle-up tickets-expand-arrow",
           show: true,
           banquetDisabled: false,
-          firstNameError: null,
-          lastNameError: null,
-          clubError: null,
         };
-        this.tickets.push(item);
+        this.state.push(item);
+        this.errors.push(this.clearedErrors);
         index++;
       });
     },
     getState() {
+      let index = 1;
       Object.keys(this.count).forEach((key) => {
         for (let i = 0; i < this.count[key]; i++) {
           if (key !== "banquet") {
@@ -225,40 +216,23 @@ export default {
               vegetarian: false,
               dtm: false,
               banquet: false,
-            };
-            this.state.push(item);
-            this.errors.push(this.clearedErrors);
-          }
-        }
-      });
-    },
-    setTickets() {
-      let index = 1;
-      Object.keys(this.count).forEach((key) => {
-        for (let i = 0; i < this.count[key]; i++) {
-          if (key !== "banquet") {
-            const ticket = {
               key: index,
-              type: key,
               description: this.$t(`cart.picker.${key}.name`),
               icon: "pi pi-angle-up tickets-expand-arrow",
               show: true,
               banquetDisabled: false,
-              firstNameError: null,
-              lastNameError: null,
-              clubError: null,
             };
-            this.tickets.push(ticket);
+            this.state.push(item);
+            this.errors.push(this.clearedErrors);
             index++;
           }
         }
       });
     },
     toggle(index) {
-      this.tickets[index].show = !this.tickets[index].show;
+      this.state[index].show = !this.state[index].show;
     },
-    submitTickets(event) {
-      event.preventDefault();
+    submitTickets() {
       arrayOfTicketsSchema
         .validate(this.state, { abortEarly: false })
         .then(() => {
@@ -297,13 +271,13 @@ export default {
       }
     },
     getDirection(index) {
-      const direction = this.tickets[index].show ? "up" : "down";
+      const direction = this.state[index].show ? "up" : "down";
       return `pi pi-angle-${direction} tickets-expand-arrow`;
     },
-    getStyle(error) {
-      if (error === null || error === "")
-        return "border: rgba(83, 89, 90, 1) 1px solid;";
-      else return "border: red 1px solid;";
+    getBorderStyle(error) {
+      const color =
+        error === null || error === "" ? "rgba(83, 89, 90, 1)" : "red";
+      return `border: ${color} 1px solid;`;
     },
     getDisabledButtonStyle(isDisabled) {
       if (isDisabled) {
@@ -356,7 +330,7 @@ export default {
       </span>
       <div class="tickets-ticket-list">
         <div
-          v-for="(ticket, index) in tickets"
+          v-for="(ticket, index) in state"
           :key="index"
           class="tickets-ticket-item"
         >
@@ -367,7 +341,7 @@ export default {
           <div class="tickets-ticket-form" v-show="ticket.show">
             <div
               class="tickets-ticket-input"
-              :style="getStyle(ticket.firstNameError)"
+              :style="getBorderStyle(errors[index].firstName)"
             >
               <input
                 v-model="state[index].firstName"
@@ -388,7 +362,7 @@ export default {
             </div>
             <div
               class="tickets-ticket-input"
-              :style="getStyle(ticket.lastNameError)"
+              :style="getBorderStyle(errors[index].lastName)"
             >
               <input
                 v-model="state[index].lastName"
@@ -417,7 +391,7 @@ export default {
             </div>
             <div
               class="tickets-ticket-input"
-              :style="getStyle(ticket.clubNameError)"
+              :style="getBorderStyle(errors[index].club)"
             >
               <select
                 v-model="state[index].club"
