@@ -62,10 +62,10 @@ export default {
   },
   data() {
     const errorMessages = reactive({
-      requiredEmail: this.$t("login.error.required-email"),
-      requiredPassword: this.$t("login.error.required-password"),
-      email: this.$t("login.error.email"),
-      min: this.$t("login.error.min"),
+      requiredEmail: this.$t("error.email.empty"),
+      requiredPassword: this.$t("error.password.empty"),
+      email: this.$t("error.email.format"),
+      min: this.$t("error.password.min"),
     });
     return {
       errorMessages,
