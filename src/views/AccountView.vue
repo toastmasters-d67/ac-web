@@ -106,7 +106,7 @@ export default {
     if (!this.items.length) {
       const token = localStorage.getItem("token");
       if (!token || !token.length) {
-        this.$router.push("login");
+        this.$router.push("/login");
       }
       getUser(token, this);
     }
