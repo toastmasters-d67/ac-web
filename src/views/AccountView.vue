@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 import axios from "axios";
 import Marquee from "@/components/app/Marquee.vue";
+import PopupModal from "@/components/app/PopupModal.vue";
 
 export async function getUser(token, target) {
   const url = `${process.env.VUE_APP_API}/user`;
@@ -22,14 +23,22 @@ export async function getUser(token, target) {
               id: order.orderId,
               amount: order.amount,
               status: "unpaid",
-              date: new Date(+order.orderId * 1000).toISOString().slice(0, 10),
+              statusText: target.$t("account.unpaid"),
+              button: "",
+              date: target.getDate(order.orderId),
             };
-            if (order.transactions.length) {
+            if (order.tickets.length) {
+              item.status = "complete";
+              item.statusText = target.$t("account.complete");
+              item.button = target.$t("account.view");
+            } else if (order.transactions.length) {
               const transaction = order.transactions.find(
                 (x) => x.status === "SUCCESS"
               );
               if (transaction && transaction.amount === order.amount) {
                 item.status = "pending";
+                item.statusText = target.$t("account.pending");
+                item.button = target.$t("account.edit");
               }
             }
             target.items.push(item);
@@ -54,6 +63,7 @@ export default {
   name: "AccountView",
   components: {
     Marquee,
+    PopupModal,
   },
   data() {
     const fields = reactive([
@@ -61,6 +71,7 @@ export default {
       this.$t("account.date"),
       this.$t("account.status"),
       this.$t("account.amount"),
+      this.$t("account.attendee"),
     ]);
     const items = reactive([]);
     return {
@@ -69,25 +80,33 @@ export default {
     };
   },
   methods: {
+    getDate(orderId) {
+      try {
+        return new Date(+orderId * 1000).toISOString().slice(0, 10);
+      } catch (error) {
+        if (error.message === "Invalid time value") {
+          const arr = [
+            orderId.slice(0, 4),
+            orderId.slice(4, 6),
+            orderId.slice(6, 8),
+          ];
+          return arr.join("-");
+        }
+        return "";
+      }
+    },
     getStatusClass(item) {
       return "account-status " + item.status.toLocaleLowerCase();
     },
-    getStatus(item) {
-      if (item.status === "unpaid") {
-        return this.$t("account.unpaid");
-      } else if (item.status === "pending") {
-        return this.$t("account.pending");
-      } else if (item.status === "complete") {
-        return this.$t("account.complete");
-      }
-      return "Error";
+    browseOrder(id) {
+      this.$router.push(`order/${id}`);
     },
   },
   created() {
     if (!this.items.length) {
       const token = localStorage.getItem("token");
       if (!token || !token.length) {
-        this.$router.push("login");
+        this.$router.push("/login");
       }
       getUser(token, this);
     }
@@ -104,11 +123,11 @@ export default {
     <article id="account" class="account-container">
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
-        <button class="account-button">
-          <router-link to="/cart" class="">
-            <span class="plus">+</span> {{ $t("account.new") }}
-          </router-link>
-        </button>
+        <router-link to="/cart" class="">
+          <button class="account-button">
+            <span class="plus">+ {{ $t("account.new") }}</span>
+          </button>
+        </router-link>
       </div>
       <table id="tableComponent" class="table table-bordered table-striped">
         <thead class="table-head">
@@ -118,6 +137,7 @@ export default {
               <i
                 v-if="field == $t('account.status')"
                 class="pi pi-question-circle"
+                @click="$refs.popup.open()"
               />
             </th>
           </tr>
@@ -127,10 +147,21 @@ export default {
             <td>{{ item.id }}</td>
             <td>{{ item.date }}</td>
             <td>
-              <span :class="getStatusClass(item)" v-text="getStatus(item)">
+              <span :class="getStatusClass(item)">
+                {{ item.statusText }}
               </span>
             </td>
             <td>$ {{ item.amount }}</td>
+            <td>
+              <button
+                v-if="item.button.length"
+                statusText
+                class="account-button"
+                @click="this.browseOrder(item.id)"
+              >
+                {{ item.button }}
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -143,11 +174,49 @@ export default {
         <div class="rwd-content">
           <div>{{ item.id }}</div>
           <div>{{ item.date }}</div>
-          <div :class="getStatusClass(item)" v-text="getStatus(item)" />
+          <div :class="getStatusClass(item)">{{ item.statusText }}</div>
           <div>$ {{ item.amount }}</div>
+          <button
+            v-if="item.button.length"
+            class="account-button"
+            @click="this.browseOrder(item.id)"
+          >
+            {{ item.button }}
+          </button>
         </div>
       </div>
     </article>
+    <PopupModal ref="popup">
+      <div class="popup-container">
+        <div class="popup-title">
+          {{ $t("account.popup.title") }}
+          <i
+            class="pi pi-times popup-close"
+            @click="this.$refs.popup.close()"
+          />
+        </div>
+        <div class="popup-content">
+          <span class="popup-status complete">
+            {{ $t("account.complete") }}
+          </span>
+          <span>{{ $t("account.popup.complete-description") }}</span>
+        </div>
+        <div class="popup-content">
+          <span class="popup-status pending">
+            {{ $t("account.pending") }}
+          </span>
+          {{ $t("account.popup.pending-description") }}
+        </div>
+        <div class="popup-content">
+          <span class="popup-status unpaid">
+            {{ $t("account.unpaid") }}
+          </span>
+          <span class="popup-description">
+            {{ $t("account.popup.unpaid-description") }}
+          </span>
+        </div>
+      </div>
+    </PopupModal>
   </div>
 </template>
 
@@ -188,6 +257,7 @@ export default {
       box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
       text-align: center;
       padding: 8px 24px;
+      cursor: pointer;
       .plus {
         font-size: 25px;
         line-height: 1;
@@ -247,7 +317,7 @@ export default {
       background-color: #f3f3f3;
     }
   }
-  .account-edit-button {
+  .account-button {
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
@@ -262,6 +332,64 @@ export default {
   }
   .rwd-account {
     display: none;
+  }
+}
+.popup-container {
+  width: 60.28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin: auto;
+  .popup-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #004165;
+    .popup-close {
+      padding: 4px;
+    }
+  }
+  .popup-content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    .popup-status {
+      font-size: 18px;
+      line-height: 22px;
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-right: 16px;
+    }
+    .complete {
+      color: #109f43;
+      background: #cdffc0;
+    }
+    .pending {
+      color: #dc6b04;
+      background: #ffe3b9;
+    }
+    .unpaid {
+      color: #e31c1c;
+      background: #ffd3cd;
+    }
+    .popup-description {
+      width: fit-content;
+      display: flex;
+      flex: 1;
+    }
   }
 }
 
@@ -316,11 +444,38 @@ export default {
           color: #109f43;
           background: #cdddc0;
         }
-        .account-edit-button {
+        .account-button {
           font-size: 14px;
           line-height: 17px;
           padding: 4px 16px;
         }
+      }
+    }
+  }
+  .popup-container {
+    width: 91.47%;
+    gap: 16px;
+    padding: 24px 16px;
+    .popup-title {
+      text-align: start;
+      font-size: 18px;
+      line-height: 22px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+      .popup-close {
+        padding: 0px;
+        transform: translateY(-32px);
+      }
+    }
+    .popup-content {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 17px;
+      .popup-status {
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 8px;
       }
     }
   }

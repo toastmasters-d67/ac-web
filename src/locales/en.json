@@ -63,9 +63,16 @@
     "amount": "Amount",
     "attendee": "Attendee info",
     "edit": "Edit",
+    "view": "View",
     "unpaid": "Unpaid",
     "pending": "Pending",
-    "complete": "Complete"
+    "complete": "Complete",
+    "popup": {
+      "title": "What does the status mean?",
+      "complete-description": "Your payment has been made, and the attendee info has been completed.",
+      "pending-description": "Your payment has been completed, but you haven’t finished editing the attendee info.",
+      "unpaid-description": "You haven’t paid or the payment is still in process. (It takes 2~5 days for barcode payment to refresh its status, while other payment types will refresh within a day.)"
+    }
   },
   "app": {
     "breadcrumb": {
@@ -146,6 +153,7 @@
     }
   },
   "clubs": [
+    "Guest",
     "Advanced Singing Toastmasters Club",
     "ALE ELITE Toastmasters Club",
     "Ale Ladder Toastmasters Club",
@@ -154,7 +162,7 @@
     "Ale Ultimate Toastmaster Club",
     "Aloha Bilingual Toastmasters Club",
     "ALPHA Toastmasters Club",
-    "AMC Leaders  Toastmasters Club",
+    "AMC Leaders Toastmasters Club",
     "AMEX Taiwan Toastmasters Club",
     "ARRIS Toastmasters Club",
     "Beast Toastmasters Club",
@@ -164,7 +172,7 @@
     "Born to Shine Christian Toastmasters",
     "CECI Toastmasters Club",
     "Challenge Yourself to Grow (CYTG) Toastmasters Club",
-    "Changhua Bilingual Toastmasters　Club",
+    "Changhua Bilingual Toastmasters Club",
     "Changhua Toastmasters Club",
     "Chaoyang Tech Toastmasters Club",
     "Charming Toastmasters Club",
@@ -188,7 +196,7 @@
     "Elite Toastmasters Club",
     "English Conversation Toastmasters Club",
     "Entrepreneur Toastmasters Club",
-    "Evershine Billingual Toastmasters  Club",
+    "Evershine Billingual Toastmasters Club",
     "Excellence Toastmasters Club",
     "EYT Toastmasters Club",
     "Far Eastern Int'L Bank Toastmasters Club",
@@ -202,7 +210,7 @@
     "Full House Bilingual Toastmasters Club",
     "Galaxy Toastmasters Club",
     "Golden Noon Toastmasters Club",
-    "Go-Me Bilingual  Toastmasters Club",
+    "Go-Me Bilingual Toastmasters Club",
     "Good Life Toastmasters Club",
     "Grand Toastmasters Club",
     "Hai-Lan-Lan Keelung Toastmasters Club",
@@ -218,7 +226,7 @@
     "Hsinchu Toastmasters Club",
     "Hsiushui Bilingual Toastmasters Club",
     "Hualien Toastmasters Club",
-    "Huatan Bilingual Toastmasters　Club",
+    "Huatan Bilingual Toastmasters Club",
     "Huluton Toastmasters Club",
     "Huwei Toastmasters Club",
     "Incredible Asus Toastmasters Club",
@@ -313,7 +321,7 @@
     "Top Bilingual Toastmasters Club",
     "Top Gun Toastmasters Club",
     "Tso-Ying Toastmasters Club",
-    "UBI Group  Toastmasters Club",
+    "UBI Group Toastmasters Club",
     "UCT-Taiwan Toastmasters Club",
     "UPS Taiwan Toastmasters Club",
     "USI Toastmasters Club",
@@ -321,7 +329,7 @@
     "We Rock Toastmasters Club",
     "Wheelers Toastmasters Club",
     "Wuri Early Bird Toastmasters Club",
-    "Y.W.C.A. Toastmasters  Club",
+    "Y.W.C.A. Toastmasters Club",
     "Yang-Ming University Toastmasters Club",
     "Yilan Toastmasters Club",
     "YMIC Toastmasters Club",
@@ -331,6 +339,51 @@
     "YZU Toastmasters Club",
     "Zhubei Bilingual Toastmasters Club"
   ],
+  "error": {
+    "club": "Please input your last club.",
+    "email": {
+      "empty": "Please input your email.",
+      "format": "The email address you entered is not valid.",
+      "occupied": "This email has been registered. Please try again."
+    },
+    "firstname": "Please input your first name.",
+    "lastname": "Please input your last name.",
+    "password": {
+      "empty": "Please input your password.",
+      "incorrect": "Incorrect account or password.",
+      "match": "The passwords you entered do not match.",
+      "min": "Password length must be at least 6 characters."
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "When is this year's annual conference? Where will it be held?",
+        "answer": "2023 annual conference will be held on April 22nd and 23rd at Kuanhe Exhibition Hall in New Taipei City."
+      },
+      {
+        "question": "What activites are included in this year's annual conference?",
+        "answer": "We have arranged a series of keynote speeches and educational sessions in the two-day program. On the night of 22nd, there will be an gala dinner where you can enjoy great food and great performance brought by outstanding Toastmasters."
+      },
+      {
+        "question": "How can I buy the annual conference tickets?",
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
+      },
+      {
+        "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
+        "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 16th for the manual refund process. No refund is allowed after this deadline."
+      },
+      {
+        "question": "Who can I contact if I have questions regarding the annual conference?",
+        "answer": "Please email your request to tmicon{'@'}toastmasters.org.tw. We will respond shortly."
+      },
+      {
+        "question": "Is there any recommended accommodation near the venue?",
+        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
+      }
+    ]
+  },
   "home": {
     "countdown": {
       "title": "Conference Starting in",
@@ -348,11 +401,15 @@
       "day1": "Day 1",
       "day2": "Day 2",
       "registration": "Registration",
-      "until": "Open until 12:00",
-      "judge": "Judge Briefing",
+      "until": "Open until 11:30",
       "min": "mins",
-      "run-off": "International Speech Run-off {alphabet} Contest",
+      "briefing1": "International Speech Run-off A/B Contests",
+      "briefing2": "{group} Briefing",
+      "group1": "Judge/Timer/Ballot Counter",
+      "group2": "Contestant/SAA",
+      "run-off": "International Speech Run-off Contest, Group {alphabet}",
       "keynote": "Keynote Speech",
+      "speaker-shih": "Founder of Acer Group, Mr. Stan Shih",
       "lunch": "Lunchbox Distribution",
       "opening": "Opening Ceremony",
       "tea": "Tea Break",
@@ -370,12 +427,15 @@
       "final": "International Speech Contest",
       "closing": "Closing Ceremony",
       "room": {
-        "calla": "1F Room Calla Lilly & Rose (1A)",
+        "calla": "1F Main Hall",
         "clove": "2F Room Clove (2B)",
+        "group2-briefing-a": "2F Room 2A: Run-off A",
+        "group2-briefing-b": "2F Room 2B: Run-off B",
         "jasmine": "1F Room Jasmine (1B)",
         "lisianthus": "2F Room Lisianthus (2A)",
         "lobby": "1F Lobby",
-        "preparation": "2F Preparation Room (2C)"
+        "preparation": "2F Preparation Room (2C)",
+        "rose": "1F Room Rose"
       },
       "gvb-keynote-title": [
         "Remastermind - How a Failed School Kid",
@@ -435,35 +495,6 @@
       "accommodation": "Accommodation"
     }
   },
-  "faq": {
-    "title": "Frequently asked questions",
-    "items": [
-      {
-        "question": "When is this year's annual conference? Where will it be held?",
-        "answer": "2023 annual conference will be held on April 22nd and 23rd at Kuanhe Exhibition Hall in New Taipei City."
-      },
-      {
-        "question": "What activites are included in this year's annual conference?",
-        "answer": "We have arranged a series of keynote speeches and educational sessions in the two-day program. On the night of 22nd, there will be an gala dinner where you can enjoy great food and great performance brought by outstanding Toastmasters."
-      },
-      {
-        "question": "How can I buy the annual conference tickets?",
-        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
-      },
-      {
-        "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
-        "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 16th for the manual refund process. No refund is allowed after this deadline."
-      },
-      {
-        "question": "Who can I contact if I have questions regarding the annual conference?",
-        "answer": "Please email your request to tmicon{'@'}toastmasters.org.tw. We will respond shortly."
-      },
-      {
-        "question": "Is there any recommended accommodation near the venue?",
-        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
-      }
-    ]
-  },
   "login": {
     "introduction": {
       "title": {
@@ -481,43 +512,48 @@
       },
       "step3": {
         "text1": "Edit ",
-        "text-highlight": "Attendee Information.",
-        "text2": " (coming soon)"
+        "text-highlight": "Attendee Information."
       }
     },
     "title": "Log in",
     "description": "Please log in before you purchase the ticket.",
     "forget-password": "Forgot your password?",
     "no-account": "Don't have an account?",
-    "error": {
-      "required-email": "Please input your email.",
-      "required-password": "Please input your password.",
-      "email": "The email address you entered is not valid.",
-      "min": "Password length must be at least 6 characters.",
-      "password": "Incorrect account or password."
+  },
+  "order": {
+    "ticket": "Ticket",
+    "list": {
+      "title": "My Order",
+      "note": "Please assign Night Banquet ticket to recipients.",
+      "mobile-subtitle": "Attendee information",
+      "mobile-content": "To have a better experience on our website, we recommend you to use desktop to fill out the following form."
+    },
+    "tickets": {
+      "title": "Attendee Information",
+      "edit": "Edit",
+      "save": "Save",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "submitted": "You've already submitted. If you want to edit your information, please contact the service center tmicon{'@'}toastmasters.org.tw",
+      "required": "Required",
+      "known": "Also known as",
+      "optional": "Optional",
+      "club": "Club name",
+      "dtm": "I'm a DTM",
+      "vegetarian": "I'm a vegetarian",
+      "banquet": "Add a banquet ticket",
+      "message": "Once you submit this form, you won't be able to edit it on the website. Please click on \"contact us\" in case you need any help."
     }
   },
   "register": {
     "title": "Register",
     "description": "Please register before you purchase the ticket.",
-    "error": {
-      "required-firstname": "Please input your first name.",
-      "required-lastname": "Please input your last name.",
-      "required-email": "Please input your email.",
-      "required-password": "Please input your password.",
-      "email-format": "The email address you entered is not valid.",
-      "email": "This email has been registered. Please try again.",
-      "min": "Password length must be at least 6 characters.",
-      "same-as-password": "The passwords you entered do not match."
-    },
-    "form": {
-      "first-name": "First name",
-      "last-name": "Last name",
-      "email": "Email",
-      "password": "Password",
-      "confirm-password": "Confirm password",
-      "have-account": "Already have an account?"
-    }
+    "firstname": "First name",
+    "lastname": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm password",
+    "have-account": "Already have an account?"
   },
   "speaker": {
     "seminar": "Seminar",
@@ -543,7 +579,7 @@
         {
           "topic": "Discussing Taiwan’s Competitiveness Through the Thinking of Wangdao",
           "time": "4/22, 11:00-11:50",
-          "location": "1F Room Calla Lilly & Rose (1A)",
+          "location": "1F Main Hall",
           "introduction": [
             "“New Wangdao” is a discussion of the way of leaders in organizations of various sizes. “Value creation, the balance of interests, and sustainable development” are the three core concepts of Wangdao thinking. Wangdao emphasizes looking at the total value of things through the “Six-Aspect Values.” Pay greater attention to the “intangible, indirect, future” invisible value in addition to the “tangible, direct, and present” dominant value. Build a new mechanism for mutual value creation and the balance of interests through continuous creativity and value creation. Only then can the goal of sustainable development be realized.",
             "Taiwan is already Si-nnovation. Facing the new and future challenges of the world, we need to make Taiwan the birthplace of Si-vilization. In the past, Taiwan has served as the main contributor of the world’s electronic products and material civilization. Hopefully in the future, Taiwan can contribute to the future spiritual civilization of mankind. Taiwan can position itself as a friend of the world.",
@@ -573,7 +609,7 @@
         {
           "topic": "Remastermind - How a Failed School Kid Mastered His Mindset to Become a Champion",
           "time": "4/22, 13:10-14:00",
-          "location": "1F Room Calla Lilly & Rose (1A)",
+          "location": "1F Main Hall",
           "introduction": [
             "When people look at Greg’s life, they only see the result. They don’t see the years of failures; they don’t feel the years of pain, and they don’t hear the negative voices from his childhood that echoed so loudly through his mind.",
             "His primary teachers told him he would amount to nothing, high school teachers said he’d be the most likely student to be in prison or dead by 21... but no matter what they said, Greg refused to listen.",
@@ -762,7 +798,7 @@
       "seminars": [
         {
           "topic": "文字的多元呈現",
-          "time": "4/23 15:40-16:50",
+          "time": "4/23, 09:50-10:50",
           "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "以系統的方法，將創意導入文字文稿中，因而產生不同的趣味。有興趣的會友，歡迎一起來玩！"
@@ -785,7 +821,7 @@
       "seminars": [
         {
           "topic": "乎囝仔也愛講台語",
-          "time": "4/23 11:00-12:00",
+          "time": "4/23, 11:00-12:00",
           "location": "2F Room Lisianthus (2A)",
           "introduction": [
             "台語是咱A母語！",

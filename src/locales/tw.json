@@ -53,7 +53,7 @@
   },
   "account": {
     "marquee": {
-      "important-notice": "《重要提醒》送出訂單後，請在繳費期限內付款，謝謝。若未在期限內付款，您的訂單將被取消，請重新訂票。"
+      "notice": "《重要提醒》送出訂單後，請在繳費期限內付款，謝謝。若未在期限內付款，您的訂單將被取消，請重新訂票。"
     },
     "title": "我的帳號",
     "new": "新訂單",
@@ -63,9 +63,16 @@
     "amount": "金額",
     "attendee": "購票人資訊",
     "edit": "編輯",
+    "view": "檢視",
     "unpaid": "未付款",
     "pending": "待完成",
-    "complete": "已完成"
+    "complete": "已完成",
+    "popup": {
+      "title": "票券狀態代表什麼意思？",
+      "complete-description": "您已完成付款及與會者資訊填寫",
+      "pending-description": "您已完成付款，但尚未填寫完與會者資訊",
+      "unpaid-description": "您尚未付款，或款項尚在處理中（超商條碼繳費約需二～五個工作天，其他繳費方式將在一天內更新）"
+    }
   },
   "app": {
     "breadcrumb": {
@@ -146,6 +153,7 @@
     }
   },
   "clubs": [
+    "來賓",
     "進階唱歌國際演講會",
     "精湛英語國際演講會",
     "階梯雙語國際演講會",
@@ -194,7 +202,7 @@
     "遠東商銀英語國際演講會",
     "遠東新世紀英語國際演講會",
     "豐原英語國際演講會",
-    "Ferina英語國際演講會",
+    "Ferina 英語國際演講會",
     "FHK Toastmasters Club",
     "輔仁英語國際演講會",
     "流暢英語國際演講會",
@@ -231,7 +239,7 @@
     "高友雙語國際演講會",
     "高雄台語國際演講會",
     "高雄英語國際演講會",
-    "安侯建業 KPMG英語國際演講會",
+    "安侯建業 KPMG 英語國際演講會",
     "輪轉台語國際演講會",
     "領導村英語國際演講會",
     "薪傳英語國際演講會",
@@ -331,6 +339,51 @@
     "元智英語國際演講會",
     "竹北雙語演講會"
   ],
+  "error": {
+    "club": "請輸入您的分會",
+    "email": {
+      "empty": "請輸入您的電子信箱",
+      "format": "您輸入的電子信箱格式不正確",
+      "occupied": "此電子信箱已被使用，請重新輸入。"
+    },
+    "firstname": "請輸入您的名字",
+    "lastname": "請輸入您的姓氏",
+    "password": {
+      "empty": "請輸入您的密碼",
+      "incorrect": "錯誤的帳號或密碼",
+      "match": "您輸入的密碼必須和前一個欄位相同",
+      "min": "密碼必須至少為六位數"
+    }
+  },
+  "faq": {
+    "title": "常見問答",
+    "items": [
+      {
+        "question": "請問今年的大會是幾號舉行？辦在哪裡呢？",
+        "answer": "2023年度大會將在4月22日及23日於新北市的寬和宴展館舉行。"
+      },
+      {
+        "question": "年度大會上有什麼樣的活動呢？",
+        "answer": "我們在兩天的大會中精心規畫了一系列的專題講座及教育訓練，22日晚上則有精緻晚宴讓大家享用美食及欣賞高水準的表演節目，當然還有緊張刺激的英語、國語、台語、日語演講比賽全國總決賽，絕對精采可期！"
+      },
+      {
+        "question": "請問要怎麼購票呢？",
+        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a> ，謝謝。"
+      },
+      {
+        "question": "如果買票後臨時無法參加年會，是否可以退費呢？",
+        "answer": "如您需要退費，請於 4 月 16 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。"
+      },
+      {
+        "question": "我有關於年會的問題想詢問，該聯繫誰呢？",
+        "answer": "請 email 至 tmicon{'@'}toastmasters.org.tw，我們會有專人與您聯繫。"
+      },
+      {
+        "question": "請問年會會場附近有推薦的住宿地點嗎？",
+        "answer": "會場周邊住宿請參考我們的 <a href='/accommodation'>住宿資訊頁</a>，謝謝。"
+      }
+    ]
+  },
   "home": {
     "countdown": {
       "title": "年度大會開幕倒數",
@@ -347,12 +400,16 @@
       "title": "大會議程",
       "day1": "第一天",
       "day2": "第二天",
-      "registration": "報到",
-      "until": "開放報到至中午12點止",
-      "judge": "裁判賽前簡報",
+      "registration": "註冊報到",
+      "until": "開放報到至上午11:30止",
       "min": "分鐘",
-      "run-off": "英文演講準決賽{alphabet}",
+      "briefing1": "英語國際演講比賽 A/B 組準決賽",
+      "briefing2": "{group} 賽前講解",
+      "group1": "裁判/計時員/計票員",
+      "group2": "參賽者/事務長",
+      "run-off": "英語國際演講比賽 {alphabet}組準決賽",
       "keynote": "{language}專題演講",
+      "speaker-shih": "宏碁集團創辦人 施振榮先生",
       "lunch": "發放午餐餐盒",
       "opening": "開幕典禮",
       "tea": "下午茶",
@@ -370,12 +427,15 @@
       "final": "英語演講比賽決賽",
       "closing": "閉幕典禮",
       "room": {
-        "calla": "1 樓 主廳 (海芋廳&薔薇廳/ 1A)",
+        "calla": "1 樓 主廳",
         "clove": "2 樓 丁香廳 (2B)",
+        "group2-briefing-a": "2 樓桔梗廳 (2A): A組準決賽",
+        "group2-briefing-b": "2 樓丁香廳 (2B): B組準決賽",
         "jasmine": "1 樓 茉莉廳 (1B)",
         "lisianthus": "2 樓 桔梗廳 (2A)",
         "lobby": "1 樓 大廳",
-        "preparation": "2 樓 準備室 (2C)"
+        "preparation": "2 樓 準備室 (2C)",
+        "rose": "1 樓 玫瑰廳"
       },
       "gvb-keynote-title": [
         "重掌人生：不會讀書也能擁有強大心念，邁向冠軍之路",
@@ -434,35 +494,6 @@
       "accommodation": "住宿資訊"
     }
   },
-  "faq": {
-    "title": "常見問答",
-    "items": [
-      {
-        "question": "請問今年的大會是幾號舉行？辦在哪裡呢？",
-        "answer": "2023年度大會將在4月22日及23日於新北市的寬和宴展館舉行。"
-      },
-      {
-        "question": "年度大會上有什麼樣的活動呢？",
-        "answer": "我們在兩天的大會中精心規畫了一系列的專題講座及教育訓練，22日晚上則有精緻晚宴讓大家享用美食及欣賞高水準的表演節目，當然還有緊張刺激的英語、國語、台語、日語演講比賽全國總決賽，絕對精采可期！"
-      },
-      {
-        "question": "請問要怎麼購票呢？",
-        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a> ，謝謝。"
-      },
-      {
-        "question": "如果買票後臨時無法參加年會，是否可以退費呢？",
-        "answer": "如您需要退費，請於 4 月 16 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。"
-      },
-      {
-        "question": "我有關於年會的問題想詢問，該聯繫誰呢？",
-        "answer": "請 email 至 tmicon{'@'}toastmasters.org.tw，我們會有專人與您聯繫。"
-      },
-      {
-        "question": "請問年會會場附近有推薦的住宿地點嗎？",
-        "answer": "會場周邊住宿請參考我們的 <a href='/accommodation'>住宿資訊頁</a>，謝謝。"
-      }
-    ]
-  },
   "login": {
     "introduction": {
       "title": {
@@ -480,43 +511,48 @@
       },
       "step3": {
         "text1": "填寫 ",
-        "text-highlight": "與會者資訊",
-        "text2": " (將於近期推出)"
+        "text-highlight": "與會者資訊"
       }
     },
     "title": "登入",
     "description": "請登入以繼續完成購票",
     "forget-password": "忘記密碼?",
-    "no-account": "沒有帳號嗎?",
-    "error": {
-      "required-email": "請填寫您的電子郵件",
-      "required-password": "請填寫您的密碼",
-      "email": "您輸入的電子郵件格式不正確",
-      "min": "密碼必須至少為六位數",
-      "password": "錯誤的帳號或密碼"
+    "no-account": "沒有帳號嗎?"
+  },
+  "order": {
+    "ticket": "票券",
+    "list": {
+      "title": "我的訂單",
+      "note": "請將晚宴票分配給對應的與會者",
+      "mobile-subtitle": "與會者資訊",
+      "mobile-content": "為了擁有更好的網站使用體驗，我們建議您使用電腦來填寫以下表格"
+    },
+    "tickets": {
+      "title": "與會者資訊",
+      "edit": "編輯",
+      "save": "暫存",
+      "submit": "送出",
+      "cancel": "取消",
+      "submitted": "您已成功送出與會者資訊。若您需要修改本頁資訊，請寫 email 至年度大會服務信箱 tmicon{'@'}toastmasters.org.tw。",
+      "required": "必填",
+      "known": "英文別名",
+      "optional": "選填",
+      "club": "分會名稱",
+      "dtm": "我是傑出會員 (DTM)",
+      "vegetarian": "我是素食者",
+      "banquet": "附加晚宴票",
+      "message": "提醒您，送出後您將無法再繼續編輯。您可以點選\"聯繫我們\"尋求專人協助。"
     }
   },
   "register": {
     "title": "註冊",
     "description": "請先註冊以繼續完成購票",
-    "error": {
-      "required-firstname": "請輸入您的名字",
-      "required-lastname": "請輸入您的姓氏",
-      "required-email": "請填寫您的電子郵件",
-      "required-password": "請填寫您的密碼",
-      "email-format": "您輸入的電子郵件格式不正確",
-      "email": "此 email 已被使用，請重新輸入。",
-      "min": "密碼必須至少為六位數",
-      "same-as-password": "您輸入的密碼必須和前一個欄位相同"
-    },
-    "form": {
-      "first-name": "名字",
-      "last-name": "姓氏",
-      "email": "電子郵件",
-      "password": "密碼",
-      "confirm-password": "確認密碼",
-      "have-account": "已經有帳號嗎?"
-    }
+    "firstname": "名字",
+    "lastname": "姓氏",
+    "email": "電子信箱",
+    "password": "密碼",
+    "confirm": "確認密碼",
+    "have-account": "已經有帳號嗎?"
   },
   "speaker": {
     "seminar": "演講資訊",
@@ -542,7 +578,7 @@
         {
           "topic": "從王道思維談台灣的競爭力",
           "time": "4/22, 11:00-11:50",
-          "location": "1樓 主廳 (海芋廳&薔薇廳/ 1A)",
+          "location": "1樓 主廳",
           "introduction": [
             "「新王道」談的是大大小小組織的領導人之道，「創造價值、利益平衡、永續經營」是王道思維的三大核心信念。很重要的是，王道要從「六面向」來看待事物的總價值，在「有形、直接、現在」的顯性價值外，更要重視「無形、間接、未來」的隱性價值。也唯有不斷創新、創造價值，持續建構一個能共創價值且相對利益平衡的新機制，才能達到永續經營的目標。",
             "台灣已是「創新矽島」（Si-nnovation），面對世界未來的新挑戰，我們要打造台灣成為東方矽文明（Si-vilization）的發祥地。過去台灣已是全球3C產品物質文明的主要貢獻者，期待未來在精神文明領域，也能對人類文明做出貢獻，台灣的定位就是全世界的朋友。",
@@ -572,13 +608,13 @@
         {
           "topic": "重掌人生：不會讀書也能擁有強大心念，邁向冠軍之路",
           "time": "4/22, 13:10-14:00",
-          "location": "1樓 主廳 (海芋廳&薔薇廳/ 1A)",
+          "location": "1樓 主廳",
           "introduction": [
             "請切換至英文版網頁瀏覽講座介紹，謝謝。"
           ]
         },
         {
-          "topic": "待提供",
+          "topic": "Team Survival Skills from Antarctica to the Apocalypse",
           "time": "4/23, 14:20-15:20",
           "location": "2樓 桔梗廳 (2A)",
           "introduction": [
@@ -616,18 +652,29 @@
       "name": "李庭萱",
       "title": "英語教育訓練講師",
       "contents": [
-        "待提供"
+        "李庭萱從她大一開始就加入台大國際英語演講社，開啟在Toastmasters的旅程。如果你想知道一位曾經連開口說話都沒有勇氣的內向女孩如何在16年的Toastmasters旅程中轉化為一位在臨床試驗產業的全球專案經理，你應該來聽聽看這場教育訓練。",
+        "在李庭萱於2022年持續追求職場上的新高度與突破時，她同時成為了一個新手媽媽。她達成了工作上的各項里程碑、同時每天煮三餐給家人吃、保持自己的興趣與自我沉澱的時光。如果你想知道一位職業婦女如何優雅地兼顧她的工作生涯、生活與家庭，你應該來聽聽看這場教育訓練。"
       ],
       "facebook": "",
       "instagram": "",
       "youtube": "",
       "seminars": [
         {
-          "topic": "待提供",
+          "topic": "管理你的時間，主宰你的生活",
           "time": "4/22, 15:30-16:30",
           "location": "2樓 桔梗廳 (2A)",
           "introduction": [
-            "待提供"
+            "時光飛逝，而你是時間這架飛機的駕駛，你有權決定如何使用你的時間。",
+            "時間就像一盞蠟燭，燒光了之後就不再回來了。",
+            "當我們真正認知到有意識地保護自己時間的重要性，我們才能最大化地使用時間。",
+            "簡化你的生活，專注於對你真正重要的事。",
+            "減少瑣碎而讓你分心的事，你才能真正達成目標。",
+            "Angel Li將於這堂教育訓練中分享管理你的時間、主宰你的生活的秘訣。",
+            "課程重點：",
+            "<li>暫存而未決的事項 (pre-occupation) 如何影響你的效率</li>",
+            "<li>時間管理決策樹</li>",
+            "<li>找出一天當中最重要的三件事(3Ts)</li>",
+            "<li>一次做一件事、每件事只做一次、開始做了就要做到完成為止 (One by one, only once and till the end)</li>"
           ]
         }
       ]
@@ -637,18 +684,18 @@
       "name": "Phillip Botha",
       "title": "英語教育訓練講師",
       "contents": [
-        "待提供"
+        "請切換至英文版網頁瀏覽講者介紹，謝謝。"
       ],
       "facebook": "",
       "instagram": "",
       "youtube": "",
       "seminars": [
         {
-          "topic": "",
+          "topic": "Be Your Own Hero: How to Overcome Self-Doubt and Be The Most Confident You",
           "time": "4/23, 13:00-14:10",
           "location": "2樓 桔梗廳 (2A)",
           "introduction": [
-            "待提供"
+            "請切換至英文版網頁瀏覽講座介紹，謝謝。"
           ]
         }
       ]
@@ -731,7 +778,7 @@
       "seminars": [
         {
           "topic": "文字的多元呈現",
-          "time": "4/23 15:40-16:50",
+          "time": "4/23, 09:50-10:50",
           "location": "2樓 桔梗廳 (2A)",
           "introduction": [
             "以系統的方法，將創意導入文字文稿中，因而產生不同的趣味。有興趣的會友，歡迎一起來玩！"
@@ -753,7 +800,7 @@
       "seminars": [
         {
           "topic": "乎囝仔也愛講台語",
-          "time": "4/23 11:00-12:00",
+          "time": "4/23, 11:00-12:00",
           "location": "2樓 桔梗廳 (2A)",
           "introduction": [
             "台語是咱A母語！",

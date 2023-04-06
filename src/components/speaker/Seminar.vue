@@ -32,10 +32,8 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.introduction") }} |
               </span>
-              <span class="seminar-row-text">
-                <span v-for="(item, key) in seminar.introduction" :key="key">
-                  {{ item }}
-                </span>
+              <span span v-for="(item, key) in seminar.introduction" :key="key">
+                <span class="seminar-row-text" v-html="item"></span>
               </span>
             </div>
           </div>

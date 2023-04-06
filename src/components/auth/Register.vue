@@ -12,12 +12,10 @@ import {
 import axios from "axios";
 
 const registerFormSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
+  firstName: Yup.string().required(),
+  lastName: Yup.string().required(),
   email: Yup.string().required().email(),
-  password: Yup.string()
-    .required("Password is required")
-    .min(6, "Password must be at least 6 characters"),
+  password: Yup.string().required().min(6),
   confirmPassword: Yup.string().required().min(6),
 });
 
@@ -28,11 +26,11 @@ export async function onSubmit(values, target) {
       .post(url, values)
       .then(function (response) {
         console.log(response);
-        target.$router.push("login");
+        target.$router.push("/login");
       })
       .catch(function (error) {
         if (409 === error.response.status) {
-          target.errors.email = target.$t("register.error.email");
+          target.errors.email = target.$t("error.email.occupied");
           target.show = true;
         } else {
           console.log(error);
@@ -45,7 +43,7 @@ export async function onSubmit(values, target) {
 }
 
 export default {
-  setup() {
+  data() {
     const v$ = useVuelidate();
     const state = reactive({
       firstName: "",
@@ -54,50 +52,36 @@ export default {
       password: "",
       confirmPassword: "",
     });
-    const initialErrors = reactive({
+    const clearedErrors = reactive({
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
     });
-    const errors = reactive({ ...initialErrors });
+    const errors = reactive({ ...clearedErrors });
     const show = ref(false);
-    return { state, v$, errors, initialErrors, show };
-  },
-  data() {
     const errorMessages = reactive({
-      requiredFirstname: this.$t("register.error.required-firstname"),
-      requiredLastname: this.$t("register.error.required-lastname"),
-      requiredEmail: this.$t("register.error.required-email"),
-      requiredPassword: this.$t("register.error.required-password"),
-      emailFormat: this.$t("register.error.email-format"),
-      email: this.$t("register.error.email"),
-      min: this.$t("register.error.min"),
-      sameAsPassword: this.$t("register.error.same-as-password"),
+      requiredFirstname: this.$t("error.firstname"),
+      requiredLastname: this.$t("error.lastname"),
+      requiredEmail: this.$t("error.email.empty"),
+      requiredPassword: this.$t("error.password.empty"),
+      emailFormat: this.$t("error.email.format"),
+      email: this.$t("error.email.occupied"),
+      min: this.$t("error.password.min"),
+      sameAsPassword: this.$t("error.password.match"),
     });
-    return {
-      errorMessages,
-    };
+    return { state, v$, errors, clearedErrors, show, errorMessages };
   },
   methods: {
-    validate(field) {
-      registerFormSchema
-        .validateAt(field, this.values)
-        .then(() => {
-          this.errors[field] = "";
-        })
-        .catch((err) => {
-          this.errors[field] = err.message;
-        });
-    },
     clear() {
-      if (this.errors.email === this.$t("register.error.email")) {
+      if (this.errors.email === this.$t("error.email.occupied")) {
         this.errors.email = "";
       }
-      Object.assign(this.errors, this.initialErrors);
+      Object.assign(this.errors, this.clearedErrors);
     },
-    registerUser() {
+    registerUser(event) {
+      event.preventDefault();
       this.v$.$validate();
       if (this.v$.state.$errors.length) {
         Array.from(this.v$.state.$errors).forEach((error) => {
@@ -175,12 +159,12 @@ export default {
     <div class="register-name">
       <div class="register-row row-name">
         <label class="register-label">
-          {{ $t("register.form.first-name") }}
+          {{ $t("register.firstname") }}
         </label>
         <input
           v-model.trim="v$.state.firstName.$model"
           type="text"
-          :placeholder="$t('register.form.first-name')"
+          :placeholder="$t('register.firstname')"
           class="register-input"
           required
           @click="clear"
@@ -192,12 +176,12 @@ export default {
       </div>
       <div class="register-row row-name">
         <label class="register-label">
-          {{ $t("register.form.last-name") }}
+          {{ $t("register.lastname") }}
         </label>
         <input
           v-model.trim="v$.state.lastName.$model"
           type="text"
-          :placeholder="$t('register.form.last-name')"
+          :placeholder="$t('register.lastname')"
           class="register-input"
           required
           @click="clear"
@@ -211,12 +195,12 @@ export default {
 
     <div class="register-row">
       <label class="register-label">
-        {{ $t("register.form.email") }}
+        {{ $t("register.email") }}
       </label>
       <input
         v-model.trim="v$.state.email.$model"
         type="email"
-        :placeholder="$t('register.form.email')"
+        :placeholder="$t('register.email')"
         class="register-input"
         required
         @click="clear"
@@ -228,12 +212,12 @@ export default {
     </div>
     <div class="register-row">
       <label class="register-label">
-        {{ $t("register.form.password") }}
+        {{ $t("register.password") }}
       </label>
       <input
         v-model.trim="v$.state.password.$model"
         type="password"
-        :placeholder="$t('register.form.password')"
+        :placeholder="$t('register.password')"
         class="register-input"
         required
         @click="clear"
@@ -245,12 +229,12 @@ export default {
     </div>
     <div class="register-row">
       <label class="register-label">
-        {{ $t("register.form.confirm-password") }}
+        {{ $t("register.confirm") }}
       </label>
       <input
         v-model.trim="v$.state.confirmPassword.$model"
         type="password"
-        :placeholder="$t('register.form.confirm-password')"
+        :placeholder="$t('register.confirm')"
         class="register-input"
         required
         @click="clear"
@@ -265,7 +249,7 @@ export default {
     </button>
 
     <span class="register-button-note">
-      {{ $t("register.form.have-account") }}
+      {{ $t("register.have-account") }}
       <router-link to="/login">
         {{ $t("login.title") }}
       </router-link>

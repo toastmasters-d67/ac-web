@@ -17,7 +17,9 @@ export default {
       (x) => this.$rt(x.key) === speakerKey
     );
     if (speaker === undefined) {
-      this.$router.push("/");
+      this.$router.push("/").then(() => {
+        this.$router.go();
+      });
     }
     const name = this.$rt(speaker.name);
     const title = this.$rt(speaker.title);

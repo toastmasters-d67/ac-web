@@ -1,6 +1,6 @@
 {
   "name": "ac",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -55,6 +55,7 @@
       "parser": "@babel/eslint-parser"
     },
     "rules": {
+      "no-useless-escape": 0,
       "vue/multi-word-component-names": 0
     },
     "overrides": [
