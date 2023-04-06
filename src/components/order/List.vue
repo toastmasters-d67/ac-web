@@ -47,10 +47,11 @@ export default {
     <header class="list-title">
       <span class="title-desktop">{{ $t("order.list.title") }}</span>
       <div class="title-mobile">
-        <span class="title-mobile-subtitle">Attendee information</span>
+        <span class="title-mobile-subtitle">
+          {{ $t("order.list.mobile-subtitle") }}
+        </span>
         <span class="title-mobile-content">
-          To have a better experience on our website, we recommend you to use
-          desktop to fill out the following form.
+          {{ $t("order.list.mobile-content") }}
         </span>
       </div>
     </header>
