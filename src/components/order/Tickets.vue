@@ -234,6 +234,12 @@ export default {
           }
         }
       });
+
+      if (this.count.banquet <= 0) {
+        Array.from(this.state).forEach((ticket, index) => {
+          this.state[index].banquetDisabled = true;
+        });
+      }
     },
     toggle(index) {
       this.state[index].show = !this.state[index].show;
