@@ -2,7 +2,7 @@
 import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import axios from "axios";
-import ConfirmDialogue from "@/components/order/ConfirmDialogue.vue";
+import Reminder from "@/components/order/Reminder.vue";
 
 const ticketSchema = Yup.object().shape({
   orderId: Yup.string().required(),
@@ -70,21 +70,23 @@ export async function fetchTickets(token, target) {
   }
 }
 
-export async function onSubmit(values, target) {
+export async function onSubmit(target) {
   const url = `${process.env.VUE_APP_API}/ticket`;
   try {
     axios
-      .post(url, values)
+      .post(url, target.state)
       .then(function (response) {
         console.log("response =", response);
-        target.$router.push("me").then(() => {
+        target.$router.push("/me").then(() => {
           target.$router.go();
         });
       })
       .catch(function (error) {
         if (401 === error.response.status) {
           localStorage.removeItem("token");
-          target.loginError = target.$t("login.error.password");
+          target.$router.push("/login").then(() => {
+            target.$router.go();
+          });
         } else {
           console.log(error);
           return Promise.reject(error);
@@ -98,7 +100,7 @@ export async function onSubmit(values, target) {
 export default {
   name: "Tickets",
   components: {
-    ConfirmDialogue,
+    Reminder,
   },
   props: {
     count: {
@@ -126,6 +128,10 @@ export default {
   data() {
     const active = ref(false);
     const editing = ref(false);
+    const showReminder = ref(false);
+    const message = ref(
+      "Once you submit this form, you won't be able to edit in the future."
+    );
     const state = reactive([]);
     const errors = reactive([]);
     const clearedErrors = reactive({
@@ -149,6 +155,8 @@ export default {
     return {
       active,
       editing,
+      showReminder,
+      message,
       state,
       errors,
       clearedErrors,
@@ -234,7 +242,7 @@ export default {
       arrayOfTicketsSchema
         .validate(this.state, { abortEarly: false })
         .then(() => {
-          onSubmit(this.state, this);
+          this.confirm();
         })
         .catch((err) => {
           err.inner.forEach((error) => {
@@ -245,6 +253,15 @@ export default {
             this.errors[index][key] = this.errorMessages[key];
           });
         });
+    },
+    confirm() {
+      this.showReminder = true;
+    },
+    dismiss() {
+      this.showReminder = false;
+    },
+    trigger() {
+      onSubmit(this);
     },
     clickBanquet(ticket) {
       const change = ticket.banquet ? -1 : 1;
@@ -287,7 +304,12 @@ export default {
 
 <template>
   <section id="tickets">
-    <ConfirmDialogue ref="confirmDialogue"></ConfirmDialogue>
+    <Reminder
+      :showReminder="showReminder"
+      :message="message"
+      :dismiss="dismiss"
+      :trigger="trigger"
+    />
     <form class="tickets-container">
       <div class="tickets-heading">
         <header class="tickets-title">Attendee Information</header>
@@ -307,13 +329,13 @@ export default {
         >
           Save
         </button>
-        <button
+        <div
           v-if="editing && active"
           class="tickets-button submit"
           @click="this.submitTickets"
         >
           Submit
-        </button>
+        </div>
       </div>
       <span class="tickets-display-already-submitted" v-if="!active">
         You've already submitted. If you want to edit your information, please
@@ -322,19 +344,15 @@ export default {
       <span class="tickets-required">
         Required <span class="red">*</span>
       </span>
-      <div class="tickets-ticket-list">
-        <div
-          v-for="(ticket, index) in state"
-          :key="index"
-          class="tickets-ticket-item"
-        >
-          <div class="tickets-ticket-title" @click="toggle(index)">
+      <div class="tickets-items">
+        <div v-for="(ticket, index) in state" :key="index" class="tickets-item">
+          <div class="tickets-item-title" @click="toggle(index)">
             <span>Ticket {{ ticket.key }} - {{ ticket.description }}</span>
             <i :class="getDirection(index)"></i>
           </div>
-          <div class="tickets-ticket-form" v-show="ticket.show">
+          <div class="tickets-item-form" v-show="ticket.show">
             <div
-              class="tickets-ticket-input"
+              class="tickets-item-input"
               :style="getBorderStyle(errors[index].firstName)"
             >
               <input
@@ -355,7 +373,7 @@ export default {
               </label>
             </div>
             <div
-              class="tickets-ticket-input"
+              class="tickets-item-input"
               :style="getBorderStyle(errors[index].lastName)"
             >
               <input
@@ -375,7 +393,7 @@ export default {
                 Last name <span class="red">*</span>
               </label>
             </div>
-            <div class="tickets-ticket-input">
+            <div class="tickets-item-input">
               <input
                 v-model="state[index].knownAs"
                 class="tickets-input-text"
@@ -384,7 +402,7 @@ export default {
               />
             </div>
             <div
-              class="tickets-ticket-input"
+              class="tickets-item-input"
               :style="getBorderStyle(errors[index].club)"
             >
               <select
@@ -408,37 +426,37 @@ export default {
                 Club name <span class="red">*</span>
               </label>
             </div>
-            <div class="tickets-ticket-checkbox">
+            <div class="tickets-checkbox">
               <input
                 type="checkbox"
-                class="tickets-checkbox-box"
+                class="tickets-checkbox-input"
                 v-model="state[index].dtm"
                 :disabled="!editing"
               />
-              <label for="dtm" class="tickets-checkbox-text">
+              <label for="dtm" class="tickets-checkbox-label">
                 I'm a DTM.
               </label>
             </div>
-            <div class="tickets-ticket-checkbox">
+            <div class="tickets-checkbox">
               <input
                 type="checkbox"
-                class="tickets-checkbox-box"
+                class="tickets-checkbox-input"
                 v-model="state[index].vegetarian"
                 :disabled="!editing"
               />
-              <label for="vegetarian" class="tickets-checkbox-text">
+              <label for="vegetarian" class="tickets-checkbox-label">
                 I'm a vegetarian.
               </label>
             </div>
-            <div v-if="ticket.type !== 'early'" class="tickets-checkbox-box">
+            <div v-if="ticket.type !== 'early'" class="tickets-checkbox">
               <input
                 type="checkbox"
                 v-model="state[index].banquet"
-                class="tickets-checkbox-box"
+                class="tickets-checkbox-input"
                 @click="clickBanquet(ticket)"
                 :disabled="!editing || ticket.banquetDisabled"
               />
-              <label for="banquet" class="tickets-checkbox-text">
+              <label for="banquet" class="tickets-checkbox-label">
                 Add a banquet ticket.
               </label>
             </div>
@@ -458,16 +476,6 @@ export default {
   background-color: white;
   border-color: transparent;
   padding: 40px;
-  .form-input-hint {
-    width: 84%;
-    max-width: 464px;
-    color: #d72727;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 22px;
-    text-align: left;
-    margin: 10px;
-  }
   .tickets-heading {
     position: relative;
     display: flex;
@@ -530,14 +538,14 @@ export default {
       color: red;
     }
   }
-  .tickets-ticket-list {
+  .tickets-items {
     position: relative;
     display: flex;
     flex-direction: column;
     align-self: stretch;
     align-items: flex-start;
     border-color: transparent;
-    .tickets-ticket-item {
+    .tickets-item {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -545,7 +553,7 @@ export default {
       align-items: flex-start;
       border-color: transparent;
       margin-bottom: 8px;
-      .tickets-ticket-title {
+      .tickets-item-title {
         position: relative;
         height: 54px;
         color: black;
@@ -565,7 +573,7 @@ export default {
         width: 25px;
         height: 25px;
       }
-      .tickets-ticket-form {
+      .tickets-item-form {
         position: relative;
         display: flex;
         flex-wrap: wrap;
@@ -577,7 +585,7 @@ export default {
         *:disabled {
           background-color: lightgrey;
         }
-        .tickets-ticket-input {
+        .tickets-item-input {
           position: relative;
           height: 54px;
           background-color: white;
@@ -612,17 +620,27 @@ export default {
             font-size: 16px;
             font-weight: 500;
           }
+          .form-input-hint {
+            width: 84%;
+            max-width: 464px;
+            color: #d72727;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 22px;
+            text-align: left;
+            margin: 10px;
+          }
         }
-        .tickets-ticket-checkbox {
+        .tickets-checkbox {
           display: flex;
           align-items: center;
           flex-basis: 100%;
-          .tickets-checkbox-box {
+          .tickets-checkbox-input {
             width: 16px;
             height: 16px;
             margin-right: 8px;
           }
-          .tickets-checkbox-text {
+          .tickets-checkbox-label {
             color: black;
             font-size: 16px;
             font-weight: 600;
