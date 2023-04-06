@@ -201,7 +201,8 @@ export default {
           banquetDisabled: false,
         };
         this.state.push(item);
-        this.errors.push(this.clearedErrors);
+        const initErrors = { ...this.clearedErrors };
+        this.errors.push(initErrors);
         index++;
       });
     },
@@ -227,7 +228,8 @@ export default {
               banquetDisabled: false,
             };
             this.state.push(item);
-            this.errors.push(this.clearedErrors);
+            const initErrors = { ...this.clearedErrors };
+            this.errors.push(initErrors);
             index++;
           }
         }
@@ -296,6 +298,9 @@ export default {
     saveForm() {
       this.editing = !this.editing;
     },
+    clear(index) {
+      this.errors[index] = { ...this.clearedErrors };
+    },
   },
 };
 </script>
@@ -360,6 +365,7 @@ export default {
                 :id="`firstName-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @input="clear(index)"
               />
               <p class="form-input-hint" v-if="!!errors[index].firstName">
                 {{ errors[index].firstName }}
@@ -381,6 +387,7 @@ export default {
                 :id="`lastName-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @input="clear(index)"
               />
               <p class="form-input-hint" v-if="!!errors[index].lastName">
                 {{ errors[index].lastName }}
@@ -396,14 +403,15 @@ export default {
             <div class="tickets-item-input">
               <input
                 v-model="state[index].knownAs"
-                :id="`club-${ticket.key}`"
+                :id="`knownAs-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @input="clear(index)"
               />
               <label
-                :for="`club-${ticket.key}`"
+                :for="`knownAs-${ticket.key}`"
                 class="tickets-input-placeholder"
-                v-show="!state[index].club"
+                v-show="!state[index].knownAs"
               >
                 {{ $t("order.tickets.known") }} ({{
                   $t("order.tickets.optional")
@@ -419,6 +427,7 @@ export default {
                 :id="`club-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @change="clear(index)"
               >
                 <option v-for="item in clubs" :key="item.id" :value="item.name">
                   {{ item.name }}
@@ -638,6 +647,7 @@ export default {
             font-weight: 500;
             line-height: 22px;
             margin: 0;
+            pointer-events: none;
           }
         }
         .tickets-checkbox {
