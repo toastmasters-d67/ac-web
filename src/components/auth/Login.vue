@@ -25,7 +25,7 @@ export async function onSubmit(values, target) {
         }
         if (token.length) {
           localStorage.setItem("token", token);
-          target.$router.push("me").then(() => {
+          target.$router.push("/me").then(() => {
             target.$router.go();
           });
         }
@@ -33,7 +33,7 @@ export async function onSubmit(values, target) {
       .catch(function (error) {
         if (401 === error.response.status) {
           localStorage.removeItem("token");
-          target.loginError = target.$t("login.error.password");
+          target.loginError = target.$t("error.password.incorrect");
         } else {
           console.log(error);
           return Promise.reject(error);
@@ -139,12 +139,12 @@ export default {
       </span>
       <div class="login-form">
         <label for="email" class="login-label">
-          {{ $t("register.form.email") }}
+          {{ $t("register.email") }}
         </label>
         <input
           v-model.trim="v$.state.email.$model"
           type="email"
-          :placeholder="$t('register.form.email')"
+          :placeholder="$t('register.email')"
           class="login-input"
           required
           @click="clear"
@@ -154,12 +154,12 @@ export default {
           {{ errors.email }}
         </p>
         <label for="password" class="login-label">
-          {{ $t("register.form.password") }}
+          {{ $t("register.password") }}
         </label>
         <input
           v-model.trim="v$.state.password.$model"
           type="password"
-          :placeholder="$t('register.form.password')"
+          :placeholder="$t('register.password')"
           class="login-input"
           required
           @click="clear"
