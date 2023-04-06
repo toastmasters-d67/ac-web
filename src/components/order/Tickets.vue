@@ -126,7 +126,6 @@ export default {
   data() {
     const active = ref(false);
     const editing = ref(false);
-    const tickets = reactive([]);
     const state = reactive([]);
     const errors = reactive([]);
     const clearedErrors = reactive({
@@ -135,9 +134,9 @@ export default {
       club: "",
     });
     const errorMessages = reactive({
-      firstName: this.$t("order.error.firstname"),
-      lastName: this.$t("order.error.lastname"),
-      club: this.$t("order.error.club"),
+      firstName: this.$t("error.firstname"),
+      lastName: this.$t("error.lastname"),
+      club: this.$t("error.club"),
     });
     const clubs = reactive([]);
     Array.from(this.$tm("clubs")).forEach((source, index) => {
@@ -150,7 +149,6 @@ export default {
     return {
       active,
       editing,
-      tickets,
       state,
       errors,
       clearedErrors,
@@ -248,24 +246,20 @@ export default {
           });
         });
     },
-    clickBanquet() {
-      let assignments = 0;
-      Array.from(this.state).forEach((ticket) => {
-        if (ticket.banquet) {
-          assignments += 1;
-        }
-      });
+    clickBanquet(ticket) {
+      const change = ticket.banquet ? -1 : 1;
+      const assignments = this.assignments + change;
       this.setAssignments(assignments);
       if (assignments < this.count.banquet) {
-        Array.from(this.tickets).forEach((ticket, index) => {
+        Array.from(this.state).forEach((ticket, index) => {
           if (ticket.banquetDisabled) {
-            this.tickets[index].banquetDisabled = false;
+            this.state[index].banquetDisabled = false;
           }
         });
       } else {
-        Array.from(this.tickets).forEach((ticket, index) => {
+        Array.from(this.state).forEach((ticket, index) => {
           if (!this.state[index].banquet) {
-            this.tickets[index].banquetDisabled = true;
+            this.state[index].banquetDisabled = true;
           }
         });
       }
@@ -421,7 +415,7 @@ export default {
                 v-model="state[index].dtm"
                 :disabled="!editing"
               />
-              <label for="vegetarian" class="tickets-checkbox-text">
+              <label for="dtm" class="tickets-checkbox-text">
                 I'm a DTM.
               </label>
             </div>
@@ -436,15 +430,12 @@ export default {
                 I'm a vegetarian.
               </label>
             </div>
-            <div
-              class="tickets-ticket-checkbox"
-              v-if="ticket.type != 1"
-              @click="clickBanquet(ticket)"
-            >
+            <div v-if="ticket.type !== 'early'" class="tickets-checkbox-box">
               <input
                 type="checkbox"
-                class="tickets-checkbox-box"
                 v-model="state[index].banquet"
+                class="tickets-checkbox-box"
+                @click="clickBanquet(ticket)"
                 :disabled="!editing || ticket.banquetDisabled"
               />
               <label for="banquet" class="tickets-checkbox-text">
@@ -459,187 +450,186 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.red {
-  color: red;
-}
-*:disabled {
-  background-color: lightgrey;
-}
 .tickets-container {
   width: 100%;
   max-width: 713px;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  border-color: transparent;
   padding: 40px;
-  border-color: transparent;
-  flex-direction: column;
-  background-color: white;
-}
-.form-input-hint {
-  width: 84%;
-  max-width: 464px;
-  color: #d72727;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  text-align: left;
-  margin: 10px;
-}
-.tickets-heading {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  justify-content: space-between;
-  border-color: transparent;
-  margin-bottom: 24px;
-  background-color: white;
-  .tickets-title {
-    color: black;
-    flex-grow: 1;
-    font-size: 28px;
-    text-align: left;
-    font-weight: 600;
-  }
-  .tickets-button {
-    width: 124px;
-    height: 48px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .form-input-hint {
+    width: 84%;
+    max-width: 464px;
+    color: #d72727;
     font-size: 18px;
     font-weight: 500;
     line-height: 22px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
-    border: black solid 1px;
-    border-radius: 70px;
-    padding: 4px;
-    margin-left: 24px;
-    cursor: pointer;
+    text-align: left;
+    margin: 10px;
   }
-  .edit {
-    color: black;
-    background-color: white;
-  }
-  .submit {
-    color: white;
-    background: #004165;
-  }
-}
-.tickets-display-already-submitted {
-  display: flex;
-  flex-direction: row;
-  border-radius: 8px;
-  color: #004165;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: left;
-  margin-bottom: 24px;
-}
-.tickets-required {
-  font-size: 14px;
-  text-align: left;
-  font-weight: 500;
-  color: rgba(83, 89, 90, 1);
-  margin-bottom: 8px;
-}
-.tickets-ticket-list {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-self: stretch;
-  align-items: flex-start;
-  border-color: transparent;
-}
-.tickets-ticket-item {
-  display: flex;
-  position: relative;
-  align-self: stretch;
-  align-items: flex-start;
-  border-color: transparent;
-  margin-bottom: 8px;
-  flex-direction: column;
-}
-.tickets-ticket-title {
-  height: 54px;
-  position: relative;
-  display: flex;
-  align-self: stretch;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: left;
-  color: black;
-  border-radius: 4px;
-  background-color: rgba(223, 223, 223, 1);
-  padding: 0px 12px;
-  margin-bottom: 8px;
-}
-.tickets-expand-arrow {
-  width: 25px;
-  height: 25px;
-}
-.tickets-ticket-form {
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  align-self: stretch;
-  align-items: flex-start;
-  gap: 16px 2.24%;
-  border-color: transparent;
-  margin-bottom: 16px;
-  .tickets-ticket-input {
-    height: 54px;
+  .tickets-heading {
     position: relative;
     display: flex;
-    flex-basis: 48.8%;
-    border: rgba(83, 89, 90, 1) 1px solid;
-    border-radius: 4px;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: white;
-    @media screen and (max-width: 900px) {
-      flex-basis: 100%;
+    border-color: transparent;
+    margin-bottom: 24px;
+    .tickets-title {
+      color: black;
+      flex-grow: 1;
+      font-size: 28px;
+      font-weight: 600;
+      text-align: left;
     }
-    .tickets-input-placeholder {
-      position: absolute;
-      top: 10px;
-      left: 16px;
-      font-size: 16px;
+    .tickets-button {
+      position: relative;
+      width: 124px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
       font-weight: 500;
-      color: rgba(83, 89, 90, 1);
+      line-height: 22px;
+      border: black solid 1px;
+      border-radius: 70px;
+      box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+      padding: 4px;
+      margin-left: 24px;
+      cursor: pointer;
     }
-    .tickets-input-text {
-      width: 100%;
-      height: 100%;
-      font-size: 20px;
-      border-color: transparent;
-      border-radius: 4px;
-      padding: 0 16px;
+    .edit {
+      color: black;
+      background-color: white;
     }
-    ::placeholder {
-      position: absolute;
-      top: 10px;
-      left: 16px;
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(83, 89, 90, 1);
+    .submit {
+      color: white;
+      background: #004165;
     }
   }
-  .tickets-ticket-checkbox {
+  .tickets-display-already-submitted {
+    color: #004165;
     display: flex;
-    align-items: center;
-    flex-basis: 100%;
-    .tickets-checkbox-box {
-      width: 16px;
-      height: 16px;
-      margin-right: 8px;
+    flex-direction: row;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    text-align: left;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  .tickets-required {
+    color: rgba(83, 89, 90, 1);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 8px;
+    .red {
+      color: red;
     }
-    .tickets-checkbox-text {
-      color: black;
-      font-size: 16px;
-      text-align: left;
-      font-weight: 600;
+  }
+  .tickets-ticket-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    align-items: flex-start;
+    border-color: transparent;
+    .tickets-ticket-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+      align-items: flex-start;
+      border-color: transparent;
+      margin-bottom: 8px;
+      .tickets-ticket-title {
+        position: relative;
+        height: 54px;
+        color: black;
+        background-color: rgba(223, 223, 223, 1);
+        display: flex;
+        align-self: stretch;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: left;
+        border-radius: 4px;
+        padding: 0px 12px;
+        margin-bottom: 8px;
+      }
+      .tickets-expand-arrow {
+        width: 25px;
+        height: 25px;
+      }
+      .tickets-ticket-form {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-self: stretch;
+        align-items: flex-start;
+        gap: 16px 2.24%;
+        border-color: transparent;
+        margin-bottom: 16px;
+        *:disabled {
+          background-color: lightgrey;
+        }
+        .tickets-ticket-input {
+          position: relative;
+          height: 54px;
+          background-color: white;
+          display: flex;
+          flex-basis: 48.8%;
+          border: rgba(83, 89, 90, 1) 1px solid;
+          border-radius: 4px;
+          @media screen and (max-width: 900px) {
+            flex-basis: 100%;
+          }
+          .tickets-input-placeholder {
+            position: absolute;
+            top: 10px;
+            left: 16px;
+            color: rgba(83, 89, 90, 1);
+            font-size: 16px;
+            font-weight: 500;
+          }
+          .tickets-input-text {
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            border-color: transparent;
+            border-radius: 4px;
+            padding: 0 16px;
+          }
+          ::placeholder {
+            position: absolute;
+            top: 10px;
+            left: 16px;
+            color: rgba(83, 89, 90, 1);
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+        .tickets-ticket-checkbox {
+          display: flex;
+          align-items: center;
+          flex-basis: 100%;
+          .tickets-checkbox-box {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+          }
+          .tickets-checkbox-text {
+            color: black;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+          }
+        }
+      }
     }
   }
 }

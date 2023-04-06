@@ -55,7 +55,6 @@ export default {
       :setCount="setCount"
       :assignments="assignments"
       :setAssignments="setAssignments"
-      v-once
     />
   </article>
 </template>
