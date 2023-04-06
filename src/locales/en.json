@@ -525,7 +525,9 @@
     "ticket": "Ticket",
     "list": {
       "title": "My Order",
-      "note": "Please assign Night Banquet ticket to recipients."
+      "note": "Please assign Night Banquet ticket to recipients.",
+      "mobile-subtitle": "Attendee information",
+      "mobile-content": "To have a better experience on our website, we recommend you to use desktop to fill out the following form."
     },
     "tickets": {
       "title": "Attendee Information",

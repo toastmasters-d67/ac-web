@@ -68,7 +68,8 @@ export default {
 @media screen and (max-width: 768px) {
   .order-container {
     flex-direction: column;
-    margin: 80px 4.27% 200px 4.27%;
+    gap: 0px;
+    margin: 15px 4.27% 100px 4.27%;
   }
 }
 </style>

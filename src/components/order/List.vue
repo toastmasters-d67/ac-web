@@ -44,7 +44,17 @@ export default {
 
 <template>
   <section id="list" class="list-container">
-    <header class="list-title">{{ $t("order.list.title") }}</header>
+    <header class="list-title">
+      <span class="title-desktop">{{ $t("order.list.title") }}</span>
+      <div class="title-mobile">
+        <span class="title-mobile-subtitle">
+          {{ $t("order.list.mobile-subtitle") }}
+        </span>
+        <span class="title-mobile-content">
+          {{ $t("order.list.mobile-content") }}
+        </span>
+      </div>
+    </header>
     <ul class="list-tickets-list">
       <li v-for="(item, key) in getItems" :key="key" class="list-ticket">
         {{ $t("order.ticket") }} {{ item.key }} - {{ item.description }}
@@ -81,11 +91,19 @@ export default {
   background-color: white;
   padding: 40px 24px;
   .list-title {
-    color: black;
-    font-size: 28px;
-    text-align: left;
-    font-weight: 600;
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    .title-desktop {
+      display: block;
+      color: black;
+      font-size: 28px;
+      text-align: left;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .title-mobile {
+      display: none;
+    }
   }
   .list-paidunpaid-switcher {
     display: flex;
@@ -228,9 +246,61 @@ export default {
     position: relative;
     top: 0px;
     z-index: 0;
+    padding: 12px 5%;
+    .list-title {
+      .title-desktop {
+        display: none;
+      }
+      .title-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 16px;
+        .title-mobile-subtitle {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20px;
+          color: black;
+        }
+        .title-mobile-content {
+          text-align: start;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          color: #787878;
+        }
+      }
+    }
     ul.list-tickets-list {
+      margin-bottom: 0;
       li.list-ticket {
         display: none;
+      }
+      .list-banquet {
+        padding: 8px 16px;
+        .list-banquet-content {
+          gap: 8px;
+          border-color: transparent;
+          margin-bottom: 4px;
+          .list-banquet-icon {
+            width: 20px;
+            height: 20px;
+          }
+          .list-banquet-text {
+            font-size: 14px;
+            line-height: 17px;
+          }
+          .list-banquet-number {
+            font-size: 12px;
+            line-height: 16px;
+          }
+        }
+        .list-banquet-note {
+          text-align: start;
+          font-size: 12px;
+          line-height: 15px;
+        }
       }
     }
   }
