@@ -33,7 +33,7 @@ export async function getCountOfTickets(token, target) {
       .catch(function (error) {
         if (401 === error.response.status) {
           localStorage.removeItem("token");
-          this.$router.push("login");
+          this.$router.push("/login");
         } else {
           console.log(error);
           return Promise.reject(error);
@@ -59,7 +59,7 @@ export async function fetchTickets(token, target) {
       .catch(function (error) {
         if (401 === error.response.status) {
           localStorage.removeItem("token");
-          this.$router.push("login");
+          this.$router.push("/login");
         } else {
           console.log(error);
           return Promise.reject(error);
@@ -165,7 +165,7 @@ export default {
   created() {
     const token = localStorage.getItem("token");
     if (!token || !token.length) {
-      this.$router.push("login");
+      this.$router.push("/login");
     }
     getCountOfTickets(token, this);
   },
@@ -177,7 +177,7 @@ export default {
       } else {
         const token = localStorage.getItem("token");
         if (!token || !token.length) {
-          this.$router.push("login");
+          this.$router.push("/login");
         }
         fetchTickets(token, this);
       }
@@ -722,13 +722,6 @@ export default {
           padding: 0px 16px;
         }
         .tickets-item-form {
-          // position: relative;
-          // display: flex;
-          // flex-wrap: wrap;
-          // align-self: stretch;
-          // align-items: flex-start;
-          // gap: 16px 2.24%;
-          // margin-bottom: 16px;
           .tickets-item-input {
             height: 48px;
             display: flex;

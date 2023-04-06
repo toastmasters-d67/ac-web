@@ -70,7 +70,6 @@ export default {
           <span class="text-highlight">
             {{ $t("login.introduction.step3.text-highlight") }}
           </span>
-          {{ $t("login.introduction.step3.text2") }}
         </span>
       </div>
     </div>
