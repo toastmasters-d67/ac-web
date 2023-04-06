@@ -630,14 +630,14 @@ export default {
             font-weight: 500;
           }
           .form-input-hint {
-            width: 84%;
-            max-width: 464px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
             color: #d72727;
             font-size: 18px;
             font-weight: 500;
             line-height: 22px;
-            text-align: left;
-            margin: 10px;
+            margin: 0;
           }
         }
         .tickets-checkbox {
@@ -654,6 +654,110 @@ export default {
             font-size: 16px;
             font-weight: 600;
             text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .tickets-container {
+    padding: 0px 5%;
+    .tickets-heading {
+      position: relative;
+      order: 99;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 24px;
+      .tickets-title {
+        display: none;
+      }
+      .tickets-button {
+        width: 100%;
+        font-size: 16px;
+        line-height: 20px;
+        margin: auto;
+      }
+      .edit {
+        color: black;
+        background-color: white;
+      }
+      .submit {
+        color: white;
+        background: #004165;
+      }
+    }
+    .tickets-display-already-submitted {
+      display: flex;
+      flex-direction: row;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    .tickets-required {
+      font-size: 12px;
+      line-height: 15px;
+    }
+    .tickets-items {
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+      align-items: flex-start;
+      .tickets-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        align-items: flex-start;
+        border-color: transparent;
+        margin-bottom: 8px;
+        .tickets-item-title {
+          height: 48px;
+          font-size: 14px;
+          line-height: 17px;
+          padding: 0px 16px;
+        }
+        .tickets-item-form {
+          // position: relative;
+          // display: flex;
+          // flex-wrap: wrap;
+          // align-self: stretch;
+          // align-items: flex-start;
+          // gap: 16px 2.24%;
+          // margin-bottom: 16px;
+          .tickets-item-input {
+            height: 48px;
+            display: flex;
+            flex-basis: 100%;
+            .tickets-input-placeholder {
+              font-size: 14px;
+              line-height: 17px;
+            }
+            .tickets-input-text {
+              font-size: 20px;
+              padding: 0 16px;
+            }
+            ::placeholder {
+              font-size: 14px;
+              line-height: 17px;
+            }
+            .form-input-hint {
+              font-size: 16px;
+              line-height: 20px;
+            }
+          }
+          .tickets-checkbox {
+            .tickets-checkbox-input {
+              width: 12px;
+              height: 12px;
+            }
+            .tickets-checkbox-label {
+              font-size: 14px;
+            }
           }
         }
       }
