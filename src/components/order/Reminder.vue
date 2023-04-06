@@ -23,8 +23,12 @@ export default {
     <div class="reminder-modal">
       <div class="reminder-message">{{ message }}</div>
       <div class="reminder-buttons">
-        <button class="button cancel-button" @click="dismiss">Cancel</button>
-        <button class="button ok-button" @click="trigger">Submit</button>
+        <button class="button cancel-button" @click="dismiss">
+          {{ $t("order.tickets.cancel") }}
+        </button>
+        <button class="button ok-button" @click="trigger">
+          {{ $t("order.tickets.submit") }}
+        </button>
       </div>
     </div>
   </section>

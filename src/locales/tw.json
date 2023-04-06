@@ -355,6 +355,35 @@
       "min": "密碼必須至少為六位數"
     }
   },
+  "faq": {
+    "title": "常見問答",
+    "items": [
+      {
+        "question": "請問今年的大會是幾號舉行？辦在哪裡呢？",
+        "answer": "2023年度大會將在4月22日及23日於新北市的寬和宴展館舉行。"
+      },
+      {
+        "question": "年度大會上有什麼樣的活動呢？",
+        "answer": "我們在兩天的大會中精心規畫了一系列的專題講座及教育訓練，22日晚上則有精緻晚宴讓大家享用美食及欣賞高水準的表演節目，當然還有緊張刺激的英語、國語、台語、日語演講比賽全國總決賽，絕對精采可期！"
+      },
+      {
+        "question": "請問要怎麼購票呢？",
+        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a> ，謝謝。"
+      },
+      {
+        "question": "如果買票後臨時無法參加年會，是否可以退費呢？",
+        "answer": "如您需要退費，請於 4 月 16 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。"
+      },
+      {
+        "question": "我有關於年會的問題想詢問，該聯繫誰呢？",
+        "answer": "請 email 至 tmicon{'@'}toastmasters.org.tw，我們會有專人與您聯繫。"
+      },
+      {
+        "question": "請問年會會場附近有推薦的住宿地點嗎？",
+        "answer": "會場周邊住宿請參考我們的 <a href='/accommodation'>住宿資訊頁</a>，謝謝。"
+      }
+    ]
+  },
   "home": {
     "countdown": {
       "title": "年度大會開幕倒數",
@@ -465,35 +494,6 @@
       "accommodation": "住宿資訊"
     }
   },
-  "faq": {
-    "title": "常見問答",
-    "items": [
-      {
-        "question": "請問今年的大會是幾號舉行？辦在哪裡呢？",
-        "answer": "2023年度大會將在4月22日及23日於新北市的寬和宴展館舉行。"
-      },
-      {
-        "question": "年度大會上有什麼樣的活動呢？",
-        "answer": "我們在兩天的大會中精心規畫了一系列的專題講座及教育訓練，22日晚上則有精緻晚宴讓大家享用美食及欣賞高水準的表演節目，當然還有緊張刺激的英語、國語、台語、日語演講比賽全國總決賽，絕對精采可期！"
-      },
-      {
-        "question": "請問要怎麼購票呢？",
-        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a> ，謝謝。"
-      },
-      {
-        "question": "如果買票後臨時無法參加年會，是否可以退費呢？",
-        "answer": "如您需要退費，請於 4 月 16 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。"
-      },
-      {
-        "question": "我有關於年會的問題想詢問，該聯繫誰呢？",
-        "answer": "請 email 至 tmicon{'@'}toastmasters.org.tw，我們會有專人與您聯繫。"
-      },
-      {
-        "question": "請問年會會場附近有推薦的住宿地點嗎？",
-        "answer": "會場周邊住宿請參考我們的 <a href='/accommodation'>住宿資訊頁</a>，謝謝。"
-      }
-    ]
-  },
   "login": {
     "introduction": {
       "title": {
@@ -520,18 +520,38 @@
     "forget-password": "忘記密碼?",
     "no-account": "沒有帳號嗎?"
   },
-  "order": {},
+  "order": {
+    "ticket": "票券",
+    "list": {
+      "title": "我的訂單",
+      "note": "請將晚宴票分配給對應的與會者"
+    },
+    "tickets": {
+      "title": "與會者資訊",
+      "edit": "編輯",
+      "save": "暫存",
+      "submit": "送出",
+      "cancel": "取消",
+      "submitted": "您已成功送出與會者資訊。若您需要修改本頁資訊，請寫 email 至年度大會服務信箱 tmicon{'@'}toastmasters.org.tw。",
+      "required": "必填",
+      "known": "英文別名",
+      "optional": "選填",
+      "club": "分會名稱",
+      "dtm": "我是傑出會員 (DTM)",
+      "vegetarian": "我是素食者",
+      "banquet": "附加晚宴票",
+      "message": "提醒您，送出後您將無法再繼續編輯。您可以點選\"聯繫我們\"尋求專人協助。"
+    }
+  },
   "register": {
     "title": "註冊",
     "description": "請先註冊以繼續完成購票",
-    "form": {
-      "first-name": "名字",
-      "last-name": "姓氏",
-      "email": "電子郵件",
-      "password": "密碼",
-      "confirm-password": "確認密碼",
-      "have-account": "已經有帳號嗎?"
-    }
+    "firstname": "名字",
+    "lastname": "姓氏",
+    "email": "電子信箱",
+    "password": "密碼",
+    "confirm": "確認密碼",
+    "have-account": "已經有帳號嗎?"
   },
   "speaker": {
     "seminar": "演講資訊",

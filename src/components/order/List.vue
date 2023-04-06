@@ -44,10 +44,10 @@ export default {
 
 <template>
   <section id="list" class="list-container">
-    <header class="list-title">My order</header>
+    <header class="list-title">{{ $t("order.list.title") }}</header>
     <ul class="list-tickets-list">
       <li v-for="(item, key) in getItems" :key="key" class="list-ticket">
-        Ticket {{ item.key }} - {{ item.description }}
+        {{ $t("order.ticket") }} {{ item.key }} - {{ item.description }}
       </li>
       <li class="list-banquet">
         <div class="list-banquet-content">
@@ -56,14 +56,14 @@ export default {
             src="@/assets/icon/order/banquet-icon.svg"
             class="list-banquet-icon"
           />
-          <span class="list-banquet-text">Night banquet</span>
+          <span class="list-banquet-text">
+            {{ $t("cart.picker.banquet.name") }}
+          </span>
           <span class="list-banquet-number">
             {{ remainder }}
           </span>
         </div>
-        <span class="list-banquet-note">
-          (Please assign Night Banquet ticket to recipients.)
-        </span>
+        <span class="list-banquet-note">({{ $t("order.list.note") }})</span>
       </li>
     </ul>
   </section>

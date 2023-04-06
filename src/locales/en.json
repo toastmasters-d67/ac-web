@@ -355,6 +355,35 @@
       "min": "Password length must be at least 6 characters."
     }
   },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "When is this year's annual conference? Where will it be held?",
+        "answer": "2023 annual conference will be held on April 22nd and 23rd at Kuanhe Exhibition Hall in New Taipei City."
+      },
+      {
+        "question": "What activites are included in this year's annual conference?",
+        "answer": "We have arranged a series of keynote speeches and educational sessions in the two-day program. On the night of 22nd, there will be an gala dinner where you can enjoy great food and great performance brought by outstanding Toastmasters."
+      },
+      {
+        "question": "How can I buy the annual conference tickets?",
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
+      },
+      {
+        "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
+        "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 16th for the manual refund process. No refund is allowed after this deadline."
+      },
+      {
+        "question": "Who can I contact if I have questions regarding the annual conference?",
+        "answer": "Please email your request to tmicon{'@'}toastmasters.org.tw. We will respond shortly."
+      },
+      {
+        "question": "Is there any recommended accommodation near the venue?",
+        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
+      }
+    ]
+  },
   "home": {
     "countdown": {
       "title": "Conference Starting in",
@@ -466,35 +495,6 @@
       "accommodation": "Accommodation"
     }
   },
-  "faq": {
-    "title": "Frequently asked questions",
-    "items": [
-      {
-        "question": "When is this year's annual conference? Where will it be held?",
-        "answer": "2023 annual conference will be held on April 22nd and 23rd at Kuanhe Exhibition Hall in New Taipei City."
-      },
-      {
-        "question": "What activites are included in this year's annual conference?",
-        "answer": "We have arranged a series of keynote speeches and educational sessions in the two-day program. On the night of 22nd, there will be an gala dinner where you can enjoy great food and great performance brought by outstanding Toastmasters."
-      },
-      {
-        "question": "How can I buy the annual conference tickets?",
-        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
-      },
-      {
-        "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
-        "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 16th for the manual refund process. No refund is allowed after this deadline."
-      },
-      {
-        "question": "Who can I contact if I have questions regarding the annual conference?",
-        "answer": "Please email your request to tmicon{'@'}toastmasters.org.tw. We will respond shortly."
-      },
-      {
-        "question": "Is there any recommended accommodation near the venue?",
-        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
-      }
-    ]
-  },
   "login": {
     "introduction": {
       "title": {
@@ -521,18 +521,38 @@
     "forget-password": "Forgot your password?",
     "no-account": "Don't have an account?",
   },
-  "order": {},
+  "order": {
+    "ticket": "Ticket",
+    "list": {
+      "title": "My Order",
+      "note": "Please assign Night Banquet ticket to recipients."
+    },
+    "tickets": {
+      "title": "Attendee Information",
+      "edit": "Edit",
+      "save": "Save",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "submitted": "You've already submitted. If you want to edit your information, please contact the service center tmicon{'@'}toastmasters.org.tw",
+      "required": "Required",
+      "known": "Also known as",
+      "optional": "Optional",
+      "club": "Club name",
+      "dtm": "I'm a DTM",
+      "vegetarian": "I'm a vegetarian",
+      "banquet": "Add a banquet ticket",
+      "message": "Once you submit this form, you won't be able to edit it on the website. Please click on \"contact us\" in case you need any help."
+    }
+  },
   "register": {
     "title": "Register",
     "description": "Please register before you purchase the ticket.",
-    "form": {
-      "first-name": "First name",
-      "last-name": "Last name",
-      "email": "Email",
-      "password": "Password",
-      "confirm-password": "Confirm password",
-      "have-account": "Already have an account?"
-    }
+    "firstname": "First name",
+    "lastname": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm password",
+    "have-account": "Already have an account?"
   },
   "speaker": {
     "seminar": "Seminar",

@@ -129,9 +129,7 @@ export default {
     const active = ref(false);
     const editing = ref(false);
     const showReminder = ref(false);
-    const message = ref(
-      "Once you submit this form, you won't be able to edit in the future."
-    );
+    const message = ref(this.$t("order.tickets.message"));
     const state = reactive([]);
     const errors = reactive([]);
     const clearedErrors = reactive({
@@ -312,7 +310,7 @@ export default {
     />
     <form class="tickets-container">
       <div class="tickets-heading">
-        <header class="tickets-title">Attendee Information</header>
+        <header class="tickets-title">{{ $t("order.tickets.title") }}</header>
         <button
           v-if="!editing && active"
           class="tickets-button edit"
@@ -320,34 +318,36 @@ export default {
           :style="getDisabledButtonStyle(!active)"
           @click="editing = !editing"
         >
-          Edit
+          {{ $t("order.tickets.edit") }}
         </button>
         <button
           v-if="editing && active"
           class="tickets-button edit"
           @click="saveForm()"
         >
-          Save
+          {{ $t("order.tickets.save") }}
         </button>
         <div
           v-if="editing && active"
           class="tickets-button submit"
           @click="this.submitTickets"
         >
-          Submit
+          {{ $t("order.tickets.submit") }}
         </div>
       </div>
       <span class="tickets-display-already-submitted" v-if="!active">
-        You've already submitted. If you want to edit your information, please
-        contact the service center tmicon@toastmasters.org.tw
+        {{ $t("order.tickets.submitted") }}
       </span>
       <span class="tickets-required">
-        Required <span class="red">*</span>
+        {{ $t("order.tickets.required") }} <span class="red">*</span>
       </span>
       <div class="tickets-items">
         <div v-for="(ticket, index) in state" :key="index" class="tickets-item">
           <div class="tickets-item-title" @click="toggle(index)">
-            <span>Ticket {{ ticket.key }} - {{ ticket.description }}</span>
+            <span>
+              {{ $t("order.ticket") }} {{ ticket.key }} -
+              {{ ticket.description }}
+            </span>
             <i :class="getDirection(index)"></i>
           </div>
           <div class="tickets-item-form" v-show="ticket.show">
@@ -369,7 +369,7 @@ export default {
                 class="tickets-input-placeholder"
                 v-show="!state[index].firstName"
               >
-                First name <span class="red">*</span>
+                {{ $t("register.firstname") }} <span class="red">*</span>
               </label>
             </div>
             <div
@@ -390,16 +390,25 @@ export default {
                 class="tickets-input-placeholder"
                 v-show="!state[index].lastName"
               >
-                Last name <span class="red">*</span>
+                {{ $t("register.lastname") }} <span class="red">*</span>
               </label>
             </div>
             <div class="tickets-item-input">
               <input
                 v-model="state[index].knownAs"
+                :id="`club-${ticket.key}`"
                 class="tickets-input-text"
-                placeholder="Also known as (Optional)"
                 :disabled="!editing"
               />
+              <label
+                :for="`club-${ticket.key}`"
+                class="tickets-input-placeholder"
+                v-show="!state[index].club"
+              >
+                {{ $t("order.tickets.known") }} ({{
+                  $t("order.tickets.optional")
+                }})
+              </label>
             </div>
             <div
               class="tickets-item-input"
@@ -407,7 +416,7 @@ export default {
             >
               <select
                 v-model="state[index].club"
-                :id="`clubName-${ticket.key}`"
+                :id="`club-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
               >
@@ -419,11 +428,11 @@ export default {
                 {{ errors[index].club }}
               </p>
               <label
-                :for="`clubName-${ticket.key}`"
+                :for="`club-${ticket.key}`"
                 class="tickets-input-placeholder"
                 v-show="!state[index].club"
               >
-                Club name <span class="red">*</span>
+                {{ $t("order.tickets.club") }} <span class="red">*</span>
               </label>
             </div>
             <div class="tickets-checkbox">
@@ -434,7 +443,7 @@ export default {
                 :disabled="!editing"
               />
               <label for="dtm" class="tickets-checkbox-label">
-                I'm a DTM.
+                {{ $t("order.tickets.dtm") }}
               </label>
             </div>
             <div class="tickets-checkbox">
@@ -445,7 +454,7 @@ export default {
                 :disabled="!editing"
               />
               <label for="vegetarian" class="tickets-checkbox-label">
-                I'm a vegetarian.
+                {{ $t("order.tickets.vegetarian") }}
               </label>
             </div>
             <div v-if="ticket.type !== 'early'" class="tickets-checkbox">
@@ -457,7 +466,7 @@ export default {
                 :disabled="!editing || ticket.banquetDisabled"
               />
               <label for="banquet" class="tickets-checkbox-label">
-                Add a banquet ticket.
+                {{ $t("order.tickets.banquet") }}
               </label>
             </div>
           </div>
