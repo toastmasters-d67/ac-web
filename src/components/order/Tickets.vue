@@ -264,7 +264,7 @@ export default {
       onSubmit(this);
     },
     clickBanquet(ticket) {
-      const change = ticket.banquet ? -1 : 1;
+      const change = ticket.banquet ? 1 : -1;
       const assignments = this.assignments + change;
       this.setAssignments(assignments);
       if (assignments < this.count.banquet) {
@@ -471,7 +471,7 @@ export default {
                 type="checkbox"
                 v-model="state[index].banquet"
                 class="tickets-checkbox-input"
-                @click="clickBanquet(ticket)"
+                @change="clickBanquet(ticket)"
                 :disabled="!editing || ticket.banquetDisabled"
               />
               <label for="banquet" class="tickets-checkbox-label">
