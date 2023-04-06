@@ -78,10 +78,7 @@ export default {
 
 <template>
   <div>
-    <Marquee
-      v-once
-      :sentences="[this.$t('account.marquee.important-notice')]"
-    />
+    <Marquee v-once :sentences="[this.$t('account.marquee.notice')]" />
     <article id="cart" class="cart-container">
       <Picker
         :state="state"

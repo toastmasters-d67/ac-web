@@ -12,11 +12,11 @@ export default {
     const content = ref(this.sentences.join(""));
     const segment = ref("");
     let offset = 6;
-    let window = 65;
+    let window = 120;
     const locale = ref(localStorage.getItem("locale") ?? "en");
     if (locale.value === "tw") {
       offset = 3;
-      window = 40;
+      window = 100;
     }
     const marquee = ref(null);
     return {
@@ -28,23 +28,9 @@ export default {
     };
   },
   created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
     this.pollMarquee();
   },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
   methods: {
-    handleResize() {
-      const locale = ref(localStorage.getItem("locale") ?? "en");
-      let width = window.innerWidth;
-      if (locale.value === "en") {
-        if (width < 530) this.window = 46;
-      } else {
-        if (width < 450) this.window = 32;
-      }
-    },
     runMarquee() {
       const start = this.content.substring(0, this.offset);
       const end = this.content.substring(this.offset);
@@ -67,7 +53,7 @@ export default {
   <section id="marquee" class="marquee-container">
     <div class="marquee-row">
       <i class="pi pi-megaphone marquee-icon"></i>
-      <span class="marquee-segment">{{ this.segment }}</span>
+      <span ref="segmentSpan" class="marquee-segment">{{ this.segment }}</span>
     </div>
   </section>
 </template>
@@ -90,7 +76,7 @@ export default {
   line-height: 18px;
   .marquee-row {
     position: relative;
-    width: 530px;
+    width: 80%;
     height: 18px;
     padding-top: 13px;
     margin: 0 auto;
@@ -103,7 +89,9 @@ export default {
     .marquee-segment {
       position: absolute;
       right: 5px;
-      width: 500px;
+      width: calc(100% - 40px);
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 }
@@ -111,9 +99,6 @@ export default {
   .marquee-container {
     .marquee-row {
       width: 100%;
-      .marquee-segment {
-        width: calc(100% - 30px);
-      }
     }
   }
 }
