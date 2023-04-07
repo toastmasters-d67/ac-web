@@ -1,21 +1,52 @@
+<script>
+export default {
+  name: "Souvenirs",
+  data() {
+    return {
+      windowHeight: window.innerHeight,
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.windowHeight = window.innerWidth;
+    },
+    getImage(item) {
+      if (item.length) {
+        if (this.windowHeight > 768) {
+          return require(`@/assets/image/home/souvenirs-${item}.png`);
+        } else {
+          return require(`@/assets/image/home/souvenirs-${item}-small.png`);
+        }
+      }
+      return "";
+    },
+  },
+};
+</script>
+
 <template>
   <section id="souvenirs" class="souvenirs-container">
     <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
     <div class="souvenirs-items">
       <div class="souvenirs-item">
-        <div class="souvenirs-item-shadow"></div>
         <img
-          src="@/assets/image/home/souvenirs-bag.png"
-          class="souvenirs-item-image souvenirs-bag"
+          :src="getImage('bag')"
+          class="souvenirs-item-image"
           alt="souvenirs-bag"
         />
         <div class="souvenirs-item-text">{{ $t("home.souvenir.bag") }}</div>
       </div>
       <div class="souvenirs-item">
-        <div class="souvenirs-item-shadow flip"></div>
         <img
-          src="@/assets/image/home/souvenirs-towel.png"
-          class="souvenirs-item-image souvenirs-towel"
+          :src="getImage('towel')"
+          class="souvenirs-item-image"
           alt="souvenirs-towel"
         />
         <div class="souvenirs-item-text">{{ $t("home.souvenir.towel") }}</div>
@@ -59,39 +90,21 @@
   gap: 5%;
   .souvenirs-item {
     position: relative;
-    width: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .souvenirs-item-shadow {
-      width: 220px;
-      height: 285px;
-      background: #ebf0f6;
-      border-radius: 200px 200px 0px 0px;
-      padding: 30px 10px 0px;
-      gap: 10px;
-    }
     .souvenirs-item-image {
-      position: absolute;
-      width: 200px;
-    }
-    .souvenirs-bag {
-      top: 30px;
-    }
-    .souvenirs-towel {
-      top: 70px;
+      width: 300px;
+      height: 419px;
     }
     .souvenirs-item-text {
       color: black;
       font-size: 24px;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.05em;
       line-height: 30px;
       text-align: center;
       margin-top: 30px;
-    }
-    .flip {
-      transform: rotate(-180deg);
     }
   }
 }
@@ -110,26 +123,17 @@
     }
   }
   .souvenirs-items {
+    flex-direction: column;
     padding-top: 0px;
+    gap: 40px;
     .souvenirs-item {
-      width: 100px;
-      .souvenirs-item-shadow {
-        width: 100px;
-        height: 132.43px;
-        padding: 20px 10px 10px;
-      }
       .souvenirs-item-image {
-        width: 90px;
-      }
-      .souvenirs-bag {
-        top: 20px;
-      }
-      .souvenirs-towel {
-        top: 37px;
+        width: 200px;
+        height: 200px;
       }
       .souvenirs-item-text {
-        font-size: 10px;
-        line-height: 10px;
+        font-size: 14px;
+        line-height: 16px;
         margin-top: 10px;
       }
     }
