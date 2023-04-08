@@ -381,7 +381,7 @@ export default {
         margin-bottom: 36px;
       }
       .first-login-description {
-        background: #ffffff;
+        background: white;
         border-radius: 8px;
         font-size: 12px;
         line-height: 15px;

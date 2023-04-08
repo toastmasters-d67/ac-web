@@ -860,7 +860,6 @@
       margin: 20px auto 29px auto;
       padding-left: 100px;
     }
-
     .program-download {
       padding: 3px 5px;
       height: 18px;
@@ -873,7 +872,6 @@
         height: 10px;
       }
     }
-
     .program-head {
       width: 90.43%;
       display: flex;
@@ -904,7 +902,6 @@
         font-size: 8px;
       }
     }
-
     .program-day-switcher {
       width: 90.43%;
       height: 30px;
