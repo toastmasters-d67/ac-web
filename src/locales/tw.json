@@ -517,6 +517,7 @@
     },
     "title": "登入",
     "description": "請登入以繼續完成購票",
+    "firstlogin-description":"若您是第一次登入年度大會網站，請先完成註冊。</br>提醒您，本網站資料並未和 Toastmasters International 國際總會官網同步，請不要直接使用國際總會官網的帳號密碼登入。",
     "forget-password": "忘記密碼?",
     "no-account": "沒有帳號嗎?"
   },
