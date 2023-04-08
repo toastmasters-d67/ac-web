@@ -1,6 +1,23 @@
 <template>
   <section id="program" class="program-container">
-    <header class="program-title">{{ $t("home.program.title") }}</header>
+    <div class="program-head">
+      <header class="program-title">{{ $t("home.program.title") }}</header>
+      <div class="program-download">
+        <a
+          href="https://drive.google.com/drive/folders/1--BW6J95C7_g35ZRH26UJfmPevzVlWbq"
+          target="_blank"
+        >
+          <img
+            src="@/assets/icon/home/program-download.svg"
+            class="download-img"
+            alt="logo"
+          />
+          <span class="downlad-text">
+            {{ $t("home.program.download") }}
+          </span>
+        </a>
+      </div>
+    </div>
     <div class="program-day-switcher">
       <div
         class="program-day"
@@ -615,8 +632,40 @@
     font-size: 48px;
     font-weight: 600;
     line-height: 49px;
-    margin-top: 50px;
-    margin-bottom: 59px;
+    margin: 50px auto 59px auto;
+    padding-left: 130px;
+  }
+  .program-head {
+    width: 84.93%;
+    max-width: 1223px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .program-download {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 5px 10px;
+    text-align: center;
+    a {
+      display: flex;
+      text-decoration: none;
+      align-items: center;
+    }
+    img {
+      margin-right: 10px;
+      height: 20px;
+    }
+    span {
+      letter-spacing: 0.03em;
+      color: black;
+      font-family: "Noto Sans TC";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 35px;
+    }
   }
   .program-day-switcher {
     max-width: 1223px;
@@ -808,8 +857,50 @@
     .program-title {
       font-size: 15px;
       line-height: 18px;
-      margin-top: 20px;
-      margin-bottom: 29px;
+      margin: 20px auto 29px auto;
+      padding-left: 100px;
+    }
+    .program-download {
+      padding: 3px 5px;
+      height: 18px;
+      span {
+        font-size: 8px;
+        line-height: 0;
+      }
+      img {
+        margin-right: 5px;
+        height: 10px;
+      }
+    }
+    .program-head {
+      width: 90.43%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .program-download {
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 15px;
+      padding: 4px 10px;
+      text-align: center;
+      a {
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+      }
+      img {
+        margin-right: 4px;
+        height: 10px;
+      }
+      span {
+        letter-spacing: 0.03em;
+        color: black;
+        font-family: "Noto Sans TC";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+      }
     }
     .program-day-switcher {
       width: 90.43%;
