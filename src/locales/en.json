@@ -509,11 +509,11 @@
       },
       "step2": {
         "text": "Choose your tickets and ",
-        "text-highlight": "Check out."
+        "text-highlight": "check out."
       },
       "step3": {
         "text1": "Edit ",
-        "text-highlight": "Attendee Information."
+        "text-highlight": "attendee information."
       }
     },
     "title": "Log in",
