@@ -201,7 +201,8 @@ export default {
           banquetDisabled: false,
         };
         this.state.push(item);
-        this.errors.push(this.clearedErrors);
+        const initErrors = { ...this.clearedErrors };
+        this.errors.push(initErrors);
         index++;
       });
     },
@@ -227,11 +228,18 @@ export default {
               banquetDisabled: false,
             };
             this.state.push(item);
-            this.errors.push(this.clearedErrors);
+            const initErrors = { ...this.clearedErrors };
+            this.errors.push(initErrors);
             index++;
           }
         }
       });
+
+      if (this.count.banquet <= 0) {
+        Array.from(this.state).forEach((ticket, index) => {
+          this.state[index].banquetDisabled = true;
+        });
+      }
     },
     toggle(index) {
       this.state[index].show = !this.state[index].show;
@@ -262,7 +270,7 @@ export default {
       onSubmit(this);
     },
     clickBanquet(ticket) {
-      const change = ticket.banquet ? -1 : 1;
+      const change = ticket.banquet ? 1 : -1;
       const assignments = this.assignments + change;
       this.setAssignments(assignments);
       if (assignments < this.count.banquet) {
@@ -295,6 +303,9 @@ export default {
     },
     saveForm() {
       this.editing = !this.editing;
+    },
+    clear(index) {
+      this.errors[index] = { ...this.clearedErrors };
     },
   },
 };
@@ -360,6 +371,7 @@ export default {
                 :id="`firstName-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @input="clear(index)"
               />
               <p class="form-input-hint" v-if="!!errors[index].firstName">
                 {{ errors[index].firstName }}
@@ -381,6 +393,7 @@ export default {
                 :id="`lastName-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @input="clear(index)"
               />
               <p class="form-input-hint" v-if="!!errors[index].lastName">
                 {{ errors[index].lastName }}
@@ -396,14 +409,15 @@ export default {
             <div class="tickets-item-input">
               <input
                 v-model="state[index].knownAs"
-                :id="`club-${ticket.key}`"
+                :id="`knownAs-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @input="clear(index)"
               />
               <label
-                :for="`club-${ticket.key}`"
+                :for="`knownAs-${ticket.key}`"
                 class="tickets-input-placeholder"
-                v-show="!state[index].club"
+                v-show="!state[index].knownAs"
               >
                 {{ $t("order.tickets.known") }} ({{
                   $t("order.tickets.optional")
@@ -419,6 +433,7 @@ export default {
                 :id="`club-${ticket.key}`"
                 class="tickets-input-text"
                 :disabled="!editing"
+                @change="clear(index)"
               >
                 <option v-for="item in clubs" :key="item.id" :value="item.name">
                   {{ item.name }}
@@ -462,7 +477,7 @@ export default {
                 type="checkbox"
                 v-model="state[index].banquet"
                 class="tickets-checkbox-input"
-                @click="clickBanquet(ticket)"
+                @change="clickBanquet(ticket)"
                 :disabled="!editing || ticket.banquetDisabled"
               />
               <label for="banquet" class="tickets-checkbox-label">
@@ -638,6 +653,7 @@ export default {
             font-weight: 500;
             line-height: 22px;
             margin: 0;
+            pointer-events: none;
           }
         }
         .tickets-checkbox {
