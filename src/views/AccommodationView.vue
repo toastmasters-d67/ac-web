@@ -13,66 +13,78 @@
         class="accommodation-banner-visual-right"
         alt=""
       />
-      <span class="accommodation-banner-title">Taipei Fushin Hotel</span>
+      <span class="accommodation-banner-title">
+        {{ $t("accommodation.banner.title") }}
+      </span>
       <hr class="accommodation-banner-divider" />
       <span class="accommodation-banner-title-text">
-        Don't miss out on our exclusive offers!
+        {{ $t("accommodation.banner.title-text") }}
       </span>
       <div class="accommodation-banner-content-container">
         <div class="accommodation-banner-content-box1">
           <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title1">Standard</span>
+            <span class="accommodation-banner-subbox-title1">
+              {{ $t("accommodation.banner.room1.name") }}
+            </span>
             <span class="accommodation-banner-subbox-text1">
-              (2 two single/
+              {{ $t("accommodation.banner.room1.description1") }}
               <br />
-              1 double)
+              {{ $t("accommodation.banner.room1.description2") }}
             </span>
           </div>
           <hr class="accommodation-banner-vertical-divider" />
           <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title2"
-              >$2,500/ night</span
-            >
-            <span class="accommodation-banner-subbox-text2">($2,700)</span>
+            <span class="accommodation-banner-subbox-title2">
+              {{ $t("accommodation.banner.room1.price") }}
+            </span>
+            <span class="accommodation-banner-subbox-text2">
+              {{ $t("accommodation.banner.room1.original-price") }}
+            </span>
           </div>
         </div>
         <div class="accommodation-banner-content-box1">
           <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title1">Family</span>
-            <span class="accommodation-banner-subbox-text1">(2 double)</span>
+            <span class="accommodation-banner-subbox-title1">
+              {{ $t("accommodation.banner.room2.name") }}
+            </span>
+            <span class="accommodation-banner-subbox-text1">
+              {{ $t("accommodation.banner.room2.description") }}
+            </span>
           </div>
           <hr class="accommodation-banner-vertical-divider" />
           <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title2"
-              >$4,400/ night</span
-            >
-            <span class="accommodation-banner-subbox-text2">($4,800)</span>
+            <span class="accommodation-banner-subbox-title2">
+              {{ $t("accommodation.banner.room2.price") }}
+            </span>
+            <span class="accommodation-banner-subbox-text2">
+              {{ $t("accommodation.banner.room2.original-price") }}
+            </span>
           </div>
         </div>
         <div class="accommodation-banner-content-box2">
           <span class="accommodation-banner-box2-note">
-            Special price for early check-in (9:00AM)
+            {{ $t("accommodation.banner.note") }}
           </span>
           <div class="accommodation-banner-box2-subbox">
             <div class="accommodation-banner-box2-subbox-text">
-              Standard
+              {{ $t("accommodation.banner.room1.name") }}
               <br />
-              +$1,300/ room
+              {{ $t("accommodation.banner.room1.add-price") }}
             </div>
             <div class="accommodation-banner-box2-subbox-text">
-              Family
+              {{ $t("accommodation.banner.room2.name") }}
               <br />
-              +$2,200/ room
+              {{ $t("accommodation.banner.room2.add-price") }}
             </div>
           </div>
         </div>
       </div>
       <div class="accommodation-banner-bottom">
         <span class="accommodation-banner-bottom-bold">
-          Get special price and tell us you are:
+          {{ $t("accommodation.banner.bottom-title") }}
         </span>
-        <span>“Attending Toastmasters D67 annual conference.”</span>
-        <span>Tel: 02-2648-9922</span>
+        <span>{{ $t("accommodation.banner.bottom-note") }}</span>
+        <span>{{ $t("accommodation.banner.bottom-tel") }}</span>
       </div>
     </div>
     <div class="accommodation-area">{{ $t("accommodation.xizhi") }}</div>

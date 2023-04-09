@@ -3,6 +3,29 @@
     "title": "Accommodation",
     "xizhi": "Xi Zhi",
     "nangang": "Nangang",
+    "banner": {
+      "title": "Taipei Fushin Hotel",
+      "title-text": "Don't miss out on our exclusive offers!",
+      "room1": {
+        "name": "Standard",
+        "description1": "(2 two single/",
+        "description2": "1 double)",
+        "price": "$2,500/ night",
+        "original-price": "($2,700)",
+        "add-price": "+$1,300/ room"
+      },
+      "room2": {
+        "name": "Family",
+        "description": "(2 double)",
+        "price": "$4,400/ night",
+        "original-price": "($4,800)",
+        "add-price": "+$2,200/ room"
+      },
+      "note": "Special price for early check-in (9:00AM)",
+      "bottom-title": "Get special price and tell us you are:",
+      "bottom-note": "“Attending Toastmasters D67 annual conference.”",
+      "bottom-tel": "Tel: 02-2648-9922"
+    },
     "hotels": [
       {
         "name": "Taipei Fushin Hotel",
