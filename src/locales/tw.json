@@ -3,6 +3,29 @@
     "title": "住宿資訊",
     "xizhi": "汐止",
     "nangang": "南港",
+    "banner": {
+      "title": "台北富信大飯店",
+      "title-text": "年會獨家優惠，數量有限",
+      "room1": {
+        "name": "雙人",
+        "description1": "(2 小床/ 1 大床)",
+        "description2": "",
+        "price": "$2,500/晚",
+        "original-price": "($2,700)",
+        "add-price": "+ $1,300/間"
+      },
+      "room2": {
+        "name": "四人",
+        "description": "(2 大床)",
+        "price": "$4,400/晚",
+        "original-price": "($4,800)",
+        "add-price": "+ $2,200/間"
+      },
+      "note": "9:00AM 前進房，需加收提早入住費用",
+      "bottom-title": "請務必告知訂房人員是",
+      "bottom-note": "「中華民國國際演講協會」年會的與會者，飯店將提供以上優惠房價!",
+      "bottom-tel": "訂房專線：02-2648-9922"
+    },
     "hotels": [
       {
         "name": "台北富信大飯店",
