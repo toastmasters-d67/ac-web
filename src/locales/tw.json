@@ -391,11 +391,11 @@
       },
       {
         "question": "請問要怎麼購票呢？",
-        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a> ，謝謝。"
+        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a>，謝謝。"
       },
       {
         "question": "如果買票後臨時無法參加年會，是否可以退費呢？",
-        "answer": "如您需要退費，請於 4 月 13 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。</br></br>4/13(含)之前的退票，將收取 10% 手續費。退費方式，將於年會活動結束後 7天(4/30) 內，以匯款方式匯到報名者指定之銀行帳戶。"
+        "answer": "如您需要退費，請於 4 月 13 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。</br></br>4/13(含)之前的退票，將收取 10% 手續費。退費方式，將於年會活動結束後 7 天 (4/30) 內，以匯款方式匯到報名者指定之銀行帳戶。"
       },
       {
         "question": "我有關於年會的問題想詢問，該聯繫誰呢？",
@@ -403,7 +403,7 @@
       },
       {
         "question": "請問年會會場附近有推薦的住宿地點嗎？",
-        "answer": "會場周邊住宿請參考我們的 <a href='/accommodation'>住宿資訊頁</a>，謝謝。"
+        "answer": "會場周邊住宿請參考我們的<a href='/accommodation'>住宿資訊頁</a>，謝謝。"
       }
     ]
   },

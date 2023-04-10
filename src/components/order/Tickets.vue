@@ -234,7 +234,6 @@ export default {
           }
         }
       });
-
       if (this.count.banquet <= 0) {
         Array.from(this.state).forEach((ticket, index) => {
           this.state[index].banquetDisabled = true;

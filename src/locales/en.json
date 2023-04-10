@@ -391,7 +391,7 @@
       },
       {
         "question": "How can I buy the annual conference tickets?",
-        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a> for more details. Thank you."
       },
       {
         "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
@@ -403,7 +403,7 @@
       },
       {
         "question": "Is there any recommended accommodation near the venue?",
-        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
+        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information."
       }
     ]
   },

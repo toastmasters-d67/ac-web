@@ -1,3 +1,49 @@
+<script>
+export default {
+  name: "SpeakerBriefing",
+  props: {
+    speakerKey: {
+      type: String,
+      default: "",
+    },
+    name: {
+      type: String,
+      default: "",
+    },
+    title: {
+      type: String,
+      default: "",
+    },
+    contents: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
+    facebook: {
+      type: String,
+      default: "",
+    },
+    instagram: {
+      type: String,
+      default: "",
+    },
+    youtube: {
+      type: String,
+      default: "",
+    },
+  },
+  methods: {
+    getImage(speakerKey) {
+      if (speakerKey.length) {
+        return require(`@/assets/image/speaker/speaker-${speakerKey}.png`);
+      }
+      return "";
+    },
+  },
+};
+</script>
+
 <template>
   <section class="briefing-container">
     <div class="briefing-speaker">
@@ -11,9 +57,7 @@
           alt="play"
         />
         <div class="briefing-speaker-text">
-          <span v-for="(item, key) in contents" :key="key">
-            <span v-html="item"></span>
-          </span>
+          <span v-for="(item, key) in contents" :key="key" v-html="item"></span>
         </div>
       </div>
       <div class="briefing-speaker-links">
@@ -97,10 +141,6 @@
       font-size: 20px;
       line-height: 40px;
       font-weight: 400;
-      ::v-deep .second-layer {
-        list-style-type: circle;
-        padding-left: 15px;
-      }
       @media screen and (max-width: 1024px) {
         font-size: 16px;
         line-height: 32px;
@@ -163,49 +203,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  name: "SpeakerBriefing",
-  props: {
-    speakerKey: {
-      type: String,
-      default: "",
-    },
-    name: {
-      type: String,
-      default: "",
-    },
-    title: {
-      type: String,
-      default: "",
-    },
-    contents: {
-      type: Array,
-      default: function () {
-        return [];
-      },
-    },
-    facebook: {
-      type: String,
-      default: "",
-    },
-    instagram: {
-      type: String,
-      default: "",
-    },
-    youtube: {
-      type: String,
-      default: "",
-    },
-  },
-  methods: {
-    getImage(speakerKey) {
-      if (speakerKey.length) {
-        return require(`@/assets/image/speaker/speaker-${speakerKey}.png`);
-      }
-      return "";
-    },
-  },
-};
-</script>

@@ -1,3 +1,38 @@
+<script>
+import { reactive } from "vue";
+import Breadcrumb from "@/components/app/Breadcrumb.vue";
+
+export default {
+  name: "FAQView",
+  components: {
+    Breadcrumb,
+  },
+  data() {
+    const items = reactive([]);
+    Array.from(this.$tm("faq.items")).forEach((source) => {
+      const item = {
+        question: this.$rt(source.question),
+        answer: this.$rt(source.answer),
+        icon: "pi pi-angle-down faq-icon",
+        show: false,
+      };
+      items.push(item);
+    });
+    return { items };
+  },
+  methods: {
+    toggle(key) {
+      this.items[key].show = !this.items[key].show;
+      const direction = this.items[key].show ? "up" : "down";
+      this.items[key].icon = `pi pi-angle-${direction} faq-icon`;
+    },
+  },
+  beforeMount() {
+    window.scrollTo({ top: 0 });
+  },
+};
+</script>
+
 <template>
   <article id="faq" class="faq-container">
     <Breadcrumb v-once />
@@ -8,19 +43,13 @@
           <span>{{ item.question }}</span>
           <i :class="item.icon"></i>
         </div>
-        <span v-if="item.show" class="faq-answer">
-          <div class="answer-content" v-html="item.answer"></div>
-        </span>
+        <span v-if="item.show" class="faq-answer" v-html="item.answer"></span>
       </div>
     </div>
   </article>
 </template>
 
 <style scoped lang="scss">
-.answer-content::v-deep li {
-  margin-bottom: 15px;
-}
-
 .faq-container {
   width: 100%;
   background: transparent;
@@ -37,7 +66,6 @@
     margin-top: 80px;
     margin-bottom: 80px;
   }
-
   .faq-questions {
     color: black;
     margin-top: 20px;
@@ -113,38 +141,3 @@
   }
 }
 </style>
-
-<script>
-import { reactive } from "vue";
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
-
-export default {
-  name: "FAQView",
-  components: {
-    Breadcrumb,
-  },
-  data() {
-    const items = reactive([]);
-    Array.from(this.$tm("faq.items")).forEach((source) => {
-      const item = {
-        question: this.$rt(source.question),
-        answer: this.$rt(source.answer),
-        icon: "pi pi-angle-down faq-icon",
-        show: false,
-      };
-      items.push(item);
-    });
-    return { items };
-  },
-  methods: {
-    toggle(key) {
-      this.items[key].show = !this.items[key].show;
-      const direction = this.items[key].show ? "up" : "down";
-      this.items[key].icon = `pi pi-angle-${direction} faq-icon`;
-    },
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-};
-</script>
