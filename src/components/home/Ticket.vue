@@ -113,15 +113,7 @@
         </ul>
       </div>
     </div>
-    <div class="ticket-note">
-      <span v-for="(item, index) in $tm('home.ticket.note')" :key="index">
-        {{ $rt(item) }}&nbsp;
-      </span>
-    </div>
-    <router-link to="/me" class="ticket-button">
-      <span class="button-text">{{ $t("home.ticket.order") }}</span>
-      <i class="pi pi-arrow-right button-arrow-right"></i>
-    </router-link>
+    <div class="ticket-note">{{ $t("home.ticket.note") }}</div>
   </section>
 </template>
 

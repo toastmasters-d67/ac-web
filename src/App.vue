@@ -1,16 +1,41 @@
+<script>
+import Navbar from "@/components/app/Navbar.vue";
+import Footer from "@/components/app/Footer.vue";
+import ScrollToTopButton from "@/components/app/ScrollToTopButton.vue";
+import CtaButtons from "@/components/app/CtaButtons.vue";
+export default {
+  components: {
+    Navbar,
+    Footer,
+    ScrollToTopButton,
+    CtaButtons,
+  },
+  methods: {
+    scrollToElement(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = `/#${id}`;
+      }
+    },
+    scrollToTop(behavior) {
+      window.scrollTo({ top: 0, behavior: behavior });
+    },
+  },
+};
+</script>
+
 <template>
   <Navbar
     :scrollToElement="scrollToElement"
     :scrollToTop="scrollToTop"
     v-once
   />
-  <router-view :scrollToElement="scrollToElement" v-once />
+  <router-view v-once />
   <Footer :scrollToElement="scrollToElement" v-once />
   <ScrollToTopButton :scrollToTop="scrollToTop" v-once />
-  <CtaButtons
-    :scrollToElement="scrollToElement"
-    :showCtaGetTickets="showCtaGetTickets"
-  />
+  <CtaButtons :scrollToElement="scrollToElement" />
 </template>
 
 <style lang="scss">
@@ -55,42 +80,3 @@ body {
   );
 }
 </style>
-
-<script>
-import Navbar from "@/components/app/Navbar.vue";
-import Footer from "@/components/app/Footer.vue";
-import ScrollToTopButton from "@/components/app/ScrollToTopButton.vue";
-import CtaButtons from "@/components/app/CtaButtons.vue";
-export default {
-  components: {
-    Navbar,
-    Footer,
-    ScrollToTopButton,
-    CtaButtons,
-  },
-  computed: {
-    showCtaGetTickets() {
-      const currentRoute = this.$route.path;
-      return (
-        currentRoute !== "/login" &&
-        currentRoute !== "/register" &&
-        currentRoute !== "/me" &&
-        currentRoute !== "/cart"
-      );
-    },
-  },
-  methods: {
-    scrollToElement(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = `/#${id}`;
-      }
-    },
-    scrollToTop(behavior) {
-      window.scrollTo({ top: 0, behavior: behavior });
-    },
-  },
-};
-</script>

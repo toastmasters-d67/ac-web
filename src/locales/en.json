@@ -505,9 +505,7 @@
       "souvenir": "Souvenirs",
       "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
-      "note": [
-        "The tickets will be available for purchase until Apr 10. Don't miss out!"
-      ],
+      "note": "Thank you for your interest, but unfortunately all the tickets were sold out.",
       "order": "Order Tickets"
     },
     "venue": {

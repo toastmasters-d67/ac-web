@@ -123,11 +123,6 @@ export default {
     <article id="account" class="account-container">
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
-        <router-link to="/cart" class="">
-          <button class="account-button">
-            <span class="plus">+ {{ $t("account.new") }}</span>
-          </button>
-        </router-link>
       </div>
       <table id="tableComponent" class="table table-bordered table-striped">
         <thead class="table-head">

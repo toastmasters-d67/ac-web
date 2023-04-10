@@ -1,16 +1,3 @@
-<template>
-  <article id="home">
-    <Marquee :sentences="sentences" v-once />
-    <Slogan :scrollToElement="scrollToElement" v-once />
-    <Countdown v-once />
-    <Ticket v-once />
-    <Speakers v-once />
-    <Program v-once />
-    <Venue v-once />
-    <Souvenirs v-once />
-  </article>
-</template>
-
 <script>
 import Marquee from "@/components/app/Marquee.vue";
 import Slogan from "@/components/home/Slogan.vue";
@@ -23,11 +10,6 @@ import Souvenirs from "@/components/home/Souvenirs.vue";
 
 export default {
   name: "HomeView",
-  props: {
-    scrollToElement: {
-      type: Function,
-    },
-  },
   components: {
     Marquee,
     Slogan,
@@ -52,3 +34,16 @@ export default {
   },
 };
 </script>
+
+<template>
+  <article id="home">
+    <Marquee :sentences="sentences" v-once />
+    <Slogan v-once />
+    <Countdown v-once />
+    <Ticket v-once />
+    <Speakers v-once />
+    <Program v-once />
+    <Venue v-once />
+    <Souvenirs v-once />
+  </article>
+</template>

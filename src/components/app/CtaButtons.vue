@@ -1,14 +1,16 @@
+<script>
+export default {
+  name: "CtaButtons",
+  props: {
+    scrollToElement: {
+      type: Function,
+    },
+  },
+};
+</script>
+
 <template>
   <div class="cta-buttons-container">
-    <button
-      class="cta-button ticket"
-      @click="scrollToElement('ticket')"
-      v-if="showCtaGetTickets"
-    >
-      <span v-for="(item, index) in $tm('app.button.ticket')" :key="index">
-        {{ $rt(item) }}
-      </span>
-    </button>
     <button
       class="cta-button contact"
       onclick="location.href = 'mailto:tmicon@toastmasters.org.tw'"
@@ -19,21 +21,6 @@
     </button>
   </div>
 </template>
-
-<script>
-export default {
-  name: "CtaButtons",
-  props: {
-    scrollToElement: {
-      type: Function,
-    },
-    showCtaGetTickets: {
-      type: Boolean,
-      default: true,
-    },
-  },
-};
-</script>
 
 <style scoped lang="scss">
 .cta-buttons-container {
@@ -60,10 +47,6 @@ export default {
     font-weight: 500;
     line-height: 20px;
     text-align: center;
-  }
-  .ticket {
-    background: linear-gradient(107.49deg, #c9d9e3 23.75%, #ffd099 83.94%);
-    margin-bottom: 15px;
   }
   .contact {
     background: linear-gradient(45.28deg, #d6bbea 25.9%, #e7becb 74.88%);
