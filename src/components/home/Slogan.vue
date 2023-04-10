@@ -1,3 +1,36 @@
+<script>
+export default {
+  name: "Slogan",
+  data() {
+    return {
+      windowHeight: window.innerHeight,
+      sloganText: this.$t("home.slogan.text.desktop"),
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.windowHeight = window.innerWidth;
+      if (this.windowHeight > 768) {
+        this.sloganText = this.$t("home.slogan.text.desktop");
+      } else {
+        this.sloganText = this.$t("home.slogan.text.mobile");
+      }
+    },
+    getStyle() {
+      const background = require("@/assets/image/home/slogan-background.png");
+      return `background: url(${background}) no-repeat center bottom/cover`;
+    },
+  },
+};
+</script>
+
 <template>
   <section class="slogan-container">
     <img
@@ -20,9 +53,6 @@
     <span class="slogan-text">
       {{ sloganText }}
     </span>
-    <button class="slogan-button" @click="scrollToElement('ticket')">
-      {{ $t("home.slogan.ticket") }}
-    </button>
     <img
       alt="Key Vision 2"
       class="slogan-kv-mobile2"
@@ -111,21 +141,6 @@
     line-height: 32px;
     margin-top: 15px;
   }
-  .slogan-button {
-    width: fit-content;
-    color: black;
-    background: #ffdb82;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 24px;
-    text-align: center;
-    border: 1px solid white;
-    border-radius: 38px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-    padding: 8px 30px;
-    margin-top: 40px;
-    cursor: pointer;
-  }
 }
 @media screen and (max-width: 1024px) {
   .slogan-container {
@@ -187,50 +202,6 @@
       letter-spacing: 0.05em;
       margin-top: 31px;
     }
-    .slogan-button {
-      font-size: 10px;
-      line-height: 12px;
-      padding: 5px 12px;
-      margin-top: 24px;
-    }
   }
 }
 </style>
-
-<script>
-export default {
-  name: "Slogan",
-  props: {
-    scrollToElement: {
-      type: Function,
-    },
-  },
-  data() {
-    return {
-      windowHeight: window.innerHeight,
-      sloganText: this.$t("home.slogan.text.desktop"),
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-      if (this.windowHeight > 768) {
-        this.sloganText = this.$t("home.slogan.text.desktop");
-      } else {
-        this.sloganText = this.$t("home.slogan.text.mobile");
-      }
-    },
-    getStyle() {
-      const background = require("@/assets/image/home/slogan-background.png");
-      return `background: url(${background}) no-repeat center bottom/cover`;
-    },
-  },
-};
-</script>

@@ -3,6 +3,29 @@
     "title": "住宿資訊",
     "xizhi": "汐止",
     "nangang": "南港",
+    "banner": {
+      "title": "台北富信大飯店",
+      "title-text": "年會獨家優惠，數量有限",
+      "room1": {
+        "name": "雙人",
+        "description1": "(2 小床/ 1 大床)",
+        "description2": "",
+        "price": "$2,500/晚",
+        "original-price": "($2,700)",
+        "add-price": "+ $1,300/間"
+      },
+      "room2": {
+        "name": "四人",
+        "description": "(2 大床)",
+        "price": "$4,400/晚",
+        "original-price": "($4,800)",
+        "add-price": "+ $2,200/間"
+      },
+      "note": "9:00AM 前進房，需加收提早入住費用",
+      "bottom-title": "請務必告知訂房人員是",
+      "bottom-note": "「中華民國國際演講協會」年會的與會者，飯店將提供以上優惠房價!",
+      "bottom-tel": "訂房專線：02-2648-9922"
+    },
     "hotels": [
       {
         "name": "台北富信大飯店",
@@ -368,11 +391,11 @@
       },
       {
         "question": "請問要怎麼購票呢？",
-        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a> ，謝謝。"
+        "answer": "請先註冊並登入年會官網，於我的帳號頁面點選建立新訂單即可購買門票。</br>詳情請參考 <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>購票流程說明</a>，謝謝。"
       },
       {
         "question": "如果買票後臨時無法參加年會，是否可以退費呢？",
-        "answer": "如您需要退費，請於 4 月 16 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。"
+        "answer": "如您需要退費，請於 4 月 13 日前 email 您的退費申請至 tmicon{'@'}toastmasters.org.tw，我們會有專人為您處理退費事宜。若超過此截止日，恕不受理。</br></br>4/13(含)之前的退票，將收取 10% 手續費。退費方式，將於年會活動結束後 7 天 (4/30) 內，以匯款方式匯到報名者指定之銀行帳戶。"
       },
       {
         "question": "我有關於年會的問題想詢問，該聯繫誰呢？",
@@ -380,7 +403,7 @@
       },
       {
         "question": "請問年會會場附近有推薦的住宿地點嗎？",
-        "answer": "會場周邊住宿請參考我們的 <a href='/accommodation'>住宿資訊頁</a>，謝謝。"
+        "answer": "會場周邊住宿請參考我們的<a href='/accommodation'>住宿資訊頁</a>，謝謝。"
       }
     ]
   },
@@ -400,6 +423,7 @@
       "title": "大會議程",
       "day1": "第一天",
       "day2": "第二天",
+      "download":"下載議程表",
       "registration": "註冊報到",
       "until": "開放報到至上午11:30止",
       "min": "分鐘",
@@ -480,9 +504,7 @@
       "souvenir": "精美紀念品",
       "banquet": "4/22 晚宴",
       "banquet-optional": "4/22 晚宴 $800 (可加購)",
-      "note": [
-        "售票截止日為4月10日，快來手刀搶票！"
-      ],
+      "note": "2023年度大會線上購票已截止，感謝您的支持。",
       "order": "線上購票"
     },
     "venue": {
@@ -516,6 +538,7 @@
     },
     "title": "登入",
     "description": "請登入以繼續完成購票",
+    "firstlogin-description":"若您是第一次登入年度大會網站，請先完成註冊。</br>提醒您，本網站資料並未和 Toastmasters International 國際總會官網同步，請不要直接使用國際總會官網的帳號密碼登入。",
     "forget-password": "忘記密碼?",
     "no-account": "沒有帳號嗎?"
   },

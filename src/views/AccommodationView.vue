@@ -2,6 +2,91 @@
   <Breadcrumb v-once />
   <header class="accommodation-title">{{ $t("accommodation.title") }}</header>
   <article id="accommodation" class="accommodation-container">
+    <div class="accommodation-banner-container">
+      <img
+        src="@/assets/image/accommodation/visual-left.svg"
+        class="accommodation-banner-visual-left"
+        alt=""
+      />
+      <img
+        src="@/assets/image/accommodation/visual-right.svg"
+        class="accommodation-banner-visual-right"
+        alt=""
+      />
+      <span class="accommodation-banner-title">
+        {{ $t("accommodation.banner.title") }}
+      </span>
+      <hr class="accommodation-banner-divider" />
+      <span class="accommodation-banner-title-text">
+        {{ $t("accommodation.banner.title-text") }}
+      </span>
+      <div class="accommodation-banner-content-container">
+        <div class="accommodation-banner-content-box1">
+          <div class="accommodation-banner-box1-subbox">
+            <span class="accommodation-banner-subbox-title1">
+              {{ $t("accommodation.banner.room1.name") }}
+            </span>
+            <span class="accommodation-banner-subbox-text1">
+              {{ $t("accommodation.banner.room1.description1") }}
+              <br />
+              {{ $t("accommodation.banner.room1.description2") }}
+            </span>
+          </div>
+          <hr class="accommodation-banner-vertical-divider" />
+          <div class="accommodation-banner-box1-subbox">
+            <span class="accommodation-banner-subbox-title2">
+              {{ $t("accommodation.banner.room1.price") }}
+            </span>
+            <span class="accommodation-banner-subbox-text2">
+              {{ $t("accommodation.banner.room1.original-price") }}
+            </span>
+          </div>
+        </div>
+        <div class="accommodation-banner-content-box1">
+          <div class="accommodation-banner-box1-subbox">
+            <span class="accommodation-banner-subbox-title1">
+              {{ $t("accommodation.banner.room2.name") }}
+            </span>
+            <span class="accommodation-banner-subbox-text1">
+              {{ $t("accommodation.banner.room2.description") }}
+            </span>
+          </div>
+          <hr class="accommodation-banner-vertical-divider" />
+          <div class="accommodation-banner-box1-subbox">
+            <span class="accommodation-banner-subbox-title2">
+              {{ $t("accommodation.banner.room2.price") }}
+            </span>
+            <span class="accommodation-banner-subbox-text2">
+              {{ $t("accommodation.banner.room2.original-price") }}
+            </span>
+          </div>
+        </div>
+        <div class="accommodation-banner-content-box2">
+          <span class="accommodation-banner-box2-note">
+            {{ $t("accommodation.banner.note") }}
+          </span>
+          <div class="accommodation-banner-box2-subbox">
+            <div class="accommodation-banner-box2-subbox-text">
+              {{ $t("accommodation.banner.room1.name") }}
+              <br />
+              {{ $t("accommodation.banner.room1.add-price") }}
+            </div>
+            <div class="accommodation-banner-box2-subbox-text">
+              {{ $t("accommodation.banner.room2.name") }}
+              <br />
+              {{ $t("accommodation.banner.room2.add-price") }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accommodation-banner-bottom">
+        <span class="accommodation-banner-bottom-bold">
+          {{ $t("accommodation.banner.bottom-title") }}
+        </span>
+        <span>{{ $t("accommodation.banner.bottom-note") }}</span>
+        <span>{{ $t("accommodation.banner.bottom-tel") }}</span>
+      </div>
+    </div>
     <div class="accommodation-area">{{ $t("accommodation.xizhi") }}</div>
     <div class="accommodation-item">
       <img
@@ -194,9 +279,151 @@
 .accommodation-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 100px;
-  padding-bottom: 100px;
-
+  padding-top: 43px;
+  padding-bottom: 300px;
+  .accommodation-banner-container {
+    width: 100vw;
+    transform: translateX(calc(600px - 50vw));
+    @media screen and (max-width: 1200px) {
+      transform: none;
+    }
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-color: transparent;
+    background-color: rgba(255, 234, 198, 1);
+    padding-top: 9px;
+    margin-bottom: 74px;
+    .accommodation-banner-visual-left {
+      width: 225px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-215%, -90%);
+      overflow: hidden;
+    }
+    .accommodation-banner-visual-right {
+      width: 175px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(100%, -110%);
+      overflow: hidden;
+    }
+    .accommodation-banner-title {
+      width: 216px;
+      height: 56px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 400;
+      color: white;
+      border-color: transparent;
+      background-image: url("@/assets/image/accommodation/banner-ellipse.svg");
+      padding-top: 24px;
+    }
+    .accommodation-banner-divider {
+      width: 216px;
+      border: 1px solid #76551d;
+      margin: 5px 0;
+    }
+    .accommodation-banner-title-text {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgb(142, 92, 5);
+      margin-bottom: 51px;
+    }
+  }
+  .accommodation-banner-content-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 46px;
+    .accommodation-banner-content-box1 {
+      height: 76px;
+      display: flex;
+      border: 1px solid rgba(142, 92, 5, 1);
+      border-radius: 8px;
+      background-color: rgba(255, 240, 219, 1);
+      .accommodation-banner-box1-subbox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgba(142, 91, 4, 1);
+        padding: 8px;
+        .accommodation-banner-subbox-title1 {
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 4px;
+        }
+        .accommodation-banner-subbox-text1 {
+          font-size: 10px;
+          font-weight: 500;
+        }
+        .accommodation-banner-subbox-title2 {
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 4px;
+        }
+        .accommodation-banner-subbox-text2 {
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 12px;
+          text-decoration-line: line-through;
+        }
+      }
+      .accommodation-banner-vertical-divider {
+        border: 1px solid rgba(142, 92, 5, 1);
+        margin: 0;
+      }
+    }
+  }
+  .accommodation-banner-content-box2 {
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    color: rgba(142, 92, 5, 1);
+    border: 1px solid rgba(142, 92, 5, 1);
+    border-radius: 7px;
+    background-color: rgba(255, 240, 219, 1);
+    padding: 12px;
+    .accommodation-banner-box2-note {
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .accommodation-banner-box2-subbox {
+      display: flex;
+      gap: 35px;
+      .accommodation-banner-box2-subbox-text {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 500;
+        margin-bottom: 2px;
+      }
+    }
+  }
+  .accommodation-banner-bottom {
+    width: 100%;
+    height: 97px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    background-color: rgba(150, 113, 50, 1);
+    .accommodation-banner-bottom-bold {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
   .accommodation-area {
     font-size: 24px;
     color: #004165;
@@ -263,6 +490,17 @@
     margin-bottom: 0px;
     margin-left: 2.5%;
     padding: 1rem;
+  }
+  .accommodation-banner-container {
+    .accommodation-banner-visual-left {
+      display: none;
+    }
+    .accommodation-banner-visual-right {
+      display: none;
+    }
+    .accommodation-banner-content-container {
+      flex-direction: column;
+    }
   }
   .accommodation-container {
     padding-top: 0px;

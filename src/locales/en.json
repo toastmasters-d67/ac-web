@@ -3,6 +3,29 @@
     "title": "Accommodation",
     "xizhi": "Xi Zhi",
     "nangang": "Nangang",
+    "banner": {
+      "title": "Taipei Fushin Hotel",
+      "title-text": "Don't miss out on our exclusive offers!",
+      "room1": {
+        "name": "Standard",
+        "description1": "(2 two single/",
+        "description2": "1 double)",
+        "price": "$2,500/ night",
+        "original-price": "($2,700)",
+        "add-price": "+$1,300/ room"
+      },
+      "room2": {
+        "name": "Family",
+        "description": "(2 double)",
+        "price": "$4,400/ night",
+        "original-price": "($4,800)",
+        "add-price": "+$2,200/ room"
+      },
+      "note": "Special price for early check-in (9:00AM)",
+      "bottom-title": "Get special price and tell us you are:",
+      "bottom-note": "“Attending Toastmasters D67 annual conference.”",
+      "bottom-tel": "Tel: 02-2648-9922"
+    },
     "hotels": [
       {
         "name": "Taipei Fushin Hotel",
@@ -368,11 +391,11 @@
       },
       {
         "question": "How can I buy the annual conference tickets?",
-        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a>  for more details. Thank you."
+        "answer": "Please register and log in to the website, and click on \"new order\" on my account page to buy the tickets. Please refer to the <a href='https://drive.google.com/drive/folders/1BdwRBJA4mpRGpFhyWxsmv4xwcUk2YC8a?usp=share_link' target='_blank'>tutorial</a> for more details. Thank you."
       },
       {
         "question": "Can I get a refund for the tickets I bought in case I couldn't attend the annual conference?",
-        "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 16th for the manual refund process. No refund is allowed after this deadline."
+        "answer": "Please email your refund request to tmicon{'@'}toastmasters.org.tw by April 13th for the manual refund process. No refund is allowed after this deadline.</br></br>In addition, we will charget 10% handling fee for each refund request sent to us by April 13th. The refund will be transferred to your bank account by April 30th."
       },
       {
         "question": "Who can I contact if I have questions regarding the annual conference?",
@@ -380,7 +403,7 @@
       },
       {
         "question": "Is there any recommended accommodation near the venue?",
-        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information. "
+        "answer": "Please visit our <a href='/accommodation'>accommodation info page</a> for more information."
       }
     ]
   },
@@ -400,6 +423,7 @@
       "title": "Program",
       "day1": "Day 1",
       "day2": "Day 2",
+      "download":"Program Download",
       "registration": "Registration",
       "until": "Open until 11:30",
       "min": "mins",
@@ -481,9 +505,7 @@
       "souvenir": "Souvenirs",
       "banquet": "Dinner banquet on 4/22 included",
       "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
-      "note": [
-        "The tickets will be available for purchase until Apr 10. Don't miss out!"
-      ],
+      "note": "Thank you for your interest, but unfortunately all the tickets were sold out.",
       "order": "Order Tickets"
     },
     "venue": {
@@ -508,17 +530,18 @@
       },
       "step2": {
         "text": "Choose your tickets and ",
-        "text-highlight": "Check out."
+        "text-highlight": "check out."
       },
       "step3": {
         "text1": "Edit ",
-        "text-highlight": "Attendee Information."
+        "text-highlight": "attendee information."
       }
     },
     "title": "Log in",
     "description": "Please log in before you purchase the ticket.",
+    "firstlogin-description":"If you are logging in for the first time, please register first.</br>Please note that the membership info on this website is not synced with Toastmasters International. Please do not use the email/password on TI website to log in.",
     "forget-password": "Forgot your password?",
-    "no-account": "Don't have an account?",
+    "no-account": "Don't have an account?"
   },
   "order": {
     "ticket": "Ticket",

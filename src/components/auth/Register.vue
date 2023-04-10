@@ -62,14 +62,14 @@ export default {
     const errors = reactive({ ...clearedErrors });
     const show = ref(false);
     const errorMessages = reactive({
-      requiredFirstname: this.$t("error.firstname"),
-      requiredLastname: this.$t("error.lastname"),
-      requiredEmail: this.$t("error.email.empty"),
-      requiredPassword: this.$t("error.password.empty"),
+      firstNameEmpty: this.$t("error.firstname"),
+      lastNameEmpty: this.$t("error.lastname"),
+      emailEmpty: this.$t("error.email.empty"),
+      passwordEmpty: this.$t("error.password.empty"),
       emailFormat: this.$t("error.email.format"),
       email: this.$t("error.email.occupied"),
       min: this.$t("error.password.min"),
-      sameAsPassword: this.$t("error.password.match"),
+      passwordMatch: this.$t("error.password.match"),
     });
     return { state, v$, errors, clearedErrors, show, errorMessages };
   },
@@ -107,38 +107,38 @@ export default {
       state: {
         firstName: {
           required: helpers.withMessage(
-            this.errorMessages.requiredFirstname,
+            this.errorMessages.firstNameEmpty,
             required
           ),
         },
         lastName: {
           required: helpers.withMessage(
-            this.errorMessages.requiredLastname,
+            this.errorMessages.lastNameEmpty,
             required
           ),
         },
         email: {
           email: helpers.withMessage(this.errorMessages.emailFormat, email),
           required: helpers.withMessage(
-            this.errorMessages.requiredEmail,
+            this.errorMessages.emailEmpty,
             required
           ),
         },
         password: {
           min: helpers.withMessage(this.errorMessages.min, minLength(6)),
           required: helpers.withMessage(
-            this.errorMessages.requiredPassword,
+            this.errorMessages.passwordEmpty,
             required
           ),
         },
         confirmPassword: {
-          sameAsPassword: helpers.withMessage(
-            this.errorMessages.sameAsPassword,
+          passwordMatch: helpers.withMessage(
+            this.errorMessages.passwordMatch,
             sameAs(this.state.password)
           ),
           min: helpers.withMessage(this.errorMessages.min, minLength(6)),
           required: helpers.withMessage(
-            this.errorMessages.requiredPassword,
+            this.errorMessages.passwordEmpty,
             required
           ),
         },

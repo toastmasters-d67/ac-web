@@ -67,8 +67,10 @@ export default {
       email: this.$t("error.email.format"),
       min: this.$t("error.password.min"),
     });
+    const firstLoginDescription = this.$t("login.firstlogin-description");
     return {
       errorMessages,
+      firstLoginDescription,
     };
   },
   methods: {
@@ -136,6 +138,8 @@ export default {
       <header class="login-title">{{ $t("login.title") }}</header>
       <span class="login-login-description">
         {{ $t("login.description") }}
+      </span>
+      <span class="first-login-description" v-html="this.firstLoginDescription">
       </span>
       <div class="login-form">
         <label for="email" class="login-label">
@@ -238,6 +242,16 @@ export default {
       font-weight: 500;
       color: rgba(33, 67, 102, 1);
       margin-bottom: 40px;
+    }
+    .first-login-description {
+      background: #f9f2e6;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 14px;
+      margin-bottom: 58px;
+      text-align: left;
+      font-weight: 400;
+      line-height: 20px;
     }
     .login-form {
       width: 100%;
@@ -365,6 +379,12 @@ export default {
         font-size: 14px;
         line-height: 17px;
         margin-bottom: 36px;
+      }
+      .first-login-description {
+        background: white;
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 15px;
       }
       .login-form {
         width: 100%;
