@@ -100,19 +100,20 @@
   "app": {
     "breadcrumb": {
       "/": "Home",
-      "faq": "FAQ",
-      "venue": "Venue",
       "accommodation": "Accommodation",
-      "shih": "Stan Shih",
-      "van-borssum": "Greg Van Borssum",
-      "hisamatsu": "Chika Hisamatsu",
-      "tu": "Samantha Tu",
+      "faq": "FAQ",
+      "team": "Our Team",
+      "venue": "Venue",
       "botha": "Phillip Botha",
-      "wang": "王玉梅",
-      "lin": "林惠君",
-      "li": "Angel Li",
       "chang": "張志良",
+      "hisamatsu": "Chika Hisamatsu",
       "huang": "黃東竣",
+      "li": "Angel Li",
+      "lin": "林惠君",
+      "shih": "Stan Shih",
+      "tu": "Samantha Tu",
+      "van-borssum": "Greg Van Borssum",
+      "wang": "王玉梅",
       "tbd": "TBD"
     },
     "navbar": {
@@ -425,37 +426,41 @@
       "day2": "Day 2",
       "download":"Program Download",
       "registration": "Registration",
-      "until": "Open until 11:30",
+      "until1": "Open until 11:30",
+      "until2": "Open until 11:00",
       "min": "mins",
       "briefing1": "International Speech Run-off A/B Contests",
       "briefing2": "{group} Briefing",
-      "group1": "Judge/Timer/Ballot Counter",
-      "group2": "Contestant/SAA",
+      "group1": "Judge/ Timer/ Ballot Counter",
+      "group2": "Contestant/ SAA",
       "run-off": "International Speech Run-off Contest, Group {alphabet}",
       "keynote": "Keynote Speech",
       "speaker-shih": "Founder of Acer Group, Mr. Stan Shih",
       "lunch": "Lunchbox Distribution",
+      "lunch-and": "",
       "opening": "Opening Ceremony",
       "tea": "Tea Break",
+      "tea-and": "",
       "english": "English",
       "mandarin": "Mandarin",
       "taiwanese": "Taiwanese",
       "evaluation": "{language} Evaluation Contest",
       "training": "{language} Training Session",
-      "japanese": "Japanese Speech & Evaluation Contest and Training Session",
+      "japanese": "Japanese Evaluation & Speech Contest and Training Session",
       "dinner": "Gala Dinner",
-      "excom": "Excom Meeting/ District Council Meeting/ Association BoD Meeting",
-      "luncheon": "Luncheon",
+      "excom": "District Excom Meeting, District Council Meeting, Association Meeting",
+      "luncheon": "Lunchbox Distribution",
       "lunch-note": "Lunchbox Distribution will take place at 1F Lobby",
+      "dtm-gathering": "DTM Gathering",
       "speech": "{language} Speech Contest",
       "final": "International Speech Contest",
-      "closing": "Closing Ceremony",
+      "closing": "Award Presentation & Closing Ceremony",
       "room": {
         "calla": "1F Main Hall",
         "clove": "2F Room Clove (2B)",
         "group2-briefing-a": "2F Room 2A: Run-off A",
         "group2-briefing-b": "2F Room 2B: Run-off B",
-        "jasmine": "1F Room Jasmine (1B)",
+        "jasmine": "1F Banquet Hall",
         "lisianthus": "2F Room Lisianthus (2A)",
         "lobby": "1F Lobby",
         "preparation": "2F Preparation Room (2C)",
@@ -464,7 +469,8 @@
       "gvb-keynote-title": [
         "Remastermind - How a Failed School Kid",
         "Mastered His Mindset to Become a Champion"
-      ]
+      ],
+      "gvb-keynote-interpreter": "Mandarin Interpreter: Amy Tang"
     },
     "slogan": {
       "title": "2023 Annual Conference",
@@ -888,6 +894,32 @@
       ]
     }
   ],
+  "team": {
+    "title": [
+      "Meet our team of ",
+      "Designers",
+      ",",
+      "Developers",
+      ", and ",
+      "Digital Experts."
+    ],
+    "description": "We are a group of passionate volunteers under the D67 Digital Transformation Committee. We are dedicated to creating an optimal digital experience for the Toastmasters community.",
+    "team": {
+      "coordinator": "2023 Annual Conference Lead Coordinator",
+      "design": "Design Team",
+      "pm": "Product Management Team",
+      "engineer": "Engineering Team"
+    },
+    "position": {
+      "uiux": "UI/UX Designer",
+      "pm": "Product Manager",
+      "pj-lead-and": "Project Lead &",
+      "fe-and": "Frontend &",
+      "qa-and": "QA &",
+      "frontend": "Frontend Developer",
+      "backend": "Backend Developer"
+    }
+  },
   "venue": {
     "car": {
       "title": "By Car",

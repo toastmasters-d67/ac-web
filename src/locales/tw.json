@@ -100,19 +100,20 @@
   "app": {
     "breadcrumb": {
       "/": "首頁",
-      "faq": "常見問答",
-      "venue": "場地資訊",
       "accommodation": "住宿資訊",
-      "shih": "施振榮",
-      "van-borssum": "Greg Van Borssum",
-      "hisamatsu": "久松 知香",
-      "tu": "凃淑貞",
+      "faq": "常見問答",
+      "team": "認識我們",
+      "venue": "場地資訊",
       "botha": "Phillip Botha",
-      "wang": "王玉梅",
-      "lin": "林惠君",
-      "li": "Angel Li",
       "chang": "張志良",
+      "hisamatsu": "久松 知香",
       "huang": "黃東竣",
+      "li": "Angel Li",
+      "lin": "林惠君",
+      "shih": "施振榮",
+      "tu": "凃淑貞",
+      "van-borssum": "Greg Van Borssum",
+      "wang": "王玉梅",
       "tbd": "邀約中"
     },
     "navbar": {
@@ -129,6 +130,7 @@
     },
     "footer": {
       "contact": "聯繫我們",
+      "team": "認識我們",
       "reserved": "2023 中華民國國際演講協會 版權所有"
     },
     "button": {
@@ -425,7 +427,8 @@
       "day2": "第二天",
       "download":"下載議程表",
       "registration": "註冊報到",
-      "until": "開放報到至上午11:30止",
+      "until1": "開放報到至上午 11:30 止",
+      "until2": "開放報到至上午 11:00 止",
       "min": "分鐘",
       "briefing1": "英語國際演講比賽 A/B 組準決賽",
       "briefing2": "{group} 賽前講解",
@@ -435,27 +438,30 @@
       "keynote": "{language}專題演講",
       "speaker-shih": "宏碁集團創辦人 施振榮先生",
       "lunch": "發放午餐餐盒",
+      "lunch-and": "暨 口譯機借用",
       "opening": "開幕典禮",
-      "tea": "下午茶",
+      "tea": "午茶時間",
+      "tea-and": "暨 口譯機歸還",
       "english": "英語",
       "mandarin": "國語",
       "taiwanese": "台語",
       "evaluation": "{language}講評比賽",
       "training": "{language}教育訓練",
-      "japanese": "日語演講暨講評比賽及教育訓練",
-      "dinner": "精緻晚宴",
-      "excom": "執委會，會員大會，理監事會議",
-      "luncheon": "餐敘",
+      "japanese": "日語講評暨演講比賽及教育訓練",
+      "dinner": "晚宴暨表揚",
+      "excom": "執委會會議、會員代表大會、協會理監事會議",
+      "luncheon": "發放午餐餐盒",
       "lunch-note": "午餐餐盒在 1 樓 大廳發放",
+      "dtm-gathering": "傑出會員餐敘",
       "speech": "{language}演講比賽",
       "final": "英語演講比賽決賽",
-      "closing": "閉幕典禮",
+      "closing": "頒獎暨閉幕典禮",
       "room": {
         "calla": "1 樓 主廳",
         "clove": "2 樓 丁香廳 (2B)",
         "group2-briefing-a": "2 樓桔梗廳 (2A): A組準決賽",
         "group2-briefing-b": "2 樓丁香廳 (2B): B組準決賽",
-        "jasmine": "1 樓 茉莉廳 (1B)",
+        "jasmine": "1 樓 茉莉廳",
         "lisianthus": "2 樓 桔梗廳 (2A)",
         "lobby": "1 樓 大廳",
         "preparation": "2 樓 準備室 (2C)",
@@ -464,7 +470,8 @@
       "gvb-keynote-title": [
         "重掌人生：不會讀書也能擁有強大心念，邁向冠軍之路",
         ""
-      ]
+      ],
+      "gvb-keynote-interpreter": "國語口譯：唐瑄"
     },
     "slogan": {
       "title": "2023 年度大會",
@@ -866,6 +873,32 @@
       ]
     }
   ],
+  "team": {
+    "title": [
+      "認識 D67 網站開發小組—",
+      "UI/UX 設計師",
+      "、",
+      "網站開發工程師",
+      "及",
+      "數位專家"
+    ],
+    "description": "我們是一群憑著熱情與興趣協助 Toastmasters 開發網站及打造絕佳數位體驗的小社群，隸屬於 D67 數位轉型委員會。",
+    "team": {
+      "coordinator": "2023 年度大會總召集人",
+      "design": "設計師團隊",
+      "pm": "產品經理團隊",
+      "engineer": "網站開發工程師團隊"
+    },
+    "position": {
+      "uiux": "UI/UX 設計師",
+      "pm": "產品經理",
+      "pj-lead-and": "專案負責人 暨",
+      "fe-and": "前端 暨",
+      "qa-and": "測試 暨",
+      "frontend": "前端工程師",
+      "backend": "後端工程師"
+    }
+  },
   "venue": {
     "car": {
       "title": "開車前往",

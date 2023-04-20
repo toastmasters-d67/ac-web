@@ -28,6 +28,9 @@
       <a href="mailto:tmicon@toastmasters.org.tw" class="footer-link">
         {{ $t("app.footer.contact") }}
       </a>
+      <router-link to="/team" class="footer-link">
+        {{ $t("app.breadcrumb.team") }}
+      </router-link>
     </div>
     <div class="footer-logos">
       <a href="https://www.toastmasters.org.tw/" target="_blank">
