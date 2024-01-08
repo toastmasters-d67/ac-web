@@ -4,7 +4,7 @@
       <header class="program-title">{{ $t("home.program.title") }}</header>
       <div class="program-download">
         <a
-          href="https://drive.google.com/drive/folders/1--BW6J95C7_g35ZRH26UJfmPevzVlWbq"
+          href="https://drive.google.com/file/d/1poDhZzGed001PUHhevTbMG4WBNWNmr4Q/view?usp=share_link"
           target="_blank"
         >
           <img
@@ -42,7 +42,7 @@
             <span class="row-item-time">
               {{ $t("home.program.registration") }}
               <span class="row-item-time-duration">
-                ({{ $t("home.program.until") }})
+                ({{ $t("home.program.until1") }})
               </span>
             </span>
             <span class="row-item-venue venue-lobby">
@@ -58,7 +58,7 @@
             <span class="row-item-time">
               09:20
               <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
+                (15 {{ $t("home.program.min") }})
               </span>
             </span>
             <span class="row-item-title">
@@ -77,7 +77,7 @@
             <span class="row-item-time">
               09:20
               <span class="row-item-time-duration">
-                (20 {{ $t("home.program.min") }})
+                (15 {{ $t("home.program.min") }})
               </span>
             </span>
             <span class="row-item-title">
@@ -151,60 +151,12 @@
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">12:00</span>
+        <span class="row-time">11:40</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-gray">
             <span class="row-item-time">
               {{ $t("home.program.lunch") }}
-              <span class="row-item-time-duration">
-                (30 {{ $t("home.program.min") }})
-              </span>
-            </span>
-            <span class="row-item-venue venue-lobby">
-              {{ $t("home.program.room.lobby") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">12:30</span>
-        <div class="row-items">
-          <div class="row-item item-expand">
-            <span class="row-item-time">
-              {{ $t("home.program.opening") }}
-              <span class="row-item-time-duration">
-                (40 {{ $t("home.program.min") }})
-              </span>
-            </span>
-            <span class="row-item-venue venue-calla">
-              {{ $t("home.program.room.calla") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">13:10</span>
-        <div class="row-items">
-          <div class="row-item item-expand">
-            <span class="row-item-time">
-              {{ $t("home.program.keynote") }} - {{ $t("speakers[1].name") }}
-            </span>
-            <span class="row-item-title title-expand">
-              {{ $t("home.program.gvb-keynote-title[0]") }}<br />
-              {{ $t("home.program.gvb-keynote-title[1]") }}
-            </span>
-            <span class="row-item-venue venue-calla">
-              {{ $t("home.program.room.calla") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="program-row program-center">
-        <span class="row-time">14:00</span>
-        <div class="row-items">
-          <div class="row-item item-expand item-expand-gray">
-            <span class="row-item-time">
-              {{ $t("home.program.tea") }}
+              {{ $t("home.program.lunch-and") }}
               <span class="row-item-time-duration">
                 (20 {{ $t("home.program.min") }})
               </span>
@@ -220,7 +172,116 @@
         <div class="row-items">
           <div class="row-item">
             <span class="row-item-time">
-              14:20
+              12:05
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.mandarin") }}/
+              {{ $t("home.program.taiwanese") }}/
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.english"),
+                })
+              }}<br />
+              {{
+                $t("home.program.briefing2", {
+                  group: $t("home.program.group1"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-rose">
+              {{ $t("home.program.room.rose") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              12:05
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.mandarin") }}/
+              {{ $t("home.program.taiwanese") }}/
+              {{
+                $t("home.program.evaluation", {
+                  language: $t("home.program.english"),
+                })
+              }}<br />
+              {{
+                $t("home.program.briefing2", {
+                  group: $t("home.program.group2"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">12:35</span>
+        <div class="row-items">
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.opening") }}
+              <span class="row-item-time-duration">
+                (50 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">13:25</span>
+        <div class="row-items">
+          <div class="row-item item-expand">
+            <span class="row-item-time">
+              {{ $t("home.program.keynote") }} - {{ $t("speakers[1].name") }}
+              <span class="row-item-time-duration">
+                (45 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title title-expand">
+              {{ $t("home.program.gvb-keynote-title[0]") }}<br />
+              {{ $t("home.program.gvb-keynote-title[1]") }}<br />
+              {{ $t("home.program.gvb-keynote-interpreter") }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time">14:10</span>
+        <div class="row-items">
+          <div class="row-item item-expand item-expand-gray">
+            <span class="row-item-time">
+              {{ $t("home.program.tea") }}
+              {{ $t("home.program.tea-and") }}
+              <span class="row-item-time-duration">
+                (15 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              14:25
               <span class="row-item-time-duration">
                 (60 {{ $t("home.program.min") }})
               </span>
@@ -238,7 +299,7 @@
           </div>
           <div class="row-item">
             <span class="row-item-time">
-              14:20
+              14:25
               <span class="row-item-time-duration">
                 (60 {{ $t("home.program.min") }})
               </span>
@@ -256,9 +317,9 @@
           </div>
           <div class="row-item">
             <span class="row-item-time">
-              14:20
+              14:40
               <span class="row-item-time-duration">
-                (120 {{ $t("home.program.min") }})
+                (200 {{ $t("home.program.min") }})
               </span>
             </span>
             <span class="row-item-title title-3-lines">
@@ -276,7 +337,7 @@
         <div class="row-items">
           <div class="row-item">
             <span class="row-item-time">
-              15:30
+              15:35
               <span class="row-item-time-duration">
                 (60 {{ $t("home.program.min") }})
               </span>
@@ -294,7 +355,7 @@
           </div>
           <div class="row-item">
             <span class="row-item-time">
-              15:30
+              15:35
               <span class="row-item-time-duration">
                 (60 {{ $t("home.program.min") }})
               </span>
@@ -317,9 +378,9 @@
         <div class="row-items">
           <div class="row-item">
             <span class="row-item-time">
-              16:40
+              16:45
               <span class="row-item-time-duration">
-                (90 {{ $t("home.program.min") }})
+                (105 {{ $t("home.program.min") }})
               </span>
             </span>
             <span class="row-item-title">
@@ -335,7 +396,7 @@
           </div>
           <div class="row-item">
             <span class="row-item-time">
-              16:40
+              16:45
               <span class="row-item-time-duration">
                 (90 {{ $t("home.program.min") }})
               </span>
@@ -354,11 +415,14 @@
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">18:30</span>
+        <span class="row-time">18:40</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-yellow">
             <span class="row-item-time">
               {{ $t("home.program.dinner") }}
+              <span class="row-item-time-duration">
+                (200 {{ $t("home.program.min") }})
+              </span>
             </span>
             <span class="row-item-venue venue-jasmine">
               {{ $t("home.program.room.jasmine") }}
@@ -369,13 +433,13 @@
     </div>
     <div class="program-table" v-if="!showProgramDay1">
       <div class="program-row program-center">
-        <span class="row-time">09:10</span>
+        <span class="row-time">09:00</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-yellow">
             <span class="row-item-time">
               {{ $t("home.program.registration") }}
               <span class="row-item-time-duration">
-                ({{ $t("home.program.until") }})
+                ({{ $t("home.program.until2") }})
               </span>
             </span>
             <span class="row-item-venue venue-lobby">
@@ -391,7 +455,7 @@
             <span class="row-item-time">
               09:10
               <span class="row-item-time-duration">
-                (180 {{ $t("home.program.min") }})
+                (170 {{ $t("home.program.min") }})
               </span>
             </span>
             <span class="row-item-title">
@@ -406,7 +470,7 @@
               <span class="row-item-time">
                 09:50
                 <span class="row-item-time-duration">
-                  (70 {{ $t("home.program.min") }})
+                  (60 {{ $t("home.program.min") }})
                 </span>
               </span>
               <span class="row-item-title">
@@ -442,20 +506,89 @@
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">12:00</span>
+        <span class="row-time"></span>
         <div class="row-items">
-          <div class="row-item item-expand item-expand-gray">
+          <div class="row-item item-expand-gray">
             <span class="row-item-time">
-              {{ $t("home.program.luncheon") }}
+              12:00
               <span class="row-item-time-duration">
-                (50 {{ $t("home.program.min") }})
+                (30 {{ $t("home.program.min") }})
               </span>
             </span>
-            <span class="row-item-venue venue-lisianthus">
-              {{ $t("home.program.room.lisianthus") }}
+            <span class="row-item-title">
+              {{ $t("home.program.luncheon") }}
             </span>
-            <span class="row-item-note">
-              ({{ $t("home.program.lunch-note") }})
+            <span class="row-item-venue venue-lobby">
+              {{ $t("home.program.room.lobby") }}
+            </span>
+          </div>
+          <div class="row-item item-expand-gray">
+            <span class="row-item-time">
+              12:00
+              <span class="row-item-time-duration">
+                (30 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.dtm-gathering") }}
+            </span>
+            <span class="row-item-venue venue-rose">
+              {{ $t("home.program.room.rose") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="program-row program-center">
+        <span class="row-time"></span>
+        <div class="row-items">
+          <div class="row-item">
+            <span class="row-item-time">
+              12:30
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.mandarin") }}/
+              {{ $t("home.program.taiwanese") }}/
+              {{
+                $t("home.program.speech", {
+                  language: $t("home.program.english"),
+                })
+              }}<br />
+              {{
+                $t("home.program.briefing2", {
+                  group: $t("home.program.group1"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-rose">
+              {{ $t("home.program.room.rose") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              12:30
+              <span class="row-item-time-duration">
+                (20 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.mandarin") }}/
+              {{ $t("home.program.taiwanese") }}/
+              {{
+                $t("home.program.speech", {
+                  language: $t("home.program.english"),
+                })
+              }}<br />
+              {{
+                $t("home.program.briefing2", {
+                  group: $t("home.program.group2"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.calla") }}
             </span>
           </div>
         </div>
@@ -596,13 +729,13 @@
         </div>
       </div>
       <div class="program-row program-center">
-        <span class="row-time">17:10</span>
+        <span class="row-time">17:00</span>
         <div class="row-items">
           <div class="row-item item-expand item-expand-yellow">
             <span class="row-item-time">
               {{ $t("home.program.closing") }}
               <span class="row-item-time-duration">
-                (50 {{ $t("home.program.min") }})
+                (75 {{ $t("home.program.min") }})
               </span>
             </span>
             <span class="row-item-venue venue-calla">

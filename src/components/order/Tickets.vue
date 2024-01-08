@@ -580,7 +580,7 @@ export default {
         position: relative;
         height: 54px;
         color: black;
-        background-color: rgba(223, 223, 223, 1);
+        background: #dfdfdf;
         display: flex;
         align-self: stretch;
         align-items: center;

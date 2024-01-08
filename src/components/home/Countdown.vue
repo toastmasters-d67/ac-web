@@ -27,13 +27,21 @@ export default {
   },
   methods: {
     getTime() {
+      let days = 0;
+      let hours = 0;
+      let minutes = 0;
+      let seconds = 0;
       const now = new Date();
       const date = new Date(process.env.VUE_APP_COUNTDOWN_DATE);
       const remaining = date - now;
-      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(remaining / (1000 * 60 * 60)) % 24;
-      const minutes = Math.floor(remaining / (1000 * 60)) % 60;
-      const seconds = Math.floor(remaining / 1000) % 60;
+      if (remaining > 0) {
+        days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+        hours = Math.floor(remaining / (1000 * 60 * 60)) % 24;
+        minutes = Math.floor(remaining / (1000 * 60)) % 60;
+        seconds = Math.floor(remaining / 1000) % 60;
+      } else {
+        window.clearInterval(this.polling);
+      }
       return [days, hours, minutes, seconds];
     },
     countdown() {
