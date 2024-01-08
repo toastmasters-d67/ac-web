@@ -1,5 +1,7 @@
 # Annual Conference
 
+This is the offical repo of Toastmasters District 67 Annual Conference website.
+
 ## Project setup
 ```
 yarn
