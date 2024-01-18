@@ -19,7 +19,7 @@ const ticketSchema = Yup.object().shape({
 const arrayOfTicketsSchema = Yup.array().of(ticketSchema);
 
 export async function getCountOfTickets(token, target) {
-  const url = `${process.env.VUE_APP_API}/orders/${target.$route.params.id}`;
+  const url = `${import.meta.env.VITE_API}/orders/${target.$route.params.id}`;
   try {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     axios
@@ -45,7 +45,7 @@ export async function getCountOfTickets(token, target) {
 }
 
 export async function fetchTickets(token, target) {
-  const url = `${process.env.VUE_APP_API}/tickets/${target.$route.params.id}`;
+  const url = `${import.meta.env.VITE_API}/tickets/${target.$route.params.id}`;
   try {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     axios
@@ -71,7 +71,7 @@ export async function fetchTickets(token, target) {
 }
 
 export async function onSubmit(target) {
-  const url = `${process.env.VUE_APP_API}/ticket`;
+  const url = `${import.meta.env.VITE_API}/ticket`;
   try {
     axios
       .post(url, target.state)
@@ -499,6 +499,7 @@ export default {
   background-color: white;
   border-color: transparent;
   padding: 40px;
+
   .tickets-heading {
     position: relative;
     display: flex;
@@ -507,6 +508,7 @@ export default {
     background-color: white;
     border-color: transparent;
     margin-bottom: 24px;
+
     .tickets-title {
       color: black;
       flex-grow: 1;
@@ -514,6 +516,7 @@ export default {
       font-weight: 600;
       text-align: left;
     }
+
     .tickets-button {
       position: relative;
       width: 124px;
@@ -531,15 +534,18 @@ export default {
       margin-left: 24px;
       cursor: pointer;
     }
+
     .edit {
       color: black;
       background-color: white;
     }
+
     .submit {
       color: white;
       background: #004165;
     }
   }
+
   .tickets-display-already-submitted {
     color: #004165;
     display: flex;
@@ -551,16 +557,19 @@ export default {
     border-radius: 8px;
     margin-bottom: 24px;
   }
+
   .tickets-required {
     color: rgba(83, 89, 90, 1);
     font-size: 14px;
     font-weight: 500;
     text-align: left;
     margin-bottom: 8px;
+
     .red {
       color: red;
     }
   }
+
   .tickets-items {
     position: relative;
     display: flex;
@@ -568,6 +577,7 @@ export default {
     align-self: stretch;
     align-items: flex-start;
     border-color: transparent;
+
     .tickets-item {
       position: relative;
       display: flex;
@@ -576,6 +586,7 @@ export default {
       align-items: flex-start;
       border-color: transparent;
       margin-bottom: 8px;
+
       .tickets-item-title {
         position: relative;
         height: 54px;
@@ -592,10 +603,12 @@ export default {
         padding: 0px 12px;
         margin-bottom: 8px;
       }
+
       .tickets-expand-arrow {
         width: 25px;
         height: 25px;
       }
+
       .tickets-item-form {
         position: relative;
         display: flex;
@@ -605,9 +618,11 @@ export default {
         gap: 16px 2.24%;
         border-color: transparent;
         margin-bottom: 16px;
+
         *:disabled {
           background-color: lightgrey;
         }
+
         .tickets-item-input {
           position: relative;
           height: 54px;
@@ -616,9 +631,11 @@ export default {
           flex-basis: 48.8%;
           border: rgba(83, 89, 90, 1) 1px solid;
           border-radius: 4px;
+
           @media screen and (max-width: 900px) {
             flex-basis: 100%;
           }
+
           .tickets-input-placeholder {
             position: absolute;
             top: 10px;
@@ -627,6 +644,7 @@ export default {
             font-size: 16px;
             font-weight: 500;
           }
+
           .tickets-input-text {
             width: 100%;
             height: 100%;
@@ -635,6 +653,7 @@ export default {
             border-radius: 4px;
             padding: 0 16px;
           }
+
           ::placeholder {
             position: absolute;
             top: 10px;
@@ -643,6 +662,7 @@ export default {
             font-size: 16px;
             font-weight: 500;
           }
+
           .form-input-hint {
             position: absolute;
             top: 10px;
@@ -655,15 +675,18 @@ export default {
             pointer-events: none;
           }
         }
+
         .tickets-checkbox {
           display: flex;
           align-items: center;
           flex-basis: 100%;
+
           .tickets-checkbox-input {
             width: 16px;
             height: 16px;
             margin-right: 8px;
           }
+
           .tickets-checkbox-label {
             color: black;
             font-size: 16px;
@@ -675,9 +698,11 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 768px) {
   .tickets-container {
     padding: 0px 5%;
+
     .tickets-heading {
       position: relative;
       order: 99;
@@ -686,24 +711,29 @@ export default {
       justify-content: space-between;
       gap: 8px;
       margin-bottom: 24px;
+
       .tickets-title {
         display: none;
       }
+
       .tickets-button {
         width: 100%;
         font-size: 16px;
         line-height: 20px;
         margin: auto;
       }
+
       .edit {
         color: black;
         background-color: white;
       }
+
       .submit {
         color: white;
         background: #004165;
       }
     }
+
     .tickets-display-already-submitted {
       display: flex;
       flex-direction: row;
@@ -713,15 +743,18 @@ export default {
       border-radius: 8px;
       margin-bottom: 24px;
     }
+
     .tickets-required {
       font-size: 12px;
       line-height: 15px;
     }
+
     .tickets-items {
       display: flex;
       flex-direction: column;
       align-self: stretch;
       align-items: flex-start;
+
       .tickets-item {
         position: relative;
         display: flex;
@@ -730,39 +763,47 @@ export default {
         align-items: flex-start;
         border-color: transparent;
         margin-bottom: 8px;
+
         .tickets-item-title {
           height: 48px;
           font-size: 14px;
           line-height: 17px;
           padding: 0px 16px;
         }
+
         .tickets-item-form {
           .tickets-item-input {
             height: 48px;
             display: flex;
             flex-basis: 100%;
+
             .tickets-input-placeholder {
               font-size: 14px;
               line-height: 17px;
             }
+
             .tickets-input-text {
               font-size: 20px;
               padding: 0 16px;
             }
+
             ::placeholder {
               font-size: 14px;
               line-height: 17px;
             }
+
             .form-input-hint {
               font-size: 16px;
               line-height: 20px;
             }
           }
+
           .tickets-checkbox {
             .tickets-checkbox-input {
               width: 12px;
               height: 12px;
             }
+
             .tickets-checkbox-label {
               font-size: 14px;
             }

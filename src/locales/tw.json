@@ -30,9 +30,7 @@
       {
         "name": "台北富信大飯店",
         "price": "$2,600 - $3,200",
-        "transportation": [
-          "寬和宴展館 － 步行 5 分鐘"
-        ]
+        "transportation": ["寬和宴展館 － 步行 5 分鐘"]
       },
       {
         "name": "南港安樂旅社",
@@ -45,9 +43,7 @@
       {
         "name": "友徠精品旅館",
         "price": "$2,400 - $2,900",
-        "transportation": [
-          "捷運昆陽站 － 步行 10 分鐘"
-        ]
+        "transportation": ["捷運昆陽站 － 步行 10 分鐘"]
       },
       {
         "name": "南港老爺行旅",
@@ -67,9 +63,7 @@
       {
         "name": "洛碁大飯店南港館",
         "price": "$5,000",
-        "transportation": [
-          "捷運南港站 (2 號出口) － 步行 5 分鐘"
-        ]
+        "transportation": ["捷運南港站 (2 號出口) － 步行 5 分鐘"]
       }
     ],
     "transportation-location": "交通"
@@ -118,7 +112,7 @@
     },
     "navbar": {
       "d67": "國際演講會第 67 地區總會",
-      "ac": "2023 年度大會",
+      "ac": "2024 年度大會",
       "program": "大會議程",
       "speakers": "講者介紹",
       "venue": "場地資訊",
@@ -131,17 +125,11 @@
     "footer": {
       "contact": "聯繫我們",
       "team": "認識我們",
-      "reserved": "2023 中華民國國際演講協會 版權所有"
+      "reserved": "2024 中華民國國際演講協會 版權所有"
     },
     "button": {
-      "ticket": [
-        "線上",
-        "購票"
-      ],
-      "contact": [
-        "聯繫",
-        "我們"
-      ]
+      "ticket": ["線上", "購票"],
+      "contact": ["聯繫", "我們"]
     }
   },
   "cart": {
@@ -425,7 +413,7 @@
       "title": "大會議程",
       "day1": "第一天",
       "day2": "第二天",
-      "download":"下載議程表",
+      "download": "下載議程表",
       "registration": "註冊報到",
       "until1": "開放報到至上午 11:30 止",
       "until2": "開放報到至上午 11:00 止",
@@ -474,13 +462,11 @@
       "gvb-keynote-interpreter": "國語口譯：唐瑄"
     },
     "slogan": {
-      "title": "2023 年度大會",
-      "date": "4/22 - 4/23",
-      "slogan": [
-        "連結現在 領導未來！"
-      ],
+      "title": "2024 年度大會",
+      "date": "4/27 - 4/28",
+      "slogan": ["連結現在 領導未來！"],
       "text": {
-        "desktop": "我們誠摯地邀請您參與國際演講會第 67 地區總會所舉辦的 2023 年度大會。在為期兩天的大會議程中，您可以參與精心規畫的專題講座及教育訓練、於晚宴享用美食饗宴，並觀看精彩的演講比賽全國總決賽，增進您的公眾演說、領導及溝通技巧。千萬不要錯過睽違了四年的實體年會，絕對精采可期！",
+        "desktop": "我們誠摯地邀請您參與國際演講會第 67 地區總會所舉辦的 2024 年度大會。在為期兩天的大會議程中，您可以參與精心規畫的專題講座及教育訓練、於晚宴享用美食饗宴，並觀看精彩的演講比賽全國總決賽，增進您的公眾演說、領導及溝通技巧。千萬不要錯過睽違了四年的實體年會，絕對精采可期！",
         "mobile": "在為期兩天的大會中，您可參與豐富多元的專題講座及教育訓練、享用美食饗宴，並觀看精彩的演講比賽全國總決賽。"
       },
       "ticket": "線上購票"
@@ -545,7 +531,7 @@
     },
     "title": "登入",
     "description": "請登入以繼續完成購票",
-    "firstlogin-description":"若您是第一次登入年度大會網站，請先完成註冊。</br>提醒您，本網站資料並未和 Toastmasters International 國際總會官網同步，請不要直接使用國際總會官網的帳號密碼登入。",
+    "firstlogin-description": "若您是第一次登入年度大會網站，請先完成註冊。</br>提醒您，本網站資料並未和 Toastmasters International 國際總會官網同步，請不要直接使用國際總會官網的帳號密碼登入。",
     "forget-password": "忘記密碼?",
     "no-account": "沒有帳號嗎?"
   },
@@ -639,17 +625,13 @@
           "topic": "重掌人生：不會讀書也能擁有強大心念，邁向冠軍之路",
           "time": "4/22, 13:10-14:00",
           "location": "1樓 主廳",
-          "introduction": [
-            "請切換至英文版網頁瀏覽講座介紹，謝謝。"
-          ]
+          "introduction": ["請切換至英文版網頁瀏覽講座介紹，謝謝。"]
         },
         {
           "topic": "Team Survival Skills from Antarctica to the Apocalypse",
           "time": "4/23, 14:20-15:20",
           "location": "2樓 桔梗廳 (2A)",
-          "introduction": [
-            "請切換至英文版網頁瀏覽講座介紹，謝謝。"
-          ]
+          "introduction": ["請切換至英文版網頁瀏覽講座介紹，謝謝。"]
         }
       ]
     },
@@ -713,9 +695,7 @@
       "key": "botha",
       "name": "Phillip Botha",
       "title": "英語教育訓練講師",
-      "contents": [
-        "請切換至英文版網頁瀏覽講者介紹，謝謝。"
-      ],
+      "contents": ["請切換至英文版網頁瀏覽講者介紹，謝謝。"],
       "facebook": "",
       "instagram": "",
       "youtube": "",
@@ -724,9 +704,7 @@
           "topic": "Be Your Own Hero: How to Overcome Self-Doubt and Be The Most Confident You",
           "time": "4/23, 13:00-14:10",
           "location": "2樓 桔梗廳 (2A)",
-          "introduction": [
-            "請切換至英文版網頁瀏覽講座介紹，謝謝。"
-          ]
+          "introduction": ["請切換至英文版網頁瀏覽講座介紹，謝謝。"]
         }
       ]
     },

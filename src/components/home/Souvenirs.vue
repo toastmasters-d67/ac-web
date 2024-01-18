@@ -1,4 +1,9 @@
 <script>
+import largeBag from "@/assets/image/home/souvenirs-bag.png";
+import smallBag from "@/assets/image/home/souvenirs-bag-small.png";
+import largeTowel from "@/assets/image/home/souvenirs-towel.png";
+import smallTowel from "@/assets/image/home/souvenirs-towel-small.png";
+
 export default {
   name: "Souvenirs",
   data() {
@@ -18,12 +23,11 @@ export default {
       this.windowHeight = window.innerWidth;
     },
     getImage(item) {
-      if (item.length) {
-        if (this.windowHeight > 768) {
-          return require(`@/assets/image/home/souvenirs-${item}.png`);
-        } else {
-          return require(`@/assets/image/home/souvenirs-${item}-small.png`);
-        }
+      if (item === "bag") {
+        return this.windowHeight > 768 ? largeBag : smallBag;
+      }
+      if (item === "towel") {
+        return this.windowHeight > 768 ? largeTowel : smallTowel;
       }
       return "";
     },
@@ -65,6 +69,7 @@ export default {
   box-sizing: border-box;
   padding-top: 150px;
   padding-bottom: 200px;
+
   .souvenirs-title {
     font-size: 48px;
     font-weight: 600;
@@ -72,6 +77,7 @@ export default {
     margin: 0 auto;
     margin-bottom: 15px;
   }
+
   .souvenirs-coming-soon {
     font-weight: 600;
     font-size: 22px;
@@ -80,6 +86,7 @@ export default {
     margin: 70px auto;
   }
 }
+
 .souvenirs-items {
   display: flex;
   flex-direction: row;
@@ -88,15 +95,18 @@ export default {
   border-color: transparent;
   padding-top: 70px;
   gap: 5%;
+
   .souvenirs-item {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .souvenirs-item-image {
       width: 300px;
       height: 419px;
     }
+
     .souvenirs-item-text {
       color: black;
       font-size: 24px;
@@ -116,21 +126,25 @@ export default {
       line-height: 18px;
       margin-bottom: 29px;
     }
+
     .souvenirs-coming-soon {
       font-size: 10px;
       line-height: 12px;
       margin: 30px auto;
     }
   }
+
   .souvenirs-items {
     flex-direction: column;
     padding-top: 0px;
     gap: 40px;
+
     .souvenirs-item {
       .souvenirs-item-image {
         width: 200px;
         height: 200px;
       }
+
       .souvenirs-item-text {
         font-size: 14px;
         line-height: 16px;

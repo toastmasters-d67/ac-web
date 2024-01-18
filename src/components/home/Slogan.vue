@@ -24,7 +24,7 @@ export default {
       }
     },
     getStyle() {
-      const background = require("@/assets/image/home/slogan-background.png");
+      const background = import("@/assets/image/home/slogan-background.png");
       return `background: url(${background}) no-repeat center bottom/cover`;
     },
   },
@@ -77,6 +77,7 @@ export default {
   padding-left: 57px;
   padding-bottom: 50px;
   background: #f8f0e9;
+
   .slogan-kv-desktop {
     position: absolute;
     max-width: 345px;
@@ -84,12 +85,15 @@ export default {
     right: 6.4%;
     top: 300px;
   }
+
   .slogan-kv-mobile1 {
     display: none;
   }
+
   .slogan-kv-mobile2 {
     display: none;
   }
+
   .slogan-date {
     width: fit-content;
     color: #214366;
@@ -99,6 +103,7 @@ export default {
     gap: 10px;
     padding: 0px 10px;
   }
+
   .slogan-year {
     color: #214366;
     font-size: 14px;
@@ -108,6 +113,7 @@ export default {
     text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
     transform: rotate(-90deg);
   }
+
   .slogan-title {
     color: #214366;
     font-weight: 500;
@@ -120,6 +126,7 @@ export default {
     margin-top: 8px;
     margin-bottom: 20px;
   }
+
   .slogan-word {
     width: fit-content;
     display: flex;
@@ -132,6 +139,7 @@ export default {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .slogan-text {
     width: 63.5%;
     color: #757575;
@@ -142,6 +150,7 @@ export default {
     margin-top: 15px;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .slogan-container {
     .slogan-word {
@@ -150,6 +159,7 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 768px) {
   .slogan-container {
     align-items: center;
@@ -158,30 +168,36 @@ export default {
     padding-top: 60px;
     padding-left: 0px;
     padding-bottom: 30px;
+
     .slogan-kv-desktop {
       display: none;
     }
+
     .slogan-kv-mobile1 {
       position: absolute;
       display: block;
       top: 90px;
       left: 1.33%;
     }
+
     .slogan-kv-mobile2 {
       display: flex;
       align-self: flex-end;
       margin-top: 13px;
     }
+
     .slogan-date {
       font-size: 12px;
       line-height: 15px;
       padding: 0px 3.2px;
     }
+
     .slogan-year {
       width: 14px;
       font-size: 5px;
       line-height: 10px;
     }
+
     .slogan-title {
       font-size: 12px;
       line-height: 15px;
@@ -189,10 +205,12 @@ export default {
       margin-top: 0px;
       margin-bottom: 16px;
     }
+
     .slogan-word {
       font-size: 20px;
       line-height: 20px;
     }
+
     .slogan-text {
       width: 86.49%;
       min-width: 200px;

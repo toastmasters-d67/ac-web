@@ -209,26 +209,31 @@ export default {
   padding-bottom: 130px;
   padding-left: 7%;
   padding-right: 7%;
+
   .picker-row {
     display: flex;
     align-items: center;
     gap: 64px;
     margin-bottom: 40px;
+
     .picker-ticket {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 8px;
+
       .picker-title {
         position: relative;
         display: flex;
         text-align: start;
         width: 100%;
+
         .picker-icon {
           width: 24px;
           height: 24px;
           margin-right: 8px;
         }
+
         .picker-name {
           color: black;
           font-size: 20px;
@@ -236,6 +241,7 @@ export default {
           line-height: 24px;
           display: flex;
         }
+
         .picker-price {
           min-width: 100px;
           position: relative;
@@ -247,6 +253,7 @@ export default {
           margin-left: auto;
         }
       }
+
       .picker-note {
         display: flex;
         text-align: start;
@@ -256,6 +263,7 @@ export default {
         color: #5e5e5e;
       }
     }
+
     .picker-select {
       color: black;
       background: white;
@@ -270,6 +278,7 @@ export default {
       padding: 8px 16px;
       gap: 12px;
     }
+
     .picker-sold-out {
       width: 100px;
       font-weight: 600;
@@ -278,6 +287,7 @@ export default {
       color: black;
     }
   }
+
   .picker-additional {
     font-weight: 500;
     font-size: 16px;
@@ -287,12 +297,14 @@ export default {
     color: #5e5e5e;
     margin-bottom: 8px;
   }
+
   .picker-divider {
     width: 100%;
     border: 1px solid #cecece;
     margin-bottom: 16px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .picker-container {
     width: 91.47%;
@@ -300,47 +312,56 @@ export default {
     padding-bottom: 20px;
     padding-left: 4.267%;
     padding-right: 4.267%;
+
     .picker-row {
       gap: 22px;
       margin-bottom: 35px;
+
       .picker-ticket {
         .picker-title {
           .picker-icon {
             width: 20px;
             height: 20px;
           }
+
           .picker-name {
             font-size: 14px;
             line-height: 17px;
           }
+
           .picker-price {
             min-width: 67px;
             font-size: 14px;
             line-height: 17px;
           }
         }
+
         .picker-note {
           font-size: 12px;
           line-height: 15px;
         }
       }
+
       .picker-select {
         font-size: 14px;
         line-height: 17px;
         padding: 8px;
         padding-left: 12px;
       }
+
       .picker-sold-out {
         width: 60px;
         font-size: 14px;
         line-height: 17px;
       }
     }
+
     .picker-additional {
       font-size: 12px;
       line-height: 15px;
       margin-bottom: 4px;
     }
+
     .picker-divider {
       width: 100%;
       border: 1px solid #cecece;

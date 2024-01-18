@@ -154,15 +154,18 @@ a {
   text-decoration: none;
   border-color: transparent;
 }
+
 button {
   font-family: inherit;
 }
+
 hr {
   width: 100%;
   margin-bottom: 24px;
   border: 0;
   border-top: 2px solid black;
 }
+
 .navbar-container {
   position: sticky;
   top: 0px;
@@ -175,6 +178,7 @@ hr {
   line-height: 24px;
   text-align: center;
   border-color: transparent;
+
   .navbar-logo {
     position: absolute;
     top: 15px;
@@ -183,20 +187,24 @@ hr {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
     .navbar-logo-image {
       width: 60px;
       margin-right: 20px;
     }
+
     .navbar-logo-text {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
       .navbar-logo-text-1 {
         color: #004165;
         font-size: 20px;
         font-weight: 600;
         line-height: 24px;
       }
+
       .navbar-logo-text-2 {
         color: #53595a;
         font-size: 12px;
@@ -205,6 +213,7 @@ hr {
       }
     }
   }
+
   .navbar-links {
     position: absolute;
     top: 20px;
@@ -215,10 +224,12 @@ hr {
     color: black;
     column-gap: 32px;
     margin-right: 32px;
+
     .navbar-link {
       font-weight: 700;
       cursor: pointer;
     }
+
     .navbar-select {
       color: black !important;
       background: transparent;
@@ -229,10 +240,12 @@ hr {
       border: transparent;
     }
   }
+
   .navbar-mobile-container {
     display: none;
   }
 }
+
 .navbar-login-button {
   display: flex;
   align-items: center;
@@ -247,6 +260,7 @@ hr {
   padding: 8px 24px;
   cursor: pointer;
 }
+
 .navbar-account-button {
   width: 27px;
   height: 27px;
@@ -255,6 +269,7 @@ hr {
   padding: 0;
   cursor: pointer;
 }
+
 .navbar-account-menu {
   position: absolute;
   top: 50px;
@@ -269,6 +284,7 @@ hr {
   background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
+
   .navbar-account-menu-link {
     font-size: 20px;
     line-height: 24px;
@@ -276,6 +292,7 @@ hr {
     cursor: pointer;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .navbar-container {
     .navbar-logo {
@@ -283,50 +300,61 @@ hr {
         width: 50px;
         margin-right: 14px;
       }
+
       .navbar-logo-text {
         .navbar-logo-text-1 {
           font-size: 16px;
           line-height: 20px;
         }
+
         .navbar-logo-text-2 {
           font-size: 10px;
           line-height: 14px;
         }
       }
     }
+
     .navbar-links {
       gap: 18px;
       margin-right: 18px;
+
       .navbar-link {
         font-size: 16px;
       }
+
       .navbar-select {
         font-size: 16px !important;
       }
     }
   }
+
   .navbar-login-button {
     font-size: 16px;
     line-height: 20px;
     padding: 8px 16px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .navbar-container {
     height: 63px;
+
     .navbar-logo {
       top: 11px;
       left: 22px;
+
       .navbar-logo-image {
         width: 50px;
         margin-right: 7px;
       }
+
       .navbar-logo-text {
         .navbar-logo-text-1 {
           font-weight: 500;
           font-size: 15px;
           line-height: 14px;
         }
+
         .navbar-logo-text-2 {
           font-weight: 500;
           font-size: 8px;
@@ -334,12 +362,15 @@ hr {
         }
       }
     }
+
     .navbar-links {
       display: none;
     }
+
     .navbar-mobile-container {
       width: 100%;
       display: flex;
+
       .navbar-mobile-button {
         top: 0;
         bottom: 0;
@@ -352,6 +383,7 @@ hr {
         border-width: 0;
         background-color: transparent;
         display: flex;
+
         .navbar-mobile-hamburger {
           width: 28px;
           height: 28px;
@@ -360,12 +392,14 @@ hr {
     }
   }
 }
+
 .navbar-mobile-links {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
   padding-left: 6.4%;
+
   .navbar-mobile-link {
     position: relative;
     width: 95%;
@@ -376,9 +410,11 @@ hr {
     line-height: 27px;
     cursor: pointer;
   }
+
   .link-text1 {
     color: #675de2;
   }
+
   .navbar-select {
     color: black !important;
     background: transparent;
@@ -405,15 +441,15 @@ export default {
     },
   },
   setup() {
-    const locale = ref(localStorage.getItem("locale") ?? "en");
+    const locale = ref(localStorage.getItem("locale") ?? "tw");
     const localeOptions = reactive([
-      {
-        value: "en",
-        label: "EN",
-      },
       {
         value: "tw",
         label: "中文",
+      },
+      {
+        value: "en",
+        label: "EN",
       },
     ]);
     const visibleFull = ref(false);

@@ -57,6 +57,7 @@ export default {
   border-radius: 0;
   box-sizing: border-box;
   padding-bottom: 150px;
+
   .faq-page-title {
     color: #004165;
     font-size: 48px;
@@ -66,9 +67,11 @@ export default {
     margin-top: 80px;
     margin-bottom: 80px;
   }
+
   .faq-questions {
     color: black;
     margin-top: 20px;
+
     .faq-question {
       position: relative;
       max-width: 990px;
@@ -88,6 +91,7 @@ export default {
       margin-top: 15px !important;
       margin-bottom: 15px !important;
       margin: 0 auto;
+
       .faq-row {
         max-width: 990px;
         width: 93.33%;
@@ -95,11 +99,13 @@ export default {
         flex-direction: row;
         align-items: center;
         cursor: pointer;
+
         .faq-icon {
           position: absolute;
           right: 30px;
         }
       }
+
       .faq-answer {
         max-width: 910px;
         width: 91.92%;
@@ -121,16 +127,19 @@ export default {
       margin-top: 30px;
       margin-bottom: 60px;
     }
+
     .faq-questions {
       .faq-question {
         font-size: 14px;
         line-height: 17px;
         gap: 5px;
+
         .faq-row {
           .faq-icon {
             right: 20px;
           }
         }
+
         .faq-answer {
           min-height: 30px;
           font-size: 12px;

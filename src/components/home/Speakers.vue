@@ -23,7 +23,10 @@ export default {
     },
     getImage(key) {
       if (key.length) {
-        return require(`@/assets/image/speakers/speaker-${key}-rounded.png`);
+        return new URL(
+          `/src/assets/image/speakers/speaker-${key}-rounded.png`,
+          import.meta.url
+        ).href;
       }
       return "";
     },
@@ -40,7 +43,7 @@ export default {
           <img
             :src="getImage(speaker.key)"
             class="speaker-image"
-            :alt="speaker.image"
+            :alt="speaker.name"
           />
           <span class="speaker-name-text">{{ speaker.name }}</span>
         </router-link>
@@ -57,6 +60,7 @@ export default {
   box-sizing: border-box;
   padding-top: 150px;
   padding-bottom: 150px;
+
   .speakers-title {
     font-size: 48px;
     font-weight: 600;
@@ -64,6 +68,7 @@ export default {
     margin-bottom: 90px;
   }
 }
+
 .speakers {
   max-width: 1200px;
   display: flex;
@@ -73,11 +78,13 @@ export default {
   margin: 0 auto;
   padding-left: 70px;
   margin-bottom: 32px;
+
   a {
     color: black;
     text-decoration: none;
     border-color: transparent;
   }
+
   .speaker {
     display: flex;
     flex-direction: column;
@@ -86,11 +93,13 @@ export default {
     border-color: transparent;
     margin-right: 70px;
     margin-bottom: 50px;
+
     .speaker-image {
       width: 250px;
       height: 250px;
       margin-bottom: 24px;
     }
+
     .speaker-name-text {
       font-size: 28px;
       font-weight: 500;
@@ -103,39 +112,47 @@ export default {
   .speakers-container {
     padding-top: 100px;
     padding-bottom: 50px;
+
     .speakers-title {
       font-size: 15px;
       line-height: 18px;
       margin-bottom: 29px;
     }
   }
+
   .speakers {
     padding-left: 10px;
     margin-bottom: 0;
+
     .speaker {
       margin-right: 10px;
       margin-bottom: 19px;
+
       .speaker-image {
         width: 100px;
         height: 100px;
         margin-bottom: 10px;
       }
+
       .speaker-name-text {
         font-size: 12px;
         line-height: 15px;
       }
     }
   }
+
   .button-view-all {
     width: 91px;
     border: 1px solid white;
     padding: 8px 15px;
     margin-bottom: 8px;
+
     .button-text {
       font-size: 10px;
       line-height: 12px;
       margin-right: 8px;
     }
+
     .button-arrow-right {
       font-size: 9px;
     }

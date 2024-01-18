@@ -61,11 +61,13 @@
   box-sizing: border-box;
   padding-top: 150px;
   padding-bottom: 50px;
+
   a {
     color: #004165;
     text-decoration: none;
     border-color: transparent;
   }
+
   .venue-title {
     font-size: 48px;
     font-weight: 600;
@@ -73,6 +75,7 @@
     margin: 0 auto;
     margin-bottom: 15px;
   }
+
   .venue-bottom-buttons {
     width: 100%;
     display: flex;
@@ -80,6 +83,7 @@
     justify-content: center;
     align-items: center;
     gap: 12.5%;
+
     .button-bottom {
       width: 265px;
       height: 45px;
@@ -91,9 +95,11 @@
       border: 2px solid rgba(0, 65, 101, 0.5);
       padding: 8px 24px;
       gap: 8px;
+
       .button-icon {
         width: 20px;
       }
+
       .button-text {
         color: #004165;
         font-size: 22px;
@@ -101,12 +107,14 @@
         line-height: 27px;
         text-align: center;
       }
+
       .button-arrow-right {
         color: #004165;
       }
     }
   }
 }
+
 .venue-box {
   width: 87.2%;
   max-width: 915px;
@@ -115,6 +123,7 @@
   align-items: flex-start;
   border-color: transparent;
   margin: 0 auto;
+
   .venue-box-name {
     font-size: 36px;
     font-weight: 400;
@@ -122,14 +131,17 @@
     margin-top: 50px;
     margin-bottom: 30px;
   }
+
   .venue-box-row {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+
     .venue-box-icon {
       font-size: 18px;
       margin-right: 15px;
     }
+
     .venue-box-text {
       font-size: 24px;
       font-weight: 400;
@@ -138,6 +150,7 @@
       text-align: left;
     }
   }
+
   .venue-box-button {
     background: #f5db8c;
     font-size: 20px;
@@ -148,6 +161,7 @@
     padding: 5px 10px;
     gap: 10px;
   }
+
   .venue-box-map {
     width: 100%;
     aspect-ratio: 902 / 479;
@@ -163,22 +177,27 @@
   .venue-container {
     padding-top: 100px;
     padding-bottom: 0px;
+
     .venue-title {
       font-size: 15px;
       line-height: 18px;
       margin-bottom: 30px;
     }
+
     .venue-bottom-buttons {
       justify-content: space-evenly;
       gap: 0;
+
       .button-bottom {
         max-width: 180px;
         width: 42.67%;
         height: 36px;
         border: 1px solid rgba(0, 65, 101, 0.5);
+
         .button-icon {
           width: 16px;
         }
+
         .button-text {
           font-size: 14px;
           line-height: 17px;
@@ -186,6 +205,7 @@
       }
     }
   }
+
   .venue-box {
     .venue-box-name {
       font-size: 12px;
@@ -193,21 +213,25 @@
       margin-top: 0px;
       margin-bottom: 16px;
     }
+
     .venue-box-row {
       .venue-box-icon {
         font-size: 9px;
         margin-right: 8px;
       }
+
       .venue-box-text {
         font-size: 10px;
         line-height: 12px;
         margin-bottom: 8px;
       }
     }
+
     .venue-box-button {
       font-size: 10px;
       line-height: 12px;
     }
+
     .venue-box-map {
       border: 0.98px solid;
       padding: 3px;

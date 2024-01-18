@@ -90,9 +90,11 @@ export default {
   flex-direction: column;
   background-color: white;
   padding: 40px 24px;
+
   .list-title {
     display: flex;
     flex-direction: column;
+
     .title-desktop {
       display: block;
       color: black;
@@ -101,15 +103,18 @@ export default {
       font-weight: 600;
       margin-bottom: 16px;
     }
+
     .title-mobile {
       display: none;
     }
   }
+
   .list-paidunpaid-switcher {
     display: flex;
     border-color: transparent;
     border-radius: 29px;
     margin-bottom: 16px;
+
     .list-switcher-button {
       width: 100px;
       display: flex;
@@ -124,13 +129,16 @@ export default {
       padding: 8px 16px;
       cursor: pointer;
     }
+
     .button-active {
       background-color: rgba(167, 196, 212, 1);
     }
+
     .button-inactive {
       background-color: transparent;
     }
   }
+
   .list-order-selector {
     width: 100%;
     display: flex;
@@ -140,6 +148,7 @@ export default {
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 1);
     margin-bottom: 16px;
+
     .list-order-number {
       color: rgba(0, 0, 0, 1);
       flex-grow: 1;
@@ -149,6 +158,7 @@ export default {
       margin-right: 8px;
       margin-bottom: 0;
     }
+
     .list-selector-icon {
       position: relative;
       background: white;
@@ -156,6 +166,7 @@ export default {
       cursor: pointer;
     }
   }
+
   ul.list-tickets-list {
     width: 100%;
     display: flex;
@@ -165,6 +176,7 @@ export default {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 24px;
+
     li.list-ticket {
       display: flex;
       font-size: 16px;
@@ -174,6 +186,7 @@ export default {
       background-color: rgba(223, 223, 223, 1);
       padding: 8px 16px;
     }
+
     .list-banquet {
       position: relative;
       display: flex;
@@ -183,6 +196,7 @@ export default {
       border-color: transparent;
       background-color: rgba(223, 223, 223, 1);
       padding: 8px 16px;
+
       .list-banquet-content {
         width: 100%;
         display: flex;
@@ -190,10 +204,12 @@ export default {
         gap: 8px;
         border-color: transparent;
         margin-bottom: 4px;
+
         .list-banquet-icon {
           width: 28px;
           height: 28px;
         }
+
         .list-banquet-text {
           color: rgba(0, 0, 0, 1);
           flex-grow: 1;
@@ -201,6 +217,7 @@ export default {
           text-align: left;
           font-weight: 500;
         }
+
         .list-banquet-number {
           width: 20px;
           height: 20px;
@@ -215,6 +232,7 @@ export default {
           background-color: black;
         }
       }
+
       .list-banquet-note {
         color: rgba(120, 120, 120, 1);
         font-size: 12px;
@@ -222,10 +240,12 @@ export default {
       }
     }
   }
+
   .list-line {
     width: 100%;
     margin-bottom: 24px;
   }
+
   .list-new-order {
     width: 100%;
     font-size: 24px;
@@ -240,6 +260,7 @@ export default {
     cursor: pointer;
   }
 }
+
 @media screen and (max-width: 768px) {
   .list-container {
     width: 100%;
@@ -247,22 +268,26 @@ export default {
     top: 0px;
     z-index: 0;
     padding: 12px 5%;
+
     .list-title {
       .title-desktop {
         display: none;
       }
+
       .title-mobile {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
         margin-bottom: 16px;
+
         .title-mobile-subtitle {
           font-weight: 600;
           font-size: 16px;
           line-height: 20px;
           color: black;
         }
+
         .title-mobile-content {
           text-align: start;
           font-weight: 400;
@@ -272,30 +297,38 @@ export default {
         }
       }
     }
+
     ul.list-tickets-list {
       margin-bottom: 0;
+
       li.list-ticket {
         display: none;
       }
+
       .list-banquet {
         padding: 8px 16px;
+
         .list-banquet-content {
           gap: 8px;
           border-color: transparent;
           margin-bottom: 4px;
+
           .list-banquet-icon {
             width: 20px;
             height: 20px;
           }
+
           .list-banquet-text {
             font-size: 14px;
             line-height: 17px;
           }
+
           .list-banquet-number {
             font-size: 12px;
             line-height: 16px;
           }
         }
+
         .list-banquet-note {
           text-align: start;
           font-size: 12px;

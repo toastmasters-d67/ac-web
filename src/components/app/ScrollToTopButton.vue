@@ -50,6 +50,7 @@ export default {
   border: transparent;
   background-color: transparent;
   display: none;
+
   .scroll-to-top-img {
     width: 47px;
     height: 47px;
