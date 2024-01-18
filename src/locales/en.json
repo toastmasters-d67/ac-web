@@ -30,9 +30,7 @@
       {
         "name": "Taipei Fushin Hotel",
         "price": "$2,600 - $3,200",
-        "transportation": [
-          "5-min walk from the conference venue"
-        ]
+        "transportation": ["5-min walk from the conference venue"]
       },
       {
         "name": "May Rooms Taipei",
@@ -45,9 +43,7 @@
       {
         "name": "Uline Motel",
         "price": "$2,400 - $2,900",
-        "transportation": [
-          "10-min walk from Kunyang MRT Station"
-        ]
+        "transportation": ["10-min walk from Kunyang MRT Station"]
       },
       {
         "name": "The Place Taipei",
@@ -60,16 +56,12 @@
       {
         "name": "Forward Hotel Nangang",
         "price": "$3,600 - $3,800",
-        "transportation": [
-          "5-min walk from Nangang Software Park MRT"
-        ]
+        "transportation": ["5-min walk from Nangang Software Park MRT"]
       },
       {
         "name": "Green World NanGang",
         "price": "$5,000",
-        "transportation": [
-          "5-min walk from Nangang MRT Station"
-        ]
+        "transportation": ["5-min walk from Nangang MRT Station"]
       }
     ],
     "transportation-location": "Transportation Location"
@@ -118,7 +110,7 @@
     },
     "navbar": {
       "d67": "Toastmasters District 67",
-      "ac": "2023 Annual Conference",
+      "ac": "2024 Annual Conference",
       "program": "Program",
       "speakers": "Speakers",
       "venue": "Venue",
@@ -130,17 +122,11 @@
     },
     "footer": {
       "contact": "Contact Us",
-      "reserved": "2023 District 67, Toastmasters International. All rights reserved."
+      "reserved": "2024 District 67, Toastmasters International. All rights reserved."
     },
     "button": {
-      "ticket": [
-        "Get",
-        "Tickets"
-      ],
-      "contact": [
-        "Contact",
-        "Us"
-      ]
+      "ticket": ["Get", "Tickets"],
+      "contact": ["Contact", "Us"]
     }
   },
   "cart": {
@@ -424,7 +410,7 @@
       "title": "Program",
       "day1": "Day 1",
       "day2": "Day 2",
-      "download":"Program Download",
+      "download": "Program Download",
       "registration": "Registration",
       "until1": "Open until 11:30",
       "until2": "Open until 11:00",
@@ -473,14 +459,11 @@
       "gvb-keynote-interpreter": "Mandarin Interpreter: Amy Tang"
     },
     "slogan": {
-      "title": "2023 Annual Conference",
-      "date": "Apr. 22-23",
-      "slogan": [
-        "Connect to the Present.",
-        "Lead the future!"
-      ],
+      "title": "2024 Annual Conference",
+      "date": "Apr. 27-28",
+      "slogan": ["Connect to the Present.", "Lead the future!"],
       "text": {
-        "desktop": "It is our great pleasure to welcome you to the 2023 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions.",
+        "desktop": "It is our great pleasure to welcome you to the 2024 Annual Conference of the Toastmasters International D67 in Taipei. Learn to improve your public speaking, leadership, and communication skills through an exciting 2-day program of keynote speeches, speech contests and training sessions.",
         "mobile": "Come join the exciting 2-day program of keynote speeches, speech contests and training sessions."
       },
       "ticket": "Get Tickets"
@@ -545,7 +528,7 @@
     },
     "title": "Log in",
     "description": "Please log in before you purchase the ticket.",
-    "firstlogin-description":"If you are logging in for the first time, please register first.</br>Please note that the membership info on this website is not synced with Toastmasters International. Please do not use the email/password on TI website to log in.",
+    "firstlogin-description": "If you are logging in for the first time, please register first.</br>Please note that the membership info on this website is not synced with Toastmasters International. Please do not use the email/password on TI website to log in.",
     "forget-password": "Forgot your password?",
     "no-account": "Don't have an account?"
   },

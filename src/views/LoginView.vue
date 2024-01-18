@@ -12,7 +12,7 @@ export default {
     return {
       windowHeight: window.innerHeight,
       step1HighlightText: this.$t(
-        "login.introduction.step1.text-highlight-login"
+        "login.introduction.step1.text-highlight-login",
       ),
     };
   },
@@ -29,13 +29,6 @@ export default {
   methods: {
     handleResize() {
       this.windowHeight = window.innerWidth;
-    },
-    getImage() {
-      if (this.windowHeight > 768) {
-        return require(`@/assets/image/login/man-shopping-online.png`);
-      } else {
-        return require(`@/assets/image/login/man-shopping-online-mobile.png`);
-      }
     },
   },
 };
@@ -56,6 +49,7 @@ export default {
   border-color: transparent;
   background-color: white;
 }
+
 @media screen and (max-width: 768px) {
   .auth-container {
     flex-direction: column-reverse;

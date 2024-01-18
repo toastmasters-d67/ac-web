@@ -65,6 +65,7 @@ export default {
   gap: 20px;
   margin: 80px 8.33% 200px 8.33%;
 }
+
 @media screen and (max-width: 768px) {
   .order-container {
     flex-direction: column;

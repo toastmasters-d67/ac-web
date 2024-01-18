@@ -760,6 +760,7 @@
   box-sizing: border-box;
   padding-top: 80px;
   padding-bottom: 80px;
+
   .program-title {
     color: #004165;
     font-size: 48px;
@@ -768,6 +769,7 @@
     margin: 50px auto 59px auto;
     padding-left: 130px;
   }
+
   .program-head {
     width: 84.93%;
     max-width: 1223px;
@@ -775,21 +777,25 @@
     align-items: center;
     justify-content: flex-end;
   }
+
   .program-download {
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     padding: 5px 10px;
     text-align: center;
+
     a {
       display: flex;
       text-decoration: none;
       align-items: center;
     }
+
     img {
       margin-right: 10px;
       height: 20px;
     }
+
     span {
       letter-spacing: 0.03em;
       color: black;
@@ -800,6 +806,7 @@
       line-height: 35px;
     }
   }
+
   .program-day-switcher {
     max-width: 1223px;
     width: 84.93%;
@@ -810,6 +817,7 @@
     gap: 31px;
     height: 70px;
     margin-bottom: 20px;
+
     .program-day {
       flex: 1;
       height: 70px;
@@ -828,6 +836,7 @@
       padding: 10px;
     }
   }
+
   .program-table {
     max-width: 1231px;
     width: 93.54%;
@@ -838,6 +847,7 @@
     justify-content: flex-start;
     border-radius: 20px;
     padding-top: 47px;
+
     .program-row {
       width: 93.74%;
       display: flex;
@@ -846,24 +856,29 @@
       justify-content: flex-start;
       margin-bottom: 30px;
     }
+
     .program-center {
       align-items: center;
     }
+
     .program-baseline {
       align-items: baseline;
     }
   }
+
   .day-active {
     background: rgba(255, 255, 255, 0.25);
     border: 2px solid;
     border-color: #ddc8bf;
     box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
   }
+
   .day-non-active {
     background: linear-gradient(-90deg, #ddc8bf 0%, #a7c4d4 100%);
     cursor: pointer;
   }
 }
+
 .row-time {
   width: 73px;
   display: flex;
@@ -876,6 +891,7 @@
   line-height: 60px;
   margin-right: 23px;
 }
+
 .row-items {
   max-width: 1055px;
   width: 100%;
@@ -883,6 +899,7 @@
   flex-direction: row;
   justify-content: flex-start;
   gap: 16px;
+
   .row-item-columns {
     display: flex;
     flex: 1;
@@ -890,6 +907,7 @@
     align-items: flex-start;
     gap: 15px;
   }
+
   .row-item {
     width: 100%;
     background: rgba(255, 255, 255, 0.6);
@@ -901,15 +919,18 @@
     padding: 15px 20px;
     gap: 15px;
     letter-spacing: 0.05em;
+
     .row-item-time {
       color: black;
       font-size: 24px;
       font-weight: 400;
       line-height: 30px;
+
       .row-item-time-duration {
         font-size: 16px;
       }
     }
+
     .row-item-title {
       color: black;
       display: flex;
@@ -922,13 +943,16 @@
       margin-top: 3px;
       margin-bottom: 8px;
     }
+
     .title-3-lines {
       font-size: 20px;
       line-height: 25px;
     }
+
     .title-expand {
       text-align: center;
     }
+
     .row-item-venue {
       color: #004165;
       display: flex;
@@ -943,32 +967,41 @@
       gap: 10px;
       padding: 5px 10px;
     }
+
     .venue-preparation {
       background: #dde1e1;
     }
+
     .venue-lisianthus {
       background: #ddc8bf;
     }
+
     .venue-clove {
       background: rgba(188, 155, 221, 0.5);
     }
+
     .venue-calla {
       background: #c1ccbe;
     }
+
     .venue-rose {
       background: #c1ccbe;
     }
+
     .venue-jasmine {
       background: rgba(255, 255, 255, 0.6);
     }
+
     .venue-lobby {
       background: white;
     }
+
     .row-item-note {
       font-size: 16px;
       color: black;
     }
   }
+
   .item-expand {
     justify-content: center;
     align-items: center;
@@ -976,9 +1009,11 @@
     font-weight: 400;
     line-height: 30px;
   }
+
   .item-expand-gray {
     background: rgba(182, 194, 210, 0.5);
   }
+
   .item-expand-yellow {
     background: rgba(255, 204, 77, 0.25);
   }
@@ -987,45 +1022,54 @@
 @media screen and (max-width: 768px) {
   .program-container {
     padding-bottom: 0px;
+
     .program-title {
       font-size: 15px;
       line-height: 18px;
       margin: 20px auto 29px auto;
       padding-left: 100px;
     }
+
     .program-download {
       padding: 3px 5px;
       height: 18px;
+
       span {
         font-size: 8px;
         line-height: 0;
       }
+
       img {
         margin-right: 5px;
         height: 10px;
       }
     }
+
     .program-head {
       width: 90.43%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
     }
+
     .program-download {
       background: rgba(255, 255, 255, 0.6);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       border-radius: 15px;
       padding: 4px 10px;
       text-align: center;
+
       a {
         display: flex;
         text-decoration: none;
         align-items: center;
       }
+
       img {
         margin-right: 4px;
         height: 10px;
       }
+
       span {
         letter-spacing: 0.03em;
         color: black;
@@ -1035,11 +1079,13 @@
         font-size: 8px;
       }
     }
+
     .program-day-switcher {
       width: 90.43%;
       height: 30px;
       gap: 10px;
       margin-bottom: 12px;
+
       .program-day {
         height: 30px;
         background-size: 100% 30px;
@@ -1047,18 +1093,22 @@
         line-height: 30px;
         border-radius: 20px;
       }
+
       .day-1 {
         background: rgba(255, 255, 255, 0.25);
       }
     }
+
     .program-table {
       border-radius: 10px;
       padding-top: 11px;
+
       .program-row {
         margin-bottom: 10px;
       }
     }
   }
+
   .row-time {
     position: absolute;
     width: fit-content;
@@ -1066,43 +1116,54 @@
     line-height: 15px;
     margin-left: 10px;
   }
+
   .row-items {
     gap: 10px;
+
     .row-item-columns {
       gap: 5px;
     }
+
     .row-item {
       padding: 10px;
       gap: 5px;
+
       .row-item-time {
         font-size: 10px;
         line-height: 15px;
+
         .row-item-time-duration {
           font-size: 8px;
         }
       }
+
       .row-item-title {
         font-size: 10px;
         line-height: 15px;
         margin-top: 3px;
         margin-bottom: 8px;
       }
+
       .title-3-lines {
         font-size: 8px;
         line-height: 14px;
       }
+
       .title-expand {
         max-width: 76%;
       }
+
       .row-item-venue {
         font-size: 8px;
         line-height: 10px;
         border-radius: 10px;
       }
+
       .row-item-note {
         font-size: 8px;
       }
     }
+
     .item-expand {
       margin: auto;
       font-size: 12px;

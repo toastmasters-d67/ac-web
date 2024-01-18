@@ -36,7 +36,10 @@ export default {
   methods: {
     getImage(speakerKey) {
       if (speakerKey.length) {
-        return require(`@/assets/image/speaker/speaker-${speakerKey}.png`);
+        return new URL(
+          `/src/assets/image/speaker/speaker-${speakerKey}.png`,
+          import.meta.url
+        ).href;
       }
       return "";
     },
@@ -97,10 +100,12 @@ export default {
   border-radius: 0;
   box-sizing: border-box;
   text-align: left;
+
   a {
     color: black;
     border-color: transparent;
   }
+
   .briefing-speaker-name {
     font-size: 48px;
     font-weight: 600;
@@ -108,6 +113,7 @@ export default {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
   .briefing-speaker-title {
     font-weight: 400;
     font-size: 20px;
@@ -115,19 +121,23 @@ export default {
     color: #53595a;
   }
 }
+
 .briefing-speaker {
   width: 83.33%;
   max-width: 1200px;
   margin: 0 auto;
+
   .briefing-speaker-divider {
     width: 100%;
     border: 1px solid #cccccc;
   }
+
   .briefing-speaker-intro {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
+
     .briefing-speaker-image {
       max-width: 510px;
       width: 42.5%;
@@ -135,23 +145,27 @@ export default {
       border-color: transparent;
       margin-right: 50px;
     }
+
     .briefing-speaker-text {
       display: flex;
       flex-direction: column;
       font-size: 20px;
       line-height: 40px;
       font-weight: 400;
+
       @media screen and (max-width: 1024px) {
         font-size: 16px;
         line-height: 32px;
       }
     }
   }
+
   .briefing-speaker-links {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
+
     .briefing-logo {
       width: 50px;
       height: 50px;
@@ -170,29 +184,36 @@ export default {
       margin-top: 0px;
       margin-bottom: 0px;
     }
+
     .briefing-speaker-title {
       font-size: 10px;
       line-height: 10px;
     }
   }
+
   .briefing-speaker {
     width: 83.33%;
     margin: 0 auto;
+
     .briefing-speaker-divider {
       display: none;
     }
+
     .briefing-speaker-intro {
       flex-direction: column;
       align-items: flex-start;
       gap: 16px;
+
       .briefing-speaker-image {
         width: 68.27%;
       }
+
       .briefing-speaker-text {
         font-size: 14px;
         line-height: 20px;
       }
     }
+
     .briefing-speaker-links {
       .briefing-logo {
         width: 25px;

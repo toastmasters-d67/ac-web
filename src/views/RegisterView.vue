@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       step1HighlightText: this.$t(
-        "login.introduction.step1.text-highlight-register"
+        "login.introduction.step1.text-highlight-register",
       ),
     };
   },
@@ -36,6 +36,7 @@ export default {
   border-color: transparent;
   background-color: white;
 }
+
 @media screen and (max-width: 768px) {
   .auth-container {
     min-height: 660px;

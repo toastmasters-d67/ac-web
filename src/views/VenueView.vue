@@ -81,11 +81,13 @@
   border-radius: 0;
   box-sizing: border-box;
   padding-bottom: 50px;
+
   a {
     color: #004165;
     text-decoration: none;
     border-color: transparent;
   }
+
   .venue-box {
     width: 87.2%;
     max-width: 915px;
@@ -95,6 +97,7 @@
     border-color: transparent;
     margin: 0 auto;
   }
+
   .venue-title {
     font-size: 48px;
     font-weight: 600;
@@ -103,10 +106,12 @@
     margin-bottom: 15px;
   }
 }
+
 .venue-section {
   text-align: left;
   margin-top: 35px;
   margin-bottom: 35px;
+
   .venue-map {
     width: 100%;
     aspect-ratio: 902 / 479;
@@ -114,6 +119,7 @@
     padding: 10px;
     margin: 0 auto;
   }
+
   .venue-section-button {
     background: linear-gradient(267.67deg, #ddc8bf 5.3%, #a7c4d4 95.87%);
     font-size: 25px;
@@ -122,25 +128,30 @@
     padding: 10px 30px;
     margin-bottom: 20px;
   }
+
   .venue-section-direction {
     width: 97.05%;
     max-width: 888px;
     color: #004165;
     font-size: 20px;
     line-height: 26px;
+
     li {
       margin-top: 10px;
       margin-bottom: 10px;
     }
   }
+
   .venue-row {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+
     .venue-row-icon {
       font-size: 18px;
       margin-right: 15px;
     }
+
     .venue-row-text {
       font-size: 24px;
       font-weight: 400;
@@ -148,6 +159,7 @@
       margin-bottom: 15px;
       text-align: left;
     }
+
     .venue-row-button {
       background: #f5db8c;
       font-size: 20px;
@@ -168,14 +180,17 @@
       max-width: 915px;
       margin: 0 auto;
     }
+
     .venue-title {
       font-size: 15px;
       line-height: 18px;
     }
   }
+
   .venue-section {
     margin-top: 12px;
     margin-bottom: 12px;
+
     .venue-section-button {
       font-size: 12px;
       line-height: 15px;
@@ -183,24 +198,29 @@
       padding: 5px 10px;
       margin-bottom: 16px;
     }
+
     .venue-section-direction {
       font-size: 12px;
       line-height: 129.4%;
+
       li {
         margin-top: 10px;
         margin-bottom: 10px;
       }
     }
+
     .venue-row {
       .venue-row-icon {
         font-size: 12px;
         margin-right: 5px;
       }
+
       .venue-row-text {
         font-size: 12px;
         line-height: 15px;
         margin-bottom: 5px;
       }
+
       .venue-row-button {
         font-size: 12px;
         line-height: 15px;

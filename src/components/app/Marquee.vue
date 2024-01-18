@@ -74,18 +74,21 @@ export default {
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+
   .marquee-row {
     position: relative;
     width: 80%;
     height: 18px;
     padding-top: 13px;
     margin: 0 auto;
+
     .marquee-icon {
       position: absolute;
       left: 5px;
       width: 30px;
       height: 30px;
     }
+
     .marquee-segment {
       position: absolute;
       right: 5px;
@@ -95,6 +98,7 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 768px) {
   .marquee-container {
     .marquee-row {
