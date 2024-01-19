@@ -3,7 +3,7 @@ import { computed, reactive, ref } from "vue";
 import axios from "axios";
 
 export async function submit(token, target) {
-  const base = process.env.VUE_APP_API;
+  const base = import.meta.env.VITE_API;
   const url = `${base}/order`;
   const callback = `${base}/callback`;
   try {
@@ -190,6 +190,7 @@ export default {
   background: white;
   border-radius: 4px;
   padding: 40px;
+
   .summary-title {
     font-weight: 600;
     font-size: 28px;
@@ -199,11 +200,13 @@ export default {
     color: black;
     margin-bottom: 40px;
   }
+
   .summary-divider {
     width: 100%;
     border: 1px solid #cecece;
     margin-bottom: 16px;
   }
+
   .summary-items {
     width: 100%;
     display: flex;
@@ -214,6 +217,7 @@ export default {
     color: #53595a;
     margin-bottom: 16px;
   }
+
   .summary-amount {
     width: 100%;
     display: flex;
@@ -224,6 +228,7 @@ export default {
     color: black;
     margin-bottom: 60px;
   }
+
   .picker-button {
     width: 100%;
     color: white;
@@ -239,29 +244,35 @@ export default {
     cursor: pointer;
   }
 }
+
 @media screen and (max-width: 768px) {
   .summary-container {
     width: 91.47%;
     padding: 12px 16px;
+
     .summary-title {
       font-weight: 600;
       font-size: 14px;
       line-height: 17px;
       margin-bottom: 24px;
     }
+
     .summary-items {
       font-size: 14px;
       line-height: 17px;
       margin-bottom: 8px;
     }
+
     .summary-divider {
       margin-bottom: 8px;
     }
+
     .summary-amount {
       font-size: 16px;
       line-height: 20px;
       margin-bottom: 24px;
     }
+
     .picker-button {
       font-size: 16px;
       line-height: 20px;

@@ -20,7 +20,7 @@ const registerFormSchema = Yup.object().shape({
 });
 
 export async function onSubmit(values, target) {
-  const url = `${process.env.VUE_APP_API}/user`;
+  const url = `${import.meta.env.VITE_API}/user`;
   try {
     axios
       .post(url, values)
@@ -267,6 +267,7 @@ export default {
   color: black;
   border-color: transparent;
   margin: auto;
+
   a {
     color: #214366;
     text-decoration: none;
@@ -275,6 +276,7 @@ export default {
     font-weight: 600;
     line-height: 24px;
   }
+
   .form-input-hint {
     width: 84%;
     max-width: 464px;
@@ -285,6 +287,7 @@ export default {
     text-align: left;
     margin: 10px;
   }
+
   .register-title {
     font-size: 40px;
     font-weight: 500;
@@ -292,18 +295,21 @@ export default {
     margin-top: 80px;
     margin-bottom: 8px;
   }
+
   .register-title-note {
     font-size: 18px;
     font-weight: 500;
     line-height: 22px;
     margin-bottom: 70px;
   }
+
   .register-name {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .register-row {
     width: 84%;
     max-width: 464px;
@@ -311,12 +317,14 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
+
     .register-label {
       font-size: 24px;
       font-weight: 500;
       line-height: 29px;
       margin-bottom: 10px;
     }
+
     .register-input {
       width: 100%;
       height: 54px;
@@ -328,6 +336,7 @@ export default {
       padding-left: 20px;
     }
   }
+
   .register-button {
     width: 84%;
     max-width: 464px;
@@ -345,23 +354,28 @@ export default {
     margin-bottom: 60px;
     cursor: pointer;
   }
+
   .register-button-note {
     font-size: 18px;
     font-weight: 500;
     line-height: 22px;
     margin-bottom: 100px;
   }
+
   .register-divider {
     display: none;
   }
 }
+
 @media screen and (max-width: 768px) {
   .register-container {
     width: 100%;
+
     a {
       font-size: 16px;
       line-height: 20px;
     }
+
     .form-input-hint {
       color: #d72727;
       font-size: 18px;
@@ -370,17 +384,20 @@ export default {
       text-align: left;
       margin: 10px;
     }
+
     .register-title {
       font-size: 28px;
       line-height: 34px;
       margin-top: 16px;
       margin-bottom: 8px;
     }
+
     .register-title-note {
       font-size: 14px;
       line-height: 17px;
       margin-bottom: 36px;
     }
+
     .register-name {
       width: 84%;
       max-width: 464px;
@@ -389,25 +406,30 @@ export default {
       justify-content: space-between;
       align-items: center;
     }
+
     .register-row {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin-bottom: 16px;
+
       .register-label {
         font-size: 16px;
         line-height: 20px;
         margin-bottom: 4px;
       }
+
       .register-input {
         height: 46px;
         background: white;
         font-size: 16px;
       }
     }
+
     .row-name {
       width: 48.095%;
     }
+
     .register-button {
       height: 46px;
       font-size: 18px;
@@ -415,11 +437,13 @@ export default {
       margin-top: 16px;
       margin-bottom: 35px;
     }
+
     .register-button-note {
       font-size: 14px;
       line-height: 17px;
       margin-bottom: 32px;
     }
+
     .register-divider {
       display: block;
       width: 84%;

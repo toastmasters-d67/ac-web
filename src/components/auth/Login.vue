@@ -13,7 +13,7 @@ const loginFormSchema = Yup.object().shape({
 });
 
 export async function onSubmit(values, target) {
-  const url = `${process.env.VUE_APP_API}/login`;
+  const url = `${import.meta.env.VITE_API}/login`;
   try {
     axios
       .post(url, values)
@@ -208,6 +208,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
   a {
     color: #214366;
     text-decoration: none;
@@ -216,6 +217,7 @@ export default {
     font-weight: 600;
     line-height: 24px;
   }
+
   .login-login {
     width: 84%;
     max-width: 464px;
@@ -223,6 +225,7 @@ export default {
     flex-direction: column;
     align-items: center;
     border-color: transparent;
+
     .login-title {
       color: black;
       font-size: 40px;
@@ -233,6 +236,7 @@ export default {
       margin-bottom: 8px;
       text-decoration: none;
     }
+
     .login-login-description {
       text-align: center;
       font-size: 18px;
@@ -243,6 +247,7 @@ export default {
       color: rgba(33, 67, 102, 1);
       margin-bottom: 40px;
     }
+
     .first-login-description {
       background: #f9f2e6;
       border-radius: 8px;
@@ -253,11 +258,13 @@ export default {
       font-weight: 400;
       line-height: 20px;
     }
+
     .login-form {
       width: 100%;
       display: flex;
       align-items: flex-start;
       flex-direction: column;
+
       .login-label {
         color: black;
         font-size: 24px;
@@ -266,6 +273,7 @@ export default {
         font-weight: 500;
         margin-bottom: 8px;
       }
+
       .login-input {
         width: 100%;
         height: 54px;
@@ -280,6 +288,7 @@ export default {
         padding-left: 20px;
         margin-bottom: 16px;
       }
+
       .form-input-hint {
         width: 100%;
         color: #d72727;
@@ -289,6 +298,7 @@ export default {
         text-align: left;
         margin: 10px;
       }
+
       .login-forget-password {
         width: 100%;
         color: black;
@@ -298,6 +308,7 @@ export default {
         text-decoration: none;
         margin-bottom: 40px;
       }
+
       .login-button {
         position: relative;
         width: 100%;
@@ -316,6 +327,7 @@ export default {
         cursor: pointer;
       }
     }
+
     .login-register {
       display: flex;
       flex-wrap: wrap;
@@ -326,14 +338,17 @@ export default {
       text-align: center;
       gap: 2px;
     }
+
     .register-link {
       color: rgb(0, 65, 101);
       font-size: 20px;
       font-weight: 600;
     }
+
     .login-divider {
       display: none;
     }
+
     .login-google-button {
       width: 100%;
       height: 62px;
@@ -349,10 +364,12 @@ export default {
       gap: 19px;
       margin-top: 40px;
       cursor: pointer;
+
       .login-google-button-logo {
         width: 22px;
         height: 22px;
       }
+
       .login-google-button-text {
         color: rgba(117, 117, 117, 1);
         font-size: 18px;
@@ -365,37 +382,45 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 768px) {
   .login-container {
     width: 100%;
+
     .login-login {
       position: relative;
       width: 84%;
+
       .login-title {
         font-size: 24px;
         line-height: 29px;
       }
+
       .login-login-description {
         font-size: 14px;
         line-height: 17px;
         margin-bottom: 36px;
       }
+
       .first-login-description {
         background: white;
         border-radius: 8px;
         font-size: 12px;
         line-height: 15px;
       }
+
       .login-form {
         width: 100%;
         display: flex;
         align-items: flex-start;
         flex-direction: column;
+
         .login-label {
           font-size: 16px;
           line-height: 20px;
           margin-bottom: 4px;
         }
+
         .login-input {
           height: 46px;
           font-size: 16px;
@@ -403,11 +428,13 @@ export default {
           padding-left: 16px;
           margin-bottom: 16px;
         }
+
         .login-forget-password {
           font-size: 14px;
           line-height: 17px;
           margin-bottom: 32px;
         }
+
         .login-button {
           height: 46px;
           font-size: 18px;
@@ -415,21 +442,26 @@ export default {
           margin-bottom: 40px;
         }
       }
+
       .login-register {
         font-size: 14px;
         line-height: 17px;
       }
+
       .register-link {
         font-size: 16px;
       }
+
       .login-divider {
         display: block;
         width: 100%;
         border: 1px solid #b4b4b4;
         margin-top: 32px;
       }
+
       .login-google-button {
         height: 47px;
+
         .login-google-button-text {
           font-size: 18px;
           line-height: 22px;

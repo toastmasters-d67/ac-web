@@ -5,7 +5,7 @@ import Marquee from "@/components/app/Marquee.vue";
 import PopupModal from "@/components/app/PopupModal.vue";
 
 export async function getUser(token, target) {
-  const url = `${process.env.VUE_APP_API}/user`;
+  const url = `${import.meta.env.VITE_API}/user`;
   try {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     axios
@@ -223,14 +223,17 @@ export default {
   padding-top: 100px;
   padding-bottom: 100px;
   margin: 0 auto;
+
   a {
     color: black;
     text-decoration: none;
     border-color: transparent;
   }
+
   .account-row {
     position: relative;
     margin-bottom: 20px;
+
     .account-title {
       color: black;
       font-size: 28px;
@@ -238,6 +241,7 @@ export default {
       line-height: 34px;
       text-align: left;
     }
+
     .account-button {
       position: absolute;
       top: 0px;
@@ -253,6 +257,7 @@ export default {
       text-align: center;
       padding: 8px 24px;
       cursor: pointer;
+
       .plus {
         font-size: 25px;
         line-height: 1;
@@ -260,29 +265,35 @@ export default {
       }
     }
   }
+
   .account-status {
     border-radius: 4px;
     padding: 4px 12px;
     margin-bottom: 30px;
   }
+
   .unpaid {
     color: #e31c1c;
     background: #ffd3cd;
   }
+
   .pending {
     color: #dc6b04;
     background: #ffe3b9;
   }
+
   .complete {
     color: #109f43;
     background: #cdddc0;
   }
+
   table {
     border-collapse: collapse;
     border-radius: 10px 10px 0px 0px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
     margin: 0 auto;
     margin-top: 30px;
+
     th {
       color: white;
       background-color: #004165;
@@ -291,11 +302,13 @@ export default {
       line-height: 24px;
       width: 25vw;
       height: 75px;
+
       i {
         width: 20px;
         height: 20px;
       }
     }
+
     td {
       color: #5e5e5e;
       font-size: 18px;
@@ -305,13 +318,16 @@ export default {
       width: 25vw;
       height: 65px;
     }
+
     tr {
       border-bottom: 1px solid #dddddd;
     }
+
     tr:nth-of-type(even) td {
       background-color: #f3f3f3;
     }
   }
+
   .account-button {
     font-weight: 500;
     font-size: 18px;
@@ -325,10 +341,12 @@ export default {
     border-radius: 70px;
     cursor: pointer;
   }
+
   .rwd-account {
     display: none;
   }
 }
+
 .popup-container {
   width: 60.28%;
   display: flex;
@@ -340,6 +358,7 @@ export default {
   border-radius: 8px;
   padding: 24px;
   margin: auto;
+
   .popup-title {
     width: 100%;
     display: flex;
@@ -348,10 +367,12 @@ export default {
     font-size: 20px;
     line-height: 24px;
     color: #004165;
+
     .popup-close {
       padding: 4px;
     }
   }
+
   .popup-content {
     width: 100%;
     display: flex;
@@ -361,6 +382,7 @@ export default {
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
+
     .popup-status {
       font-size: 18px;
       line-height: 22px;
@@ -368,18 +390,22 @@ export default {
       padding: 4px 12px;
       margin-right: 16px;
     }
+
     .complete {
       color: #109f43;
       background: #cdffc0;
     }
+
     .pending {
       color: #dc6b04;
       background: #ffe3b9;
     }
+
     .unpaid {
       color: #e31c1c;
       background: #ffd3cd;
     }
+
     .popup-description {
       width: fit-content;
       display: flex;
@@ -392,17 +418,21 @@ export default {
   .account-container {
     padding-top: 20px;
     padding-bottom: 20px;
+
     .account-title {
       font-size: 18px !important;
     }
+
     .account-button {
       font-size: 16px !important;
       padding: 5.5px 20px !important;
       width: auto !important;
     }
+
     table {
       display: none;
     }
+
     .rwd-account {
       background: white;
       border-radius: 4px;
@@ -411,34 +441,43 @@ export default {
       justify-content: space-between;
       margin-bottom: 16px;
       box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.15);
+
       .rwd-title {
         text-align: left;
+
         div {
           margin-bottom: 16px;
           font-weight: 800;
         }
       }
+
       .rwd-content {
         text-align: right;
+
         div {
           margin-bottom: 16px;
           color: #868686;
         }
+
         .account-status {
           margin-bottom: 8px;
         }
+
         .unpaid {
           color: #e31c1c;
           background: #ffd3cd;
         }
+
         .pending {
           color: #dc6b04;
           background: #ffe3b9;
         }
+
         .complete {
           color: #109f43;
           background: #cdddc0;
         }
+
         .account-button {
           font-size: 14px;
           line-height: 17px;
@@ -447,26 +486,31 @@ export default {
       }
     }
   }
+
   .popup-container {
     width: 91.47%;
     gap: 16px;
     padding: 24px 16px;
+
     .popup-title {
       text-align: start;
       font-size: 18px;
       line-height: 22px;
       margin-top: 32px;
       margin-bottom: 8px;
+
       .popup-close {
         padding: 0px;
         transform: translateY(-32px);
       }
     }
+
     .popup-content {
       flex-direction: column;
       align-items: flex-start;
       font-size: 14px;
       line-height: 17px;
+
       .popup-status {
         font-size: 14px;
         line-height: 17px;

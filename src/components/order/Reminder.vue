@@ -45,6 +45,7 @@ export default {
   display: flex;
   align-items: center;
   z-index: 9;
+
   .reminder-modal {
     width: 706px;
     background: white;
@@ -55,16 +56,19 @@ export default {
     padding: 24px 40px;
     margin: 0 auto;
     z-index: 99;
+
     .reminder-message {
       color: black;
       font-size: 18px;
       font-weight: 500;
     }
+
     .reminder-buttons {
       display: flex;
       flex-direction: row;
       justify-content: center;
       margin-top: 24px;
+
       .button {
         position: relative;
         width: 124px;
@@ -82,10 +86,12 @@ export default {
         margin-left: 24px;
         cursor: pointer;
       }
+
       .ok-button {
         color: white;
         background: #004165;
       }
+
       .cancel-button {
         color: black;
         background-color: white;

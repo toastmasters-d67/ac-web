@@ -32,7 +32,7 @@ export default {
       let minutes = 0;
       let seconds = 0;
       const now = new Date();
-      const date = new Date(process.env.VUE_APP_COUNTDOWN_DATE);
+      const date = new Date(import.meta.env.VITE_COUNTDOWN_DATE);
       const remaining = date - now;
       if (remaining > 0) {
         days = Math.floor(remaining / (1000 * 60 * 60 * 24));
@@ -103,21 +103,26 @@ export default {
     #f8f0e9 0.27%,
     rgba(251, 239, 229, 0) 99.76%
   );
+
   .countdown-title {
     color: #004165;
     font-size: 48px;
     font-weight: 600;
     line-height: 59px;
   }
+
   .countdown-row {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+
     div:nth-child(-n + 4) {
       margin-right: 50px;
     }
+
     margin: 0 auto;
+
     .countdown-item {
       width: 200px;
       height: 273px;
@@ -127,6 +132,7 @@ export default {
       align-items: center;
       margin-top: 50px;
       margin-bottom: 50px;
+
       .countdown-unit {
         color: #979797;
         font-size: 32px;
@@ -144,19 +150,23 @@ export default {
   .countdown-container {
     padding-top: 0px;
     padding-bottom: 30px;
+
     .countdown-title {
       font-size: 15px;
       line-height: 18px;
     }
+
     .countdown-row {
       div:nth-child(-n + 4) {
         margin-right: 13px;
       }
+
       .countdown-item {
         width: 63px;
         height: 96px;
         margin-top: auto;
         margin-bottom: auto;
+
         .countdown-unit {
           font-size: 10px;
           line-height: 35px;

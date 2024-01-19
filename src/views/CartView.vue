@@ -27,11 +27,11 @@ export default {
       banquet: "Dinner Banquet",
     });
     const price = reactive({
-      early: process.env.VUE_APP_TICKET_EARLY,
-      double: process.env.VUE_APP_TICKET_DOUBLE,
-      first: process.env.VUE_APP_TICKET_FIRST,
-      second: process.env.VUE_APP_TICKET_SECOND,
-      banquet: process.env.VUE_APP_TICKET_BANQUET,
+      early: import.meta.env.VITE_TICKET_EARLY,
+      double: import.meta.env.VITE_TICKET_DOUBLE,
+      first: import.meta.env.VITE_TICKET_FIRST,
+      second: import.meta.env.VITE_TICKET_SECOND,
+      banquet: import.meta.env.VITE_TICKET_BANQUET,
     });
     return {
       state,
@@ -105,6 +105,7 @@ export default {
   margin-bottom: 100px;
   gap: 20px;
 }
+
 @media screen and (max-width: 768px) {
   .cart-container {
     flex-direction: column;

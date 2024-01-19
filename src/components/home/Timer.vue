@@ -19,15 +19,18 @@
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: local("Archivo"),
+  src:
+    local("Archivo"),
     url("@/assets/fonts/Archivo/Archivo-Regular.woff2") format("woff2"),
     url("@/assets/fonts/Archivo/Archivo-Regular.woff") format("woff");
 }
+
 .timer {
   position: relative;
   display: inline-block;
   background: transparent;
   margin: 0 auto;
+
   .timer-circle {
     position: relative;
     width: 200px;
@@ -35,6 +38,7 @@
     background: white;
     border-radius: 50%;
     overflow: hidden;
+
     .timer-segment {
       position: absolute;
       top: 50%;
@@ -46,6 +50,7 @@
       transform-origin: 0 0;
     }
   }
+
   .timer-inner {
     position: absolute;
     left: 50%;
@@ -56,6 +61,7 @@
     border-radius: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
+
   .timer-value {
     position: absolute;
     left: 50%;
@@ -70,6 +76,7 @@
     background-clip: text;
     transform: translateX(-50%) translateY(-50%);
   }
+
   .timer-ball {
     display: block;
     position: absolute;
@@ -80,6 +87,7 @@
     background: transparent;
     transform-origin: 0 0;
   }
+
   .timer-ball:before {
     content: "";
     position: absolute;
@@ -98,17 +106,21 @@
       width: 63px;
       height: 63px;
     }
+
     .timer-inner {
       width: 60px;
       height: 60px;
     }
+
     .timer-value {
       font-size: 20px;
       line-height: 30px;
     }
+
     .timer-ball {
       top: calc(50% - 1px);
     }
+
     .timer-ball:before {
       right: -3px;
       width: 8px;
@@ -136,7 +148,7 @@ export default {
   data() {
     const number = ref(computed(() => this.neat(this.$props.value)));
     const angle = computed(() =>
-      this.getAngle(this.$props.value, this.$props.full)
+      this.getAngle(this.$props.value, this.$props.full),
     );
     return {
       number,

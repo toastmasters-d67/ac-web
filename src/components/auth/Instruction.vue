@@ -1,4 +1,7 @@
 <script>
+import largeMan from "@/assets/image/login/man-shopping-online.png";
+import smallMan from "@/assets/image/login/man-shopping-online-mobile.png";
+
 export default {
   name: "Instruction",
   props: {
@@ -24,11 +27,7 @@ export default {
       this.windowHeight = window.innerWidth;
     },
     getImage() {
-      if (this.windowHeight > 768) {
-        return require(`@/assets/image/login/man-shopping-online.png`);
-      } else {
-        return require(`@/assets/image/login/man-shopping-online-mobile.png`);
-      }
+      return this.windowHeight > 768 ? largeMan : smallMan;
     },
   },
 };
@@ -93,9 +92,11 @@ export default {
   padding-left: 5.7%;
   padding-right: 20px;
   padding-top: 148px;
+
   .instruction-title {
     text-align: left;
     margin-bottom: 94px;
+
     .instruction-title-highlight {
       font-size: 32px;
       font-weight: 500;
@@ -103,6 +104,7 @@ export default {
       letter-spacing: 0em;
       color: rgba(233, 168, 55, 1);
     }
+
     .instruction-title-text {
       font-size: 24px;
       font-weight: 500;
@@ -111,6 +113,7 @@ export default {
       color: #004165;
     }
   }
+
   .login-man-shopping-online {
     width: 297px;
     right: 0;
@@ -118,6 +121,7 @@ export default {
     position: absolute;
     border-color: transparent;
   }
+
   .instruction-steps {
     width: fit-content;
     display: flex;
@@ -125,6 +129,7 @@ export default {
     border-color: transparent;
     margin-bottom: 24px;
     gap: 24px;
+
     .instruction-step {
       width: fit-content;
       display: flex;
@@ -132,6 +137,7 @@ export default {
       align-items: center;
       text-align: left;
       flex-shrink: 0;
+
       .instruction-step-number {
         width: 40px;
         height: 40px;
@@ -144,12 +150,14 @@ export default {
         margin-right: 22.5px;
         margin-bottom: 0;
       }
+
       .instruction-step-text {
         font-weight: 500;
         font-size: 20px;
         line-height: 24px;
         color: rgba(33, 67, 102, 1);
       }
+
       .text-highlight {
         color: rgba(233, 168, 55, 1);
         font-weight: 700;
@@ -157,33 +165,40 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 768px) {
   .instruction-container {
     width: 100%;
     height: auto;
     background: none;
     padding: 40px 0 100px 0;
+
     .instruction-title {
       margin: 24px auto 8px;
+
       .instruction-title-highlight {
         font-size: 20px;
         line-height: 24px;
       }
+
       .instruction-title-text {
         font-size: 16px;
         line-height: 20px;
       }
     }
+
     .login-man-shopping-online {
       position: relative;
       width: 166px;
       order: -1;
       margin: auto;
     }
+
     .instruction-steps {
       margin: auto;
       margin-bottom: 24px;
       gap: 8px;
+
       .instruction-step {
         .instruction-step-number {
           width: 32px;
@@ -193,6 +208,7 @@ export default {
           padding: 9px;
           margin-right: 17px;
         }
+
         .instruction-step-text {
           font-size: 14px;
           line-height: 17px;

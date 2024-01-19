@@ -28,6 +28,7 @@
   border: 0;
   overflow-x: auto;
 }
+
 .p-menuitem-text {
   font-family: "Montserrat" !important;
   font-size: 24px;
@@ -35,10 +36,12 @@
   line-height: 15px;
   color: #675de2 !important;
 }
+
 .p-breadcrumb-chevron {
   color: #675de2 !important;
   margin: 0 0.5rem 0 0.5rem;
 }
+
 .p-breadcrumb ul {
   margin: 0;
   padding: 0;
@@ -47,12 +50,15 @@
   align-items: center;
   flex-wrap: nowrap;
 }
+
 .p-breadcrumb .p-menuitem-text {
   line-height: 1;
 }
+
 .p-breadcrumb .p-menuitem-link {
   text-decoration: none;
 }
+
 .p-breadcrumb::-webkit-scrollbar {
   display: none;
 }
@@ -63,10 +69,12 @@
     margin-bottom: 15px;
     margin-left: 2.5%;
   }
+
   .p-menuitem-text {
     font-size: 10px;
     line-height: 15px;
   }
+
   .p-breadcrumb-chevron {
     margin: 0 0.25rem 0 0.25rem;
     font-size: 10px;

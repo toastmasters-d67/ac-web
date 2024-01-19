@@ -29,6 +29,7 @@ export default {
   bottom: 6%;
   display: flex;
   flex-direction: column;
+
   .cta-button {
     width: 100px;
     height: 100px;
@@ -38,7 +39,9 @@ export default {
     align-items: center;
     border-color: transparent;
     border-radius: 50%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25), inset 2px 1px 10px white;
+    box-shadow:
+      0px 2px 4px rgba(0, 0, 0, 0.25),
+      inset 2px 1px 10px white;
     cursor: pointer;
     padding-left: 20px;
     padding-right: 20px;
@@ -48,6 +51,7 @@ export default {
     line-height: 20px;
     text-align: center;
   }
+
   .contact {
     background: linear-gradient(45.28deg, #d6bbea 25.9%, #e7becb 74.88%);
   }

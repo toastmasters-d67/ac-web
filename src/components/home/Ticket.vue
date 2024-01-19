@@ -128,6 +128,7 @@
   border-color: transparent;
   padding-top: 100px;
   padding-bottom: 200px;
+
   .ticket-title {
     color: #004165;
     font-size: 48px;
@@ -135,16 +136,20 @@
     line-height: 59px;
     margin-bottom: 50px;
   }
+
   .ticket-row {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: flex-end;
+
     div:nth-child(-n + 3) {
       margin-right: 15px;
     }
+
     margin: 0 auto;
   }
+
   .ticket-note {
     display: flex;
     flex-direction: row;
@@ -152,10 +157,12 @@
     font-size: 22px;
     line-height: 30px;
     letter-spacing: 0.05em;
+
     @media screen and (max-width: 1024px) {
       flex-direction: column;
     }
   }
+
   .ticket-button {
     color: #6f6f6e;
     background: #ffdb82;
@@ -170,6 +177,7 @@
     margin-top: 23px;
     text-decoration: none;
     cursor: pointer;
+
     .button-text {
       font-size: 22px;
       font-weight: 600;
@@ -178,12 +186,14 @@
     }
   }
 }
+
 .white {
   width: 300px;
   background: rgba(255, 255, 255, 0.6);
   border-color: #bc92b7;
   padding-top: 35px;
 }
+
 .early-bird {
   width: 312px;
   height: 470px;
@@ -201,6 +211,7 @@
   border-color: white;
   padding-top: 80px;
 }
+
 .ticket-item {
   position: relative;
   color: black;
@@ -212,6 +223,7 @@
   border-radius: 20px;
   box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
   margin-bottom: 48px;
+
   .ticket-item-expiring {
     position: absolute;
     left: 90px;
@@ -235,6 +247,7 @@
     box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.25);
     border-radius: 1000px;
   }
+
   .ticket-item-title {
     font-size: 24px;
     font-weight: 400;
@@ -242,6 +255,7 @@
     line-height: 60px;
     text-align: center;
   }
+
   .ticket-item-price {
     font-size: 48px;
     font-weight: 600;
@@ -250,29 +264,34 @@
     margin-top: 25px;
     margin-bottom: 25px;
   }
+
   .ticket-item-price-note {
     font-size: 16px;
     font-weight: 500;
     line-height: 40px;
     text-decoration-line: line-through;
   }
+
   .early-bird-title {
     font-size: 36px;
     font-weight: 500;
     letter-spacing: 0.02em;
     line-height: 50px;
   }
+
   .early-bird-title-note {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.05em;
     line-height: 22px;
   }
+
   .early-bird-price {
     font-size: 60px;
     font-weight: 500;
     line-height: 40px;
   }
+
   .early-bird-price-note {
     font-size: 16px;
     font-weight: 500;
@@ -280,6 +299,7 @@
     text-decoration-line: line-through;
   }
 }
+
 ul.ticket-item-list {
   width: 207px;
   list-style-type: none;
@@ -292,15 +312,18 @@ ul.ticket-item-list {
   margin: 0;
   padding: 0;
   margin-bottom: 75px;
+
   li.ticket-item-row {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 5px;
+
     .ticket-item-icon {
       width: 17px;
       height: 17px;
     }
+
     .ticket-item-text {
       font-size: 14px;
       font-weight: 400;
@@ -315,43 +338,52 @@ ul.ticket-item-list {
   .ticket-container {
     padding-top: 70px;
     padding-bottom: 100px;
+
     .ticket-title {
       font-size: 15px;
       line-height: 18px;
       margin-bottom: 30px;
     }
+
     .ticket-row {
       div:nth-child(-n + 3) {
         margin-right: 9px;
       }
     }
+
     .ticket-note {
       flex-direction: column;
       font-size: 10px;
       line-height: 12px;
     }
+
     .ticket-button {
       border: 1px solid white;
       gap: 5px;
       padding: 8px 15px;
       margin-top: 16px;
+
       .button-text {
         font-size: 10px;
         line-height: 12px;
       }
     }
   }
+
   .white {
     width: 150px;
     padding-top: 20px;
   }
+
   .early-bird {
     width: 163px;
     height: 222px;
     padding-top: 30px;
   }
+
   .ticket-item {
     margin-bottom: 24px;
+
     .ticket-item-expiring {
       left: 48px;
       top: -12px;
@@ -359,45 +391,54 @@ ul.ticket-item-list {
       line-height: 12px;
       padding: 5px 12px;
     }
+
     .ticket-item-title {
       font-size: 12px;
       line-height: 15px;
     }
+
     .ticket-item-price {
       font-size: 24px;
       line-height: 30px;
       margin: 17px auto;
     }
+
     .ticket-item-price-note {
       font-size: 16px;
       font-weight: 500;
       line-height: 40px;
     }
+
     .early-bird-title {
       font-size: 15px;
       letter-spacing: 0.05em;
       line-height: 20px;
     }
+
     .early-bird-title-note {
       font-size: 10px;
       line-height: 15px;
       letter-spacing: 0;
     }
+
     .early-bird-price {
       font-size: 32px;
       margin-top: 9px;
       margin-bottom: 9px;
     }
+
     .early-bird-price-note {
       font-size: 10px;
       line-height: 10px;
       margin-bottom: 9px;
     }
   }
+
   ul.ticket-item-list {
     width: 124px;
     font-weight: 400;
     margin-bottom: 16px;
+
     li.ticket-item-row {
       .ticket-item-text {
         font-size: 10px;

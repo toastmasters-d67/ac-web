@@ -263,11 +263,13 @@ export default {
       this.windowHeight = window.innerWidth;
     },
     getImage(item) {
+      let path = "";
       if (this.windowHeight > 768) {
-        return require(`@/assets/image/our-team/${item}.png`);
+        path = `/src/assets/image/our-team/${item}.png`;
       } else {
-        return require(`@/assets/image/our-team/${item}-mobile.png`);
+        path = `/src/assets/image/our-team/${item}-mobile.png`;
       }
+      return new URL(path, import.meta.url).href;
     },
   },
 };
@@ -281,11 +283,13 @@ export default {
   right: 0;
   position: absolute;
   margin: 0;
+
   .our-team-background-image-right {
     width: 100%;
     height: 100%;
   }
 }
+
 .our-team-container {
   width: 100%;
   position: relative;
@@ -295,6 +299,7 @@ export default {
   padding-left: 85px;
   padding-top: 80px;
   margin-bottom: 80px;
+
   .our-team-title {
     width: 60%;
     min-width: 600px;
@@ -303,19 +308,23 @@ export default {
     font-weight: 500;
     color: rgba(0, 65, 101, 1);
     margin-bottom: 39px;
+
     .our-team-title-highlight1 {
       color: rgba(228, 167, 61, 1);
       text-decoration: underline;
     }
+
     .our-team-title-highlight2 {
       color: rgba(147, 135, 219, 1);
       text-decoration: underline;
     }
+
     .our-team-title-highlight3 {
       color: #6d192b;
       text-decoration: underline;
     }
   }
+
   .our-team-description {
     width: 60%;
     min-width: 600px;
@@ -328,6 +337,7 @@ export default {
     margin-bottom: 111px;
   }
 }
+
 .our-team-team {
   width: 100%;
   display: flex;
@@ -335,6 +345,7 @@ export default {
   border-color: transparent;
   flex-direction: column;
   margin-bottom: 66px;
+
   .our-team-team-name {
     font-size: 32px;
     text-align: center;
@@ -342,11 +353,13 @@ export default {
     margin-bottom: 40px;
     color: #004165;
   }
+
   .our-team-members {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 30px;
+
     .our-team-member {
       display: flex;
       align-items: center;
@@ -357,12 +370,14 @@ export default {
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
       background-color: rgba(255, 255, 255, 0.4);
       padding: 28px;
+
       .our-team-member-image {
         width: 238px;
         height: 301px;
         border-color: transparent;
         margin-bottom: 15px;
       }
+
       .our-team-member-profile {
         width: 238px;
         display: flex;
@@ -371,6 +386,7 @@ export default {
         font-size: 16px;
         font-weight: 400;
         border-color: transparent;
+
         .our-team-member-name {
           color: black;
           font-size: 20px;
@@ -379,27 +395,32 @@ export default {
         }
       }
     }
+
     .two-positions {
       padding-top: 18px;
       padding-bottom: 18px;
     }
   }
 }
+
 @media screen and (max-width: 768px) {
   .our-team-background-image {
     display: none;
   }
+
   .our-team-container {
     width: 100%;
     padding-left: 47px;
     padding-top: 0px;
     margin-bottom: 80px;
+
     .our-team-title {
       width: 71.65%;
       min-width: 0px;
       font-size: 20px;
       margin-bottom: 20px;
     }
+
     .our-team-description {
       width: 90%;
       min-width: 0px;
@@ -408,38 +429,47 @@ export default {
       margin-bottom: 88px;
     }
   }
+
   .our-team-team {
     margin-bottom: 35px;
+
     .our-team-team-name {
       font-size: 15px;
       margin-bottom: 9px;
     }
+
     .our-team-members {
       gap: 9px 30px;
+
       .our-team-member {
         border-radius: 10px;
         padding: 10px;
+
         .our-team-member-image {
           width: 100px;
           height: 126.38px;
           margin-bottom: 5px;
         }
+
         .our-team-member-profile {
           width: 100px;
           font-size: 10px;
           line-height: 12px;
           letter-spacing: -0.01em;
+
           .our-team-member-name {
             font-size: 12px;
             line-height: 15px;
             margin-bottom: 0px;
           }
+
           .profile-two-positions-text {
             font-size: 6px;
             line-height: 7px;
           }
         }
       }
+
       .two-positions {
         padding-top: 8px;
         padding-bottom: 10px;
