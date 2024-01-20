@@ -1,10 +1,17 @@
 <script>
 import { reactive } from "vue";
+import axios from 'axios';
 
+const CMS_URL = import.meta.env.VITE_CMS_API;
 export default {
+  
   name: "Speakers",
+  
   data() {
     const speakers = reactive([]);
+    let speakPer = [];
+    const icon = [];
+    // const id ='';
     Array.from(this.$tm("speakers")).forEach((source) => {
       const item = {
         key: this.$rt(source.key),
@@ -12,15 +19,63 @@ export default {
       };
       speakers.push(item);
     });
-    return { speakers };
+    return { speakers , speakPer,icon};
+  },
+  mounted(){
+      axios.get(`${CMS_URL}/items/speakers`, {
+      })
+      .then(response => {
+        Array.from(response.data.data.forEach((source) => {
+          if(this.$store.state.langu == "tw"){
+            this.speakPer.push(source.name);
+          }
+      this.icon.push(source.icon);})
+        )
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    if( this.$store.state.langu == "en") {
+      axios.get(`${CMS_URL}/items/speakers_translations`, {
+      })
+      .then(response => {
+        Array.from(response.data.data.forEach((source) => {
+
+      this.speakPer.push(source.name);
+        // console.log("en:" , this.speakPer);
+          
+        }))})
+      .catch(error => {
+        console.log(error);
+      })
+    }
+    
+  },
+  beforeUpdate(){
+    // console.log(...this.icon);
   },
   methods: {
-    getLink(key) {
-      if (key.length) {
-        return `/${key}`;
-      }
-      return "";
+    // get cms data
+    
+    getLink(id) {
+      return `/${id}`;
+     
     },
+    setId(key){
+      this.$store.commit('SET_ID',key+1)
+      console.log(this.$store.state.id)
+      localStorage.setItem("speaker_id",this.$store.state.id);
+    },
+    // getLink(key) {
+    //   if (key.length) {
+    //     return `/${key}`;
+    //   }
+    //   return "";
+    // },
+    getIcon(iconId) {
+      return  `${CMS_URL}/assets/${iconId}`
+      },
+    
     getImage(key) {
       if (key.length) {
         return new URL(
@@ -36,7 +91,26 @@ export default {
 
 <template>
   <section id="speakers" class="speakers-container">
+
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
+    <div class="speakers">
+      <div v-for="(speaker, index) in speakPer" :key="index">
+        <!-- <div class="speaker"> -->
+        <router-link :to="getLink(index+1)" class="speaker" >
+          
+            <img
+            @click="setId(index)"
+            :src="getIcon(icon[index])"
+            class="speaker-image"
+            :alt="speaker"
+          />
+          <span class="speaker-name-text">{{ speaker }}</span>
+        <!-- </div> -->
+        </router-link>
+      </div>
+    </div>
+
+    <!-- <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
       <div v-for="(speaker, index) in speakers" :key="index">
         <router-link :to="getLink(speaker.key)" class="speaker">
@@ -48,7 +122,7 @@ export default {
           <span class="speaker-name-text">{{ speaker.name }}</span>
         </router-link>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 

@@ -441,6 +441,7 @@ export default {
     },
   },
   setup() {
+    const lan = ''
     const locale = ref(localStorage.getItem("locale") ?? "tw");
     const localeOptions = reactive([
       {
@@ -460,8 +461,10 @@ export default {
       localStorage.setItem("locale", newlocale);
       location.reload();
     });
+   
 
     return {
+      lan,
       locale,
       localeOptions,
       visibleFull,
@@ -469,6 +472,12 @@ export default {
       showAccountMenu,
     };
   },
+  watch:{
+    locale(value){
+      this.lan = value;
+    }
+  },
+
   created() {
     const token = localStorage.getItem("token");
     if (!token || !token.length) {
@@ -479,6 +488,11 @@ export default {
   },
   mounted() {
     document.addEventListener("click", this.onClick);
+    console.log("mounted " + this.locale)
+    console.log("mounted navbar" + this.$store.state.id)
+    this.$store.commit('SET_LAN', this.locale)
+    this.$store.commit('SET_ID', this.$store.state.id)
+    console.log("store " + this.$store.state.langu)
   },
   beforeUnmount() {
     document.removeEventListener("click", this.onClick);

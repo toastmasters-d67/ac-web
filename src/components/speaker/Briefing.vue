@@ -2,10 +2,10 @@
 export default {
   name: "SpeakerBriefing",
   props: {
-    speakerKey: {
-      type: String,
-      default: "",
-    },
+    // speakerKey: {
+    //   type: String,
+    //   default: "",
+    // },
     name: {
       type: String,
       default: "",
@@ -32,17 +32,22 @@ export default {
       type: String,
       default: "",
     },
+    image:{
+      type: String,
+      default: "",
+    }
   },
   methods: {
-    getImage(speakerKey) {
-      if (speakerKey.length) {
-        return new URL(
-          `/src/assets/image/speaker/speaker-${speakerKey}.png`,
-          import.meta.url
-        ).href;
-      }
-      return "";
-    },
+    // getImage(speakerKey) {
+    //   if (speakerKey.length) {
+    //     return new URL(
+    //       `/src/assets/image/speaker/speaker-${speakerKey}.png`,
+    //       import.meta.url
+    //     ).href;
+    //   }
+    //   return "";
+    // },
+
   },
 };
 </script>
@@ -55,12 +60,13 @@ export default {
       <hr class="briefing-speaker-divider" />
       <div class="briefing-speaker-intro">
         <img
-          :src="getImage(speakerKey)"
+          :src="image"
           class="briefing-speaker-image"
           alt="play"
         />
         <div class="briefing-speaker-text">
-          <span v-for="(item, key) in contents" :key="key" v-html="item"></span>
+          <!-- <span v-for="(item, key) in contents" :key="key" v-html="item"></span> -->
+          <span>{{ contents }}</span>
         </div>
       </div>
       <div class="briefing-speaker-links">

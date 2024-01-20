@@ -8,9 +8,10 @@ import "primevue/resources/primevue.min.css";
 import "primevue/resources/themes/lara-light-indigo/theme.css";
 import "primeicons/primeicons.css";
 import i18n from "./i18n";
-
+import store from "./store"
 const app = createApp(App).use(i18n);
 app.use(router).use(PrimeVue);
+app.use(store);
 app.component("Button", Button);
 app.component("Sidebar", Sidebar);
 app.mount("#app");
