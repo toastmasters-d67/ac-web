@@ -2,83 +2,6 @@
   <section class="seminar-container">
     <div class="seminar-box">
       <header class="seminar-title">{{ $t("speaker.seminar") }}</header>
-      <!-- <div
-        v-for="(seminar, key) in seminars"
-        :key="key"
-        class="seminar-subcontainer"
-      >
-        <div class="seminar-separator"></div>
-        <div class="seminar-content">
-          <div class="seminar-content-basic-info">
-            <div class="seminar-row">
-              <span class="seminar-row-title">
-                {{ $t("speaker.topic") }} |
-              </span>
-              <span class="seminar-row-subtitle">{{ seminar.topic }}</span>
-            </div>
-            <div class="seminar-row">
-              <span class="seminar-row-title">{{ $t("speaker.time") }} |</span>
-              <span class="seminar-row-subtitle">{{ seminar.time }}</span>
-            </div>
-            <div class="seminar-row">
-              <span class="seminar-row-title">
-                {{ $t("speaker.location") }} |
-              </span>
-              <span class="seminar-row-subtitle">{{ seminar.location }}</span>
-            </div>
-          </div>
-          <div class="seminar-content-introduction">
-            <div class="seminar-row">
-              <span class="seminar-row-title">
-                {{ $t("speaker.introduction") }} |
-              </span>
-              <span span v-for="(item, key) in seminar.introduction" :key="key">
-                <span class="seminar-row-text" v-html="item"></span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- <div
-        
-        class="seminar-subcontainer"
-      >
-        <div class="seminar-separator"></div>
-        <div class="seminar-content">
-          <div class="seminar-content-basic-info">
-            <div class="seminar-row">
-              <span class="seminar-row-title">
-                {{ $t("speaker.topic") }} |
-              </span>
-              <span class="seminar-row-subtitle">{{ topic }}</span>
-            </div>
-            <div class="seminar-row">
-              <span class="seminar-row-title">{{ $t("speaker.time") }} |</span>
-              <span class="seminar-row-subtitle">{{ time }}</span>
-            </div>
-            <div class="seminar-row">
-              <span class="seminar-row-title">
-                {{ $t("speaker.location") }} |
-              </span>
-              <span class="seminar-row-subtitle">{{ location }}</span>
-            </div>
-          </div>
-          <div class="seminar-content-introduction">
-            <div class="seminar-row">
-              <span class="seminar-row-title">
-                {{ $t("speaker.introduction") }} |
-              </span>
-              
-                <span class="seminar-row-text" v-html="introduction"></span>
-           
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-
-
       <div
         v-for="(seminar, key) in seminars"
         :key="key"
@@ -109,9 +32,7 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.introduction") }} |
               </span>
-              <!-- <span span v-for="(item, key) in seminar.introduction" :key="key"> -->
                 <span class="seminar-row-text" v-html="seminar.introduction"></span>
-              <!-- </span> -->
             </div>
           </div>
         </div>

@@ -11,7 +11,6 @@ export default {
     const speakers = reactive([]);
     let speakPer = [];
     const icon = [];
-    // const id ='';
     Array.from(this.$tm("speakers")).forEach((source) => {
       const item = {
         key: this.$rt(source.key),
@@ -42,17 +41,12 @@ export default {
         Array.from(response.data.data.forEach((source) => {
 
       this.speakPer.push(source.name);
-        // console.log("en:" , this.speakPer);
-          
         }))})
       .catch(error => {
         console.log(error);
       })
     }
     
-  },
-  beforeUpdate(){
-    // console.log(...this.icon);
   },
   methods: {
     // get cms data
@@ -61,30 +55,10 @@ export default {
       return `/${id}`;
      
     },
-    setId(key){
-      this.$store.commit('SET_ID',key+1)
-      console.log(this.$store.state.id)
-      localStorage.setItem("speaker_id",this.$store.state.id);
-    },
-    // getLink(key) {
-    //   if (key.length) {
-    //     return `/${key}`;
-    //   }
-    //   return "";
-    // },
     getIcon(iconId) {
       return  `${CMS_URL}/assets/${iconId}`
       },
-    
-    getImage(key) {
-      if (key.length) {
-        return new URL(
-          `/src/assets/image/speakers/speaker-${key}-rounded.png`,
-          import.meta.url
-        ).href;
-      }
-      return "";
-    },
+  
   },
 };
 </script>
@@ -95,34 +69,18 @@ export default {
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
       <div v-for="(speaker, index) in speakPer" :key="index">
-        <!-- <div class="speaker"> -->
         <router-link :to="getLink(index+1)" class="speaker" >
-          
             <img
-            @click="setId(index)"
+            
             :src="getIcon(icon[index])"
             class="speaker-image"
             :alt="speaker"
           />
           <span class="speaker-name-text">{{ speaker }}</span>
-        <!-- </div> -->
         </router-link>
       </div>
     </div>
 
-    <!-- <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
-    <div class="speakers">
-      <div v-for="(speaker, index) in speakers" :key="index">
-        <router-link :to="getLink(speaker.key)" class="speaker">
-          <img
-            :src="getImage(speaker.key)"
-            class="speaker-image"
-            :alt="speaker.name"
-          />
-          <span class="speaker-name-text">{{ speaker.name }}</span>
-        </router-link>
-      </div>
-    </div> -->
   </section>
 </template>
 

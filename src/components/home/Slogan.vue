@@ -1,8 +1,28 @@
 <script>
+import axios from 'axios';
+import { reactive } from 'vue';
+const CMS_URL = import.meta.env.VITE_CMS_API;
+const YEAR = import.meta.env.VITE_YEAR;
 export default {
   name: "Slogan",
   data() {
+
+    const date = '';
+    const title = '';
+    const slogan = '';
+    const longWelcome = '';
+    const shortWelcome = '';
+    const img = '';
+    const translation=[];
+
     return {
+      date,
+      title,
+      slogan,
+      longWelcome,
+      shortWelcome,
+      img,
+      translation,
       windowHeight: window.innerHeight,
       sloganText: this.$t("home.slogan.text.desktop"),
     };
@@ -14,7 +34,69 @@ export default {
   unmounted() {
     window.removeEventListener("resize", this.handleResize);
   },
+  mounted(){
+    this.getAllData();
+  },
   methods: {
+    // get data from directus
+    async getChineseData(){
+      console.log("first request2121");
+       await axios({
+        url:`${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`,
+        method: 'get'
+      }).then(res=>{
+        Array.from(res.data.data.forEach((source) =>{
+
+            this.date = source.date;
+            this.title = source.title;
+            this.slogan = source.slogan;
+            this.longWelcome = source.longwelcome;
+            this.shortWelcome = source.shortwelcome;
+            this.img = source.img;
+            this.translation.push(source.translations[0]);
+            
+          } ))
+      }).catch(error => {
+        console.log(error);
+      })
+      
+      
+     },
+
+     getForigienData(){
+
+      console.log("second request");
+      Array.from(this.translation.forEach((translation_id) =>{
+      axios({
+        url:`${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`,
+        method: 'get'
+      }).then(res=>{
+        Array.from(res.data.data.forEach((source) =>{
+          this.date = source.date;
+            this.title = source.title;
+            this.slogan = source.slogan;
+            this.longWelcome = source.longwelcome;
+            this.shortWelcome = source.shortwelcome;
+            
+          } ))
+           
+      })
+    }
+    
+    )
+    )
+     },
+     async getAllData(){
+      await this.getChineseData();
+      if(this.$store.state.langu == "en"){
+        
+        this.getForigienData();
+      }
+      
+     },
+
+
+
     handleResize() {
       this.windowHeight = window.innerWidth;
       if (this.windowHeight > 768) {
@@ -27,7 +109,10 @@ export default {
       const background = import("@/assets/image/home/slogan-background.png");
       return `background: url(${background}) no-repeat center bottom/cover`;
     },
-  },
+  
+
+
+},
 };
 </script>
 
@@ -43,20 +128,21 @@ export default {
       class="slogan-kv-mobile1"
       src="@/assets/image/home/key-vision-mobile1.png"
     />
-    <div class="slogan-date">{{ $t("home.slogan.date") }}</div>
-    <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
+    <div class="slogan-date">{{ date }}</div>
+    <header class="slogan-title">{{ title }}</header>
     <div class="slogan-word">
-      <span v-for="(item, index) in $tm('home.slogan.slogan')" :key="index">
-        {{ $rt(item) }}
+     
+      <span>
+        {{ slogan }}
       </span>
     </div>
     <span class="slogan-text">
-      {{ sloganText }}
+      {{ longWelcome }}
     </span>
     <img
       alt="Key Vision 2"
       class="slogan-kv-mobile2"
-      src="@/assets/image/home/key-vision-mobile2.png"
+      :src="img"
     />
   </section>
 </template>
@@ -128,7 +214,7 @@ export default {
   }
 
   .slogan-word {
-    width: fit-content;
+    width: 75%;
     display: flex;
     flex-direction: column;
     background: #214366;

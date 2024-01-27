@@ -38,15 +38,6 @@ export default {
     }
   },
   methods: {
-    // getImage(speakerKey) {
-    //   if (speakerKey.length) {
-    //     return new URL(
-    //       `/src/assets/image/speaker/speaker-${speakerKey}.png`,
-    //       import.meta.url
-    //     ).href;
-    //   }
-    //   return "";
-    // },
 
   },
 };
@@ -65,7 +56,6 @@ export default {
           alt="play"
         />
         <div class="briefing-speaker-text">
-          <!-- <span v-for="(item, key) in contents" :key="key" v-html="item"></span> -->
           <span>{{ contents }}</span>
         </div>
       </div>
