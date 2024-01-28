@@ -2,10 +2,6 @@
 export default {
   name: "SpeakerBriefing",
   props: {
-    // speakerKey: {
-    //   type: String,
-    //   default: "",
-    // },
     name: {
       type: String,
       default: "",

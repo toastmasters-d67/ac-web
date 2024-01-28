@@ -51,8 +51,6 @@ export default {
     }
   },
   methods: {
-    // get cms data
-
     getLink(id) {
       return `/${id}`;
     },

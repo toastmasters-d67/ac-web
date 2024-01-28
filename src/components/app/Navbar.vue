@@ -487,9 +487,7 @@ export default {
   },
   mounted() {
     document.addEventListener("click", this.onClick);
-    console.log("mounted " + this.locale);
     this.$store.commit("SET_LAN", this.locale);
-    console.log("store " + this.$store.state.langu);
   },
   beforeUnmount() {
     document.removeEventListener("click", this.onClick);

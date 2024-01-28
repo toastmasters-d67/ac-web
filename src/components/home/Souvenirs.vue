@@ -47,9 +47,7 @@ export default {
       return "";
     },
 
-    // get data from axios
     async getChineseData() {
-      console.log("first request");
       await axios({
         url: `${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`,
         method: "get",
@@ -76,7 +74,6 @@ export default {
     },
 
     getForigienData() {
-      console.log("second request");
       Array.from(
         this.translation.forEach((translation_id) => {
           axios({

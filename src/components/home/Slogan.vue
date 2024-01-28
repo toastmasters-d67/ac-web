@@ -36,9 +36,7 @@ export default {
     this.getAllData();
   },
   methods: {
-    // get data from directus
     async getChineseData() {
-      console.log("first request2121");
       await axios({
         url: `${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`,
         method: "get",
@@ -62,7 +60,6 @@ export default {
     },
 
     getForigienData() {
-      console.log("second request");
       Array.from(
         this.translation.forEach((translation_id) => {
           axios({

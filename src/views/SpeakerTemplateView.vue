@@ -12,7 +12,6 @@ export default {
   },
   data() {
     const speakerKey = this.$route.params.key;
-    // directus get id
     const translations = [];
     let seminars = reactive([]);
     const name = "";
@@ -22,8 +21,6 @@ export default {
     const instagram = "";
     const youtube = "";
     const image = "";
-
-    // seminar
     const time = [];
 
     return {
@@ -45,7 +42,6 @@ export default {
   },
   methods: {
     async getChineseData() {
-      console.log("first request");
       await axios({
         url: `${CMS_URL}/items/seminars/?filter[speaker][_eq]=${this.speakerKey}`,
         method: "get",
@@ -74,8 +70,6 @@ export default {
     },
 
     getForigienData() {
-      console.log("second request");
-      console.log("tr..." + this.translations);
       let count = 0;
       Array.from(
         this.translations.forEach((translation_id) => {
@@ -109,9 +103,6 @@ export default {
   },
 
   mounted() {
-    console.log("catching..." + this.speakerKey);
-    // speaker
-    // 共同
     axios
       .get(`${CMS_URL}/items/speakers/?filter[id][_eq]=${this.speakerKey}`, {})
       .then((response) => {
@@ -121,7 +112,6 @@ export default {
             this.instagram = source.instagram;
             this.youtube = source.youtube;
             this.image = `${CMS_URL}/assets/${source.picture}`;
-            // 中文
             if (this.$store.state.langu == "tw") {
               this.name = source.name;
               this.title = source.title;
@@ -133,7 +123,6 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-    // 英文
     if (this.$store.state.langu == "en") {
       axios
         .get(
@@ -143,7 +132,6 @@ export default {
         .then((response) => {
           Array.from(
             response.data.data.forEach((source) => {
-              // console.log("en:" , source.name," ", source.title);
               this.name = source.name;
               this.title = source.title;
               this.contents = source.contents;

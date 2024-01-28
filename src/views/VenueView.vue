@@ -244,7 +244,6 @@ export default {
     const metro = "";
     const link = "";
     const translation = "";
-    // let venues = reactive([]);
 
     return {
       name,
@@ -267,7 +266,6 @@ export default {
 
   methods: {
     async getChineseData() {
-      console.log("first request");
       await axios({
         url: `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`,
         method: "get",
@@ -275,7 +273,6 @@ export default {
         .then((res) => {
           Array.from(
             res.data.data.forEach((source) => {
-              console.log(source.name);
               this.name = source.name;
               this.telephone = source.telephone;
               this.address = source.address;
@@ -293,7 +290,6 @@ export default {
         });
     },
     getForigienData() {
-      console.log("second request");
       axios({
         url: `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${this.translation}`,
         method: "get",
@@ -318,7 +314,6 @@ export default {
   },
   mounted() {
     this.getAllData();
-    // this.getChineseData();
   },
 };
 </script>

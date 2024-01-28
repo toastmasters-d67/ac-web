@@ -58,7 +58,6 @@ export default {
   setup() {},
   methods: {
     async getChineseData() {
-      console.log("first request");
       await axios({
         url: `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`,
         method: "get",
@@ -80,7 +79,6 @@ export default {
         });
     },
     getForigienData() {
-      console.log("second request");
       axios({
         url: `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${this.translation}`,
         method: "get",

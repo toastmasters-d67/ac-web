@@ -10,24 +10,12 @@ export default {
     Breadcrumb,
   },
   data() {
-    // const items = reactive([]);
-    // Array.from(this.$tm("faq.items")).forEach((source) => {
-    //   const item = {
-    //     question: this.$rt(source.question),
-    //     answer: this.$rt(source.answer),
-    //     icon: "pi pi-angle-down faq-icon",
-    //     show: false,
-    //   };
-    //   items.push(item);
-    // });
     const faqs = reactive([]);
     const translation = [];
     return { faqs, translation };
   },
   methods: {
-    // get data from directus
     async getChineseData() {
-      console.log("first reques");
       await axios({
         url: `${CMS_URL}/items/faqs/?filter[year][_eq]=${YEAR}`,
         method: "get",
@@ -42,7 +30,6 @@ export default {
                 show: false,
               };
               this.faqs.push(item);
-              console.log(this.faqs);
               this.translation.push(source.translations[0]);
             }),
           );
@@ -53,7 +40,6 @@ export default {
     },
 
     getForigienData() {
-      console.log("second request");
       Array.from(
         this.translation.forEach((translation_id) => {
           axios({

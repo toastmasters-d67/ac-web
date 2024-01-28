@@ -7,7 +7,6 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import { viteCommonjs } from "@originjs/vite-plugin-commonjs";
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
