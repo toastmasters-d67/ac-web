@@ -12,7 +12,7 @@ export async function submit(token, target) {
       .post(url, {
         amount: target.amount,
         email: "",
-        description: "2023 Annual Conference",
+        description: `${import.meta.env.VITE_YEAR} Annual Conference`,
         url: base,
         callback: callback,
         early: target.state.early,
