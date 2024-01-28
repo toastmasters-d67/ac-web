@@ -2,10 +2,6 @@
 export default {
   name: "SpeakerBriefing",
   props: {
-    speakerKey: {
-      type: String,
-      default: "",
-    },
     name: {
       type: String,
       default: "",
@@ -32,18 +28,12 @@ export default {
       type: String,
       default: "",
     },
-  },
-  methods: {
-    getImage(speakerKey) {
-      if (speakerKey.length) {
-        return new URL(
-          `/src/assets/image/speaker/speaker-${speakerKey}.png`,
-          import.meta.url
-        ).href;
-      }
-      return "";
+    image: {
+      type: String,
+      default: "",
     },
   },
+  methods: {},
 };
 </script>
 
@@ -54,13 +44,9 @@ export default {
       <div class="briefing-speaker-title">{{ title }}</div>
       <hr class="briefing-speaker-divider" />
       <div class="briefing-speaker-intro">
-        <img
-          :src="getImage(speakerKey)"
-          class="briefing-speaker-image"
-          alt="play"
-        />
+        <img :src="image" class="briefing-speaker-image" alt="play" />
         <div class="briefing-speaker-text">
-          <span v-for="(item, key) in contents" :key="key" v-html="item"></span>
+          <span>{{ contents }}</span>
         </div>
       </div>
       <div class="briefing-speaker-links">

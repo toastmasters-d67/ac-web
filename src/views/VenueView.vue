@@ -3,30 +3,24 @@
     <Breadcrumb v-once />
     <div class="venue-box">
       <section id="map" class="venue-section">
-        <img
-          src="@/assets/image/home/venue-map.png"
-          class="venue-map"
-          alt="map"
-        />
+        <img :src="img" class="venue-map" alt="map" />
       </section>
       <section id="map" class="venue-section">
         <header class="venue-title">{{ $t("home.venue.venue") }}</header>
         <div class="venue-row">
           <i class="pi pi-phone venue-row-icon"></i>
-          <span class="venue-row-text">(02) 2649-3034</span>
+          <span class="venue-row-text"
+            ><a :href="`tel:${telephone}`">{{ telephone }}</a></span
+          >
         </div>
         <div class="venue-row">
           <i class="pi pi-map-marker venue-row-icon"></i>
           <span class="venue-row-text">
-            {{ $t("home.venue.address") }}
+            {{ address }}
           </span>
         </div>
         <div class="venue-row">
-          <a
-            href="https://goo.gl/maps/hk4DmRVfQ2e4q5FA9"
-            class="venue-row-button"
-            target="_blank"
-          >
+          <a :href="link" class="venue-row-button" target="_blank">
             {{ $t("home.venue.show") }}
           </a>
         </div>
@@ -36,11 +30,12 @@
           <div class="venue-section-button">{{ $t("venue.car.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <ol>
+          <!-- <ol>
             <li v-for="(item, key) in $tm('venue.car.steps')" :key="key">
               {{ $rt(item) }}
             </li>
-          </ol>
+          </ol> -->
+          <div v-text="car"></div>
         </div>
       </section>
       <section id="metro" class="venue-section">
@@ -49,13 +44,14 @@
         </div>
         <div class="venue-section-direction">
           <span>
-            {{ $t("venue.metro.content") }}
+            <!-- {{ $t("venue.metro.content") }} -->
+            {{ metro }}
           </span>
-          <ol>
+          <!-- <ol>
             <li v-for="(item, key) in $tm('venue.metro.steps')" :key="key">
               {{ $rt(item) }}
             </li>
-          </ol>
+          </ol> -->
         </div>
       </section>
       <section id="bus" class="venue-section">
@@ -64,7 +60,8 @@
         </div>
         <div class="venue-section-direction">
           <span>
-            {{ $t("venue.bus.content") }}
+            <!-- {{ $t("venue.bus.content") }} -->
+            {{ bus }}
           </span>
         </div>
       </section>
@@ -232,14 +229,91 @@
 
 <script>
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
-
+import axios from "axios";
+const CMS_URL = import.meta.env.VITE_CMS_API;
+const YEAR = import.meta.env.VITE_YEAR;
 export default {
   name: "VenueView",
+  data() {
+    const name = "";
+    const telephone = "";
+    const address = "";
+    const img = "";
+    const car = "";
+    const bus = "";
+    const metro = "";
+    const link = "";
+    const translation = "";
+
+    return {
+      name,
+      telephone,
+      address,
+      img,
+      car,
+      metro,
+      bus,
+      link,
+      translation,
+    };
+  },
   components: {
     Breadcrumb,
   },
   beforeMount() {
     window.scrollTo({ top: 0 });
+  },
+
+  methods: {
+    async getChineseData() {
+      await axios({
+        url: `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`,
+        method: "get",
+      })
+        .then((res) => {
+          Array.from(
+            res.data.data.forEach((source) => {
+              this.name = source.name;
+              this.telephone = source.telephone;
+              this.address = source.address;
+              this.link = source.link;
+              this.car = source.car;
+              this.metro = source.metro;
+              this.bus = source.bus;
+              this.img = `${CMS_URL}/assets/${source.picture}`;
+              this.translation = source.translations[0];
+            }),
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getForigienData() {
+      axios({
+        url: `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${this.translation}`,
+        method: "get",
+      }).then((res) => {
+        Array.from(
+          res.data.data.forEach((source) => {
+            this.name = source.name;
+            this.address = source.address;
+            this.car = source.car;
+            this.metro = source.metro;
+            this.bus = source.bus;
+          }),
+        );
+      });
+    },
+    async getAllData() {
+      await this.getChineseData();
+      if (this.$store.state.langu == "en") {
+        this.getForigienData();
+      }
+    },
+  },
+  mounted() {
+    this.getAllData();
   },
 };
 </script>

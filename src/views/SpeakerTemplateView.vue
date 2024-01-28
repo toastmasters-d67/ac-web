@@ -1,50 +1,30 @@
 <script>
 import { reactive } from "vue";
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
-
+import axios from "axios";
+const CMS_URL = import.meta.env.VITE_CMS_API;
 export default {
   name: "SpeakersTemplateView",
   components: {
-    Breadcrumb,
     Briefing,
     Seminar,
   },
   data() {
     const speakerKey = this.$route.params.key;
-    const speaker = this.$tm("speakers").find(
-      (x) => this.$rt(x.key) === speakerKey
-    );
-    if (speaker === undefined) {
-      this.$router.push("/").then(() => {
-        this.$router.go();
-      });
-    }
-    const name = this.$rt(speaker.name);
-    const title = this.$rt(speaker.title);
-    const contents = reactive([]);
-    const facebook = this.$rt(speaker.facebook);
-    const instagram = this.$rt(speaker.instagram);
-    const youtube = this.$rt(speaker.youtube);
-    Array.from(speaker.contents).forEach((source) => {
-      contents.push(this.$rt(source));
-    });
-    const seminars = reactive([]);
-    Array.from(speaker.seminars).forEach((source) => {
-      let introduction = reactive([]);
-      Array.from(source.introduction).forEach((intro) => {
-        introduction.push(this.$rt(intro));
-      });
-      seminars.push({
-        topic: this.$rt(source.topic),
-        time: this.$rt(source.time),
-        location: this.$rt(source.location),
-        introduction: introduction,
-      });
-    });
+    const translations = [];
+    let seminars = reactive([]);
+    const name = "";
+    const title = "";
+    const contents = "";
+    const facebook = "";
+    const instagram = "";
+    const youtube = "";
+    const image = "";
+    const time = [];
 
     return {
+      translations,
       speakerKey,
       name,
       title,
@@ -52,28 +32,142 @@ export default {
       facebook,
       instagram,
       youtube,
+      image,
       seminars,
+      time,
     };
   },
   beforeMount() {
     window.scrollTo({ top: 0 });
+  },
+  methods: {
+    async getChineseData() {
+      await axios({
+        url: `${CMS_URL}/items/seminars/?filter[speaker][_eq]=${this.speakerKey}`,
+        method: "get",
+      })
+        .then((res) => {
+          Array.from(
+            res.data.data.forEach((source) => {
+              this.translations.push(source.translations[0]);
+              this.time.push(source.time);
+              if (this.$store.state.langu == "tw") {
+                const item = {
+                  time: source.time,
+                  topic: source.topic,
+                  location: source.location,
+                  introduction: source.introduction,
+                };
+
+                this.seminars.push(item);
+              }
+            }),
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    getForigienData() {
+      let count = 0;
+      Array.from(
+        this.translations.forEach((translation_id) => {
+          axios({
+            url: `${CMS_URL}/items/seminars_translations/?filter[id][_eq]=${translation_id}`,
+            method: "get",
+          }).then((res) => {
+            Array.from(
+              res.data.data.forEach((source) => {
+                const item = {
+                  time: this.time[count],
+                  topic: source.topic,
+                  location: source.location,
+                  introduction: source.introduction,
+                };
+                this.seminars.push(item);
+                count = count + 1;
+              }),
+            );
+          });
+        }),
+      );
+    },
+
+    async getAllData() {
+      await this.getChineseData();
+      if (this.$store.state.langu == "en") {
+        this.getForigienData();
+      }
+    },
+  },
+
+  mounted() {
+    axios
+      .get(`${CMS_URL}/items/speakers/?filter[id][_eq]=${this.speakerKey}`, {})
+      .then((response) => {
+        Array.from(
+          response.data.data.forEach((source) => {
+            this.facebook = source.facebook;
+            this.instagram = source.instagram;
+            this.youtube = source.youtube;
+            this.image = `${CMS_URL}/assets/${source.picture}`;
+            if (this.$store.state.langu == "tw") {
+              this.name = source.name;
+              this.title = source.title;
+              this.contents = source.contents;
+            }
+          }),
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    if (this.$store.state.langu == "en") {
+      axios
+        .get(
+          `${CMS_URL}/items/speakers_translations/?filter[id][_eq]=${this.speakerKey}`,
+          {},
+        )
+        .then((response) => {
+          Array.from(
+            response.data.data.forEach((source) => {
+              this.name = source.name;
+              this.title = source.title;
+              this.contents = source.contents;
+            }),
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    this.getAllData();
   },
 };
 </script>
 
 <template>
   <article id="speaker" class="speaker-container">
-    <Breadcrumb v-once />
+    <!-- <Breadcrumb v-once /> -->
     <Briefing
-      :speakerKey="speakerKey"
       :name="name"
       :title="title"
       :contents="contents"
       :facebook="facebook"
       :instagram="instagram"
       :youtube="youtube"
+      :image="image"
     />
-    <Seminar :seminars="seminars" />
+    <Seminar
+      :topic="topic"
+      :time="time"
+      :location="location"
+      :introduction="introduction"
+      :seminars="seminars"
+    />
+    <!-- <Seminar :seminars="seminars" /> -->
   </article>
 </template>
 

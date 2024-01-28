@@ -32,9 +32,10 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.introduction") }} |
               </span>
-              <span span v-for="(item, key) in seminar.introduction" :key="key">
-                <span class="seminar-row-text" v-html="item"></span>
-              </span>
+              <span
+                class="seminar-row-text"
+                v-html="seminar.introduction"
+              ></span>
             </div>
           </div>
         </div>
@@ -217,6 +218,31 @@ export default {
       type: Object,
       default: function () {
         return reactive([]);
+      },
+    },
+
+    topic: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
+    time: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
+    location: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
+    introduction: {
+      type: Array,
+      default: function () {
+        return [];
       },
     },
   },

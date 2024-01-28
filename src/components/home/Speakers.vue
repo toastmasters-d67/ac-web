@@ -1,10 +1,15 @@
 <script>
 import { reactive } from "vue";
+import axios from "axios";
 
+const CMS_URL = import.meta.env.VITE_CMS_API;
 export default {
   name: "Speakers",
+
   data() {
     const speakers = reactive([]);
+    let speakPer = [];
+    const icon = [];
     Array.from(this.$tm("speakers")).forEach((source) => {
       const item = {
         key: this.$rt(source.key),
@@ -12,23 +17,45 @@ export default {
       };
       speakers.push(item);
     });
-    return { speakers };
+    return { speakers, speakPer, icon };
+  },
+  mounted() {
+    axios
+      .get(`${CMS_URL}/items/speakers`, {})
+      .then((response) => {
+        Array.from(
+          response.data.data.forEach((source) => {
+            if (this.$store.state.langu == "tw") {
+              this.speakPer.push(source.name);
+            }
+            this.icon.push(source.icon);
+          }),
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    if (this.$store.state.langu == "en") {
+      axios
+        .get(`${CMS_URL}/items/speakers_translations`, {})
+        .then((response) => {
+          Array.from(
+            response.data.data.forEach((source) => {
+              this.speakPer.push(source.name);
+            }),
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
   methods: {
-    getLink(key) {
-      if (key.length) {
-        return `/${key}`;
-      }
-      return "";
+    getLink(id) {
+      return `/${id}`;
     },
-    getImage(key) {
-      if (key.length) {
-        return new URL(
-          `/src/assets/image/speakers/speaker-${key}-rounded.png`,
-          import.meta.url
-        ).href;
-      }
-      return "";
+    getIcon(iconId) {
+      return `${CMS_URL}/assets/${iconId}`;
     },
   },
 };
@@ -38,14 +65,14 @@ export default {
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
-      <div v-for="(speaker, index) in speakers" :key="index">
-        <router-link :to="getLink(speaker.key)" class="speaker">
+      <div v-for="(speaker, index) in speakPer" :key="index">
+        <router-link :to="getLink(index + 1)" class="speaker">
           <img
-            :src="getImage(speaker.key)"
+            :src="getIcon(icon[index])"
             class="speaker-image"
-            :alt="speaker.name"
+            :alt="speaker"
           />
-          <span class="speaker-name-text">{{ speaker.name }}</span>
+          <span class="speaker-name-text">{{ speaker }}</span>
         </router-link>
       </div>
     </div>
