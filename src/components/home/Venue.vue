@@ -5,26 +5,20 @@
       <span class="venue-box-name">{{ name }}</span>
       <div class="venue-box-row">
         <i class="pi pi-phone venue-box-icon"></i>
-        <span class="venue-box-text"><a :href="`tel:${telephone}`">{{ telephone }}</a></span>
+        <span class="venue-box-text"
+          ><a :href="`tel:${telephone}`">{{ telephone }}</a></span
+        >
       </div>
       <div class="venue-box-row">
         <i class="pi pi-map-marker venue-box-icon"></i>
         <span class="venue-box-text">
-          {{ address}}
+          {{ address }}
         </span>
       </div>
-      <a
-        :href="`${link}`"
-        class="venue-box-button"
-        target="_blank"
-      >
+      <a :href="`${link}`" class="venue-box-button" target="_blank">
         {{ $t("home.venue.show") }}
       </a>
-      <img
-        :src="img"
-        class="venue-box-map"
-        alt="map"
-      />
+      <img :src="img" class="venue-box-map" alt="map" />
     </div>
     <div class="venue-bottom-buttons">
       <router-link to="/venue" class="button-bottom">
@@ -48,72 +42,68 @@
 </template>
 
 <script>
-
-import axios from 'axios';
+import axios from "axios";
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const YEAR = import.meta.env.VITE_YEAR;
-export default{
-  data(){
-    const name= '';
-    const telephone = '';
-    const address = '';
-    const img = '';
-    const link = '';
-    const translation = '';
-    return {name,telephone,address,img,link,translation}
-
+export default {
+  data() {
+    const name = "";
+    const telephone = "";
+    const address = "";
+    const img = "";
+    const link = "";
+    const translation = "";
+    return { name, telephone, address, img, link, translation };
   },
-  setup() {
-    
-  },
-  methods:{
-    async getChineseData(){
+  setup() {},
+  methods: {
+    async getChineseData() {
       console.log("first request");
-       await axios({
-        url:`${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
-            this.name = source.name;
-            this.telephone = source.telephone;
-            this.address = source.address;
-            this.link = source.link;
-            this.img = `${CMS_URL}/assets/${source.picture}`;
-            this.translation = source.translations[0];
-          } ))
-      }).catch(error => {
-        console.log(error);
+      await axios({
+        url: `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`,
+        method: "get",
       })
-        
-      
-     },
-     getForigienData(){
+        .then((res) => {
+          Array.from(
+            res.data.data.forEach((source) => {
+              this.name = source.name;
+              this.telephone = source.telephone;
+              this.address = source.address;
+              this.link = source.link;
+              this.img = `${CMS_URL}/assets/${source.picture}`;
+              this.translation = source.translations[0];
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getForigienData() {
       console.log("second request");
       axios({
-        url:`${CMS_URL}/items/venue_translations/?filter[id][_eq]=${this.translation}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
+        url: `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${this.translation}`,
+        method: "get",
+      }).then((res) => {
+        Array.from(
+          res.data.data.forEach((source) => {
             this.name = source.name;
-            this.address = source.address;   
-          } ))
-      })
-     },
-     async getAllData(){
+            this.address = source.address;
+          })
+        );
+      });
+    },
+    async getAllData() {
       await this.getChineseData();
-      if(this.$store.state.langu == "en"){
+      if (this.$store.state.langu == "en") {
         this.getForigienData();
       }
-      
-     }
-
+    },
   },
-  mounted(){
+  mounted() {
     this.getAllData();
-
-
-  }
-}
+  },
+};
 </script>
 
 <style scoped lang="scss">

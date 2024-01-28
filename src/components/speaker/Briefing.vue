@@ -32,14 +32,12 @@ export default {
       type: String,
       default: "",
     },
-    image:{
+    image: {
       type: String,
       default: "",
-    }
+    },
   },
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
@@ -50,11 +48,7 @@ export default {
       <div class="briefing-speaker-title">{{ title }}</div>
       <hr class="briefing-speaker-divider" />
       <div class="briefing-speaker-intro">
-        <img
-          :src="image"
-          class="briefing-speaker-image"
-          alt="play"
-        />
+        <img :src="image" class="briefing-speaker-image" alt="play" />
         <div class="briefing-speaker-text">
           <span>{{ contents }}</span>
         </div>

@@ -148,7 +148,7 @@ export default {
   data() {
     const number = ref(computed(() => this.neat(this.$props.value)));
     const angle = computed(() =>
-      this.getAngle(this.$props.value, this.$props.full),
+      this.getAngle(this.$props.value, this.$props.full)
     );
     return {
       number,

@@ -1,12 +1,11 @@
 <script>
 import { reactive } from "vue";
-import axios from 'axios';
+import axios from "axios";
 
 const CMS_URL = import.meta.env.VITE_CMS_API;
 export default {
-  
   name: "Speakers",
-  
+
   data() {
     const speakers = reactive([]);
     let speakPer = [];
@@ -18,60 +17,59 @@ export default {
       };
       speakers.push(item);
     });
-    return { speakers , speakPer,icon};
+    return { speakers, speakPer, icon };
   },
-  mounted(){
-      axios.get(`${CMS_URL}/items/speakers`, {
+  mounted() {
+    axios
+      .get(`${CMS_URL}/items/speakers`, {})
+      .then((response) => {
+        Array.from(
+          response.data.data.forEach((source) => {
+            if (this.$store.state.langu == "tw") {
+              this.speakPer.push(source.name);
+            }
+            this.icon.push(source.icon);
+          })
+        );
       })
-      .then(response => {
-        Array.from(response.data.data.forEach((source) => {
-          if(this.$store.state.langu == "tw"){
-            this.speakPer.push(source.name);
-          }
-      this.icon.push(source.icon);})
-        )
-      })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-      })
-    if( this.$store.state.langu == "en") {
-      axios.get(`${CMS_URL}/items/speakers_translations`, {
-      })
-      .then(response => {
-        Array.from(response.data.data.forEach((source) => {
-
-      this.speakPer.push(source.name);
-        }))})
-      .catch(error => {
-        console.log(error);
-      })
+      });
+    if (this.$store.state.langu == "en") {
+      axios
+        .get(`${CMS_URL}/items/speakers_translations`, {})
+        .then((response) => {
+          Array.from(
+            response.data.data.forEach((source) => {
+              this.speakPer.push(source.name);
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-    
   },
   methods: {
     // get cms data
-    
+
     getLink(id) {
       return `/${id}`;
-     
     },
     getIcon(iconId) {
-      return  `${CMS_URL}/assets/${iconId}`
-      },
-  
+      return `${CMS_URL}/assets/${iconId}`;
+    },
   },
 };
 </script>
 
 <template>
   <section id="speakers" class="speakers-container">
-
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
       <div v-for="(speaker, index) in speakPer" :key="index">
-        <router-link :to="getLink(index+1)" class="speaker" >
-            <img
-            
+        <router-link :to="getLink(index + 1)" class="speaker">
+          <img
             :src="getIcon(icon[index])"
             class="speaker-image"
             :alt="speaker"
@@ -80,7 +78,6 @@ export default {
         </router-link>
       </div>
     </div>
-
   </section>
 </template>
 

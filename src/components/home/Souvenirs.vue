@@ -3,23 +3,23 @@ import largeBag from "@/assets/image/home/souvenirs-bag.png";
 import smallBag from "@/assets/image/home/souvenirs-bag-small.png";
 import largeTowel from "@/assets/image/home/souvenirs-towel.png";
 import smallTowel from "@/assets/image/home/souvenirs-towel-small.png";
-import axios from 'axios';
-import { reactive } from 'vue';
+import axios from "axios";
+import { reactive } from "vue";
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const YEAR = import.meta.env.VITE_YEAR;
 export default {
   name: "Souvenirs",
   data() {
-    const name = '';
+    const name = "";
     const img = [];
     const translation = [];
-    let souvenirs = reactive([])
+    let souvenirs = reactive([]);
     return {
       windowHeight: window.innerHeight,
       name,
       img,
       translation,
-      souvenirs
+      souvenirs,
     };
   },
   created() {
@@ -29,11 +29,10 @@ export default {
   unmounted() {
     window.removeEventListener("resize", this.handleResize);
   },
-  
-  mounted(){
+
+  mounted() {
     this.getAllData();
-  }
-  ,
+  },
   methods: {
     handleResize() {
       this.windowHeight = window.innerWidth;
@@ -49,66 +48,60 @@ export default {
     },
 
     // get data from axios
-    async getChineseData(){
+    async getChineseData() {
       console.log("first request");
-       await axios({
-        url:`${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
-
-            const item = {
-              name : source.name,
-              img: `${CMS_URL}/assets/${source.picture}`,
-              
-            };
-            this.img.push(`${CMS_URL}/assets/${source.picture}`)
-            if(this.$store.state.langu == "tw"){
-            this.souvenirs.push(item);
-            }
-            this.translation.push(source.translations[0]);
-          } ))
-      }).catch(error => {
-        console.log(error);
+      await axios({
+        url: `${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`,
+        method: "get",
       })
+        .then((res) => {
+          Array.from(
+            res.data.data.forEach((source) => {
+              const item = {
+                name: source.name,
+                img: `${CMS_URL}/assets/${source.picture}`,
+              };
+              this.img.push(`${CMS_URL}/assets/${source.picture}`);
+              if (this.$store.state.langu == "tw") {
+                this.souvenirs.push(item);
+              }
+              this.translation.push(source.translations[0]);
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       this.souvenirs.name = [];
-      
-     },
+    },
 
-     getForigienData(){
+    getForigienData() {
       console.log("second request");
-      Array.from(this.translation.forEach((translation_id) =>{
-      axios({
-        url:`${CMS_URL}/items/souvenirs_translations/?filter[id][_eq]=${translation_id}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
-          const item = {
-              name : source.name,
-              img: this.img[translation_id-1],
-            };
-            this.souvenirs.push(item);
-            
-          } ))
-           
-      })
-    }
-    
-    )
-    )
-     },
-     async getAllData(){
+      Array.from(
+        this.translation.forEach((translation_id) => {
+          axios({
+            url: `${CMS_URL}/items/souvenirs_translations/?filter[id][_eq]=${translation_id}`,
+            method: "get",
+          }).then((res) => {
+            Array.from(
+              res.data.data.forEach((source) => {
+                const item = {
+                  name: source.name,
+                  img: this.img[translation_id - 1],
+                };
+                this.souvenirs.push(item);
+              })
+            );
+          });
+        })
+      );
+    },
+    async getAllData() {
       await this.getChineseData();
-      if(this.$store.state.langu == "en"){
-        
+      if (this.$store.state.langu == "en") {
         this.getForigienData();
       }
-      
-     }
-
-
-
-
+    },
   },
 };
 </script>
@@ -117,8 +110,12 @@ export default {
   <section id="souvenirs" class="souvenirs-container">
     <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
 
-    <div class="souvenirs-items" >
-      <div class="souvenirs-item" v-for="(souvenir, key) in souvenirs" :key="key">
+    <div class="souvenirs-items">
+      <div
+        class="souvenirs-item"
+        v-for="(souvenir, key) in souvenirs"
+        :key="key"
+      >
         <img
           :src="souvenir.img"
           class="souvenirs-item-image"
@@ -126,7 +123,6 @@ export default {
         />
         <div class="souvenirs-item-text">{{ souvenir.name }}</div>
       </div>
-     
     </div>
   </section>
 </template>

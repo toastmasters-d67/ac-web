@@ -1,19 +1,18 @@
 <script>
-import axios from 'axios';
-import { reactive } from 'vue';
+import axios from "axios";
+import { reactive } from "vue";
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const YEAR = import.meta.env.VITE_YEAR;
 export default {
   name: "Slogan",
   data() {
-
-    const date = '';
-    const title = '';
-    const slogan = '';
-    const longWelcome = '';
-    const shortWelcome = '';
-    const img = '';
-    const translation=[];
+    const date = "";
+    const title = "";
+    const slogan = "";
+    const longWelcome = "";
+    const shortWelcome = "";
+    const img = "";
+    const translation = [];
 
     return {
       date,
@@ -34,68 +33,62 @@ export default {
   unmounted() {
     window.removeEventListener("resize", this.handleResize);
   },
-  mounted(){
+  mounted() {
     this.getAllData();
   },
   methods: {
     // get data from directus
-    async getChineseData(){
+    async getChineseData() {
       console.log("first request2121");
-       await axios({
-        url:`${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
-
-            this.date = source.date;
-            this.title = source.title;
-            this.slogan = source.slogan;
-            this.longWelcome = source.longwelcome;
-            this.shortWelcome = source.shortwelcome;
-            this.img = source.img;
-            this.translation.push(source.translations[0]);
-            
-          } ))
-      }).catch(error => {
-        console.log(error);
+      await axios({
+        url: `${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`,
+        method: "get",
       })
-      
-      
-     },
+        .then((res) => {
+          Array.from(
+            res.data.data.forEach((source) => {
+              this.date = source.date;
+              this.title = source.title;
+              this.slogan = source.slogan;
+              this.longWelcome = source.longwelcome;
+              this.shortWelcome = source.shortwelcome;
+              this.img = source.img;
+              this.translation.push(source.translations[0]);
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
-     getForigienData(){
-
+    getForigienData() {
       console.log("second request");
-      Array.from(this.translation.forEach((translation_id) =>{
-      axios({
-        url:`${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
-          this.date = source.date;
-            this.title = source.title;
-            this.slogan = source.slogan;
-            this.longWelcome = source.longwelcome;
-            this.shortWelcome = source.shortwelcome;
-            
-          } ))
-           
-      })
-    }
-    
-    )
-    )
-     },
-     async getAllData(){
+      Array.from(
+        this.translation.forEach((translation_id) => {
+          axios({
+            url: `${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`,
+            method: "get",
+          }).then((res) => {
+            Array.from(
+              res.data.data.forEach((source) => {
+                this.date = source.date;
+                this.title = source.title;
+                this.slogan = source.slogan;
+                this.longWelcome = source.longwelcome;
+                this.shortWelcome = source.shortwelcome;
+              })
+            );
+          });
+        })
+      );
+    },
+    async getAllData() {
       await this.getChineseData();
-      if(this.$store.state.langu == "en"){
-        
+      if (this.$store.state.langu == "en") {
         this.getForigienData();
       }
-      
-     },
-
-
+    },
 
     handleResize() {
       this.windowHeight = window.innerWidth;
@@ -109,10 +102,7 @@ export default {
       const background = import("@/assets/image/home/slogan-background.png");
       return `background: url(${background}) no-repeat center bottom/cover`;
     },
-  
-
-
-},
+  },
 };
 </script>
 
@@ -131,7 +121,6 @@ export default {
     <div class="slogan-date">{{ date }}</div>
     <header class="slogan-title">{{ title }}</header>
     <div class="slogan-word">
-     
       <span>
         {{ slogan }}
       </span>
@@ -139,11 +128,7 @@ export default {
     <span class="slogan-text">
       {{ longWelcome }}
     </span>
-    <img
-      alt="Key Vision 2"
-      class="slogan-kv-mobile2"
-      :src="img"
-    />
+    <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="img" />
   </section>
 </template>
 

@@ -1,7 +1,7 @@
 <script>
 import { reactive } from "vue";
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
-import axios from 'axios';
+import axios from "axios";
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const YEAR = import.meta.env.VITE_YEAR;
 export default {
@@ -22,66 +22,63 @@ export default {
     // });
     const faqs = reactive([]);
     const translation = [];
-    return { faqs,translation};
+    return { faqs, translation };
   },
   methods: {
-
     // get data from directus
-    async getChineseData(){
+    async getChineseData() {
       console.log("first reques");
-       await axios({
-        url:`${CMS_URL}/items/faqs/?filter[year][_eq]=${YEAR}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
-            const item = {
-            question : source.question,
-            answer : source.answer,
-            icon: "pi pi-angle-down faq-icon",
-            show : false,
-            };
-            this.faqs.push(item);
-            console.log(this.faqs);
-            this.translation.push(source.translations[0]);
-          } ))
-      }).catch(error => {
-        console.log(error);
+      await axios({
+        url: `${CMS_URL}/items/faqs/?filter[year][_eq]=${YEAR}`,
+        method: "get",
       })
+        .then((res) => {
+          Array.from(
+            res.data.data.forEach((source) => {
+              const item = {
+                question: source.question,
+                answer: source.answer,
+                icon: "pi pi-angle-down faq-icon",
+                show: false,
+              };
+              this.faqs.push(item);
+              console.log(this.faqs);
+              this.translation.push(source.translations[0]);
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
-     },
-
-     getForigienData(){
-
+    getForigienData() {
       console.log("second request");
-      Array.from(this.translation.forEach((translation_id) =>{
-      axios({
-        url:`${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`,
-        method: 'get'
-      }).then(res=>{
-        Array.from(res.data.data.forEach((source) =>{
-          this.date = source.date;
-            this.title = source.title;
-            this.slogan = source.slogan;
-            this.longWelcome = source.longwelcome;
-            this.shortWelcome = source.shortwelcome;
-            
-          } ))
-           
-      })
-    }
-    
-    )
-    )
-     },
-     async getAllData(){
+      Array.from(
+        this.translation.forEach((translation_id) => {
+          axios({
+            url: `${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`,
+            method: "get",
+          }).then((res) => {
+            Array.from(
+              res.data.data.forEach((source) => {
+                this.date = source.date;
+                this.title = source.title;
+                this.slogan = source.slogan;
+                this.longWelcome = source.longwelcome;
+                this.shortWelcome = source.shortwelcome;
+              })
+            );
+          });
+        })
+      );
+    },
+    async getAllData() {
       await this.getChineseData();
-      if(this.$store.state.langu == "en"){
-        
+      if (this.$store.state.langu == "en") {
         this.getForigienData();
       }
-      
-     },
-
+    },
 
     toggle(key) {
       this.faqs[key].show = !this.faqs[key].show;
@@ -92,9 +89,9 @@ export default {
   beforeMount() {
     window.scrollTo({ top: 0 });
   },
-  mounted(){
-    this.getChineseData()
-  }
+  mounted() {
+    this.getChineseData();
+  },
 };
 </script>
 

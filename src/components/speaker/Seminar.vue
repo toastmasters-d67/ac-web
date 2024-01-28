@@ -32,15 +32,14 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.introduction") }} |
               </span>
-                <span class="seminar-row-text" v-html="seminar.introduction"></span>
+              <span
+                class="seminar-row-text"
+                v-html="seminar.introduction"
+              ></span>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
     </div>
   </section>
 </template>
@@ -237,7 +236,6 @@ export default {
     introduction: {
       type: Array,
       default: "",
-    
     },
   },
 };
