@@ -44,7 +44,7 @@ export default {
               this.faqs.push(item);
               console.log(this.faqs);
               this.translation.push(source.translations[0]);
-            })
+            }),
           );
         })
         .catch((error) => {
@@ -67,10 +67,10 @@ export default {
                 this.slogan = source.slogan;
                 this.longWelcome = source.longwelcome;
                 this.shortWelcome = source.shortwelcome;
-              })
+              }),
             );
           });
-        })
+        }),
       );
     },
     async getAllData() {

@@ -116,14 +116,14 @@ export default {
           email: helpers.withMessage(this.errorMessages.email, email),
           required: helpers.withMessage(
             this.errorMessages.requiredEmail,
-            required
+            required,
           ),
         },
         password: {
           min: helpers.withMessage(this.errorMessages.min, minLength(6)),
           required: helpers.withMessage(
             this.errorMessages.requiredPassword,
-            required
+            required,
           ),
         },
       },

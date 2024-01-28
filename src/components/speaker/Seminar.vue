@@ -223,19 +223,27 @@ export default {
 
     topic: {
       type: Array,
-      default: "",
+      default: function () {
+        return [];
+      },
     },
     time: {
       type: Array,
-      default: "",
+      default: function () {
+        return [];
+      },
     },
     location: {
       type: Array,
-      default: "",
+      default: function () {
+        return [];
+      },
     },
     introduction: {
       type: Array,
-      default: "",
+      default: function () {
+        return [];
+      },
     },
   },
 };

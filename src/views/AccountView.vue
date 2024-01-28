@@ -33,7 +33,7 @@ export async function getUser(token, target) {
               item.button = target.$t("account.view");
             } else if (order.transactions.length) {
               const transaction = order.transactions.find(
-                (x) => x.status === "SUCCESS"
+                (x) => x.status === "SUCCESS",
               );
               if (transaction && transaction.amount === order.amount) {
                 item.status = "pending";

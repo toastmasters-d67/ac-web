@@ -66,7 +66,7 @@ export default {
                 this.souvenirs.push(item);
               }
               this.translation.push(source.translations[0]);
-            })
+            }),
           );
         })
         .catch((error) => {
@@ -90,10 +90,10 @@ export default {
                   img: this.img[translation_id - 1],
                 };
                 this.souvenirs.push(item);
-              })
+              }),
             );
           });
-        })
+        }),
       );
     },
     async getAllData() {

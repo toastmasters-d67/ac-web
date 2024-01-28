@@ -1,6 +1,5 @@
 <script>
 import { reactive } from "vue";
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
 import axios from "axios";
@@ -8,7 +7,6 @@ const CMS_URL = import.meta.env.VITE_CMS_API;
 export default {
   name: "SpeakersTemplateView",
   components: {
-    Breadcrumb,
     Briefing,
     Seminar,
   },
@@ -67,7 +65,7 @@ export default {
 
                 this.seminars.push(item);
               }
-            })
+            }),
           );
         })
         .catch((error) => {
@@ -95,10 +93,10 @@ export default {
                 };
                 this.seminars.push(item);
                 count = count + 1;
-              })
+              }),
             );
           });
-        })
+        }),
       );
     },
 
@@ -129,7 +127,7 @@ export default {
               this.title = source.title;
               this.contents = source.contents;
             }
-          })
+          }),
         );
       })
       .catch((error) => {
@@ -140,7 +138,7 @@ export default {
       axios
         .get(
           `${CMS_URL}/items/speakers_translations/?filter[id][_eq]=${this.speakerKey}`,
-          {}
+          {},
         )
         .then((response) => {
           Array.from(
@@ -149,7 +147,7 @@ export default {
               this.name = source.name;
               this.title = source.title;
               this.contents = source.contents;
-            })
+            }),
           );
         })
         .catch((error) => {

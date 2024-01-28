@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       step1HighlightText: this.$t(
-        "login.introduction.step1.text-highlight-register"
+        "login.introduction.step1.text-highlight-register",
       ),
     };
   },

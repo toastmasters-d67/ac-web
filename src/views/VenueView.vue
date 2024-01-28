@@ -285,7 +285,7 @@ export default {
               this.bus = source.bus;
               this.img = `${CMS_URL}/assets/${source.picture}`;
               this.translation = source.translations[0];
-            })
+            }),
           );
         })
         .catch((error) => {
@@ -305,7 +305,7 @@ export default {
             this.car = source.car;
             this.metro = source.metro;
             this.bus = source.bus;
-          })
+          }),
         );
       });
     },

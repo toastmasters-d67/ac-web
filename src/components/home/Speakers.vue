@@ -29,7 +29,7 @@ export default {
               this.speakPer.push(source.name);
             }
             this.icon.push(source.icon);
-          })
+          }),
         );
       })
       .catch((error) => {
@@ -42,7 +42,7 @@ export default {
           Array.from(
             response.data.data.forEach((source) => {
               this.speakPer.push(source.name);
-            })
+            }),
           );
         })
         .catch((error) => {
