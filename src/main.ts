@@ -1,5 +1,4 @@
 import { createApp } from "vue";
-// @ts-expect-error TS(2307): Cannot find module './App.vue' or its correspondin... Remove this comment to see the full error message
 import App from "./App.vue";
 import router from "./router";
 import Button from "primevue/button";

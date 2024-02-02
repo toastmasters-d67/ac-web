@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Marquee from "@/components/app/Marquee.vue";
 import Slogan from "@/components/home/Slogan.vue";
 import Countdown from "@/components/home/Countdown.vue";

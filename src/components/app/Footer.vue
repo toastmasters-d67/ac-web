@@ -185,7 +185,7 @@ a {
 }
 </style>
 
-<script>
+<script lang="ts">
 export default {
   name: "Footer",
   props: {

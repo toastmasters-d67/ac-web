@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { computed, reactive, ref } from "vue";
 import axios from "axios";
 

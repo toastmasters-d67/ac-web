@@ -227,7 +227,7 @@
 }
 </style>
 
-<script>
+<script lang="ts">
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import axios from "axios";
 const CMS_URL = import.meta.env.VITE_CMS_API;
@@ -282,7 +282,7 @@ export default {
               this.bus = source.bus;
               this.img = `${CMS_URL}/assets/${source.picture}`;
               this.translation = source.translations[0];
-            }),
+            })
           );
         })
         .catch((error) => {
@@ -301,7 +301,7 @@ export default {
             this.car = source.car;
             this.metro = source.metro;
             this.bus = source.bus;
-          }),
+          })
         );
       });
     },

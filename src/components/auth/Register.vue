@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import useVuelidate from "@vuelidate/core";
@@ -108,38 +108,38 @@ export default {
         firstName: {
           required: helpers.withMessage(
             this.errorMessages.firstNameEmpty,
-            required,
+            required
           ),
         },
         lastName: {
           required: helpers.withMessage(
             this.errorMessages.lastNameEmpty,
-            required,
+            required
           ),
         },
         email: {
           email: helpers.withMessage(this.errorMessages.emailFormat, email),
           required: helpers.withMessage(
             this.errorMessages.emailEmpty,
-            required,
+            required
           ),
         },
         password: {
           min: helpers.withMessage(this.errorMessages.min, minLength(6)),
           required: helpers.withMessage(
             this.errorMessages.passwordEmpty,
-            required,
+            required
           ),
         },
         confirmPassword: {
           passwordMatch: helpers.withMessage(
             this.errorMessages.passwordMatch,
-            sameAs(this.state.password),
+            sameAs(this.state.password)
           ),
           min: helpers.withMessage(this.errorMessages.min, minLength(6)),
           required: helpers.withMessage(
             this.errorMessages.passwordEmpty,
-            required,
+            required
           ),
         },
       },

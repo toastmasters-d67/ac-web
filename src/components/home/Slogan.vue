@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import axios from "axios";
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const YEAR = import.meta.env.VITE_YEAR;
@@ -51,7 +51,7 @@ export default {
               this.shortWelcome = source.shortwelcome;
               this.img = source.img;
               this.translation.push(source.translations[0]);
-            }),
+            })
           );
         })
         .catch((error) => {
@@ -73,10 +73,10 @@ export default {
                 this.slogan = source.slogan;
                 this.longWelcome = source.longwelcome;
                 this.shortWelcome = source.shortwelcome;
-              }),
+              })
             );
           });
-        }),
+        })
       );
     },
     async getAllData() {

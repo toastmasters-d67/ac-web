@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import largeMan from "@/assets/image/login/man-shopping-online.png";
 import smallMan from "@/assets/image/login/man-shopping-online-mobile.png";
 

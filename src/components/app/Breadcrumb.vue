@@ -82,7 +82,7 @@
 }
 </style>
 
-<script>
+<script lang="ts">
 import { computed, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 import BreadcrumbItem from "@/components/app/BreadcrumbItem.vue";

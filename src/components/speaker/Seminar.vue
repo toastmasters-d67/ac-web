@@ -208,7 +208,7 @@
 }
 </style>
 
-<script>
+<script lang="ts">
 import { reactive } from "vue";
 
 export default {

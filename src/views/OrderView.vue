@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { reactive, ref } from "vue";
 import List from "@/components/order/List.vue";
 import Tickets from "@/components/order/Tickets.vue";
