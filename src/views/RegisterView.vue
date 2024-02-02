@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Instruction from "@/components/auth/Instruction.vue";
 import Register from "@/components/auth/Register.vue";
 
@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       step1HighlightText: this.$t(
-        "login.introduction.step1.text-highlight-register",
+        "login.introduction.step1.text-highlight-register"
       ),
     };
   },

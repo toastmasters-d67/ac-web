@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { reactive } from "vue";
 import Marquee from "@/components/app/Marquee.vue";
 import Picker from "@/components/cart/Picker.vue";

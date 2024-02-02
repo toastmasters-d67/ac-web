@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Instruction from "@/components/auth/Instruction.vue";
 import Login from "@/components/auth/Login.vue";
 
@@ -12,7 +12,7 @@ export default {
     return {
       windowHeight: window.innerHeight,
       step1HighlightText: this.$t(
-        "login.introduction.step1.text-highlight-login",
+        "login.introduction.step1.text-highlight-login"
       ),
     };
   },

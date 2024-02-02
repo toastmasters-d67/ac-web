@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Navbar from "@/components/app/Navbar.vue";
 import Footer from "@/components/app/Footer.vue";
 import ScrollToTopButton from "@/components/app/ScrollToTopButton.vue";

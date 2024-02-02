@@ -41,7 +41,7 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import axios from "axios";
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const YEAR = import.meta.env.VITE_YEAR;
@@ -71,7 +71,7 @@ export default {
               this.link = source.link;
               this.img = `${CMS_URL}/assets/${source.picture}`;
               this.translation = source.translations[0];
-            }),
+            })
           );
         })
         .catch((error) => {
@@ -87,7 +87,7 @@ export default {
           res.data.data.forEach((source) => {
             this.name = source.name;
             this.address = source.address;
-          }),
+          })
         );
       });
     },

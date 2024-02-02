@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import useVuelidate from "@vuelidate/core";
@@ -116,14 +116,14 @@ export default {
           email: helpers.withMessage(this.errorMessages.email, email),
           required: helpers.withMessage(
             this.errorMessages.requiredEmail,
-            required,
+            required
           ),
         },
         password: {
           min: helpers.withMessage(this.errorMessages.min, minLength(6)),
           required: helpers.withMessage(
             this.errorMessages.requiredPassword,
-            required,
+            required
           ),
         },
       },

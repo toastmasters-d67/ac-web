@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { reactive } from "vue";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
@@ -61,7 +61,7 @@ export default {
 
                 this.seminars.push(item);
               }
-            }),
+            })
           );
         })
         .catch((error) => {
@@ -87,10 +87,10 @@ export default {
                 };
                 this.seminars.push(item);
                 count = count + 1;
-              }),
+              })
             );
           });
-        }),
+        })
       );
     },
 
@@ -117,7 +117,7 @@ export default {
               this.title = source.title;
               this.contents = source.contents;
             }
-          }),
+          })
         );
       })
       .catch((error) => {
@@ -127,7 +127,7 @@ export default {
       axios
         .get(
           `${CMS_URL}/items/speakers_translations/?filter[id][_eq]=${this.speakerKey}`,
-          {},
+          {}
         )
         .then((response) => {
           Array.from(
@@ -135,7 +135,7 @@ export default {
               this.name = source.name;
               this.title = source.title;
               this.contents = source.contents;
-            }),
+            })
           );
         })
         .catch((error) => {

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { reactive, ref } from "vue";
 import * as Yup from "yup";
 import axios from "axios";

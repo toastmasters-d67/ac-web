@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { reactive } from "vue";
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 import axios from "axios";
@@ -31,7 +31,7 @@ export default {
               };
               this.faqs.push(item);
               this.translation.push(source.translations[0]);
-            }),
+            })
           );
         })
         .catch((error) => {
@@ -53,10 +53,10 @@ export default {
                 this.slogan = source.slogan;
                 this.longWelcome = source.longwelcome;
                 this.shortWelcome = source.shortwelcome;
-              }),
+              })
             );
           });
-        }),
+        })
       );
     },
     async getAllData() {

@@ -427,7 +427,7 @@ hr {
 }
 </style>
 
-<script>
+<script lang="ts">
 import { reactive, ref, watch } from "vue";
 
 export default {

@@ -607,7 +607,7 @@
 }
 </style>
 
-<script>
+<script lang="ts">
 import Breadcrumb from "@/components/app/Breadcrumb.vue";
 
 export default {
