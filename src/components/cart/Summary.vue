@@ -7,14 +7,14 @@ export async function submit(token, target) {
   const url = `${base}/order`;
   const callback = `${base}/callback`;
   try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     axios
       .post(url, {
         amount: target.amount,
         email: "",
         description: `${import.meta.env.VITE_YEAR} Annual Conference`,
         url: base,
-        callback: callback,
+        callback,
         early: target.state.early,
         double: target.state.double,
         first: target.state.first,
@@ -22,13 +22,13 @@ export async function submit(token, target) {
         banquet: target.state.banquet,
       })
       .then((response) => target.setValues(response))
-      .catch(function (error) {
-        if (401 === error.response.status) {
+      .catch(async function (error) {
+        if (error.response.status === 401) {
           localStorage.removeItem("token");
           this.$router.push("login");
         } else {
           console.log(error);
-          return Promise.reject(error);
+          return await Promise.reject(error);
         }
       });
   } catch (error) {
@@ -109,7 +109,7 @@ export default {
       event.preventDefault();
       if (this.amount) {
         const token = localStorage.getItem("token");
-        if (!token || !token.length) {
+        if (!token?.length) {
           this.$router.push("login");
         }
         console.log("token =", token);

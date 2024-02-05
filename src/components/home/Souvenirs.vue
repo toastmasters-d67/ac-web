@@ -1,3 +1,24 @@
+<template>
+  <section id="souvenirs" class="souvenirs-container">
+    <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
+
+    <div class="souvenirs-items">
+      <div
+        class="souvenirs-item"
+        v-for="(souvenir, key) in souvenirs"
+        :key="key"
+      >
+        <img
+          :src="souvenir.img"
+          class="souvenirs-item-image"
+          alt="souvenirs-bag"
+        />
+        <div class="souvenirs-item-text">{{ souvenir.name }}</div>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, reactive } from "vue";
 import axios from "axios";
@@ -37,6 +58,7 @@ const getChineseData = async () => {
       const item = {
         name: source.name,
         img: `${CMS_URL}/assets/${source.picture}`,
+        translation_id: source.translations[0],
       };
       souvenirs.push(item);
     });
@@ -77,27 +99,6 @@ onUnmounted(() => {
   window.removeEventListener("resize", handleResize);
 });
 </script>
-
-<template>
-  <section id="souvenirs" class="souvenirs-container">
-    <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
-
-    <div class="souvenirs-items">
-      <div
-        class="souvenirs-item"
-        v-for="(souvenir, key) in souvenirs"
-        :key="key"
-      >
-        <img
-          :src="souvenir.img"
-          class="souvenirs-item-image"
-          alt="souvenirs-bag"
-        />
-        <div class="souvenirs-item-text">{{ souvenir.name }}</div>
-      </div>
-    </div>
-  </section>
-</template>
 
 <style scoped lang="scss">
 .souvenirs-container {

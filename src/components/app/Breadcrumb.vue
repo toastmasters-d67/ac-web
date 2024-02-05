@@ -90,7 +90,7 @@ import BreadcrumbItem from "@/components/app/BreadcrumbItem.vue";
 export default {
   name: "Breadcrumb",
   components: {
-    BreadcrumbItem: BreadcrumbItem,
+    BreadcrumbItem,
   },
   data() {
     const mapping = this.$tm("app.breadcrumb");

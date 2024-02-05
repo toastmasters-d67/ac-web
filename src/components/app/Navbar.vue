@@ -168,7 +168,7 @@ const showAccountMenu = ref(false);
 
 watch(locale, (newLocale) => {
   localStorage.setItem("locale", newLocale);
-  store.setLanguage(newLocale);
+  store.set_language(newLocale);
   location.reload();
 });
 

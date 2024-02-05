@@ -53,6 +53,7 @@ const telephone = ref("");
 const address = ref("");
 const img = ref("");
 const link = ref("");
+const translation = ref("");
 
 const getChineseData = async () => {
   try {
@@ -65,6 +66,7 @@ const getChineseData = async () => {
     address.value = data.address;
     link.value = data.link;
     img.value = `${CMS_URL}/assets/${data.picture}`;
+    translation.value = data.translations[0];
   } catch (error) {
     console.error(error);
   }
@@ -73,7 +75,7 @@ const getChineseData = async () => {
 const getForigienData = async () => {
   try {
     const response = await axios.get(
-      `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${translation}`
+      `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${translation.value}`
     );
     const data = response.data.data[0]; // 假設只有一條數據
     name.value = data.name;

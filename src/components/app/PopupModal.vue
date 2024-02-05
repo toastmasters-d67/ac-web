@@ -1,27 +1,24 @@
-<script lang="ts">
-export default {
-  name: "PopupModal",
-  data: () => ({
-    isVisible: false,
-  }),
-  methods: {
-    open() {
-      this.isVisible = true;
-    },
-    close() {
-      this.isVisible = false;
-    },
-  },
-};
-</script>
-
 <template>
   <transition name="fade">
-    <div class="popup-modal" v-if="isVisible">
+    <div class="popup-modal" v-if="isVisible.value">
       <slot></slot>
     </div>
   </transition>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+
+const isVisible = ref(false);
+
+function open() {
+  isVisible.value = true;
+}
+
+function close() {
+  isVisible.value = false;
+}
+</script>
 
 <style scoped lang="scss">
 .fade-enter-active,

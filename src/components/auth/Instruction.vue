@@ -1,38 +1,3 @@
-<script lang="ts">
-import largeMan from "@/assets/image/login/man-shopping-online.png";
-import smallMan from "@/assets/image/login/man-shopping-online-mobile.png";
-
-export default {
-  name: "Instruction",
-  props: {
-    step1HighlightText: {
-      type: String,
-      default: "Log in",
-    },
-  },
-  data() {
-    return {
-      windowHeight: window.innerHeight,
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-    },
-    getImage() {
-      return this.windowHeight > 768 ? largeMan : smallMan;
-    },
-  },
-};
-</script>
-
 <template>
   <section class="instruction-container">
     <span class="instruction-title">
@@ -79,6 +44,35 @@ export default {
     />
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from "vue";
+import largeMan from "@/assets/image/login/man-shopping-online.png";
+import smallMan from "@/assets/image/login/man-shopping-online-mobile.png";
+
+const props = defineProps({
+  step1HighlightText: String,
+});
+
+const windowHeight = ref(window.innerHeight);
+
+function handleResize() {
+  windowHeight.value = window.innerWidth;
+}
+
+function getImage() {
+  return windowHeight.value > 768 ? largeMan : smallMan;
+}
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  handleResize();
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
+</script>
 
 <style scoped lang="scss">
 .instruction-container {

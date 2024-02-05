@@ -1,3 +1,21 @@
+<template>
+  <section id="speakers" class="speakers-container">
+    <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
+    <div class="speakers">
+      <div v-for="speaker in speakers" :key="speaker.id">
+        <router-link :to="getLink(speaker.id)" class="speaker">
+          <img
+            :src="getIcon(speaker.icon.id)"
+            class="speaker-image"
+            :alt="speaker.name"
+          />
+          <span class="speaker-name-text">{{ getName(speaker) }}</span>
+        </router-link>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { createDirectus, graphql } from "@directus/sdk";
@@ -9,9 +27,9 @@ interface Speaker {
     id: number;
   };
   id: number;
-  translations: {
+  translations: Array<{
     name: string;
-  }[];
+  }>;
 }
 
 interface Schema {
@@ -51,24 +69,6 @@ const getName = (speaker: Speaker) => {
   }
 };
 </script>
-
-<template>
-  <section id="speakers" class="speakers-container">
-    <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
-    <div class="speakers">
-      <div v-for="speaker in speakers" :key="speaker.id">
-        <router-link :to="getLink(speaker.id)" class="speaker">
-          <img
-            :src="getIcon(speaker.icon.id)"
-            class="speaker-image"
-            :alt="speaker.name"
-          />
-          <span class="speaker-name-text">{{ getName(speaker) }}</span>
-        </router-link>
-      </div>
-    </div>
-  </section>
-</template>
 
 <style scoped lang="scss">
 .speakers-container {

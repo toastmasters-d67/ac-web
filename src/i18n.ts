@@ -5,6 +5,6 @@ export default createI18n({
   legacy: false,
   locale: localStorage.getItem("locale") ?? "tw",
   fallbackLocale: import.meta.env.VITE_I18N_FALLBACK_LOCALE || "tw",
-  messages: messages,
+  messages,
   globalInjection: true,
 });

@@ -21,22 +21,22 @@ const arrayOfTicketsSchema = Yup.array().of(ticketSchema);
 export async function getCountOfTickets(token, target) {
   const url = `${import.meta.env.VITE_API}/orders/${target.$route.params.id}`;
   try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     axios
       .get(url)
       .then(function (response) {
-        if (response && response.data) {
+        if (response?.data) {
           target.setCount(response.data);
           target.setActive(response.data);
         }
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
+      .catch(async function (error) {
+        if (error.response.status === 401) {
           localStorage.removeItem("token");
           this.$router.push("/login");
         } else {
           console.log(error);
-          return Promise.reject(error);
+          return await Promise.reject(error);
         }
       });
   } catch (error) {
@@ -47,22 +47,22 @@ export async function getCountOfTickets(token, target) {
 export async function fetchTickets(token, target) {
   const url = `${import.meta.env.VITE_API}/tickets/${target.$route.params.id}`;
   try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     axios
       .get(url)
       .then(function (response) {
-        if (response && response.data) {
+        if (response?.data) {
           target.readState(response.data);
           target.setAssignments(target.count.banquet);
         }
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
+      .catch(async function (error) {
+        if (error.response.status === 401) {
           localStorage.removeItem("token");
           this.$router.push("/login");
         } else {
           console.log(error);
-          return Promise.reject(error);
+          return await Promise.reject(error);
         }
       });
   } catch (error) {
@@ -81,15 +81,15 @@ export async function onSubmit(target) {
           target.$router.go();
         });
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
+      .catch(async function (error) {
+        if (error.response.status === 401) {
           localStorage.removeItem("token");
           target.$router.push("/login").then(() => {
             target.$router.go();
           });
         } else {
           console.log(error);
-          return Promise.reject(error);
+          return await Promise.reject(error);
         }
       });
   } catch (error) {
@@ -164,7 +164,7 @@ export default {
   },
   created() {
     const token = localStorage.getItem("token");
-    if (!token || !token.length) {
+    if (!token?.length) {
       this.$router.push("/login");
     }
     getCountOfTickets(token, this);
@@ -176,7 +176,7 @@ export default {
         this.getState();
       } else {
         const token = localStorage.getItem("token");
-        if (!token || !token.length) {
+        if (!token?.length) {
           this.$router.push("/login");
         }
         fetchTickets(token, this);

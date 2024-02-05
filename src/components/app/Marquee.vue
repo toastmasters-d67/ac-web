@@ -1,62 +1,47 @@
-<script lang="ts">
-import { ref } from "vue";
-
-export default {
-  name: "Marquee",
-  props: {
-    sentences: {
-      type: Object,
-    },
-  },
-  data() {
-    const content = ref(this.sentences.join(""));
-    const segment = ref("");
-    let offset = 6;
-    let window = 120;
-    const locale = ref(localStorage.getItem("locale") ?? "en");
-    if (locale.value === "tw") {
-      offset = 3;
-      window = 100;
-    }
-    const marquee = ref(null);
-    return {
-      content,
-      segment,
-      offset,
-      window,
-      marquee,
-    };
-  },
-  created() {
-    this.pollMarquee();
-  },
-  methods: {
-    runMarquee() {
-      const start = this.content.substring(0, this.offset);
-      const end = this.content.substring(this.offset);
-      this.content = end + start;
-      this.segment = this.content.substring(0, this.window);
-    },
-    pollMarquee() {
-      this.marquee = window.setInterval(() => {
-        this.runMarquee();
-      }, 500);
-    },
-  },
-  beforeUnmount() {
-    window.clearInterval(this.marquee);
-  },
-};
-</script>
-
 <template>
   <section id="marquee" class="marquee-container">
     <div class="marquee-row">
       <i class="pi pi-megaphone marquee-icon"></i>
-      <span ref="segmentSpan" class="marquee-segment">{{ this.segment }}</span>
+      <span ref="segmentSpan" class="marquee-segment">{{ segment }}</span>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from "vue";
+
+const props = defineProps({
+  sentences: Array,
+});
+
+const content = ref(props.sentences.join(""));
+const segment = ref("");
+let offset = 6;
+let windowSize = 120;
+const locale = ref(localStorage.getItem("locale") ?? "en");
+if (locale.value === "tw") {
+  offset = 3;
+  windowSize = 100;
+}
+const marqueeInterval = ref(null);
+
+onMounted(() => {
+  marqueeInterval.value = setInterval(() => {
+    runMarquee();
+  }, 500);
+});
+
+onBeforeUnmount(() => {
+  clearInterval(marqueeInterval.value);
+});
+
+function runMarquee() {
+  const start = content.value.substring(0, offset);
+  const end = content.value.substring(offset);
+  content.value = end + start;
+  segment.value = content.value.substring(0, windowSize);
+}
+</script>
 
 <style scoped lang="scss">
 .marquee-container {

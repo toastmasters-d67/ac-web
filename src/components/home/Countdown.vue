@@ -33,10 +33,10 @@ const seconds = ref(0);
 const polling = ref(null);
 
 function getTime() {
-  let d = 0,
-    h = 0,
-    m = 0,
-    s = 0;
+  let d = 0;
+  let h = 0;
+  let m = 0;
+  let s = 0;
   const now = new Date();
   const date = new Date(import.meta.env.VITE_COUNTDOWN_DATE);
   const remaining = date - now;

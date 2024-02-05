@@ -1,78 +1,3 @@
-<script lang="ts">
-import { reactive } from "vue";
-
-export default {
-  props: {
-    state: {
-      type: Object,
-      default: function () {
-        return {
-          early: 0,
-          double: 0,
-          first: 0,
-          second: 0,
-          banquet: 0,
-        };
-      },
-    },
-    name: {
-      type: Object,
-      default: function () {
-        return {
-          early: "",
-          double: "",
-          first: "",
-          second: "",
-          banquet: "",
-        };
-      },
-    },
-    price: {
-      type: Object,
-      default: function () {
-        return {
-          early: 0,
-          double: 0,
-          first: 0,
-          second: 0,
-          banquet: 0,
-        };
-      },
-    },
-    setEarly: {
-      type: Function,
-    },
-    setDouble: {
-      type: Function,
-    },
-    setFirst: {
-      type: Function,
-    },
-    setSecond: {
-      type: Function,
-    },
-    setBanquet: {
-      type: Function,
-    },
-  },
-  computed: {
-    banquetNumbers: {
-      get() {
-        const maxBanquetNumber =
-          this.state.double + this.state.first + this.state.second;
-        return reactive(Array.from(Array(maxBanquetNumber + 1).keys()));
-      },
-    },
-  },
-  data() {
-    const numbers = reactive(Array.from(Array(31).keys()));
-    return {
-      numbers,
-    };
-  },
-};
-</script>
-
 <template>
   <section id="picker" class="picker-container">
     <div class="picker-row">
@@ -197,6 +122,61 @@ export default {
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed, reactive, toRefs } from "vue";
+import { useI18n } from "vue-i18n";
+
+const props = defineProps({
+  state: {
+    type: Object,
+    default: () => ({
+      early: 0,
+      double: 0,
+      first: 0,
+      second: 0,
+      banquet: 0,
+    }),
+  },
+  name: {
+    type: Object,
+    default: () => ({
+      early: "",
+      double: "",
+      first: "",
+      second: "",
+      banquet: "",
+    }),
+  },
+  price: {
+    type: Object,
+    default: () => ({
+      early: 0,
+      double: 0,
+      first: 0,
+      second: 0,
+      banquet: 0,
+    }),
+  },
+  setEarly: Function,
+  setDouble: Function,
+  setFirst: Function,
+  setSecond: Function,
+  setBanquet: Function,
+});
+
+const stateRefs = toRefs(props.state);
+
+const { t } = useI18n();
+
+const banquetNumbers = computed(() => {
+  const maxBanquetNumber =
+    props.state.double + props.state.first + props.state.second;
+  return Array.from({ length: maxBanquetNumber + 1 }, (_, i) => i);
+});
+
+const numbers = Array.from({ length: 31 }, (_, i) => i);
+</script>
 
 <style scoped lang="scss">
 .picker-container {

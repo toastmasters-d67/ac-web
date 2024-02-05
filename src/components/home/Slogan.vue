@@ -1,3 +1,29 @@
+<template>
+  <section class="slogan-container">
+    <img
+      alt="Key Vision"
+      class="slogan-kv-desktop"
+      src="@/assets/image/home/key-vision.png"
+    />
+    <img
+      alt="Key Vision 1"
+      class="slogan-kv-mobile1"
+      src="@/assets/image/home/key-vision-mobile1.png"
+    />
+    <div class="slogan-date">{{ date }}</div>
+    <header class="slogan-title">{{ title }}</header>
+    <div class="slogan-word">
+      <span>
+        {{ slogan }}
+      </span>
+    </div>
+    <span class="slogan-text">
+      {{ longWelcome }}
+    </span>
+    <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="img" />
+  </section>
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import axios from "axios";
@@ -80,32 +106,6 @@ onUnmounted(() => {
   window.removeEventListener("resize", handleResize);
 });
 </script>
-
-<template>
-  <section class="slogan-container">
-    <img
-      alt="Key Vision"
-      class="slogan-kv-desktop"
-      src="@/assets/image/home/key-vision.png"
-    />
-    <img
-      alt="Key Vision 1"
-      class="slogan-kv-mobile1"
-      src="@/assets/image/home/key-vision-mobile1.png"
-    />
-    <div class="slogan-date">{{ date }}</div>
-    <header class="slogan-title">{{ title }}</header>
-    <div class="slogan-word">
-      <span>
-        {{ slogan }}
-      </span>
-    </div>
-    <span class="slogan-text">
-      {{ longWelcome }}
-    </span>
-    <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="img" />
-  </section>
-</template>
 
 <style scoped lang="scss">
 .slogan-container {

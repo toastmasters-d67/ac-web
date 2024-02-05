@@ -19,10 +19,10 @@ import axios from "axios";
 import { useLanguageStore } from "@/stores";
 import Briefing from "@/components/speaker/Briefing.vue";
 import Seminar from "@/components/speaker/Seminar.vue";
+import { useRoute } from "vue-router";
 
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const store = useLanguageStore();
-import { useRoute } from "vue-router";
 
 const route = useRoute();
 const speakerKey = ref(route.params.key);
@@ -105,7 +105,7 @@ const fetchSpeakerDetails = async () => {
       contents.value = data.contents;
     } else {
       const transResponse = await axios.get(
-        `${CMS_URL}/items/speakers_translations/?filter[id][_eq]=${speakerKey.value}`
+        `${CMS_URL}/items/speakers_translations/?filter[id][_eq]=${translations.value[0]}`
       );
       const transData = transResponse.data.data[0]; // Assuming there's only one translation per speaker
       name.value = transData.name;

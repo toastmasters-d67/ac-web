@@ -20,7 +20,7 @@ export async function onSubmit(values, target) {
       .then(function (response) {
         console.log("response =", response);
         let token = "";
-        if (response && response.data && "token" in response.data) {
+        if (response?.data && "token" in response.data) {
           token = response.data.token;
         }
         if (token.length) {
@@ -30,13 +30,13 @@ export async function onSubmit(values, target) {
           });
         }
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
+      .catch(async function (error) {
+        if (error.response.status === 401) {
           localStorage.removeItem("token");
           target.loginError = target.$t("error.password.incorrect");
         } else {
           console.log(error);
-          return Promise.reject(error);
+          return await Promise.reject(error);
         }
       });
   } catch (error) {

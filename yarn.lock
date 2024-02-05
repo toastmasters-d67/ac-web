@@ -1217,7 +1217,7 @@ __metadata:
     pinia: "npm:^2.1.7"
     prettier: "npm:^3.2.5"
     primeicons: "npm:^6.0.1"
-    primevue: "npm:^3.47.2"
+    primevue: "npm:^3.48.0"
     sass: "npm:^1.70.0"
     vite: "npm:^5.0.12"
     vite-plugin-env-compatible: "npm:^2.0.1"
@@ -1481,9 +1481,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001580":
-  version: 1.0.30001583
-  resolution: "caniuse-lite@npm:1.0.30001583"
-  checksum: 10c0/9ce61437e7a0c8e69bdb3480962dca7d7a9e9fa8d7c56ae411454d8b101d7c83d71f6c7fa74450c131f6c14e35e347042b3e1787b15edbfaba0e05fd75ab2625
+  version: 1.0.30001584
+  resolution: "caniuse-lite@npm:1.0.30001584"
+  checksum: 10c0/9f353d7b14ea218bf90f9aa908947be1119f3744bb4080aeef59dd2fbca2ca663a6eecad29deba41f7d02ef9f516240353809f31208396a1ec9824b515467d87
   languageName: node
   linkType: hard
 
@@ -2227,9 +2227,9 @@ __metadata:
   linkType: hard
 
 "escalade@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "escalade@npm:3.1.1"
-  checksum: 10c0/afd02e6ca91ffa813e1108b5e7756566173d6bc0d1eb951cb44d6b21702ec17c1cf116cfe75d4a2b02e05acb0b808a7a9387d0d1ca5cf9c04ad03a8445c3e46d
+  version: 3.1.2
+  resolution: "escalade@npm:3.1.2"
+  checksum: 10c0/6b4adafecd0682f3aa1cd1106b8fff30e492c7015b178bc81b2d2f75106dabea6c6d6e8508fc491bd58e597c74abb0e8e2368f943ecb9393d4162e3c2f3cf287
   languageName: node
   linkType: hard
 
@@ -2487,11 +2487,11 @@ __metadata:
   linkType: hard
 
 "fastq@npm:^1.6.0":
-  version: 1.17.0
-  resolution: "fastq@npm:1.17.0"
+  version: 1.17.1
+  resolution: "fastq@npm:1.17.1"
   dependencies:
     reusify: "npm:^1.0.4"
-  checksum: 10c0/0a90ed46ccd6a858a32e297bd35f4249ba6544899b905d08f33a6ba36459041639161fa15bc85a38afa98dd44fb2fa2969419a879721a1395d3e24668a7732c7
+  checksum: 10c0/1095f16cea45fb3beff558bb3afa74ca7a9250f5a670b65db7ed585f92b4b48381445cd328b3d87323da81e43232b5d5978a8201bde84e0cd514310f1ea6da34
   languageName: node
   linkType: hard
 
@@ -3164,11 +3164,11 @@ __metadata:
   linkType: hard
 
 "magic-string@npm:^0.30.0, magic-string@npm:^0.30.5":
-  version: 0.30.6
-  resolution: "magic-string@npm:0.30.6"
+  version: 0.30.7
+  resolution: "magic-string@npm:0.30.7"
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.4.15"
-  checksum: 10c0/e8835de3427d28678667c4a82e3b54d82ac73d455aa508b8445867b70024eb7dabe4ef82393762baf296256981fa973fc1b8a3e7f837efbc44eec9a65b19efd3
+  checksum: 10c0/d1d949f7a53c37c6e685f4ea7b2b151c2fe0cc5af8f1f979ecba916f7d60d58f35309aaf4c8b09ce1aef7c160b957be39a38b52b478a91650750931e4ddd5daf
   languageName: node
   linkType: hard
 
@@ -3697,12 +3697,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"primevue@npm:^3.47.2":
-  version: 3.47.2
-  resolution: "primevue@npm:3.47.2"
+"primevue@npm:^3.48.0":
+  version: 3.48.0
+  resolution: "primevue@npm:3.48.0"
   peerDependencies:
     vue: ^3.0.0
-  checksum: 10c0/26645126acb003e98779523023b147a3fa5b3553f58e11288f226d8ce9f272c325b9e24f8a959e7b8078b3dcd4566dda28c9642d5519fa95f9afa43db6cab260
+  checksum: 10c0/68e1085a9cf734c4cea3655a3079e5245d6219d37d06e8eda5c2bd08bffed6e72c94d479a6840e820a46b42bd1f99c0b554060f7759e2cd43357ab22bc400af8
   languageName: node
   linkType: hard
 
@@ -3899,13 +3899,13 @@ __metadata:
   linkType: hard
 
 "semver@npm:^7.3.5, semver@npm:^7.3.6, semver@npm:^7.5.3, semver@npm:^7.5.4":
-  version: 7.5.4
-  resolution: "semver@npm:7.5.4"
+  version: 7.6.0
+  resolution: "semver@npm:7.6.0"
   dependencies:
     lru-cache: "npm:^6.0.0"
   bin:
     semver: bin/semver.js
-  checksum: 10c0/5160b06975a38b11c1ab55950cb5b8a23db78df88275d3d8a42ccf1f29e55112ac995b3a26a522c36e3b5f76b0445f1eef70d696b8c7862a2b4303d7b0e7609e
+  checksum: 10c0/fbfe717094ace0aa8d6332d7ef5ce727259815bd8d8815700853f4faf23aacbd7192522f0dc5af6df52ef4fa85a355ebd2f5d39f554bd028200d6cf481ab9b53
   languageName: node
   linkType: hard
 

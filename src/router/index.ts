@@ -10,52 +10,52 @@ const routes = [
   {
     path: "/accommodation",
     name: "accommodation",
-    component: () => import("@/views/AccommodationView.vue"),
+    component: async () => await import("@/views/AccommodationView.vue"),
   },
   {
     path: "/cart",
     name: "cart",
-    component: () => import("@/views/CartView.vue"),
+    component: async () => await import("@/views/CartView.vue"),
   },
   {
     path: "/faq",
     name: "faq",
-    component: () => import("@/views/FAQView.vue"),
+    component: async () => await import("@/views/FAQView.vue"),
   },
   {
     path: "/login",
     name: "login",
-    component: () => import("@/views/LoginView.vue"),
+    component: async () => await import("@/views/LoginView.vue"),
   },
   {
     path: "/me",
     name: "me",
-    component: () => import("@/views/AccountView.vue"),
+    component: async () => await import("@/views/AccountView.vue"),
   },
   {
     path: "/order/:id",
     name: "order",
-    component: () => import("@/views/OrderView.vue"),
+    component: async () => await import("@/views/OrderView.vue"),
   },
   {
     path: "/register",
     name: "register",
-    component: () => import("@/views/RegisterView.vue"),
+    component: async () => await import("@/views/RegisterView.vue"),
   },
   {
     path: "/team",
     name: "team",
-    component: () => import("@/views/TeamView.vue"),
+    component: async () => await import("@/views/TeamView.vue"),
   },
   {
     path: "/venue",
     name: "venue",
-    component: () => import("@/views/VenueView.vue"),
+    component: async () => await import("@/views/VenueView.vue"),
   },
   {
     path: "/speaker/:key",
     name: "speaker",
-    component: () => import("@/views/SpeakerTemplateView.vue"),
+    component: async () => await import("@/views/SpeakerTemplateView.vue"),
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];

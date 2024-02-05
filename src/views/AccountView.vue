@@ -7,16 +7,14 @@ import PopupModal from "@/components/app/PopupModal.vue";
 export async function getUser(token, target) {
   const url = `${import.meta.env.VITE_API}/user`;
   try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     axios
       .get(url)
       .then(function (response) {
         if (
-          response &&
-          response.data &&
+          response?.data &&
           "orders" in response.data &&
-          response.data.orders &&
-          response.data.orders.length
+          response.data.orders?.length
         ) {
           Array.from(response.data.orders).forEach((order) => {
             const item = {
@@ -45,13 +43,13 @@ export async function getUser(token, target) {
           });
         }
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
+      .catch(async function (error) {
+        if (error.response.status === 401) {
           localStorage.removeItem("token");
           this.$router.push("login");
         } else {
           console.log(error);
-          return Promise.reject(error);
+          return await Promise.reject(error);
         }
       });
   } catch (error) {
@@ -105,7 +103,7 @@ export default {
   created() {
     if (!this.items.length) {
       const token = localStorage.getItem("token");
-      if (!token || !token.length) {
+      if (!token?.length) {
         this.$router.push("/login");
       }
       getUser(token, this);

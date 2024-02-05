@@ -12,34 +12,33 @@
   </button>
 </template>
 
-<script lang="ts">
-export default {
-  name: "ScrollToTopButton",
-  props: {
-    scrollToTop: {
-      type: Function,
-    },
-  },
-  methods: {
-    handelScroll() {
-      var mybutton = this.$refs.scrollToTopButton;
-      if (
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100
-      ) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
-    },
-  },
-  created() {
-    window.addEventListener("scroll", this.handelScroll);
-  },
-  unmounted() {
-    window.removeEventListener("scroll", this.handelScroll);
-  },
-};
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref, defineProps } from "vue";
+
+defineProps({
+  scrollToTop: Function,
+});
+
+const scrollToTopButton = ref(null);
+
+function handelScroll() {
+  if (
+    document.body.scrollTop > 100 ||
+    document.documentElement.scrollTop > 100
+  ) {
+    scrollToTopButton.value.style.display = "block";
+  } else {
+    scrollToTopButton.value.style.display = "none";
+  }
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", handelScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handelScroll);
+});
 </script>
 
 <style scoped lang="scss">

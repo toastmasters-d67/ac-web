@@ -28,13 +28,13 @@ export async function onSubmit(values, target) {
         console.log(response);
         target.$router.push("/login");
       })
-      .catch(function (error) {
-        if (409 === error.response.status) {
+      .catch(async function (error) {
+        if (error.response.status === 409) {
           target.errors.email = target.$t("error.email.occupied");
           target.show = true;
         } else {
           console.log(error);
-          return Promise.reject(error);
+          return await Promise.reject(error);
         }
       });
   } catch (error) {
