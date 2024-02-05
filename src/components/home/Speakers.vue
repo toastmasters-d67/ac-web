@@ -1,61 +1,62 @@
 <script lang="ts">
 import { reactive } from "vue";
-import axios from "axios";
+import { createDirectus, graphql } from "@directus/sdk";
 
+interface Speaker {
+  name: string;
+  icon: {
+    id: number;
+  };
+  id: number;
+  translations: {
+    name: string;
+  }[];
+}
+
+interface Schema {
+  articles: Speaker[];
+}
 const CMS_URL = import.meta.env.VITE_CMS_API;
+const client = createDirectus<Schema>(CMS_URL).with(graphql());
+
 export default {
   name: "Speakers",
 
   data() {
-    const speakers = reactive([]);
-    let speakPer = [];
-    const icon = [];
-    Array.from(this.$tm("speakers")).forEach((source) => {
-      const item = {
-        key: this.$rt(source.key),
-        name: this.$rt(source.name),
-      };
-      speakers.push(item);
-    });
-    return { speakers, speakPer, icon };
+    return {
+      state: reactive({
+        speakers: [],
+      }),
+    };
   },
-  mounted() {
-    axios
-      .get(`${CMS_URL}/items/speakers`, {})
-      .then((response) => {
-        Array.from(
-          response.data.data.forEach((source) => {
-            if (this.$store.state.langu == "tw") {
-              this.speakPer.push(source.name);
-            }
-            this.icon.push(source.icon);
-          })
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    if (this.$store.state.langu == "en") {
-      axios
-        .get(`${CMS_URL}/items/speakers_translations`, {})
-        .then((response) => {
-          Array.from(
-            response.data.data.forEach((source) => {
-              this.speakPer.push(source.name);
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+  async mounted() {
+    const result = await client.query<Speaker[]>(`
+      query Speakers {
+          speakers(filter: { seminars: { year: { _eq: "2023" } } }) {
+              name
+              icon {
+                  id
+              }
+              id
+              translations(filter: { languages_id: { name: { _eq: "English" } } }) {
+                  name
+              }
+          }
+      }
+    `);
+    this.state.speakers = result.speakers;
   },
   methods: {
     getLink(id) {
-      return `/${id}`;
+      return `/speaker/${id}`;
     },
     getIcon(iconId) {
       return `${CMS_URL}/assets/${iconId}`;
+    },
+    getName(speaker) {
+      if (this.$store.state.langu == "tw") {
+        return speaker.name;
+      } else return speaker.translations[0].name;
     },
   },
 };
@@ -65,14 +66,14 @@ export default {
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
-      <div v-for="(speaker, index) in speakPer" :key="index">
-        <router-link :to="getLink(index + 1)" class="speaker">
+      <div v-for="speaker in state.speakers">
+        <router-link :to="getLink(speaker.id)" class="speaker">
           <img
-            :src="getIcon(icon[index])"
+            :src="getIcon(speaker.icon.id)"
             class="speaker-image"
             :alt="speaker"
           />
-          <span class="speaker-name-text">{{ speaker }}</span>
+          <span class="speaker-name-text">{{ getName(speaker) }}</span>
         </router-link>
       </div>
     </div>
