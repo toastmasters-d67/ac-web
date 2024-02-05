@@ -44,6 +44,17 @@
   </section>
 </template>
 
+<script setup lang="ts">
+import { defineProps } from "vue";
+
+const props = defineProps({
+  seminars: {
+    type: Array,
+    default: () => [],
+  },
+});
+</script>
+
 <style scoped lang="scss">
 .seminar-container {
   width: 100%;
@@ -207,44 +218,3 @@
   }
 }
 </style>
-
-<script lang="ts">
-import { reactive } from "vue";
-
-export default {
-  name: "SpeakerSeminar",
-  props: {
-    seminars: {
-      type: Object,
-      default: function () {
-        return reactive([]);
-      },
-    },
-
-    topic: {
-      type: Array,
-      default: function () {
-        return [];
-      },
-    },
-    time: {
-      type: Array,
-      default: function () {
-        return [];
-      },
-    },
-    location: {
-      type: Array,
-      default: function () {
-        return [];
-      },
-    },
-    introduction: {
-      type: Array,
-      default: function () {
-        return [];
-      },
-    },
-  },
-};
-</script>

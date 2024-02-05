@@ -1,32 +1,25 @@
-<script lang="ts">
-import Instruction from "@/components/auth/Instruction.vue";
-import Register from "@/components/auth/Register.vue";
-
-export default {
-  name: "RegisterView",
-  components: {
-    Instruction,
-    Register,
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-  data() {
-    return {
-      step1HighlightText: this.$t(
-        "login.introduction.step1.text-highlight-register"
-      ),
-    };
-  },
-};
-</script>
-
 <template>
   <div class="auth-container">
     <Instruction :step1HighlightText="step1HighlightText" v-once />
     <Register v-once />
   </div>
 </template>
+
+<script setup lang="ts">
+import { onBeforeMount, ref } from "vue";
+import { useI18n } from "vue-i18n";
+import Instruction from "@/components/auth/Instruction.vue";
+import Register from "@/components/auth/Register.vue";
+
+const { t } = useI18n();
+const step1HighlightText = ref(
+  t("login.introduction.step1.text-highlight-register")
+);
+
+onBeforeMount(() => {
+  window.scrollTo({ top: 0 });
+});
+</script>
 
 <style scoped lang="scss">
 .auth-container {

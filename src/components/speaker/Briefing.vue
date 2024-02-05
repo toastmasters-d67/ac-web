@@ -1,42 +1,3 @@
-<script lang="ts">
-export default {
-  name: "SpeakerBriefing",
-  props: {
-    name: {
-      type: String,
-      default: "",
-    },
-    title: {
-      type: String,
-      default: "",
-    },
-    contents: {
-      type: Array,
-      default: function () {
-        return [];
-      },
-    },
-    facebook: {
-      type: String,
-      default: "",
-    },
-    instagram: {
-      type: String,
-      default: "",
-    },
-    youtube: {
-      type: String,
-      default: "",
-    },
-    image: {
-      type: String,
-      default: "",
-    },
-  },
-  methods: {},
-};
-</script>
-
 <template>
   <section class="briefing-container">
     <div class="briefing-speaker">
@@ -75,6 +36,41 @@ export default {
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { defineProps } from "vue";
+
+const props = defineProps({
+  name: {
+    type: String,
+    default: "",
+  },
+  title: {
+    type: String,
+    default: "",
+  },
+  contents: {
+    type: String,
+    default: "",
+  },
+  facebook: {
+    type: String,
+    default: "",
+  },
+  instagram: {
+    type: String,
+    default: "",
+  },
+  youtube: {
+    type: String,
+    default: "",
+  },
+  image: {
+    type: String,
+    default: "",
+  },
+});
+</script>
 
 <style scoped lang="scss">
 .briefing-container {

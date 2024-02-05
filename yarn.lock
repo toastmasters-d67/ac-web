@@ -1086,7 +1086,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/devtools-api@npm:^6.0.0-beta.11, @vue/devtools-api@npm:^6.5.0":
+"@vue/devtools-api@npm:^6.5.0":
   version: 6.5.1
   resolution: "@vue/devtools-api@npm:6.5.1"
   checksum: 10c0/d28b00a64df2c5b3351f74ad28ec7fe65e9ee6e20e585c0130ae6ab74b7e616d4eda3b3e82d39ad391e959be4bbb7aa7221d8253bbca1f3021ad07d4430095f9
@@ -1214,6 +1214,7 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
     eslint-plugin-vue: "npm:^9.21.1"
+    pinia: "npm:^2.1.7"
     prettier: "npm:^3.2.5"
     primeicons: "npm:^6.0.1"
     primevue: "npm:^3.47.2"
@@ -1224,7 +1225,6 @@ __metadata:
     vue: "npm:^3.4.15"
     vue-i18n: "npm:^9.9.1"
     vue-router: "npm:^4.2.5"
-    vuex: "npm:^4.1.0"
     yup: "npm:^1.3.3"
   languageName: unknown
   linkType: soft
@@ -3614,6 +3614,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pinia@npm:^2.1.7":
+  version: 2.1.7
+  resolution: "pinia@npm:2.1.7"
+  dependencies:
+    "@vue/devtools-api": "npm:^6.5.0"
+    vue-demi: "npm:>=0.14.5"
+  peerDependencies:
+    "@vue/composition-api": ^1.4.0
+    typescript: ">=4.4.4"
+    vue: ^2.6.14 || ^3.3.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+    typescript:
+      optional: true
+  checksum: 10c0/f4380a4db04b5b8565ed8a6843821d91f8f650d79dd9f0094005248bd963521b8a73419032fda76541e59b895b0e7852e67ca9d0408162cc391ce5a1bcbda445
+  languageName: node
+  linkType: hard
+
 "pkg-types@npm:^1.0.3":
   version: 1.0.3
   resolution: "pkg-types@npm:1.0.3"
@@ -4311,6 +4330,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vue-demi@npm:>=0.14.5":
+  version: 0.14.7
+  resolution: "vue-demi@npm:0.14.7"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^3.0.0-0 || ^2.6.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  bin:
+    vue-demi-fix: bin/vue-demi-fix.js
+    vue-demi-switch: bin/vue-demi-switch.js
+  checksum: 10c0/303216e3e6ee3f6ab5631488dd00a767ef3760a0a14e580c0223b278d093dc9ada8164ecec6bf8d8e12034e0bdf8dbb947c0c6f83095c6a53030a4a6dcbd57ce
+  languageName: node
+  linkType: hard
+
 "vue-demi@npm:^0.13.11":
   version: 0.13.11
   resolution: "vue-demi@npm:0.13.11"
@@ -4383,17 +4418,6 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/7410135553f38d390ece3d5edcb6e2c158c3717e002a4e0766a95f6054f0ab7a8ce69000f5e29ff41f631f3cc7211123fbe34ab591b43b14f4af77c4ac01d116
-  languageName: node
-  linkType: hard
-
-"vuex@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "vuex@npm:4.1.0"
-  dependencies:
-    "@vue/devtools-api": "npm:^6.0.0-beta.11"
-  peerDependencies:
-    vue: ^3.2.0
-  checksum: 10c0/33605e6d8731cfa064933727a199039db474cb36e1a9178a2c31f21c3d9c04e7800d70f4b5115986cb5995761c7320faaab512e9ba35d019ae4f657c25bb7fdb
   languageName: node
   linkType: hard
 

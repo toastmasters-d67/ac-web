@@ -1,6 +1,7 @@
-<script lang="ts">
-import { reactive } from "vue";
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
 import { createDirectus, graphql } from "@directus/sdk";
+import { useLanguageStore } from "@/stores";
 
 interface Speaker {
   name: string;
@@ -16,49 +17,38 @@ interface Speaker {
 interface Schema {
   articles: Speaker[];
 }
+
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const client = createDirectus<Schema>(CMS_URL).with(graphql());
+const store = useLanguageStore();
+const speakers = ref<Speaker[]>([]);
 
-export default {
-  name: "Speakers",
+onMounted(async () => {
+  const result = await client.query<Speaker[]>(`
+    query Speakers {
+        speakers(filter: { seminars: { year: { _eq: "2023" } } }) {
+            name
+            icon {
+                id
+            }
+            id
+            translations(filter: { languages_id: { name: { _eq: "English" } } }) {
+                name
+            }
+        }
+    }
+  `);
+  speakers.value = result.speakers;
+});
 
-  data() {
-    return {
-      state: reactive({
-        speakers: [],
-      }),
-    };
-  },
-  async mounted() {
-    const result = await client.query<Speaker[]>(`
-      query Speakers {
-          speakers(filter: { seminars: { year: { _eq: "2023" } } }) {
-              name
-              icon {
-                  id
-              }
-              id
-              translations(filter: { languages_id: { name: { _eq: "English" } } }) {
-                  name
-              }
-          }
-      }
-    `);
-    this.state.speakers = result.speakers;
-  },
-  methods: {
-    getLink(id) {
-      return `/speaker/${id}`;
-    },
-    getIcon(iconId) {
-      return `${CMS_URL}/assets/${iconId}`;
-    },
-    getName(speaker) {
-      if (this.$store.state.langu == "tw") {
-        return speaker.name;
-      } else return speaker.translations[0].name;
-    },
-  },
+const getLink = (id: number) => `/speaker/${id}`;
+const getIcon = (iconId: number) => `${CMS_URL}/assets/${iconId}`;
+const getName = (speaker: Speaker) => {
+  if (store.language == "tw") {
+    return speaker.name;
+  } else {
+    return speaker.translations[0].name;
+  }
 };
 </script>
 
@@ -66,12 +56,12 @@ export default {
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
-      <div v-for="speaker in state.speakers">
+      <div v-for="speaker in speakers" :key="speaker.id">
         <router-link :to="getLink(speaker.id)" class="speaker">
           <img
             :src="getIcon(speaker.icon.id)"
             class="speaker-image"
-            :alt="speaker"
+            :alt="speaker.name"
           />
           <span class="speaker-name-text">{{ getName(speaker) }}</span>
         </router-link>

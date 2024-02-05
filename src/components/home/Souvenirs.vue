@@ -1,106 +1,81 @@
-<script lang="ts">
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, reactive } from "vue";
+import axios from "axios";
+import { useLanguageStore } from "@/stores";
 import largeBag from "@/assets/image/home/souvenirs-bag.png";
 import smallBag from "@/assets/image/home/souvenirs-bag-small.png";
 import largeTowel from "@/assets/image/home/souvenirs-towel.png";
 import smallTowel from "@/assets/image/home/souvenirs-towel-small.png";
-import axios from "axios";
-import { reactive } from "vue";
+
 const CMS_URL = import.meta.env.VITE_CMS_API;
 const YEAR = import.meta.env.VITE_YEAR;
-export default {
-  name: "Souvenirs",
-  data() {
-    const name = "";
-    const img = [];
-    const translation = [];
-    let souvenirs = reactive([]);
-    return {
-      windowHeight: window.innerHeight,
-      name,
-      img,
-      translation,
-      souvenirs,
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
+const store = useLanguageStore();
 
-  mounted() {
-    this.getAllData();
-  },
-  methods: {
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-    },
-    getImage(item) {
-      if (item === "bag") {
-        return this.windowHeight > 768 ? largeBag : smallBag;
-      }
-      if (item === "towel") {
-        return this.windowHeight > 768 ? largeTowel : smallTowel;
-      }
-      return "";
-    },
+const windowHeight = ref(window.innerHeight);
+const souvenirs = reactive([]);
 
-    async getChineseData() {
-      await axios({
-        url: `${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`,
-        method: "get",
-      })
-        .then((res) => {
-          Array.from(
-            res.data.data.forEach((source) => {
-              const item = {
-                name: source.name,
-                img: `${CMS_URL}/assets/${source.picture}`,
-              };
-              this.img.push(`${CMS_URL}/assets/${source.picture}`);
-              if (this.$store.state.langu == "tw") {
-                this.souvenirs.push(item);
-              }
-              this.translation.push(source.translations[0]);
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      this.souvenirs.name = [];
-    },
-
-    getForigienData() {
-      Array.from(
-        this.translation.forEach((translation_id) => {
-          axios({
-            url: `${CMS_URL}/items/souvenirs_translations/?filter[id][_eq]=${translation_id}`,
-            method: "get",
-          }).then((res) => {
-            Array.from(
-              res.data.data.forEach((source) => {
-                const item = {
-                  name: source.name,
-                  img: this.img[translation_id - 1],
-                };
-                this.souvenirs.push(item);
-              })
-            );
-          });
-        })
-      );
-    },
-    async getAllData() {
-      await this.getChineseData();
-      if (this.$store.state.langu == "en") {
-        this.getForigienData();
-      }
-    },
-  },
+const handleResize = () => {
+  windowHeight.value = window.innerWidth;
 };
+
+const getImage = (item) => {
+  if (item === "bag") {
+    return windowHeight.value > 768 ? largeBag : smallBag;
+  }
+  if (item === "towel") {
+    return windowHeight.value > 768 ? largeTowel : smallTowel;
+  }
+  return "";
+};
+
+const getChineseData = async () => {
+  try {
+    const response = await axios.get(
+      `${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`
+    );
+    response.data.data.forEach((source) => {
+      const item = {
+        name: source.name,
+        img: `${CMS_URL}/assets/${source.picture}`,
+      };
+      souvenirs.push(item);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const getForigienData = async () => {
+  for (const item of souvenirs) {
+    try {
+      const response = await axios.get(
+        `${CMS_URL}/items/souvenirs_translations/?filter[id][_eq]=${item.translation_id}`
+      );
+      response.data.data.forEach((source) => {
+        item.name = source.name;
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+};
+
+const getAllData = async () => {
+  await getChineseData();
+  if (store.language === "en") {
+    await getForigienData();
+  }
+};
+
+onMounted(() => {
+  handleResize();
+  window.addEventListener("resize", handleResize);
+  getAllData();
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
 </script>
 
 <template>

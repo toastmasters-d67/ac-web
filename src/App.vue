@@ -1,31 +1,3 @@
-<script lang="ts">
-import Navbar from "@/components/app/Navbar.vue";
-import Footer from "@/components/app/Footer.vue";
-import ScrollToTopButton from "@/components/app/ScrollToTopButton.vue";
-import CtaButtons from "@/components/app/CtaButtons.vue";
-export default {
-  components: {
-    Navbar,
-    Footer,
-    ScrollToTopButton,
-    CtaButtons,
-  },
-  methods: {
-    scrollToElement(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = `/#${id}`;
-      }
-    },
-    scrollToTop(behavior) {
-      window.scrollTo({ top: 0, behavior: behavior });
-    },
-  },
-};
-</script>
-
 <template>
   <Navbar
     :scrollToElement="scrollToElement"
@@ -37,6 +9,26 @@ export default {
   <ScrollToTopButton :scrollToTop="scrollToTop" v-once />
   <CtaButtons :scrollToElement="scrollToElement" />
 </template>
+
+<script setup lang="ts">
+import Navbar from "@/components/app/Navbar.vue";
+import Footer from "@/components/app/Footer.vue";
+import ScrollToTopButton from "@/components/app/ScrollToTopButton.vue";
+import CtaButtons from "@/components/app/CtaButtons.vue";
+
+const scrollToElement = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.location.href = `/#${id}`;
+  }
+};
+
+const scrollToTop = (behavior = "smooth") => {
+  window.scrollTo({ top: 0, behavior });
+};
+</script>
 
 <style lang="scss">
 #app {

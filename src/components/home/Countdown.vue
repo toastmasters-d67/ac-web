@@ -1,68 +1,3 @@
-<script lang="ts">
-import { ref } from "vue";
-import Timer from "@/components/home/Timer.vue";
-
-export default {
-  name: "Countdown",
-  components: {
-    Timer,
-  },
-  data() {
-    const [d, h, m, s] = this.getTime();
-    const days = ref(d);
-    const hours = ref(h);
-    const minutes = ref(m);
-    const seconds = ref(s);
-    const polling = ref(null);
-    return {
-      days,
-      hours,
-      minutes,
-      seconds,
-      polling,
-    };
-  },
-  created() {
-    this.pollData();
-  },
-  methods: {
-    getTime() {
-      let days = 0;
-      let hours = 0;
-      let minutes = 0;
-      let seconds = 0;
-      const now = new Date();
-      const date = new Date(import.meta.env.VITE_COUNTDOWN_DATE);
-      const remaining = date - now;
-      if (remaining > 0) {
-        days = Math.floor(remaining / (1000 * 60 * 60 * 24));
-        hours = Math.floor(remaining / (1000 * 60 * 60)) % 24;
-        minutes = Math.floor(remaining / (1000 * 60)) % 60;
-        seconds = Math.floor(remaining / 1000) % 60;
-      } else {
-        window.clearInterval(this.polling);
-      }
-      return [days, hours, minutes, seconds];
-    },
-    countdown() {
-      const [days, hours, minutes, seconds] = this.getTime();
-      this.days = days;
-      this.hours = hours;
-      this.minutes = minutes;
-      this.seconds = seconds;
-    },
-    pollData() {
-      this.polling = window.setInterval(() => {
-        this.countdown();
-      }, 1000);
-    },
-  },
-  beforeUnmount() {
-    window.clearInterval(this.polling);
-  },
-};
-</script>
-
 <template>
   <section class="countdown-container">
     <header class="countdown-title">{{ $t("home.countdown.title") }}</header>
@@ -86,6 +21,56 @@ export default {
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import Timer from "@/components/home/Timer.vue";
+
+const days = ref(0);
+const hours = ref(0);
+const minutes = ref(0);
+const seconds = ref(0);
+const polling = ref(null);
+
+function getTime() {
+  let d = 0,
+    h = 0,
+    m = 0,
+    s = 0;
+  const now = new Date();
+  const date = new Date(import.meta.env.VITE_COUNTDOWN_DATE);
+  const remaining = date - now;
+
+  if (remaining > 0) {
+    d = Math.floor(remaining / (1000 * 60 * 60 * 24));
+    h = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+    m = Math.floor((remaining / (1000 * 60)) % 60);
+    s = Math.floor((remaining / 1000) % 60);
+  }
+
+  days.value = d;
+  hours.value = h;
+  minutes.value = m;
+  seconds.value = s;
+}
+
+function pollData() {
+  polling.value = window.setInterval(() => {
+    getTime();
+  }, 1000);
+}
+
+onMounted(() => {
+  getTime();
+  pollData();
+});
+
+onBeforeUnmount(() => {
+  if (polling.value) {
+    window.clearInterval(polling.value);
+  }
+});
+</script>
 
 <style scoped lang="scss">
 .countdown-container {
