@@ -5,7 +5,7 @@
       <section id="map" class="venue-section">
         <img :src="img" class="venue-map" alt="map" />
       </section>
-      <section id="map" class="venue-section">
+      <section id="info" class="venue-section">
         <header class="venue-title">{{ $t("home.venue.venue") }}</header>
         <div class="venue-row">
           <i class="pi pi-phone venue-row-icon"></i>
@@ -15,14 +15,12 @@
         </div>
         <div class="venue-row">
           <i class="pi pi-map-marker venue-row-icon"></i>
-          <span class="venue-row-text">
-            {{ address }}
-          </span>
+          <span class="venue-row-text">{{ address }}</span>
         </div>
         <div class="venue-row">
-          <a :href="link" class="venue-row-button" target="_blank">
-            {{ $t("home.venue.show") }}
-          </a>
+          <a :href="link" class="venue-row-button" target="_blank">{{
+            $t("home.venue.show")
+          }}</a>
         </div>
       </section>
       <section id="car" class="venue-section">
@@ -30,12 +28,7 @@
           <div class="venue-section-button">{{ $t("venue.car.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <!-- <ol>
-            <li v-for="(item, key) in $tm('venue.car.steps')" :key="key">
-              {{ $rt(item) }}
-            </li>
-          </ol> -->
-          <div v-text="car"></div>
+          <div v-html="car"></div>
         </div>
       </section>
       <section id="metro" class="venue-section">
@@ -43,15 +36,7 @@
           <div class="venue-section-button">{{ $t("venue.metro.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <span>
-            <!-- {{ $t("venue.metro.content") }} -->
-            {{ metro }}
-          </span>
-          <!-- <ol>
-            <li v-for="(item, key) in $tm('venue.metro.steps')" :key="key">
-              {{ $rt(item) }}
-            </li>
-          </ol> -->
+          <span>{{ metro }}</span>
         </div>
       </section>
       <section id="bus" class="venue-section">
@@ -59,15 +44,79 @@
           <div class="venue-section-button">{{ $t("venue.bus.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <span>
-            <!-- {{ $t("venue.bus.content") }} -->
-            {{ bus }}
-          </span>
+          <span>{{ bus }}</span>
         </div>
       </section>
     </div>
   </article>
 </template>
+
+<script setup lang="ts">
+import { ref, onBeforeMount } from 'vue'
+import axios, { type AxiosResponse } from 'axios'
+import { useLanguageStore } from '@/stores.ts'
+import Breadcrumb from '@/components/app/Breadcrumb.vue'
+
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+const store = useLanguageStore()
+
+const name = ref('')
+const telephone = ref('')
+const address = ref('')
+const img = ref('')
+const car = ref('')
+const metro = ref('')
+const bus = ref('')
+const link = ref('')
+
+const getChineseData = async (): Promise<void> => {
+  try {
+    const response = await axios.get(
+      `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`
+    )
+    const data = response.data.data[0] // Assuming there's only one venue
+    name.value = data.name
+    telephone.value = data.telephone
+    address.value = data.address
+    link.value = data.link
+    car.value = data.car
+    metro.value = data.metro
+    bus.value = data.bus
+    img.value = `${CMS_URL}/assets/${data.picture}`
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getForigienData = async (): Promise<void> => {
+  try {
+    const response: AxiosResponse = await axios.get(
+      `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${data.translation}`
+    )
+    const data = response.data.data[0] // Assuming there's only one translation
+    name.value = data.name
+    address.value = data.address
+    car.value = data.car
+    metro.value = data.metro
+    bus.value = data.bus
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
+  }
+}
+
+onBeforeMount(() => {
+  window.scrollTo({ top: 0 })
+  void getAllData()
+})
+</script>
 
 <style scoped lang="scss">
 .venue-container {
@@ -226,94 +275,3 @@
   }
 }
 </style>
-
-<script lang="ts">
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
-import axios from "axios";
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-export default {
-  name: "VenueView",
-  data() {
-    const name = "";
-    const telephone = "";
-    const address = "";
-    const img = "";
-    const car = "";
-    const bus = "";
-    const metro = "";
-    const link = "";
-    const translation = "";
-
-    return {
-      name,
-      telephone,
-      address,
-      img,
-      car,
-      metro,
-      bus,
-      link,
-      translation,
-    };
-  },
-  components: {
-    Breadcrumb,
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-
-  methods: {
-    async getChineseData() {
-      await axios({
-        url: `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`,
-        method: "get",
-      })
-        .then((res) => {
-          Array.from(
-            res.data.data.forEach((source) => {
-              this.name = source.name;
-              this.telephone = source.telephone;
-              this.address = source.address;
-              this.link = source.link;
-              this.car = source.car;
-              this.metro = source.metro;
-              this.bus = source.bus;
-              this.img = `${CMS_URL}/assets/${source.picture}`;
-              this.translation = source.translations[0];
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getForigienData() {
-      axios({
-        url: `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${this.translation}`,
-        method: "get",
-      }).then((res) => {
-        Array.from(
-          res.data.data.forEach((source) => {
-            this.name = source.name;
-            this.address = source.address;
-            this.car = source.car;
-            this.metro = source.metro;
-            this.bus = source.bus;
-          })
-        );
-      });
-    },
-    async getAllData() {
-      await this.getChineseData();
-      if (this.$store.state.langu == "en") {
-        this.getForigienData();
-      }
-    },
-  },
-  mounted() {
-    this.getAllData();
-  },
-};
-</script>

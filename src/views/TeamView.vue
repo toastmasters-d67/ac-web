@@ -235,44 +235,34 @@
   </article>
 </template>
 
-<script lang="ts">
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
+<script setup lang="ts">
+import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue'
+import Breadcrumb from '@/components/app/Breadcrumb.vue'
 
-export default {
-  name: "OurTeam",
-  components: {
-    Breadcrumb,
-  },
-  data() {
-    return {
-      windowHeight: window.innerHeight,
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-    },
-    getImage(item) {
-      let path = "";
-      if (this.windowHeight > 768) {
-        path = `/src/assets/image/our-team/${item}.png`;
-      } else {
-        path = `/src/assets/image/our-team/${item}-mobile.png`;
-      }
-      return new URL(path, import.meta.url).href;
-    },
-  },
-};
+const windowHeight = ref(window.innerHeight)
+
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
+}
+
+const getImage = (item: any): string => {
+  return windowHeight.value > 768
+    ? `/src/assets/image/our-team/${item}.png`
+    : `/src/assets/image/our-team/${item}-mobile.png`
+}
+
+onBeforeMount(() => {
+  window.scrollTo({ top: 0 })
+})
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+  handleResize()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped lang="scss">

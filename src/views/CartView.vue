@@ -1,84 +1,6 @@
-<script lang="ts">
-import { reactive } from "vue";
-import Marquee from "@/components/app/Marquee.vue";
-import Picker from "@/components/cart/Picker.vue";
-import Summary from "@/components/cart/Summary.vue";
-
-export default {
-  name: "CartView",
-  components: {
-    Marquee,
-    Picker,
-    Summary,
-  },
-  data() {
-    const state = reactive({
-      early: 0,
-      double: 0,
-      first: 0,
-      second: 0,
-      banquet: 0,
-    });
-    const name = reactive({
-      early: "Early Bird 2 Day Pass",
-      double: "2 Day Pass",
-      first: "First Day Pass",
-      second: "Second Day Pass",
-      banquet: "Dinner Banquet",
-    });
-    const price = reactive({
-      early: import.meta.env.VITE_TICKET_EARLY,
-      double: import.meta.env.VITE_TICKET_DOUBLE,
-      first: import.meta.env.VITE_TICKET_FIRST,
-      second: import.meta.env.VITE_TICKET_SECOND,
-      banquet: import.meta.env.VITE_TICKET_BANQUET,
-    });
-    return {
-      state,
-      name,
-      price,
-    };
-  },
-  methods: {
-    setEarly(event) {
-      this.state.early = +event.target.value;
-    },
-    setDouble(event) {
-      this.state.double = +event.target.value;
-      this.updateBanquet();
-    },
-    setFirst(event) {
-      this.state.first = +event.target.value;
-      this.updateBanquet();
-    },
-    setSecond(event) {
-      this.state.second = +event.target.value;
-      this.updateBanquet();
-    },
-    setBanquet(event) {
-      let value = +event.target.value;
-      const sum = this.state.double + this.state.first + this.state.second;
-      if (value > sum) {
-        value = sum;
-      }
-      this.state.banquet = value;
-    },
-    updateBanquet() {
-      const sum = this.state.double + this.state.first + this.state.second;
-      if (this.state.banquet > sum) {
-        this.state.banquet = sum;
-      }
-    },
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-};
-</script>
-
 <template>
   <div>
-    <Marquee :sentences="[this.$t('account.marquee.notice')]" v-once />
+    <Marquee :sentences="[t('account.marquee.notice')]" v-once />
     <article id="cart" class="cart-container">
       <Picker
         :state="state"
@@ -95,6 +17,75 @@ export default {
     </article>
   </div>
 </template>
+
+<script setup lang="ts">
+import { reactive, onBeforeMount } from 'vue'
+import { useI18n } from 'vue-i18n'
+import Marquee from '@/components/app/Marquee.vue'
+import Picker from '@/components/cart/Picker.vue'
+import Summary from '@/components/cart/Summary.vue'
+
+const { t } = useI18n()
+
+const state = reactive({
+  early: 0,
+  double: 0,
+  first: 0,
+  second: 0,
+  banquet: 0
+})
+
+const name = {
+  early: '',
+  double: '',
+  first: '',
+  second: '',
+  banquet: ''
+}
+
+const price = {
+  early: import.meta.env.VITE_TICKET_EARLY,
+  double: import.meta.env.VITE_TICKET_DOUBLE,
+  first: import.meta.env.VITE_TICKET_FIRST,
+  second: import.meta.env.VITE_TICKET_SECOND,
+  banquet: import.meta.env.VITE_TICKET_BANQUET
+}
+
+const updateBanquet = (): void => {
+  const sum = state.double + state.first + state.second
+  if (state.banquet > sum) {
+    state.banquet = sum
+  }
+}
+
+const setEarly = (event: { target: { value: string | number } }): void => {
+  state.early = +event.target.value
+}
+const setDouble = (event: { target: { value: string | number } }): void => {
+  state.double = +event.target.value
+  updateBanquet()
+}
+const setFirst = (event: { target: { value: string | number } }): void => {
+  state.first = +event.target.value
+  updateBanquet()
+}
+const setSecond = (event: { target: { value: string | number } }): void => {
+  state.second = +event.target.value
+  updateBanquet()
+}
+const setBanquet = (event: { target: { value: string | number } }): void => {
+  let value = +event.target.value
+  const sum = state.double + state.first + state.second
+  if (value > sum) {
+    value = sum
+  }
+  state.banquet = value
+}
+
+onBeforeMount(() => {
+  window.scrollTo({ top: 0 })
+})
+</script>
 
 <style scoped lang="scss">
 .cart-container {

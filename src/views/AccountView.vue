@@ -1,125 +1,6 @@
-<script lang="ts">
-import { reactive } from "vue";
-import axios from "axios";
-import Marquee from "@/components/app/Marquee.vue";
-import PopupModal from "@/components/app/PopupModal.vue";
-
-export async function getUser(token, target) {
-  const url = `${import.meta.env.VITE_API}/user`;
-  try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    axios
-      .get(url)
-      .then(function (response) {
-        if (
-          response &&
-          response.data &&
-          "orders" in response.data &&
-          response.data.orders &&
-          response.data.orders.length
-        ) {
-          Array.from(response.data.orders).forEach((order) => {
-            const item = {
-              id: order.orderId,
-              amount: order.amount,
-              status: "unpaid",
-              statusText: target.$t("account.unpaid"),
-              button: "",
-              date: target.getDate(order.orderId),
-            };
-            if (order.tickets.length) {
-              item.status = "complete";
-              item.statusText = target.$t("account.complete");
-              item.button = target.$t("account.view");
-            } else if (order.transactions.length) {
-              const transaction = order.transactions.find(
-                (x) => x.status === "SUCCESS"
-              );
-              if (transaction && transaction.amount === order.amount) {
-                item.status = "pending";
-                item.statusText = target.$t("account.pending");
-                item.button = target.$t("account.edit");
-              }
-            }
-            target.items.push(item);
-          });
-        }
-      })
-      .catch(function (error) {
-        if (401 === error.response.status) {
-          localStorage.removeItem("token");
-          this.$router.push("login");
-        } else {
-          console.log(error);
-          return Promise.reject(error);
-        }
-      });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export default {
-  name: "AccountView",
-  components: {
-    Marquee,
-    PopupModal,
-  },
-  data() {
-    const fields = reactive([
-      this.$t("account.number"),
-      this.$t("account.date"),
-      this.$t("account.status"),
-      this.$t("account.amount"),
-      this.$t("account.attendee"),
-    ]);
-    const items = reactive([]);
-    return {
-      fields,
-      items,
-    };
-  },
-  methods: {
-    getDate(orderId) {
-      try {
-        return new Date(+orderId * 1000).toISOString().slice(0, 10);
-      } catch (error) {
-        if (error.message === "Invalid time value") {
-          const arr = [
-            orderId.slice(0, 4),
-            orderId.slice(4, 6),
-            orderId.slice(6, 8),
-          ];
-          return arr.join("-");
-        }
-        return "";
-      }
-    },
-    getStatusClass(item) {
-      return "account-status " + item.status.toLocaleLowerCase();
-    },
-    browseOrder(id) {
-      this.$router.push(`order/${id}`);
-    },
-  },
-  created() {
-    if (!this.items.length) {
-      const token = localStorage.getItem("token");
-      if (!token || !token.length) {
-        this.$router.push("/login");
-      }
-      getUser(token, this);
-    }
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-};
-</script>
-
 <template>
   <div>
-    <Marquee :sentences="[this.$t('account.marquee.notice')]" v-once />
+    <Marquee :sentences="[$t('account.marquee.notice')]" v-once />
     <article id="account" class="account-container">
       <div class="account-row">
         <header class="account-title">{{ $t("account.title") }}</header>
@@ -152,7 +33,7 @@ export default {
                 v-if="item.button.length"
                 statusText
                 class="account-button"
-                @click="this.browseOrder(item.id)"
+                @click="browseOrder(item.id)"
               >
                 {{ item.button }}
               </button>
@@ -174,7 +55,7 @@ export default {
           <button
             v-if="item.button.length"
             class="account-button"
-            @click="this.browseOrder(item.id)"
+            @click="browseOrder(item.id)"
           >
             {{ item.button }}
           </button>
@@ -187,7 +68,7 @@ export default {
           {{ $t("account.popup.title") }}
           <i
             class="pi pi-times popup-close"
-            @click="this.$refs.popup.close()"
+            @click="$refs.popup.close()"
           />
         </div>
         <div class="popup-content">
@@ -214,6 +95,110 @@ export default {
     </PopupModal>
   </div>
 </template>
+
+<script setup lang="ts">
+import { reactive, onMounted } from 'vue'
+import axios from 'axios'
+import Marquee from '@/components/app/Marquee.vue'
+import PopupModal from '@/components/app/PopupModal.vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const router = useRouter()
+const { t } = useI18n()
+
+const fields = reactive([
+  t('account.number'),
+  t('account.date'),
+  t('account.status'),
+  t('account.amount'),
+  t('account.attendee')
+])
+
+const items = reactive([])
+
+function getDate (orderId: string): string {
+  try {
+    return new Date(+orderId * 1000).toISOString().slice(0, 10)
+  } catch (error) {
+    if (error.message === 'Invalid time value') {
+      const arr = [
+        orderId.slice(0, 4),
+        orderId.slice(4, 6),
+        orderId.slice(6, 8)
+      ]
+      return arr.join('-')
+    }
+    return ''
+  }
+}
+
+function getStatusClass (item: never): string {
+  return 'account-status ' + item.status.toLocaleLowerCase()
+}
+
+function browseOrder (id: any): void {
+  router.push(`order/${id}`)
+}
+
+async function getUser (token: string): Promise<void> {
+  const url = `${import.meta.env.VITE_API}/user`
+  try {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`
+    const response = await axios.get(url)
+    if (
+      response?.data &&
+      'orders' in response.data &&
+      response.data.orders?.length
+    ) {
+      response.data.orders.forEach((order) => {
+        const item = {
+          id: order.orderId,
+          amount: order.amount,
+          status: 'unpaid',
+          statusText: t('account.unpaid'),
+          button: '',
+          date: getDate(order.orderId)
+        }
+        if (order.tickets.length) {
+          item.status = 'complete'
+          item.statusText = t('account.complete')
+          item.button = t('account.view')
+        } else if (order.transactions.length) {
+          const transaction = order.transactions.find(
+            (x) => x.status === 'SUCCESS'
+          )
+          if (transaction && transaction.amount === order.amount) {
+            item.status = 'pending'
+            item.statusText = t('account.pending')
+            item.button = t('account.edit')
+          }
+        }
+        items.push(item)
+      })
+    }
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 401) {
+      localStorage.removeItem('token')
+      router.push('/login')
+    } else {
+      console.error(error)
+    }
+  }
+}
+
+onMounted(() => {
+  if (items.length === 0) {
+    const token = localStorage.getItem('token')
+    if (!token?.length) {
+      router.push('/login')
+    } else {
+      getUser(token)
+    }
+  }
+  window.scrollTo({ top: 0 })
+})
+</script>
 
 <style scoped lang="scss">
 .account-container {

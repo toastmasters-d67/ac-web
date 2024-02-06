@@ -1,8 +1,8 @@
 <script lang="ts">
-import { reactive, ref } from "vue";
-import * as Yup from "yup";
-import axios from "axios";
-import Reminder from "@/components/order/Reminder.vue";
+import { reactive, ref } from 'vue'
+import * as Yup from 'yup'
+import axios from 'axios'
+import Reminder from '@/components/order/Reminder.vue'
 
 const ticketSchema = Yup.object().shape({
   orderId: Yup.string().required(),
@@ -13,94 +13,94 @@ const ticketSchema = Yup.object().shape({
   club: Yup.string().required(),
   vegetarian: Yup.bool().required().default(false),
   dtm: Yup.bool().required().default(false),
-  banquet: Yup.bool().required().default(false),
-});
+  banquet: Yup.bool().required().default(false)
+})
 
-const arrayOfTicketsSchema = Yup.array().of(ticketSchema);
+const arrayOfTicketsSchema = Yup.array().of(ticketSchema)
 
-export async function getCountOfTickets(token, target) {
-  const url = `${import.meta.env.VITE_API}/orders/${target.$route.params.id}`;
+export async function getCountOfTickets (token, target) {
+  const url = `${import.meta.env.VITE_API}/orders/${target.$route.params.id}`
   try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`
     axios
       .get(url)
       .then(function (response) {
-        if (response && response.data) {
-          target.setCount(response.data);
-          target.setActive(response.data);
+        if (response?.data) {
+          target.setCount(response.data)
+          target.setActive(response.data)
         }
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
-          localStorage.removeItem("token");
-          this.$router.push("/login");
+      .catch(async function (error) {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token')
+          this.$router.push('/login')
         } else {
-          console.log(error);
-          return Promise.reject(error);
+          console.log(error)
+          return await Promise.reject(error)
         }
-      });
+      })
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
-export async function fetchTickets(token, target) {
-  const url = `${import.meta.env.VITE_API}/tickets/${target.$route.params.id}`;
+export async function fetchTickets (token, target) {
+  const url = `${import.meta.env.VITE_API}/tickets/${target.$route.params.id}`
   try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`
     axios
       .get(url)
       .then(function (response) {
-        if (response && response.data) {
-          target.readState(response.data);
-          target.setAssignments(target.count.banquet);
+        if (response?.data) {
+          target.readState(response.data)
+          target.setAssignments(target.count.banquet)
         }
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
-          localStorage.removeItem("token");
-          this.$router.push("/login");
+      .catch(async function (error) {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token')
+          this.$router.push('/login')
         } else {
-          console.log(error);
-          return Promise.reject(error);
+          console.log(error)
+          return await Promise.reject(error)
         }
-      });
+      })
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
-export async function onSubmit(target) {
-  const url = `${import.meta.env.VITE_API}/ticket`;
+export async function onSubmit (target) {
+  const url = `${import.meta.env.VITE_API}/ticket`
   try {
     axios
       .post(url, target.state)
       .then(function (response) {
-        console.log("response =", response);
-        target.$router.push("/me").then(() => {
-          target.$router.go();
-        });
+        console.log('response =', response)
+        target.$router.push('/me').then(() => {
+          target.$router.go()
+        })
       })
-      .catch(function (error) {
-        if (401 === error.response.status) {
-          localStorage.removeItem("token");
-          target.$router.push("/login").then(() => {
-            target.$router.go();
-          });
+      .catch(async function (error) {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token')
+          target.$router.push('/login').then(() => {
+            target.$router.go()
+          })
         } else {
-          console.log(error);
-          return Promise.reject(error);
+          console.log(error)
+          return await Promise.reject(error)
         }
-      });
+      })
   } catch (error) {
-    console.log("error =", error);
+    console.log('error =', error)
   }
 }
 
 export default {
-  name: "Tickets",
+  name: 'Tickets',
   components: {
-    Reminder,
+    Reminder
   },
   props: {
     count: {
@@ -111,44 +111,44 @@ export default {
           double: 0,
           first: 0,
           second: 0,
-          banquet: 0,
-        };
-      },
+          banquet: 0
+        }
+      }
     },
     setCount: {
-      type: Function,
+      type: Function
     },
     setAssignments: {
-      type: Function,
+      type: Function
     },
     assignments: {
-      type: Number,
-    },
+      type: Number
+    }
   },
-  data() {
-    const active = ref(false);
-    const editing = ref(false);
-    const showReminder = ref(false);
-    const message = ref(this.$t("order.tickets.message"));
-    const state = reactive([]);
-    const errors = reactive([]);
+  data () {
+    const active = ref(false)
+    const editing = ref(false)
+    const showReminder = ref(false)
+    const message = ref(this.$t('order.tickets.message'))
+    const state = reactive([])
+    const errors = reactive([])
     const clearedErrors = reactive({
-      firstName: "",
-      lastName: "",
-      club: "",
-    });
+      firstName: '',
+      lastName: '',
+      club: ''
+    })
     const errorMessages = reactive({
-      firstName: this.$t("error.firstname"),
-      lastName: this.$t("error.lastname"),
-      club: this.$t("error.club"),
-    });
-    const clubs = reactive([]);
-    Array.from(this.$tm("clubs")).forEach((source, index) => {
+      firstName: this.$t('error.firstname'),
+      lastName: this.$t('error.lastname'),
+      club: this.$t('error.club')
+    })
+    const clubs = reactive([])
+    Array.from(this.$tm('clubs')).forEach((source, index) => {
       clubs.push({
         key: index + 1,
-        name: this.$rt(source),
-      });
-    });
+        name: this.$rt(source)
+      })
+    })
 
     return {
       active,
@@ -159,31 +159,31 @@ export default {
       errors,
       clearedErrors,
       errorMessages,
-      clubs,
-    };
-  },
-  created() {
-    const token = localStorage.getItem("token");
-    if (!token || !token.length) {
-      this.$router.push("/login");
+      clubs
     }
-    getCountOfTickets(token, this);
+  },
+  created () {
+    const token = localStorage.getItem('token')
+    if (!token?.length) {
+      this.$router.push('/login')
+    }
+    getCountOfTickets(token, this)
   },
   methods: {
-    setActive(data) {
+    setActive (data) {
       if (data.tickets.length === 0) {
-        this.active = true;
-        this.getState();
+        this.active = true
+        this.getState()
       } else {
-        const token = localStorage.getItem("token");
-        if (!token || !token.length) {
-          this.$router.push("/login");
+        const token = localStorage.getItem('token')
+        if (!token?.length) {
+          this.$router.push('/login')
         }
-        fetchTickets(token, this);
+        fetchTickets(token, this)
       }
     },
-    readState(tickets) {
-      let index = 1;
+    readState (tickets) {
+      let index = 1
       Array.from(tickets).forEach((ticket) => {
         const item = {
           firstName: ticket.firstName,
@@ -196,118 +196,118 @@ export default {
           key: index,
           type: ticket.type,
           description: this.$t(`cart.picker.${ticket.type}.name`),
-          icon: "pi pi-angle-up tickets-expand-arrow",
+          icon: 'pi pi-angle-up tickets-expand-arrow',
           show: true,
-          banquetDisabled: false,
-        };
-        this.state.push(item);
-        const initErrors = { ...this.clearedErrors };
-        this.errors.push(initErrors);
-        index++;
-      });
+          banquetDisabled: false
+        }
+        this.state.push(item)
+        const initErrors = { ...this.clearedErrors }
+        this.errors.push(initErrors)
+        index++
+      })
     },
-    getState() {
-      let index = 1;
+    getState () {
+      let index = 1
       Object.keys(this.count).forEach((key) => {
         for (let i = 0; i < this.count[key]; i++) {
-          if (key !== "banquet") {
+          if (key !== 'banquet') {
             const item = {
               orderId: this.$route.params.id,
               type: key,
-              firstName: "",
-              lastName: "",
-              knownAs: "",
-              club: "",
+              firstName: '',
+              lastName: '',
+              knownAs: '',
+              club: '',
               vegetarian: false,
               dtm: false,
               banquet: false,
               key: index,
               description: this.$t(`cart.picker.${key}.name`),
-              icon: "pi pi-angle-up tickets-expand-arrow",
+              icon: 'pi pi-angle-up tickets-expand-arrow',
               show: true,
-              banquetDisabled: false,
-            };
-            this.state.push(item);
-            const initErrors = { ...this.clearedErrors };
-            this.errors.push(initErrors);
-            index++;
+              banquetDisabled: false
+            }
+            this.state.push(item)
+            const initErrors = { ...this.clearedErrors }
+            this.errors.push(initErrors)
+            index++
           }
         }
-      });
+      })
       if (this.count.banquet <= 0) {
         Array.from(this.state).forEach((ticket, index) => {
-          this.state[index].banquetDisabled = true;
-        });
+          this.state[index].banquetDisabled = true
+        })
       }
     },
-    toggle(index) {
-      this.state[index].show = !this.state[index].show;
+    toggle (index) {
+      this.state[index].show = !this.state[index].show
     },
-    submitTickets() {
+    submitTickets () {
       arrayOfTicketsSchema
         .validate(this.state, { abortEarly: false })
         .then(() => {
-          this.confirm();
+          this.confirm()
         })
         .catch((err) => {
           err.inner.forEach((error) => {
-            console.log("error =", error);
-            const arr = error.path.split(".");
-            const index = +arr[0].replace(/[^0-9\.]+/g, "");
-            const key = arr[1];
-            this.errors[index][key] = this.errorMessages[key];
-          });
-        });
+            console.log('error =', error)
+            const arr = error.path.split('.')
+            const index = +arr[0].replace(/[^0-9\.]+/g, '')
+            const key = arr[1]
+            this.errors[index][key] = this.errorMessages[key]
+          })
+        })
     },
-    confirm() {
-      this.showReminder = true;
+    confirm () {
+      this.showReminder = true
     },
-    dismiss() {
-      this.showReminder = false;
+    dismiss () {
+      this.showReminder = false
     },
-    trigger() {
-      onSubmit(this);
+    trigger () {
+      onSubmit(this)
     },
-    clickBanquet(ticket) {
-      const change = ticket.banquet ? 1 : -1;
-      const assignments = this.assignments + change;
-      this.setAssignments(assignments);
+    clickBanquet (ticket) {
+      const change = ticket.banquet ? 1 : -1
+      const assignments = this.assignments + change
+      this.setAssignments(assignments)
       if (assignments < this.count.banquet) {
         Array.from(this.state).forEach((ticket, index) => {
           if (ticket.banquetDisabled) {
-            this.state[index].banquetDisabled = false;
+            this.state[index].banquetDisabled = false
           }
-        });
+        })
       } else {
         Array.from(this.state).forEach((ticket, index) => {
           if (!this.state[index].banquet) {
-            this.state[index].banquetDisabled = true;
+            this.state[index].banquetDisabled = true
           }
-        });
+        })
       }
     },
-    getDirection(index) {
-      const direction = this.state[index].show ? "up" : "down";
-      return `pi pi-angle-${direction} tickets-expand-arrow`;
+    getDirection (index) {
+      const direction = this.state[index].show ? 'up' : 'down'
+      return `pi pi-angle-${direction} tickets-expand-arrow`
     },
-    getBorderStyle(error) {
+    getBorderStyle (error) {
       const color =
-        error === null || error === "" ? "rgba(83, 89, 90, 1)" : "red";
-      return `border: ${color} 1px solid;`;
+        error === null || error === '' ? 'rgba(83, 89, 90, 1)' : 'red'
+      return `border: ${color} 1px solid;`
     },
-    getDisabledButtonStyle(isDisabled) {
+    getDisabledButtonStyle (isDisabled) {
       if (isDisabled) {
-        return "color: #b0b0b0; border: 1px solid #bababa; background: #f3f3f3";
+        return 'color: #b0b0b0; border: 1px solid #bababa; background: #f3f3f3'
       }
     },
-    saveForm() {
-      this.editing = !this.editing;
+    saveForm () {
+      this.editing = !this.editing
     },
-    clear(index) {
-      this.errors[index] = { ...this.clearedErrors };
-    },
-  },
-};
+    clear (index) {
+      this.errors[index] = { ...this.clearedErrors }
+    }
+  }
+}
 </script>
 
 <template>

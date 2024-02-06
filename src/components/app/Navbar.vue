@@ -148,6 +148,82 @@
   </nav>
 </template>
 
+<script setup lang="ts">
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useLanguageStore } from '@/stores.ts'
+
+useRoute()
+const router = useRouter()
+const store = useLanguageStore()
+
+const locale = ref(localStorage.getItem('locale') ?? 'tw')
+const localeOptions = [
+  { value: 'tw', label: '中文' },
+  { value: 'en', label: 'EN' }
+]
+const visibleFull = ref(false)
+const isLogin = ref(false)
+const showAccountMenu = ref(false)
+
+watch(locale, (newLocale) => {
+  localStorage.setItem('locale', newLocale)
+  store.setLanguage(newLocale)
+  location.reload()
+})
+
+onMounted(() => {
+  const token = localStorage.getItem('token')
+  isLogin.value = !!token
+  document.addEventListener('click', onClick)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', onClick)
+})
+
+function hideMenu (): void {
+  visibleFull.value = false
+}
+
+function hideMenuAndScrollToElement (id: any): void {
+  hideMenu()
+  scrollToElement(id)
+}
+
+function hideMenuAndToTop (): void {
+  hideMenu()
+  scrollToTop()
+}
+
+function onClick (event): void {
+  if (event.target.closest('.navbar-account-button')) {
+    showAccountMenu.value = !showAccountMenu.value
+  } else {
+    showAccountMenu.value = false
+  }
+}
+
+function logout (): void {
+  localStorage.removeItem('token')
+  void router.push('/').then(() => {
+    location.reload()
+  })
+}
+
+function scrollToTop (): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+function scrollToElement (id: string): void {
+  const element = document.getElementById(id)
+  if (element != null) {
+    const top = element.offsetTop
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+}
+</script>
+
 <style scoped lang="scss">
 a {
   color: black;
@@ -426,101 +502,3 @@ hr {
   }
 }
 </style>
-
-<script lang="ts">
-import { reactive, ref, watch } from "vue";
-
-export default {
-  name: "Navbar",
-  props: {
-    scrollToElement: {
-      type: Function,
-    },
-    scrollToTop: {
-      type: Function,
-    },
-  },
-  setup() {
-    const lan = "";
-    const locale = ref(localStorage.getItem("locale") ?? "tw");
-    const localeOptions = reactive([
-      {
-        value: "tw",
-        label: "中文",
-      },
-      {
-        value: "en",
-        label: "EN",
-      },
-    ]);
-    const visibleFull = ref(false);
-    const isLogin = ref(false);
-    const showAccountMenu = ref(false);
-
-    watch(locale, (newlocale) => {
-      localStorage.setItem("locale", newlocale);
-      location.reload();
-    });
-
-    return {
-      lan,
-      locale,
-      localeOptions,
-      visibleFull,
-      isLogin,
-      showAccountMenu,
-    };
-  },
-  watch: {
-    locale(value) {
-      this.lan = value;
-    },
-  },
-
-  created() {
-    const token = localStorage.getItem("token");
-    if (!token || !token.length) {
-      this.isLogin = false;
-    } else {
-      this.isLogin = true;
-    }
-  },
-  mounted() {
-    document.addEventListener("click", this.onClick);
-    this.$store.commit("SET_LAN", this.locale);
-  },
-  beforeUnmount() {
-    document.removeEventListener("click", this.onClick);
-  },
-  methods: {
-    hideMenu() {
-      this.visibleFull = false;
-    },
-    hideMenuAndScrollToElement(id) {
-      this.hideMenu();
-      this.scrollToElement(id);
-    },
-    hideMenuAndToTop() {
-      this.hideMenu();
-      this.scrollToTop();
-    },
-    onClick(event) {
-      if (
-        !this.showAccountMenu &&
-        this.$refs.accountButton &&
-        this.$refs.accountButton.contains(event.target)
-      ) {
-        this.showAccountMenu = true;
-      } else {
-        this.showAccountMenu = false;
-      }
-    },
-    logout() {
-      localStorage.removeItem("token");
-      this.$router.push("/").then(() => {
-        this.$router.go();
-      });
-    },
-  },
-};
-</script>

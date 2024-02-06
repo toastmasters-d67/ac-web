@@ -1,45 +1,38 @@
-<script lang="ts">
-import Instruction from "@/components/auth/Instruction.vue";
-import Login from "@/components/auth/Login.vue";
-
-export default {
-  name: "LoginView",
-  components: {
-    Instruction,
-    Login,
-  },
-  data() {
-    return {
-      windowHeight: window.innerHeight,
-      step1HighlightText: this.$t(
-        "login.introduction.step1.text-highlight-login"
-      ),
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-    },
-  },
-};
-</script>
-
 <template>
   <div class="auth-container">
     <Instruction :step1HighlightText="step1HighlightText" v-once />
     <Login v-once />
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+import Instruction from '@/components/auth/Instruction.vue'
+import Login from '@/components/auth/Login.vue'
+
+const { t } = useI18n()
+const windowHeight = ref(window.innerHeight)
+const step1HighlightText = ref(
+  t('login.introduction.step1.text-highlight-login')
+)
+
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
+}
+
+onBeforeMount(() => {
+  window.scrollTo({ top: 0 })
+})
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
+</script>
 
 <style scoped lang="scss">
 .auth-container {

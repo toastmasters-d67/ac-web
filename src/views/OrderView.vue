@@ -1,52 +1,3 @@
-<script lang="ts">
-import { reactive, ref } from "vue";
-import List from "@/components/order/List.vue";
-import Tickets from "@/components/order/Tickets.vue";
-
-export default {
-  name: "OrderView",
-  components: {
-    List,
-    Tickets,
-  },
-  data() {
-    const count = reactive({
-      early: 0,
-      double: 0,
-      first: 0,
-      second: 0,
-      banquet: 0,
-    });
-    const assignments = ref(0);
-    return {
-      count,
-      assignments,
-    };
-  },
-  methods: {
-    setCount(data) {
-      const { banquet, double, early, first, second } = data;
-      this.count.banquet = banquet;
-      this.count.double = double;
-      this.count.early = early;
-      this.count.first = first;
-      this.count.second = second;
-    },
-    setAssignments(number) {
-      this.assignments = number;
-    },
-  },
-  computed: {
-    getRemainder() {
-      return this.count.banquet - this.assignments;
-    },
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-};
-</script>
-
 <template>
   <article id="order" class="order-container">
     <List :count="count" :remainder="getRemainder" />
@@ -58,6 +9,41 @@ export default {
     />
   </article>
 </template>
+
+<script setup lang="ts">
+import { reactive, ref, onBeforeMount, computed } from 'vue'
+import List from '@/components/order/List.vue'
+import Tickets from '@/components/order/Tickets.vue'
+
+const count = reactive({
+  early: 0,
+  double: 0,
+  first: 0,
+  second: 0,
+  banquet: 0
+})
+
+const assignments = ref(0)
+
+const setCount = (data: { banquet: any, double: any, early: any, first: any, second: any }): void => {
+  const { banquet, double, early, first, second } = data
+  count.banquet = banquet
+  count.double = double
+  count.early = early
+  count.first = first
+  count.second = second
+}
+
+const setAssignments = (number: number): void => {
+  assignments.value = number
+}
+
+const getRemainder = computed(() => count.banquet - assignments.value)
+
+onBeforeMount(() => {
+  window.scrollTo({ top: 0 })
+})
+</script>
 
 <style scoped lang="scss">
 .order-container {

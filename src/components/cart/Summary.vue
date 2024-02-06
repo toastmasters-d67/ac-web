@@ -1,143 +1,3 @@
-<script lang="ts">
-import { computed, reactive, ref } from "vue";
-import axios from "axios";
-
-export async function submit(token, target) {
-  const base = import.meta.env.VITE_API;
-  const url = `${base}/order`;
-  const callback = `${base}/callback`;
-  try {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    axios
-      .post(url, {
-        amount: target.amount,
-        email: "",
-        description: `${import.meta.env.VITE_YEAR} Annual Conference`,
-        url: base,
-        callback: callback,
-        early: target.state.early,
-        double: target.state.double,
-        first: target.state.first,
-        second: target.state.second,
-        banquet: target.state.banquet,
-      })
-      .then((response) => target.setValues(response))
-      .catch(function (error) {
-        if (401 === error.response.status) {
-          localStorage.removeItem("token");
-          this.$router.push("login");
-        } else {
-          console.log(error);
-          return Promise.reject(error);
-        }
-      });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export default {
-  props: {
-    state: {
-      type: Object,
-      default: function () {
-        return {
-          early: 0,
-          double: 0,
-          first: 0,
-          second: 0,
-          banquet: 0,
-        };
-      },
-    },
-    name: {
-      type: Object,
-      default: function () {
-        return {
-          early: "",
-          double: "",
-          first: "",
-          second: "",
-          banquet: "",
-        };
-      },
-    },
-    price: {
-      type: Object,
-      default: function () {
-        return {
-          early: 0,
-          double: 0,
-          first: 0,
-          second: 0,
-          banquet: 0,
-        };
-      },
-    },
-  },
-  data() {
-    const amount = ref(computed(() => this.getAmount()));
-    const url = ref("");
-    const content = ref("");
-    const sha = ref("");
-    const merchantID = ref("");
-    const version = ref("");
-    return {
-      amount,
-      url,
-      content,
-      sha,
-      merchantID,
-      version,
-    };
-  },
-  computed: {
-    subTotal: {
-      get() {
-        return reactive({
-          early: this.state.early * this.price.early,
-          double: this.state.double * this.price.double,
-          first: this.state.first * this.price.first,
-          second: this.state.second * this.price.second,
-          banquet: this.state.banquet * this.price.banquet,
-        });
-      },
-    },
-  },
-  methods: {
-    checkout(event) {
-      event.preventDefault();
-      if (this.amount) {
-        const token = localStorage.getItem("token");
-        if (!token || !token.length) {
-          this.$router.push("login");
-        }
-        console.log("token =", token);
-        submit(token, this);
-      }
-    },
-    getAmount() {
-      let sum = 0;
-      Object.keys(this.state).forEach((key) => {
-        sum += this.state[key] * this.price[key];
-      });
-      return sum;
-    },
-    setValues(response) {
-      const { merchantID, version, content, sha, url } = response.data;
-      this.merchantID = merchantID;
-      this.version = version;
-      this.content = content;
-      this.sha = sha;
-      this.url = url;
-      setTimeout(function () {
-        document.getElementById("blue").submit();
-      }, 1000);
-    },
-  },
-};
-</script>
-
 <template>
   <div class="summary-container">
     <section id="summary">
@@ -165,12 +25,12 @@ export default {
       <hr class="summary-divider" />
       <div class="summary-amount">
         <span>{{ $t("cart.summary.total") }}</span>
-        <span>NT$ {{ amount }}</span>
+        <span>NT$ {{ totalAmount }}</span>
       </div>
-      <button class="picker-button" @click="this.checkout">
+      <button class="picker-button" @click="checkout">
         {{ $t("cart.summary.checkout") }}
       </button>
-      <form id="blue" :action="this.url" method="POST">
+      <form id="blue" :action="url" method="POST">
         <input v-model="merchantID" type="hidden" name="MerchantID" />
         <input v-model="version" type="hidden" name="Version" />
         <input v-model="content" type="hidden" name="TradeInfo" />
@@ -179,6 +39,127 @@ export default {
     </section>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, ref, onMounted } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
+
+const props = defineProps({
+  state: {
+    type: Object,
+    default: () => ({
+      early: 0,
+      double: 0,
+      first: 0,
+      second: 0,
+      banquet: 0
+    })
+  },
+  name: {
+    type: Object,
+    default: () => ({
+      early: '',
+      double: '',
+      first: '',
+      second: '',
+      banquet: ''
+    })
+  },
+  price: {
+    type: Object,
+    default: () => ({
+      early: 0,
+      double: 0,
+      first: 0,
+      second: 0,
+      banquet: 0
+    })
+  }
+})
+
+const router = useRouter()
+
+const totalAmount = computed(() => {
+  let sum = 0
+  for (const key in props.state) {
+    sum += props.state[key] * props.price[key]
+  }
+  return sum
+})
+
+const subTotal = computed(() => ({
+  early: props.state.early * props.price.early,
+  double: props.state.double * props.price.double,
+  first: props.state.first * props.price.first,
+  second: props.state.second * props.price.second,
+  banquet: props.state.banquet * props.price.banquet
+}))
+
+const url = ref('')
+const content = ref('')
+const sha = ref('')
+const merchantID = ref('')
+const version = ref('')
+
+async function checkout (event) {
+  event.preventDefault()
+  if (totalAmount.value) {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      router.push('login')
+      return
+    }
+    await submit(token)
+  }
+}
+
+async function submit (token) {
+  const base = import.meta.env.VITE_API
+  const apiUrl = `${base}/order`
+  const callbackUrl = `${base}/callback`
+
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`
+
+  try {
+    const response = await axios.post(apiUrl, {
+      amount: totalAmount.value,
+      email: '',
+      description: `${import.meta.env.VITE_YEAR} Annual Conference`,
+      url: base,
+      callback: callbackUrl,
+      early: props.state.early,
+      double: props.state.double,
+      first: props.state.first,
+      second: props.state.second,
+      banquet: props.state.banquet
+    })
+
+    setValues(response.data)
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 401) {
+      localStorage.removeItem('token')
+      router.push('login')
+    } else {
+      console.error(error)
+    }
+  }
+}
+
+function setValues (data) {
+  merchantID.value = data.merchantID
+  version.value = data.version
+  content.value = data.content
+  sha.value = data.sha
+  url.value = data.url
+
+  onMounted(() => {
+    setTimeout(() => {
+      document.getElementById('blue')?.submit()
+    }, 1000)
+  })
+}
+</script>
 
 <style scoped lang="scss">
 .summary-container {

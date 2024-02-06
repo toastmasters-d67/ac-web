@@ -34,66 +34,69 @@
   </li>
 </template>
 
-<script lang="ts">
-export default {
-  name: "BreadcrumbItem",
-  props: {
-    item: null,
-    template: null,
-    exact: null,
-  },
-  methods: {
-    onClick(event, navigate) {
-      if (this.item.command) {
-        this.item.command({
-          originalEvent: event,
-          item: this.item,
-        });
-      }
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
-      if (this.item.to && navigate) {
-        navigate(event);
-      }
-    },
-    containerClass(item) {
-      return [{ "p-disabled": this.disabled(item) }, this.item.class];
-    },
-    linkClass(routerProps) {
-      return [
-        "p-menuitem-link",
-        {
-          "router-link-active": routerProps && routerProps.isActive,
-          "router-link-active-exact":
-            this.exact && routerProps && routerProps.isExactActive,
-        },
-      ];
-    },
-    visible() {
-      return typeof this.item.visible === "function"
-        ? this.item.visible()
-        : this.item.visible !== false;
-    },
-    disabled(item) {
-      return typeof item.disabled === "function"
-        ? item.disabled()
-        : item.disabled;
-    },
-    label() {
-      return typeof this.item.label === "function"
-        ? this.item.label()
-        : this.item.label;
-    },
-    isCurrentUrl() {
-      const { to, url } = this.item;
-      const lastPath = `/${window.location.href.split("/").pop()}`;
+const props = defineProps({
+  item: Object,
+  template: Function,
+  exact: Boolean
+})
 
-      return to === lastPath || url === lastPath ? "page" : false;
-    },
-  },
-  computed: {
-    iconClass() {
-      return ["p-menuitem-icon", this.item.icon];
-    },
-  },
-};
+useRouter()
+
+function onClick (event: any, navigate: (arg0: any) => void): void {
+  if (props.item.command) {
+    props.item.command({
+      originalEvent: event,
+      item: props.item
+    })
+  }
+
+  if (props.item.to && navigate) {
+    navigate(event)
+  }
+}
+
+function containerClass (item: { class: string }): string[] {
+  return [{ 'p-disabled': disabled(item) }, item.class]
+}
+
+function linkClass (routerProps: { isActive: any, isExactActive: any }) {
+  return [
+    'p-menuitem-link',
+    {
+      'router-link-active': routerProps?.isActive,
+      'router-link-active-exact': props.exact && routerProps?.isExactActive
+    }
+  ]
+}
+
+function visible (): boolean {
+  return typeof props.item.visible === 'function'
+    ? props.item.visible()
+    : props.item.visible !== false
+}
+
+function disabled (item: { class?: string, disabled?: any }): boolean {
+  return typeof item.disabled === 'function' ? item.disabled() : item.disabled
+}
+
+function label (): string {
+  return typeof props.item.label === 'function'
+    ? props.item.label()
+    : props.item.label
+}
+
+function isCurrentUrl () {
+  const { to, url } = props.item
+  const lastPath = `/${window.location.href.split('/').pop()}`
+
+  return to === lastPath || url === lastPath ? 'page' : false
+}
+
+const iconClass = computed(() => {
+  return ['p-menuitem-icon', props.item.icon]
+})
 </script>

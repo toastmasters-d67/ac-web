@@ -1,107 +1,3 @@
-<script lang="ts">
-import axios from "axios";
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-export default {
-  name: "Slogan",
-  data() {
-    const date = "";
-    const title = "";
-    const slogan = "";
-    const longWelcome = "";
-    const shortWelcome = "";
-    const img = "";
-    const translation = [];
-
-    return {
-      date,
-      title,
-      slogan,
-      longWelcome,
-      shortWelcome,
-      img,
-      translation,
-      windowHeight: window.innerHeight,
-      sloganText: this.$t("home.slogan.text.desktop"),
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  mounted() {
-    this.getAllData();
-  },
-  methods: {
-    async getChineseData() {
-      await axios({
-        url: `${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`,
-        method: "get",
-      })
-        .then((res) => {
-          Array.from(
-            res.data.data.forEach((source) => {
-              this.date = source.date;
-              this.title = source.title;
-              this.slogan = source.slogan;
-              this.longWelcome = source.longwelcome;
-              this.shortWelcome = source.shortwelcome;
-              this.img = source.img;
-              this.translation.push(source.translations[0]);
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
-    getForigienData() {
-      Array.from(
-        this.translation.forEach((translation_id) => {
-          axios({
-            url: `${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`,
-            method: "get",
-          }).then((res) => {
-            Array.from(
-              res.data.data.forEach((source) => {
-                this.date = source.date;
-                this.title = source.title;
-                this.slogan = source.slogan;
-                this.longWelcome = source.longwelcome;
-                this.shortWelcome = source.shortwelcome;
-              })
-            );
-          });
-        })
-      );
-    },
-    async getAllData() {
-      await this.getChineseData();
-      if (this.$store.state.langu == "en") {
-        this.getForigienData();
-      }
-    },
-
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-      if (this.windowHeight > 768) {
-        this.sloganText = this.$t("home.slogan.text.desktop");
-      } else {
-        this.sloganText = this.$t("home.slogan.text.mobile");
-      }
-    },
-    getStyle() {
-      const background = import("@/assets/image/home/slogan-background.png");
-      return `background: url(${background}) no-repeat center bottom/cover`;
-    },
-  },
-};
-</script>
-
 <template>
   <section class="slogan-container">
     <img
@@ -127,6 +23,89 @@ export default {
     <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="img" />
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import axios from 'axios'
+import { useLanguageStore } from '@/stores.ts'
+
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+
+const date = ref('')
+const title = ref('')
+const slogan = ref('')
+const longWelcome = ref('')
+const shortWelcome = ref('')
+const img = ref('')
+const translation = ref([])
+const windowHeight = ref(window.innerHeight)
+const store = useLanguageStore()
+const sloganText = ref('')
+
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
+  sloganText.value =
+    windowHeight.value > 768
+      ? 'home.slogan.text.desktop'
+      : 'home.slogan.text.mobile'
+}
+
+const getChineseData = async (): Promise<void> => {
+  try {
+    const response = await axios.get(
+      `${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`
+    )
+    response.data.data.forEach((source: { date: string, title: string, slogan: string, longwelcome: string, shortwelcome: string, img: string, translations: any[] }) => {
+      date.value = source.date
+      title.value = source.title
+      slogan.value = source.slogan
+      longWelcome.value = source.longwelcome
+      shortWelcome.value = source.shortwelcome
+      img.value = source.img
+      translation.value.push(source.translations[0])
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getForigienData = async (): Promise<void> => {
+  for (const translationId of translation.value) {
+    try {
+      const response = await axios.get(
+        `${CMS_URL}/items/general_translations/?filter[id][_eq]=${String(translationId)}`
+      )
+      response.data.data.forEach((source: { date: string, title: string, slogan: string, longwelcome: string, shortwelcome: string }) => {
+        date.value = source.date
+        title.value = source.title
+        slogan.value = source.slogan
+        longWelcome.value = source.longwelcome
+        shortWelcome.value = source.shortwelcome
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
+  }
+}
+
+onMounted(() => {
+  handleResize()
+  window.addEventListener('resize', handleResize)
+  void getAllData()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
+</script>
 
 <style scoped lang="scss">
 .slogan-container {

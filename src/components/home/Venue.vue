@@ -11,13 +11,11 @@
       </div>
       <div class="venue-box-row">
         <i class="pi pi-map-marker venue-box-icon"></i>
-        <span class="venue-box-text">
-          {{ address }}
-        </span>
+        <span class="venue-box-text">{{ address }}</span>
       </div>
-      <a :href="`${link}`" class="venue-box-button" target="_blank">
-        {{ $t("home.venue.show") }}
-      </a>
+      <a :href="link" class="venue-box-button" target="_blank">{{
+        $t("home.venue.show")
+      }}</a>
       <img :src="img" class="venue-box-map" alt="map" />
     </div>
     <div class="venue-bottom-buttons">
@@ -41,67 +39,60 @@
   </section>
 </template>
 
-<script lang="ts">
-import axios from "axios";
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-export default {
-  data() {
-    const name = "";
-    const telephone = "";
-    const address = "";
-    const img = "";
-    const link = "";
-    const translation = "";
-    return { name, telephone, address, img, link, translation };
-  },
-  setup() {},
-  methods: {
-    async getChineseData() {
-      await axios({
-        url: `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`,
-        method: "get",
-      })
-        .then((res) => {
-          Array.from(
-            res.data.data.forEach((source) => {
-              this.name = source.name;
-              this.telephone = source.telephone;
-              this.address = source.address;
-              this.link = source.link;
-              this.img = `${CMS_URL}/assets/${source.picture}`;
-              this.translation = source.translations[0];
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getForigienData() {
-      axios({
-        url: `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${this.translation}`,
-        method: "get",
-      }).then((res) => {
-        Array.from(
-          res.data.data.forEach((source) => {
-            this.name = source.name;
-            this.address = source.address;
-          })
-        );
-      });
-    },
-    async getAllData() {
-      await this.getChineseData();
-      if (this.$store.state.langu == "en") {
-        this.getForigienData();
-      }
-    },
-  },
-  mounted() {
-    this.getAllData();
-  },
-};
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { useLanguageStore } from '@/stores.ts'
+
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+const store = useLanguageStore()
+
+const name = ref('')
+const telephone = ref('')
+const address = ref('')
+const img = ref('')
+const link = ref('')
+const translation = ref('')
+
+const getChineseData = async (): Promise<void> => {
+  try {
+    const response = await axios.get(
+      `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`
+    )
+    const data = response.data.data[0] // 假設只有一條數據
+    name.value = data.name
+    telephone.value = data.telephone
+    address.value = data.address
+    link.value = data.link
+    img.value = `${CMS_URL}/assets/${data.picture}`
+    translation.value = data.translations[0]
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getForigienData = async (): Promise<void> => {
+  try {
+    const response = await axios.get(
+      `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${translation.value}`
+    )
+    const data = response.data.data[0] // 假設只有一條數據
+    name.value = data.name
+    address.value = data.address
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
+  }
+}
+
+onMounted(getAllData)
 </script>
 
 <style scoped lang="scss">

@@ -7,10 +7,71 @@
       <div class="timer-segment" :style="getStyles[3]"></div>
     </div>
     <div class="timer-inner"></div>
-    <div class="timer-value">{{ number }}</div>
+    <div class="timer-value">{{ neatNumber }}</div>
     <div class="timer-ball" :style="getBall"></div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = defineProps({
+  value: {
+    type: Number,
+    default: 0
+  },
+  full: {
+    type: Number,
+    default: 60
+  }
+})
+
+const neatNumber = computed(() => neat(props.value))
+const angle = computed(() => getAngle(props.value, props.full))
+
+function neat (number: number): string {
+  if (number < 0) {
+    return ''
+  }
+  if (number < 10) {
+    return `0${number.toString()}`
+  }
+  return number.toString()
+}
+
+function getAngle (value: number, full: number): number {
+  value = +value
+  const angle = Math.floor((360 * value) / full)
+  return angle
+}
+
+const getStyles = computed(() => {
+  const styles = []
+  const quotient = Math.floor(angle.value / 90)
+  const remainder = angle.value % 90
+  const rotate = [3, 0, 1, 2]
+  rotate.forEach((value) => {
+    const key = rotate.indexOf(value)
+    let skew = 0
+    if (key > quotient) {
+      skew = 90
+    } else if (key === quotient) {
+      skew = 90 - remainder
+    }
+    const style = `transform: rotate(${value * 90}deg) skew(${skew}deg)`
+    styles.push(style)
+  })
+  return styles
+})
+
+const getBall = computed(() => {
+  let ball = angle.value - 90
+  if (ball < 0) {
+    ball += 360
+  }
+  return `transform: rotate(${ball}deg)`
+})
+</script>
 
 <style scoped lang="scss">
 @font-face {
@@ -129,74 +190,3 @@
   }
 }
 </style>
-
-<script lang="ts">
-import { computed, ref } from "vue";
-
-export default {
-  name: "Timer",
-  props: {
-    value: {
-      type: Number,
-      default: 0,
-    },
-    full: {
-      type: Number,
-      default: 60,
-    },
-  },
-  data() {
-    const number = ref(computed(() => this.neat(this.$props.value)));
-    const angle = computed(() =>
-      this.getAngle(this.$props.value, this.$props.full)
-    );
-    return {
-      number,
-      angle,
-    };
-  },
-  methods: {
-    neat(number) {
-      if (number < 0) {
-        return "";
-      }
-      if (number < 10) {
-        return `0${number.toString()}`;
-      }
-      return number.toString();
-    },
-    getAngle(value, full) {
-      value = +value;
-      const angle = Math.floor((360 * value) / full);
-      return angle;
-    },
-  },
-  computed: {
-    getStyles() {
-      const styles = [];
-      const quotient = Math.floor(this.angle / 90);
-      const remainder = this.angle % 90;
-      const rotate = [3, 0, 1, 2];
-      Array.from(rotate).forEach((value) => {
-        const key = rotate.indexOf(value);
-        let skew = 0;
-        if (key > quotient) {
-          skew = 90;
-        } else if (key === quotient) {
-          skew = 90 - remainder;
-        }
-        const style = `transform: rotate(${value * 90}deg) skew(${skew}deg)`;
-        styles.push(style);
-      });
-      return styles;
-    },
-    getBall() {
-      let ball = this.angle - 90;
-      if (ball < 0) {
-        ball += 360;
-      }
-      return `transform: rotate(${ball}deg)`;
-    },
-  },
-};
-</script>

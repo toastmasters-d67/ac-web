@@ -1,83 +1,65 @@
-<script lang="ts">
-export default {
-  name: "List",
-  props: {
-    count: {
-      type: Object,
-      default: function () {
-        return {
-          early: 0,
-          double: 0,
-          first: 0,
-          second: 0,
-          banquet: 0,
-        };
-      },
-    },
-    remainder: {
-      type: Number,
-    },
-  },
-  computed: {
-    getItems() {
-      const items = [];
-      let index = 1;
-      Object.keys(this.count).forEach((key) => {
-        for (let i = 0; i < this.count[key]; i++) {
-          if (key !== "banquet") {
-            const item = {
-              id: "",
-              key: index,
-              type: key,
-              description: this.$t(`cart.picker.${key}.name`),
-            };
-            items.push(item);
-            index++;
-          }
-        }
-      });
-      return items;
-    },
-  },
-};
-</script>
-
 <template>
   <section id="list" class="list-container">
     <header class="list-title">
       <span class="title-desktop">{{ $t("order.list.title") }}</span>
       <div class="title-mobile">
-        <span class="title-mobile-subtitle">
-          {{ $t("order.list.mobile-subtitle") }}
-        </span>
-        <span class="title-mobile-content">
-          {{ $t("order.list.mobile-content") }}
-        </span>
+        <span class="title-mobile-subtitle">{{ $t("order.list.mobile-subtitle") }}</span>
+        <span class="title-mobile-content">{{ $t("order.list.mobile-content") }}</span>
       </div>
     </header>
     <ul class="list-tickets-list">
-      <li v-for="(item, key) in getItems" :key="key" class="list-ticket">
+      <li v-for="(item, index) in getItems" :key="index" class="list-ticket">
         {{ $t("order.ticket") }} {{ item.key }} - {{ item.description }}
       </li>
       <li class="list-banquet">
         <div class="list-banquet-content">
-          <img
-            alt="banquet"
-            src="@/assets/icon/order/banquet-icon.svg"
-            class="list-banquet-icon"
-          />
-          <span class="list-banquet-text">
-            {{ $t("cart.picker.banquet.name") }}
-          </span>
-          <span class="list-banquet-number">
-            {{ remainder }}
-          </span>
+          <img alt="banquet" src="@/assets/icon/order/banquet-icon.svg" class="list-banquet-icon" />
+          <span class="list-banquet-text">{{ $t("cart.picker.banquet.name") }}</span>
+          <span class="list-banquet-number">{{ remainder }}</span>
         </div>
         <span class="list-banquet-note">({{ $t("order.list.note") }})</span>
       </li>
     </ul>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = defineProps({
+  count: {
+    type: Object,
+    default: () => ({
+      early: 0,
+      double: 0,
+      first: 0,
+      second: 0,
+      banquet: 0
+    })
+  },
+  remainder: Number
+})
+
+const getItems = computed(() => {
+  const items: any[] = []
+  let index = 1
+  Object.keys(props.count).forEach((key) => {
+    for (let i = 0; i < props.count[key]; i++) {
+      if (key !== 'banquet') {
+        const item = {
+          id: '',
+          key: index,
+          type: key,
+          description: `cart.picker.${key}.name`
+        }
+        items.push(item)
+        index++
+      }
+    }
+  })
+  return items
+})
+</script>
 
 <style scoped lang="scss">
 .list-container {

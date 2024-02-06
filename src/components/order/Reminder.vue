@@ -1,23 +1,3 @@
-<script lang="ts">
-export default {
-  name: "Reminder",
-  props: {
-    showReminder: {
-      type: Boolean,
-    },
-    message: {
-      type: String,
-    },
-    dismiss: {
-      type: Function,
-    },
-    trigger: {
-      type: Function,
-    },
-  },
-};
-</script>
-
 <template>
   <section id="reminder" v-if="showReminder" class="reminder-container">
     <div class="reminder-modal">
@@ -33,6 +13,15 @@ export default {
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  showReminder: Boolean,
+  message: String,
+  dismiss: Function,
+  trigger: Function
+})
+</script>
 
 <style scoped lang="scss">
 .reminder-container {

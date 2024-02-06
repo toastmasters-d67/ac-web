@@ -1,83 +1,74 @@
-<script lang="ts">
-import { reactive } from "vue";
-import axios from "axios";
-
-const CMS_URL = import.meta.env.VITE_CMS_API;
-export default {
-  name: "Speakers",
-
-  data() {
-    const speakers = reactive([]);
-    let speakPer = [];
-    const icon = [];
-    Array.from(this.$tm("speakers")).forEach((source) => {
-      const item = {
-        key: this.$rt(source.key),
-        name: this.$rt(source.name),
-      };
-      speakers.push(item);
-    });
-    return { speakers, speakPer, icon };
-  },
-  mounted() {
-    axios
-      .get(`${CMS_URL}/items/speakers`, {})
-      .then((response) => {
-        Array.from(
-          response.data.data.forEach((source) => {
-            if (this.$store.state.langu == "tw") {
-              this.speakPer.push(source.name);
-            }
-            this.icon.push(source.icon);
-          })
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    if (this.$store.state.langu == "en") {
-      axios
-        .get(`${CMS_URL}/items/speakers_translations`, {})
-        .then((response) => {
-          Array.from(
-            response.data.data.forEach((source) => {
-              this.speakPer.push(source.name);
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  },
-  methods: {
-    getLink(id) {
-      return `/${id}`;
-    },
-    getIcon(iconId) {
-      return `${CMS_URL}/assets/${iconId}`;
-    },
-  },
-};
-</script>
-
 <template>
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
-      <div v-for="(speaker, index) in speakPer" :key="index">
-        <router-link :to="getLink(index + 1)" class="speaker">
+      <div v-for="speaker in speakers" :key="speaker.id">
+        <router-link :to="getLink(speaker.id)" class="speaker">
           <img
-            :src="getIcon(icon[index])"
+            :src="getIcon(speaker.icon.id)"
             class="speaker-image"
-            :alt="speaker"
+            :alt="speaker.name"
           />
-          <span class="speaker-name-text">{{ speaker }}</span>
+          <span class="speaker-name-text">{{ getName(speaker) }}</span>
         </router-link>
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { createDirectus, graphql } from '@directus/sdk'
+import { useLanguageStore } from '@/stores.ts'
+
+interface Speaker {
+  name: string
+  icon: {
+    id: number
+  }
+  id: number
+  translations: Array<{
+    name: string
+  }>
+}
+
+interface Schema {
+  articles: Speaker[]
+}
+
+const CMS_URL = import.meta.env.VITE_CMS_API
+const client = createDirectus<Schema>(CMS_URL).with(graphql())
+const store = useLanguageStore()
+const speakers = ref<Speaker[]>([])
+
+onMounted(async () => {
+  const result = await client.query<Speaker[]>(`
+    query Speakers {
+        speakers(filter: { seminars: { year: { _eq: "2023" } } }) {
+            name
+            icon {
+                id
+            }
+            id
+            translations(filter: { languages_id: { name: { _eq: "English" } } }) {
+                name
+            }
+        }
+    }
+  `)
+  speakers.value = result.speakers
+})
+
+const getLink = (id: number): string => `/speaker/${id}`
+const getIcon = (iconId: number): string => `${CMS_URL}/assets/${iconId}`
+const getName = (speaker: Speaker): string => {
+  if (store.language === 'tw') {
+    return speaker.name
+  } else {
+    return speaker.translations[0].name
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .speakers-container {

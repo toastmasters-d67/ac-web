@@ -85,6 +85,12 @@
   </footer>
 </template>
 
+<script setup lang="ts">
+defineProps({
+  scrollToElement: Function
+})
+</script>
+
 <style scoped>
 a {
   color: #53595a;
@@ -184,14 +190,3 @@ a {
   }
 }
 </style>
-
-<script lang="ts">
-export default {
-  name: "Footer",
-  props: {
-    scrollToElement: {
-      type: Function,
-    },
-  },
-};
-</script>

@@ -1,93 +1,10 @@
-<script lang="ts">
-import { reactive } from "vue";
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
-import axios from "axios";
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-export default {
-  name: "FAQView",
-  components: {
-    Breadcrumb,
-  },
-  data() {
-    const faqs = reactive([]);
-    const translation = [];
-    return { faqs, translation };
-  },
-  methods: {
-    async getChineseData() {
-      await axios({
-        url: `${CMS_URL}/items/faqs/?filter[year][_eq]=${YEAR}`,
-        method: "get",
-      })
-        .then((res) => {
-          Array.from(
-            res.data.data.forEach((source) => {
-              const item = {
-                question: source.question,
-                answer: source.answer,
-                icon: "pi pi-angle-down faq-icon",
-                show: false,
-              };
-              this.faqs.push(item);
-              this.translation.push(source.translations[0]);
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
-    getForigienData() {
-      Array.from(
-        this.translation.forEach((translation_id) => {
-          axios({
-            url: `${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`,
-            method: "get",
-          }).then((res) => {
-            Array.from(
-              res.data.data.forEach((source) => {
-                this.date = source.date;
-                this.title = source.title;
-                this.slogan = source.slogan;
-                this.longWelcome = source.longwelcome;
-                this.shortWelcome = source.shortwelcome;
-              })
-            );
-          });
-        })
-      );
-    },
-    async getAllData() {
-      await this.getChineseData();
-      if (this.$store.state.langu == "en") {
-        this.getForigienData();
-      }
-    },
-
-    toggle(key) {
-      this.faqs[key].show = !this.faqs[key].show;
-      const direction = this.faqs[key].show ? "up" : "down";
-      this.faqs[key].icon = `pi pi-angle-${direction} faq-icon`;
-    },
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-  mounted() {
-    this.getChineseData();
-  },
-};
-</script>
-
 <template>
   <article id="faq" class="faq-container">
     <Breadcrumb v-once />
     <header class="faq-page-title">{{ $t("faq.title") }}</header>
     <div class="faq-questions">
       <div v-for="(item, key) in faqs" :key="key" class="faq-question">
-        <div class="faq-row" @click="toggle(key)">
+        <div class="faq-row" @click="() => toggle(key)">
           <span>{{ item.question }}</span>
           <i :class="item.icon"></i>
         </div>
@@ -96,6 +13,75 @@ export default {
     </div>
   </article>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { useLanguageStore } from '@/stores.ts'
+import Breadcrumb from '@/components/app/Breadcrumb.vue'
+
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+const store = useLanguageStore()
+
+const faqs = ref([])
+const translation = ref([])
+
+const getChineseData = async (): Promise<void> => {
+  try {
+    const response = await axios.get(
+      `${CMS_URL}/items/faqs/?filter[year][_eq]=${YEAR}`
+    )
+    response.data.data.forEach((source) => {
+      const item = {
+        question: source.question,
+        answer: source.answer,
+        icon: 'pi pi-angle-down faq-icon',
+        show: false
+      }
+      faqs.value.push(item)
+      translation.value.push(source.translations[0])
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getForigienData = async (): Promise<void> => {
+  for (const id of translation.value) {
+    try {
+      const response = await axios.get(
+        `${CMS_URL}/items/general_translations/?filter[id][_eq]=${id}`
+      )
+      response.data.data.forEach((source, index) => {
+        faqs.value[index].question =
+          source.question ?? faqs.value[index].question
+        faqs.value[index].answer = source.answer ?? faqs.value[index].answer
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
+  }
+}
+
+const toggle = (key: number): void => {
+  faqs.value[key].show = !faqs.value[key].show
+  const direction = faqs.value[key].show ? 'up' : 'down'
+  faqs.value[key].icon = `pi pi-angle-${direction} faq-icon`
+}
+
+onMounted(() => {
+  window.scrollTo({ top: 0 })
+  void getAllData()
+})
+</script>
 
 <style scoped lang="scss">
 .faq-container {

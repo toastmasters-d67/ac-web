@@ -1,108 +1,3 @@
-<script lang="ts">
-import largeBag from "@/assets/image/home/souvenirs-bag.png";
-import smallBag from "@/assets/image/home/souvenirs-bag-small.png";
-import largeTowel from "@/assets/image/home/souvenirs-towel.png";
-import smallTowel from "@/assets/image/home/souvenirs-towel-small.png";
-import axios from "axios";
-import { reactive } from "vue";
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-export default {
-  name: "Souvenirs",
-  data() {
-    const name = "";
-    const img = [];
-    const translation = [];
-    let souvenirs = reactive([]);
-    return {
-      windowHeight: window.innerHeight,
-      name,
-      img,
-      translation,
-      souvenirs,
-    };
-  },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-
-  mounted() {
-    this.getAllData();
-  },
-  methods: {
-    handleResize() {
-      this.windowHeight = window.innerWidth;
-    },
-    getImage(item) {
-      if (item === "bag") {
-        return this.windowHeight > 768 ? largeBag : smallBag;
-      }
-      if (item === "towel") {
-        return this.windowHeight > 768 ? largeTowel : smallTowel;
-      }
-      return "";
-    },
-
-    async getChineseData() {
-      await axios({
-        url: `${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`,
-        method: "get",
-      })
-        .then((res) => {
-          Array.from(
-            res.data.data.forEach((source) => {
-              const item = {
-                name: source.name,
-                img: `${CMS_URL}/assets/${source.picture}`,
-              };
-              this.img.push(`${CMS_URL}/assets/${source.picture}`);
-              if (this.$store.state.langu == "tw") {
-                this.souvenirs.push(item);
-              }
-              this.translation.push(source.translations[0]);
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      this.souvenirs.name = [];
-    },
-
-    getForigienData() {
-      Array.from(
-        this.translation.forEach((translation_id) => {
-          axios({
-            url: `${CMS_URL}/items/souvenirs_translations/?filter[id][_eq]=${translation_id}`,
-            method: "get",
-          }).then((res) => {
-            Array.from(
-              res.data.data.forEach((source) => {
-                const item = {
-                  name: source.name,
-                  img: this.img[translation_id - 1],
-                };
-                this.souvenirs.push(item);
-              })
-            );
-          });
-        })
-      );
-    },
-    async getAllData() {
-      await this.getChineseData();
-      if (this.$store.state.langu == "en") {
-        this.getForigienData();
-      }
-    },
-  },
-};
-</script>
-
 <template>
   <section id="souvenirs" class="souvenirs-container">
     <header class="souvenirs-title">{{ $t("home.souvenir.title") }}</header>
@@ -123,6 +18,87 @@ export default {
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, reactive } from 'vue'
+import axios from 'axios'
+import { useLanguageStore } from '@/stores.ts'
+import largeBag from '@/assets/image/home/souvenirs-bag.png'
+import smallBag from '@/assets/image/home/souvenirs-bag-small.png'
+import largeTowel from '@/assets/image/home/souvenirs-towel.png'
+import smallTowel from '@/assets/image/home/souvenirs-towel-small.png'
+
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+const store = useLanguageStore()
+
+const windowHeight = ref(window.innerHeight)
+const souvenirs = reactive([])
+
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
+}
+
+const getImage = (item: string): string => {
+  if (item === 'bag') {
+    return windowHeight.value > 768 ? largeBag : smallBag
+  }
+  if (item === 'towel') {
+    return windowHeight.value > 768 ? largeTowel : smallTowel
+  }
+  return ''
+}
+
+const getChineseData = async (): Promise<void> => {
+  try {
+    const response = await axios.get(
+      `${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`
+    )
+    response.data.data.forEach((source: { name: any, picture: any, translations: any[] }) => {
+      const item = {
+        name: source.name,
+        img: `${CMS_URL}/assets/${source.picture}`,
+        translation_id: source.translations[0]
+      }
+      souvenirs.push(item)
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getForigienData = async (): Promise<void> => {
+  for (const item of souvenirs) {
+    try {
+      const response = await axios.get(
+        `${CMS_URL}/items/souvenirs_translations/?filter[id][_eq]=${item.translation_id}`
+      )
+      response.data.data.forEach((source: { name: any }) => {
+        item.name = source.name
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
+  }
+}
+
+onMounted(() => {
+  handleResize()
+  window.addEventListener('resize', handleResize)
+  void getAllData()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
+</script>
 
 <style scoped lang="scss">
 .souvenirs-container {

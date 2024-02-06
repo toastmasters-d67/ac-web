@@ -268,6 +268,15 @@
   </article>
 </template>
 
+<script setup lang="ts">
+import { onBeforeMount } from 'vue'
+import Breadcrumb from '@/components/app/Breadcrumb.vue'
+
+onBeforeMount(() => {
+  window.scrollTo({ top: 0 })
+})
+</script>
+
 <style scoped lang="scss">
 .accommodation-title {
   font-size: 32px;
@@ -606,17 +615,3 @@
   }
 }
 </style>
-
-<script lang="ts">
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
-
-export default {
-  name: "AccommodationView",
-  components: {
-    Breadcrumb,
-  },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
-  },
-};
-</script>

@@ -1,19 +1,8 @@
-<script lang="ts">
-export default {
-  name: "CtaButtons",
-  props: {
-    scrollToElement: {
-      type: Function,
-    },
-  },
-};
-</script>
-
 <template>
   <div class="cta-buttons-container">
     <button
       class="cta-button contact"
-      onclick="location.href = 'mailto:tmicon@toastmasters.org.tw'"
+      @click="() => (location.href = 'mailto:tmicon@toastmasters.org.tw')"
     >
       <span v-for="(item, index) in $tm('app.button.contact')" :key="index">
         {{ $rt(item) }}
@@ -21,6 +10,12 @@ export default {
     </button>
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  scrollToElement: Function
+})
+</script>
 
 <style scoped lang="scss">
 .cta-buttons-container {
