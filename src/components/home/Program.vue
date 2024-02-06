@@ -1177,20 +1177,20 @@
 
 <script lang="ts">
 export default {
-  name: "Program",
-  data() {
+  name: 'Program',
+  data () {
     return {
-      showProgramDay1: true,
-    };
+      showProgramDay1: true
+    }
   },
   methods: {
-    switchProgram(day) {
-      if (day === "day1") {
-        this.showProgramDay1 = true;
+    switchProgram (day: string) {
+      if (day === 'day1') {
+        this.showProgramDay1 = true
       } else {
-        this.showProgramDay1 = false;
+        this.showProgramDay1 = false
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>

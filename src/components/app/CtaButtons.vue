@@ -12,11 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-
-const props = defineProps({
-  scrollToElement: Function,
-});
+defineProps({
+  scrollToElement: Function
+})
 </script>
 
 <style scoped lang="scss">

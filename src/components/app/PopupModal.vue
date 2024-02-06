@@ -7,16 +7,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const isVisible = ref(false);
+const isVisible = ref(false)
 
-function open() {
-  isVisible.value = true;
+function open () {
+  isVisible.value = true
 }
 
-function close() {
-  isVisible.value = false;
+function close () {
+  isVisible.value = false
 }
 </script>
 

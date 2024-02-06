@@ -8,38 +8,38 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
-  sentences: Array,
-});
+  sentences: Array
+})
 
-const content = ref(props.sentences.join(""));
-const segment = ref("");
-let offset = 6;
-let windowSize = 120;
-const locale = ref(localStorage.getItem("locale") ?? "en");
-if (locale.value === "tw") {
-  offset = 3;
-  windowSize = 100;
+const content = ref(props.sentences.join(''))
+const segment = ref('')
+let offset = 6
+let windowSize = 120
+const locale = ref(localStorage.getItem('locale') ?? 'en')
+if (locale.value === 'tw') {
+  offset = 3
+  windowSize = 100
 }
-const marqueeInterval = ref(null);
+const marqueeInterval = ref(null)
 
 onMounted(() => {
   marqueeInterval.value = setInterval(() => {
-    runMarquee();
-  }, 500);
-});
+    runMarquee()
+  }, 500)
+})
 
 onBeforeUnmount(() => {
-  clearInterval(marqueeInterval.value);
-});
+  clearInterval(marqueeInterval.value)
+})
 
-function runMarquee() {
-  const start = content.value.substring(0, offset);
-  const end = content.value.substring(offset);
-  content.value = end + start;
-  segment.value = content.value.substring(0, windowSize);
+function runMarquee (): void {
+  const start = content.value.substring(0, offset)
+  const end = content.value.substring(offset)
+  content.value = end + start
+  segment.value = content.value.substring(0, windowSize)
 }
 </script>
 

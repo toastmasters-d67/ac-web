@@ -46,32 +46,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import largeMan from "@/assets/image/login/man-shopping-online.png";
-import smallMan from "@/assets/image/login/man-shopping-online-mobile.png";
+import { ref, onMounted, onUnmounted } from 'vue'
+import largeMan from '@/assets/image/login/man-shopping-online.png'
+import smallMan from '@/assets/image/login/man-shopping-online-mobile.png'
 
-const props = defineProps({
-  step1HighlightText: String,
-});
+defineProps({
+  step1HighlightText: String
+})
 
-const windowHeight = ref(window.innerHeight);
+const windowHeight = ref(window.innerHeight)
 
-function handleResize() {
-  windowHeight.value = window.innerWidth;
+function handleResize (): void {
+  windowHeight.value = window.innerWidth
 }
 
-function getImage() {
-  return windowHeight.value > 768 ? largeMan : smallMan;
+function getImage (): string {
+  return windowHeight.value > 768 ? largeMan : smallMan
 }
 
 onMounted(() => {
-  window.addEventListener("resize", handleResize);
-  handleResize();
-});
+  window.addEventListener('resize', handleResize)
+  handleResize()
+})
 
 onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped lang="scss">

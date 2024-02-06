@@ -38,38 +38,36 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-
-const props = defineProps({
+defineProps({
   name: {
     type: String,
-    default: "",
+    default: ''
   },
   title: {
     type: String,
-    default: "",
+    default: ''
   },
   contents: {
     type: String,
-    default: "",
+    default: ''
   },
   facebook: {
     type: String,
-    default: "",
+    default: ''
   },
   instagram: {
     type: String,
-    default: "",
+    default: ''
   },
   youtube: {
     type: String,
-    default: "",
+    default: ''
   },
   image: {
     type: String,
-    default: "",
-  },
-});
+    default: ''
+  }
+})
 </script>
 
 <style scoped lang="scss">

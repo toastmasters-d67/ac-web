@@ -149,77 +149,77 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onBeforeUnmount } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { useLanguageStore } from "@/stores";
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useLanguageStore } from '@/stores.ts'
 
-const route = useRoute();
-const router = useRouter();
-const store = useLanguageStore();
+useRoute()
+const router = useRouter()
+const store = useLanguageStore()
 
-const locale = ref(localStorage.getItem("locale") ?? "tw");
+const locale = ref(localStorage.getItem('locale') ?? 'tw')
 const localeOptions = [
-  { value: "tw", label: "中文" },
-  { value: "en", label: "EN" },
-];
-const visibleFull = ref(false);
-const isLogin = ref(false);
-const showAccountMenu = ref(false);
+  { value: 'tw', label: '中文' },
+  { value: 'en', label: 'EN' }
+]
+const visibleFull = ref(false)
+const isLogin = ref(false)
+const showAccountMenu = ref(false)
 
 watch(locale, (newLocale) => {
-  localStorage.setItem("locale", newLocale);
-  store.set_language(newLocale);
-  location.reload();
-});
+  localStorage.setItem('locale', newLocale)
+  store.setLanguage(newLocale)
+  location.reload()
+})
 
 onMounted(() => {
-  const token = localStorage.getItem("token");
-  isLogin.value = !!token;
-  document.addEventListener("click", onClick);
-});
+  const token = localStorage.getItem('token')
+  isLogin.value = !!token
+  document.addEventListener('click', onClick)
+})
 
 onBeforeUnmount(() => {
-  document.removeEventListener("click", onClick);
-});
+  document.removeEventListener('click', onClick)
+})
 
-function hideMenu() {
-  visibleFull.value = false;
+function hideMenu (): void {
+  visibleFull.value = false
 }
 
-function hideMenuAndScrollToElement(id) {
-  hideMenu();
-  scrollToElement(id);
+function hideMenuAndScrollToElement (id: any): void {
+  hideMenu()
+  scrollToElement(id)
 }
 
-function hideMenuAndToTop() {
-  hideMenu();
-  scrollToTop();
+function hideMenuAndToTop (): void {
+  hideMenu()
+  scrollToTop()
 }
 
-function onClick(event) {
-  if (event.target.closest(".navbar-account-button")) {
-    showAccountMenu.value = !showAccountMenu.value;
+function onClick (event): void {
+  if (event.target.closest('.navbar-account-button')) {
+    showAccountMenu.value = !showAccountMenu.value
   } else {
-    showAccountMenu.value = false;
+    showAccountMenu.value = false
   }
 }
 
-function logout() {
-  localStorage.removeItem("token");
-  router.push("/").then(() => {
-    location.reload();
-  });
+function logout (): void {
+  localStorage.removeItem('token')
+  void router.push('/').then(() => {
+    location.reload()
+  })
 }
 
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+function scrollToTop (): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-function scrollToElement(id) {
-  const element = document.getElementById(id);
-  if (element) {
-    const top = element.offsetTop;
-    window.scrollTo({ top, behavior: "smooth" });
+function scrollToElement (id: string): void {
+  const element = document.getElementById(id)
+  if (element != null) {
+    const top = element.offsetTop
+    window.scrollTo({ top, behavior: 'smooth' })
   }
 }
 </script>

@@ -131,72 +131,72 @@
 </style>
 
 <script lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref } from 'vue'
 
 export default {
-  name: "Timer",
+  name: 'Timer',
   props: {
     value: {
       type: Number,
-      default: 0,
+      default: 0
     },
     full: {
       type: Number,
-      default: 60,
-    },
+      default: 60
+    }
   },
-  data() {
-    const number = ref(computed(() => this.neat(this.$props.value)));
+  data () {
+    const number = ref(computed(() => this.neat(this.$props.value)))
     const angle = computed(() =>
       this.getAngle(this.$props.value, this.$props.full)
-    );
+    )
     return {
       number,
-      angle,
-    };
+      angle
+    }
   },
   methods: {
-    neat(number) {
+    neat (number) {
       if (number < 0) {
-        return "";
+        return ''
       }
       if (number < 10) {
-        return `0${number.toString()}`;
+        return `0${number.toString()}`
       }
-      return number.toString();
+      return number.toString()
     },
-    getAngle(value, full) {
-      value = +value;
-      const angle = Math.floor((360 * value) / full);
-      return angle;
-    },
+    getAngle (value, full) {
+      value = +value
+      const angle = Math.floor((360 * value) / full)
+      return angle
+    }
   },
   computed: {
-    getStyles() {
-      const styles = [];
-      const quotient = Math.floor(this.angle / 90);
-      const remainder = this.angle % 90;
-      const rotate = [3, 0, 1, 2];
+    getStyles () {
+      const styles = []
+      const quotient = Math.floor(this.angle / 90)
+      const remainder = this.angle % 90
+      const rotate = [3, 0, 1, 2]
       Array.from(rotate).forEach((value) => {
-        const key = rotate.indexOf(value);
-        let skew = 0;
+        const key = rotate.indexOf(value)
+        let skew = 0
         if (key > quotient) {
-          skew = 90;
+          skew = 90
         } else if (key === quotient) {
-          skew = 90 - remainder;
+          skew = 90 - remainder
         }
-        const style = `transform: rotate(${value * 90}deg) skew(${skew}deg)`;
-        styles.push(style);
-      });
-      return styles;
+        const style = `transform: rotate(${value * 90}deg) skew(${skew}deg)`
+        styles.push(style)
+      })
+      return styles
     },
-    getBall() {
-      let ball = this.angle - 90;
+    getBall () {
+      let ball = this.angle - 90
       if (ball < 0) {
-        ball += 360;
+        ball += 360
       }
-      return `transform: rotate(${ball}deg)`;
-    },
-  },
-};
+      return `transform: rotate(${ball}deg)`
+    }
+  }
+}
 </script>

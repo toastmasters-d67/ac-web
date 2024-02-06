@@ -269,12 +269,12 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount } from "vue";
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
+import { onBeforeMount } from 'vue'
+import Breadcrumb from '@/components/app/Breadcrumb.vue'
 
 onBeforeMount(() => {
-  window.scrollTo({ top: 0 });
-});
+  window.scrollTo({ top: 0 })
+})
 </script>
 
 <style scoped lang="scss">

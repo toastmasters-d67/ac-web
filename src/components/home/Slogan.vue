@@ -25,86 +25,86 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import axios from "axios";
-import { useLanguageStore } from "@/stores";
+import { ref, onMounted, onUnmounted } from 'vue'
+import axios from 'axios'
+import { useLanguageStore } from '@/stores.ts'
 
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
 
-const date = ref("");
-const title = ref("");
-const slogan = ref("");
-const longWelcome = ref("");
-const shortWelcome = ref("");
-const img = ref("");
-const translation = ref([]);
-const windowHeight = ref(window.innerHeight);
-const store = useLanguageStore();
-const sloganText = ref("");
+const date = ref('')
+const title = ref('')
+const slogan = ref('')
+const longWelcome = ref('')
+const shortWelcome = ref('')
+const img = ref('')
+const translation = ref([])
+const windowHeight = ref(window.innerHeight)
+const store = useLanguageStore()
+const sloganText = ref('')
 
-const handleResize = () => {
-  windowHeight.value = window.innerWidth;
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
   sloganText.value =
     windowHeight.value > 768
-      ? "home.slogan.text.desktop"
-      : "home.slogan.text.mobile";
-};
+      ? 'home.slogan.text.desktop'
+      : 'home.slogan.text.mobile'
+}
 
-const getChineseData = async () => {
+const getChineseData = async (): Promise<void> => {
   try {
     const response = await axios.get(
       `${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`
-    );
-    response.data.data.forEach((source) => {
-      date.value = source.date;
-      title.value = source.title;
-      slogan.value = source.slogan;
-      longWelcome.value = source.longwelcome;
-      shortWelcome.value = source.shortwelcome;
-      img.value = source.img;
-      translation.value.push(source.translations[0]);
-    });
+    )
+    response.data.data.forEach((source: { date: string, title: string, slogan: string, longwelcome: string, shortwelcome: string, img: string, translations: any[] }) => {
+      date.value = source.date
+      title.value = source.title
+      slogan.value = source.slogan
+      longWelcome.value = source.longwelcome
+      shortWelcome.value = source.shortwelcome
+      img.value = source.img
+      translation.value.push(source.translations[0])
+    })
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-const getForigienData = async () => {
-  for (const translation_id of translation.value) {
+const getForigienData = async (): Promise<void> => {
+  for (const translationId of translation.value) {
     try {
       const response = await axios.get(
-        `${CMS_URL}/items/general_translations/?filter[id][_eq]=${translation_id}`
-      );
-      response.data.data.forEach((source) => {
-        date.value = source.date;
-        title.value = source.title;
-        slogan.value = source.slogan;
-        longWelcome.value = source.longwelcome;
-        shortWelcome.value = source.shortwelcome;
-      });
+        `${CMS_URL}/items/general_translations/?filter[id][_eq]=${String(translationId)}`
+      )
+      response.data.data.forEach((source: { date: string, title: string, slogan: string, longwelcome: string, shortwelcome: string }) => {
+        date.value = source.date
+        title.value = source.title
+        slogan.value = source.slogan
+        longWelcome.value = source.longwelcome
+        shortWelcome.value = source.shortwelcome
+      })
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
-};
+}
 
-const getAllData = async () => {
-  await getChineseData();
-  if (store.language === "en") {
-    await getForigienData();
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
   }
-};
+}
 
 onMounted(() => {
-  handleResize();
-  window.addEventListener("resize", handleResize);
-  getAllData();
-});
+  handleResize()
+  window.addEventListener('resize', handleResize)
+  void getAllData()
+})
 
 onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped lang="scss">

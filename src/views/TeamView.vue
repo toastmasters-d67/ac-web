@@ -236,33 +236,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount, onMounted, onUnmounted } from "vue";
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
+import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue'
+import Breadcrumb from '@/components/app/Breadcrumb.vue'
 
-const windowHeight = ref(window.innerHeight);
+const windowHeight = ref(window.innerHeight)
 
-const handleResize = () => {
-  windowHeight.value = window.innerWidth;
-};
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
+}
 
-const getImage = (item) => {
+const getImage = (item: any): string => {
   return windowHeight.value > 768
     ? `/src/assets/image/our-team/${item}.png`
-    : `/src/assets/image/our-team/${item}-mobile.png`;
-};
+    : `/src/assets/image/our-team/${item}-mobile.png`
+}
 
 onBeforeMount(() => {
-  window.scrollTo({ top: 0 });
-});
+  window.scrollTo({ top: 0 })
+})
 
 onMounted(() => {
-  window.addEventListener("resize", handleResize);
-  handleResize();
-});
+  window.addEventListener('resize', handleResize)
+  handleResize()
+})
 
 onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped lang="scss">

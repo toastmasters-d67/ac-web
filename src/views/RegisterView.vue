@@ -6,19 +6,19 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref } from "vue";
-import { useI18n } from "vue-i18n";
-import Instruction from "@/components/auth/Instruction.vue";
-import Register from "@/components/auth/Register.vue";
+import { onBeforeMount, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import Instruction from '@/components/auth/Instruction.vue'
+import Register from '@/components/auth/Register.vue'
 
-const { t } = useI18n();
+const { t } = useI18n()
 const step1HighlightText = ref(
-  t("login.introduction.step1.text-highlight-register")
-);
+  t('login.introduction.step1.text-highlight-register')
+)
 
 onBeforeMount(() => {
-  window.scrollTo({ top: 0 });
-});
+  window.scrollTo({ top: 0 })
+})
 </script>
 
 <style scoped lang="scss">

@@ -40,59 +40,59 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import axios from "axios";
-import { useLanguageStore } from "@/stores";
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { useLanguageStore } from '@/stores.ts'
 
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-const store = useLanguageStore();
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+const store = useLanguageStore()
 
-const name = ref("");
-const telephone = ref("");
-const address = ref("");
-const img = ref("");
-const link = ref("");
-const translation = ref("");
+const name = ref('')
+const telephone = ref('')
+const address = ref('')
+const img = ref('')
+const link = ref('')
+const translation = ref('')
 
-const getChineseData = async () => {
+const getChineseData = async (): Promise<void> => {
   try {
     const response = await axios.get(
       `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`
-    );
-    const data = response.data.data[0]; // 假設只有一條數據
-    name.value = data.name;
-    telephone.value = data.telephone;
-    address.value = data.address;
-    link.value = data.link;
-    img.value = `${CMS_URL}/assets/${data.picture}`;
-    translation.value = data.translations[0];
+    )
+    const data = response.data.data[0] // 假設只有一條數據
+    name.value = data.name
+    telephone.value = data.telephone
+    address.value = data.address
+    link.value = data.link
+    img.value = `${CMS_URL}/assets/${data.picture}`
+    translation.value = data.translations[0]
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-const getForigienData = async () => {
+const getForigienData = async (): Promise<void> => {
   try {
     const response = await axios.get(
       `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${translation.value}`
-    );
-    const data = response.data.data[0]; // 假設只有一條數據
-    name.value = data.name;
-    address.value = data.address;
+    )
+    const data = response.data.data[0] // 假設只有一條數據
+    name.value = data.name
+    address.value = data.address
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-const getAllData = async () => {
-  await getChineseData();
-  if (store.language === "en") {
-    await getForigienData();
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
   }
-};
+}
 
-onMounted(getAllData);
+onMounted(getAllData)
 </script>
 
 <style scoped lang="scss">

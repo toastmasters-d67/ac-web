@@ -19,6 +19,35 @@
   </nav>
 </template>
 
+<script setup lang="ts">
+import { reactive, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import BreadcrumbItem from '@/components/app/BreadcrumbItem.vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm, rt } = useI18n()
+const route = useRoute()
+
+const mapping = tm('app.breadcrumb')
+const home = reactive({
+  label: rt(mapping['/']),
+  to: '/'
+})
+
+const model = reactive([])
+const segments = route.path.slice(1).split('/')
+segments.forEach((segment, index) => {
+  const url = `/${segments.slice(0, index + 1).join('/')}`
+  const item = {
+    label: rt(mapping[segment] || segment),
+    to: url
+  }
+  model.push(item)
+})
+
+const exact = ref(true)
+</script>
+
 <style>
 .p-breadcrumb {
   background: transparent;
@@ -81,39 +110,3 @@
   }
 }
 </style>
-
-<script lang="ts">
-import { computed, reactive, ref } from "vue";
-import { useRoute } from "vue-router";
-import BreadcrumbItem from "@/components/app/BreadcrumbItem.vue";
-
-export default {
-  name: "Breadcrumb",
-  components: {
-    BreadcrumbItem,
-  },
-  data() {
-    const mapping = this.$tm("app.breadcrumb");
-    const home = reactive({
-      label: this.$rt(mapping["/"]),
-      to: "/",
-    });
-    const route = useRoute();
-    const path = computed(() => route.path);
-    const segments = path.value.slice(1).split("/");
-    const model = reactive([]);
-    Array.from(segments).forEach((segment) => {
-      const key = path.value.indexOf(segment);
-      const url = `${path.value.slice(0, key)}${segment}`;
-      const item = {
-        label: this.$rt(mapping[segment]),
-        to: url,
-      };
-      model.push(item);
-    });
-    const exact = ref(true);
-
-    return { home, model, exact };
-  },
-};
-</script>

@@ -45,14 +45,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-
-const props = defineProps({
+defineProps({
   seminars: {
     type: Array,
-    default: () => [],
-  },
-});
+    default: () => []
+  }
+})
 </script>
 
 <style scoped lang="scss">

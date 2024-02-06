@@ -1,118 +1,118 @@
 <script lang="ts">
-import { reactive } from "vue";
-import axios from "axios";
-import Marquee from "@/components/app/Marquee.vue";
-import PopupModal from "@/components/app/PopupModal.vue";
+import { reactive } from 'vue'
+import axios from 'axios'
+import Marquee from '@/components/app/Marquee.vue'
+import PopupModal from '@/components/app/PopupModal.vue'
 
-export async function getUser(token, target) {
-  const url = `${import.meta.env.VITE_API}/user`;
+export async function getUser (token, target) {
+  const url = `${import.meta.env.VITE_API}/user`
   try {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`
     axios
       .get(url)
       .then(function (response) {
         if (
           response?.data &&
-          "orders" in response.data &&
+          'orders' in response.data &&
           response.data.orders?.length
         ) {
           Array.from(response.data.orders).forEach((order) => {
             const item = {
               id: order.orderId,
               amount: order.amount,
-              status: "unpaid",
-              statusText: target.$t("account.unpaid"),
-              button: "",
-              date: target.getDate(order.orderId),
-            };
+              status: 'unpaid',
+              statusText: target.$t('account.unpaid'),
+              button: '',
+              date: target.getDate(order.orderId)
+            }
             if (order.tickets.length) {
-              item.status = "complete";
-              item.statusText = target.$t("account.complete");
-              item.button = target.$t("account.view");
+              item.status = 'complete'
+              item.statusText = target.$t('account.complete')
+              item.button = target.$t('account.view')
             } else if (order.transactions.length) {
               const transaction = order.transactions.find(
-                (x) => x.status === "SUCCESS"
-              );
+                (x) => x.status === 'SUCCESS'
+              )
               if (transaction && transaction.amount === order.amount) {
-                item.status = "pending";
-                item.statusText = target.$t("account.pending");
-                item.button = target.$t("account.edit");
+                item.status = 'pending'
+                item.statusText = target.$t('account.pending')
+                item.button = target.$t('account.edit')
               }
             }
-            target.items.push(item);
-          });
+            target.items.push(item)
+          })
         }
       })
       .catch(async function (error) {
         if (error.response.status === 401) {
-          localStorage.removeItem("token");
-          this.$router.push("login");
+          localStorage.removeItem('token')
+          this.$router.push('login')
         } else {
-          console.log(error);
-          return await Promise.reject(error);
+          console.log(error)
+          return await Promise.reject(error)
         }
-      });
+      })
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
 export default {
-  name: "AccountView",
+  name: 'AccountView',
   components: {
     Marquee,
-    PopupModal,
+    PopupModal
   },
-  data() {
+  data () {
     const fields = reactive([
-      this.$t("account.number"),
-      this.$t("account.date"),
-      this.$t("account.status"),
-      this.$t("account.amount"),
-      this.$t("account.attendee"),
-    ]);
-    const items = reactive([]);
+      this.$t('account.number'),
+      this.$t('account.date'),
+      this.$t('account.status'),
+      this.$t('account.amount'),
+      this.$t('account.attendee')
+    ])
+    const items = reactive([])
     return {
       fields,
-      items,
-    };
+      items
+    }
   },
   methods: {
-    getDate(orderId) {
+    getDate (orderId) {
       try {
-        return new Date(+orderId * 1000).toISOString().slice(0, 10);
+        return new Date(+orderId * 1000).toISOString().slice(0, 10)
       } catch (error) {
-        if (error.message === "Invalid time value") {
+        if (error.message === 'Invalid time value') {
           const arr = [
             orderId.slice(0, 4),
             orderId.slice(4, 6),
-            orderId.slice(6, 8),
-          ];
-          return arr.join("-");
+            orderId.slice(6, 8)
+          ]
+          return arr.join('-')
         }
-        return "";
+        return ''
       }
     },
-    getStatusClass(item) {
-      return "account-status " + item.status.toLocaleLowerCase();
+    getStatusClass (item) {
+      return 'account-status ' + item.status.toLocaleLowerCase()
     },
-    browseOrder(id) {
-      this.$router.push(`order/${id}`);
-    },
-  },
-  created() {
-    if (!this.items.length) {
-      const token = localStorage.getItem("token");
-      if (!token?.length) {
-        this.$router.push("/login");
-      }
-      getUser(token, this);
+    browseOrder (id) {
+      this.$router.push(`order/${id}`)
     }
   },
-  beforeMount() {
-    window.scrollTo({ top: 0 });
+  created () {
+    if (!this.items.length) {
+      const token = localStorage.getItem('token')
+      if (!token?.length) {
+        this.$router.push('/login')
+      }
+      getUser(token, this)
+    }
   },
-};
+  beforeMount () {
+    window.scrollTo({ top: 0 })
+  }
+}
 </script>
 
 <template>

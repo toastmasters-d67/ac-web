@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: "List",
+  name: 'List',
   props: {
     count: {
       type: Object,
@@ -10,36 +10,36 @@ export default {
           double: 0,
           first: 0,
           second: 0,
-          banquet: 0,
-        };
-      },
+          banquet: 0
+        }
+      }
     },
     remainder: {
-      type: Number,
-    },
+      type: Number
+    }
   },
   computed: {
-    getItems() {
-      const items = [];
-      let index = 1;
+    getItems () {
+      const items: any[] = []
+      let index = 1
       Object.keys(this.count).forEach((key) => {
         for (let i = 0; i < this.count[key]; i++) {
-          if (key !== "banquet") {
+          if (key !== 'banquet') {
             const item = {
-              id: "",
+              id: '',
               key: index,
               type: key,
-              description: this.$t(`cart.picker.${key}.name`),
-            };
-            items.push(item);
-            index++;
+              description: this.$t(`cart.picker.${key}.name`)
+            }
+            items.push(item)
+            index++
           }
         }
-      });
-      return items;
-    },
-  },
-};
+      })
+      return items
+    }
+  }
+}
 </script>
 
 <template>

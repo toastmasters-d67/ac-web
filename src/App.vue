@@ -11,23 +11,23 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from "@/components/app/Navbar.vue";
-import Footer from "@/components/app/Footer.vue";
-import ScrollToTopButton from "@/components/app/ScrollToTopButton.vue";
-import CtaButtons from "@/components/app/CtaButtons.vue";
+import Navbar from '@/components/app/Navbar.vue'
+import Footer from '@/components/app/Footer.vue'
+import ScrollToTopButton from '@/components/app/ScrollToTopButton.vue'
+import CtaButtons from '@/components/app/CtaButtons.vue'
 
-const scrollToElement = (id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
+const scrollToElement = (id: string): void => {
+  const element = document.getElementById(id)
+  if (element != null) {
+    element.scrollIntoView({ behavior: 'smooth' })
   } else {
-    window.location.href = `/#${id}`;
+    window.location.href = `/#${id}`
   }
-};
+}
 
-const scrollToTop = (behavior = "smooth") => {
-  window.scrollTo({ top: 0, behavior });
-};
+const scrollToTop = (behavior = 'smooth'): void => {
+  window.scrollTo({ top: 0, behavior })
+}
 </script>
 
 <style lang="scss">
@@ -45,8 +45,7 @@ const scrollToTop = (behavior = "smooth") => {
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src:
-    local("Montserrat"),
+  src: local("Montserrat"),
     url("./assets/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2"),
     url("./assets/fonts/Montserrat/Montserrat-Regular.woff") format("woff");
 }
@@ -56,8 +55,7 @@ const scrollToTop = (behavior = "smooth") => {
   font-weight: 400;
   font-style: normal;
   font-display: auto;
-  src:
-    local("Noto Sans TC"),
+  src: local("Noto Sans TC"),
     url("//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.otf")
       format("otf");
 }

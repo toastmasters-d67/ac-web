@@ -20,84 +20,84 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, reactive } from "vue";
-import axios from "axios";
-import { useLanguageStore } from "@/stores";
-import largeBag from "@/assets/image/home/souvenirs-bag.png";
-import smallBag from "@/assets/image/home/souvenirs-bag-small.png";
-import largeTowel from "@/assets/image/home/souvenirs-towel.png";
-import smallTowel from "@/assets/image/home/souvenirs-towel-small.png";
+import { ref, onMounted, onUnmounted, reactive } from 'vue'
+import axios from 'axios'
+import { useLanguageStore } from '@/stores.ts'
+import largeBag from '@/assets/image/home/souvenirs-bag.png'
+import smallBag from '@/assets/image/home/souvenirs-bag-small.png'
+import largeTowel from '@/assets/image/home/souvenirs-towel.png'
+import smallTowel from '@/assets/image/home/souvenirs-towel-small.png'
 
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-const store = useLanguageStore();
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+const store = useLanguageStore()
 
-const windowHeight = ref(window.innerHeight);
-const souvenirs = reactive([]);
+const windowHeight = ref(window.innerHeight)
+const souvenirs = reactive([])
 
-const handleResize = () => {
-  windowHeight.value = window.innerWidth;
-};
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
+}
 
-const getImage = (item) => {
-  if (item === "bag") {
-    return windowHeight.value > 768 ? largeBag : smallBag;
+const getImage = (item: string): string => {
+  if (item === 'bag') {
+    return windowHeight.value > 768 ? largeBag : smallBag
   }
-  if (item === "towel") {
-    return windowHeight.value > 768 ? largeTowel : smallTowel;
+  if (item === 'towel') {
+    return windowHeight.value > 768 ? largeTowel : smallTowel
   }
-  return "";
-};
+  return ''
+}
 
-const getChineseData = async () => {
+const getChineseData = async (): Promise<void> => {
   try {
     const response = await axios.get(
       `${CMS_URL}/items/souvenirs/?filter[year][_eq]=${YEAR}`
-    );
-    response.data.data.forEach((source) => {
+    )
+    response.data.data.forEach((source: { name: any, picture: any, translations: any[] }) => {
       const item = {
         name: source.name,
         img: `${CMS_URL}/assets/${source.picture}`,
-        translation_id: source.translations[0],
-      };
-      souvenirs.push(item);
-    });
+        translation_id: source.translations[0]
+      }
+      souvenirs.push(item)
+    })
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-const getForigienData = async () => {
+const getForigienData = async (): Promise<void> => {
   for (const item of souvenirs) {
     try {
       const response = await axios.get(
         `${CMS_URL}/items/souvenirs_translations/?filter[id][_eq]=${item.translation_id}`
-      );
-      response.data.data.forEach((source) => {
-        item.name = source.name;
-      });
+      )
+      response.data.data.forEach((source: { name: any }) => {
+        item.name = source.name
+      })
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
-};
+}
 
-const getAllData = async () => {
-  await getChineseData();
-  if (store.language === "en") {
-    await getForigienData();
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
   }
-};
+}
 
 onMounted(() => {
-  handleResize();
-  window.addEventListener("resize", handleResize);
-  getAllData();
-});
+  handleResize()
+  window.addEventListener('resize', handleResize)
+  void getAllData()
+})
 
 onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped lang="scss">

@@ -52,70 +52,70 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount } from "vue";
-import axios from "axios";
-import { useLanguageStore } from "@/stores";
-import Breadcrumb from "@/components/app/Breadcrumb.vue";
+import { ref, onBeforeMount } from 'vue'
+import axios, { type AxiosResponse } from 'axios'
+import { useLanguageStore } from '@/stores.ts'
+import Breadcrumb from '@/components/app/Breadcrumb.vue'
 
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const YEAR = import.meta.env.VITE_YEAR;
-const store = useLanguageStore();
+const CMS_URL = import.meta.env.VITE_CMS_API
+const YEAR = import.meta.env.VITE_YEAR
+const store = useLanguageStore()
 
-const name = ref("");
-const telephone = ref("");
-const address = ref("");
-const img = ref("");
-const car = ref("");
-const metro = ref("");
-const bus = ref("");
-const link = ref("");
+const name = ref('')
+const telephone = ref('')
+const address = ref('')
+const img = ref('')
+const car = ref('')
+const metro = ref('')
+const bus = ref('')
+const link = ref('')
 
-const getChineseData = async () => {
+const getChineseData = async (): Promise<void> => {
   try {
     const response = await axios.get(
       `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`
-    );
-    const data = response.data.data[0]; // Assuming there's only one venue
-    name.value = data.name;
-    telephone.value = data.telephone;
-    address.value = data.address;
-    link.value = data.link;
-    car.value = data.car;
-    metro.value = data.metro;
-    bus.value = data.bus;
-    img.value = `${CMS_URL}/assets/${data.picture}`;
+    )
+    const data = response.data.data[0] // Assuming there's only one venue
+    name.value = data.name
+    telephone.value = data.telephone
+    address.value = data.address
+    link.value = data.link
+    car.value = data.car
+    metro.value = data.metro
+    bus.value = data.bus
+    img.value = `${CMS_URL}/assets/${data.picture}`
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-const getForigienData = async () => {
+const getForigienData = async (): Promise<void> => {
   try {
-    const response = await axios.get(
+    const response: AxiosResponse = await axios.get(
       `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${data.translation}`
-    );
-    const data = response.data.data[0]; // Assuming there's only one translation
-    name.value = data.name;
-    address.value = data.address;
-    car.value = data.car;
-    metro.value = data.metro;
-    bus.value = data.bus;
+    )
+    const data = response.data.data[0] // Assuming there's only one translation
+    name.value = data.name
+    address.value = data.address
+    car.value = data.car
+    metro.value = data.metro
+    bus.value = data.bus
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-const getAllData = async () => {
-  await getChineseData();
-  if (store.language === "en") {
-    await getForigienData();
+const getAllData = async (): Promise<void> => {
+  await getChineseData()
+  if (store.language === 'en') {
+    await getForigienData()
   }
-};
+}
 
 onBeforeMount(() => {
-  window.scrollTo({ top: 0 });
-  getAllData();
-});
+  window.scrollTo({ top: 0 })
+  void getAllData()
+})
 </script>
 
 <style scoped lang="scss">

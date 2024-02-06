@@ -124,8 +124,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, toRefs } from "vue";
-import { useI18n } from "vue-i18n";
+import { computed, toRefs } from 'vue'
 
 const props = defineProps({
   state: {
@@ -135,18 +134,18 @@ const props = defineProps({
       double: 0,
       first: 0,
       second: 0,
-      banquet: 0,
-    }),
+      banquet: 0
+    })
   },
   name: {
     type: Object,
     default: () => ({
-      early: "",
-      double: "",
-      first: "",
-      second: "",
-      banquet: "",
-    }),
+      early: '',
+      double: '',
+      first: '',
+      second: '',
+      banquet: ''
+    })
   },
   price: {
     type: Object,
@@ -155,27 +154,25 @@ const props = defineProps({
       double: 0,
       first: 0,
       second: 0,
-      banquet: 0,
-    }),
+      banquet: 0
+    })
   },
   setEarly: Function,
   setDouble: Function,
   setFirst: Function,
   setSecond: Function,
-  setBanquet: Function,
-});
+  setBanquet: Function
+})
 
-const stateRefs = toRefs(props.state);
-
-const { t } = useI18n();
+toRefs(props.state)
 
 const banquetNumbers = computed(() => {
   const maxBanquetNumber =
-    props.state.double + props.state.first + props.state.second;
-  return Array.from({ length: maxBanquetNumber + 1 }, (_, i) => i);
-});
+    props.state.double + props.state.first + props.state.second
+  return Array.from({ length: maxBanquetNumber + 1 }, (_, i) => i)
+})
 
-const numbers = Array.from({ length: 31 }, (_, i) => i);
+const numbers = Array.from({ length: 31 }, (_, i) => i)
 </script>
 
 <style scoped lang="scss">

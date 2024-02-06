@@ -13,32 +13,32 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, defineProps } from "vue";
+import { onMounted, onUnmounted, ref } from 'vue'
 
 defineProps({
-  scrollToTop: Function,
-});
+  scrollToTop: Function
+})
 
-const scrollToTopButton = ref(null);
+const scrollToTopButton = ref(null)
 
-function handelScroll() {
+function handelScroll (): void {
   if (
     document.body.scrollTop > 100 ||
     document.documentElement.scrollTop > 100
   ) {
-    scrollToTopButton.value.style.display = "block";
+    scrollToTopButton.value.style.display = 'block'
   } else {
-    scrollToTopButton.value.style.display = "none";
+    scrollToTopButton.value.style.display = 'none'
   }
 }
 
 onMounted(() => {
-  window.addEventListener("scroll", handelScroll);
-});
+  window.addEventListener('scroll', handelScroll)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handelScroll);
-});
+  window.removeEventListener('scroll', handelScroll)
+})
 </script>
 
 <style scoped lang="scss">

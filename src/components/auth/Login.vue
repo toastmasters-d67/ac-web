@@ -1,152 +1,13 @@
-<script lang="ts">
-import { reactive, ref } from "vue";
-import * as Yup from "yup";
-import useVuelidate from "@vuelidate/core";
-import { required, email, minLength, helpers } from "@vuelidate/validators";
-import axios from "axios";
-
-const loginFormSchema = Yup.object().shape({
-  email: Yup.string().required().email(),
-  password: Yup.string()
-    .required("Password is required")
-    .min(6, "Password must be at least 6 characters"),
-});
-
-export async function onSubmit(values, target) {
-  const url = `${import.meta.env.VITE_API}/login`;
-  try {
-    axios
-      .post(url, values)
-      .then(function (response) {
-        console.log("response =", response);
-        let token = "";
-        if (response?.data && "token" in response.data) {
-          token = response.data.token;
-        }
-        if (token.length) {
-          localStorage.setItem("token", token);
-          target.$router.push("/me").then(() => {
-            target.$router.go();
-          });
-        }
-      })
-      .catch(async function (error) {
-        if (error.response.status === 401) {
-          localStorage.removeItem("token");
-          target.loginError = target.$t("error.password.incorrect");
-        } else {
-          console.log(error);
-          return await Promise.reject(error);
-        }
-      });
-  } catch (error) {
-    console.log("error =", error);
-    localStorage.removeItem("token");
-  }
-}
-
-export default {
-  setup() {
-    const v$ = useVuelidate();
-    const state = reactive({
-      email: "",
-      password: "",
-    });
-    const initialErrors = reactive({
-      email: "",
-      password: "",
-    });
-    const errors = reactive({ ...initialErrors });
-    const loginError = ref("");
-    return { state, v$, errors, loginError, initialErrors };
-  },
-  data() {
-    const errorMessages = reactive({
-      requiredEmail: this.$t("error.email.empty"),
-      requiredPassword: this.$t("error.password.empty"),
-      email: this.$t("error.email.format"),
-      min: this.$t("error.password.min"),
-    });
-    const firstLoginDescription = this.$t("login.firstlogin-description");
-    return {
-      errorMessages,
-      firstLoginDescription,
-    };
-  },
-  methods: {
-    validate(field) {
-      loginFormSchema
-        .validateAt(field, this.values)
-        .then(() => {
-          this.errors[field] = "";
-        })
-        .catch((err) => {
-          this.errors[field] = err.message;
-        });
-    },
-    clear() {
-      this.loginError = "";
-      Object.assign(this.errors, this.initialErrors);
-    },
-    loginUser() {
-      this.v$.$validate();
-      if (this.v$.state.$errors.length) {
-        Array.from(this.v$.state.$errors).forEach((error) => {
-          this.errors[error.$property] = error.$message;
-        });
-        return;
-      }
-      loginFormSchema
-        .validate(this.state, { abortEarly: false })
-        .then(() => {
-          this.errors = { email: "", password: "" };
-          onSubmit(this.state, this);
-        })
-        .catch((err) => {
-          err.inner.forEach((error) => {
-            this.errors[error.path] = error.message;
-          });
-        });
-    },
-  },
-  validations() {
-    return {
-      state: {
-        email: {
-          email: helpers.withMessage(this.errorMessages.email, email),
-          required: helpers.withMessage(
-            this.errorMessages.requiredEmail,
-            required
-          ),
-        },
-        password: {
-          min: helpers.withMessage(this.errorMessages.min, minLength(6)),
-          required: helpers.withMessage(
-            this.errorMessages.requiredPassword,
-            required
-          ),
-        },
-      },
-    };
-  },
-};
-</script>
-
 <template>
   <section id="login" class="login-container">
     <div class="login-login">
       <header class="login-title">{{ $t("login.title") }}</header>
-      <span class="login-login-description">
-        {{ $t("login.description") }}
-      </span>
-      <span class="first-login-description" v-html="this.firstLoginDescription">
-      </span>
+      <span class="login-login-description">{{ $t("login.description") }}</span>
+      <span class="first-login-description" v-html="firstLoginDescription"></span>
       <div class="login-form">
-        <label for="email" class="login-label">
-          {{ $t("register.email") }}
-        </label>
+        <label for="email" class="login-label">{{ $t("register.email") }}</label>
         <input
-          v-model.trim="v$.state.email.$model"
+          v-model.trim="state.email"
           type="email"
           :placeholder="$t('register.email')"
           class="login-input"
@@ -154,14 +15,10 @@ export default {
           @click="clear"
           @input="clear"
         />
-        <p class="form-input-hint" v-if="!!errors.email">
-          {{ errors.email }}
-        </p>
-        <label for="password" class="login-label">
-          {{ $t("register.password") }}
-        </label>
+        <p class="form-input-hint" v-if="v$.email.$error">{{ errorMessages.email[v$.email.$errors[0].$validator] }}</p>
+        <label for="password" class="login-label">{{ $t("register.password") }}</label>
         <input
-          v-model.trim="v$.state.password.$model"
+          v-model.trim="state.password"
           type="password"
           :placeholder="$t('register.password')"
           class="login-input"
@@ -169,38 +26,87 @@ export default {
           @click="clear"
           @input="clear"
         />
+        <p class="form-input-hint" v-if="v$.password.$error">{{ errorMessages.password[v$.password.$errors[0].$validator] }}</p>
         <p class="form-input-hint">{{ loginError }}</p>
-        <p class="form-input-hint" v-if="!!errors.password">
-          {{ errors.password }}
-        </p>
-        <a
-          class="login-forget-password"
-          href="mailto:tmicon@toastmasters.org.tw"
-        >
-          {{ $t("login.forget-password") }}
-        </a>
-        <button class="login-button" @click="this.loginUser">
-          {{ $t("login.title") }}
-        </button>
+        <a class="login-forget-password" href="mailto:tmicon@toastmasters.org.tw">{{ $t("login.forget-password") }}</a>
+        <button class="login-button" @click="loginUser">{{ $t("login.title") }}</button>
       </div>
       <div class="login-register">
         {{ $t("login.no-account") }}
-        <router-link class="login-register register-link" to="/register">
-          {{ $t("register.title") }}
-        </router-link>
+        <router-link class="login-register register-link" to="/register">{{ $t("register.title") }}</router-link>
       </div>
       <hr class="login-divider" />
       <button class="login-google-button" v-if="false">
-        <img
-          alt="google"
-          src="@/assets/icon/login/google.svg"
-          class="login-google-button-logo"
-        />
+        <img alt="google" src="@/assets/icon/login/google.svg" class="login-google-button-logo" />
         <span class="login-google-button-text">Google</span>
       </button>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import useVuelidate from '@vuelidate/core'
+import { required, email, minLength } from '@vuelidate/validators'
+import axios from 'axios'
+
+const { t } = useI18n()
+const router = useRouter()
+const loginError = ref('')
+
+const state = reactive({
+  email: '',
+  password: ''
+})
+
+const rules = {
+  email: { required, email },
+  password: { required, minLength: minLength(6) }
+}
+
+const v$ = useVuelidate(rules, state)
+
+const errorMessages = {
+  email: {
+    required: t('error.email.empty'),
+    email: t('error.email.format')
+  },
+  password: {
+    required: t('error.password.empty'),
+    minLength: t('error.password.min')
+  }
+}
+
+const firstLoginDescription = t('login.firstlogin-description')
+
+function clear (): void {
+  loginError.value = ''
+}
+
+async function loginUser (): Promise<void> {
+  await v$.value.$validate()
+  if (!v$.value.$error) {
+    const url = `${import.meta.env.VITE_API}/login`
+    try {
+      const response = await axios.post(url, state)
+      const token = response.data.token
+      if (token) {
+        localStorage.setItem('token', token)
+        await router.push('/me')
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        localStorage.removeItem('token')
+        loginError.value = t('error.password.incorrect')
+      } else {
+        console.error(error)
+      }
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .login-container {

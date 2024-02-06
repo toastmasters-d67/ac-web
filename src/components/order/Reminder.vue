@@ -15,14 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-
-const props = defineProps({
+defineProps({
   showReminder: Boolean,
   message: String,
   dismiss: Function,
-  trigger: Function,
-});
+  trigger: Function
+})
 </script>
 
 <style scoped lang="scss">

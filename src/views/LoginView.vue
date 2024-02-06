@@ -6,32 +6,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount, onMounted, onUnmounted } from "vue";
-import { useI18n } from "vue-i18n";
-import Instruction from "@/components/auth/Instruction.vue";
-import Login from "@/components/auth/Login.vue";
+import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+import Instruction from '@/components/auth/Instruction.vue'
+import Login from '@/components/auth/Login.vue'
 
-const { t } = useI18n();
-const windowHeight = ref(window.innerHeight);
+const { t } = useI18n()
+const windowHeight = ref(window.innerHeight)
 const step1HighlightText = ref(
-  t("login.introduction.step1.text-highlight-login")
-);
+  t('login.introduction.step1.text-highlight-login')
+)
 
-const handleResize = () => {
-  windowHeight.value = window.innerWidth;
-};
+const handleResize = (): void => {
+  windowHeight.value = window.innerWidth
+}
 
 onBeforeMount(() => {
-  window.scrollTo({ top: 0 });
-});
+  window.scrollTo({ top: 0 })
+})
 
 onMounted(() => {
-  window.addEventListener("resize", handleResize);
-});
+  window.addEventListener('resize', handleResize)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped lang="scss">

@@ -17,29 +17,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { createDirectus, graphql } from "@directus/sdk";
-import { useLanguageStore } from "@/stores";
+import { ref, onMounted } from 'vue'
+import { createDirectus, graphql } from '@directus/sdk'
+import { useLanguageStore } from '@/stores.ts'
 
 interface Speaker {
-  name: string;
+  name: string
   icon: {
-    id: number;
-  };
-  id: number;
+    id: number
+  }
+  id: number
   translations: Array<{
-    name: string;
-  }>;
+    name: string
+  }>
 }
 
 interface Schema {
-  articles: Speaker[];
+  articles: Speaker[]
 }
 
-const CMS_URL = import.meta.env.VITE_CMS_API;
-const client = createDirectus<Schema>(CMS_URL).with(graphql());
-const store = useLanguageStore();
-const speakers = ref<Speaker[]>([]);
+const CMS_URL = import.meta.env.VITE_CMS_API
+const client = createDirectus<Schema>(CMS_URL).with(graphql())
+const store = useLanguageStore()
+const speakers = ref<Speaker[]>([])
 
 onMounted(async () => {
   const result = await client.query<Speaker[]>(`
@@ -55,19 +55,19 @@ onMounted(async () => {
             }
         }
     }
-  `);
-  speakers.value = result.speakers;
-});
+  `)
+  speakers.value = result.speakers
+})
 
-const getLink = (id: number) => `/speaker/${id}`;
-const getIcon = (iconId: number) => `${CMS_URL}/assets/${iconId}`;
-const getName = (speaker: Speaker) => {
-  if (store.language == "tw") {
-    return speaker.name;
+const getLink = (id: number): string => `/speaker/${id}`
+const getIcon = (iconId: number): string => `${CMS_URL}/assets/${iconId}`
+const getName = (speaker: Speaker): string => {
+  if (store.language === 'tw') {
+    return speaker.name
   } else {
-    return speaker.translations[0].name;
+    return speaker.translations[0].name
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

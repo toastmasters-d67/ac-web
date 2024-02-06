@@ -86,11 +86,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-
 defineProps({
-  scrollToElement: Function,
-});
+  scrollToElement: Function
+})
 </script>
 
 <style scoped>

@@ -1,262 +1,103 @@
-<script lang="ts">
-import { reactive, ref } from "vue";
-import * as Yup from "yup";
-import useVuelidate from "@vuelidate/core";
-import {
-  required,
-  email,
-  minLength,
-  sameAs,
-  helpers,
-} from "@vuelidate/validators";
-import axios from "axios";
-
-const registerFormSchema = Yup.object().shape({
-  firstName: Yup.string().required(),
-  lastName: Yup.string().required(),
-  email: Yup.string().required().email(),
-  password: Yup.string().required().min(6),
-  confirmPassword: Yup.string().required().min(6),
-});
-
-export async function onSubmit(values, target) {
-  const url = `${import.meta.env.VITE_API}/user`;
-  try {
-    axios
-      .post(url, values)
-      .then(function (response) {
-        console.log(response);
-        target.$router.push("/login");
-      })
-      .catch(async function (error) {
-        if (error.response.status === 409) {
-          target.errors.email = target.$t("error.email.occupied");
-          target.show = true;
-        } else {
-          console.log(error);
-          return await Promise.reject(error);
-        }
-      });
-  } catch (error) {
-    console.log("error =", error);
-  }
-}
-
-export default {
-  data() {
-    const v$ = useVuelidate();
-    const state = reactive({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-    const clearedErrors = reactive({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-    const errors = reactive({ ...clearedErrors });
-    const show = ref(false);
-    const errorMessages = reactive({
-      firstNameEmpty: this.$t("error.firstname"),
-      lastNameEmpty: this.$t("error.lastname"),
-      emailEmpty: this.$t("error.email.empty"),
-      passwordEmpty: this.$t("error.password.empty"),
-      emailFormat: this.$t("error.email.format"),
-      email: this.$t("error.email.occupied"),
-      min: this.$t("error.password.min"),
-      passwordMatch: this.$t("error.password.match"),
-    });
-    return { state, v$, errors, clearedErrors, show, errorMessages };
-  },
-  methods: {
-    clear() {
-      if (this.errors.email === this.$t("error.email.occupied")) {
-        this.errors.email = "";
-      }
-      Object.assign(this.errors, this.clearedErrors);
-    },
-    registerUser(event) {
-      event.preventDefault();
-      this.v$.$validate();
-      if (this.v$.state.$errors.length) {
-        Array.from(this.v$.state.$errors).forEach((error) => {
-          this.errors[error.$property] = error.$message;
-        });
-        return;
-      }
-      registerFormSchema
-        .validate(this.state, { abortEarly: false })
-        .then(() => {
-          this.errors = {};
-          onSubmit(this.state, this);
-        })
-        .catch((err) => {
-          err.inner.forEach((error) => {
-            this.errors[error.path] = error.message;
-          });
-        });
-    },
-  },
-  validations() {
-    return {
-      state: {
-        firstName: {
-          required: helpers.withMessage(
-            this.errorMessages.firstNameEmpty,
-            required
-          ),
-        },
-        lastName: {
-          required: helpers.withMessage(
-            this.errorMessages.lastNameEmpty,
-            required
-          ),
-        },
-        email: {
-          email: helpers.withMessage(this.errorMessages.emailFormat, email),
-          required: helpers.withMessage(
-            this.errorMessages.emailEmpty,
-            required
-          ),
-        },
-        password: {
-          min: helpers.withMessage(this.errorMessages.min, minLength(6)),
-          required: helpers.withMessage(
-            this.errorMessages.passwordEmpty,
-            required
-          ),
-        },
-        confirmPassword: {
-          passwordMatch: helpers.withMessage(
-            this.errorMessages.passwordMatch,
-            sameAs(this.state.password)
-          ),
-          min: helpers.withMessage(this.errorMessages.min, minLength(6)),
-          required: helpers.withMessage(
-            this.errorMessages.passwordEmpty,
-            required
-          ),
-        },
-      },
-    };
-  },
-};
-</script>
-
 <template>
   <section id="register" class="register-container">
-    <header class="register-title">
-      {{ $t("register.title") }}
-    </header>
-    <span class="register-title-note">
-      {{ $t("register.description") }}
-    </span>
+    <header class="register-title">{{ $t("register.title") }}</header>
+    <span class="register-title-note">{{ $t("register.description") }}</span>
     <div class="register-name">
       <div class="register-row row-name">
-        <label class="register-label">
-          {{ $t("register.firstname") }}
-        </label>
-        <input
-          v-model.trim="v$.state.firstName.$model"
-          type="text"
-          :placeholder="$t('register.firstname')"
-          class="register-input"
-          required
-          @click="clear"
-          @input="clear"
-        />
-        <p class="form-input-hint" v-if="!!errors.firstName">
-          {{ errors.firstName }}
-        </p>
+        <label class="register-label">{{ $t("register.firstname") }}</label>
+        <input v-model.trim="state.firstName" type="text" :placeholder="$t('register.firstname')" class="register-input" required @click="clear" @input="clear" />
+        <p class="form-input-hint" v-if="!!errors.firstName">{{ errors.firstName }}</p>
       </div>
       <div class="register-row row-name">
-        <label class="register-label">
-          {{ $t("register.lastname") }}
-        </label>
-        <input
-          v-model.trim="v$.state.lastName.$model"
-          type="text"
-          :placeholder="$t('register.lastname')"
-          class="register-input"
-          required
-          @click="clear"
-          @input="clear"
-        />
-        <p class="form-input-hint" v-if="!!errors.lastName">
-          {{ errors.lastName }}
-        </p>
+        <label class="register-label">{{ $t("register.lastname") }}</label>
+        <input v-model.trim="state.lastName" type="text" :placeholder="$t('register.lastname')" class="register-input" required @click="clear" @input="clear" />
+        <p class="form-input-hint" v-if="!!errors.lastName">{{ errors.lastName }}</p>
       </div>
     </div>
-
     <div class="register-row">
-      <label class="register-label">
-        {{ $t("register.email") }}
-      </label>
-      <input
-        v-model.trim="v$.state.email.$model"
-        type="email"
-        :placeholder="$t('register.email')"
-        class="register-input"
-        required
-        @click="clear"
-        @input="clear"
-      />
-      <p class="form-input-hint" v-if="!!errors.email || show">
-        {{ errors.email }}
-      </p>
+      <label class="register-label">{{ $t("register.email") }}</label>
+      <input v-model.trim="state.email" type="email" :placeholder="$t('register.email')" class="register-input" required @click="clear" @input="clear" />
+      <p class="form-input-hint" v-if="!!errors.email || show">{{ errors.email }}</p>
     </div>
     <div class="register-row">
-      <label class="register-label">
-        {{ $t("register.password") }}
-      </label>
-      <input
-        v-model.trim="v$.state.password.$model"
-        type="password"
-        :placeholder="$t('register.password')"
-        class="register-input"
-        required
-        @click="clear"
-        @input="clear"
-      />
-      <p class="form-input-hint" v-if="!!errors.password">
-        {{ errors.password }}
-      </p>
+      <label class="register-label">{{ $t("register.password") }}</label>
+      <input v-model.trim="state.password" type="password" :placeholder="$t('register.password')" class="register-input" required @click="clear" @input="clear" />
+      <p class="form-input-hint" v-if="!!errors.password">{{ errors.password }}</p>
     </div>
     <div class="register-row">
-      <label class="register-label">
-        {{ $t("register.confirm") }}
-      </label>
-      <input
-        v-model.trim="v$.state.confirmPassword.$model"
-        type="password"
-        :placeholder="$t('register.confirm')"
-        class="register-input"
-        required
-        @click="clear"
-        @input="clear"
-      />
-      <p class="form-input-hint" v-if="!!errors.confirmPassword">
-        {{ errors.confirmPassword }}
-      </p>
+      <label class="register-label">{{ $t("register.confirm") }}</label>
+      <input v-model.trim="state.confirmPassword" type="password" :placeholder="$t('register.confirm')" class="register-input" required @click="clear" @input="clear" />
+      <p class="form-input-hint" v-if="!!errors.confirmPassword">{{ errors.confirmPassword }}</p>
     </div>
-    <button type="submit" class="register-button" @click="this.registerUser">
-      {{ $t("register.title") }}
-    </button>
-
-    <span class="register-button-note">
-      {{ $t("register.have-account") }}
-      <router-link to="/login">
-        {{ $t("login.title") }}
-      </router-link>
-    </span>
+    <button type="submit" class="register-button" @click="registerUser">{{ $t("register.title") }}</button>
+    <span class="register-button-note">{{ $t("register.have-account") }} <router-link to="/login">{{ $t("login.title") }}</router-link></span>
     <hr class="register-divider" />
   </section>
 </template>
+
+<script setup lang="ts">
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useVuelidate } from '@vuelidate/core'
+import { required, email, minLength, sameAs } from '@vuelidate/validators'
+import axios from 'axios'
+
+const { t } = useI18n()
+const router = useRouter()
+
+const state = reactive({
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+})
+
+const rules = {
+  firstName: { required },
+  lastName: { required },
+  email: { required, email },
+  password: { required, minLength: minLength(6) },
+  confirmPassword: { required, sameAsPassword: sameAs(state.password) }
+}
+
+const v$ = useVuelidate(rules, state)
+const errors = reactive({
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+})
+
+const show = ref(false)
+
+function clear (): void {
+  show.value = false
+  for (const key in errors) {
+    errors[key] = ''
+  }
+}
+
+async function registerUser (event: { preventDefault: () => void }): Promise<void> {
+  event.preventDefault()
+  await v$.value.$validate()
+  if (!v$.value.$error) {
+    try {
+      await axios.post(`${import.meta.env.VITE_API}/user`, state)
+      await router.push('/login')
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 409) {
+        errors.email = t('error.email.occupied')
+        show.value = true
+      } else {
+        console.error(error)
+      }
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .register-container {

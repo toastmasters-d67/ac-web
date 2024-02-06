@@ -35,68 +35,68 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   item: Object,
   template: Function,
-  exact: Boolean,
-});
+  exact: Boolean
+})
 
-const router = useRouter();
+useRouter()
 
-function onClick(event, navigate) {
+function onClick (event: any, navigate: (arg0: any) => void): void {
   if (props.item.command) {
     props.item.command({
       originalEvent: event,
-      item: props.item,
-    });
+      item: props.item
+    })
   }
 
   if (props.item.to && navigate) {
-    navigate(event);
+    navigate(event)
   }
 }
 
-function containerClass(item) {
-  return [{ "p-disabled": disabled(item) }, item.class];
+function containerClass (item: { class: string }): string[] {
+  return [{ 'p-disabled': disabled(item) }, item.class]
 }
 
-function linkClass(routerProps) {
+function linkClass (routerProps: { isActive: any, isExactActive: any }) {
   return [
-    "p-menuitem-link",
+    'p-menuitem-link',
     {
-      "router-link-active": routerProps?.isActive,
-      "router-link-active-exact": props.exact && routerProps?.isExactActive,
-    },
-  ];
+      'router-link-active': routerProps?.isActive,
+      'router-link-active-exact': props.exact && routerProps?.isExactActive
+    }
+  ]
 }
 
-function visible() {
-  return typeof props.item.visible === "function"
+function visible (): boolean {
+  return typeof props.item.visible === 'function'
     ? props.item.visible()
-    : props.item.visible !== false;
+    : props.item.visible !== false
 }
 
-function disabled(item) {
-  return typeof item.disabled === "function" ? item.disabled() : item.disabled;
+function disabled (item: { class?: string, disabled?: any }): boolean {
+  return typeof item.disabled === 'function' ? item.disabled() : item.disabled
 }
 
-function label() {
-  return typeof props.item.label === "function"
+function label (): string {
+  return typeof props.item.label === 'function'
     ? props.item.label()
-    : props.item.label;
+    : props.item.label
 }
 
-function isCurrentUrl() {
-  const { to, url } = props.item;
-  const lastPath = `/${window.location.href.split("/").pop()}`;
+function isCurrentUrl () {
+  const { to, url } = props.item
+  const lastPath = `/${window.location.href.split('/').pop()}`
 
-  return to === lastPath || url === lastPath ? "page" : false;
+  return to === lastPath || url === lastPath ? 'page' : false
 }
 
 const iconClass = computed(() => {
-  return ["p-menuitem-icon", props.item.icon];
-});
+  return ['p-menuitem-icon', props.item.icon]
+})
 </script>

@@ -23,53 +23,53 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import Timer from "@/components/home/Timer.vue";
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import Timer from '@/components/home/Timer.vue'
 
-const days = ref(0);
-const hours = ref(0);
-const minutes = ref(0);
-const seconds = ref(0);
-const polling = ref(null);
+const days = ref(0)
+const hours = ref(0)
+const minutes = ref(0)
+const seconds = ref(0)
+const polling = ref(null)
 
-function getTime() {
-  let d = 0;
-  let h = 0;
-  let m = 0;
-  let s = 0;
-  const now = new Date();
-  const date = new Date(import.meta.env.VITE_COUNTDOWN_DATE);
-  const remaining = date - now;
+function getTime (): void {
+  let d = 0
+  let h = 0
+  let m = 0
+  let s = 0
+  const now = new Date()
+  const date = new Date(import.meta.env.VITE_COUNTDOWN_DATE)
+  const remaining = Number(date) - Number(now)
 
   if (remaining > 0) {
-    d = Math.floor(remaining / (1000 * 60 * 60 * 24));
-    h = Math.floor((remaining / (1000 * 60 * 60)) % 24);
-    m = Math.floor((remaining / (1000 * 60)) % 60);
-    s = Math.floor((remaining / 1000) % 60);
+    d = Math.floor(remaining / (1000 * 60 * 60 * 24))
+    h = Math.floor((remaining / (1000 * 60 * 60)) % 24)
+    m = Math.floor((remaining / (1000 * 60)) % 60)
+    s = Math.floor((remaining / 1000) % 60)
   }
 
-  days.value = d;
-  hours.value = h;
-  minutes.value = m;
-  seconds.value = s;
+  days.value = d
+  hours.value = h
+  minutes.value = m
+  seconds.value = s
 }
 
-function pollData() {
+function pollData (): void {
   polling.value = window.setInterval(() => {
-    getTime();
-  }, 1000);
+    getTime()
+  }, 1000)
 }
 
 onMounted(() => {
-  getTime();
-  pollData();
-});
+  getTime()
+  pollData()
+})
 
 onBeforeUnmount(() => {
-  if (polling.value) {
-    window.clearInterval(polling.value);
+  if (polling.value !== null && polling.value !== undefined) {
+    window.clearInterval(polling.value)
   }
-});
+})
 </script>
 
 <style scoped lang="scss">
