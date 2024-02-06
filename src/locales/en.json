@@ -110,7 +110,7 @@
     },
     "navbar": {
       "d67": "Toastmasters District 67",
-      "ac": "2024 Annual Conference",
+      "ac": "Annual Conference",
       "program": "Program",
       "speakers": "Speakers",
       "venue": "Venue",
@@ -484,7 +484,7 @@
       "two-day": "2 Day Pass",
       "early-bird-title": "Early Bird Pass",
       "early-bird-title-note": "2 day pass + Dinner Banquet",
-      "early-bird-price-note": "Original price $ 3000",
+      "early-bird-price-note": "Original price $",
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
       "until": "Until Mar 27, 2023",
@@ -492,8 +492,8 @@
       "lunch": "Lunchbox",
       "lunch2": "Lunchboxes for 2 days",
       "souvenir": "Souvenirs",
-      "banquet": "Dinner banquet on 4/22 included",
-      "banquet-optional": "Dinner banquet on 4/22 $800 (optional)",
+      "banquet": "Dinner banquet included",
+      "banquet-optional": "Optional dinner banquet $",
       "note": "Thank you for your interest, but unfortunately all the tickets were sold out.",
       "order": "Order Tickets"
     },

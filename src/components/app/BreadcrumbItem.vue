@@ -36,15 +36,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
 
 const props = defineProps({
   item: Object,
   template: Function,
   exact: Boolean
 })
-
-useRouter()
 
 function onClick (event: any, navigate: (arg0: any) => void): void {
   if (props.item.command) {

@@ -8,7 +8,7 @@
       />
       <div class="navbar-logo-text">
         <span class="navbar-logo-text-1">{{ $t("app.navbar.d67") }}</span>
-        <span class="navbar-logo-text-2">{{ $t("app.navbar.ac") }}</span>
+        <span class="navbar-logo-text-2">{{ year }} {{ $t("app.navbar.ac") }}</span>
       </div>
     </router-link>
     <div class="navbar-links">
@@ -150,10 +150,9 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { useLanguageStore } from '@/stores.ts'
 
-useRoute()
 const router = useRouter()
 const store = useLanguageStore()
 
@@ -165,6 +164,7 @@ const localeOptions = [
 const visibleFull = ref(false)
 const isLogin = ref(false)
 const showAccountMenu = ref(false)
+const year = import.meta.env.VITE_YEAR
 
 watch(locale, (newLocale) => {
   localStorage.setItem('locale', newLocale)
