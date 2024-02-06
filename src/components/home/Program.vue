@@ -748,6 +748,16 @@
   </section>
 </template>
 
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const showProgramDay1 = ref(true)
+
+function switchProgram (day: string): void {
+  showProgramDay1.value = day === 'day1'
+}
+</script>
+
 <style scoped lang="scss">
 .program-container {
   width: 100%;
@@ -1174,23 +1184,3 @@
   }
 }
 </style>
-
-<script lang="ts">
-export default {
-  name: 'Program',
-  data () {
-    return {
-      showProgramDay1: true
-    }
-  },
-  methods: {
-    switchProgram (day: string) {
-      if (day === 'day1') {
-        this.showProgramDay1 = true
-      } else {
-        this.showProgramDay1 = false
-      }
-    }
-  }
-}
-</script>
