@@ -20,17 +20,16 @@ export const useSpeakersStore = defineStore('speakers', {
     async loadSpeakers (client: any) {
       try {
         const result = await client.query(`
-          query Speakers {
-              speakers(filter: { seminars: { year: { _eq: "${import.meta.env.VITE_YEAR}" } } }) {
-                  name
-                  icon { id }
-                  id
-                  translations(filter: { languages_id: { name: { _eq: "English" } } }) {
-                      name
-                  }
-              }
+        query Speakers {
+          speakers(filter: { seminars: { year: { _eq: "${import.meta.env.VITE_YEAR}" } } }) {
+            id
+            name
+            icon { id }
+            translations(filter: { languages_id: { name: { _eq: "English" } } }) {
+              name
+            }
           }
-        `)
+        }`)
         this.speakers = result.speakers
         this.error = null
       } catch (err) {
@@ -42,11 +41,11 @@ export const useSpeakersStore = defineStore('speakers', {
 })
 
 interface Speaker {
+  id: number
   name: string
   icon: {
     id: number
   }
-  id: number
   translations: Array<{
     name: string
   }>
