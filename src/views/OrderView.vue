@@ -12,8 +12,8 @@
 
 <script setup lang="ts">
 import { reactive, ref, onBeforeMount, computed } from 'vue'
-import List from '@/components/order/List.vue'
-import Tickets from '@/components/order/Tickets.vue'
+import List from '@/components/order/OrderList.vue'
+import Tickets from '@/components/order/OrderTickets.vue'
 
 const count = reactive({
   early: 0,

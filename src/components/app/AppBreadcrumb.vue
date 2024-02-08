@@ -28,7 +28,7 @@ import { useI18n } from 'vue-i18n'
 const { tm, rt } = useI18n()
 const route = useRoute()
 
-const mapping = tm('app.breadcrumb')
+const mapping: Record<string, string> = tm('app.breadcrumb')
 const home = reactive({
   label: rt(mapping['/']),
   to: '/'

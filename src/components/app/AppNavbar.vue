@@ -151,7 +151,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
-import { useLanguageStore } from '@/stores.ts'
+import { useLanguageStore } from '@/stores/languageStore.ts'
 
 const router = useRouter()
 const store = useLanguageStore()

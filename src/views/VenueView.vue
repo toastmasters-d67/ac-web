@@ -54,8 +54,8 @@
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
 import axios, { type AxiosResponse } from 'axios'
-import { useLanguageStore } from '@/stores.ts'
-import Breadcrumb from '@/components/app/Breadcrumb.vue'
+import { useLanguageStore } from '@/stores/languageStore.ts'
+import Breadcrumb from '@/components/app/AppBreadcrumb.vue'
 
 const CMS_URL = import.meta.env.VITE_CMS_API
 const YEAR = import.meta.env.VITE_YEAR

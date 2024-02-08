@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import axios from 'axios'
-import { useLanguageStore } from '@/stores.ts'
+import { useLanguageStore } from '@/stores/languageStore.ts'
 
 const CMS_URL = import.meta.env.VITE_CMS_API
 const YEAR = import.meta.env.VITE_YEAR

@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, reactive } from 'vue'
 import axios from 'axios'
-import { useLanguageStore } from '@/stores.ts'
+import { useLanguageStore } from '@/stores/languageStore.ts'
 import largeBag from '@/assets/image/home/souvenirs-bag.png'
 import smallBag from '@/assets/image/home/souvenirs-bag-small.png'
 import largeTowel from '@/assets/image/home/souvenirs-towel.png'

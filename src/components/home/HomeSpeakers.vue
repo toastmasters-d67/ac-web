@@ -2,14 +2,14 @@
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
-      <div v-for="speaker in speakers" :key="speaker.id">
-        <router-link :to="getLink(speaker.id)" class="speaker">
+      <div v-for="speaker in speakersStore.speakers" :key="speaker.id">
+        <router-link :to="speakersStore.getLink(speaker.id)" class="speaker">
           <img
-            :src="getIcon(speaker.icon.id)"
+            :src="speakersStore.getIcon(speaker.icon.id)"
             class="speaker-image"
-            :alt="speaker.name"
+            :alt="speakersStore.getName(speaker, locale)"
           />
-          <span class="speaker-name-text">{{ getName(speaker) }}</span>
+          <span class="speaker-name-text">{{ speakersStore.getName(speaker, locale) }}</span>
         </router-link>
       </div>
     </div>
@@ -17,57 +17,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { createDirectus, graphql } from '@directus/sdk'
-import { useLanguageStore } from '@/stores.ts'
+import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useSpeakersStore } from '@/stores/speakersStore.ts'
+import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 
-interface Speaker {
-  name: string
-  icon: {
-    id: number
-  }
-  id: number
-  translations: Array<{
-    name: string
-  }>
-}
+const { locale } = useI18n()
+const speakersStore = useSpeakersStore()
+const client = useDirectusClient()
 
-interface Schema {
-  articles: Speaker[]
-}
-
-const CMS_URL = import.meta.env.VITE_CMS_API
-const client = createDirectus<Schema>(CMS_URL).with(graphql())
-const store = useLanguageStore()
-const speakers = ref<Speaker[]>([])
-
-onMounted(async () => {
-  const result = await client.query<Speaker[]>(`
-    query Speakers {
-        speakers(filter: { seminars: { year: { _eq: "2023" } } }) {
-            name
-            icon {
-                id
-            }
-            id
-            translations(filter: { languages_id: { name: { _eq: "English" } } }) {
-                name
-            }
-        }
-    }
-  `)
-  speakers.value = result.speakers
+onMounted(() => {
+  void speakersStore.loadSpeakers(client)
 })
-
-const getLink = (id: number): string => `/speaker/${id}`
-const getIcon = (iconId: number): string => `${CMS_URL}/assets/${iconId}`
-const getName = (speaker: Speaker): string => {
-  if (store.language === 'tw') {
-    return speaker.name
-  } else {
-    return speaker.translations[0].name
-  }
-}
 </script>
 
 <style scoped lang="scss">

@@ -46,7 +46,7 @@ function getAngle (value: number, full: number): number {
 }
 
 const getStyles = computed(() => {
-  const styles = []
+  const styles: any[] = []
   const quotient = Math.floor(angle.value / 90)
   const remainder = angle.value % 90
   const rotate = [3, 0, 1, 2]
