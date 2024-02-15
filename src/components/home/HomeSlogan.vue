@@ -10,37 +10,30 @@
       class="slogan-kv-mobile1"
       src="@/assets/image/home/key-vision-mobile1.png"
     />
-    <div class="slogan-date">{{ date }}</div>
-    <header class="slogan-title">{{ title }}</header>
+    <div class="slogan-date">{{ generalStore.getItem("date", locale) }}</div>
+    <header class="slogan-title">{{ generalStore.getItem("title", locale) }}</header>
     <div class="slogan-word">
       <span>
-        {{ slogan }}
+        {{ generalStore.getItem("slogan", locale) }}
       </span>
     </div>
     <span class="slogan-text">
-      {{ longWelcome }}
+      {{ generalStore.getItem("longwelcome", locale) }}
     </span>
-    <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="img" />
+    <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="generalStore.getLogo" />
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import axios from 'axios'
-import { useLanguageStore } from '@/stores/languageStore.ts'
+import { useI18n } from 'vue-i18n'
+import { useGeneralStore } from '@/stores/generalStore.ts'
+import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 
-const CMS_URL = import.meta.env.VITE_CMS_API
-const YEAR = import.meta.env.VITE_YEAR
-
-const date = ref('')
-const title = ref('')
-const slogan = ref('')
-const longWelcome = ref('')
-const shortWelcome = ref('')
-const img = ref('')
-const translation = ref([])
+const { locale } = useI18n()
+const generalStore = useGeneralStore()
+const client = useDirectusClient()
 const windowHeight = ref(window.innerHeight)
-const store = useLanguageStore()
 const sloganText = ref('')
 
 const handleResize = (): void => {
@@ -51,55 +44,10 @@ const handleResize = (): void => {
       : 'home.slogan.text.mobile'
 }
 
-const getChineseData = async (): Promise<void> => {
-  try {
-    const response = await axios.get(
-      `${CMS_URL}/items/general/?filter[year][_eq]=${YEAR}`
-    )
-    response.data.data.forEach((source: { date: string, title: string, slogan: string, longwelcome: string, shortwelcome: string, img: string, translations: any[] }) => {
-      date.value = source.date
-      title.value = source.title
-      slogan.value = source.slogan
-      longWelcome.value = source.longwelcome
-      shortWelcome.value = source.shortwelcome
-      img.value = source.img
-      translation.value.push(source.translations[0])
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const getForigienData = async (): Promise<void> => {
-  for (const translationId of translation.value) {
-    try {
-      const response = await axios.get(
-        `${CMS_URL}/items/general_translations/?filter[id][_eq]=${String(translationId)}`
-      )
-      response.data.data.forEach((source: { date: string, title: string, slogan: string, longwelcome: string, shortwelcome: string }) => {
-        date.value = source.date
-        title.value = source.title
-        slogan.value = source.slogan
-        longWelcome.value = source.longwelcome
-        shortWelcome.value = source.shortwelcome
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}
-
-const getAllData = async (): Promise<void> => {
-  await getChineseData()
-  if (store.language === 'en') {
-    await getForigienData()
-  }
-}
-
 onMounted(() => {
   handleResize()
   window.addEventListener('resize', handleResize)
-  void getAllData()
+  void generalStore.loadGeneral(client)
 })
 
 onUnmounted(() => {

@@ -2,22 +2,31 @@ import { defineStore } from 'pinia'
 
 export const useGeneralStore = defineStore('general', {
   state: () => ({
-    general: [] as General[],
+    general: {
+      date: '',
+      title: '',
+      slogan: '',
+      longwelcome: '',
+      shortwelcome: '',
+      marquee1: '',
+      marquee2: '',
+      logo: {
+        id: 0
+      },
+      translations: []
+    } satisfies General,
     error: null
   }),
   getters: {
-    getLink: () => (id: number) => {
-      return `/speaker/${id}`
+    getItem: (state) => (item: keyof General, locale: string) => {
+      return locale === 'tw' ? state.general[item] : state.general.translations[0][item]
     },
-    getIcon: () => (iconId: number) => {
-      return `${import.meta.env.VITE_CMS_API}/assets/${iconId}`
-    },
-    getName: () => (speaker: Speaker, locale: string) => {
-      return locale === 'en' ? speaker.translations[0].name : speaker.name
+    getLogo: (state) => {
+      return `${import.meta.env.VITE_CMS_API}/assets/${state.general.logo.id}`
     }
   },
   actions: {
-    async loadSpeakers (client: any) {
+    async loadGeneral (client: any) {
       try {
         const result = await client.query(`
         query General {
@@ -41,7 +50,7 @@ export const useGeneralStore = defineStore('general', {
             }
           }
         }`)
-        this.general = result.general
+        this.general = result.general[0]
         this.error = null
       } catch (err) {
         this.error = err as null

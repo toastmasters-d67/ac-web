@@ -13,7 +13,7 @@ export const useSpeakersStore = defineStore('speakers', {
       return `${import.meta.env.VITE_CMS_API}/assets/${iconId}`
     },
     getName: () => (speaker: Speaker, locale: string) => {
-      return locale === 'en' ? speaker.translations[0].name : speaker.name
+      return locale === 'tw' ? speaker.name : speaker.translations[0].name
     }
   },
   actions: {
