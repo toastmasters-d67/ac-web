@@ -21,9 +21,9 @@
 <script setup lang="ts">
 import { reactive, onBeforeMount } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Marquee from '@/components/app/Marquee.vue'
-import Picker from '@/components/cart/Picker.vue'
-import Summary from '@/components/cart/Summary.vue'
+import Marquee from '@/components/app/AppMarquee.vue'
+import Picker from '@/components/cart/CartPicker.vue'
+import Summary from '@/components/cart/CartSummary.vue'
 
 const { t } = useI18n()
 

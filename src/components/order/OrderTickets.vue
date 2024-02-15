@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import * as Yup from 'yup'
 import axios from 'axios'
-import Reminder from '@/components/order/Reminder.vue'
+import Reminder from '@/components/order/OrderReminder.vue'
 
 const ticketSchema = Yup.object().shape({
   orderId: Yup.string().required(),

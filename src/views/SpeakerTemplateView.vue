@@ -16,9 +16,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { useLanguageStore } from '@/stores.ts'
-import Briefing from '@/components/speaker/Briefing.vue'
-import Seminar from '@/components/speaker/Seminar.vue'
+import { useLanguageStore } from '@/stores/languageStore.ts'
+import Briefing from '@/components/speaker/SpeakerBriefing.vue'
+import Seminar from '@/components/speaker/SpeakerSeminar.vue'
 import { useRoute } from 'vue-router'
 
 const CMS_URL = import.meta.env.VITE_CMS_API

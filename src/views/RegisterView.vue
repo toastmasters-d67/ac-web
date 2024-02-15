@@ -8,8 +8,8 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Instruction from '@/components/auth/Instruction.vue'
-import Register from '@/components/auth/Register.vue'
+import Instruction from '@/components/auth/AuthInstruction.vue'
+import Register from '@/components/auth/AuthRegister.vue'
 
 const { t } = useI18n()
 const step1HighlightText = ref(

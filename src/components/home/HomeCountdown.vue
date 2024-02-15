@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import Timer from '@/components/home/Timer.vue'
+import Timer from '@/components/home/HomeTimer.vue'
 
 const days = ref(0)
 const hours = ref(0)

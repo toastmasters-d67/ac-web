@@ -8,8 +8,8 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Instruction from '@/components/auth/Instruction.vue'
-import Login from '@/components/auth/Login.vue'
+import Instruction from '@/components/auth/AuthInstruction.vue'
+import Login from '@/components/auth/AuthLogin.vue'
 
 const { t } = useI18n()
 const windowHeight = ref(window.innerHeight)

@@ -22,13 +22,13 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import BreadcrumbItem from '@/components/app/BreadcrumbItem.vue'
+import BreadcrumbItem from '@/components/app/AppBreadcrumbItem.vue'
 import { useI18n } from 'vue-i18n'
 
 const { tm, rt } = useI18n()
 const route = useRoute()
 
-const mapping = tm('app.breadcrumb')
+const mapping: Record<string, string> = tm('app.breadcrumb')
 const home = reactive({
   label: rt(mapping['/']),
   to: '/'

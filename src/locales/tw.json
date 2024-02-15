@@ -112,7 +112,7 @@
     },
     "navbar": {
       "d67": "國際演講會第 67 地區總會",
-      "ac": "2024 年度大會",
+      "ac": "年度大會",
       "program": "大會議程",
       "speakers": "講者介紹",
       "venue": "場地資訊",
@@ -487,7 +487,7 @@
       "two-day": "二日票",
       "early-bird-title": "早鳥二日票",
       "early-bird-title-note": "二日票加晚宴",
-      "early-bird-price-note": "原價 $ 3000",
+      "early-bird-price-note": "原價 $",
       "first-day": "第一日票",
       "second-day": "第二日票",
       "until": "優惠至 3 月 27 日止",
@@ -495,8 +495,8 @@
       "lunch": "午餐餐盒",
       "lunch2": "兩天的午餐餐盒",
       "souvenir": "精美紀念品",
-      "banquet": "4/22 晚宴",
-      "banquet-optional": "4/22 晚宴 $800 (可加購)",
+      "banquet": "含晚宴",
+      "banquet-optional": "可加購晚宴 $",
       "note": "2023年度大會線上購票已截止，感謝您的支持。",
       "order": "線上購票"
     },

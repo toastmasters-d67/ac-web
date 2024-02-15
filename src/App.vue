@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from '@/components/app/Navbar.vue'
-import Footer from '@/components/app/Footer.vue'
-import ScrollToTopButton from '@/components/app/ScrollToTopButton.vue'
-import CtaButtons from '@/components/app/CtaButtons.vue'
+import Navbar from '@/components/app/AppNavbar.vue'
+import Footer from '@/components/app/AppFooter.vue'
+import ScrollToTopButton from '@/components/app/AppScrollToTopButton.vue'
+import CtaButtons from '@/components/app/AppCtaButtons.vue'
 
 const scrollToElement = (id: string): void => {
   const element = document.getElementById(id)

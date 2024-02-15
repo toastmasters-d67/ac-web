@@ -237,7 +237,7 @@
 
 <script setup lang="ts">
 import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue'
-import Breadcrumb from '@/components/app/Breadcrumb.vue'
+import Breadcrumb from '@/components/app/AppBreadcrumb.vue'
 
 const windowHeight = ref(window.innerHeight)
 

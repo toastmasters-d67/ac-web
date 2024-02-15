@@ -99,8 +99,8 @@
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
 import axios from 'axios'
-import Marquee from '@/components/app/Marquee.vue'
-import PopupModal from '@/components/app/PopupModal.vue'
+import Marquee from '@/components/app/AppMarquee.vue'
+import PopupModal from '@/components/app/AppPopupModal.vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 

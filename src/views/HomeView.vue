@@ -14,14 +14,14 @@
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Marquee from '@/components/app/Marquee.vue'
-import Slogan from '@/components/home/Slogan.vue'
-import Countdown from '@/components/home/Countdown.vue'
-import Ticket from '@/components/home/Ticket.vue'
-import Speakers from '@/components/home/Speakers.vue'
-import Program from '@/components/home/Program.vue'
-import Venue from '@/components/home/Venue.vue'
-import Souvenirs from '@/components/home/Souvenirs.vue'
+import Marquee from '@/components/app/AppMarquee.vue'
+import Slogan from '@/components/home/HomeSlogan.vue'
+import Countdown from '@/components/home/HomeCountdown.vue'
+import Ticket from '@/components/home/HomeTicket.vue'
+import Speakers from '@/components/home/HomeSpeakers.vue'
+import Program from '@/components/home/HomeProgram.vue'
+import Venue from '@/components/home/HomeVenue.vue'
+import Souvenirs from '@/components/home/HomeSouvenirs.vue'
 
 const { t } = useI18n()
 const sentences = ref([

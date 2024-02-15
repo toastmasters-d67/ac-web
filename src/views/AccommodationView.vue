@@ -270,7 +270,7 @@
 
 <script setup lang="ts">
 import { onBeforeMount } from 'vue'
-import Breadcrumb from '@/components/app/Breadcrumb.vue'
+import Breadcrumb from '@/components/app/AppBreadcrumb.vue'
 
 onBeforeMount(() => {
   window.scrollTo({ top: 0 })

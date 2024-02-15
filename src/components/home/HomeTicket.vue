@@ -4,7 +4,7 @@
     <div class="ticket-row">
       <div class="ticket-item white">
         <span class="ticket-item-title">{{ $t("home.ticket.two-day") }}</span>
-        <span class="ticket-item-price">$ 2200</span>
+        <span class="ticket-item-price">$ {{ price.double }}</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
@@ -22,7 +22,7 @@
               class="ticket-item-icon"
             />
             <span class="ticket-item-text">
-              {{ $t("home.ticket.banquet-optional") }}
+              {{ $t("home.ticket.banquet-optional") }} {{ price.banquet }}
             </span>
           </li>
         </ul>
@@ -37,9 +37,9 @@
         <span class="early-bird-title-note">
           {{ $t("home.ticket.early-bird-title-note") }}
         </span>
-        <span class="ticket-item-price early-bird-price">$ 2500</span>
+        <span class="ticket-item-price early-bird-price">$ {{ price.early }}</span>
         <span class="early-bird-price-note">
-          {{ $t("home.ticket.early-bird-price-note") }}
+          {{ $t("home.ticket.early-bird-price-note") }}  {{ price.double }}
         </span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
@@ -62,7 +62,7 @@
       </div>
       <div class="ticket-item white">
         <span class="ticket-item-title">{{ $t("home.ticket.first-day") }}</span>
-        <span class="ticket-item-price">$ 1300</span>
+        <span class="ticket-item-price">$ {{ price.first }}</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
@@ -80,7 +80,7 @@
               class="ticket-item-icon"
             />
             <span class="ticket-item-text">
-              {{ $t("home.ticket.banquet-optional") }}
+              {{ $t("home.ticket.banquet-optional") }} {{ price.banquet }}
             </span>
           </li>
         </ul>
@@ -89,7 +89,7 @@
         <span class="ticket-item-title">{{
           $t("home.ticket.second-day")
         }}</span>
-        <span class="ticket-item-price">$ 1300</span>
+        <span class="ticket-item-price">$ {{ price.second }}</span>
         <ul class="ticket-item-list">
           <li class="ticket-item-row">
             <i class="pi pi-check"></i>
@@ -107,7 +107,7 @@
               class="ticket-item-icon"
             />
             <span class="ticket-item-text">
-              {{ $t("home.ticket.banquet-optional") }}
+              {{ $t("home.ticket.banquet-optional") }} {{ price.banquet }}
             </span>
           </li>
         </ul>
@@ -116,6 +116,16 @@
     <div class="ticket-note">{{ $t("home.ticket.note") }}</div>
   </section>
 </template>
+
+<script setup lang="ts">
+const price = {
+  early: import.meta.env.VITE_TICKET_EARLY,
+  double: import.meta.env.VITE_TICKET_DOUBLE,
+  first: import.meta.env.VITE_TICKET_FIRST,
+  second: import.meta.env.VITE_TICKET_SECOND,
+  banquet: import.meta.env.VITE_TICKET_BANQUET
+}
+</script>
 
 <style scoped lang="scss">
 .ticket-container {
