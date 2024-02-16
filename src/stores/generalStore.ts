@@ -6,7 +6,7 @@ export const useGeneralStore = defineStore('general', {
       date: '',
       title: '',
       slogan: '',
-      longwelcome: '',
+      longwelcom: '',
       shortwelcome: '',
       marquee1: '',
       marquee2: '',
@@ -22,13 +22,15 @@ export const useGeneralStore = defineStore('general', {
       return locale === 'tw' ? state.general[item] : state.general.translations[0][item]
     },
     getLogo: (state) => {
+      if (state.general.logo.id === 0) return ''
       return `${import.meta.env.VITE_CMS_API}/assets/${state.general.logo.id}`
     }
   },
   actions: {
     async loadGeneral (client: any) {
-      try {
-        const result = await client.query(`
+      if (this.general.date === '') {
+        try {
+          const result = await client.query(`
         query General {
           general(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
             date
@@ -39,7 +41,7 @@ export const useGeneralStore = defineStore('general', {
             marquee1
             marquee2
             logo { id }
-            translations(filter: { languages_id: { name: { _eq: "English" } } }) {
+            translations(filter: { languages_code: { name: { _eq: "English" } } }) {
               date
               title
               slogan
@@ -50,11 +52,12 @@ export const useGeneralStore = defineStore('general', {
             }
           }
         }`)
-        this.general = result.general[0]
-        this.error = null
-      } catch (err) {
-        this.error = err as null
-        console.error('Failed to load general:', err)
+          this.general = result.general[0]
+          this.error = null
+        } catch (err) {
+          this.error = err as null
+          console.error('Failed to load general:', err)
+        }
       }
     }
   }
@@ -64,7 +67,7 @@ interface General {
   date: string
   title: string
   slogan: string
-  longwelcome: string
+  longwelcom: string
   shortwelcome: string
   marquee1: string
   marquee2: string

@@ -3,84 +3,38 @@
     <Breadcrumb v-once />
     <header class="faq-page-title">{{ $t("faq.title") }}</header>
     <div class="faq-questions">
-      <div v-for="(item, key) in faqs" :key="key" class="faq-question">
-        <div class="faq-row" @click="() => toggle(key)">
-          <span>{{ item.question }}</span>
-          <i :class="item.icon"></i>
+      <div v-for="faq in faqsStore.faqs" :key="faq.question" class="faq-question">
+        <div class="faq-row" @click="() => toggle(faq)">
+          <span>{{ faqsStore.getQuestion(faq, locale) }}</span>
+          <i :class="faq.icon"></i>
         </div>
-        <span v-if="item.show" class="faq-answer" v-html="item.answer"></span>
+        <span v-if="faq.show" class="faq-answer" v-html="faqsStore.getAnswer(faq, locale)"></span>
       </div>
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
-import { useLanguageStore } from '@/stores/languageStore.ts'
+import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useFaqsStore } from '@/stores/faqsStore.ts'
+import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 import Breadcrumb from '@/components/app/AppBreadcrumb.vue'
 
-const CMS_URL = import.meta.env.VITE_CMS_API
-const YEAR = import.meta.env.VITE_YEAR
-const store = useLanguageStore()
-
-const faqs = ref([])
-const translation = ref([])
-
-const getChineseData = async (): Promise<void> => {
-  try {
-    const response = await axios.get(
-      `${CMS_URL}/items/faqs/?filter[year][_eq]=${YEAR}`
-    )
-    response.data.data.forEach((source) => {
-      const item = {
-        question: source.question,
-        answer: source.answer,
-        icon: 'pi pi-angle-down faq-icon',
-        show: false
-      }
-      faqs.value.push(item)
-      translation.value.push(source.translations[0])
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const getForigienData = async (): Promise<void> => {
-  for (const id of translation.value) {
-    try {
-      const response = await axios.get(
-        `${CMS_URL}/items/general_translations/?filter[id][_eq]=${id}`
-      )
-      response.data.data.forEach((source, index) => {
-        faqs.value[index].question =
-          source.question ?? faqs.value[index].question
-        faqs.value[index].answer = source.answer ?? faqs.value[index].answer
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}
-
-const getAllData = async (): Promise<void> => {
-  await getChineseData()
-  if (store.language === 'en') {
-    await getForigienData()
-  }
-}
-
-const toggle = (key: number): void => {
-  faqs.value[key].show = !faqs.value[key].show
-  const direction = faqs.value[key].show ? 'up' : 'down'
-  faqs.value[key].icon = `pi pi-angle-${direction} faq-icon`
-}
+const { locale } = useI18n()
+const faqsStore = useFaqsStore()
+const client = useDirectusClient()
 
 onMounted(() => {
   window.scrollTo({ top: 0 })
-  void getAllData()
+  void faqsStore.loadFaqs(client)
 })
+
+const toggle = (faq: { show: boolean, icon: string }): void => {
+  faq.show = !faq.show
+  const direction = faq.show ? 'up' : 'down'
+  faq.icon = `pi pi-angle-${direction} faq-icon`
+}
 </script>
 
 <style scoped lang="scss">

@@ -3,7 +3,7 @@
     <img
       alt="Key Vision"
       class="slogan-kv-desktop"
-      src="@/assets/image/home/key-vision.png"
+      :src="generalStore.getLogo"
     />
     <img
       alt="Key Vision 1"
@@ -18,9 +18,9 @@
       </span>
     </div>
     <span class="slogan-text">
-      {{ generalStore.getItem("longwelcome", locale) }}
+      {{ sloganText }}
     </span>
-    <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="generalStore.getLogo" />
+    <img alt="Key Vision 2" class="slogan-kv-mobile2" src="@/assets/image/home/key-vision-mobile2.png" />
   </section>
 </template>
 
@@ -33,21 +33,19 @@ import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 const { locale } = useI18n()
 const generalStore = useGeneralStore()
 const client = useDirectusClient()
-const windowHeight = ref(window.innerHeight)
 const sloganText = ref('')
 
 const handleResize = (): void => {
-  windowHeight.value = window.innerWidth
   sloganText.value =
-    windowHeight.value > 768
-      ? 'home.slogan.text.desktop'
-      : 'home.slogan.text.mobile'
+  window.innerWidth > 768
+    ? generalStore.getItem('longwelcom', locale.value)
+    : generalStore.getItem('shortwelcome', locale.value)
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await generalStore.loadGeneral(client)
   handleResize()
   window.addEventListener('resize', handleResize)
-  void generalStore.loadGeneral(client)
 })
 
 onUnmounted(() => {

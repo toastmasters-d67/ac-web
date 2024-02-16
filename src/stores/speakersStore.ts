@@ -18,6 +18,7 @@ export const useSpeakersStore = defineStore('speakers', {
   },
   actions: {
     async loadSpeakers (client: any) {
+      if (this.speakers.length > 0) return
       try {
         const result = await client.query(`
         query Speakers {
