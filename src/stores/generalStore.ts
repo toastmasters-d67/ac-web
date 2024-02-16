@@ -6,7 +6,11 @@ export const useGeneralStore = defineStore('general', {
       date: '',
       title: '',
       slogan: '',
+<<<<<<< HEAD
       longwelcom: '',
+=======
+      longwelcome: '',
+>>>>>>> f9fb16a67743af29d4070139045d3c6e66681191
       shortwelcome: '',
       marquee1: '',
       marquee2: '',
@@ -67,7 +71,11 @@ interface General {
   date: string
   title: string
   slogan: string
+<<<<<<< HEAD
   longwelcom: string
+=======
+  longwelcome: string
+>>>>>>> f9fb16a67743af29d4070139045d3c6e66681191
   shortwelcome: string
   marquee1: string
   marquee2: string
