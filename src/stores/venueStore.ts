@@ -19,6 +19,7 @@ export const useVenueStore = defineStore('venue', {
   }),
   getters: {
     getItem: (state) => (item: keyof Venue, locale: string) => {
+      if (state.venue.name === '') return ''
       return locale === 'tw' ? state.venue[item] : state.venue.translations[0][item]
     },
     getPicture: (state) => {
