@@ -6,11 +6,7 @@ export const useGeneralStore = defineStore('general', {
       date: '',
       title: '',
       slogan: '',
-<<<<<<< HEAD
       longwelcom: '',
-=======
-      longwelcome: '',
->>>>>>> f9fb16a67743af29d4070139045d3c6e66681191
       shortwelcome: '',
       marquee1: '',
       marquee2: '',
@@ -23,6 +19,7 @@ export const useGeneralStore = defineStore('general', {
   }),
   getters: {
     getItem: (state) => (item: keyof General, locale: string) => {
+      if (state.general.date === '') return ''
       return locale === 'tw' ? state.general[item] : state.general.translations[0][item]
     },
     getLogo: (state) => {
