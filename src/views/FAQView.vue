@@ -3,12 +3,12 @@
     <Breadcrumb v-once />
     <header class="faq-page-title">{{ $t("faq.title") }}</header>
     <div class="faq-questions">
-      <div v-for="faq in faqsStore.faqs" :key="faq.question" class="faq-question">
+      <div v-for="faq in store.faqs" :key="faq.question" class="faq-question">
         <div class="faq-row" @click="() => toggle(faq)">
-          <span>{{ faqsStore.getQuestion(faq, locale) }}</span>
+          <span>{{ store.getQuestion(faq, locale) }}</span>
           <i :class="faq.icon"></i>
         </div>
-        <span v-if="faq.show" class="faq-answer" v-html="faqsStore.getAnswer(faq, locale)"></span>
+        <span v-if="faq.show" class="faq-answer" v-html="store.getAnswer(faq, locale)"></span>
       </div>
     </div>
   </article>
@@ -22,12 +22,12 @@ import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 import Breadcrumb from '@/components/app/AppBreadcrumb.vue'
 
 const { locale } = useI18n()
-const faqsStore = useFaqsStore()
+const store = useFaqsStore()
 const client = useDirectusClient()
 
 onMounted(() => {
   window.scrollTo({ top: 0 })
-  void faqsStore.loadFaqs(client)
+  void store.loadData(client)
 })
 
 const toggle = (faq: { show: boolean, icon: string }): void => {

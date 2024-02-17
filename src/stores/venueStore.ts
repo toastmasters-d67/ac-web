@@ -34,10 +34,10 @@ export const useVenueStore = defineStore('venue', {
     }
   },
   actions: {
-    async loadVenue (client: any) {
+    async loadData (client: any) {
+      if (this.venue.name !== '') return
       try {
-        const result = await client.query(`
-        query Venue {
+        const result = await client.query(`{
           venue(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
             name
             address

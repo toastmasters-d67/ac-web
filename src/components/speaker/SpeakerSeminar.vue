@@ -3,7 +3,7 @@
     <div class="seminar-box">
       <header class="seminar-title">{{ $t("speaker.seminar") }}</header>
       <div
-        v-for="(seminar, key) in seminars"
+        v-for="(seminar, key) in store.seminars"
         :key="key"
         class="seminar-subcontainer"
       >
@@ -14,7 +14,7 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.topic") }} |
               </span>
-              <span class="seminar-row-subtitle">{{ seminar.topic }}</span>
+              <span class="seminar-row-subtitle">{{ store.getSeminarItem(key, "topic", locale) }}</span>
             </div>
             <div class="seminar-row">
               <span class="seminar-row-title">{{ $t("speaker.time") }} |</span>
@@ -24,7 +24,7 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.location") }} |
               </span>
-              <span class="seminar-row-subtitle">{{ seminar.location }}</span>
+              <span class="seminar-row-subtitle">{{ store.getSeminarItem(key, "location", locale) }}</span>
             </div>
           </div>
           <div class="seminar-content-introduction">
@@ -32,10 +32,7 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.introduction") }} |
               </span>
-              <span
-                class="seminar-row-text"
-                v-html="seminar.introduction"
-              ></span>
+              <span class="seminar-row-text">{{ store.getSeminarItem(key, "introduction", locale) }}</span>
             </div>
           </div>
         </div>
@@ -45,12 +42,11 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  seminars: {
-    type: Array,
-    default: () => []
-  }
-})
+import { useI18n } from 'vue-i18n'
+import { useSpeakerStore } from '@/stores/speakerStore.ts'
+
+const { locale } = useI18n()
+const store = useSpeakerStore()
 </script>
 
 <style scoped lang="scss">

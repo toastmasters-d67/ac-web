@@ -28,37 +28,35 @@ export const useGeneralStore = defineStore('general', {
     }
   },
   actions: {
-    async loadGeneral (client: any) {
-      if (this.general.date === '') {
-        try {
-          const result = await client.query(`
-        query General {
-          general(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
-            date
-            title
-            slogan
-            longwelcom
-            shortwelcome
-            marquee1
-            marquee2
-            logo { id }
-            translations(filter: { languages_code: { name: { _eq: "English" } } }) {
+    async loadData (client: any) {
+      if (this.general.date !== '') return
+      try {
+        const result = await client.query(`{
+            general(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
               date
               title
               slogan
-              longwelcome
+              longwelcom
               shortwelcome
               marquee1
               marquee2
+              logo { id }
+              translations(filter: { languages_code: { name: { _eq: "English" } } }) {
+                date
+                title
+                slogan
+                longwelcome
+                shortwelcome
+                marquee1
+                marquee2
+              }
             }
-          }
-        }`)
-          this.general = result.general[0]
-          this.error = null
-        } catch (err) {
-          this.error = err as null
-          console.error('Failed to load general:', err)
-        }
+          }`)
+        this.general = result.general[0]
+        this.error = null
+      } catch (err) {
+        this.error = err as null
+        console.error('Failed to load general:', err)
       }
     }
   }

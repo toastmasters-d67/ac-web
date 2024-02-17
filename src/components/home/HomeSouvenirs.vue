@@ -5,15 +5,15 @@
     <div class="souvenirs-items">
       <div
         class="souvenirs-item"
-        v-for="souvenir in souvenirsStore.souvenirs"
+        v-for="souvenir in store.souvenirs"
         :key="souvenir.name"
       >
         <img
-          :src="souvenirsStore.getPicture(souvenir.picture.id)"
+          :src="store.getPicture(souvenir.picture.id)"
           class="souvenirs-item-image"
           alt="souvenirs-bag"
         />
-        <div class="souvenirs-item-text">{{ souvenirsStore.getName(souvenir, locale) }}</div>
+        <div class="souvenirs-item-text">{{ store.getName(souvenir, locale) }}</div>
       </div>
     </div>
   </section>
@@ -26,11 +26,11 @@ import { useSouvenirsStore } from '@/stores/souvenirsStore.ts'
 import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 
 const { locale } = useI18n()
-const souvenirsStore = useSouvenirsStore()
+const store = useSouvenirsStore()
 const client = useDirectusClient()
 
 onMounted(() => {
-  void souvenirsStore.loadSouvenirs(client)
+  void store.loadData(client)
 })
 </script>
 

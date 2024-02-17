@@ -2,23 +2,22 @@ import { defineStore } from 'pinia'
 
 export const useFaqsStore = defineStore('faqs', {
   state: () => ({
-    faqs: [] as Faqs[],
+    faqs: [] as Faq[],
     error: null
   }),
   getters: {
-    getQuestion: () => (faqs: Faqs, locale: string) => {
-      return locale === 'tw' ? faqs.question : faqs.translations[0].question
+    getQuestion: () => (faq: Faq, locale: string) => {
+      return locale === 'tw' ? faq.question : faq.translations[0].question
     },
-    getAnswer: () => (faqs: Faqs, locale: string) => {
-      return locale === 'tw' ? faqs.answer : faqs.translations[0].answer
+    getAnswer: () => (faq: Faq, locale: string) => {
+      return locale === 'tw' ? faq.answer : faq.translations[0].answer
     }
   },
   actions: {
-    async loadFaqs (client: any) {
+    async loadData (client: any) {
       if (this.faqs.length > 0) return
       try {
-        const result = await client.query(`
-        query Faqs {
+        const result = await client.query(`{
           faqs(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
             question
             answer
@@ -42,7 +41,7 @@ export const useFaqsStore = defineStore('faqs', {
   }
 })
 
-interface Faqs {
+interface Faq {
   question: string
   answer: string
   icon: string

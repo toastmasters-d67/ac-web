@@ -1,31 +1,31 @@
 <template>
   <section class="briefing-container">
     <div class="briefing-speaker">
-      <header class="briefing-speaker-name">{{ name }}</header>
-      <div class="briefing-speaker-title">{{ title }}</div>
+      <header class="briefing-speaker-name">{{ store.getSpeakerItem("name", locale) }}</header>
+      <div class="briefing-speaker-title">{{ store.getSpeakerItem("title", locale) }}</div>
       <hr class="briefing-speaker-divider" />
       <div class="briefing-speaker-intro">
-        <img :src="image" class="briefing-speaker-image" alt="play" />
+        <img :src="store.getPicture" class="briefing-speaker-image" alt="play" />
         <div class="briefing-speaker-text">
-          <span>{{ contents }}</span>
+          <span>{{ store.getSpeakerItem("contents", locale) }}</span>
         </div>
       </div>
       <div class="briefing-speaker-links">
-        <a :href="facebook" target="_blank" v-if="facebook">
+        <a :href="store.getFacebook" target="_blank" v-if="store.getFacebook">
           <img
             src="@/assets/icon/speaker/speaker-facebook.png"
             class="briefing-logo"
             alt="facebook"
           />
         </a>
-        <a :href="instagram" target="_blank" v-if="instagram">
+        <a :href="store.getInstagram" target="_blank" v-if="store.getInstagram">
           <img
             src="@/assets/icon/speaker/speaker-instagram.png"
             class="briefing-logo"
             alt="instagram"
           />
         </a>
-        <a :href="youtube" target="_blank" v-if="youtube">
+        <a :href="store.getYoutube" target="_blank" v-if="store.getYoutube">
           <img
             src="@/assets/icon/speaker/speaker-youtube.png"
             class="briefing-logo"
@@ -38,36 +38,11 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-    default: ''
-  },
-  title: {
-    type: String,
-    default: ''
-  },
-  contents: {
-    type: String,
-    default: ''
-  },
-  facebook: {
-    type: String,
-    default: ''
-  },
-  instagram: {
-    type: String,
-    default: ''
-  },
-  youtube: {
-    type: String,
-    default: ''
-  },
-  image: {
-    type: String,
-    default: ''
-  }
-})
+import { useI18n } from 'vue-i18n'
+import { useSpeakerStore } from '@/stores/speakerStore.ts'
+
+const { locale } = useI18n()
+const store = useSpeakerStore()
 </script>
 
 <style scoped lang="scss">

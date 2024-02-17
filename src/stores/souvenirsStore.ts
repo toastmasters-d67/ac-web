@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useSouvenirsStore = defineStore('souvenirs', {
   state: () => ({
-    souvenirs: [] as Souvenirs[],
+    souvenirs: [] as Souvenir[],
     error: null
   }),
   getters: {
@@ -11,16 +11,15 @@ export const useSouvenirsStore = defineStore('souvenirs', {
         ? `${import.meta.env.VITE_CMS_API}/assets/${iconId}`
         : `${import.meta.env.VITE_CMS_API}/assets/${iconId}?width=800&height=800`
     },
-    getName: () => (souvenirs: Souvenirs, locale: string) => {
-      return locale === 'tw' ? souvenirs.name : souvenirs.translations[0].name
+    getName: () => (souvenir: Souvenir, locale: string) => {
+      return locale === 'tw' ? souvenir.name : souvenir.translations[0].name
     }
   },
   actions: {
-    async loadSouvenirs (client: any) {
+    async loadData (client: any) {
       if (this.souvenirs.length > 0) return
       try {
-        const result = await client.query(`
-        query Souvenirs {
+        const result = await client.query(`{
           souvenirs(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
             name
             picture { id }
@@ -39,7 +38,7 @@ export const useSouvenirsStore = defineStore('souvenirs', {
   }
 })
 
-interface Souvenirs {
+interface Souvenir {
   name: string
   picture: {
     id: number

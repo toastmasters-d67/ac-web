@@ -2,14 +2,14 @@
   <section id="speakers" class="speakers-container">
     <header class="speakers-title">{{ $t("home.speaker.title") }}</header>
     <div class="speakers">
-      <div v-for="speaker in speakersStore.speakers" :key="speaker.id">
-        <router-link :to="speakersStore.getLink(speaker.id)" class="speaker">
+      <div v-for="speaker in store.speakers" :key="speaker.id">
+        <router-link :to="store.getLink(speaker.id)" class="speaker">
           <img
-            :src="speakersStore.getIcon(speaker.icon.id)"
+            :src="store.getIcon(speaker.icon.id)"
             class="speaker-image"
-            :alt="speakersStore.getName(speaker, locale)"
+            :alt="store.getName(speaker, locale)"
           />
-          <span class="speaker-name-text">{{ speakersStore.getName(speaker, locale) }}</span>
+          <span class="speaker-name-text">{{ store.getName(speaker, locale) }}</span>
         </router-link>
       </div>
     </div>
@@ -19,15 +19,15 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useSpeakersStore } from '@/stores/speakersStore.ts'
+import { useSpeakerListStore } from '@/stores/speakerListStore.ts'
 import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 
 const { locale } = useI18n()
-const speakersStore = useSpeakersStore()
+const store = useSpeakerListStore()
 const client = useDirectusClient()
 
 onMounted(() => {
-  void speakersStore.loadSpeakers(client)
+  void store.loadData(client)
 })
 </script>
 
@@ -138,3 +138,4 @@ onMounted(() => {
   }
 }
 </style>
+@/stores/speakerListStore

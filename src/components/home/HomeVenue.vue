@@ -2,21 +2,21 @@
   <section id="venue" class="venue-container">
     <header class="venue-title">{{ $t("home.venue.title") }}</header>
     <div class="venue-box">
-      <span class="venue-box-name">{{ venueStore.getItem("name", locale) }}</span>
+      <span class="venue-box-name">{{ store.getItem("name", locale) }}</span>
       <div class="venue-box-row">
         <i class="pi pi-phone venue-box-icon"></i>
         <span class="venue-box-text"
-          ><a :href="`tel:${venueStore.getTelephone}`">{{ venueStore.getTelephone }}</a></span
+          ><a :href="`tel:${store.getTelephone}`">{{ store.getTelephone }}</a></span
         >
       </div>
       <div class="venue-box-row">
         <i class="pi pi-map-marker venue-box-icon"></i>
-        <span class="venue-box-text">{{ venueStore.getItem("address", locale) }}</span>
+        <span class="venue-box-text">{{ store.getItem("address", locale) }}</span>
       </div>
-      <a :href="venueStore.getLink" class="venue-box-button" target="_blank">{{
+      <a :href="store.getLink" class="venue-box-button" target="_blank">{{
         $t("home.venue.show")
       }}</a>
-      <img :src="venueStore.getPicture" class="venue-box-map" alt="map" />
+      <img :src="store.getPicture" class="venue-box-map" alt="map" />
     </div>
     <div class="venue-bottom-buttons">
       <router-link to="/venue" class="button-bottom">
@@ -46,11 +46,11 @@ import { useVenueStore } from '@/stores/venueStore.ts'
 import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 
 const { locale } = useI18n()
-const venueStore = useVenueStore()
+const store = useVenueStore()
 const client = useDirectusClient()
 
 onMounted(() => {
-  void venueStore.loadVenue(client)
+  void store.loadData(client)
 })
 </script>
 
