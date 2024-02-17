@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useSpeakersStore = defineStore('speakers', {
+export const useSpeakerListStore = defineStore('speakerList', {
   state: () => ({
     speakers: [] as Speaker[],
     error: null
@@ -17,10 +17,10 @@ export const useSpeakersStore = defineStore('speakers', {
     }
   },
   actions: {
-    async loadSpeakers (client: any) {
+    async loadData (client: any) {
+      if (this.speakers.length > 0) return
       try {
-        const result = await client.query(`
-        query Speakers {
+        const result = await client.query(`{
           speakers(filter: { seminars: { year: { _eq: "${import.meta.env.VITE_YEAR}" } } }) {
             id
             name

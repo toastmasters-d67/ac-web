@@ -6,7 +6,7 @@ export const useGeneralStore = defineStore('general', {
       date: '',
       title: '',
       slogan: '',
-      longwelcome: '',
+      longwelcom: '',
       shortwelcome: '',
       marquee1: '',
       marquee2: '',
@@ -19,37 +19,39 @@ export const useGeneralStore = defineStore('general', {
   }),
   getters: {
     getItem: (state) => (item: keyof General, locale: string) => {
+      if (state.general.date === '') return ''
       return locale === 'tw' ? state.general[item] : state.general.translations[0][item]
     },
     getLogo: (state) => {
+      if (state.general.logo.id === 0) return ''
       return `${import.meta.env.VITE_CMS_API}/assets/${state.general.logo.id}`
     }
   },
   actions: {
-    async loadGeneral (client: any) {
+    async loadData (client: any) {
+      if (this.general.date !== '') return
       try {
-        const result = await client.query(`
-        query General {
-          general(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
-            date
-            title
-            slogan
-            longwelcom
-            shortwelcome
-            marquee1
-            marquee2
-            logo { id }
-            translations(filter: { languages_id: { name: { _eq: "English" } } }) {
+        const result = await client.query(`{
+            general(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
               date
               title
               slogan
-              longwelcome
+              longwelcom
               shortwelcome
               marquee1
               marquee2
+              logo { id }
+              translations(filter: { languages_code: { name: { _eq: "English" } } }) {
+                date
+                title
+                slogan
+                longwelcome
+                shortwelcome
+                marquee1
+                marquee2
+              }
             }
-          }
-        }`)
+          }`)
         this.general = result.general[0]
         this.error = null
       } catch (err) {
@@ -64,7 +66,7 @@ interface General {
   date: string
   title: string
   slogan: string
-  longwelcome: string
+  longwelcom: string
   shortwelcome: string
   marquee1: string
   marquee2: string

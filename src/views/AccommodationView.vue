@@ -2,105 +2,19 @@
   <Breadcrumb v-once />
   <header class="accommodation-title">{{ $t("accommodation.title") }}</header>
   <article id="accommodation" class="accommodation-container">
-    <div class="accommodation-banner-container">
+    <div v-for="(accom, key) in store.accoms" :key="key" class="accommodation-item">
       <img
-        src="@/assets/image/accommodation/visual-left.svg"
-        class="accommodation-banner-visual-left"
-        alt=""
-      />
-      <img
-        src="@/assets/image/accommodation/visual-right.svg"
-        class="accommodation-banner-visual-right"
-        alt=""
-      />
-      <span class="accommodation-banner-title">
-        {{ $t("accommodation.banner.title") }}
-      </span>
-      <hr class="accommodation-banner-divider" />
-      <span class="accommodation-banner-title-text">
-        {{ $t("accommodation.banner.title-text") }}
-      </span>
-      <div class="accommodation-banner-content-container">
-        <div class="accommodation-banner-content-box1">
-          <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title1">
-              {{ $t("accommodation.banner.room1.name") }}
-            </span>
-            <span class="accommodation-banner-subbox-text1">
-              {{ $t("accommodation.banner.room1.description1") }}
-              <br />
-              {{ $t("accommodation.banner.room1.description2") }}
-            </span>
-          </div>
-          <hr class="accommodation-banner-vertical-divider" />
-          <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title2">
-              {{ $t("accommodation.banner.room1.price") }}
-            </span>
-            <span class="accommodation-banner-subbox-text2">
-              {{ $t("accommodation.banner.room1.original-price") }}
-            </span>
-          </div>
-        </div>
-        <div class="accommodation-banner-content-box1">
-          <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title1">
-              {{ $t("accommodation.banner.room2.name") }}
-            </span>
-            <span class="accommodation-banner-subbox-text1">
-              {{ $t("accommodation.banner.room2.description") }}
-            </span>
-          </div>
-          <hr class="accommodation-banner-vertical-divider" />
-          <div class="accommodation-banner-box1-subbox">
-            <span class="accommodation-banner-subbox-title2">
-              {{ $t("accommodation.banner.room2.price") }}
-            </span>
-            <span class="accommodation-banner-subbox-text2">
-              {{ $t("accommodation.banner.room2.original-price") }}
-            </span>
-          </div>
-        </div>
-        <div class="accommodation-banner-content-box2">
-          <span class="accommodation-banner-box2-note">
-            {{ $t("accommodation.banner.note") }}
-          </span>
-          <div class="accommodation-banner-box2-subbox">
-            <div class="accommodation-banner-box2-subbox-text">
-              {{ $t("accommodation.banner.room1.name") }}
-              <br />
-              {{ $t("accommodation.banner.room1.add-price") }}
-            </div>
-            <div class="accommodation-banner-box2-subbox-text">
-              {{ $t("accommodation.banner.room2.name") }}
-              <br />
-              {{ $t("accommodation.banner.room2.add-price") }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="accommodation-banner-bottom">
-        <span class="accommodation-banner-bottom-bold">
-          {{ $t("accommodation.banner.bottom-title") }}
-        </span>
-        <span>{{ $t("accommodation.banner.bottom-note") }}</span>
-        <span>{{ $t("accommodation.banner.bottom-tel") }}</span>
-      </div>
-    </div>
-    <div class="accommodation-area">{{ $t("accommodation.xizhi") }}</div>
-    <div class="accommodation-item">
-      <img
-        src="@/assets/image/accommodation/fushin-large.png"
-        alt="Taipei Fushin Hotel"
+        :src="store.getPicture(key)"
+        :alt="store.getName(key, locale)"
         class="accommodation-image-large"
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
           <div class="accommodation-name">
-            {{ $t("accommodation.hotels[0].name") }}
+            {{ store.getName(key, locale) }}
           </div>
           <div class="accommodation-price">
-            {{ $t("accommodation.hotels[0].price") }}
+            {{ store.getPrice(key) }}
           </div>
         </div>
         <div class="accommodation-transportation">
@@ -112,155 +26,7 @@
             <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
           <ul>
-            <li>{{ $t("accommodation.hotels[0].transportation[0]") }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accommodation-area">{{ $t("accommodation.nangang") }}</div>
-    <div class="accommodation-item">
-      <img
-        src="@/assets/image/accommodation/may-large.png"
-        alt="May Rooms Taipei"
-        class="accommodation-image-large"
-      />
-      <div class="accommodation-content">
-        <div class="accommodation-content-title">
-          <div class="accommodation-name">
-            {{ $t("accommodation.hotels[1].name") }}
-          </div>
-          <div class="accommodation-price">
-            {{ $t("accommodation.hotels[1].price") }}
-          </div>
-        </div>
-        <div class="accommodation-transportation">
-          <div class="accommodation-transportation-title">
-            <img
-              src="@/assets/image/accommodation/icon-transportation-large.svg"
-              alt="transportation-icon"
-            />
-            <p>{{ $t("accommodation.transportation-location") }}</p>
-          </div>
-          <ul>
-            <li>{{ $t("accommodation.hotels[1].transportation[0]") }}</li>
-            <li>{{ $t("accommodation.hotels[1].transportation[1]") }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accommodation-item">
-      <img
-        src="@/assets/image/accommodation/uline-large.png"
-        alt="Uline Motel"
-        class="accommodation-image-large"
-      />
-      <div class="accommodation-content">
-        <div class="accommodation-content-title">
-          <div class="accommodation-name">
-            {{ $t("accommodation.hotels[2].name") }}
-          </div>
-          <div class="accommodation-price">
-            {{ $t("accommodation.hotels[2].price") }}
-          </div>
-        </div>
-        <div class="accommodation-transportation">
-          <div class="accommodation-transportation-title">
-            <img
-              src="@/assets/image/accommodation/icon-transportation-large.svg"
-              alt="transportation-icon"
-            />
-            <p>{{ $t("accommodation.transportation-location") }}</p>
-          </div>
-          <ul>
-            <li>{{ $t("accommodation.hotels[2].transportation[0]") }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accommodation-item">
-      <img
-        src="@/assets/image/accommodation/place-large.png"
-        alt="The Place Taipei"
-        class="accommodation-image-large"
-      />
-      <div class="accommodation-content">
-        <div class="accommodation-content-title">
-          <div class="accommodation-name">
-            {{ $t("accommodation.hotels[3].name") }}
-          </div>
-          <div class="accommodation-price">
-            {{ $t("accommodation.hotels[3].price") }}
-          </div>
-        </div>
-        <div class="accommodation-transportation">
-          <div class="accommodation-transportation-title">
-            <img
-              src="@/assets/image/accommodation/icon-transportation-large.svg"
-              alt="transportation-icon"
-            />
-            <p>{{ $t("accommodation.transportation-location") }}</p>
-          </div>
-          <ul>
-            <li>{{ $t("accommodation.hotels[3].transportation[0]") }}</li>
-            <li>{{ $t("accommodation.hotels[3].transportation[1]") }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accommodation-item">
-      <img
-        src="@/assets/image/accommodation/forward-large.png"
-        alt="Forward Hotel Nangang"
-        class="accommodation-image-large"
-      />
-      <div class="accommodation-content">
-        <div class="accommodation-content-title">
-          <div class="accommodation-name">
-            {{ $t("accommodation.hotels[4].name") }}
-          </div>
-          <div class="accommodation-price">
-            {{ $t("accommodation.hotels[4].price") }}
-          </div>
-        </div>
-        <div class="accommodation-transportation">
-          <div class="accommodation-transportation-title">
-            <img
-              src="@/assets/image/accommodation/icon-transportation-large.svg"
-              alt="transportation-icon"
-            />
-            <p>{{ $t("accommodation.transportation-location") }}</p>
-          </div>
-          <ul>
-            <li>{{ $t("accommodation.hotels[4].transportation[0]") }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accommodation-item">
-      <img
-        src="@/assets/image/accommodation/greenworld-large.png"
-        alt="Green World NanGang"
-        class="accommodation-image-large"
-      />
-      <div class="accommodation-content">
-        <div class="accommodation-content-title">
-          <div class="accommodation-name">
-            {{ $t("accommodation.hotels[5].name") }}
-          </div>
-          <div class="accommodation-price">
-            {{ $t("accommodation.hotels[5].price") }}
-          </div>
-        </div>
-        <div class="accommodation-transportation">
-          <div class="accommodation-transportation-title">
-            <img
-              src="@/assets/image/accommodation/icon-transportation-large.svg"
-              alt="transportation-icon"
-            />
-            <p>{{ $t("accommodation.transportation-location") }}</p>
-          </div>
-          <ul>
-            <li>{{ $t("accommodation.hotels[5].transportation[0]") }}</li>
+            <li>{{ store.getTrans(key, locale) }}</li>
           </ul>
         </div>
       </div>
@@ -269,11 +35,19 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
+import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useAccomsStore } from '@/stores/accomsStore.ts'
+import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 import Breadcrumb from '@/components/app/AppBreadcrumb.vue'
 
-onBeforeMount(() => {
+const { locale } = useI18n()
+const store = useAccomsStore()
+const client = useDirectusClient()
+
+onMounted(() => {
   window.scrollTo({ top: 0 })
+  void store.loadData(client)
 })
 </script>
 

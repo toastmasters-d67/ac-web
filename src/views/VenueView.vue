@@ -3,22 +3,22 @@
     <Breadcrumb v-once />
     <div class="venue-box">
       <section id="map" class="venue-section">
-        <img :src="img" class="venue-map" alt="map" />
+        <img :src="store.getPicture" class="venue-map" alt="map" />
       </section>
       <section id="info" class="venue-section">
         <header class="venue-title">{{ $t("home.venue.venue") }}</header>
         <div class="venue-row">
           <i class="pi pi-phone venue-row-icon"></i>
           <span class="venue-row-text"
-            ><a :href="`tel:${telephone}`">{{ telephone }}</a></span
+            ><a :href="`tel:${store.getTelephone}`">{{ store.getTelephone }}</a></span
           >
         </div>
         <div class="venue-row">
           <i class="pi pi-map-marker venue-row-icon"></i>
-          <span class="venue-row-text">{{ address }}</span>
+          <span class="venue-row-text">{{ store.getItem("address", locale) }}</span>
         </div>
         <div class="venue-row">
-          <a :href="link" class="venue-row-button" target="_blank">{{
+          <a :href="store.getLink" class="venue-row-button" target="_blank">{{
             $t("home.venue.show")
           }}</a>
         </div>
@@ -28,7 +28,7 @@
           <div class="venue-section-button">{{ $t("venue.car.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <div v-html="car"></div>
+          <span>{{ store.getItem("car", locale) }}</span>
         </div>
       </section>
       <section id="metro" class="venue-section">
@@ -36,7 +36,7 @@
           <div class="venue-section-button">{{ $t("venue.metro.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <span>{{ metro }}</span>
+          <span>{{ store.getItem("metro", locale) }}</span>
         </div>
       </section>
       <section id="bus" class="venue-section">
@@ -44,7 +44,7 @@
           <div class="venue-section-button">{{ $t("venue.bus.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <span>{{ bus }}</span>
+          <span>{{ store.getItem("bus", locale) }}</span>
         </div>
       </section>
     </div>
@@ -52,69 +52,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount } from 'vue'
-import axios, { type AxiosResponse } from 'axios'
-import { useLanguageStore } from '@/stores/languageStore.ts'
+import { onBeforeMount } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useVenueStore } from '@/stores/venueStore.ts'
+import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 import Breadcrumb from '@/components/app/AppBreadcrumb.vue'
 
-const CMS_URL = import.meta.env.VITE_CMS_API
-const YEAR = import.meta.env.VITE_YEAR
-const store = useLanguageStore()
-
-const name = ref('')
-const telephone = ref('')
-const address = ref('')
-const img = ref('')
-const car = ref('')
-const metro = ref('')
-const bus = ref('')
-const link = ref('')
-
-const getChineseData = async (): Promise<void> => {
-  try {
-    const response = await axios.get(
-      `${CMS_URL}/items/venue/?filter[year][_eq]=${YEAR}`
-    )
-    const data = response.data.data[0] // Assuming there's only one venue
-    name.value = data.name
-    telephone.value = data.telephone
-    address.value = data.address
-    link.value = data.link
-    car.value = data.car
-    metro.value = data.metro
-    bus.value = data.bus
-    img.value = `${CMS_URL}/assets/${data.picture}`
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const getForigienData = async (): Promise<void> => {
-  try {
-    const response: AxiosResponse = await axios.get(
-      `${CMS_URL}/items/venue_translations/?filter[id][_eq]=${data.translation}`
-    )
-    const data = response.data.data[0] // Assuming there's only one translation
-    name.value = data.name
-    address.value = data.address
-    car.value = data.car
-    metro.value = data.metro
-    bus.value = data.bus
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const getAllData = async (): Promise<void> => {
-  await getChineseData()
-  if (store.language === 'en') {
-    await getForigienData()
-  }
-}
+const { locale } = useI18n()
+const store = useVenueStore()
+const client = useDirectusClient()
 
 onBeforeMount(() => {
   window.scrollTo({ top: 0 })
-  void getAllData()
+  void store.loadData(client)
 })
 </script>
 

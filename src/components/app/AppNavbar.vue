@@ -151,11 +151,8 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
-import { useLanguageStore } from '@/stores/languageStore.ts'
 
 const router = useRouter()
-const store = useLanguageStore()
-
 const locale = ref(localStorage.getItem('locale') ?? 'tw')
 const localeOptions = [
   { value: 'tw', label: '中文' },
@@ -168,7 +165,6 @@ const year = import.meta.env.VITE_YEAR
 
 watch(locale, (newLocale) => {
   localStorage.setItem('locale', newLocale)
-  store.setLanguage(newLocale)
   location.reload()
 })
 

@@ -3,24 +3,24 @@
     <img
       alt="Key Vision"
       class="slogan-kv-desktop"
-      src="@/assets/image/home/key-vision.png"
+      :src="store.getLogo"
     />
     <img
       alt="Key Vision 1"
       class="slogan-kv-mobile1"
       src="@/assets/image/home/key-vision-mobile1.png"
     />
-    <div class="slogan-date">{{ generalStore.getItem("date", locale) }}</div>
-    <header class="slogan-title">{{ generalStore.getItem("title", locale) }}</header>
+    <div class="slogan-date">{{ store.getItem("date", locale) }}</div>
+    <header class="slogan-title">{{ store.getItem("title", locale) }}</header>
     <div class="slogan-word">
       <span>
-        {{ generalStore.getItem("slogan", locale) }}
+        {{ store.getItem("slogan", locale) }}
       </span>
     </div>
     <span class="slogan-text">
-      {{ generalStore.getItem("longwelcome", locale) }}
+      {{ sloganText }}
     </span>
-    <img alt="Key Vision 2" class="slogan-kv-mobile2" :src="generalStore.getLogo" />
+    <img alt="Key Vision 2" class="slogan-kv-mobile2" src="@/assets/image/home/key-vision-mobile2.png" />
   </section>
 </template>
 
@@ -31,23 +31,21 @@ import { useGeneralStore } from '@/stores/generalStore.ts'
 import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 
 const { locale } = useI18n()
-const generalStore = useGeneralStore()
+const store = useGeneralStore()
 const client = useDirectusClient()
-const windowHeight = ref(window.innerHeight)
 const sloganText = ref('')
 
 const handleResize = (): void => {
-  windowHeight.value = window.innerWidth
   sloganText.value =
-    windowHeight.value > 768
-      ? 'home.slogan.text.desktop'
-      : 'home.slogan.text.mobile'
+  window.innerWidth > 768
+    ? store.getItem('longwelcom', locale.value)
+    : store.getItem('shortwelcome', locale.value)
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await store.loadData(client)
   handleResize()
   window.addEventListener('resize', handleResize)
-  void generalStore.loadGeneral(client)
 })
 
 onUnmounted(() => {
