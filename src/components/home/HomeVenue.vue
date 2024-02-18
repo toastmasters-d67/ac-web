@@ -54,7 +54,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .venue-container {
   width: 100%;
   color: #004165;

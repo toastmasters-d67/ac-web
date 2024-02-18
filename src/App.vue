@@ -30,7 +30,7 @@ const scrollToTop = (behavior = 'smooth'): void => {
 }
 </script>
 
-<style lang="scss">
+<style>
 #app {
   font-family: Montserrat, "Noto Sans TC", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

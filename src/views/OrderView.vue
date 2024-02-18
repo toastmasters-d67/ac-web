@@ -45,7 +45,7 @@ onBeforeMount(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .order-container {
   display: flex;
   gap: 20px;

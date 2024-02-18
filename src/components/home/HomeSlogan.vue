@@ -53,7 +53,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .slogan-container {
   width: 100%;
   min-height: 548px;

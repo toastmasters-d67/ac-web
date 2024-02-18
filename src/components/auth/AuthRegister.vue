@@ -99,7 +99,7 @@ async function registerUser (event: { preventDefault: () => void }): Promise<voi
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .register-container {
   width: 55.5%;
   display: flex;

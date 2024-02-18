@@ -43,7 +43,7 @@ function runMarquee (): void {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .marquee-container {
   z-index: 5;
   width: 100%;

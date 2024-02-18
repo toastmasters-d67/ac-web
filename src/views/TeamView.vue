@@ -265,7 +265,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .our-team-background-image {
   width: 600px;
   height: 800px;

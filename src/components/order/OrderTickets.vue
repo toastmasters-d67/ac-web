@@ -490,7 +490,7 @@ export default {
   </section>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .tickets-container {
   width: 100%;
   max-width: 713px;

@@ -161,7 +161,7 @@ function setValues (data) {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .summary-container {
   width: 26.875%;
   height: fit-content;

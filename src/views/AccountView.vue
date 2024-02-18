@@ -200,7 +200,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .account-container {
   width: 80%;
   border-color: transparent;

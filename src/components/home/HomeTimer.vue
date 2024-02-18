@@ -73,7 +73,7 @@ const getBall = computed(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 @font-face {
   font-family: "Archivo";
   font-weight: 400;

@@ -74,7 +74,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .instruction-container {
   position: relative;
   width: 44.5%;

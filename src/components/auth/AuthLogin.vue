@@ -108,7 +108,7 @@ async function loginUser (): Promise<void> {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .login-container {
   width: 55.5%;
   display: flex;

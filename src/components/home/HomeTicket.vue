@@ -127,7 +127,7 @@ const price = {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .ticket-container {
   width: 100%;
   background: transparent;

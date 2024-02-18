@@ -61,7 +61,7 @@ const getItems = computed(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .list-container {
   width: 32.25%;
   height: fit-content;

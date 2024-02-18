@@ -220,7 +220,7 @@ function scrollToElement (id: string): void {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 a {
   color: black;
   text-decoration: none;

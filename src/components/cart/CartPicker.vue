@@ -175,7 +175,7 @@ const banquetNumbers = computed(() => {
 const numbers = Array.from({ length: 31 }, (_, i) => i)
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .picker-container {
   width: 55.07%;
   display: flex;
