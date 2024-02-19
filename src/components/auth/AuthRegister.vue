@@ -1,104 +1,86 @@
 <template>
   <section id="register" class="register-container">
-    <header class="register-title">{{ $t("register.title") }}</header>
-    <span class="register-title-note">{{ $t("register.description") }}</span>
-    <div class="register-name">
-      <div class="register-row row-name">
-        <label class="register-label">{{ $t("register.firstname") }}</label>
-        <input v-model.trim="state.firstName" type="text" :placeholder="$t('register.firstname')" class="register-input" required @click="clear" @input="clear" />
-        <p class="form-input-hint" v-if="!!errors.firstName">{{ errors.firstName }}</p>
+    <header class="register-title">{{ t("register.title") }}</header>
+    <span class="register-title-note">{{ t("register.description") }}</span>
+    <form @submit.prevent="handleSubmit(onSubmit)">
+      <div class="register-name">
+        <div class="register-row row-name">
+          <label for="firstName" class="register-label">{{ t("register.firstname") }}</label>
+          <input v-model="firstName" id="firstName" type="text" :placeholder="t('register.firstname')" class="register-input" @input="clearForm" />
+          <ErrorMessage :name="'firstName'" class="form-input-hint"/>
+        </div>
+        <div class="register-row row-name">
+          <label for="lastName" class="register-label">{{ t("register.lastname") }}</label>
+          <input v-model="lastName" id="lastName" type="text" :placeholder="t('register.lastname')" class="register-input" @input="clearForm" />
+          <ErrorMessage :name="'lastName'" class="form-input-hint"/>
+        </div>
       </div>
-      <div class="register-row row-name">
-        <label class="register-label">{{ $t("register.lastname") }}</label>
-        <input v-model.trim="state.lastName" type="text" :placeholder="$t('register.lastname')" class="register-input" required @click="clear" @input="clear" />
-        <p class="form-input-hint" v-if="!!errors.lastName">{{ errors.lastName }}</p>
+      <div class="register-row">
+        <label for="email" class="register-label">{{ t("register.email") }}</label>
+        <input v-model="email" id="email" type="email" :placeholder="t('register.email')" class="register-input" @input="clearForm" />
+        <ErrorMessage :name="'email'" class="form-input-hint"/>
       </div>
-    </div>
-    <div class="register-row">
-      <label class="register-label">{{ $t("register.email") }}</label>
-      <input v-model.trim="state.email" type="email" :placeholder="$t('register.email')" class="register-input" required @click="clear" @input="clear" />
-      <p class="form-input-hint" v-if="!!errors.email || show">{{ errors.email }}</p>
-    </div>
-    <div class="register-row">
-      <label class="register-label">{{ $t("register.password") }}</label>
-      <input v-model.trim="state.password" type="password" :placeholder="$t('register.password')" class="register-input" required @click="clear" @input="clear" />
-      <p class="form-input-hint" v-if="!!errors.password">{{ errors.password }}</p>
-    </div>
-    <div class="register-row">
-      <label class="register-label">{{ $t("register.confirm") }}</label>
-      <input v-model.trim="state.confirmPassword" type="password" :placeholder="$t('register.confirm')" class="register-input" required @click="clear" @input="clear" />
-      <p class="form-input-hint" v-if="!!errors.confirmPassword">{{ errors.confirmPassword }}</p>
-    </div>
-    <button type="submit" class="register-button" @click="registerUser">{{ $t("register.title") }}</button>
-    <span class="register-button-note">{{ $t("register.have-account") }} <router-link to="/login">{{ $t("login.title") }}</router-link></span>
-    <hr class="register-divider" />
+      <div class="register-row">
+        <label for="password" class="register-label">{{ t("register.password") }}</label>
+        <input v-model="password" id="password" type="password" :placeholder="t('register.password')" class="register-input" @input="clearForm" />
+        <ErrorMessage :name="'password'" class="form-input-hint"/>
+      </div>
+      <div class="register-row">
+        <label for="confirmPassword" class="register-label">{{ t("register.confirm") }}</label>
+        <input v-model="confirmPassword" id="confirmPassword" type="password" :placeholder="t('register.confirm')" class="register-input" @input="clearForm" />
+        <ErrorMessage :name="'confirmPassword'" class="form-input-hint"/>
+      </div>
+      <button type="submit" class="register-button">{{ t("register.title") }}</button>
+    </form>
+    <span class="register-button-note">{{ t("register.have-account") }} <router-link to="/login">{{ t("login.title") }}</router-link></span>
   </section>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useField, useForm, ErrorMessage } from 'vee-validate'
+import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
-import { useVuelidate } from '@vuelidate/core'
-import { required, email, minLength, sameAs } from '@vuelidate/validators'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 const { t } = useI18n()
 const router = useRouter()
 
-const state = reactive({
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  confirmPassword: ''
+const schema = yup.object({
+  firstName: yup.string().required(t('register.validation.firstname_required')),
+  lastName: yup.string().required(t('register.validation.lastname_required')),
+  email: yup.string().email(t('register.validation.email_invalid')).required(t('register.validation.email_required')),
+  password: yup.string().min(6, t('register.validation.password_length')).required(t('register.validation.password_required')),
+  confirmPassword: yup.string().oneOf([yup.ref('password'), null], t('register.validation.password_match')).required(t('register.validation.confirm_required'))
 })
 
-const rules = {
-  firstName: { required },
-  lastName: { required },
-  email: { required, email },
-  password: { required, minLength: minLength(6) },
-  confirmPassword: { required, sameAsPassword: sameAs(state.password) }
-}
-
-const v$ = useVuelidate(rules, state)
-const errors = reactive({
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  confirmPassword: ''
+const { handleSubmit, errors, resetForm } = useForm({
+  validationSchema: schema
 })
 
-const show = ref(false)
+const { value: firstName } = useField('firstName')
+const { value: lastName } = useField('lastName')
+const { value: email } = useField('email')
+const { value: password } = useField('password')
+const { value: confirmPassword } = useField('confirmPassword')
 
-function clear (): void {
-  show.value = false
-  for (const key in errors) {
-    errors[key] = ''
-  }
-}
-
-async function registerUser (event: { preventDefault: () => void }): Promise<void> {
-  event.preventDefault()
-  await v$.value.$validate()
-  if (!v$.value.$error) {
-    try {
-      await axios.post(`${import.meta.env.VITE_API}/user`, state)
-      await router.push('/login')
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response?.status === 409) {
-        errors.email = t('error.email.occupied')
-        show.value = true
-      } else {
-        console.error(error)
-      }
+const onSubmit = async (values: any): Promise<void> => {
+  try {
+    await axios.post(`${import.meta.env.VITE_API}/user`, values)
+    await router.push('/login')
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 409) {
+      errors.value.email = t('error.email.occupied')
+    } else {
+      console.error(error)
     }
   }
 }
-</script>
 
+const clearForm = (): void => {
+  resetForm()
+}
+</script>
 <style scoped>
 .register-container {
   width: 55.5%;
@@ -116,6 +98,15 @@ async function registerUser (event: { preventDefault: () => void }): Promise<voi
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
   }
 
   .form-input-hint {

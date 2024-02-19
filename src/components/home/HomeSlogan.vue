@@ -3,49 +3,50 @@
     <img
       alt="Key Vision"
       class="slogan-kv-desktop"
-      :src="store.getLogo"
+      src="@/assets/image/home/key-vision.png"
     />
     <img
       alt="Key Vision 1"
       class="slogan-kv-mobile1"
       src="@/assets/image/home/key-vision-mobile1.png"
     />
-    <div class="slogan-date">{{ store.getItem("date", locale) }}</div>
-    <header class="slogan-title">{{ store.getItem("title", locale) }}</header>
+    <div class="slogan-date">{{ $t("home.slogan.date") }}</div>
+    <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
     <div class="slogan-word">
-      <span>
-        {{ store.getItem("slogan", locale) }}
+      <span v-for="(item, index) in $tm('home.slogan.slogan')" :key="index">
+        {{ $rt(item) }}
       </span>
     </div>
     <span class="slogan-text">
       {{ sloganText }}
     </span>
-    <img alt="Key Vision 2" class="slogan-kv-mobile2" src="@/assets/image/home/key-vision-mobile2.png" />
+    <img
+      alt="Key Vision 2"
+      class="slogan-kv-mobile2"
+      src="@/assets/image/home/key-vision-mobile2.png"
+    />
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useGeneralStore } from '@/stores/generalStore.ts'
-import { useDirectusClient } from '@/composables/useDirectusClient.ts'
 
-const { locale } = useI18n()
-const store = useGeneralStore()
-const client = useDirectusClient()
-const sloganText = ref('')
+const windowHeight = ref(window.innerHeight)
+const sloganText = ref(useI18n().t('home.slogan.text.desktop'))
 
 const handleResize = (): void => {
-  sloganText.value =
-  window.innerWidth > 768
-    ? store.getItem('longwelcom', locale.value)
-    : store.getItem('shortwelcome', locale.value)
+  windowHeight.value = window.innerWidth
+  if (windowHeight.value > 768) {
+    sloganText.value = useI18n().t('home.slogan.text.desktop')
+  } else {
+    sloganText.value = useI18n().t('home.slogan.text.mobile')
+  }
 }
 
-onMounted(async () => {
-  await store.loadData(client)
-  handleResize()
+onMounted(() => {
   window.addEventListener('resize', handleResize)
+  handleResize()
 })
 
 onUnmounted(() => {

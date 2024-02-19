@@ -4,33 +4,21 @@
       <header class="login-title">{{ $t("login.title") }}</header>
       <span class="login-login-description">{{ $t("login.description") }}</span>
       <span class="first-login-description" v-html="firstLoginDescription"></span>
-      <div class="login-form">
-        <label for="email" class="login-label">{{ $t("register.email") }}</label>
-        <input
-          v-model.trim="state.email"
-          type="email"
-          :placeholder="$t('register.email')"
-          class="login-input"
-          required
-          @click="clear"
-          @input="clear"
-        />
-        <p class="form-input-hint" v-if="v$.email.$error">{{ errorMessages.email[v$.email.$errors[0].$validator] }}</p>
-        <label for="password" class="login-label">{{ $t("register.password") }}</label>
-        <input
-          v-model.trim="state.password"
-          type="password"
-          :placeholder="$t('register.password')"
-          class="login-input"
-          required
-          @click="clear"
-          @input="clear"
-        />
-        <p class="form-input-hint" v-if="v$.password.$error">{{ errorMessages.password[v$.password.$errors[0].$validator] }}</p>
-        <p class="form-input-hint">{{ loginError }}</p>
-        <a class="login-forget-password" href="mailto:tmicon@toastmasters.org.tw">{{ $t("login.forget-password") }}</a>
-        <button class="login-button" @click="loginUser">{{ $t("login.title") }}</button>
-      </div>
+      <VForm @submit="loginUser">
+        <div class="login-form">
+          <label for="email" class="login-label">{{ $t("register.email") }}</label>
+          <Field name="email" type="email" v-model="state.email" class="login-input" :placeholder="$t('register.email')" @input="clear" />
+          <ErrorMessage name="email" class="form-input-hint" />
+
+          <label for="password" class="login-label">{{ $t("register.password") }}</label>
+          <Field name="password" type="password" v-model="state.password" class="login-input" :placeholder="$t('register.password')" @input="clear" />
+          <ErrorMessage name="password" class="form-input-hint" />
+
+          <p class="form-input-hint">{{ loginError }}</p>
+          <a class="login-forget-password" href="mailto:tmicon@toastmasters.org.tw">{{ $t("login.forget-password") }}</a>
+          <button type="submit" class="login-button">{{ $t("login.title") }}</button>
+        </div>
+      </VForm>
       <div class="login-register">
         {{ $t("login.no-account") }}
         <router-link class="login-register register-link" to="/register">{{ $t("register.title") }}</router-link>
@@ -48,9 +36,26 @@
 import { reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import useVuelidate from '@vuelidate/core'
-import { required, email, minLength } from '@vuelidate/validators'
+import { Form as VForm, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
+import { required, email, min } from '@vee-validate/rules'
+import { object, string } from 'yup'
 import axios from 'axios'
+
+defineRule('required', required)
+defineRule('email', email)
+defineRule('min', min)
+
+configure({
+  generateMessage: (ctx: { field: any, rule: { params: any[], name: string | number } }) => {
+    const { t } = useI18n()
+    const messages = {
+      required: t('error.field.required', { field: ctx.field }),
+      email: t('error.email.format'),
+      min: t('error.password.min', { length: ctx.rule.params[0] })
+    }
+    return messages[ctx.rule.name as keyof typeof messages]
+  }
+})
 
 const { t } = useI18n()
 const router = useRouter()
@@ -61,23 +66,10 @@ const state = reactive({
   password: ''
 })
 
-const rules = {
-  email: { required, email },
-  password: { required, minLength: minLength(6) }
-}
-
-const v$ = useVuelidate(rules, state)
-
-const errorMessages = {
-  email: {
-    required: t('error.email.empty'),
-    email: t('error.email.format')
-  },
-  password: {
-    required: t('error.password.empty'),
-    minLength: t('error.password.min')
-  }
-}
+const schema = object({
+  email: string().required().email(),
+  password: string().required().min(6)
+})
 
 const firstLoginDescription = t('login.firstlogin-description')
 
@@ -86,14 +78,18 @@ function clear (): void {
 }
 
 async function loginUser (): Promise<void> {
-  await v$.value.$validate()
-  if (!v$.value.$error) {
+  const isValid = await schema.validate(state).catch((e) => {
+    loginError.value = e.errors[0]
+    return false
+  })
+
+  if (isValid) {
     const url = `${import.meta.env.VITE_API}/login`
     try {
       const response = await axios.post(url, state)
       const token = response.data.token
-      if (token) {
-        localStorage.setItem('token', token)
+      if (token !== undefined && token !== null && token !== '') {
+        localStorage.setItem('token', String(token))
         await router.push('/me')
       }
     } catch (error) {
@@ -122,6 +118,15 @@ async function loginUser (): Promise<void> {
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
   }
 
   .login-login {
