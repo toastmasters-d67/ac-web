@@ -8,7 +8,7 @@
     <img
       alt="Key Vision 1"
       class="slogan-kv-mobile1"
-      src="@/assets/image/home/key-vision-mobile1.png"
+      src="@/assets/image/home/key-vision-2024.jfif"
     />
     <div class="slogan-date">{{ $t("home.slogan.date") }}</div>
     <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
@@ -23,7 +23,7 @@
     <img
       alt="Key Vision 2"
       class="slogan-kv-mobile2"
-      src="@/assets/image/home/key-vision-mobile2.png"
+      src="@/assets/image/home/key-vision-2024.jfif"
     />
   </section>
 </template>
