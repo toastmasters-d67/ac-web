@@ -758,7 +758,7 @@ function switchProgram (day: string): void {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .program-container {
   width: 100%;
   background: transparent;

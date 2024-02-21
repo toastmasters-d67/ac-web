@@ -51,7 +51,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .accommodation-title {
   font-size: 32px;
   color: #004165;

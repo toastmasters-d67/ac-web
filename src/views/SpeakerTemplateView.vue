@@ -24,7 +24,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .speaker-container {
   background: transparent;
 }

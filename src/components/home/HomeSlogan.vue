@@ -33,14 +33,15 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const windowHeight = ref(window.innerHeight)
-const sloganText = ref(useI18n().t('home.slogan.text.desktop'))
+const i18n = useI18n()
+const sloganText = ref(i18n.t('home.slogan.text.desktop'))
 
 const handleResize = (): void => {
-  windowHeight.value = window.innerWidth
+  windowHeight.value = window.innerHeight
   if (windowHeight.value > 768) {
-    sloganText.value = useI18n().t('home.slogan.text.desktop')
+    sloganText.value = i18n.t('home.slogan.text.desktop')
   } else {
-    sloganText.value = useI18n().t('home.slogan.text.mobile')
+    sloganText.value = i18n.t('home.slogan.text.mobile')
   }
 }
 
@@ -54,7 +55,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .slogan-container {
   width: 100%;
   min-height: 548px;

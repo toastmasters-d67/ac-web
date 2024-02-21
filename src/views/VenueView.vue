@@ -68,7 +68,7 @@ onBeforeMount(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .venue-container {
   width: 100%;
   color: #004165;

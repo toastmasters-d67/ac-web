@@ -23,7 +23,7 @@ defineProps({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .reminder-container {
   position: fixed;
   top: 0;

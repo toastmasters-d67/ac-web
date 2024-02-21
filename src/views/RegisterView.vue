@@ -21,7 +21,7 @@ onBeforeMount(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .auth-container {
   width: 100%;
   display: flex;

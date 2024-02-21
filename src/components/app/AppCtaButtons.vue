@@ -17,7 +17,7 @@ defineProps({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .cta-buttons-container {
   position: fixed;
   right: 2.5%;

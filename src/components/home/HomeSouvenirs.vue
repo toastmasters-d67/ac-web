@@ -34,7 +34,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .souvenirs-container {
   width: 100%;
   color: #004165;

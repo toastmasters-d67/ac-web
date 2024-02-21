@@ -81,7 +81,7 @@ const clearForm = (): void => {
   resetForm()
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 .register-container {
   width: 55.5%;
   display: flex;

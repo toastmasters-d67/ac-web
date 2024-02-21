@@ -72,7 +72,7 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .countdown-container {
   width: 100%;
   background: transparent;

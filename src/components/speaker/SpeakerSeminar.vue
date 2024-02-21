@@ -49,7 +49,7 @@ const { locale } = useI18n()
 const store = useSpeakerStore()
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .seminar-container {
   width: 100%;
   color: black;

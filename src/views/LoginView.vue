@@ -34,7 +34,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .auth-container {
   width: 100%;
   min-height: 796px;

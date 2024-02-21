@@ -37,7 +37,7 @@ const toggle = (faq: { show: boolean, icon: string }): void => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .faq-container {
   width: 100%;
   background: transparent;

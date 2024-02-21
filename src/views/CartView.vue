@@ -87,7 +87,7 @@ onBeforeMount(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .cart-container {
   width: 100%;
   display: flex;

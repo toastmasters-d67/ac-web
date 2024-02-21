@@ -41,7 +41,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .scroll-to-top-button {
   position: fixed;
   right: 1.53%;
