@@ -3,7 +3,7 @@
     <img
       alt="Key Vision"
       class="slogan-kv-desktop"
-      src="@/assets/image/home/key-vision.png"
+      src="@/assets/image/home/key-vision-2024.jfif"
     />
     <img
       alt="Key Vision 1"
