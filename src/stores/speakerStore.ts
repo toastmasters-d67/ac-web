@@ -41,7 +41,6 @@ export const useSpeakerStore = defineStore('speaker', {
   },
   actions: {
     async loadData (client: any, speakerKey: string) {
-      if (this.speaker.name !== '') return
       try {
         const result = await client.query(`{
           speakers(filter: { id: { _eq: "${speakerKey}" } }) {
