@@ -7,7 +7,7 @@
       <div class="briefing-speaker-intro">
         <img :src="store.getPicture" class="briefing-speaker-image" alt="play" />
         <div class="briefing-speaker-text">
-          <span>{{ store.getSpeakerItem("contents", locale) }}</span>
+          <span v-html="store.getContent(locale)"></span>
         </div>
       </div>
       <div class="briefing-speaker-links">

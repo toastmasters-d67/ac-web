@@ -113,7 +113,7 @@
         </ul>
       </div>
     </div>
-    <div class="ticket-note">{{ $t("home.ticket.note") }}</div>
+    <!-- <div class="ticket-note">{{ $t("home.ticket.note") }}</div> -->
   </section>
 </template>
 

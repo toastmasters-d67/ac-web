@@ -22,6 +22,9 @@ export const useSpeakerStore = defineStore('speaker', {
       if (state.speaker.name === '') return ''
       return locale === 'tw' ? state.speaker[item] : state.speaker.translations[0][item]
     },
+    getContent: (state) => (locale: string) => {
+      return locale === 'tw' ? state.speaker.content : state.speaker.translations[0].content
+    },
     getPicture: (state) => {
       if (state.speaker.picture.id === 0) return ''
       return `${import.meta.env.VITE_CMS_API}/assets/${state.speaker.picture.id}`
@@ -41,13 +44,12 @@ export const useSpeakerStore = defineStore('speaker', {
   },
   actions: {
     async loadData (client: any, speakerKey: string) {
-      if (this.speaker.name !== '') return
       try {
         const result = await client.query(`{
           speakers(filter: { id: { _eq: "${speakerKey}" } }) {
             name
             title
-            contents
+            content
             facebook
             instagram
             youtube
@@ -55,7 +57,7 @@ export const useSpeakerStore = defineStore('speaker', {
             translations {
               name
               title
-              contents
+              content
             }
             seminars(filter: { year: { _eq: "${import.meta.env.VITE_YEAR}" } }) {
               time
@@ -84,7 +86,7 @@ export const useSpeakerStore = defineStore('speaker', {
 interface Speaker {
   name: string
   title: string
-  contents: string
+  content: string
   facebook: string
   instagram: string
   youtube: string
@@ -94,7 +96,7 @@ interface Speaker {
   translations: Array<{
     name: string
     title: string
-    contents: string
+    content: string
   }>
 }
 

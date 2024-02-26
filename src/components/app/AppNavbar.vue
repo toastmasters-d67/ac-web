@@ -47,7 +47,7 @@
           </option>
         </select>
       </div>
-      <router-link v-if="!isLogin" to="login" class="navbar-login-button">
+      <!-- <router-link v-if="!isLogin" to="login" class="navbar-login-button">
         {{ $t("app.navbar.login") }}
       </router-link>
       <button v-else class="navbar-account-button" ref="accountButton">
@@ -64,7 +64,10 @@
         <div class="navbar-account-menu-link" @click="logout()">
           {{ $t("app.navbar.logout") }}
         </div>
-      </div>
+      </div> -->
+      <a href="https://www.accupass.com/event/2402150909411718374115/" target="_blank" class="navbar-login-button">
+        {{ $t("app.navbar.register") }}
+      </a>
     </div>
     <div class="navbar-mobile-container">
       <Button
@@ -123,7 +126,7 @@
               </option>
             </select>
           </div>
-          <router-link
+          <!-- <router-link
             v-if="!isLogin"
             to="login"
             class="navbar-mobile-link"
@@ -141,7 +144,10 @@
           </router-link>
           <div v-if="isLogin" class="navbar-mobile-link" @click="logout()">
             {{ $t("app.navbar.logout") }}
-          </div>
+          </div> -->
+          <a href="https://www.accupass.com/event/2402150909411718374115/" target="_blank" class="navbar-mobile-link">
+            {{ $t("app.navbar.register") }}
+          </a>
         </div>
       </Sidebar>
     </div>

@@ -118,7 +118,8 @@
       "lang": "EN",
       "login": "Log in",
       "account": "My Account",
-      "logout": "Log out"
+      "logout": "Log out",
+      "register": "Register Now"
     },
     "footer": {
       "contact": "Contact Us",
