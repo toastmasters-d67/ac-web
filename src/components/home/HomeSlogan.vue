@@ -3,12 +3,12 @@
     <img
       alt="Key Vision"
       class="slogan-kv-desktop"
-      src="@/assets/image/home/key-vision-2024.jfif"
+      src="@/assets/image/home/key-vision-2024.png"
     />
     <img
       alt="Key Vision 1"
       class="slogan-kv-mobile1"
-      src="@/assets/image/home/key-vision-2024.jfif"
+      src="@/assets/image/home/key-vision-2024-mobile1.png"
     />
     <div class="slogan-date">{{ $t("home.slogan.date") }}</div>
     <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
@@ -23,7 +23,7 @@
     <img
       alt="Key Vision 2"
       class="slogan-kv-mobile2"
-      src="@/assets/image/home/key-vision-2024.jfif"
+      src="@/assets/image/home/key-vision-2024-mobile2.png"
     />
   </section>
 </template>
