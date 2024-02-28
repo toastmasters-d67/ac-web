@@ -6,7 +6,7 @@
         <img :src="store.getPicture" class="venue-map" alt="map" />
       </section>
       <section id="info" class="venue-section">
-        <header class="venue-title">{{ $t("home.venue.venue") }}</header>
+        <header class="venue-title">{{ store.getItem("name", locale) }}</header>
         <div class="venue-row">
           <i class="pi pi-phone venue-row-icon"></i>
           <span class="venue-row-text"

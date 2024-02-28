@@ -5,7 +5,7 @@
     <div class="faq-questions">
       <div v-for="faq in store.faqs" :key="faq.question" class="faq-question">
         <div class="faq-row" @click="() => toggle(faq)">
-          <span>{{ store.getQuestion(faq, locale) }}</span>
+          <span v-html="store.getQuestion(faq, locale)"></span>
           <i :class="faq.icon"></i>
         </div>
         <span v-if="faq.show" class="faq-answer" v-html="store.getAnswer(faq, locale)"></span>

@@ -5,11 +5,11 @@
       class="slogan-kv-desktop"
       src="@/assets/image/home/key-vision-2024.png"
     />
-    <img
+    <!-- <img
       alt="Key Vision 1"
       class="slogan-kv-mobile1"
       src="@/assets/image/home/key-vision-2024-mobile1.png"
-    />
+    /> -->
     <div class="slogan-date">{{ $t("home.slogan.date") }}</div>
     <header class="slogan-title">{{ $t("home.slogan.title") }}</header>
     <div class="slogan-word">
