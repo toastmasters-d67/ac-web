@@ -22,6 +22,15 @@ export const useVenueStore = defineStore('venue', {
       if (state.venue.name === '') return ''
       return locale === 'tw' ? state.venue[item] : state.venue.translations[0][item]
     },
+    getCar: (state) => (locale: string) => {
+      return locale === 'tw' ? state.venue.car : state.venue.translations[0].car
+    },
+    getMetro: (state) => (locale: string) => {
+      return locale === 'tw' ? state.venue.metro : state.venue.translations[0].metro
+    },
+    getBus: (state) => (locale: string) => {
+      return locale === 'tw' ? state.venue.bus : state.venue.translations[0].bus
+    },
     getPicture: (state) => {
       if (state.venue.picture.id === 0) return ''
       return `${import.meta.env.VITE_CMS_API}/assets/${state.venue.picture.id}`
