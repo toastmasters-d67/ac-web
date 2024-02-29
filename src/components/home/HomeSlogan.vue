@@ -32,13 +32,11 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const windowHeight = ref(window.innerHeight)
 const i18n = useI18n()
 const sloganText = ref(i18n.t('home.slogan.text.desktop'))
 
 const handleResize = (): void => {
-  windowHeight.value = window.innerHeight
-  if (windowHeight.value > 768) {
+  if (window.innerHeight > 768) {
     sloganText.value = i18n.t('home.slogan.text.desktop')
   } else {
     sloganText.value = i18n.t('home.slogan.text.mobile')

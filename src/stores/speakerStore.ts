@@ -5,7 +5,7 @@ export const useSpeakerStore = defineStore('speaker', {
     speaker: {
       name: '',
       title: '',
-      contents: '',
+      content: '',
       facebook: '',
       instagram: '',
       youtube: '',
@@ -23,7 +23,7 @@ export const useSpeakerStore = defineStore('speaker', {
       return locale === 'tw' ? state.speaker[item] : state.speaker.translations[0][item]
     },
     getContent: (state) => (locale: string) => {
-      console.log(state)
+      if (state.speaker.name === '') return ''
       return locale === 'tw' ? state.speaker.content : state.speaker.translations[0].content
     },
     getPicture: (state) => {
