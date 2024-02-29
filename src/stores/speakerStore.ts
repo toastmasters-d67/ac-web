@@ -23,6 +23,7 @@ export const useSpeakerStore = defineStore('speaker', {
       return locale === 'tw' ? state.speaker[item] : state.speaker.translations[0][item]
     },
     getContent: (state) => (locale: string) => {
+      console.log(state)
       return locale === 'tw' ? state.speaker.content : state.speaker.translations[0].content
     },
     getPicture: (state) => {
@@ -40,6 +41,9 @@ export const useSpeakerStore = defineStore('speaker', {
     },
     getSeminarItem: (state) => (key: number, item: keyof Seminar, locale: string) => {
       return locale === 'tw' ? state.seminars[key][item] : state.seminars[key].translations[0][item]
+    },
+    getIntroduction: (state) => (key: number, locale: string) => {
+      return locale === 'tw' ? state.seminars[key].introduction : state.seminars[key].translations[0].introduction
     }
   },
   actions: {

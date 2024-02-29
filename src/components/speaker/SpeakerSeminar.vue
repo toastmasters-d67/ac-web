@@ -32,7 +32,7 @@
               <span class="seminar-row-title">
                 {{ $t("speaker.introduction") }} |
               </span>
-              <span class="seminar-row-text">{{ store.getSeminarItem(key, "introduction", locale) }}</span>
+              <span class="seminar-row-text" v-html="store.getIntroduction(key, locale)"></span>
             </div>
           </div>
         </div>

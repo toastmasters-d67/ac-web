@@ -6,7 +6,7 @@
         <img :src="store.getPicture" class="venue-map" alt="map" />
       </section>
       <section id="info" class="venue-section">
-        <header class="venue-title">{{ $t("home.venue.venue") }}</header>
+        <header class="venue-title">{{ store.getItem("name", locale) }}</header>
         <div class="venue-row">
           <i class="pi pi-phone venue-row-icon"></i>
           <span class="venue-row-text"
@@ -28,7 +28,7 @@
           <div class="venue-section-button">{{ $t("venue.car.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <span>{{ store.getItem("car", locale) }}</span>
+          <span v-html="store.getCar(locale)"></span>
         </div>
       </section>
       <section id="metro" class="venue-section">
@@ -36,7 +36,7 @@
           <div class="venue-section-button">{{ $t("venue.metro.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <span>{{ store.getItem("metro", locale) }}</span>
+          <span v-html="store.getMetro(locale)"></span>
         </div>
       </section>
       <section id="bus" class="venue-section">
@@ -44,7 +44,7 @@
           <div class="venue-section-button">{{ $t("venue.bus.title") }}</div>
         </div>
         <div class="venue-section-direction">
-          <span>{{ store.getItem("bus", locale) }}</span>
+          <span v-html="store.getBus(locale)"></span>
         </div>
       </section>
     </div>
