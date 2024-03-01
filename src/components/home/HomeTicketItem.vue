@@ -1,84 +1,39 @@
 <template>
-  <section id="ticket" class="ticket-container">
-    <header class="ticket-title">{{ $t("home.ticket.title") }}</header>
-    <div class="ticket-row">
-      <TicketItem
-        v-for="item in ticketItems"
-        :key="item.type"
-        :type="item.type"
-        :title="item.title"
-        :price="prices[item.priceKey]"
-        :check="item.check"
-        :option="item.option"
-        :note="item.note"
-        :priceNote="item.priceNote"
-        :soldOut="item.soldOut"
-      />
-    </div>
-  </section>
+  <div :class="['ticket-item', type]">
+    <span class="ticket-item-expiring" v-if="soldOut">{{ $t("home.ticket.sold-out") }}</span>
+    <span class="ticket-item-title" :class="type+'-title'">{{ $t(title) }}</span>
+    <span class="early-bird-title-note" v-if="note">{{ $t(note) }}</span>
+    <span class="ticket-item-price" :class="type+'-price'">$ {{ price }}</span>
+    <span class="early-bird-price-note" v-if="priceNote">{{ $t('home.ticket.early-bird-price-note', { price: priceNote }) }}</span>
+    <ul class="ticket-item-list">
+      <li class="ticket-item-row" v-for="(item, index) in check" :key="index">
+        <i class="pi pi-check"></i>
+        <span class="ticket-item-text">{{ $t(item) }}</span>
+      </li>
+      <li class="ticket-item-row" v-if="option">
+        <img
+          src="@/assets/icon/home/ticket-dashed-box.svg"
+          class="ticket-item-icon"
+        />
+        <span class="ticket-item-text">{{ $t('home.ticket.banquet-optional', { price: option }) }}</span>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TicketItem from './HomeTicketItem.vue' // 確保路徑與你的檔案結構匹配
+import { defineProps } from 'vue'
 
-const prices = ref({
-  group: import.meta.env.VITE_TICKET_GROUP,
-  early: import.meta.env.VITE_TICKET_EARLY,
-  origin: import.meta.env.VITE_TICKET_ORIGIN,
-  double: import.meta.env.VITE_TICKET_DOUBLE,
-  first: import.meta.env.VITE_TICKET_FIRST,
-  second: import.meta.env.VITE_TICKET_SECOND,
-  banquet: import.meta.env.VITE_TICKET_BANQUET
+defineProps({
+  type: String,
+  title: String,
+  price: [Number, String],
+  check: Array,
+  option: Number,
+  note: String,
+  priceNote: String,
+  soldOut: Boolean
 })
-
-const ticketItems = ref([
-  {
-    type: 'early-bird',
-    title: 'home.ticket.group',
-    priceKey: 'group',
-    check: ['home.ticket.lunch2', 'home.ticket.souvenir', 'home.ticket.banquet'],
-    note: 'home.ticket.early-bird-title-note',
-    priceNote: prices.value.origin,
-    soldOut: false
-  },
-  {
-    type: 'early-bird',
-    title: 'home.ticket.early-bird-title',
-    priceKey: 'early',
-    check: ['home.ticket.lunch2', 'home.ticket.souvenir', 'home.ticket.banquet'],
-    note: 'home.ticket.early-bird-title-note',
-    priceNote: prices.value.origin,
-    soldOut: false
-  },
-  {
-    type: 'white',
-    title: 'home.ticket.two-day',
-    priceKey: 'double',
-    check: ['home.ticket.lunch2', 'home.ticket.souvenir'],
-    option: prices.value.banquet
-  },
-  {
-    type: 'white',
-    title: 'home.ticket.first-day',
-    priceKey: 'first',
-    check: ['home.ticket.lunch', 'home.ticket.souvenir'],
-    option: prices.value.banquet
-  },
-  {
-    type: 'white',
-    title: 'home.ticket.second-day',
-    priceKey: 'second',
-    check: ['home.ticket.lunch', 'home.ticket.souvenir'],
-    option: prices.value.banquet
-  },
-  {
-    type: 'white',
-    title: 'home.ticket.banquet-only',
-    priceKey: 'banquet',
-    check: ['home.ticket.souvenir']
-  }
-])
 </script>
 
 <style scoped lang="scss">
