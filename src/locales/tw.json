@@ -1,6 +1,7 @@
 {
   "accommodation": {
     "title": "住宿資訊",
+    "website": "網站連結",
     "xizhi": "汐止",
     "nangang": "南港",
     "banner": {
@@ -116,6 +117,7 @@
       "program": "大會議程",
       "speakers": "講者介紹",
       "venue": "場地資訊",
+      "souvenir": "紀念品",
       "faq": "常見問答",
       "lang": "中文",
       "login": "登入",
@@ -485,12 +487,15 @@
     },
     "ticket": {
       "title": "票價資訊",
+      "group": "團體票",
+      "group-note": "五人以上成團",
       "two-day": "二日票",
       "early-bird-title": "早鳥二日票",
       "early-bird-title-note": "二日票加晚宴",
       "early-bird-price-note": "原價 $",
       "first-day": "第一日票",
       "second-day": "第二日票",
+      "banquet-only": "單購晚宴",
       "until": "優惠至 3 月 27 日止",
       "sold-out": "已完售",
       "lunch": "午餐餐盒",

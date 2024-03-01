@@ -19,6 +19,9 @@ export const useAccomsStore = defineStore('accoms', {
     },
     getPrice: (state) => (key: number) => {
       return state.accoms[key].price
+    },
+    getWebsite: (state) => (key: number) => {
+      return state.accoms[key].website
     }
   },
   actions: {
@@ -30,6 +33,7 @@ export const useAccomsStore = defineStore('accoms', {
             name
             transportation
             price
+            website
             picture { id }
             translations(filter: { languages_code: { name: { _eq: "English" } } }) {
               name
@@ -51,6 +55,7 @@ interface Accom {
   name: string
   transportation: string
   price: number
+  website: string
   picture: { id: number }
   translations: Array<{
     name: string

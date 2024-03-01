@@ -33,6 +33,13 @@
       >
         {{ $t("app.navbar.venue") }}
       </router-link>
+      <router-link
+        to="/#souvenir"
+        class="navbar-link"
+        @click="scrollToElement('souvenirs')"
+      >
+        {{ $t("app.navbar.souvenir") }}
+      </router-link>
       <router-link to="/faq" class="navbar-link">
         {{ $t("app.navbar.faq") }}
       </router-link>

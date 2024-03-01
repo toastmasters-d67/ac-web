@@ -10,8 +10,11 @@
       />
       <div class="accommodation-content">
         <div class="accommodation-content-title">
-          <div class="accommodation-name">
+          <div class="accommodation-name" :href="store.getWebsite(key)">
             {{ store.getName(key, locale) }}
+            <a :href="store.getWebsite(key)" target="_blank">
+              ({{ $t("accommodation.website") }})
+            </a>
           </div>
           <div class="accommodation-price">
             {{ store.getPrice(key) }}
@@ -25,9 +28,10 @@
             />
             <p>{{ $t("accommodation.transportation-location") }}</p>
           </div>
-          <ul>
+          <span v-html="store.getTrans(key, locale)"></span>
+          <!-- <ul>
             <li>{{ store.getTrans(key, locale) }}</li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>

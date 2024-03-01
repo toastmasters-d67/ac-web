@@ -1,6 +1,7 @@
 {
   "accommodation": {
     "title": "Accommodation",
+    "website": "Website",
     "xizhi": "Xi Zhi",
     "nangang": "Nangang",
     "banner": {
@@ -114,6 +115,7 @@
       "program": "Program",
       "speakers": "Speakers",
       "venue": "Venue",
+      "souvenir": "Souvenirs",
       "faq": "FAQ",
       "lang": "EN",
       "login": "Log in",
@@ -482,12 +484,15 @@
     },
     "ticket": {
       "title": "Ticket Price",
+      "group": "Group Ticket",
+      "group-note": "Available for 5 or more people",
       "two-day": "2 Day Pass",
       "early-bird-title": "Early Bird Pass",
       "early-bird-title-note": "2 day pass + Dinner Banquet",
       "early-bird-price-note": "Original price $",
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
+      "banquet-only": "Dinner Banquet",
       "until": "Until Mar 27, 2023",
       "sold-out": "Sold out",
       "lunch": "Lunchbox",
