@@ -126,7 +126,6 @@ onBeforeMount(() => {
   }
 
   .venue-section-direction {
-    width: 97.05%;
     max-width: 888px;
     color: #004165;
     font-size: 20px;

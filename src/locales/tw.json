@@ -492,7 +492,7 @@
       "two-day": "二日票",
       "early-bird-title": "早鳥二日票",
       "early-bird-title-note": "二日票加晚宴",
-      "early-bird-price-note": "原價 $",
+      "early-bird-price-note": "原價 $ {price}",
       "first-day": "第一日票",
       "second-day": "第二日票",
       "banquet-only": "單購晚宴",
@@ -502,7 +502,7 @@
       "lunch2": "兩天的午餐餐盒",
       "souvenir": "精美紀念品",
       "banquet": "含晚宴",
-      "banquet-optional": "可加購晚宴 $",
+      "banquet-optional": "可加購晚宴 $ {price}",
       "note": "2023年度大會線上購票已截止，感謝您的支持。",
       "order": "線上購票"
     },
