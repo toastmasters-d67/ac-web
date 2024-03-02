@@ -489,7 +489,7 @@
       "two-day": "2 Day Pass",
       "early-bird-title": "Early Bird Pass",
       "early-bird-title-note": "2 day pass + Dinner Banquet",
-      "early-bird-price-note": "Original price $",
+      "early-bird-price-note": "Original price $ {price}",
       "first-day": "First Day Pass",
       "second-day": "Second Day Pass",
       "banquet-only": "Dinner Banquet",
@@ -499,7 +499,7 @@
       "lunch2": "Lunchboxes for 2 days",
       "souvenir": "Souvenirs",
       "banquet": "Dinner banquet included",
-      "banquet-optional": "Optional dinner banquet $",
+      "banquet-optional": "Optional dinner banquet $ {price}",
       "note": "Thank you for your interest, but unfortunately all the tickets were sold out.",
       "order": "Order Tickets"
     },

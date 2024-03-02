@@ -1,6 +1,6 @@
 <template>
   <div :class="['ticket-item', type]">
-    <span class="ticket-item-expiring" v-if="soldOut">{{ $t("home.ticket.sold-out") }}</span>
+    <span class="ticket-item-expiring" v-if="expiring">{{ $t(expiring) }}</span>
     <span class="ticket-item-title" :class="type+'-title'">{{ $t(title) }}</span>
     <span class="early-bird-title-note" v-if="note">{{ $t(note) }}</span>
     <span class="ticket-item-price" :class="type+'-price'">$ {{ price }}</span>
@@ -32,7 +32,7 @@ defineProps({
   option: Number,
   note: String,
   priceNote: String,
-  soldOut: Boolean
+  expiring: String
 })
 </script>
 
@@ -145,7 +145,6 @@ defineProps({
 
   .ticket-item-expiring {
     position: absolute;
-    left: 90px;
     top: -15px;
     color: #52555a;
     background: linear-gradient(
@@ -304,7 +303,6 @@ ul.ticket-item-list {
     margin-bottom: 24px;
 
     .ticket-item-expiring {
-      left: 48px;
       top: -12px;
       font-size: 10px;
       line-height: 12px;
