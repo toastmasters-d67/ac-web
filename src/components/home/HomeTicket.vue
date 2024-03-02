@@ -12,7 +12,7 @@
         :option="item.option"
         :note="item.note"
         :priceNote="item.priceNote"
-        :soldOut="item.soldOut"
+        :expiring="item.expiring"
       />
     </div>
   </section>
@@ -38,9 +38,8 @@ const ticketItems = ref([
     title: 'home.ticket.group',
     priceKey: 'group',
     check: ['home.ticket.lunch2', 'home.ticket.souvenir', 'home.ticket.banquet'],
-    note: 'home.ticket.early-bird-title-note',
-    priceNote: prices.value.origin,
-    soldOut: false
+    note: 'home.ticket.group-note',
+    priceNote: prices.value.origin
   },
   {
     type: 'early-bird',
@@ -49,7 +48,7 @@ const ticketItems = ref([
     check: ['home.ticket.lunch2', 'home.ticket.souvenir', 'home.ticket.banquet'],
     note: 'home.ticket.early-bird-title-note',
     priceNote: prices.value.origin,
-    soldOut: false
+    expiring: 'home.ticket.until'
   },
   {
     type: 'white',
