@@ -26,26 +26,6 @@
       {{ $t("team.description") }}
     </span>
     <div class="our-team-team">
-      <span class="our-team-team-name">
-        {{ $t("team.team.coordinator") }}
-      </span>
-      <div class="our-team-members">
-        <div class="our-team-member two-positions">
-          <img
-            :src="getImage('kevin-lin')"
-            class="our-team-member-image"
-            alt="Kevin Lin"
-          />
-          <div class="our-team-member-profile">
-            <span class="our-team-member-name">Kevin Lin</span>
-            <span class="profile-two-positions-text">
-              {{ $t("team.team.coordinator") }}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="our-team-team">
       <span class="our-team-team-name">{{ $t("team.team.design") }}</span>
       <div class="our-team-members">
         <div class="our-team-member">
