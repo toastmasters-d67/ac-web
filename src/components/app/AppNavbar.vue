@@ -420,7 +420,7 @@ hr {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 860px) {
   .navbar-container {
     height: 63px;
 
