@@ -227,8 +227,8 @@ const handleResize = (): void => {
 
 const getImage = (item: any): string => {
   return windowHeight.value > 768
-    ? `/src/assets/image/our-team/${item}.png`
-    : `/src/assets/image/our-team/${item}-mobile.png`
+    ? `/${item}.png`
+    : `/${item}-mobile.png`
 }
 
 onBeforeMount(() => {
