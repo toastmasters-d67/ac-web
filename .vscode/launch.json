@@ -13,7 +13,7 @@
       "type": "node"
     },
     {
-      "type": "chrome",
+      "type": "msedge",
       "request": "launch",
       "name": "對 localhost 啟動 Chrome",
       "url": "http://localhost:5173",

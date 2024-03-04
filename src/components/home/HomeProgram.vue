@@ -62,10 +62,10 @@
               </span>
             </span>
             <span class="row-item-title">
-              {{ $t("home.program.briefing1") }}<br />
+              {{ $t("home.program.run-off", { alphabet: "A" }) }}<br />
               {{
                 $t("home.program.briefing2", {
-                  group: $t("home.program.group1"),
+                  group: $t("home.program.group2"),
                 })
               }}
             </span>
@@ -81,7 +81,7 @@
               </span>
             </span>
             <span class="row-item-title">
-              {{ $t("home.program.briefing1") }}<br />
+              {{ $t("home.program.run-off", { alphabet: "B" }) }}<br />
               {{
                 $t("home.program.briefing2", {
                   group: $t("home.program.group2"),
@@ -90,6 +90,25 @@
             </span>
             <span class="row-item-venue venue-lisianthus">
               {{ $t("home.program.room.singapore") }}
+            </span>
+          </div>
+          <div class="row-item">
+            <span class="row-item-time">
+              09:20
+              <span class="row-item-time-duration">
+                (15 {{ $t("home.program.min") }})
+              </span>
+            </span>
+            <span class="row-item-title">
+              {{ $t("home.program.briefing1") }}<br />
+              {{
+                $t("home.program.briefing2", {
+                  group: $t("home.program.group1"),
+                })
+              }}
+            </span>
+            <span class="row-item-venue venue-calla">
+              {{ $t("home.program.room.german") }}
             </span>
           </div>
         </div>
