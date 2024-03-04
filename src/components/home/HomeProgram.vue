@@ -69,8 +69,8 @@
                 })
               }}
             </span>
-            <span class="row-item-venue venue-rose">
-              {{ $t("home.program.room.german") }}
+            <span class="row-item-venue venue-clove">
+              {{ $t("home.program.room.china") }}
             </span>
           </div>
           <div class="row-item">
@@ -554,7 +554,7 @@
               }}<br />
               {{
                 $t("home.program.briefing2", {
-                  group: $t("home.program.group1"),
+                  group: $t("home.program.group2"),
                 })
               }}
             </span>
@@ -579,7 +579,7 @@
               }}<br />
               {{
                 $t("home.program.briefing2", {
-                  group: $t("home.program.group2"),
+                  group: $t("home.program.group1"),
                 })
               }}
             </span>
