@@ -62,7 +62,7 @@
               </span>
             </span>
             <span class="row-item-title">
-              {{ $t("home.program.run-off", { alphabet: "A" }) }}<br />
+              {{ $t("home.program.run-off", { alphabet: "A" }) }}
               {{
                 $t("home.program.briefing2", {
                   group: $t("home.program.group2"),
@@ -81,7 +81,7 @@
               </span>
             </span>
             <span class="row-item-title">
-              {{ $t("home.program.run-off", { alphabet: "B" }) }}<br />
+              {{ $t("home.program.run-off", { alphabet: "B" }) }}
               {{
                 $t("home.program.briefing2", {
                   group: $t("home.program.group2"),
@@ -100,7 +100,7 @@
               </span>
             </span>
             <span class="row-item-title">
-              {{ $t("home.program.briefing1") }}<br />
+              {{ $t("home.program.briefing1") }}
               {{
                 $t("home.program.briefing2", {
                   group: $t("home.program.group1"),
