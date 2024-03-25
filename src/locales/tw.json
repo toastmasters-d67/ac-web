@@ -450,6 +450,10 @@
       "title": "講師介紹",
       "tbd": "邀約中"
     },
+    "sponsor": {
+      "title": "贊助商",
+      "tbd": "邀約中"
+    },
     "ticket": {
       "title": "票價資訊",
       "group": "團體全程票",

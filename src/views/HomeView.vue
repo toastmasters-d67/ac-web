@@ -8,6 +8,7 @@
     <Program v-once />
     <Venue v-once />
     <Souvenirs v-once />
+    <Sponsors v-once />
   </article>
 </template>
 
@@ -22,6 +23,7 @@ import Speakers from '@/components/home/HomeSpeakers.vue'
 import Program from '@/components/home/HomeProgram.vue'
 import Venue from '@/components/home/HomeVenue.vue'
 import Souvenirs from '@/components/home/HomeSouvenirs.vue'
+import Sponsors from '@/components/home/HomeSponsors.vue'
 
 const { t } = useI18n()
 const sentences = ref([
